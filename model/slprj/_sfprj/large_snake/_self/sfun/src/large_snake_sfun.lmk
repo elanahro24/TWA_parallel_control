@@ -1,0 +1,75 @@
+CC     = "c:\program files (x86)\matlab\r2010a\sys\lcc\bin\lcc.exe"
+LD     = "c:\program files (x86)\matlab\r2010a\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "c:\program files (x86)\matlab\r2010a\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"c:\program files (x86)\matlab\r2010a\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"large_snake_sfun.obj"\
+	"large_snake_sfun_registry.obj"\
+	"c1_large_snake.obj"\
+	"c2_large_snake.obj"\
+	"c3_large_snake.obj"\
+	"c4_large_snake.obj"\
+	"c5_large_snake.obj"\
+	"c6_large_snake.obj"\
+	"c7_large_snake.obj"\
+	"c8_large_snake.obj"\
+	"c9_large_snake.obj"\
+	"c10_large_snake.obj"\
+	"c11_large_snake.obj"\
+	"c13_large_snake.obj"\
+	"c15_large_snake.obj"\
+	"c22_large_snake.obj"\
+	"lccstub.obj"\
+	"c:\program files (x86)\matlab\r2010a\sys\lcc\mex\lccdef.def"\
+	"c:\program files (x86)\matlab\r2010a\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"c:\program files (x86)\matlab\r2010a\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libmex.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libmx.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libut.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libemlrt.lib"\
+	"c:\program files (x86)\matlab\r2010a\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"c:\program files (x86)\matlab\r2010a\sys\lcc\include"  -I"c:\program files (x86)\matlab\r2010a\extern\include"  -I"c:\program files (x86)\matlab\r2010a\simulink\include"  -I"c:\program files (x86)\matlab\r2010a\stateflow\c\mex\include"  -I"c:\program files (x86)\matlab\r2010a\stateflow\c\debugger\include" 
+ 
+
+large_snake_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o large_snake_sfun.mexw32 @large_snake_sfun.lmko
+large_snake_sfun.obj :	"large_snake_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "large_snake_sfun.c"
+large_snake_sfun_registry.obj :	"large_snake_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "large_snake_sfun_registry.c"
+c1_large_snake.obj :	"c1_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_large_snake.c"
+c2_large_snake.obj :	"c2_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_large_snake.c"
+c3_large_snake.obj :	"c3_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_large_snake.c"
+c4_large_snake.obj :	"c4_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_large_snake.c"
+c5_large_snake.obj :	"c5_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c5_large_snake.c"
+c6_large_snake.obj :	"c6_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c6_large_snake.c"
+c7_large_snake.obj :	"c7_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c7_large_snake.c"
+c8_large_snake.obj :	"c8_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c8_large_snake.c"
+c9_large_snake.obj :	"c9_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c9_large_snake.c"
+c10_large_snake.obj :	"c10_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c10_large_snake.c"
+c11_large_snake.obj :	"c11_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c11_large_snake.c"
+c13_large_snake.obj :	"c13_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c13_large_snake.c"
+c15_large_snake.obj :	"c15_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c15_large_snake.c"
+c22_large_snake.obj :	"c22_large_snake.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c22_large_snake.c"
+lccstub.obj :	"c:\program files (x86)\matlab\r2010a\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c:\program files (x86)\matlab\r2010a\sys\lcc\mex\lccstub.c"

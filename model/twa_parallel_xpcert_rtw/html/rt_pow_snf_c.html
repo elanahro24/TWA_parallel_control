@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - rt_pow_snf.c </TITLE>
+<STYLE> .LN { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .CT { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PP { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .KW { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .DT { font-style: bold;   color: #112266 } </STYLE>
+<SCRIPT language="JavaScript" type="text/javascript">
+<!--
+function rtwHilite(aBlock,aSsid) {
+    if (!aSsid) { aSsid = ""; }
+    window.location.href="matlab: if ~isempty(which('private/rtwbindmodel')), rtwprivate rtwbindmodel 'd:\\Projects\\big_snake_control\\BigSnakeSimulink\\Model\\twa_parallel.mdl' 'd:\\Projects\\big_snake_control\\BigSnakeSimulink\\Model\\twa_parallel_xpcert_rtw' '', end; rtwprivate code2model "+aBlock+" "+aSsid+";"
+} // end rtwHilite
+//-->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT="#1122aa" ONLOAD="if (top) if (top.rtwFileOnLoad) top.rtwFileOnLoad(window);">
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="file:///d:\Projects\big_snake_control\BigSnakeSimulink\Model\twa_parallel_xpcert_rtw\rt_pow_snf.c" TARGET="rtwreport_document_frame">d:\Projects\big_snake_control\BigSnakeSimulink\Model\twa_parallel_xpcert_rtw\rt_pow_snf.c</A></H4>
+<PRE id="RTWcode">
+<SPAN><A CLASS="LN" NAME="1">    1   </A><SPAN CLASS="CT">/*</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="2">    2   </A><SPAN CLASS="CT"> * rt_pow_snf.c</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="3">    3   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="4">    4   </A><SPAN CLASS="CT"> * Real-Time Workshop code generation for Simulink model &quot;twa_parallel.mdl&quot;.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="5">    5   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version              : 1.6677</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="7">    7   </A><SPAN CLASS="CT"> * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * C source code generated on : Tue Jun 11 18:47:24 2024</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="9">    9   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="10">   10   </A><SPAN CLASS="CT"> * Target selection: xpctargetert.tlc</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="11">   11   </A><SPAN CLASS="CT"> * Embedded hardware selection: Generic-&gt;32-bit x86 compatible</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="12">   12   </A><SPAN CLASS="CT"> * Code generation objectives: Unspecified</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="13">   13   </A><SPAN CLASS="CT"> * Validation result: Not run</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="14">   14   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="15">   15   </A><SPAN CLASS="CT"> */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="16">   16   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="17">   17   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;rt_pow_snf.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="18">   18   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;rt_nonfinite.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="19">   19   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&lt;math.h&gt;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="20">   20   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="21">   21   </A><SPAN CLASS="CT">/*</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="22">   22   </A><SPAN CLASS="CT"> * Calls double-precision version of POW, with guard against domain error</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="23">   23   </A><SPAN CLASS="CT"> * and guards against non-finites</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="24">   24   </A><SPAN CLASS="CT"> */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="25">   25   </A>real_T <A NAME="fcn_rt_pow_snf">rt_pow_snf</A>(<SPAN CLASS="DT">const</SPAN> real_T xr, <SPAN CLASS="DT">const</SPAN> real_T yr)
+</SPAN><SPAN><A CLASS="LN" NAME="26">   26   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="27">   27   </A>  real_T ret, axr, ayr;
+</SPAN><SPAN><A CLASS="LN" NAME="28">   28   </A>  <SPAN CLASS="KW">if</SPAN> (<A HREF="rt_nonfinite_c.html#fcn_rtIsNaN" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rtIsNaN');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtIsNaN</FONT></A>(xr) || <A HREF="rt_nonfinite_c.html#fcn_rtIsNaN" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rtIsNaN');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtIsNaN</FONT></A>(yr)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="29">   29   </A>    ret = (<A HREF="rt_nonfinite_c.html#var_rtNaN" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtNaN');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtNaN</FONT></A>);
+</SPAN><SPAN><A CLASS="LN" NAME="30">   30   </A>  <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="31">   31   </A>    axr = fabs(xr);
+</SPAN><SPAN><A CLASS="LN" NAME="32">   32   </A>    ayr = fabs(yr);
+</SPAN><SPAN><A CLASS="LN" NAME="33">   33   </A>    <SPAN CLASS="KW">if</SPAN> (<A HREF="rt_nonfinite_c.html#fcn_rtIsInf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rtIsInf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtIsInf</FONT></A>(ayr)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="34">   34   </A>      <SPAN CLASS="KW">if</SPAN> (axr == 1.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="35">   35   </A>        ret = (<A HREF="rt_nonfinite_c.html#var_rtNaN" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtNaN');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtNaN</FONT></A>);
+</SPAN><SPAN><A CLASS="LN" NAME="36">   36   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> (axr &gt; 1.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="37">   37   </A>        <SPAN CLASS="KW">if</SPAN> (yr &gt; 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="38">   38   </A>          ret = (<A HREF="rt_nonfinite_c.html#var_rtInf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtInf');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtInf</FONT></A>);
+</SPAN><SPAN><A CLASS="LN" NAME="39">   39   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="40">   40   </A>          ret = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="41">   41   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="42">   42   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="43">   43   </A>        <SPAN CLASS="KW">if</SPAN> (yr &gt; 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="44">   44   </A>          ret = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="45">   45   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="46">   46   </A>          ret = (<A HREF="rt_nonfinite_c.html#var_rtInf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtInf');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtInf</FONT></A>);
+</SPAN><SPAN><A CLASS="LN" NAME="47">   47   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="48">   48   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="49">   49   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="50">   50   </A>      <SPAN CLASS="KW">if</SPAN> (ayr == 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="51">   51   </A>        ret = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="52">   52   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> (ayr == 1.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="53">   53   </A>        <SPAN CLASS="KW">if</SPAN> (yr &gt; 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="54">   54   </A>          ret = xr;
+</SPAN><SPAN><A CLASS="LN" NAME="55">   55   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="56">   56   </A>          ret = 1.0/xr;
+</SPAN><SPAN><A CLASS="LN" NAME="57">   57   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="58">   58   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> (yr == 2.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="59">   59   </A>        ret = xr*xr;
+</SPAN><SPAN><A CLASS="LN" NAME="60">   60   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> (yr == 0.5 &amp;&amp; xr &gt;= 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="61">   61   </A>        ret = sqrt(xr);
+</SPAN><SPAN><A CLASS="LN" NAME="62">   62   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> ((xr &lt; 0.0) &amp;&amp; (yr &gt; floor(yr))) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="63">   63   </A>        ret = (<A HREF="rt_nonfinite_c.html#var_rtNaN" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_rtNaN');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtNaN</FONT></A>);
+</SPAN><SPAN><A CLASS="LN" NAME="64">   64   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="65">   65   </A>        ret = pow(xr, yr);
+</SPAN><SPAN><A CLASS="LN" NAME="66">   66   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="67">   67   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="68">   68   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="69">   69   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="70">   70   </A>  <SPAN CLASS="KW">return</SPAN> ret;
+</SPAN><SPAN><A CLASS="LN" NAME="71">   71   </A><B>}</B>                                      <SPAN CLASS="CT">/* end rt_pow_snf */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="72">   72   </A>
+</SPAN></PRE>
+</TD></TR></TABLE>
+</P>
+</BODY>
+</HTML>

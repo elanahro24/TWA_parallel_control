@@ -1,0 +1,54 @@
+%implements "initstgmodel2" "C"
+
+%function BlockTypeSetup(block, system) void
+  %openfile hdrBuffer
+%%#include <stdio.h>
+#include "C:\ServoToGo\stg_comn.h"
+#include "C:\ServoToGo\stgdefs.h"
+#include "C:\ServoToGo\stgmembs.h"
+#include "C:\ServoToGo\irq_defs.h"
+  %closefile hdrBuffer
+  %<LibCacheIncludes(hdrBuffer)>
+  %<LibAddToModelSources("global_vars")>
+  %<LibAddToModelSources("stgmembs")>
+%endfunction 
+
+%function Start(block, system) Output 
+{
+	extern struct IrqDataStruct IrqData;
+	extern struct ServoToGo StgController;
+	%assign BASE_ADDR = CAST("Number",Parameter[1].Value[0])
+	%assign IRQ_NUM = CAST("Number",Parameter[2].Value[0])
+	StgController.wBaseAddress = %<BASE_ADDR>;
+	StgController.wIrq = %<IRQ_NUM>;
+	IrqData.IRQ = %<IRQ_NUM>;
+	ServoToGo_Constructor2(IrqData.IRQ);
+}
+%endfunction 
+ 
+%function Outputs(block, system) Output
+{
+	/* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>)*/
+	{
+	%assign DEBUG_FLAG = CAST("Number",Parameter[3].Value[0])
+	if (%<DEBUG_FLAG>==1)
+	{
+		extern struct ServoToGo StgController;
+		short PARAMS[6];
+		PARAMS[0] = StgController.wBaseAddress;
+		PARAMS[1] = StgController.wIrq;
+		PARAMS[2] = StgController.wModel;
+		PARAMS[3] = StgController.wNoBoardFlag;
+		PARAMS[4] = StgController.wAxesInSys;
+		PARAMS[5] = StgController.wSaveDirs;
+
+		%foreach idx = %<DEBUG_FLAG * 6>
+		{
+			%assign y = LibBlockOutputSignal(%<idx>,"","",0)
+			%<y> = PARAMS[%<idx>];
+		}
+		%endforeach
+	}
+	}
+}
+%endfunction

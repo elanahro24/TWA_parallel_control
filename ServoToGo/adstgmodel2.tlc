@@ -1,0 +1,51 @@
+%implements "adstgmodel2" "C"
+
+%function BlockTypeSetup(block, system) void
+  %openfile hdrBuffer
+#include "C:\ServoToGo\stg_comn.h"
+#include "C:\ServoToGo\stgdefs.h"
+#include "C:\ServoToGo\stgmembs.h"
+#include "C:\ServoToGo\irq_defs.h"
+  %closefile hdrBuffer
+  %<LibCacheIncludes(hdrBuffer)>
+  %<LibAddToModelSources("global_vars")>
+  %<LibAddToModelSources("stgmembs")>
+%endfunction 
+
+%function Start(block, system) Output 
+{
+	%assign AUTO_ZERO = CAST("Number",Parameter[1].Value[0])
+	if (%<AUTO_ZERO> == 1)
+		AutoZeroAdc();
+	else
+		DontAutoZeroAdc();
+	CalADC();
+	Timer2Delay(7159);
+}
+%endfunction 
+ 
+%function Outputs(block, system) Output
+{
+	/* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>)*/
+	{
+	int j, k;
+	short counts;
+	%assign N_CHANNELS = SIZE(Parameter[0].Value,1)
+	%assign CHAN_VEC = CAST("Vector",Parameter[0].Value)
+	
+	%foreach idx = %<N_CHANNELS>
+	{
+		%assign id=CAST("Number",%<CHAN_VEC[idx]>)
+		%assign y = LibBlockOutputSignal(idx,"","",0)
+	
+		StartADC(%<id>);
+		Timer2Delay(150);
+		/* Try to read ADC -- give up after 10000 iterations. */
+		for (j=0; (ReadADC(%<id>, &counts) == STG_FAILURE) && (j < 10000); j++)
+			;
+		%<y> = (double) counts *(10.0 / 4096.0);
+	}
+	%endforeach
+	}
+}
+%endfunction

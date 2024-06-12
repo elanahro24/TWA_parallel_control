@@ -1,0 +1,55 @@
+%implements "dostgmodel2" "C"
+
+%function BlockTypeSetup(block, system) void
+  %openfile hdrBuffer
+#include "C:\ServoToGo\stg_comn.h"
+#include "C:\ServoToGo\stgdefs.h"
+#include "C:\ServoToGo\stgmembs.h"
+#include "C:\ServoToGo\irq_defs.h"
+  %closefile hdrBuffer
+  %<LibCacheIncludes(hdrBuffer)>
+  %<LibAddToModelSources("global_vars")>
+  %<LibAddToModelSources("stgmembs")>
+%endfunction 
+
+%function Start(block, system) Output 
+{
+	%assign PORT_BIT = CAST("Number",Parameter[1].Value[0])
+	DioDirection2(%<PORT_BIT>,STG_PORT_OUTPUT);
+}
+%endfunction 
+ 
+%function Outputs(block, system) Output
+{
+	/* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>)*/
+	{
+	%assign N_CHANNELS = SIZE(Parameter[0].Value,1)
+	%assign CHAN_VEC = CAST("Vector",Parameter[0].Value)
+	%assign PORT_BIT = CAST("Number",Parameter[1].Value[0])
+	
+	%switch %<PORT_BIT>
+	{
+		%case 1
+			%assign nPort = 0
+			%break
+		%case 2
+			%assign nPort = 1
+			%break
+		%case 12
+			%assign nPort = 2
+			%break
+		%case 48
+			%assign nPort = 3
+			%break
+	}
+	%endswitch
+	%foreach idx = %<N_CHANNELS>
+	{
+		%assign id=CAST("Number",%<CHAN_VEC[idx]>)
+		%assign y = LibBlockInputSignal(idx,"","",0)
+		RawDO3(%<id>,%<y>,%<nPort>);
+	}
+	%endforeach
+	}
+}
+%endfunction

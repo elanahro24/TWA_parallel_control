@@ -1,0 +1,55 @@
+%implements "encstgmodel2" "C"
+
+%function BlockTypeSetup(block, system) void
+  %openfile hdrBuffer
+#include "C:\ServoToGo\stg_comn.h"
+#include "C:\ServoToGo\stgdefs.h"
+#include "C:\ServoToGo\stgmembs.h"
+#include "C:\ServoToGo\irq_defs.h"
+  %closefile hdrBuffer
+  %<LibCacheIncludes(hdrBuffer)>
+  %<LibAddToModelSources("global_vars")>
+  %<LibAddToModelSources("stgmembs")>
+%endfunction 
+
+%function Start(block, system) Output 
+{
+	int i;
+	
+	EncoderResetAddr();
+	for (i = 0; i < 8; i++)
+		SetEncoderCounts(i, 0);
+}
+%endfunction 
+ 
+%function Outputs(block, system) Output
+{
+	/* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>)*/
+
+	{
+	short i;
+	LONGBYTE enc[8];
+	%assign N_CHANNELS = SIZE(Parameter[0].Value,1)
+	%assign CHAN_VEC = CAST("Vector",Parameter[0].Value)
+	%assign COUNT_REV = CAST("Number",Parameter[1].Value[0])
+	
+	EncoderLatch();
+	EncReadAll(&enc);
+	%foreach idx = %<N_CHANNELS>
+	{
+		%assign id=CAST("Number",%<CHAN_VEC[idx]>)
+		%assign y = LibBlockOutputSignal(idx,"","",0)
+		%assign x = LibBlockInputSignal(idx,"","",0)
+		
+		if (%<x>==1)
+		{
+			SetEncoderCounts(%<id>, 0);
+			%<y> = 0;
+		}
+		else
+			%<y> = (double) enc[%<id>].Long/%<COUNT_REV/360>;
+	}
+	%endforeach
+	}
+}
+%endfunction

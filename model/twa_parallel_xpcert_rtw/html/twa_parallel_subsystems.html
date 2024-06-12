@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - Nonvirtual subsystems in twa_parallel</TITLE>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" />
+  <SCRIPT language="JavaScript" type="text/javascript">
+<!--
+function rtwHilite(aBlock,aSsid) {
+    if (!aSsid) { aSsid = ""; }
+    window.location.href="matlab: if ~isempty(which('private/rtwbindmodel')), rtwprivate rtwbindmodel 'd:\\Projects\\big_snake_control\\BigSnakeSimulink\\Model\\twa_parallel.mdl' 'd:\\Projects\\big_snake_control\\BigSnakeSimulink\\Model\\twa_parallel_xpcert_rtw' '', end; rtwprivate code2model "+aBlock+" "+aSsid+";"
+} // end rtwHilite
+//-->
+</SCRIPT>
+
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="0033CC" VLINK="#666666" ONLOAD="if (top) if (top.tocHiliteById) top.tocHiliteById('rtwIdSubsystem');">
+<FONT SIZE="+3" COLOR="#000066"> Nonvirtual subsystems in twa_parallel</FONT>
+<P CLASS="margin" />
+<A NAME="codemap"><FONT SIZE="+1" COLOR="#000066"> <B CLASS="midprod"> 
+ Code Mapping </B></FONT></A>
+<P CLASS="margin" />  
+The following table:
+<ul>
+
+<li> provides a mapping from the non-virtual subsystems in the model to
+functions or Reused functions in the generated code and </li>
+
+<li> notes exceptions that caused some non-virtual subsystems to not reuse code
+even though they were assigned a Reuse Setting ('RTW System Code' entry 
+on the Subsystem Block Dialog) of 'Auto' or 'Reused Function'.</li>
+
+</ul>
+<BR />
+   <TABLE BORDER="1" CELLPADDING="5" CELLSPACING="1">
+     <TR><TD><B>Subsystem</B></TD><TD><B>Reuse Setting</B></TD><TD><B>Reuse Outcome</B></TD><TD><B>Outcome Diagnostic</B></TD></TR>
+     <TR><TD><a href="javascript:rtwHilite('twa_parallel:3036');"><FONT COLOR="blue"><I>&lt;S2&gt;</I></FONT></a></TD><TD>Auto</TD><TD>Inline</TD><TD><FONT COLOR="green">normal</FONT></TD></TR>
+     <TR><TD><a href="javascript:rtwHilite('twa_parallel:3107');"><FONT COLOR="blue"><I>&lt;S3&gt;</I></FONT></a></TD><TD>Auto</TD><TD>Inline</TD><TD><FONT COLOR="green">normal</FONT></TD></TR>
+     <TR><TD><a href="javascript:rtwHilite('twa_parallel:3137');"><FONT COLOR="blue"><I>&lt;S4&gt;</I></FONT></a></TD><TD>Auto</TD><TD>Inline</TD><TD><FONT COLOR="green">normal</FONT></TD></TR>
+     <TR><TD><a href="javascript:rtwHilite('twa_parallel:2902');"><FONT COLOR="blue"><I>&lt;S18&gt;</I></FONT></a></TD><TD>Auto</TD><TD>Inline</TD><TD><FONT COLOR="green">normal</FONT></TD></TR>
+   </TABLE>
+<BR />
+<BR />
+<A NAME="codeexcepts"><FONT SIZE="+1" COLOR="#000066"> <B CLASS="midprod"> 
+ Code Reuse Exceptions</B></FONT></A>
+ <P CLASS="margin" />  
+
+The following section provides details on each exception that caused
+a non-virtual subsystem with a Reuse Setting of 
+<ul>
+
+<li> 'Auto' to become an inlined code segment, </li>
+
+<li> 'Auto' to become a non-reusable function without arguments, or</li>
+
+<li> 'Reused Function' to become a non-reusable function without arguments.</li>
+
+</ul>
+
+<B>Note</B>: This section does not report graphically identical non-virtual
+subsystems marked as 'Auto' that were not reused due to differences in their
+functional properties (such as dimensions, datatypes, work vectors, parameters,
+etc.).  You may identify reasons for non-reuse in such cases by
+inspecting the differences in the functional attributes of the
+subsystems in the model or in the inlined generated code.
+
+<BR />
+<BR />
+   <B>No reuse exceptions in model</B>
+
+ </BODY>
+</HTML>
+

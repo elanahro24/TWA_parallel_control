@@ -1,0 +1,1687 @@
+<HTML>
+<HEAD>
+<TITLE>RTW Report - twa_parallel.c </TITLE>
+<STYLE> .LN { font-style: italic; color: #888888 } </STYLE>
+<STYLE> .CT { font-style: italic; color: #117755 } </STYLE>
+<STYLE> .PP { font-style: bold;   color: #992211 } </STYLE>
+<STYLE> .KW { font-style: bold;   color: #112266 } </STYLE>
+<STYLE> .DT { font-style: bold;   color: #112266 } </STYLE>
+<SCRIPT language="JavaScript" type="text/javascript">
+<!--
+function rtwHilite(aBlock,aSsid) {
+    if (!aSsid) { aSsid = ""; }
+    window.location.href="matlab: if ~isempty(which('private/rtwbindmodel')), rtwprivate rtwbindmodel 'd:\\Projects\\big_snake_control\\BigSnakeSimulink\\Model\\twa_parallel.mdl' 'd:\\Projects\\big_snake_control\\BigSnakeSimulink\\Model\\twa_parallel_xpcert_rtw' '', end; rtwprivate code2model "+aBlock+" "+aSsid+";"
+} // end rtwHilite
+//-->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#eeeeee" TEXT="#1122aa" ONLOAD="if (top) if (top.rtwFileOnLoad) top.rtwFileOnLoad(window);">
+<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="6" WIDTH="100%" HEIGHT="100%"><TR><TD WIDTH="100%" VALIGN="top" BGCOLOR="#ffffff">
+<H4>File: <A HREF="file:///d:\Projects\big_snake_control\BigSnakeSimulink\Model\twa_parallel_xpcert_rtw\twa_parallel.c" TARGET="rtwreport_document_frame">d:\Projects\big_snake_control\BigSnakeSimulink\Model\twa_parallel_xpcert_rtw\twa_parallel.c</A></H4>
+<PRE id="RTWcode">
+<SPAN><A CLASS="LN" NAME="1">    1   </A><SPAN CLASS="CT">/*</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="2">    2   </A><SPAN CLASS="CT"> * twa_parallel.c</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="3">    3   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="4">    4   </A><SPAN CLASS="CT"> * Real-Time Workshop code generation for Simulink model &quot;twa_parallel.mdl&quot;.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="5">    5   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version              : 1.6677</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="7">    7   </A><SPAN CLASS="CT"> * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * C source code generated on : Tue Jun 11 18:47:24 2024</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="9">    9   </A><SPAN CLASS="CT"> *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="10">   10   </A><SPAN CLASS="CT"> * Target selection: xpctargetert.tlc</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="11">   11   </A><SPAN CLASS="CT"> * Embedded hardware selection: Generic-&gt;32-bit x86 compatible</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="12">   12   </A><SPAN CLASS="CT"> * Code generation objectives: Unspecified</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="13">   13   </A><SPAN CLASS="CT"> * Validation result: Not run</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="14">   14   </A><SPAN CLASS="CT"> */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="15">   15   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="16">   16   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;rt_logging_mmi.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="17">   17   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;twa_parallel_capi.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="18">   18   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;twa_parallel.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="19">   19   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;twa_parallel_private.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="20">   20   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&lt;stdio.h&gt;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="21">   21   </A><FONT COLOR="#992211">#</FONT><SPAN CLASS="PP">include</SPAN> <FONT COLOR="#992211">&quot;twa_parallel_dt.h&quot;</FONT>
+</SPAN><SPAN><A CLASS="LN" NAME="22">   22   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="23">   23   </A><SPAN CLASS="CT">/* Block signals (auto storage) */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="24">   24   </A><A HREF="twa_parallel_h.html#type_BlockIO_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_BlockIO_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">BlockIO_twa_parallel</FONT></A> twa_parallel_B;
+</SPAN><SPAN><A CLASS="LN" NAME="25">   25   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="26">   26   </A><SPAN CLASS="CT">/* Block states (auto storage) */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="27">   27   </A><A HREF="twa_parallel_h.html#type_D_Work_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_D_Work_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">D_Work_twa_parallel</FONT></A> twa_parallel_DWork;
+</SPAN><SPAN><A CLASS="LN" NAME="28">   28   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="29">   29   </A><SPAN CLASS="CT">/* Real-time model */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="30">   30   </A><A HREF="twa_parallel_types_h.html#type_rtModel_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_rtModel_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtModel_twa_parallel</FONT></A> twa_parallel_rtM_;
+</SPAN><SPAN><A CLASS="LN" NAME="31">   31   </A><A HREF="twa_parallel_types_h.html#type_rtModel_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_rtModel_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtModel_twa_parallel</FONT></A> *twa_parallel_rtM = &amp;twa_parallel_rtM_;
+</SPAN><SPAN><A CLASS="LN" NAME="32">   32   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="33">   33   </A><SPAN CLASS="CT">/* Forward declaration for local functions */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="34">   34   </A><SPAN CLASS="DT">static</SPAN> real_T <A HREF="twa_parallel_c.html#fcn_twa_parallel_norm" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_norm');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_norm</FONT></A>(<SPAN CLASS="DT">const</SPAN> real_T eml_x[3]);
+</SPAN><SPAN><A CLASS="LN" NAME="35">   35   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="36">   36   </A><SPAN CLASS="CT">/* Function for Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3036')"><FONT color="#117755"><I>&lt;Root&gt;/GetMacroLegLen</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="37">   37   </A><SPAN CLASS="DT">static</SPAN> real_T <A NAME="fcn_twa_parallel_norm">twa_parallel_norm</A>(<SPAN CLASS="DT">const</SPAN> real_T eml_x[3])
+</SPAN><SPAN><A CLASS="LN" NAME="38">   38   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="39">   39   </A>  real_T eml_y;
+</SPAN><SPAN><A CLASS="LN" NAME="40">   40   </A>  real_T eml_scale;
+</SPAN><SPAN><A CLASS="LN" NAME="41">   41   </A>  boolean_T eml_firstNonZero;
+</SPAN><SPAN><A CLASS="LN" NAME="42">   42   </A>  real_T eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="43">   43   </A>  real_T eml_t;
+</SPAN><SPAN><A CLASS="LN" NAME="44">   44   </A>  eml_y = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="45">   45   </A>  eml_scale = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="46">   46   </A>  eml_firstNonZero = TRUE;
+</SPAN><SPAN><A CLASS="LN" NAME="47">   47   </A>  eml_xk = eml_x[0];
+</SPAN><SPAN><A CLASS="LN" NAME="48">   48   </A>  <SPAN CLASS="KW">if</SPAN> (eml_xk != 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="49">   49   </A>    eml_xk = fabs(eml_xk);
+</SPAN><SPAN><A CLASS="LN" NAME="50">   50   </A>    eml_scale = eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="51">   51   </A>    eml_y = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="52">   52   </A>    eml_firstNonZero = FALSE;
+</SPAN><SPAN><A CLASS="LN" NAME="53">   53   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="54">   54   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="55">   55   </A>  eml_xk = eml_x[1];
+</SPAN><SPAN><A CLASS="LN" NAME="56">   56   </A>  <SPAN CLASS="KW">if</SPAN> (eml_xk != 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="57">   57   </A>    eml_xk = fabs(eml_xk);
+</SPAN><SPAN><A CLASS="LN" NAME="58">   58   </A>    <SPAN CLASS="KW">if</SPAN> (eml_firstNonZero) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="59">   59   </A>      eml_scale = eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="60">   60   </A>      eml_y = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="61">   61   </A>      eml_firstNonZero = FALSE;
+</SPAN><SPAN><A CLASS="LN" NAME="62">   62   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> (eml_scale &lt; eml_xk) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="63">   63   </A>      eml_t = eml_scale / eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="64">   64   </A>      eml_y = eml_y * eml_t * eml_t + 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="65">   65   </A>      eml_scale = eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="66">   66   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="67">   67   </A>      eml_t = eml_xk / eml_scale;
+</SPAN><SPAN><A CLASS="LN" NAME="68">   68   </A>      eml_y += eml_t * eml_t;
+</SPAN><SPAN><A CLASS="LN" NAME="69">   69   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="70">   70   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="71">   71   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="72">   72   </A>  eml_xk = eml_x[2];
+</SPAN><SPAN><A CLASS="LN" NAME="73">   73   </A>  <SPAN CLASS="KW">if</SPAN> (eml_xk != 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="74">   74   </A>    eml_xk = fabs(eml_xk);
+</SPAN><SPAN><A CLASS="LN" NAME="75">   75   </A>    <SPAN CLASS="KW">if</SPAN> (eml_firstNonZero) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="76">   76   </A>      eml_scale = eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="77">   77   </A>      eml_y = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="78">   78   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <SPAN CLASS="KW">if</SPAN> (eml_scale &lt; eml_xk) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="79">   79   </A>      eml_t = eml_scale / eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="80">   80   </A>      eml_y = eml_y * eml_t * eml_t + 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="81">   81   </A>      eml_scale = eml_xk;
+</SPAN><SPAN><A CLASS="LN" NAME="82">   82   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="83">   83   </A>      eml_t = eml_xk / eml_scale;
+</SPAN><SPAN><A CLASS="LN" NAME="84">   84   </A>      eml_y += eml_t * eml_t;
+</SPAN><SPAN><A CLASS="LN" NAME="85">   85   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="86">   86   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="87">   87   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="88">   88   </A>  <SPAN CLASS="KW">return</SPAN> eml_scale * sqrt(eml_y);
+</SPAN><SPAN><A CLASS="LN" NAME="89">   89   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="90">   90   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="91">   91   </A><SPAN CLASS="CT">/* Model output function */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="92">   92   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_twa_parallel_output">twa_parallel_output</A>(int_T tid)
+</SPAN><SPAN><A CLASS="LN" NAME="93">   93   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="94">   94   </A>  real_T eml_vertex_dist[9];
+</SPAN><SPAN><A CLASS="LN" NAME="95">   95   </A>  boolean_T eml_y;
+</SPAN><SPAN><A CLASS="LN" NAME="96">   96   </A>  boolean_T eml_x[3];
+</SPAN><SPAN><A CLASS="LN" NAME="97">   97   </A>  int32_T eml_k;
+</SPAN><SPAN><A CLASS="LN" NAME="98">   98   </A>  boolean_T eml_exitg;
+</SPAN><SPAN><A CLASS="LN" NAME="99">   99   </A>  real_T eml_eta[6];
+</SPAN><SPAN><A CLASS="LN" NAME="100">  100   </A>  real_T eml_a[6];
+</SPAN><SPAN><A CLASS="LN" NAME="101">  101   </A>  real_T eml_b_c;
+</SPAN><SPAN><A CLASS="LN" NAME="102">  102   </A>  real_T eml_g_c;
+</SPAN><SPAN><A CLASS="LN" NAME="103">  103   </A>  real_T eml_h_c;
+</SPAN><SPAN><A CLASS="LN" NAME="104">  104   </A>  real_T eml_i_c;
+</SPAN><SPAN><A CLASS="LN" NAME="105">  105   </A>  int32_T uIdx;
+</SPAN><SPAN><A CLASS="LN" NAME="106">  106   </A>  int32_T k;
+</SPAN><SPAN><A CLASS="LN" NAME="107">  107   </A>  int32_T idxN;
+</SPAN><SPAN><A CLASS="LN" NAME="108">  108   </A>  int32_T cff;
+</SPAN><SPAN><A CLASS="LN" NAME="109">  109   </A>  int32_T j;
+</SPAN><SPAN><A CLASS="LN" NAME="110">  110   </A>  real_T tmp[9];
+</SPAN><SPAN><A CLASS="LN" NAME="111">  111   </A>  real_T tmp_0[9];
+</SPAN><SPAN><A CLASS="LN" NAME="112">  112   </A>  real_T tmp_1[9];
+</SPAN><SPAN><A CLASS="LN" NAME="113">  113   </A>  real_T eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="114">  114   </A>  real_T eml_velmex_stroke_idx_0;
+</SPAN><SPAN><A CLASS="LN" NAME="115">  115   </A>  real_T eml_velmex_stroke_idx_1;
+</SPAN><SPAN><A CLASS="LN" NAME="116">  116   </A>  <SPAN CLASS="DT">static</SPAN> real_T tmp_2[9] = <B>{</B> 3.8988463678375417E+001, -2.2510000000000023E+001,
+</SPAN><SPAN><A CLASS="LN" NAME="117">  117   </A>    0.0, 2.7566799448806924E-015, 45.02, 0.0, -3.8988463678375432E+001,
+</SPAN><SPAN><A CLASS="LN" NAME="118">  118   </A>    -2.2510000000000005E+001, 0.0 <B>}</B>;
+</SPAN><SPAN><A CLASS="LN" NAME="119">  119   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="120">  120   </A>  <SPAN CLASS="DT">static</SPAN> real_T tmp_3[9] = <B>{</B> 1.3856406460551014E+002, -8.0000000000000071E+001,
+</SPAN><SPAN><A CLASS="LN" NAME="121">  121   </A>    0.0, 9.7971743931788261E-015, 160.0, 0.0, -1.3856406460551017E+002,
+</SPAN><SPAN><A CLASS="LN" NAME="122">  122   </A>    -8.0000000000000014E+001, 0.0 <B>}</B>;
+</SPAN><SPAN><A CLASS="LN" NAME="123">  123   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="124">  124   </A>  <SPAN CLASS="CT">/* S-Function (initstgmodel2): '<A href="javascript:rtwHilite('twa_parallel:2992')"><FONT color="#117755"><I>&lt;Root&gt;/Init</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="125">  125   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="126">  126   </A>    <SPAN CLASS="CT">/* S-Function Block: &lt;Root&gt;/Init (initstgmodel2)*/</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="127">  127   </A>    <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="128">  128   </A>      <SPAN CLASS="KW">if</SPAN> (0==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="129">  129   </A>        <SPAN CLASS="DT">extern</SPAN> <SPAN CLASS="KW">struct</SPAN> ServoToGo StgController;
+</SPAN><SPAN><A CLASS="LN" NAME="130">  130   </A>        <SPAN CLASS="DT">short</SPAN> PARAMS[6];
+</SPAN><SPAN><A CLASS="LN" NAME="131">  131   </A>        PARAMS[0] = StgController.wBaseAddress;
+</SPAN><SPAN><A CLASS="LN" NAME="132">  132   </A>        PARAMS[1] = StgController.wIrq;
+</SPAN><SPAN><A CLASS="LN" NAME="133">  133   </A>        PARAMS[2] = StgController.wModel;
+</SPAN><SPAN><A CLASS="LN" NAME="134">  134   </A>        PARAMS[3] = StgController.wNoBoardFlag;
+</SPAN><SPAN><A CLASS="LN" NAME="135">  135   </A>        PARAMS[4] = StgController.wAxesInSys;
+</SPAN><SPAN><A CLASS="LN" NAME="136">  136   </A>        PARAMS[5] = StgController.wSaveDirs;
+</SPAN><SPAN><A CLASS="LN" NAME="137">  137   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="138">  138   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="139">  139   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="140">  140   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="141">  141   </A>  <SPAN CLASS="CT">/* S-Function (dastgmodel2): '<A href="javascript:rtwHilite('twa_parallel:2897')"><FONT color="#117755"><I>&lt;Root&gt;/Analog Output</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="142">  142   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="143">  143   </A>    <SPAN CLASS="CT">/* S-Function Block: &lt;Root&gt;/Analog Output (dastgmodel2)*/</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="144">  144   </A>    <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="145">  145   </A>      <SPAN CLASS="DT">short</SPAN> i;
+</SPAN><SPAN><A CLASS="LN" NAME="146">  146   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="147">  147   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="148">  148   </A>        <SPAN CLASS="KW">if</SPAN> ((twa_parallel_B.Switch_l[0] &lt;= 10.) &amp;&amp; (twa_parallel_B.Switch_l[0] &gt;=
+</SPAN><SPAN><A CLASS="LN" NAME="149">  149   </A>             -10.)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="150">  150   </A>          i = (<SPAN CLASS="DT">short</SPAN>)(twa_parallel_B.Switch_l[0] * 409.6 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="151">  151   </A>          RawDAC(0, i);
+</SPAN><SPAN><A CLASS="LN" NAME="152">  152   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="153">  153   </A>          <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.Switch_l[0] &gt; 10.)
+</SPAN><SPAN><A CLASS="LN" NAME="154">  154   </A>            RawDAC(0, 4096.5);
+</SPAN><SPAN><A CLASS="LN" NAME="155">  155   </A>          <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="156">  156   </A>            RawDAC(0, -4096.0 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="157">  157   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="158">  158   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="159">  159   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="160">  160   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="161">  161   </A>        <SPAN CLASS="KW">if</SPAN> ((twa_parallel_B.Switch_l[1] &lt;= 10.) &amp;&amp; (twa_parallel_B.Switch_l[1] &gt;=
+</SPAN><SPAN><A CLASS="LN" NAME="162">  162   </A>             -10.)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="163">  163   </A>          i = (<SPAN CLASS="DT">short</SPAN>)(twa_parallel_B.Switch_l[1] * 409.6 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="164">  164   </A>          RawDAC(1, i);
+</SPAN><SPAN><A CLASS="LN" NAME="165">  165   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="166">  166   </A>          <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.Switch_l[1] &gt; 10.)
+</SPAN><SPAN><A CLASS="LN" NAME="167">  167   </A>            RawDAC(1, 4096.5);
+</SPAN><SPAN><A CLASS="LN" NAME="168">  168   </A>          <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="169">  169   </A>            RawDAC(1, -4096.0 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="170">  170   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="171">  171   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="172">  172   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="173">  173   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="174">  174   </A>        <SPAN CLASS="KW">if</SPAN> ((twa_parallel_B.Switch_l[2] &lt;= 10.) &amp;&amp; (twa_parallel_B.Switch_l[2] &gt;=
+</SPAN><SPAN><A CLASS="LN" NAME="175">  175   </A>             -10.)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="176">  176   </A>          i = (<SPAN CLASS="DT">short</SPAN>)(twa_parallel_B.Switch_l[2] * 409.6 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="177">  177   </A>          RawDAC(2, i);
+</SPAN><SPAN><A CLASS="LN" NAME="178">  178   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="179">  179   </A>          <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.Switch_l[2] &gt; 10.)
+</SPAN><SPAN><A CLASS="LN" NAME="180">  180   </A>            RawDAC(2, 4096.5);
+</SPAN><SPAN><A CLASS="LN" NAME="181">  181   </A>          <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="182">  182   </A>            RawDAC(2, -4096.0 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="183">  183   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="184">  184   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="185">  185   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="186">  186   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="187">  187   </A>        <SPAN CLASS="KW">if</SPAN> ((twa_parallel_B.Switch_l[3] &lt;= 10.) &amp;&amp; (twa_parallel_B.Switch_l[3] &gt;=
+</SPAN><SPAN><A CLASS="LN" NAME="188">  188   </A>             -10.)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="189">  189   </A>          i = (<SPAN CLASS="DT">short</SPAN>)(twa_parallel_B.Switch_l[3] * 409.6 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="190">  190   </A>          RawDAC(3, i);
+</SPAN><SPAN><A CLASS="LN" NAME="191">  191   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="192">  192   </A>          <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.Switch_l[3] &gt; 10.)
+</SPAN><SPAN><A CLASS="LN" NAME="193">  193   </A>            RawDAC(3, 4096.5);
+</SPAN><SPAN><A CLASS="LN" NAME="194">  194   </A>          <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="195">  195   </A>            RawDAC(3, -4096.0 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="196">  196   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="197">  197   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="198">  198   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="199">  199   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="200">  200   </A>        <SPAN CLASS="KW">if</SPAN> ((twa_parallel_B.Switch_l[4] &lt;= 10.) &amp;&amp; (twa_parallel_B.Switch_l[4] &gt;=
+</SPAN><SPAN><A CLASS="LN" NAME="201">  201   </A>             -10.)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="202">  202   </A>          i = (<SPAN CLASS="DT">short</SPAN>)(twa_parallel_B.Switch_l[4] * 409.6 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="203">  203   </A>          RawDAC(4, i);
+</SPAN><SPAN><A CLASS="LN" NAME="204">  204   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="205">  205   </A>          <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.Switch_l[4] &gt; 10.)
+</SPAN><SPAN><A CLASS="LN" NAME="206">  206   </A>            RawDAC(4, 4096.5);
+</SPAN><SPAN><A CLASS="LN" NAME="207">  207   </A>          <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="208">  208   </A>            RawDAC(4, -4096.0 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="209">  209   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="210">  210   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="211">  211   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="212">  212   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="213">  213   </A>        <SPAN CLASS="KW">if</SPAN> ((twa_parallel_B.Switch_l[5] &lt;= 10.) &amp;&amp; (twa_parallel_B.Switch_l[5] &gt;=
+</SPAN><SPAN><A CLASS="LN" NAME="214">  214   </A>             -10.)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="215">  215   </A>          i = (<SPAN CLASS="DT">short</SPAN>)(twa_parallel_B.Switch_l[5] * 409.6 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="216">  216   </A>          RawDAC(5, i);
+</SPAN><SPAN><A CLASS="LN" NAME="217">  217   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="218">  218   </A>          <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.Switch_l[5] &gt; 10.)
+</SPAN><SPAN><A CLASS="LN" NAME="219">  219   </A>            RawDAC(5, 4096.5);
+</SPAN><SPAN><A CLASS="LN" NAME="220">  220   </A>          <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="221">  221   </A>            RawDAC(5, -4096.0 + .5);
+</SPAN><SPAN><A CLASS="LN" NAME="222">  222   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="223">  223   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="224">  224   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="225">  225   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="226">  226   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="227">  227   </A>  <SPAN CLASS="CT">/* S-Function (encstgmodel2): '<A href="javascript:rtwHilite('twa_parallel:3004')"><FONT color="#117755"><I>&lt;S1&gt;/Encoder Input</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="228">  228   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="229">  229   </A>    <SPAN CLASS="CT">/* S-Function Block: &lt;S1&gt;/Encoder Input (encstgmodel2)*/</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="230">  230   </A>    <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="231">  231   </A>      <SPAN CLASS="DT">short</SPAN> i;
+</SPAN><SPAN><A CLASS="LN" NAME="232">  232   </A>      LONGBYTE enc[8];
+</SPAN><SPAN><A CLASS="LN" NAME="233">  233   </A>      EncoderLatch();
+</SPAN><SPAN><A CLASS="LN" NAME="234">  234   </A>      EncReadAll(&amp;enc);
+</SPAN><SPAN><A CLASS="LN" NAME="235">  235   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="236">  236   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="237">  237   </A>        <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_reset_Value==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="238">  238   </A>          SetEncoderCounts(0, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="239">  239   </A>          twa_parallel_B.EncoderInput_o1 = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="240">  240   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="241">  241   </A>          twa_parallel_B.EncoderInput_o1 = (<SPAN CLASS="DT">double</SPAN>) enc[0].Long/1;
+</SPAN><SPAN><A CLASS="LN" NAME="242">  242   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="243">  243   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="244">  244   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="245">  245   </A>        <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_reset_Value==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="246">  246   </A>          SetEncoderCounts(1, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="247">  247   </A>          twa_parallel_B.EncoderInput_o2 = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="248">  248   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="249">  249   </A>          twa_parallel_B.EncoderInput_o2 = (<SPAN CLASS="DT">double</SPAN>) enc[1].Long/1;
+</SPAN><SPAN><A CLASS="LN" NAME="250">  250   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="251">  251   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="252">  252   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="253">  253   </A>        <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_reset_Value==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="254">  254   </A>          SetEncoderCounts(2, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="255">  255   </A>          twa_parallel_B.EncoderInput_o3 = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="256">  256   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="257">  257   </A>          twa_parallel_B.EncoderInput_o3 = (<SPAN CLASS="DT">double</SPAN>) enc[2].Long/1;
+</SPAN><SPAN><A CLASS="LN" NAME="258">  258   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="259">  259   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="260">  260   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="261">  261   </A>        <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_reset_Value==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="262">  262   </A>          SetEncoderCounts(3, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="263">  263   </A>          twa_parallel_B.EncoderInput_o4 = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="264">  264   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="265">  265   </A>          twa_parallel_B.EncoderInput_o4 = (<SPAN CLASS="DT">double</SPAN>) enc[3].Long/1;
+</SPAN><SPAN><A CLASS="LN" NAME="266">  266   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="267">  267   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="268">  268   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="269">  269   </A>        <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_reset_Value==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="270">  270   </A>          SetEncoderCounts(4, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="271">  271   </A>          twa_parallel_B.EncoderInput_o5 = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="272">  272   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="273">  273   </A>          twa_parallel_B.EncoderInput_o5 = (<SPAN CLASS="DT">double</SPAN>) enc[4].Long/1;
+</SPAN><SPAN><A CLASS="LN" NAME="274">  274   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="275">  275   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="276">  276   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="277">  277   </A>        <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_reset_Value==1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="278">  278   </A>          SetEncoderCounts(5, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="279">  279   </A>          twa_parallel_B.EncoderInput_o6 = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="280">  280   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="281">  281   </A>          twa_parallel_B.EncoderInput_o6 = (<SPAN CLASS="DT">double</SPAN>) enc[5].Long/1;
+</SPAN><SPAN><A CLASS="LN" NAME="282">  282   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="283">  283   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="284">  284   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="285">  285   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="286">  286   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3028')"><FONT color="#117755"><I>&lt;S8&gt;/enc_res</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="287">  287   </A>  twa_parallel_B.enc_res = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_res_Gain *
+</SPAN><SPAN><A CLASS="LN" NAME="288">  288   </A>    twa_parallel_B.EncoderInput_o1;
+</SPAN><SPAN><A CLASS="LN" NAME="289">  289   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="290">  290   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3029')"><FONT color="#117755"><I>&lt;S8&gt;/gear_ratio</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="291">  291   </A>  twa_parallel_B.gear_ratio = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.gear_ratio_Gain *
+</SPAN><SPAN><A CLASS="LN" NAME="292">  292   </A>    twa_parallel_B.enc_res;
+</SPAN><SPAN><A CLASS="LN" NAME="293">  293   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="294">  294   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3043')"><FONT color="#117755"><I>&lt;S9&gt;/enc_res</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="295">  295   </A>  twa_parallel_B.enc_res_l = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_res_Gain_j *
+</SPAN><SPAN><A CLASS="LN" NAME="296">  296   </A>    twa_parallel_B.EncoderInput_o2;
+</SPAN><SPAN><A CLASS="LN" NAME="297">  297   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="298">  298   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3044')"><FONT color="#117755"><I>&lt;S9&gt;/gear_ratio</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="299">  299   </A>  twa_parallel_B.gear_ratio_p = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.gear_ratio_Gain_i *
+</SPAN><SPAN><A CLASS="LN" NAME="300">  300   </A>    twa_parallel_B.enc_res_l;
+</SPAN><SPAN><A CLASS="LN" NAME="301">  301   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="302">  302   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3048')"><FONT color="#117755"><I>&lt;S10&gt;/enc_res</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="303">  303   </A>  twa_parallel_B.enc_res_f = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_res_Gain_jz *
+</SPAN><SPAN><A CLASS="LN" NAME="304">  304   </A>    twa_parallel_B.EncoderInput_o3;
+</SPAN><SPAN><A CLASS="LN" NAME="305">  305   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="306">  306   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3049')"><FONT color="#117755"><I>&lt;S10&gt;/gear_ratio</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="307">  307   </A>  twa_parallel_B.gear_ratio_c = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.gear_ratio_Gain_d *
+</SPAN><SPAN><A CLASS="LN" NAME="308">  308   </A>    twa_parallel_B.enc_res_f;
+</SPAN><SPAN><A CLASS="LN" NAME="309">  309   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="310">  310   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3068')"><FONT color="#117755"><I>&lt;S11&gt;/enc_res</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="311">  311   </A>  twa_parallel_B.enc_res_c = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_res_Gain_i *
+</SPAN><SPAN><A CLASS="LN" NAME="312">  312   </A>    twa_parallel_B.EncoderInput_o4;
+</SPAN><SPAN><A CLASS="LN" NAME="313">  313   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="314">  314   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3069')"><FONT color="#117755"><I>&lt;S11&gt;/gear_ratio</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="315">  315   </A>  twa_parallel_B.gear_ratio_l = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.gear_ratio_Gain_a *
+</SPAN><SPAN><A CLASS="LN" NAME="316">  316   </A>    twa_parallel_B.enc_res_c;
+</SPAN><SPAN><A CLASS="LN" NAME="317">  317   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="318">  318   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3073')"><FONT color="#117755"><I>&lt;S12&gt;/enc_res</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="319">  319   </A>  twa_parallel_B.enc_res_fa = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_res_Gain_g *
+</SPAN><SPAN><A CLASS="LN" NAME="320">  320   </A>    twa_parallel_B.EncoderInput_o5;
+</SPAN><SPAN><A CLASS="LN" NAME="321">  321   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="322">  322   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3074')"><FONT color="#117755"><I>&lt;S12&gt;/gear_ratio</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="323">  323   </A>  twa_parallel_B.gear_ratio_j = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.gear_ratio_Gain_o *
+</SPAN><SPAN><A CLASS="LN" NAME="324">  324   </A>    twa_parallel_B.enc_res_fa;
+</SPAN><SPAN><A CLASS="LN" NAME="325">  325   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="326">  326   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3078')"><FONT color="#117755"><I>&lt;S13&gt;/enc_res</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="327">  327   </A>  twa_parallel_B.enc_res_b = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.enc_res_Gain_ij *
+</SPAN><SPAN><A CLASS="LN" NAME="328">  328   </A>    twa_parallel_B.EncoderInput_o6;
+</SPAN><SPAN><A CLASS="LN" NAME="329">  329   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="330">  330   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3079')"><FONT color="#117755"><I>&lt;S13&gt;/gear_ratio</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="331">  331   </A>  twa_parallel_B.gear_ratio_n = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.gear_ratio_Gain_da *
+</SPAN><SPAN><A CLASS="LN" NAME="332">  332   </A>    twa_parallel_B.enc_res_b;
+</SPAN><SPAN><A CLASS="LN" NAME="333">  333   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="334">  334   </A>  <SPAN CLASS="CT">/* SignalConversion: '&lt;S16&gt;/TmpSignal ConversionAtDiscrete FIR FilterInport1' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="335">  335   </A>  twa_parallel_B.TmpSignalConversionAtDiscreteFI[0] = twa_parallel_B.gear_ratio;
+</SPAN><SPAN><A CLASS="LN" NAME="336">  336   </A>  twa_parallel_B.TmpSignalConversionAtDiscreteFI[1] =
+</SPAN><SPAN><A CLASS="LN" NAME="337">  337   </A>    twa_parallel_B.gear_ratio_p;
+</SPAN><SPAN><A CLASS="LN" NAME="338">  338   </A>  twa_parallel_B.TmpSignalConversionAtDiscreteFI[2] =
+</SPAN><SPAN><A CLASS="LN" NAME="339">  339   </A>    twa_parallel_B.gear_ratio_c;
+</SPAN><SPAN><A CLASS="LN" NAME="340">  340   </A>  twa_parallel_B.TmpSignalConversionAtDiscreteFI[3] =
+</SPAN><SPAN><A CLASS="LN" NAME="341">  341   </A>    twa_parallel_B.gear_ratio_l;
+</SPAN><SPAN><A CLASS="LN" NAME="342">  342   </A>  twa_parallel_B.TmpSignalConversionAtDiscreteFI[4] =
+</SPAN><SPAN><A CLASS="LN" NAME="343">  343   </A>    twa_parallel_B.gear_ratio_j;
+</SPAN><SPAN><A CLASS="LN" NAME="344">  344   </A>  twa_parallel_B.TmpSignalConversionAtDiscreteFI[5] =
+</SPAN><SPAN><A CLASS="LN" NAME="345">  345   </A>    twa_parallel_B.gear_ratio_n;
+</SPAN><SPAN><A CLASS="LN" NAME="346">  346   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="347">  347   </A>  <SPAN CLASS="CT">/* DiscreteFir: '<A href="javascript:rtwHilite('twa_parallel:2999')"><FONT color="#117755"><I>&lt;S16&gt;/Discrete FIR Filter</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="348">  348   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3001')"><FONT color="#117755"><I>&lt;S16&gt;/vel_filter_coeffs</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="349">  349   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="350">  350   </A>  uIdx = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="351">  351   </A>  <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="352">  352   </A>    idxN = twa_parallel_DWork.DiscreteFIRFilter_circBuf;
+</SPAN><SPAN><A CLASS="LN" NAME="353">  353   </A>    eml_velmex_stroke_idx = twa_parallel_B.TmpSignalConversionAtDiscreteFI[uIdx]
+</SPAN><SPAN><A CLASS="LN" NAME="354">  354   </A>      * <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.vel_filter_coeffs_Value[0];
+</SPAN><SPAN><A CLASS="LN" NAME="355">  355   </A>    uIdx++;
+</SPAN><SPAN><A CLASS="LN" NAME="356">  356   </A>    cff = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="357">  357   </A>    <SPAN CLASS="KW">for</SPAN> (j = idxN; j &lt; 1; j++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="358">  358   </A>      eml_k = k + j;
+</SPAN><SPAN><A CLASS="LN" NAME="359">  359   </A>      eml_velmex_stroke_idx += twa_parallel_DWork.DiscreteFIRFilter_states[eml_k]
+</SPAN><SPAN><A CLASS="LN" NAME="360">  360   </A>        * <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.vel_filter_coeffs_Value[cff];
+</SPAN><SPAN><A CLASS="LN" NAME="361">  361   </A>      cff++;
+</SPAN><SPAN><A CLASS="LN" NAME="362">  362   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="363">  363   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="364">  364   </A>    <SPAN CLASS="KW">for</SPAN> (j = 0; j &lt; idxN; j++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="365">  365   </A>      eml_k = k + j;
+</SPAN><SPAN><A CLASS="LN" NAME="366">  366   </A>      eml_velmex_stroke_idx += twa_parallel_DWork.DiscreteFIRFilter_states[eml_k]
+</SPAN><SPAN><A CLASS="LN" NAME="367">  367   </A>        * <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.vel_filter_coeffs_Value[cff];
+</SPAN><SPAN><A CLASS="LN" NAME="368">  368   </A>      cff++;
+</SPAN><SPAN><A CLASS="LN" NAME="369">  369   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="370">  370   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="371">  371   </A>    twa_parallel_B.DiscreteFIRFilter[k] = eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="372">  372   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="373">  373   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="374">  374   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="375">  375   </A>    <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3000')"><FONT color="#117755"><I>&lt;S16&gt;/Gain</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="376">  376   </A>    twa_parallel_B.Gain[uIdx] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.Gain_Gain *
+</SPAN><SPAN><A CLASS="LN" NAME="377">  377   </A>      twa_parallel_B.DiscreteFIRFilter[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="378">  378   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="379">  379   </A>    <SPAN CLASS="CT">/* SampleTimeMath: '<A href="javascript:rtwHilite('twa_parallel:2996:4')"><FONT color="#117755"><I>&lt;S15&gt;/TSamp</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="380">  380   </A><SPAN CLASS="CT">     *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="381">  381   </A><SPAN CLASS="CT">     * About '<A href="javascript:rtwHilite('twa_parallel:2996:4')"><FONT color="#117755"><I>&lt;S15&gt;/TSamp</I></FONT></A>':</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="382">  382   </A><SPAN CLASS="CT">     *  y = u * K where K = 1 / ( w * Ts )</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="383">  383   </A><SPAN CLASS="CT">     */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="384">  384   </A>    twa_parallel_B.TSamp[uIdx] = twa_parallel_B.Gain[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="385">  385   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.TSamp_WtEt;
+</SPAN><SPAN><A CLASS="LN" NAME="386">  386   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="387">  387   </A>    <SPAN CLASS="CT">/* UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2996:5')"><FONT color="#117755"><I>&lt;S15&gt;/UD</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="388">  388   </A>    twa_parallel_B.Uk1[uIdx] = twa_parallel_DWork.UD_DSTATE[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="389">  389   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="390">  390   </A>    <SPAN CLASS="CT">/* Sum: '<A href="javascript:rtwHilite('twa_parallel:2996:3')"><FONT color="#117755"><I>&lt;S15&gt;/Diff</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="391">  391   </A>    twa_parallel_B.Diff[uIdx] = twa_parallel_B.TSamp[uIdx] -
+</SPAN><SPAN><A CLASS="LN" NAME="392">  392   </A>      twa_parallel_B.Uk1[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="393">  393   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="394">  394   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="395">  395   </A>  <SPAN CLASS="CT">/* ok to acquire for <A href="javascript:rtwHilite('twa_parallel:3006:228')"><FONT color="#117755"><I>&lt;S21&gt;/S-Function</I></FONT></A> */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="396">  396   </A>  twa_parallel_DWork.SFunction_IWORK.AcquireOK = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="397">  397   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="398">  398   </A>  <SPAN CLASS="CT">/* ok to acquire for <A href="javascript:rtwHilite('twa_parallel:3008:228')"><FONT color="#117755"><I>&lt;S22&gt;/S-Function</I></FONT></A> */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="399">  399   </A>  twa_parallel_DWork.SFunction_IWORK_j.AcquireOK = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="400">  400   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="401">  401   </A>  <SPAN CLASS="CT">/* DiscreteFir: '<A href="javascript:rtwHilite('twa_parallel:3089')"><FONT color="#117755"><I>&lt;S20&gt;/Discrete FIR Filter</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="402">  402   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3091')"><FONT color="#117755"><I>&lt;S20&gt;/vel_filter_coeffs</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="403">  403   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="404">  404   </A>  uIdx = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="405">  405   </A>  <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="406">  406   </A>    idxN = twa_parallel_DWork.DiscreteFIRFilter_circBuf_l;
+</SPAN><SPAN><A CLASS="LN" NAME="407">  407   </A>    eml_velmex_stroke_idx = twa_parallel_B.TmpSignalConversionAtDiscreteFI[uIdx]
+</SPAN><SPAN><A CLASS="LN" NAME="408">  408   </A>      * <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.vel_filter_coeffs_Value_m[0];
+</SPAN><SPAN><A CLASS="LN" NAME="409">  409   </A>    uIdx++;
+</SPAN><SPAN><A CLASS="LN" NAME="410">  410   </A>    cff = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="411">  411   </A>    <SPAN CLASS="KW">for</SPAN> (j = idxN; j &lt; 1; j++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="412">  412   </A>      eml_k = k + j;
+</SPAN><SPAN><A CLASS="LN" NAME="413">  413   </A>      eml_velmex_stroke_idx +=
+</SPAN><SPAN><A CLASS="LN" NAME="414">  414   </A>        twa_parallel_DWork.DiscreteFIRFilter_states_m[eml_k] *
+</SPAN><SPAN><A CLASS="LN" NAME="415">  415   </A>        <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.vel_filter_coeffs_Value_m[cff];
+</SPAN><SPAN><A CLASS="LN" NAME="416">  416   </A>      cff++;
+</SPAN><SPAN><A CLASS="LN" NAME="417">  417   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="418">  418   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="419">  419   </A>    <SPAN CLASS="KW">for</SPAN> (j = 0; j &lt; idxN; j++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="420">  420   </A>      eml_k = k + j;
+</SPAN><SPAN><A CLASS="LN" NAME="421">  421   </A>      eml_velmex_stroke_idx +=
+</SPAN><SPAN><A CLASS="LN" NAME="422">  422   </A>        twa_parallel_DWork.DiscreteFIRFilter_states_m[eml_k] *
+</SPAN><SPAN><A CLASS="LN" NAME="423">  423   </A>        <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.vel_filter_coeffs_Value_m[cff];
+</SPAN><SPAN><A CLASS="LN" NAME="424">  424   </A>      cff++;
+</SPAN><SPAN><A CLASS="LN" NAME="425">  425   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="426">  426   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="427">  427   </A>    twa_parallel_B.DiscreteFIRFilter_h[k] = eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="428">  428   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="429">  429   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="430">  430   </A>  <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:3090')"><FONT color="#117755"><I>&lt;S20&gt;/Gain</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="431">  431   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="432">  432   </A>    twa_parallel_B.Gain_n[uIdx] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.Gain_Gain_d *
+</SPAN><SPAN><A CLASS="LN" NAME="433">  433   </A>      twa_parallel_B.DiscreteFIRFilter_h[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="434">  434   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="435">  435   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="436">  436   </A>  <SPAN CLASS="CT">/* ok to acquire for <A href="javascript:rtwHilite('twa_parallel:3133:228')"><FONT color="#117755"><I>&lt;S23&gt;/S-Function</I></FONT></A> */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="437">  437   </A>  twa_parallel_DWork.SFunction_IWORK_i.AcquireOK = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="438">  438   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="439">  439   </A>  <SPAN CLASS="CT">/* Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3036')"><FONT color="#117755"><I>&lt;Root&gt;/GetMacroLegLen</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="440">  440   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3093')"><FONT color="#117755"><I>&lt;Root&gt;/ee_rot</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="441">  441   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3094')"><FONT color="#117755"><I>&lt;Root&gt;/x_des</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="442">  442   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="443">  443   </A>  <SPAN CLASS="CT">/* Embedded MATLAB Function 'GetMacroLegLen': '<A href="javascript:rtwHilite('twa_parallel:3036:1')"><FONT color="#117755"><I>&lt;S2&gt;:1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="444">  444   </A>  <SPAN CLASS="CT">/*  This function solves for the vertex positions of the base and moving */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="445">  445   </A>  <SPAN CLASS="CT">/*  platform for a given desired end effector position. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="446">  446   </A>  <SPAN CLASS="CT">/*  With vertex positions known, leg lengths can be solved for. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="447">  447   </A>  <SPAN CLASS="CT">/*  moving platform radius */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="448">  448   </A>  <SPAN CLASS="CT">/* [mm] */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="449">  449   </A>  <SPAN CLASS="CT">/*  base radius */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="450">  450   </A>  <SPAN CLASS="CT">/* [mm] */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="451">  451   </A>  <SPAN CLASS="CT">/*  position of flexure centers */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="452">  452   </A>  <SPAN CLASS="CT">/*  radius of position of flexure center */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="453">  453   </A>  <SPAN CLASS="CT">/* [mm] */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="454">  454   </A>  <SPAN CLASS="CT">/*  position of twa pivot point, taken from CAD */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="455">  455   </A>  <SPAN CLASS="CT">/*  radius of position of twa pivot */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="456">  456   </A>  <SPAN CLASS="CT">/*  rotation matrix of moving frame about z-xis */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="457">  457   </A>  <SPAN CLASS="CT">/*  ee_rot = 0; */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="458">  458   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:26')"><FONT color="#117755"><I>&lt;S2&gt;:1:26</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="459">  459   </A>  <SPAN CLASS="CT">/*  moving platform vertex locations */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="460">  460   </A>  <SPAN CLASS="CT">/*  x_des = zeros(3,1); */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="461">  461   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:33')"><FONT color="#117755"><I>&lt;S2&gt;:1:33</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="462">  462   </A>  <SPAN CLASS="CT">/*  base vertex positions */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="463">  463   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:36')"><FONT color="#117755"><I>&lt;S2&gt;:1:36</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="464">  464   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:38')"><FONT color="#117755"><I>&lt;S2&gt;:1:38</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="465">  465   </A>  tmp[0] = cos(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_rot_Value);
+</SPAN><SPAN><A CLASS="LN" NAME="466">  466   </A>  tmp[3] = -sin(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_rot_Value);
+</SPAN><SPAN><A CLASS="LN" NAME="467">  467   </A>  tmp[6] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="468">  468   </A>  tmp[1] = sin(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_rot_Value);
+</SPAN><SPAN><A CLASS="LN" NAME="469">  469   </A>  tmp[4] = cos(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_rot_Value);
+</SPAN><SPAN><A CLASS="LN" NAME="470">  470   </A>  tmp[7] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="471">  471   </A>  tmp[2] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="472">  472   </A>  tmp[5] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="473">  473   </A>  tmp[8] = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="474">  474   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 3; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="475">  475   </A>    tmp_0[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="476">  476   </A>    tmp_0[uIdx] += <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.x_des_Value[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="477">  477   </A>    tmp_0[uIdx + 3] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="478">  478   </A>    tmp_0[uIdx + 3] += <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.x_des_Value[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="479">  479   </A>    tmp_0[uIdx + 6] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="480">  480   </A>    tmp_0[uIdx + 6] += <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.x_des_Value[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="481">  481   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="482">  482   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="483">  483   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 3; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="484">  484   </A>    <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 3; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="485">  485   </A>      tmp_1[uIdx + 3 * k] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="486">  486   </A>      tmp_1[uIdx + 3 * k] = tmp_1[3 * k + uIdx] + tmp_2[3 * k] * tmp[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="487">  487   </A>      tmp_1[uIdx + 3 * k] = tmp_2[3 * k + 1] * tmp[uIdx + 3] + tmp_1[3 * k +
+</SPAN><SPAN><A CLASS="LN" NAME="488">  488   </A>        uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="489">  489   </A>      tmp_1[uIdx + 3 * k] = tmp_2[3 * k + 2] * tmp[uIdx + 6] + tmp_1[3 * k +
+</SPAN><SPAN><A CLASS="LN" NAME="490">  490   </A>        uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="491">  491   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="492">  492   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="493">  493   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="494">  494   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 3; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="495">  495   </A>    eml_vertex_dist[3 * uIdx] = (tmp_0[3 * uIdx] + tmp_1[3 * uIdx]) - tmp_3[3 *
+</SPAN><SPAN><A CLASS="LN" NAME="496">  496   </A>      uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="497">  497   </A>    eml_vertex_dist[1 + 3 * uIdx] = (tmp_0[3 * uIdx + 1] + tmp_1[3 * uIdx + 1])
+</SPAN><SPAN><A CLASS="LN" NAME="498">  498   </A>      - tmp_3[3 * uIdx + 1];
+</SPAN><SPAN><A CLASS="LN" NAME="499">  499   </A>    eml_vertex_dist[2 + 3 * uIdx] = (tmp_0[3 * uIdx + 2] + tmp_1[3 * uIdx + 2])
+</SPAN><SPAN><A CLASS="LN" NAME="500">  500   </A>      - tmp_3[3 * uIdx + 2];
+</SPAN><SPAN><A CLASS="LN" NAME="501">  501   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="502">  502   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="503">  503   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:40')"><FONT color="#117755"><I>&lt;S2&gt;:1:40</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="504">  504   </A>  twa_parallel_B.macro_leg_len[0] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="505">  505   </A>  twa_parallel_B.macro_leg_len[1] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="506">  506   </A>  twa_parallel_B.macro_leg_len[2] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="507">  507   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="508">  508   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:41')"><FONT color="#117755"><I>&lt;S2&gt;:1:41</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="509">  509   </A>  twa_parallel_B.macro_leg_len[0] = <A HREF="twa_parallel_c.html#fcn_twa_parallel_norm" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_norm');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_norm</FONT></A>(*((real_T (*)[3])&amp;
+</SPAN><SPAN><A CLASS="LN" NAME="510">  510   </A>    eml_vertex_dist[0]));
+</SPAN><SPAN><A CLASS="LN" NAME="511">  511   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="512">  512   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:42')"><FONT color="#117755"><I>&lt;S2&gt;:1:42</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="513">  513   </A>  twa_parallel_B.macro_leg_len[1] = <A HREF="twa_parallel_c.html#fcn_twa_parallel_norm" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_norm');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_norm</FONT></A>(*((real_T (*)[3])&amp;
+</SPAN><SPAN><A CLASS="LN" NAME="514">  514   </A>    eml_vertex_dist[3]));
+</SPAN><SPAN><A CLASS="LN" NAME="515">  515   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="516">  516   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3036:1:43')"><FONT color="#117755"><I>&lt;S2&gt;:1:43</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="517">  517   </A>  twa_parallel_B.macro_leg_len[2] = <A HREF="twa_parallel_c.html#fcn_twa_parallel_norm" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_norm');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_norm</FONT></A>(*((real_T (*)[3])&amp;
+</SPAN><SPAN><A CLASS="LN" NAME="518">  518   </A>    eml_vertex_dist[6]));
+</SPAN><SPAN><A CLASS="LN" NAME="519">  519   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="520">  520   </A>  <SPAN CLASS="CT">/* SignalConversion: '&lt;S3&gt;/TmpSignal ConversionAt SFunction Inport3' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="521">  521   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_i[0] = twa_parallel_B.gear_ratio;
+</SPAN><SPAN><A CLASS="LN" NAME="522">  522   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_i[1] =
+</SPAN><SPAN><A CLASS="LN" NAME="523">  523   </A>    twa_parallel_B.gear_ratio_p;
+</SPAN><SPAN><A CLASS="LN" NAME="524">  524   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_i[2] =
+</SPAN><SPAN><A CLASS="LN" NAME="525">  525   </A>    twa_parallel_B.gear_ratio_c;
+</SPAN><SPAN><A CLASS="LN" NAME="526">  526   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_i[3] =
+</SPAN><SPAN><A CLASS="LN" NAME="527">  527   </A>    twa_parallel_B.gear_ratio_l;
+</SPAN><SPAN><A CLASS="LN" NAME="528">  528   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_i[4] =
+</SPAN><SPAN><A CLASS="LN" NAME="529">  529   </A>    twa_parallel_B.gear_ratio_j;
+</SPAN><SPAN><A CLASS="LN" NAME="530">  530   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_i[5] =
+</SPAN><SPAN><A CLASS="LN" NAME="531">  531   </A>    twa_parallel_B.gear_ratio_n;
+</SPAN><SPAN><A CLASS="LN" NAME="532">  532   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="533">  533   </A>  <SPAN CLASS="CT">/* Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3107')"><FONT color="#117755"><I>&lt;Root&gt;/GetMacroQDes</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="534">  534   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3111')"><FONT color="#117755"><I>&lt;Root&gt;/ee_velmex_pitch</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="535">  535   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="536">  536   </A>  <SPAN CLASS="CT">/* Embedded MATLAB Function 'GetMacroQDes': '<A href="javascript:rtwHilite('twa_parallel:3107:1')"><FONT color="#117755"><I>&lt;S3&gt;:1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="537">  537   </A>  <SPAN CLASS="CT">/*  This function solves for command signal for given desired macro leg */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="538">  538   </A>  <SPAN CLASS="CT">/*  lengths */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="539">  539   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:5')"><FONT color="#117755"><I>&lt;S3&gt;:1:5</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="540">  540   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:7')"><FONT color="#117755"><I>&lt;S3&gt;:1:7</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="541">  541   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:11')"><FONT color="#117755"><I>&lt;S3&gt;:1:11</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="542">  542   </A>  twa_parallel_B.qmacro_des[0] = twa_parallel_B.TmpSignalConversionAtSFunctio_i
+</SPAN><SPAN><A CLASS="LN" NAME="543">  543   </A>    [0];
+</SPAN><SPAN><A CLASS="LN" NAME="544">  544   </A>  twa_parallel_B.qmacro_des[1] = twa_parallel_B.TmpSignalConversionAtSFunctio_i
+</SPAN><SPAN><A CLASS="LN" NAME="545">  545   </A>    [1];
+</SPAN><SPAN><A CLASS="LN" NAME="546">  546   </A>  twa_parallel_B.qmacro_des[2] = twa_parallel_B.TmpSignalConversionAtSFunctio_i
+</SPAN><SPAN><A CLASS="LN" NAME="547">  547   </A>    [2];
+</SPAN><SPAN><A CLASS="LN" NAME="548">  548   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="549">  549   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:12')"><FONT color="#117755"><I>&lt;S3&gt;:1:12</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="550">  550   </A>  eml_velmex_stroke_idx = twa_parallel_B.macro_leg_len[0] - 120.0;
+</SPAN><SPAN><A CLASS="LN" NAME="551">  551   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="552">  552   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:13')"><FONT color="#117755"><I>&lt;S3&gt;:1:13</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="553">  553   </A>  eml_velmex_stroke_idx_0 = twa_parallel_B.macro_leg_len[1] - 120.0;
+</SPAN><SPAN><A CLASS="LN" NAME="554">  554   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="555">  555   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:14')"><FONT color="#117755"><I>&lt;S3&gt;:1:14</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="556">  556   </A>  eml_velmex_stroke_idx_1 = twa_parallel_B.macro_leg_len[2] - 120.0;
+</SPAN><SPAN><A CLASS="LN" NAME="557">  557   </A>  eml_x[0] = (eml_velmex_stroke_idx &lt; 196.0);
+</SPAN><SPAN><A CLASS="LN" NAME="558">  558   </A>  eml_x[1] = (eml_velmex_stroke_idx_0 &lt; 196.0);
+</SPAN><SPAN><A CLASS="LN" NAME="559">  559   </A>  eml_x[2] = (eml_velmex_stroke_idx_1 &lt; 196.0);
+</SPAN><SPAN><A CLASS="LN" NAME="560">  560   </A>  eml_y = TRUE;
+</SPAN><SPAN><A CLASS="LN" NAME="561">  561   </A>  eml_k = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="562">  562   </A>  eml_exitg = FALSE;
+</SPAN><SPAN><A CLASS="LN" NAME="563">  563   </A>  <SPAN CLASS="KW">while</SPAN> (((uint32_T)eml_exitg == 0U) &amp;&amp; (eml_k &lt;= 3)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="564">  564   </A>    <SPAN CLASS="KW">if</SPAN> ((int32_T)eml_x[eml_k - 1] == 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="565">  565   </A>      eml_y = FALSE;
+</SPAN><SPAN><A CLASS="LN" NAME="566">  566   </A>      eml_exitg = TRUE;
+</SPAN><SPAN><A CLASS="LN" NAME="567">  567   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="568">  568   </A>      eml_k++;
+</SPAN><SPAN><A CLASS="LN" NAME="569">  569   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="570">  570   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="571">  571   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="572">  572   </A>  <SPAN CLASS="KW">if</SPAN> (eml_y) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="573">  573   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3107:1:17')"><FONT color="#117755"><I>&lt;S3&gt;:1:17</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="574">  574   </A>    twa_parallel_B.qmacro_des[0] = eml_velmex_stroke_idx /
+</SPAN><SPAN><A CLASS="LN" NAME="575">  575   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_velmex_pitch_Value;
+</SPAN><SPAN><A CLASS="LN" NAME="576">  576   </A>    twa_parallel_B.qmacro_des[1] = eml_velmex_stroke_idx_0 /
+</SPAN><SPAN><A CLASS="LN" NAME="577">  577   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_velmex_pitch_Value;
+</SPAN><SPAN><A CLASS="LN" NAME="578">  578   </A>    twa_parallel_B.qmacro_des[2] = eml_velmex_stroke_idx_1 /
+</SPAN><SPAN><A CLASS="LN" NAME="579">  579   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.ee_velmex_pitch_Value;
+</SPAN><SPAN><A CLASS="LN" NAME="580">  580   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="581">  581   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="582">  582   </A>  <SPAN CLASS="CT">/* SignalConversion: '&lt;S4&gt;/TmpSignal ConversionAt SFunction Inport1' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="583">  583   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_e[0] = twa_parallel_B.gear_ratio;
+</SPAN><SPAN><A CLASS="LN" NAME="584">  584   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_e[1] =
+</SPAN><SPAN><A CLASS="LN" NAME="585">  585   </A>    twa_parallel_B.gear_ratio_p;
+</SPAN><SPAN><A CLASS="LN" NAME="586">  586   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_e[2] =
+</SPAN><SPAN><A CLASS="LN" NAME="587">  587   </A>    twa_parallel_B.gear_ratio_c;
+</SPAN><SPAN><A CLASS="LN" NAME="588">  588   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_e[3] =
+</SPAN><SPAN><A CLASS="LN" NAME="589">  589   </A>    twa_parallel_B.gear_ratio_l;
+</SPAN><SPAN><A CLASS="LN" NAME="590">  590   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_e[4] =
+</SPAN><SPAN><A CLASS="LN" NAME="591">  591   </A>    twa_parallel_B.gear_ratio_j;
+</SPAN><SPAN><A CLASS="LN" NAME="592">  592   </A>  twa_parallel_B.TmpSignalConversionAtSFunctio_e[5] =
+</SPAN><SPAN><A CLASS="LN" NAME="593">  593   </A>    twa_parallel_B.gear_ratio_n;
+</SPAN><SPAN><A CLASS="LN" NAME="594">  594   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="595">  595   </A>  <SPAN CLASS="CT">/* Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3137')"><FONT color="#117755"><I>&lt;Root&gt;/GetMicroQDes</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="596">  596   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3139')"><FONT color="#117755"><I>&lt;Root&gt;/micro_leg_len</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="597">  597   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="598">  598   </A>  <SPAN CLASS="CT">/* Embedded MATLAB Function 'GetMicroQDes': '<A href="javascript:rtwHilite('twa_parallel:3137:1')"><FONT color="#117755"><I>&lt;S4&gt;:1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="599">  599   </A>  <SPAN CLASS="CT">/*  This function solves for command signal for the twa's given a desired */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="600">  600   </A>  <SPAN CLASS="CT">/*  micro leg length */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="601">  601   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:5')"><FONT color="#117755"><I>&lt;S4&gt;:1:5</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="602">  602   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:7')"><FONT color="#117755"><I>&lt;S4&gt;:1:7</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="603">  603   </A>  <SPAN CLASS="CT">/* [mm] */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="604">  604   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:10')"><FONT color="#117755"><I>&lt;S4&gt;:1:10</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="605">  605   </A>  twa_parallel_B.qmicro_des[0] = twa_parallel_B.TmpSignalConversionAtSFunctio_e
+</SPAN><SPAN><A CLASS="LN" NAME="606">  606   </A>    [3];
+</SPAN><SPAN><A CLASS="LN" NAME="607">  607   </A>  twa_parallel_B.qmicro_des[1] = twa_parallel_B.TmpSignalConversionAtSFunctio_e
+</SPAN><SPAN><A CLASS="LN" NAME="608">  608   </A>    [4];
+</SPAN><SPAN><A CLASS="LN" NAME="609">  609   </A>  twa_parallel_B.qmicro_des[2] = twa_parallel_B.TmpSignalConversionAtSFunctio_e
+</SPAN><SPAN><A CLASS="LN" NAME="610">  610   </A>    [5];
+</SPAN><SPAN><A CLASS="LN" NAME="611">  611   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="612">  612   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:11')"><FONT color="#117755"><I>&lt;S4&gt;:1:11</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="613">  613   </A>  eml_velmex_stroke_idx = 2.258E+002 - <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.micro_leg_len_Value[0];
+</SPAN><SPAN><A CLASS="LN" NAME="614">  614   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="615">  615   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:12')"><FONT color="#117755"><I>&lt;S4&gt;:1:12</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="616">  616   </A>  eml_velmex_stroke_idx_0 = 2.263E+002 - <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.micro_leg_len_Value[1];
+</SPAN><SPAN><A CLASS="LN" NAME="617">  617   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="618">  618   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:13')"><FONT color="#117755"><I>&lt;S4&gt;:1:13</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="619">  619   </A>  eml_velmex_stroke_idx_1 = 224.5 - <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.micro_leg_len_Value[2];
+</SPAN><SPAN><A CLASS="LN" NAME="620">  620   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="621">  621   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:15')"><FONT color="#117755"><I>&lt;S4&gt;:1:15</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="622">  622   </A>  twa_parallel_B.qmicro_des[0] = sqrt((5.0985640000000007E+004 - <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>
+</SPAN><SPAN><A CLASS="LN" NAME="623">  623   </A>    (eml_velmex_stroke_idx, 2.0)) / 1.9516089999999996E-002);
+</SPAN><SPAN><A CLASS="LN" NAME="624">  624   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="625">  625   </A>  <SPAN CLASS="CT">/* [rad] */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="626">  626   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:16')"><FONT color="#117755"><I>&lt;S4&gt;:1:16</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="627">  627   </A>  twa_parallel_B.qmicro_des[1] = sqrt((5.121169E+004 - <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>
+</SPAN><SPAN><A CLASS="LN" NAME="628">  628   </A>    (eml_velmex_stroke_idx_0, 2.0)) / 1.9516089999999996E-002);
+</SPAN><SPAN><A CLASS="LN" NAME="629">  629   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="630">  630   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:17')"><FONT color="#117755"><I>&lt;S4&gt;:1:17</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="631">  631   </A>  twa_parallel_B.qmicro_des[2] = sqrt((50400.25 - <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>
+</SPAN><SPAN><A CLASS="LN" NAME="632">  632   </A>    (eml_velmex_stroke_idx_1, 2.0)) / 1.9516089999999996E-002);
+</SPAN><SPAN><A CLASS="LN" NAME="633">  633   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="634">  634   </A>  <SPAN CLASS="CT">/* convert to rotations from radians */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="635">  635   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3137:1:20')"><FONT color="#117755"><I>&lt;S4&gt;:1:20</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="636">  636   </A>  twa_parallel_B.qmicro_des[0] = twa_parallel_B.qmicro_des[0] /
+</SPAN><SPAN><A CLASS="LN" NAME="637">  637   </A>    6.2831853071795862E+000;
+</SPAN><SPAN><A CLASS="LN" NAME="638">  638   </A>  twa_parallel_B.qmicro_des[1] = twa_parallel_B.qmicro_des[1] /
+</SPAN><SPAN><A CLASS="LN" NAME="639">  639   </A>    6.2831853071795862E+000;
+</SPAN><SPAN><A CLASS="LN" NAME="640">  640   </A>  twa_parallel_B.qmicro_des[2] = twa_parallel_B.qmicro_des[2] /
+</SPAN><SPAN><A CLASS="LN" NAME="641">  641   </A>    6.2831853071795862E+000;
+</SPAN><SPAN><A CLASS="LN" NAME="642">  642   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="643">  643   </A>  <SPAN CLASS="CT">/* Switch: '<A href="javascript:rtwHilite('twa_parallel:3130')"><FONT color="#117755"><I>&lt;Root&gt;/Switch</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="644">  644   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;Root&gt;/cntrl_mode</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="645">  645   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:2928')"><FONT color="#117755"><I>&lt;Root&gt;/q_des</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="646">  646   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="647">  647   </A>  <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.cntrl_mode_Value != 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="648">  648   </A>    twa_parallel_B.Switch[0] = twa_parallel_B.qmacro_des[0];
+</SPAN><SPAN><A CLASS="LN" NAME="649">  649   </A>    twa_parallel_B.Switch[1] = twa_parallel_B.qmacro_des[1];
+</SPAN><SPAN><A CLASS="LN" NAME="650">  650   </A>    twa_parallel_B.Switch[2] = twa_parallel_B.qmacro_des[2];
+</SPAN><SPAN><A CLASS="LN" NAME="651">  651   </A>    twa_parallel_B.Switch[3] = twa_parallel_B.qmicro_des[0];
+</SPAN><SPAN><A CLASS="LN" NAME="652">  652   </A>    twa_parallel_B.Switch[4] = twa_parallel_B.qmicro_des[1];
+</SPAN><SPAN><A CLASS="LN" NAME="653">  653   </A>    twa_parallel_B.Switch[5] = twa_parallel_B.qmicro_des[2];
+</SPAN><SPAN><A CLASS="LN" NAME="654">  654   </A>  <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="655">  655   </A>    <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="656">  656   </A>      twa_parallel_B.Switch[uIdx] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.q_des_Value[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="657">  657   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="658">  658   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="659">  659   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="660">  660   </A>  <SPAN CLASS="CT">/* DigitalClock: '<A href="javascript:rtwHilite('twa_parallel:2901')"><FONT color="#117755"><I>&lt;S6&gt;/Digital Clock</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="661">  661   </A>  twa_parallel_B.DigitalClock = twa_parallel_rtM-&gt;Timing.t[1];
+</SPAN><SPAN><A CLASS="LN" NAME="662">  662   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="663">  663   </A>  <SPAN CLASS="CT">/* UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2908')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="664">  664   </A>  twa_parallel_B.UnitDelay = twa_parallel_DWork.UnitDelay_DSTATE;
+</SPAN><SPAN><A CLASS="LN" NAME="665">  665   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="666">  666   </A>  <SPAN CLASS="CT">/* UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2909')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="667">  667   </A>  twa_parallel_B.UnitDelay1 = twa_parallel_DWork.UnitDelay1_DSTATE;
+</SPAN><SPAN><A CLASS="LN" NAME="668">  668   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="669">  669   </A>  <SPAN CLASS="CT">/* Signal Processing Blockset N-Sample Enable  (sdspnsamp2) - '<A href="javascript:rtwHilite('twa_parallel:2905:3')"><FONT color="#117755"><I>&lt;S19&gt;/N-Sample Enable</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="670">  670   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="671">  671   </A>    <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="672">  672   </A>      <SPAN CLASS="KW">if</SPAN> (twa_parallel_DWork.NSampleEnable_Counter ==
+</SPAN><SPAN><A CLASS="LN" NAME="673">  673   </A>          <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.NSampleEnable_TARGETCNT) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="674">  674   </A>        twa_parallel_B.NSampleEnable = (boolean_T)(2 -
+</SPAN><SPAN><A CLASS="LN" NAME="675">  675   </A>          <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.NSampleEnable_ACTLEVEL);
+</SPAN><SPAN><A CLASS="LN" NAME="676">  676   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="677">  677   </A>        twa_parallel_B.NSampleEnable = (boolean_T)
+</SPAN><SPAN><A CLASS="LN" NAME="678">  678   </A>          (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.NSampleEnable_ACTLEVEL - 1);
+</SPAN><SPAN><A CLASS="LN" NAME="679">  679   </A>        (twa_parallel_DWork.NSampleEnable_Counter)++;
+</SPAN><SPAN><A CLASS="LN" NAME="680">  680   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="681">  681   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="682">  682   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="683">  683   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="684">  684   </A>  <SPAN CLASS="CT">/* SignalConversion: '&lt;S18&gt;/TmpSignal ConversionAt SFunction Inport2' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="685">  685   </A>  twa_parallel_B.TmpSignalConversionAtSFunctionI[0] = twa_parallel_B.gear_ratio;
+</SPAN><SPAN><A CLASS="LN" NAME="686">  686   </A>  twa_parallel_B.TmpSignalConversionAtSFunctionI[1] =
+</SPAN><SPAN><A CLASS="LN" NAME="687">  687   </A>    twa_parallel_B.gear_ratio_p;
+</SPAN><SPAN><A CLASS="LN" NAME="688">  688   </A>  twa_parallel_B.TmpSignalConversionAtSFunctionI[2] =
+</SPAN><SPAN><A CLASS="LN" NAME="689">  689   </A>    twa_parallel_B.gear_ratio_c;
+</SPAN><SPAN><A CLASS="LN" NAME="690">  690   </A>  twa_parallel_B.TmpSignalConversionAtSFunctionI[3] =
+</SPAN><SPAN><A CLASS="LN" NAME="691">  691   </A>    twa_parallel_B.gear_ratio_l;
+</SPAN><SPAN><A CLASS="LN" NAME="692">  692   </A>  twa_parallel_B.TmpSignalConversionAtSFunctionI[4] =
+</SPAN><SPAN><A CLASS="LN" NAME="693">  693   </A>    twa_parallel_B.gear_ratio_j;
+</SPAN><SPAN><A CLASS="LN" NAME="694">  694   </A>  twa_parallel_B.TmpSignalConversionAtSFunctionI[5] =
+</SPAN><SPAN><A CLASS="LN" NAME="695">  695   </A>    twa_parallel_B.gear_ratio_n;
+</SPAN><SPAN><A CLASS="LN" NAME="696">  696   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="697">  697   </A>  <SPAN CLASS="CT">/* Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:2902')"><FONT color="#117755"><I>&lt;S6&gt;/Embedded MATLAB Function</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="698">  698   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:2914')"><FONT color="#117755"><I>&lt;S6&gt;/quintic_enable</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="699">  699   </A><SPAN CLASS="CT">   *  Constant: '<A href="javascript:rtwHilite('twa_parallel:2911')"><FONT color="#117755"><I>&lt;S6&gt;/tf</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="700">  700   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="701">  701   </A>  <SPAN CLASS="CT">/* Embedded MATLAB Function 'Quintic Poly/Embedded MATLAB Function': '<A href="javascript:rtwHilite('twa_parallel:2902:1')"><FONT color="#117755"><I>&lt;S18&gt;:1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="702">  702   </A>  <SPAN CLASS="CT">/*  number of actuators */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="703">  703   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:5')"><FONT color="#117755"><I>&lt;S18&gt;:1:5</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="704">  704   </A>  twa_parallel_B.robot_mov = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="705">  705   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="706">  706   </A>  <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:6')"><FONT color="#117755"><I>&lt;S18&gt;:1:6</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="707">  707   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="708">  708   </A>    <SPAN CLASS="CT">/* UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2910')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay2</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="709">  709   </A>    twa_parallel_B.UnitDelay2[uIdx] = twa_parallel_DWork.UnitDelay2_DSTATE[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="710">  710   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="711">  711   </A>    <SPAN CLASS="CT">/* Switch: '<A href="javascript:rtwHilite('twa_parallel:2905:4')"><FONT color="#117755"><I>&lt;S19&gt;/Switch</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="712">  712   </A>    <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.NSampleEnable) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="713">  713   </A>      twa_parallel_B.Switch_f[uIdx] =
+</SPAN><SPAN><A CLASS="LN" NAME="714">  714   </A>        twa_parallel_B.TmpSignalConversionAtDiscreteFI[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="715">  715   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="716">  716   </A>      twa_parallel_B.Switch_f[uIdx] = twa_parallel_B.UnitDelay2[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="717">  717   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="718">  718   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="719">  719   </A>    eml_eta[uIdx] = twa_parallel_B.Switch[uIdx] - twa_parallel_B.Switch_f[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="720">  720   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="721">  721   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="722">  722   </A>  <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.quintic_enable_Value != 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="723">  723   </A>    <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="724">  724   </A>      eml_a[uIdx] = eml_eta[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="725">  725   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="726">  726   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="727">  727   </A>    eml_velmex_stroke_idx = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="728">  728   </A>    eml_k = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="729">  729   </A>    uIdx = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="730">  730   </A>    <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="731">  731   </A>      eml_velmex_stroke_idx += eml_a[eml_k - 1] * eml_eta[uIdx - 1];
+</SPAN><SPAN><A CLASS="LN" NAME="732">  732   </A>      eml_k++;
+</SPAN><SPAN><A CLASS="LN" NAME="733">  733   </A>      uIdx++;
+</SPAN><SPAN><A CLASS="LN" NAME="734">  734   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="735">  735   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="736">  736   </A>    <SPAN CLASS="KW">if</SPAN> (eml_velmex_stroke_idx &gt; 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="737">  737   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:9')"><FONT color="#117755"><I>&lt;S18&gt;:1:9</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="738">  738   </A>      <SPAN CLASS="CT">/*  conf = 0 means that the 5th order poly */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="739">  739   </A>      <SPAN CLASS="CT">/*  is not configured for the desired trajectory. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="740">  740   </A>      <SPAN CLASS="CT">/*  Therefore, the block is initialized. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="741">  741   </A>      <SPAN CLASS="KW">if</SPAN> (twa_parallel_B.UnitDelay == 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="742">  742   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:13')"><FONT color="#117755"><I>&lt;S18&gt;:1:13</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="743">  743   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:14')"><FONT color="#117755"><I>&lt;S18&gt;:1:14</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="744">  744   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:15')"><FONT color="#117755"><I>&lt;S18&gt;:1:15</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="745">  745   </A>        twa_parallel_B.t0n = twa_parallel_B.DigitalClock;
+</SPAN><SPAN><A CLASS="LN" NAME="746">  746   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="747">  747   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:16')"><FONT color="#117755"><I>&lt;S18&gt;:1:16</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="748">  748   </A>        twa_parallel_B.confn = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="749">  749   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="750">  750   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:17')"><FONT color="#117755"><I>&lt;S18&gt;:1:17</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="751">  751   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:18')"><FONT color="#117755"><I>&lt;S18&gt;:1:18</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="752">  752   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:19')"><FONT color="#117755"><I>&lt;S18&gt;:1:19</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="753">  753   </A>        <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="754">  754   </A>          twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch_f[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="755">  755   </A>          twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.Switch_f[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="756">  756   </A>          twa_parallel_B.q_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="757">  757   </A>          twa_parallel_B.q_dub_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="758">  758   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="759">  759   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="760">  760   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:21')"><FONT color="#117755"><I>&lt;S18&gt;:1:21</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="761">  761   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:22')"><FONT color="#117755"><I>&lt;S18&gt;:1:22</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="762">  762   </A>        twa_parallel_B.t0n = twa_parallel_B.UnitDelay1;
+</SPAN><SPAN><A CLASS="LN" NAME="763">  763   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="764">  764   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:23')"><FONT color="#117755"><I>&lt;S18&gt;:1:23</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="765">  765   </A>        twa_parallel_B.confn = twa_parallel_B.UnitDelay;
+</SPAN><SPAN><A CLASS="LN" NAME="766">  766   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="767">  767   </A>        <SPAN CLASS="CT">/*  5th order polynomial */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="768">  768   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:27')"><FONT color="#117755"><I>&lt;S18&gt;:1:27</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="769">  769   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:28')"><FONT color="#117755"><I>&lt;S18&gt;:1:28</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="770">  770   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:29')"><FONT color="#117755"><I>&lt;S18&gt;:1:29</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="771">  771   </A>        <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="772">  772   </A>          eml_velmex_stroke_idx = eml_eta[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="773">  773   </A>          twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch_f[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="774">  774   </A>          eml_velmex_stroke_idx *= -15.0;
+</SPAN><SPAN><A CLASS="LN" NAME="775">  775   </A>          twa_parallel_B.q_dub_dot[uIdx] = -6.6666666666666663E-001 *
+</SPAN><SPAN><A CLASS="LN" NAME="776">  776   </A>            eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="777">  777   </A>          eml_a[uIdx] = -0.4 * eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="778">  778   </A>          eml_eta[uIdx] = eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="779">  779   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="780">  780   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="781">  781   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:30')"><FONT color="#117755"><I>&lt;S18&gt;:1:30</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="782">  782   </A>        eml_velmex_stroke_idx_0 = twa_parallel_B.DigitalClock -
+</SPAN><SPAN><A CLASS="LN" NAME="783">  783   </A>          twa_parallel_B.UnitDelay1;
+</SPAN><SPAN><A CLASS="LN" NAME="784">  784   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="785">  785   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:31')"><FONT color="#117755"><I>&lt;S18&gt;:1:31</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="786">  786   </A>        eml_velmex_stroke_idx = eml_velmex_stroke_idx_0 /
+</SPAN><SPAN><A CLASS="LN" NAME="787">  787   </A>          <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value;
+</SPAN><SPAN><A CLASS="LN" NAME="788">  788   </A>        <SPAN CLASS="KW">if</SPAN> (eml_velmex_stroke_idx_0 &lt; <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="789">  789   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:33')"><FONT color="#117755"><I>&lt;S18&gt;:1:33</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="790">  790   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:34')"><FONT color="#117755"><I>&lt;S18&gt;:1:34</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="791">  791   </A>          twa_parallel_B.robot_mov = 1.0;
+</SPAN><SPAN><A CLASS="LN" NAME="792">  792   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="793">  793   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:35')"><FONT color="#117755"><I>&lt;S18&gt;:1:35</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="794">  794   </A>          eml_velmex_stroke_idx_1 = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx, 3.0);
+</SPAN><SPAN><A CLASS="LN" NAME="795">  795   </A>          eml_b_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx, 4.0);
+</SPAN><SPAN><A CLASS="LN" NAME="796">  796   </A>          eml_velmex_stroke_idx = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx, 5.0);
+</SPAN><SPAN><A CLASS="LN" NAME="797">  797   </A>          <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="798">  798   </A>            twa_parallel_B.q_cmd[uIdx] = ((twa_parallel_B.q_dub_dot[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="799">  799   </A>              eml_velmex_stroke_idx_1 + twa_parallel_B.Switch_f[uIdx]) +
+</SPAN><SPAN><A CLASS="LN" NAME="800">  800   </A>              eml_eta[uIdx] * eml_b_c) + eml_a[uIdx] * eml_velmex_stroke_idx;
+</SPAN><SPAN><A CLASS="LN" NAME="801">  801   </A>          <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="802">  802   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="803">  803   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:36')"><FONT color="#117755"><I>&lt;S18&gt;:1:36</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="804">  804   </A>          eml_velmex_stroke_idx = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx_0, 2.0);
+</SPAN><SPAN><A CLASS="LN" NAME="805">  805   </A>          eml_velmex_stroke_idx_1 = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value, 3.0);
+</SPAN><SPAN><A CLASS="LN" NAME="806">  806   </A>          eml_b_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx_0, 3.0);
+</SPAN><SPAN><A CLASS="LN" NAME="807">  807   </A>          eml_g_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value, 4.0);
+</SPAN><SPAN><A CLASS="LN" NAME="808">  808   </A>          eml_h_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx_0, 4.0);
+</SPAN><SPAN><A CLASS="LN" NAME="809">  809   </A>          eml_i_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value, 5.0);
+</SPAN><SPAN><A CLASS="LN" NAME="810">  810   </A>          <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="811">  811   </A>            twa_parallel_B.q_dot[uIdx] = (3.0 * twa_parallel_B.q_dub_dot[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="812">  812   </A>              eml_velmex_stroke_idx / eml_velmex_stroke_idx_1 + 4.0 *
+</SPAN><SPAN><A CLASS="LN" NAME="813">  813   </A>              eml_eta[uIdx] * eml_b_c / eml_g_c) + 5.0 * eml_a[uIdx] * eml_h_c /
+</SPAN><SPAN><A CLASS="LN" NAME="814">  814   </A>              eml_i_c;
+</SPAN><SPAN><A CLASS="LN" NAME="815">  815   </A>          <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="816">  816   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="817">  817   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:37')"><FONT color="#117755"><I>&lt;S18&gt;:1:37</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="818">  818   </A>          eml_velmex_stroke_idx = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value, 3.0);
+</SPAN><SPAN><A CLASS="LN" NAME="819">  819   </A>          eml_velmex_stroke_idx_1 = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx_0, 2.0);
+</SPAN><SPAN><A CLASS="LN" NAME="820">  820   </A>          eml_b_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value, 4.0);
+</SPAN><SPAN><A CLASS="LN" NAME="821">  821   </A>          eml_g_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(eml_velmex_stroke_idx_0, 3.0);
+</SPAN><SPAN><A CLASS="LN" NAME="822">  822   </A>          eml_h_c = <A HREF="rt_pow_snf_c.html#fcn_rt_pow_snf" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_pow_snf');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_pow_snf</FONT></A>(<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.tf_Value, 5.0);
+</SPAN><SPAN><A CLASS="LN" NAME="823">  823   </A>          <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="824">  824   </A>            twa_parallel_B.q_dub_dot[uIdx] = (6.0 *
+</SPAN><SPAN><A CLASS="LN" NAME="825">  825   </A>              twa_parallel_B.q_dub_dot[uIdx] * eml_velmex_stroke_idx_0 /
+</SPAN><SPAN><A CLASS="LN" NAME="826">  826   </A>              eml_velmex_stroke_idx + 12.0 * eml_eta[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="827">  827   </A>              eml_velmex_stroke_idx_1 / eml_b_c) + 20.0 * eml_a[uIdx] * eml_g_c /
+</SPAN><SPAN><A CLASS="LN" NAME="828">  828   </A>              eml_h_c;
+</SPAN><SPAN><A CLASS="LN" NAME="829">  829   </A>          <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="830">  830   </A>        <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="831">  831   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:39')"><FONT color="#117755"><I>&lt;S18&gt;:1:39</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="832">  832   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:40')"><FONT color="#117755"><I>&lt;S18&gt;:1:40</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="833">  833   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:41')"><FONT color="#117755"><I>&lt;S18&gt;:1:41</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="834">  834   </A>          <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:42')"><FONT color="#117755"><I>&lt;S18&gt;:1:42</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="835">  835   </A>          <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="836">  836   </A>            twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.Switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="837">  837   </A>            twa_parallel_B.q_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="838">  838   </A>            twa_parallel_B.q_dub_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="839">  839   </A>            twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="840">  840   </A>          <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="841">  841   </A>        <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="842">  842   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="843">  843   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="844">  844   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:46')"><FONT color="#117755"><I>&lt;S18&gt;:1:46</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="845">  845   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:47')"><FONT color="#117755"><I>&lt;S18&gt;:1:47</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="846">  846   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:48')"><FONT color="#117755"><I>&lt;S18&gt;:1:48</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="847">  847   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:49')"><FONT color="#117755"><I>&lt;S18&gt;:1:49</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="848">  848   </A>      twa_parallel_B.confn = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="849">  849   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="850">  850   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:50')"><FONT color="#117755"><I>&lt;S18&gt;:1:50</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="851">  851   </A>      <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="852">  852   </A>        twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.Switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="853">  853   </A>        twa_parallel_B.q_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="854">  854   </A>        twa_parallel_B.q_dub_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="855">  855   </A>        twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch_f[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="856">  856   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="857">  857   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="858">  858   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:51')"><FONT color="#117755"><I>&lt;S18&gt;:1:51</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="859">  859   </A>      twa_parallel_B.t0n = twa_parallel_B.UnitDelay1;
+</SPAN><SPAN><A CLASS="LN" NAME="860">  860   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="861">  861   </A>  <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="862">  862   </A>    <SPAN CLASS="CT">/*  Configuration space is not used (pdot = 0). */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="863">  863   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:55')"><FONT color="#117755"><I>&lt;S18&gt;:1:55</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="864">  864   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:56')"><FONT color="#117755"><I>&lt;S18&gt;:1:56</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="865">  865   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:57')"><FONT color="#117755"><I>&lt;S18&gt;:1:57</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="866">  866   </A>    <SPAN CLASS="CT">/*  However we do want to record the current */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="867">  867   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:58')"><FONT color="#117755"><I>&lt;S18&gt;:1:58</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="868">  868   </A>    twa_parallel_B.confn = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="869">  869   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="870">  870   </A>    <SPAN CLASS="CT">/*  position in order to be ready as soon */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="871">  871   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:59')"><FONT color="#117755"><I>&lt;S18&gt;:1:59</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="872">  872   </A>    twa_parallel_B.t0n = twa_parallel_B.DigitalClock;
+</SPAN><SPAN><A CLASS="LN" NAME="873">  873   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="874">  874   </A>    <SPAN CLASS="CT">/*  as the enable becomes 1. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="875">  875   </A>    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:60')"><FONT color="#117755"><I>&lt;S18&gt;:1:60</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="876">  876   </A>    <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="877">  877   </A>      twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.Switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="878">  878   </A>      twa_parallel_B.q_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="879">  879   </A>      twa_parallel_B.q_dub_dot[uIdx] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="880">  880   </A>      twa_parallel_B.q0n[uIdx] =
+</SPAN><SPAN><A CLASS="LN" NAME="881">  881   </A>        twa_parallel_B.TmpSignalConversionAtSFunctionI[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="882">  882   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="883">  883   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="884">  884   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="885">  885   </A>  <SPAN CLASS="CT">/* ------------------------------------------------------------------------ */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="886">  886   </A>  <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="887">  887   </A>    <SPAN CLASS="CT">/* Saturate: '<A href="javascript:rtwHilite('twa_parallel:2944')"><FONT color="#117755"><I>&lt;S5&gt;/Saturation</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="888">  888   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="889">  889   </A>    <SPAN CLASS="CT">/* Sum: '<A href="javascript:rtwHilite('twa_parallel:2961')"><FONT color="#117755"><I>&lt;S5&gt;/Sum</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="890">  890   </A>    twa_parallel_B.Sum[uIdx] = twa_parallel_B.q_cmd[uIdx] -
+</SPAN><SPAN><A CLASS="LN" NAME="891">  891   </A>      twa_parallel_B.TmpSignalConversionAtDiscreteFI[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="892">  892   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="893">  893   </A>    <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:2943')"><FONT color="#117755"><I>&lt;S5&gt;/Kp</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="894">  894   </A>    twa_parallel_B.Kp[uIdx] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.Kp_Gain[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="895">  895   </A>      twa_parallel_B.Sum[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="896">  896   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="897">  897   </A>    <SPAN CLASS="CT">/* SampleTimeMath: '<A href="javascript:rtwHilite('twa_parallel:2935:4')"><FONT color="#117755"><I>&lt;S17&gt;/TSamp</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="898">  898   </A><SPAN CLASS="CT">     *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="899">  899   </A><SPAN CLASS="CT">     * About '<A href="javascript:rtwHilite('twa_parallel:2935:4')"><FONT color="#117755"><I>&lt;S17&gt;/TSamp</I></FONT></A>':</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="900">  900   </A><SPAN CLASS="CT">     *  y = u * K where K = 1 / ( w * Ts )</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="901">  901   </A><SPAN CLASS="CT">     */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="902">  902   </A>    twa_parallel_B.TSamp_a[uIdx] = twa_parallel_B.q_cmd[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="903">  903   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.TSamp_WtEt_a;
+</SPAN><SPAN><A CLASS="LN" NAME="904">  904   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="905">  905   </A>    <SPAN CLASS="CT">/* UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2935:5')"><FONT color="#117755"><I>&lt;S17&gt;/UD</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="906">  906   </A>    twa_parallel_B.Uk1_e[uIdx] = twa_parallel_DWork.UD_DSTATE_k[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="907">  907   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="908">  908   </A>    <SPAN CLASS="CT">/* Sum: '<A href="javascript:rtwHilite('twa_parallel:2935:3')"><FONT color="#117755"><I>&lt;S17&gt;/Diff</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="909">  909   </A>    twa_parallel_B.Diff_j[uIdx] = twa_parallel_B.TSamp_a[uIdx] -
+</SPAN><SPAN><A CLASS="LN" NAME="910">  910   </A>      twa_parallel_B.Uk1_e[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="911">  911   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="912">  912   </A>    <SPAN CLASS="CT">/* Sum: '<A href="javascript:rtwHilite('twa_parallel:2962')"><FONT color="#117755"><I>&lt;S5&gt;/Sum1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="913">  913   </A>    twa_parallel_B.Sum1[uIdx] = twa_parallel_B.Diff_j[uIdx] -
+</SPAN><SPAN><A CLASS="LN" NAME="914">  914   </A>      twa_parallel_B.Diff[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="915">  915   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="916">  916   </A>    <SPAN CLASS="CT">/* Gain: '<A href="javascript:rtwHilite('twa_parallel:2942')"><FONT color="#117755"><I>&lt;S5&gt;/Kd</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="917">  917   </A>    twa_parallel_B.Kd[uIdx] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.Kd_Gain[uIdx] *
+</SPAN><SPAN><A CLASS="LN" NAME="918">  918   </A>      twa_parallel_B.Sum1[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="919">  919   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="920">  920   </A>    <SPAN CLASS="CT">/* Sum: '<A href="javascript:rtwHilite('twa_parallel:2933')"><FONT color="#117755"><I>&lt;S5&gt;/Add</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="921">  921   </A>    twa_parallel_B.Add[uIdx] = twa_parallel_B.Kp[uIdx] + twa_parallel_B.Kd[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="922">  922   </A>    eml_velmex_stroke_idx = twa_parallel_B.Add[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="923">  923   </A>    twa_parallel_B.Saturation[uIdx] = rt_SATURATE(eml_velmex_stroke_idx,
+</SPAN><SPAN><A CLASS="LN" NAME="924">  924   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.Saturation_LowerSat[uIdx],
+</SPAN><SPAN><A CLASS="LN" NAME="925">  925   </A>      <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.Saturation_UpperSat[uIdx]);
+</SPAN><SPAN><A CLASS="LN" NAME="926">  926   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="927">  927   </A>    <SPAN CLASS="CT">/* Switch: '<A href="javascript:rtwHilite('twa_parallel:3021')"><FONT color="#117755"><I>&lt;S5&gt;/Switch</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="928">  928   </A><SPAN CLASS="CT">     *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3023')"><FONT color="#117755"><I>&lt;S5&gt;/manual_current</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="929">  929   </A><SPAN CLASS="CT">     *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3132')"><FONT color="#117755"><I>&lt;S5&gt;/pd_mode</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="930">  930   </A><SPAN CLASS="CT">     */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="931">  931   </A>    <SPAN CLASS="KW">if</SPAN> (<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.pd_mode_Value != 0.0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="932">  932   </A>      twa_parallel_B.Switch_l[uIdx] = twa_parallel_B.Saturation[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="933">  933   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="934">  934   </A>      twa_parallel_B.Switch_l[uIdx] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.manual_current_Value[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="935">  935   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="936">  936   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="937">  937   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="938">  938   </A>  <SPAN CLASS="CT">/* tid is required for a uniform function interface.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="939">  939   </A><SPAN CLASS="CT">   * Argument tid is not used in the function. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="940">  940   </A>  UNUSED_PARAMETER(tid);
+</SPAN><SPAN><A CLASS="LN" NAME="941">  941   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="942">  942   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="943">  943   </A><SPAN CLASS="CT">/* Model update function */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="944">  944   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_twa_parallel_update">twa_parallel_update</A>(int_T tid)
+</SPAN><SPAN><A CLASS="LN" NAME="945">  945   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="946">  946   </A>  int32_T k;
+</SPAN><SPAN><A CLASS="LN" NAME="947">  947   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="948">  948   </A>  <SPAN CLASS="CT">/* Update for DiscreteFir: '<A href="javascript:rtwHilite('twa_parallel:2999')"><FONT color="#117755"><I>&lt;S16&gt;/Discrete FIR Filter</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="949">  949   </A>  twa_parallel_DWork.DiscreteFIRFilter_circBuf =
+</SPAN><SPAN><A CLASS="LN" NAME="950">  950   </A>    twa_parallel_DWork.DiscreteFIRFilter_circBuf - 1;
+</SPAN><SPAN><A CLASS="LN" NAME="951">  951   </A>  <SPAN CLASS="KW">if</SPAN> (twa_parallel_DWork.DiscreteFIRFilter_circBuf &lt; 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="952">  952   </A>    twa_parallel_DWork.DiscreteFIRFilter_circBuf = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="953">  953   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="954">  954   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="955">  955   </A>  <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="956">  956   </A>    twa_parallel_DWork.DiscreteFIRFilter_states[twa_parallel_DWork.DiscreteFIRFilter_circBuf
+</SPAN><SPAN><A CLASS="LN" NAME="957">  957   </A>      + k] = twa_parallel_B.TmpSignalConversionAtDiscreteFI[k];
+</SPAN><SPAN><A CLASS="LN" NAME="958">  958   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="959">  959   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="960">  960   </A>  <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2996:5')"><FONT color="#117755"><I>&lt;S15&gt;/UD</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="961">  961   </A>  <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="962">  962   </A>    twa_parallel_DWork.UD_DSTATE[k] = twa_parallel_B.TSamp[k];
+</SPAN><SPAN><A CLASS="LN" NAME="963">  963   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="964">  964   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="965">  965   </A>  <SPAN CLASS="CT">/* Update for DiscreteFir: '<A href="javascript:rtwHilite('twa_parallel:3089')"><FONT color="#117755"><I>&lt;S20&gt;/Discrete FIR Filter</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="966">  966   </A>  twa_parallel_DWork.DiscreteFIRFilter_circBuf_l =
+</SPAN><SPAN><A CLASS="LN" NAME="967">  967   </A>    twa_parallel_DWork.DiscreteFIRFilter_circBuf_l - 1;
+</SPAN><SPAN><A CLASS="LN" NAME="968">  968   </A>  <SPAN CLASS="KW">if</SPAN> (twa_parallel_DWork.DiscreteFIRFilter_circBuf_l &lt; 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="969">  969   </A>    twa_parallel_DWork.DiscreteFIRFilter_circBuf_l = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="970">  970   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="971">  971   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="972">  972   </A>  <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="973">  973   </A>    twa_parallel_DWork.DiscreteFIRFilter_states_m[twa_parallel_DWork.DiscreteFIRFilter_circBuf_l
+</SPAN><SPAN><A CLASS="LN" NAME="974">  974   </A>      + k] = twa_parallel_B.TmpSignalConversionAtDiscreteFI[k];
+</SPAN><SPAN><A CLASS="LN" NAME="975">  975   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="976">  976   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="977">  977   </A>  <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2908')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="978">  978   </A>  twa_parallel_DWork.UnitDelay_DSTATE = twa_parallel_B.confn;
+</SPAN><SPAN><A CLASS="LN" NAME="979">  979   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="980">  980   </A>  <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2909')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="981">  981   </A>  twa_parallel_DWork.UnitDelay1_DSTATE = twa_parallel_B.t0n;
+</SPAN><SPAN><A CLASS="LN" NAME="982">  982   </A>  <SPAN CLASS="KW">for</SPAN> (k = 0; k &lt; 6; k++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="983">  983   </A>    <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2910')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay2</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="984">  984   </A>    twa_parallel_DWork.UnitDelay2_DSTATE[k] = twa_parallel_B.q0n[k];
+</SPAN><SPAN><A CLASS="LN" NAME="985">  985   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="986">  986   </A>    <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2935:5')"><FONT color="#117755"><I>&lt;S17&gt;/UD</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="987">  987   </A>    twa_parallel_DWork.UD_DSTATE_k[k] = twa_parallel_B.TSamp_a[k];
+</SPAN><SPAN><A CLASS="LN" NAME="988">  988   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="989">  989   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="990">  990   </A>  <SPAN CLASS="CT">/* Update absolute time for base rate */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="991">  991   </A>  <SPAN CLASS="CT">/* The &quot;clockTick0&quot; counts the number of times the code of this task has</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="992">  992   </A><SPAN CLASS="CT">   * been executed. The absolute time is the multiplication of &quot;clockTick0&quot;</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="993">  993   </A><SPAN CLASS="CT">   * and &quot;Timing.stepSize0&quot;. Size of &quot;clockTick0&quot; ensures timer will not</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="994">  994   </A><SPAN CLASS="CT">   * overflow during the application lifespan selected.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="995">  995   </A><SPAN CLASS="CT">   * Timer of this task consists of two 32 bit unsigned integers.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="996">  996   </A><SPAN CLASS="CT">   * The two integers represent the low bits Timing.clockTick0 and the high bits</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="997">  997   </A><SPAN CLASS="CT">   * Timing.clockTickH0. When the low bit overflows to 0, the high bits increment.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="998">  998   </A><SPAN CLASS="CT">   */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="999">  999   </A>  <SPAN CLASS="KW">if</SPAN> (!(++twa_parallel_rtM-&gt;Timing.clockTick0)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1000"> 1000   </A>    ++twa_parallel_rtM-&gt;Timing.clockTickH0;
+</SPAN><SPAN><A CLASS="LN" NAME="1001"> 1001   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1002"> 1002   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1003"> 1003   </A>  twa_parallel_rtM-&gt;Timing.t[0] = twa_parallel_rtM-&gt;Timing.clockTick0 *
+</SPAN><SPAN><A CLASS="LN" NAME="1004"> 1004   </A>    twa_parallel_rtM-&gt;Timing.stepSize0 + twa_parallel_rtM-&gt;Timing.clockTickH0 *
+</SPAN><SPAN><A CLASS="LN" NAME="1005"> 1005   </A>    twa_parallel_rtM-&gt;Timing.stepSize0 * 4294967296.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1006"> 1006   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1007"> 1007   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1008"> 1008   </A>    <SPAN CLASS="CT">/* Update absolute timer for sample time: [0.002s, 0.0s] */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1009"> 1009   </A>    <SPAN CLASS="CT">/* The &quot;clockTick1&quot; counts the number of times the code of this task has</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1010"> 1010   </A><SPAN CLASS="CT">     * been executed. The absolute time is the multiplication of &quot;clockTick1&quot;</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1011"> 1011   </A><SPAN CLASS="CT">     * and &quot;Timing.stepSize1&quot;. Size of &quot;clockTick1&quot; ensures timer will not</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1012"> 1012   </A><SPAN CLASS="CT">     * overflow during the application lifespan selected.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1013"> 1013   </A><SPAN CLASS="CT">     * Timer of this task consists of two 32 bit unsigned integers.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1014"> 1014   </A><SPAN CLASS="CT">     * The two integers represent the low bits Timing.clockTick1 and the high bits</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1015"> 1015   </A><SPAN CLASS="CT">     * Timing.clockTickH1. When the low bit overflows to 0, the high bits increment.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1016"> 1016   </A><SPAN CLASS="CT">     */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1017"> 1017   </A>    <SPAN CLASS="KW">if</SPAN> (!(++twa_parallel_rtM-&gt;Timing.clockTick1)) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1018"> 1018   </A>      ++twa_parallel_rtM-&gt;Timing.clockTickH1;
+</SPAN><SPAN><A CLASS="LN" NAME="1019"> 1019   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1020"> 1020   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1021"> 1021   </A>    twa_parallel_rtM-&gt;Timing.t[1] = twa_parallel_rtM-&gt;Timing.clockTick1 *
+</SPAN><SPAN><A CLASS="LN" NAME="1022"> 1022   </A>      twa_parallel_rtM-&gt;Timing.stepSize1 + twa_parallel_rtM-&gt;Timing.clockTickH1 *
+</SPAN><SPAN><A CLASS="LN" NAME="1023"> 1023   </A>      twa_parallel_rtM-&gt;Timing.stepSize1 * 4294967296.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1024"> 1024   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1025"> 1025   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1026"> 1026   </A>  <SPAN CLASS="CT">/* tid is required for a uniform function interface.</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1027"> 1027   </A><SPAN CLASS="CT">   * Argument tid is not used in the function. */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1028"> 1028   </A>  UNUSED_PARAMETER(tid);
+</SPAN><SPAN><A CLASS="LN" NAME="1029"> 1029   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1030"> 1030   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1031"> 1031   </A><SPAN CLASS="CT">/* Model initialize function */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1032"> 1032   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_twa_parallel_initialize">twa_parallel_initialize</A>(boolean_T firstTime)
+</SPAN><SPAN><A CLASS="LN" NAME="1033"> 1033   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1034"> 1034   </A>  (<SPAN CLASS="DT">void</SPAN>)firstTime;
+</SPAN><SPAN><A CLASS="LN" NAME="1035"> 1035   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1036"> 1036   </A>  <SPAN CLASS="CT">/* Registration code */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1037"> 1037   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1038"> 1038   </A>  <SPAN CLASS="CT">/* initialize non-finites */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1039"> 1039   </A>  <A HREF="rt_nonfinite_c.html#fcn_rt_InitInfAndNaN" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_InitInfAndNaN');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rt_InitInfAndNaN</FONT></A>(<SPAN CLASS="KW">sizeof</SPAN>(real_T));
+</SPAN><SPAN><A CLASS="LN" NAME="1040"> 1040   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1041"> 1041   </A>  <SPAN CLASS="CT">/* initialize real-time model */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1042"> 1042   </A>  (<SPAN CLASS="DT">void</SPAN>) memset((<SPAN CLASS="DT">void</SPAN> *)twa_parallel_rtM, 0,
+</SPAN><SPAN><A CLASS="LN" NAME="1043"> 1043   </A>                <SPAN CLASS="KW">sizeof</SPAN>(<A HREF="twa_parallel_types_h.html#type_rtModel_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_rtModel_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtModel_twa_parallel</FONT></A>));
+</SPAN><SPAN><A CLASS="LN" NAME="1044"> 1044   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1045"> 1045   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1046"> 1046   </A>    <SPAN CLASS="CT">/* Setup solver object */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1047"> 1047   </A>    rtsiSetSimTimeStepPtr(&amp;twa_parallel_rtM-&gt;solverInfo,
+</SPAN><SPAN><A CLASS="LN" NAME="1048"> 1048   </A>                          &amp;twa_parallel_rtM-&gt;Timing.simTimeStep);
+</SPAN><SPAN><A CLASS="LN" NAME="1049"> 1049   </A>    rtsiSetTPtr(&amp;twa_parallel_rtM-&gt;solverInfo, &amp;rtmGetTPtr(twa_parallel_rtM));
+</SPAN><SPAN><A CLASS="LN" NAME="1050"> 1050   </A>    rtsiSetStepSizePtr(&amp;twa_parallel_rtM-&gt;solverInfo,
+</SPAN><SPAN><A CLASS="LN" NAME="1051"> 1051   </A>                       &amp;twa_parallel_rtM-&gt;Timing.stepSize0);
+</SPAN><SPAN><A CLASS="LN" NAME="1052"> 1052   </A>    rtsiSetErrorStatusPtr(&amp;twa_parallel_rtM-&gt;solverInfo, (&amp;rtmGetErrorStatus
+</SPAN><SPAN><A CLASS="LN" NAME="1053"> 1053   </A>      (twa_parallel_rtM)));
+</SPAN><SPAN><A CLASS="LN" NAME="1054"> 1054   </A>    rtsiSetRTModelPtr(&amp;twa_parallel_rtM-&gt;solverInfo, twa_parallel_rtM);
+</SPAN><SPAN><A CLASS="LN" NAME="1055"> 1055   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1056"> 1056   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1057"> 1057   </A>  rtsiSetSimTimeStep(&amp;twa_parallel_rtM-&gt;solverInfo, MAJOR_TIME_STEP);
+</SPAN><SPAN><A CLASS="LN" NAME="1058"> 1058   </A>  rtsiSetSolverName(&amp;twa_parallel_rtM-&gt;solverInfo,<FONT COLOR="#1122ff">&quot;FixedStepDiscrete&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1059"> 1059   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1060"> 1060   </A>  <SPAN CLASS="CT">/* Initialize timing info */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1061"> 1061   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1062"> 1062   </A>    int_T *mdlTsMap = twa_parallel_rtM-&gt;Timing.sampleTimeTaskIDArray;
+</SPAN><SPAN><A CLASS="LN" NAME="1063"> 1063   </A>    mdlTsMap[0] = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="1064"> 1064   </A>    mdlTsMap[1] = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="1065"> 1065   </A>    twa_parallel_rtM-&gt;Timing.sampleTimeTaskIDPtr = (&amp;mdlTsMap[0]);
+</SPAN><SPAN><A CLASS="LN" NAME="1066"> 1066   </A>    twa_parallel_rtM-&gt;Timing.sampleTimes =
+</SPAN><SPAN><A CLASS="LN" NAME="1067"> 1067   </A>      (&amp;twa_parallel_rtM-&gt;Timing.sampleTimesArray[0]);
+</SPAN><SPAN><A CLASS="LN" NAME="1068"> 1068   </A>    twa_parallel_rtM-&gt;Timing.offsetTimes =
+</SPAN><SPAN><A CLASS="LN" NAME="1069"> 1069   </A>      (&amp;twa_parallel_rtM-&gt;Timing.offsetTimesArray[0]);
+</SPAN><SPAN><A CLASS="LN" NAME="1070"> 1070   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1071"> 1071   </A>    <SPAN CLASS="CT">/* task periods */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1072"> 1072   </A>    twa_parallel_rtM-&gt;Timing.sampleTimes[0] = (0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1073"> 1073   </A>    twa_parallel_rtM-&gt;Timing.sampleTimes[1] = (0.002);
+</SPAN><SPAN><A CLASS="LN" NAME="1074"> 1074   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1075"> 1075   </A>    <SPAN CLASS="CT">/* task offsets */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1076"> 1076   </A>    twa_parallel_rtM-&gt;Timing.offsetTimes[0] = (0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1077"> 1077   </A>    twa_parallel_rtM-&gt;Timing.offsetTimes[1] = (0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1078"> 1078   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1079"> 1079   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1080"> 1080   </A>  rtmSetTPtr(twa_parallel_rtM, &amp;twa_parallel_rtM-&gt;Timing.tArray[0]);
+</SPAN><SPAN><A CLASS="LN" NAME="1081"> 1081   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1082"> 1082   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1083"> 1083   </A>    int_T *mdlSampleHits = twa_parallel_rtM-&gt;Timing.sampleHitArray;
+</SPAN><SPAN><A CLASS="LN" NAME="1084"> 1084   </A>    mdlSampleHits[0] = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="1085"> 1085   </A>    mdlSampleHits[1] = 1;
+</SPAN><SPAN><A CLASS="LN" NAME="1086"> 1086   </A>    twa_parallel_rtM-&gt;Timing.sampleHits = (&amp;mdlSampleHits[0]);
+</SPAN><SPAN><A CLASS="LN" NAME="1087"> 1087   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1088"> 1088   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1089"> 1089   </A>  rtmSetTFinal(twa_parallel_rtM, -1);
+</SPAN><SPAN><A CLASS="LN" NAME="1090"> 1090   </A>  twa_parallel_rtM-&gt;Timing.stepSize0 = 0.002;
+</SPAN><SPAN><A CLASS="LN" NAME="1091"> 1091   </A>  twa_parallel_rtM-&gt;Timing.stepSize1 = 0.002;
+</SPAN><SPAN><A CLASS="LN" NAME="1092"> 1092   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1093"> 1093   </A>  <SPAN CLASS="CT">/* Setup for data logging */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1094"> 1094   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1095"> 1095   </A>    <SPAN CLASS="DT">static</SPAN> RTWLogInfo rt_DataLoggingInfo;
+</SPAN><SPAN><A CLASS="LN" NAME="1096"> 1096   </A>    twa_parallel_rtM-&gt;rtwLogInfo = &amp;rt_DataLoggingInfo;
+</SPAN><SPAN><A CLASS="LN" NAME="1097"> 1097   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1098"> 1098   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1099"> 1099   </A>  <SPAN CLASS="CT">/* Setup for data logging */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1100"> 1100   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1101"> 1101   </A>    rtliSetLogXSignalInfo(twa_parallel_rtM-&gt;rtwLogInfo, (NULL));
+</SPAN><SPAN><A CLASS="LN" NAME="1102"> 1102   </A>    rtliSetLogXSignalPtrs(twa_parallel_rtM-&gt;rtwLogInfo, (NULL));
+</SPAN><SPAN><A CLASS="LN" NAME="1103"> 1103   </A>    rtliSetLogT(twa_parallel_rtM-&gt;rtwLogInfo, <FONT COLOR="#1122ff">&quot;tout&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1104"> 1104   </A>    rtliSetLogX(twa_parallel_rtM-&gt;rtwLogInfo, <FONT COLOR="#1122ff">&quot;&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1105"> 1105   </A>    rtliSetLogXFinal(twa_parallel_rtM-&gt;rtwLogInfo, <FONT COLOR="#1122ff">&quot;&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1106"> 1106   </A>    rtliSetSigLog(twa_parallel_rtM-&gt;rtwLogInfo, <FONT COLOR="#1122ff">&quot;&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1107"> 1107   </A>    rtliSetLogVarNameModifier(twa_parallel_rtM-&gt;rtwLogInfo, <FONT COLOR="#1122ff">&quot;rt_&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1108"> 1108   </A>    rtliSetLogFormat(twa_parallel_rtM-&gt;rtwLogInfo, 2);
+</SPAN><SPAN><A CLASS="LN" NAME="1109"> 1109   </A>    rtliSetLogMaxRows(twa_parallel_rtM-&gt;rtwLogInfo, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1110"> 1110   </A>    rtliSetLogDecimation(twa_parallel_rtM-&gt;rtwLogInfo, 1);
+</SPAN><SPAN><A CLASS="LN" NAME="1111"> 1111   </A>    rtliSetLogY(twa_parallel_rtM-&gt;rtwLogInfo, <FONT COLOR="#1122ff">&quot;&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1112"> 1112   </A>    rtliSetLogYSignalInfo(twa_parallel_rtM-&gt;rtwLogInfo, (NULL));
+</SPAN><SPAN><A CLASS="LN" NAME="1113"> 1113   </A>    rtliSetLogYSignalPtrs(twa_parallel_rtM-&gt;rtwLogInfo, (NULL));
+</SPAN><SPAN><A CLASS="LN" NAME="1114"> 1114   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1115"> 1115   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1116"> 1116   </A>  <SPAN CLASS="CT">/* external mode info */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1117"> 1117   </A>  twa_parallel_rtM-&gt;Sizes.checksums[0] = (3230455310U);
+</SPAN><SPAN><A CLASS="LN" NAME="1118"> 1118   </A>  twa_parallel_rtM-&gt;Sizes.checksums[1] = (891657378U);
+</SPAN><SPAN><A CLASS="LN" NAME="1119"> 1119   </A>  twa_parallel_rtM-&gt;Sizes.checksums[2] = (2237461116U);
+</SPAN><SPAN><A CLASS="LN" NAME="1120"> 1120   </A>  twa_parallel_rtM-&gt;Sizes.checksums[3] = (3687892425U);
+</SPAN><SPAN><A CLASS="LN" NAME="1121"> 1121   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1122"> 1122   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1123"> 1123   </A>    <SPAN CLASS="DT">static</SPAN> <SPAN CLASS="DT">const</SPAN> sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
+</SPAN><SPAN><A CLASS="LN" NAME="1124"> 1124   </A>    <SPAN CLASS="DT">static</SPAN> RTWExtModeInfo rt_ExtModeInfo;
+</SPAN><SPAN><A CLASS="LN" NAME="1125"> 1125   </A>    <SPAN CLASS="DT">static</SPAN> <SPAN CLASS="DT">const</SPAN> sysRanDType *systemRan[5];
+</SPAN><SPAN><A CLASS="LN" NAME="1126"> 1126   </A>    twa_parallel_rtM-&gt;extModeInfo = (&amp;rt_ExtModeInfo);
+</SPAN><SPAN><A CLASS="LN" NAME="1127"> 1127   </A>    rteiSetSubSystemActiveVectorAddresses(&amp;rt_ExtModeInfo, systemRan);
+</SPAN><SPAN><A CLASS="LN" NAME="1128"> 1128   </A>    systemRan[0] = &amp;rtAlwaysEnabled;
+</SPAN><SPAN><A CLASS="LN" NAME="1129"> 1129   </A>    systemRan[1] = &amp;rtAlwaysEnabled;
+</SPAN><SPAN><A CLASS="LN" NAME="1130"> 1130   </A>    systemRan[2] = &amp;rtAlwaysEnabled;
+</SPAN><SPAN><A CLASS="LN" NAME="1131"> 1131   </A>    systemRan[3] = &amp;rtAlwaysEnabled;
+</SPAN><SPAN><A CLASS="LN" NAME="1132"> 1132   </A>    systemRan[4] = &amp;rtAlwaysEnabled;
+</SPAN><SPAN><A CLASS="LN" NAME="1133"> 1133   </A>    rteiSetModelMappingInfoPtr(twa_parallel_rtM-&gt;extModeInfo,
+</SPAN><SPAN><A CLASS="LN" NAME="1134"> 1134   </A>      &amp;twa_parallel_rtM-&gt;SpecialInfo.mappingInfo);
+</SPAN><SPAN><A CLASS="LN" NAME="1135"> 1135   </A>    rteiSetChecksumsPtr(twa_parallel_rtM-&gt;extModeInfo,
+</SPAN><SPAN><A CLASS="LN" NAME="1136"> 1136   </A>                        twa_parallel_rtM-&gt;Sizes.checksums);
+</SPAN><SPAN><A CLASS="LN" NAME="1137"> 1137   </A>    rteiSetTPtr(twa_parallel_rtM-&gt;extModeInfo, rtmGetTPtr(twa_parallel_rtM));
+</SPAN><SPAN><A CLASS="LN" NAME="1138"> 1138   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1139"> 1139   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1140"> 1140   </A>  twa_parallel_rtM-&gt;solverInfoPtr = (&amp;twa_parallel_rtM-&gt;solverInfo);
+</SPAN><SPAN><A CLASS="LN" NAME="1141"> 1141   </A>  twa_parallel_rtM-&gt;Timing.stepSize = (0.002);
+</SPAN><SPAN><A CLASS="LN" NAME="1142"> 1142   </A>  rtsiSetFixedStepSize(&amp;twa_parallel_rtM-&gt;solverInfo, 0.002);
+</SPAN><SPAN><A CLASS="LN" NAME="1143"> 1143   </A>  rtsiSetSolverMode(&amp;twa_parallel_rtM-&gt;solverInfo, SOLVER_MODE_SINGLETASKING);
+</SPAN><SPAN><A CLASS="LN" NAME="1144"> 1144   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1145"> 1145   </A>  <SPAN CLASS="CT">/* block I/O */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1146"> 1146   </A>  twa_parallel_rtM-&gt;ModelData.blockIO = ((<SPAN CLASS="DT">void</SPAN> *) &amp;twa_parallel_B);
+</SPAN><SPAN><A CLASS="LN" NAME="1147"> 1147   </A>  (<SPAN CLASS="DT">void</SPAN>) memset(((<SPAN CLASS="DT">void</SPAN> *) &amp;twa_parallel_B), 0,
+</SPAN><SPAN><A CLASS="LN" NAME="1148"> 1148   </A>                <SPAN CLASS="KW">sizeof</SPAN>(<A HREF="twa_parallel_h.html#type_BlockIO_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_BlockIO_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">BlockIO_twa_parallel</FONT></A>));
+</SPAN><SPAN><A CLASS="LN" NAME="1149"> 1149   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1150"> 1150   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1151"> 1151   </A>    int_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1152"> 1152   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1153"> 1153   </A>      twa_parallel_B.TmpSignalConversionAtDiscreteFI[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1154"> 1154   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1155"> 1155   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1156"> 1156   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1157"> 1157   </A>      twa_parallel_B.DiscreteFIRFilter[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1158"> 1158   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1159"> 1159   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1160"> 1160   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1161"> 1161   </A>      twa_parallel_B.Gain[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1162"> 1162   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1163"> 1163   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1164"> 1164   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1165"> 1165   </A>      twa_parallel_B.TSamp[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1166"> 1166   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1167"> 1167   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1168"> 1168   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1169"> 1169   </A>      twa_parallel_B.Uk1[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1170"> 1170   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1171"> 1171   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1172"> 1172   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1173"> 1173   </A>      twa_parallel_B.Diff[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1174"> 1174   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1175"> 1175   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1176"> 1176   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1177"> 1177   </A>      twa_parallel_B.DiscreteFIRFilter_h[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1178"> 1178   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1179"> 1179   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1180"> 1180   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1181"> 1181   </A>      twa_parallel_B.Gain_n[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1182"> 1182   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1183"> 1183   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1184"> 1184   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1185"> 1185   </A>      twa_parallel_B.Switch[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1186"> 1186   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1187"> 1187   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1188"> 1188   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1189"> 1189   </A>      twa_parallel_B.UnitDelay2[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1190"> 1190   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1191"> 1191   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1192"> 1192   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1193"> 1193   </A>      twa_parallel_B.Switch_f[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1194"> 1194   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1195"> 1195   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1196"> 1196   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1197"> 1197   </A>      twa_parallel_B.Sum[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1198"> 1198   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1199"> 1199   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1200"> 1200   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1201"> 1201   </A>      twa_parallel_B.Kp[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1202"> 1202   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1203"> 1203   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1204"> 1204   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1205"> 1205   </A>      twa_parallel_B.TSamp_a[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1206"> 1206   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1207"> 1207   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1208"> 1208   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1209"> 1209   </A>      twa_parallel_B.Uk1_e[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1210"> 1210   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1211"> 1211   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1212"> 1212   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1213"> 1213   </A>      twa_parallel_B.Diff_j[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1214"> 1214   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1215"> 1215   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1216"> 1216   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1217"> 1217   </A>      twa_parallel_B.Sum1[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1218"> 1218   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1219"> 1219   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1220"> 1220   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1221"> 1221   </A>      twa_parallel_B.Kd[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1222"> 1222   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1223"> 1223   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1224"> 1224   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1225"> 1225   </A>      twa_parallel_B.Add[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1226"> 1226   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1227"> 1227   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1228"> 1228   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1229"> 1229   </A>      twa_parallel_B.Saturation[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1230"> 1230   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1231"> 1231   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1232"> 1232   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1233"> 1233   </A>      twa_parallel_B.Switch_l[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1234"> 1234   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1235"> 1235   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1236"> 1236   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1237"> 1237   </A>      twa_parallel_B.TmpSignalConversionAtSFunctionI[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1238"> 1238   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1239"> 1239   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1240"> 1240   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1241"> 1241   </A>      twa_parallel_B.q_cmd[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1242"> 1242   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1243"> 1243   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1244"> 1244   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1245"> 1245   </A>      twa_parallel_B.q_dot[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1246"> 1246   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1247"> 1247   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1248"> 1248   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1249"> 1249   </A>      twa_parallel_B.q_dub_dot[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1250"> 1250   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1251"> 1251   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1252"> 1252   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1253"> 1253   </A>      twa_parallel_B.q0n[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1254"> 1254   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1255"> 1255   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1256"> 1256   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1257"> 1257   </A>      twa_parallel_B.TmpSignalConversionAtSFunctio_e[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1258"> 1258   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1259"> 1259   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1260"> 1260   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1261"> 1261   </A>      twa_parallel_B.TmpSignalConversionAtSFunctio_i[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1262"> 1262   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1263"> 1263   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1264"> 1264   </A>    twa_parallel_B.EncoderInput_o1 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1265"> 1265   </A>    twa_parallel_B.EncoderInput_o2 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1266"> 1266   </A>    twa_parallel_B.EncoderInput_o3 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1267"> 1267   </A>    twa_parallel_B.EncoderInput_o4 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1268"> 1268   </A>    twa_parallel_B.EncoderInput_o5 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1269"> 1269   </A>    twa_parallel_B.EncoderInput_o6 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1270"> 1270   </A>    twa_parallel_B.enc_res = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1271"> 1271   </A>    twa_parallel_B.gear_ratio = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1272"> 1272   </A>    twa_parallel_B.enc_res_l = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1273"> 1273   </A>    twa_parallel_B.gear_ratio_p = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1274"> 1274   </A>    twa_parallel_B.enc_res_f = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1275"> 1275   </A>    twa_parallel_B.gear_ratio_c = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1276"> 1276   </A>    twa_parallel_B.enc_res_c = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1277"> 1277   </A>    twa_parallel_B.gear_ratio_l = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1278"> 1278   </A>    twa_parallel_B.enc_res_fa = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1279"> 1279   </A>    twa_parallel_B.gear_ratio_j = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1280"> 1280   </A>    twa_parallel_B.enc_res_b = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1281"> 1281   </A>    twa_parallel_B.gear_ratio_n = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1282"> 1282   </A>    twa_parallel_B.DigitalClock = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1283"> 1283   </A>    twa_parallel_B.UnitDelay = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1284"> 1284   </A>    twa_parallel_B.UnitDelay1 = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1285"> 1285   </A>    twa_parallel_B.confn = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1286"> 1286   </A>    twa_parallel_B.t0n = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1287"> 1287   </A>    twa_parallel_B.robot_mov = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1288"> 1288   </A>    twa_parallel_B.qmicro_des[0] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1289"> 1289   </A>    twa_parallel_B.qmicro_des[1] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1290"> 1290   </A>    twa_parallel_B.qmicro_des[2] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1291"> 1291   </A>    twa_parallel_B.qmacro_des[0] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1292"> 1292   </A>    twa_parallel_B.qmacro_des[1] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1293"> 1293   </A>    twa_parallel_B.qmacro_des[2] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1294"> 1294   </A>    twa_parallel_B.macro_leg_len[0] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1295"> 1295   </A>    twa_parallel_B.macro_leg_len[1] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1296"> 1296   </A>    twa_parallel_B.macro_leg_len[2] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1297"> 1297   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1298"> 1298   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1299"> 1299   </A>  <SPAN CLASS="CT">/* parameters */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1300"> 1300   </A>  twa_parallel_rtM-&gt;ModelData.defaultParam = ((real_T *)&amp;<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>);
+</SPAN><SPAN><A CLASS="LN" NAME="1301"> 1301   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1302"> 1302   </A>  <SPAN CLASS="CT">/* states (dwork) */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1303"> 1303   </A>  twa_parallel_rtM-&gt;Work.dwork = ((<SPAN CLASS="DT">void</SPAN> *) &amp;twa_parallel_DWork);
+</SPAN><SPAN><A CLASS="LN" NAME="1304"> 1304   </A>  (<SPAN CLASS="DT">void</SPAN>) memset((<SPAN CLASS="DT">void</SPAN> *)&amp;twa_parallel_DWork, 0,
+</SPAN><SPAN><A CLASS="LN" NAME="1305"> 1305   </A>                <SPAN CLASS="KW">sizeof</SPAN>(<A HREF="twa_parallel_h.html#type_D_Work_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_D_Work_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">D_Work_twa_parallel</FONT></A>));
+</SPAN><SPAN><A CLASS="LN" NAME="1306"> 1306   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1307"> 1307   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1308"> 1308   </A>    int_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1309"> 1309   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1310"> 1310   </A>      twa_parallel_DWork.DiscreteFIRFilter_states[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1311"> 1311   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1312"> 1312   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1313"> 1313   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1314"> 1314   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1315"> 1315   </A>    int_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1316"> 1316   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1317"> 1317   </A>      twa_parallel_DWork.UD_DSTATE[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1318"> 1318   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1319"> 1319   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1320"> 1320   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1321"> 1321   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1322"> 1322   </A>    int_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1323"> 1323   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1324"> 1324   </A>      twa_parallel_DWork.DiscreteFIRFilter_states_m[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1325"> 1325   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1326"> 1326   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1327"> 1327   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1328"> 1328   </A>  twa_parallel_DWork.UnitDelay_DSTATE = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1329"> 1329   </A>  twa_parallel_DWork.UnitDelay1_DSTATE = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1330"> 1330   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1331"> 1331   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1332"> 1332   </A>    int_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1333"> 1333   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1334"> 1334   </A>      twa_parallel_DWork.UnitDelay2_DSTATE[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1335"> 1335   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1336"> 1336   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1337"> 1337   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1338"> 1338   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1339"> 1339   </A>    int_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1340"> 1340   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1341"> 1341   </A>      twa_parallel_DWork.UD_DSTATE_k[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="1342"> 1342   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1343"> 1343   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1344"> 1344   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1345"> 1345   </A>  <SPAN CLASS="CT">/* data type transition information */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1346"> 1346   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1347"> 1347   </A>    <SPAN CLASS="DT">static</SPAN> DataTypeTransInfo dtInfo;
+</SPAN><SPAN><A CLASS="LN" NAME="1348"> 1348   </A>    (<SPAN CLASS="DT">void</SPAN>) memset((char_T *) &amp;dtInfo, 0,
+</SPAN><SPAN><A CLASS="LN" NAME="1349"> 1349   </A>                  <SPAN CLASS="KW">sizeof</SPAN>(dtInfo));
+</SPAN><SPAN><A CLASS="LN" NAME="1350"> 1350   </A>    twa_parallel_rtM-&gt;SpecialInfo.mappingInfo = (&amp;dtInfo);
+</SPAN><SPAN><A CLASS="LN" NAME="1351"> 1351   </A>    twa_parallel_rtM-&gt;SpecialInfo.xpcData = ((<SPAN CLASS="DT">void</SPAN>*) &amp;dtInfo);
+</SPAN><SPAN><A CLASS="LN" NAME="1352"> 1352   </A>    dtInfo.numDataTypes = 14;
+</SPAN><SPAN><A CLASS="LN" NAME="1353"> 1353   </A>    dtInfo.dataTypeSizes = &amp;rtDataTypeSizes[0];
+</SPAN><SPAN><A CLASS="LN" NAME="1354"> 1354   </A>    dtInfo.dataTypeNames = &amp;rtDataTypeNames[0];
+</SPAN><SPAN><A CLASS="LN" NAME="1355"> 1355   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1356"> 1356   </A>    <SPAN CLASS="CT">/* Block I/O transition table */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1357"> 1357   </A>    dtInfo.B = &amp;rtBTransTable;
+</SPAN><SPAN><A CLASS="LN" NAME="1358"> 1358   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1359"> 1359   </A>    <SPAN CLASS="CT">/* Parameters transition table */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1360"> 1360   </A>    dtInfo.P = &amp;rtPTransTable;
+</SPAN><SPAN><A CLASS="LN" NAME="1361"> 1361   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1362"> 1362   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1363"> 1363   </A>  <SPAN CLASS="CT">/* Initialize DataMapInfo substructure containing ModelMap for C API */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1364"> 1364   </A>  <A HREF="twa_parallel_capi_c.html#fcn_twa_parallel_InitializeDataMapInfo" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_InitializeDataMapInfo');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_InitializeDataMapInfo</FONT></A>(twa_parallel_rtM);
+</SPAN><SPAN><A CLASS="LN" NAME="1365"> 1365   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1366"> 1366   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1367"> 1367   </A><SPAN CLASS="CT">/* Model terminate function */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1368"> 1368   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_twa_parallel_terminate">twa_parallel_terminate</A>(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1369"> 1369   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1370"> 1370   </A>  <SPAN CLASS="CT">/* Terminate for S-Function (dastgmodel2): '<A href="javascript:rtwHilite('twa_parallel:2897')"><FONT color="#117755"><I>&lt;Root&gt;/Analog Output</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1371"> 1371   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1372"> 1372   </A>    <SPAN CLASS="CT">/* S-Function Block: &lt;Root&gt;/Analog Output (dastgmodel2)*/</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1373"> 1373   </A>    <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1374"> 1374   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1375"> 1375   </A>        RawDAC(0, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1376"> 1376   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1377"> 1377   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1378"> 1378   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1379"> 1379   </A>        RawDAC(1, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1380"> 1380   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1381"> 1381   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1382"> 1382   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1383"> 1383   </A>        RawDAC(2, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1384"> 1384   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1385"> 1385   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1386"> 1386   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1387"> 1387   </A>        RawDAC(3, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1388"> 1388   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1389"> 1389   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1390"> 1390   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1391"> 1391   </A>        RawDAC(4, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1392"> 1392   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1393"> 1393   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1394"> 1394   </A>      <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1395"> 1395   </A>        RawDAC(5, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1396"> 1396   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1397"> 1397   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1398"> 1398   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1399"> 1399   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1400"> 1400   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1401"> 1401   </A><SPAN CLASS="CT">/*========================================================================*</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1402"> 1402   </A><SPAN CLASS="CT"> * Start of GRT compatible call interface                                 *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1403"> 1403   </A><SPAN CLASS="CT"> *========================================================================*/</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1404"> 1404   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlOutputs">MdlOutputs</A>(int_T tid)
+</SPAN><SPAN><A CLASS="LN" NAME="1405"> 1405   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1406"> 1406   </A>  <A HREF="twa_parallel_c.html#fcn_twa_parallel_output" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_output');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_output</FONT></A>(tid);
+</SPAN><SPAN><A CLASS="LN" NAME="1407"> 1407   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1408"> 1408   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1409"> 1409   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlUpdate">MdlUpdate</A>(int_T tid)
+</SPAN><SPAN><A CLASS="LN" NAME="1410"> 1410   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1411"> 1411   </A>  <A HREF="twa_parallel_c.html#fcn_twa_parallel_update" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_update');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_update</FONT></A>(tid);
+</SPAN><SPAN><A CLASS="LN" NAME="1412"> 1412   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1413"> 1413   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1414"> 1414   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlInitializeSizes">MdlInitializeSizes</A>(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1415"> 1415   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1416"> 1416   </A>  twa_parallel_rtM-&gt;Sizes.numContStates = (0);<SPAN CLASS="CT">/* Number of continuous states */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1417"> 1417   </A>  twa_parallel_rtM-&gt;Sizes.numY = (0);  <SPAN CLASS="CT">/* Number of model outputs */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1418"> 1418   </A>  twa_parallel_rtM-&gt;Sizes.numU = (0);  <SPAN CLASS="CT">/* Number of model inputs */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1419"> 1419   </A>  twa_parallel_rtM-&gt;Sizes.sysDirFeedThru = (0);<SPAN CLASS="CT">/* The model is not direct feedthrough */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1420"> 1420   </A>  twa_parallel_rtM-&gt;Sizes.numSampTimes = (2);<SPAN CLASS="CT">/* Number of sample times */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1421"> 1421   </A>  twa_parallel_rtM-&gt;Sizes.numBlocks = (69);<SPAN CLASS="CT">/* Number of blocks */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1422"> 1422   </A>  twa_parallel_rtM-&gt;Sizes.numBlockIO = (56);<SPAN CLASS="CT">/* Number of block outputs */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1423"> 1423   </A>  twa_parallel_rtM-&gt;Sizes.numBlockPrms = (100);<SPAN CLASS="CT">/* Sum of parameter &quot;widths&quot; */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1424"> 1424   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1425"> 1425   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1426"> 1426   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlInitializeSampleTimes">MdlInitializeSampleTimes</A>(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1427"> 1427   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1428"> 1428   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1429"> 1429   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1430"> 1430   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlInitialize">MdlInitialize</A>(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1431"> 1431   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1432"> 1432   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1433"> 1433   </A>    int32_T i;
+</SPAN><SPAN><A CLASS="LN" NAME="1434"> 1434   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1435"> 1435   </A>    <SPAN CLASS="CT">/* InitializeConditions for DiscreteFir: '<A href="javascript:rtwHilite('twa_parallel:2999')"><FONT color="#117755"><I>&lt;S16&gt;/Discrete FIR Filter</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1436"> 1436   </A>    twa_parallel_DWork.DiscreteFIRFilter_circBuf = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="1437"> 1437   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1438"> 1438   </A>    <SPAN CLASS="CT">/* InitializeConditions for DiscreteFir: '<A href="javascript:rtwHilite('twa_parallel:3089')"><FONT color="#117755"><I>&lt;S20&gt;/Discrete FIR Filter</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1439"> 1439   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1440"> 1440   </A>      twa_parallel_DWork.DiscreteFIRFilter_states[i] =
+</SPAN><SPAN><A CLASS="LN" NAME="1441"> 1441   </A>        <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.DiscreteFIRFilter_IC;
+</SPAN><SPAN><A CLASS="LN" NAME="1442"> 1442   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1443"> 1443   </A>      <SPAN CLASS="CT">/* InitializeConditions for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2996:5')"><FONT color="#117755"><I>&lt;S15&gt;/UD</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1444"> 1444   </A>      twa_parallel_DWork.UD_DSTATE[i] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.UD_X0;
+</SPAN><SPAN><A CLASS="LN" NAME="1445"> 1445   </A>      twa_parallel_DWork.DiscreteFIRFilter_states_m[i] =
+</SPAN><SPAN><A CLASS="LN" NAME="1446"> 1446   </A>        <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.DiscreteFIRFilter_IC_b;
+</SPAN><SPAN><A CLASS="LN" NAME="1447"> 1447   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1448"> 1448   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1449"> 1449   </A>    twa_parallel_DWork.DiscreteFIRFilter_circBuf_l = 0;
+</SPAN><SPAN><A CLASS="LN" NAME="1450"> 1450   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1451"> 1451   </A>    <SPAN CLASS="CT">/* InitializeConditions for Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3036')"><FONT color="#117755"><I>&lt;Root&gt;/GetMacroLegLen</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1452"> 1452   </A>    twa_parallel_DWork.is_active_c1_twa_parallel = 0U;
+</SPAN><SPAN><A CLASS="LN" NAME="1453"> 1453   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1454"> 1454   </A>    <SPAN CLASS="CT">/* InitializeConditions for Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3107')"><FONT color="#117755"><I>&lt;Root&gt;/GetMacroQDes</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1455"> 1455   </A>    twa_parallel_DWork.is_active_c4_twa_parallel = 0U;
+</SPAN><SPAN><A CLASS="LN" NAME="1456"> 1456   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1457"> 1457   </A>    <SPAN CLASS="CT">/* InitializeConditions for Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:3137')"><FONT color="#117755"><I>&lt;Root&gt;/GetMicroQDes</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1458"> 1458   </A>    twa_parallel_DWork.is_active_c2_twa_parallel = 0U;
+</SPAN><SPAN><A CLASS="LN" NAME="1459"> 1459   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1460"> 1460   </A>    <SPAN CLASS="CT">/* InitializeConditions for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2908')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1461"> 1461   </A>    twa_parallel_DWork.UnitDelay_DSTATE = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.UnitDelay_X0;
+</SPAN><SPAN><A CLASS="LN" NAME="1462"> 1462   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1463"> 1463   </A>    <SPAN CLASS="CT">/* InitializeConditions for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2909')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1464"> 1464   </A>    twa_parallel_DWork.UnitDelay1_DSTATE = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.UnitDelay1_X0;
+</SPAN><SPAN><A CLASS="LN" NAME="1465"> 1465   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1466"> 1466   </A>    <SPAN CLASS="CT">/* Signal Processing Blockset N-Sample Enable  (sdspnsamp2) - '<A href="javascript:rtwHilite('twa_parallel:2905:3')"><FONT color="#117755"><I>&lt;S19&gt;/N-Sample Enable</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1467"> 1467   </A>    twa_parallel_DWork.NSampleEnable_Counter = (uint32_T) 0;
+</SPAN><SPAN><A CLASS="LN" NAME="1468"> 1468   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1469"> 1469   </A>    <SPAN CLASS="CT">/* InitializeConditions for Embedded MATLAB: '<A href="javascript:rtwHilite('twa_parallel:2902')"><FONT color="#117755"><I>&lt;S6&gt;/Embedded MATLAB Function</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1470"> 1470   </A>    twa_parallel_DWork.is_active_c22_twa_parallel = 0U;
+</SPAN><SPAN><A CLASS="LN" NAME="1471"> 1471   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1472"> 1472   </A>      <SPAN CLASS="CT">/* InitializeConditions for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2910')"><FONT color="#117755"><I>&lt;S6&gt;/Unit Delay2</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1473"> 1473   </A>      twa_parallel_DWork.UnitDelay2_DSTATE[i] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.UnitDelay2_X0[i];
+</SPAN><SPAN><A CLASS="LN" NAME="1474"> 1474   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1475"> 1475   </A>      <SPAN CLASS="CT">/* InitializeConditions for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:2935:5')"><FONT color="#117755"><I>&lt;S17&gt;/UD</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1476"> 1476   </A>      twa_parallel_DWork.UD_DSTATE_k[i] = <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.UD_X0_o;
+</SPAN><SPAN><A CLASS="LN" NAME="1477"> 1477   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1478"> 1478   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1479"> 1479   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1480"> 1480   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1481"> 1481   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlStart">MdlStart</A>(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1482"> 1482   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1483"> 1483   </A>  <SPAN CLASS="CT">/* Start for S-Function (initstgmodel2): '<A href="javascript:rtwHilite('twa_parallel:2992')"><FONT color="#117755"><I>&lt;Root&gt;/Init</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1484"> 1484   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1485"> 1485   </A>    <SPAN CLASS="DT">extern</SPAN> <SPAN CLASS="KW">struct</SPAN> IrqDataStruct IrqData;
+</SPAN><SPAN><A CLASS="LN" NAME="1486"> 1486   </A>    <SPAN CLASS="DT">extern</SPAN> <SPAN CLASS="KW">struct</SPAN> ServoToGo StgController;
+</SPAN><SPAN><A CLASS="LN" NAME="1487"> 1487   </A>    StgController.wBaseAddress = 768;
+</SPAN><SPAN><A CLASS="LN" NAME="1488"> 1488   </A>    StgController.wIrq = 5;
+</SPAN><SPAN><A CLASS="LN" NAME="1489"> 1489   </A>    IrqData.IRQ = 5;
+</SPAN><SPAN><A CLASS="LN" NAME="1490"> 1490   </A>    ServoToGo_Constructor2(IrqData.IRQ);
+</SPAN><SPAN><A CLASS="LN" NAME="1491"> 1491   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1492"> 1492   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1493"> 1493   </A>  <SPAN CLASS="CT">/* Start for S-Function (encstgmodel2): '<A href="javascript:rtwHilite('twa_parallel:3004')"><FONT color="#117755"><I>&lt;S1&gt;/Encoder Input</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1494"> 1494   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1495"> 1495   </A>    <SPAN CLASS="DT">int</SPAN> i;
+</SPAN><SPAN><A CLASS="LN" NAME="1496"> 1496   </A>    EncoderResetAddr();
+</SPAN><SPAN><A CLASS="LN" NAME="1497"> 1497   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 8; i++)
+</SPAN><SPAN><A CLASS="LN" NAME="1498"> 1498   </A>      SetEncoderCounts(i, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1499"> 1499   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1500"> 1500   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1501"> 1501   </A>  <SPAN CLASS="CT">/* S-Function Block: &lt;S21&gt;/S-Function (scblock) */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1502"> 1502   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1503"> 1503   </A>    <SPAN CLASS="DT">int</SPAN> i;
+</SPAN><SPAN><A CLASS="LN" NAME="1504"> 1504   </A>    <SPAN CLASS="KW">if</SPAN> ((i = rl32eScopeExists(2)) == 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1505"> 1505   </A>      <SPAN CLASS="KW">if</SPAN> ((i = rl32eDefScope(2,2)) != 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1506"> 1506   </A>        printf(<FONT COLOR="#1122ff">&quot;Error creating scope 2\n&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1507"> 1507   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1508"> 1508   </A>        rl32eAddSignal(2, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1509"> 1509   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1510"> 1510   </A>        rl32eAddSignal(2, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1511"> 1511   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s2&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1512"> 1512   </A>        rl32eAddSignal(2, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1513"> 1513   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s3&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1514"> 1514   </A>        rl32eAddSignal(2, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1515"> 1515   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s4&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1516"> 1516   </A>        rl32eAddSignal(2, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1517"> 1517   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s5&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1518"> 1518   </A>        rl32eAddSignal(2, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1519"> 1519   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s6&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1520"> 1520   </A>        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1521"> 1521   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s1&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q1d [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1522"> 1522   </A>        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1523"> 1523   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s2&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q2d [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1524"> 1524   </A>        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1525"> 1525   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s3&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q3d [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1526"> 1526   </A>        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1527"> 1527   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s4&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q4d [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1528"> 1528   </A>        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1529"> 1529   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s5&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q5d [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1530"> 1530   </A>        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1531"> 1531   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s6&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q6d [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1532"> 1532   </A>        rl32eSetScope(2, 4, 25);
+</SPAN><SPAN><A CLASS="LN" NAME="1533"> 1533   </A>        rl32eSetScope(2, 40, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1534"> 1534   </A>        rl32eSetScope(2, 7, 1);
+</SPAN><SPAN><A CLASS="LN" NAME="1535"> 1535   </A>        rl32eSetScope(2, 0, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1536"> 1536   </A>        rl32eSetScope(2, 3, rl32eGetSignalNo(
+</SPAN><SPAN><A CLASS="LN" NAME="1537"> 1537   </A>          <FONT COLOR="#1122ff">&quot;Encoders/Derivative/Discrete Derivative/Diff/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1538"> 1538   </A>        rl32eSetScope(2, 1, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1539"> 1539   </A>        rl32eSetScope(2, 2, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1540"> 1540   </A>        rl32eSetScope(2, 10, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1541"> 1541   </A>        rl32eSetTargetScope(2, 1, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1542"> 1542   </A>        rl32eSetTargetScope(2, 11, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1543"> 1543   </A>        rl32eSetTargetScope(2, 10, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1544"> 1544   </A>        xpceScopeAcqOK(2, &amp;twa_parallel_DWork.SFunction_IWORK.AcquireOK);
+</SPAN><SPAN><A CLASS="LN" NAME="1545"> 1545   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1546"> 1546   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1547"> 1547   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1548"> 1548   </A>    <SPAN CLASS="KW">if</SPAN> (i) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1549"> 1549   </A>      rl32eRestartAcquisition(2);
+</SPAN><SPAN><A CLASS="LN" NAME="1550"> 1550   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1551"> 1551   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1552"> 1552   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1553"> 1553   </A>  <SPAN CLASS="CT">/* S-Function Block: &lt;S22&gt;/S-Function (scblock) */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1554"> 1554   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1555"> 1555   </A>    <SPAN CLASS="DT">int</SPAN> i;
+</SPAN><SPAN><A CLASS="LN" NAME="1556"> 1556   </A>    <SPAN CLASS="KW">if</SPAN> ((i = rl32eScopeExists(1)) == 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1557"> 1557   </A>      <SPAN CLASS="KW">if</SPAN> ((i = rl32eDefScope(1,2)) != 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1558"> 1558   </A>        printf(<FONT COLOR="#1122ff">&quot;Error creating scope 1\n&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1559"> 1559   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1560"> 1560   </A>        rl32eAddSignal(1, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1561"> 1561   </A>        rl32eAddSignal(1, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s2&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1562"> 1562   </A>        rl32eAddSignal(1, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s3&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1563"> 1563   </A>        rl32eAddSignal(1, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s4&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1564"> 1564   </A>        rl32eAddSignal(1, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s5&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1565"> 1565   </A>        rl32eAddSignal(1, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s6&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1566"> 1566   </A>        rl32eSetTargetScopeSigFt(1,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s1&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1567"> 1567   </A>          <FONT COLOR="#1122ff">&quot;q1 [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1568"> 1568   </A>        rl32eSetTargetScopeSigFt(1,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s2&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1569"> 1569   </A>          <FONT COLOR="#1122ff">&quot;q2 [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1570"> 1570   </A>        rl32eSetTargetScopeSigFt(1,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s3&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1571"> 1571   </A>          <FONT COLOR="#1122ff">&quot;q3 [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1572"> 1572   </A>        rl32eSetTargetScopeSigFt(1,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s4&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1573"> 1573   </A>          <FONT COLOR="#1122ff">&quot;q4 [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1574"> 1574   </A>        rl32eSetTargetScopeSigFt(1,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s5&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1575"> 1575   </A>          <FONT COLOR="#1122ff">&quot;q5 [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1576"> 1576   </A>        rl32eSetTargetScopeSigFt(1,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s6&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1577"> 1577   </A>          <FONT COLOR="#1122ff">&quot;q6 [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1578"> 1578   </A>        rl32eSetScope(1, 4, 25);
+</SPAN><SPAN><A CLASS="LN" NAME="1579"> 1579   </A>        rl32eSetScope(1, 40, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1580"> 1580   </A>        rl32eSetScope(1, 7, 1);
+</SPAN><SPAN><A CLASS="LN" NAME="1581"> 1581   </A>        rl32eSetScope(1, 0, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1582"> 1582   </A>        rl32eSetScope(1, 3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Scopes/Fir Filter/Gain/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1583"> 1583   </A>        rl32eSetScope(1, 1, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1584"> 1584   </A>        rl32eSetScope(1, 2, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1585"> 1585   </A>        rl32eSetScope(1, 10, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1586"> 1586   </A>        rl32eSetTargetScope(1, 1, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1587"> 1587   </A>        rl32eSetTargetScope(1, 11, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1588"> 1588   </A>        rl32eSetTargetScope(1, 10, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1589"> 1589   </A>        xpceScopeAcqOK(1, &amp;twa_parallel_DWork.SFunction_IWORK_j.AcquireOK);
+</SPAN><SPAN><A CLASS="LN" NAME="1590"> 1590   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1591"> 1591   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1592"> 1592   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1593"> 1593   </A>    <SPAN CLASS="KW">if</SPAN> (i) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1594"> 1594   </A>      rl32eRestartAcquisition(1);
+</SPAN><SPAN><A CLASS="LN" NAME="1595"> 1595   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1596"> 1596   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1597"> 1597   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1598"> 1598   </A>  <SPAN CLASS="CT">/* S-Function Block: &lt;S23&gt;/S-Function (scblock) */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1599"> 1599   </A>  <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1600"> 1600   </A>    <SPAN CLASS="DT">int</SPAN> i;
+</SPAN><SPAN><A CLASS="LN" NAME="1601"> 1601   </A>    <SPAN CLASS="KW">if</SPAN> ((i = rl32eScopeExists(3)) == 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1602"> 1602   </A>      <SPAN CLASS="KW">if</SPAN> ((i = rl32eDefScope(3,2)) != 0) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1603"> 1603   </A>        printf(<FONT COLOR="#1122ff">&quot;Error creating scope 3\n&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1604"> 1604   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1605"> 1605   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1606"> 1606   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s2&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1607"> 1607   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s3&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1608"> 1608   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s4&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1609"> 1609   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s5&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1610"> 1610   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s6&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1611"> 1611   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s1&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1612"> 1612   </A>          <FONT COLOR="#1122ff">&quot;q1_des [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1613"> 1613   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s2&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1614"> 1614   </A>          <FONT COLOR="#1122ff">&quot;q2_des [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1615"> 1615   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s3&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1616"> 1616   </A>          <FONT COLOR="#1122ff">&quot;q3_des [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1617"> 1617   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s4&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1618"> 1618   </A>          <FONT COLOR="#1122ff">&quot;q4_des [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1619"> 1619   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s5&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1620"> 1620   </A>          <FONT COLOR="#1122ff">&quot;q5_des [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1621"> 1621   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s6&quot;</FONT>),
+</SPAN><SPAN><A CLASS="LN" NAME="1622"> 1622   </A>          <FONT COLOR="#1122ff">&quot;q6_des [cnt] %12.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="1623"> 1623   </A>        rl32eSetScope(3, 4, 25);
+</SPAN><SPAN><A CLASS="LN" NAME="1624"> 1624   </A>        rl32eSetScope(3, 40, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1625"> 1625   </A>        rl32eSetScope(3, 7, 1);
+</SPAN><SPAN><A CLASS="LN" NAME="1626"> 1626   </A>        rl32eSetScope(3, 0, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1627"> 1627   </A>        rl32eSetScope(3, 3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;Switch/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="1628"> 1628   </A>        rl32eSetScope(3, 1, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1629"> 1629   </A>        rl32eSetScope(3, 2, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1630"> 1630   </A>        rl32eSetScope(3, 10, 0);
+</SPAN><SPAN><A CLASS="LN" NAME="1631"> 1631   </A>        rl32eSetTargetScope(3, 1, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1632"> 1632   </A>        rl32eSetTargetScope(3, 11, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1633"> 1633   </A>        rl32eSetTargetScope(3, 10, 0.0);
+</SPAN><SPAN><A CLASS="LN" NAME="1634"> 1634   </A>        xpceScopeAcqOK(3, &amp;twa_parallel_DWork.SFunction_IWORK_i.AcquireOK);
+</SPAN><SPAN><A CLASS="LN" NAME="1635"> 1635   </A>      <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1636"> 1636   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1637"> 1637   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1638"> 1638   </A>    <SPAN CLASS="KW">if</SPAN> (i) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1639"> 1639   </A>      rl32eRestartAcquisition(3);
+</SPAN><SPAN><A CLASS="LN" NAME="1640"> 1640   </A>    <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1641"> 1641   </A>  <B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1642"> 1642   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1643"> 1643   </A>  <A HREF="twa_parallel_c.html#fcn_MdlInitialize" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_MdlInitialize');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">MdlInitialize</FONT></A>();
+</SPAN><SPAN><A CLASS="LN" NAME="1644"> 1644   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1645"> 1645   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1646"> 1646   </A><SPAN CLASS="DT">void</SPAN> <A NAME="fcn_MdlTerminate">MdlTerminate</A>(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1647"> 1647   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1648"> 1648   </A>  <A HREF="twa_parallel_c.html#fcn_twa_parallel_terminate" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_terminate');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_terminate</FONT></A>();
+</SPAN><SPAN><A CLASS="LN" NAME="1649"> 1649   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1650"> 1650   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1651"> 1651   </A><A HREF="twa_parallel_types_h.html#type_rtModel_twa_parallel" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_rtModel_twa_parallel')" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">rtModel_twa_parallel</FONT></A> *twa_parallel(<SPAN CLASS="DT">void</SPAN>)
+</SPAN><SPAN><A CLASS="LN" NAME="1652"> 1652   </A><B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1653"> 1653   </A>  <A HREF="twa_parallel_c.html#fcn_twa_parallel_initialize" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_twa_parallel_initialize');"  TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_initialize</FONT></A>(1);
+</SPAN><SPAN><A CLASS="LN" NAME="1654"> 1654   </A>  <SPAN CLASS="KW">return</SPAN> twa_parallel_rtM;
+</SPAN><SPAN><A CLASS="LN" NAME="1655"> 1655   </A><B>}</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1656"> 1656   </A>
+</SPAN><SPAN><A CLASS="LN" NAME="1657"> 1657   </A><SPAN CLASS="CT">/*========================================================================*</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1658"> 1658   </A><SPAN CLASS="CT"> * End of GRT compatible call interface                                   *</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1659"> 1659   </A><SPAN CLASS="CT"> *========================================================================*/</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1660"> 1660   </A>
+</SPAN></PRE>
+</TD></TR></TABLE>
+</P>
+</BODY>
+</HTML>

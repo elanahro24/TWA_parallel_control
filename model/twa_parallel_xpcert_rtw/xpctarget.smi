@@ -1,0 +1,17 @@
+#include "twa_parallel.bio"
+#include "twa_parallel.lbl"
+#include "twa_parallel.sid"
+
+
+const xpc_SigMappingInfo xpcMMI[] =
+  {
+    {
+      {twa_parallel_BIO},
+      {twa_parallel_SID},
+      {twa_parallel_LBL},
+      "",
+      "twa_parallel",
+      0,
+      177,
+    },
+  };

@@ -1,0 +1,45 @@
+CC     = "c:\matlab\r2010a\sys\lcc\bin\lcc.exe"
+LD     = "c:\matlab\r2010a\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "c:\matlab\r2010a\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup
+LDFLAGS = -s -dll -L"c:\matlab\r2010a\sys\lcc\lib"
+LIBFLAGS = 
+
+OBJECTS = \
+	"twa_parallel_sfun.obj"\
+	"twa_parallel_sfun_registry.obj"\
+	"c1_twa_parallel.obj"\
+	"c2_twa_parallel.obj"\
+	"c4_twa_parallel.obj"\
+	"c22_twa_parallel.obj"\
+	"lccstub.obj"\
+	"c:\matlab\r2010a\sys\lcc\mex\lccdef.def"\
+	"c:\matlab\r2010a\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"c:\matlab\r2010a\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libmex.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libmx.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libut.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libemlrt.lib"\
+	"c:\matlab\r2010a\extern\lib\win32\lcc\libmwblascompat32.lib"\
+
+INCLUDE_PATH= -I"c:\matlab\r2010a\sys\lcc\include"  -I"c:\matlab\r2010a\extern\include"  -I"c:\matlab\r2010a\simulink\include"  -I"c:\matlab\r2010a\stateflow\c\mex\include"  -I"c:\matlab\r2010a\stateflow\c\debugger\include" 
+ 
+
+twa_parallel_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o twa_parallel_sfun.mexw32 @twa_parallel_sfun.lmko
+twa_parallel_sfun.obj :	"twa_parallel_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "twa_parallel_sfun.c"
+twa_parallel_sfun_registry.obj :	"twa_parallel_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "twa_parallel_sfun_registry.c"
+c1_twa_parallel.obj :	"c1_twa_parallel.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_twa_parallel.c"
+c2_twa_parallel.obj :	"c2_twa_parallel.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_twa_parallel.c"
+c4_twa_parallel.obj :	"c4_twa_parallel.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_twa_parallel.c"
+c22_twa_parallel.obj :	"c22_twa_parallel.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c22_twa_parallel.c"
+lccstub.obj :	"c:\matlab\r2010a\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c:\matlab\r2010a\sys\lcc\mex\lccstub.c"

@@ -1,0 +1,66 @@
+%implements "dastgmodel2" "C"
+
+%function BlockTypeSetup(block, system) void
+  %openfile hdrBuffer
+#include "C:\ServoToGo\stg_comn.h"
+#include "C:\ServoToGo\stgdefs.h"
+#include "C:\ServoToGo\stgmembs.h"
+#include "C:\ServoToGo\irq_defs.h"
+  %closefile hdrBuffer
+  %<LibCacheIncludes(hdrBuffer)>
+  %<LibAddToModelSources("global_vars")>
+  %<LibAddToModelSources("stgmembs")>
+%endfunction 
+
+%function Outputs(block, system) Output
+{
+	/* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>)*/
+	{
+	short i;
+	%assign N_CHANNELS = SIZE(Parameter[0].Value,1)
+	%assign CHAN_VEC = CAST("Vector",Parameter[0].Value)
+	
+	%foreach idx = %<N_CHANNELS>
+	{
+		%assign id=CAST("Number",%<CHAN_VEC[idx]>)
+		%assign y = LibBlockInputSignal(idx,"","",0)
+		
+		if ((%<y> <= 10.) && (%<y> >= -10.))
+		{
+			i = (short)(%<y> * 409.6 + .5);
+			RawDAC(%<id>, i);
+		}
+		else
+		{
+			if (%<y> > 10.)
+				RawDAC(%<id>, 4096.5);
+			else
+				RawDAC(%<id>, -4096.0 + .5);
+		}
+	}
+	%endforeach
+	}
+}
+%endfunction
+
+%function Terminate(block, system) Output
+{
+	/* %<Type> Block: %<Name> (%<ParamSettings.FunctionName>)*/
+	{
+	%assign N_CHANNELS = SIZE(Parameter[0].Value,1)
+	%assign rollVars = ["Y"]
+	%assign CHAN_VEC = CAST("Vector",Parameter[0].Value)
+	
+	%assign rollRegion = [0:%<N_CHANNELS-1>]
+	
+	%roll idx = rollRegion, lcv = 9, block, "Roller", rollVars
+	{
+		%assign id=CAST("Number",%<CHAN_VEC[idx]>)
+		%assign y = LibBlockInputSignal(idx,"","",%<id>)
+
+		RawDAC(%<id>, 0);
+	}
+	%endroll
+	}
+}
+%endfunction
