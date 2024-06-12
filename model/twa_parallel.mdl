@@ -6,12 +6,13 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6677"
+    ComputedModelVersion    "1.6678"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   SavedCharacterEncoding  "windows-1252"
-  PreLoadFcn		  "addpath('c:\\ServoToGo');\ndir = cd; addpath(dir,'Init_func')"
+  PreLoadFcn		  "addpath('c:\\ServoToGo');\naddpath('d:\\Projects\\TwistedWireActuator\\TWA_parallel_control\\init_fun"
+  "c')"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -28,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jun 11 18:47:13 2024"
-  RTWModifiedTimeStamp	  640032427
-  ModelVersionFormat	  "1.%<AutoIncrement:6677>"
+  LastModifiedDate	  "Wed Jun 12 14:49:23 2024"
+  RTWModifiedTimeStamp	  640104556
+  ModelVersionFormat	  "1.%<AutoIncrement:6678>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1758,7 +1759,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [1922, 75, 3838, 1019]
+    Location		    [2, 75, 1918, 1019]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -4968,8 +4969,6 @@ Stateflow {
     viewObj		    10
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    19
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

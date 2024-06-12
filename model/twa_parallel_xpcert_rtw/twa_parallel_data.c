@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6677
+ * Model version                        : 1.6678
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Tue Jun 11 18:47:24 2024
+ * Real-Time Workshop file generated on : Wed Jun 12 14:50:21 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Tue Jun 11 18:47:24 2024
+ * C/C++ source code generated on       : Wed Jun 12 14:50:22 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible

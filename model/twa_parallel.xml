@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<SubSystem>
+		<Name>Encoders</Name>
+		<xPCName>twa_parallel/Encoders</xPCName>
+		<SubSystem>
+			<Name>Counts To Turns</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Counts To Turns1</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns1</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns1/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns1/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns1/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns1/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns1/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns1/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Counts To Turns2</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns2</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns2/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns2/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns2/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns2/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns2/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns2/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Counts To Turns3</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns3</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns3/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns3/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns3/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns3/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns3/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns3/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Counts To Turns4</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns4</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns4/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns4/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns4/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns4/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns4/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns4/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Counts To Turns5</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns5</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns5/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns5/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns5/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns5/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns5/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns5/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Derivative</Name>
+			<xPCName>twa_parallel/Encoders/Derivative</xPCName>
+			<SubSystem>
+				<Name>Discrete Derivative</Name>
+				<xPCName>twa_parallel/Encoders/Derivative/Discrete Derivative</xPCName>
+				<block>
+					<blkName>UD</blkName>
+					<xpcblkName>Encoders/Derivative/Discrete Derivative/UD</xpcblkName>
+					<SLblockPath>twa_parallel/Encoders/Derivative/Discrete Derivative/UD</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>X0</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>TSamp</blkName>
+					<xpcblkName>Encoders/Derivative/Discrete Derivative/TSamp</xpcblkName>
+					<SLblockPath>twa_parallel/Encoders/Derivative/Discrete Derivative/TSamp</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>WtEt</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Diff</sigName>
+					<xpcsigName>Encoders/Derivative/Discrete Derivative/Diff</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>UD</sigName>
+					<xpcsigName>Encoders/Derivative/Discrete Derivative/UD</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>TSamp</sigName>
+					<xpcsigName>Encoders/Derivative/Discrete Derivative/TSamp</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<SubSystem>
+				<Name>Fir Filter</Name>
+				<xPCName>twa_parallel/Encoders/Derivative/Fir Filter</xPCName>
+				<block>
+					<blkName>vel_filter_coeffs</blkName>
+					<xpcblkName>Encoders/Derivative/Fir Filter/vel_filter_coeffs</xpcblkName>
+					<SLblockPath>twa_parallel/Encoders/Derivative/Fir Filter/vel_filter_coeffs</SLblockPath>
+					<isSrc>[1 0 1]</isSrc>
+					<parameter>
+						<paramName>Value</paramName>
+						<dim>[2, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Gain</blkName>
+					<xpcblkName>Encoders/Derivative/Fir Filter/Gain</xpcblkName>
+					<SLblockPath>twa_parallel/Encoders/Derivative/Fir Filter/Gain</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>Gain</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<block>
+					<blkName>Discrete FIR Filter</blkName>
+					<xpcblkName>Encoders/Derivative/Fir Filter/Discrete FIR Filter</xpcblkName>
+					<SLblockPath>twa_parallel/Encoders/Derivative/Fir Filter/Discrete FIR Filter</SLblockPath>
+					<isSrc>[0 2 1]</isSrc>
+					<parameter>
+						<paramName>IC</paramName>
+						<dim>[1, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>Gain</sigName>
+					<xpcsigName>Encoders/Derivative/Fir Filter/Gain</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Discrete FIR Filter</sigName>
+					<xpcsigName>Encoders/Derivative/Fir Filter/Discrete FIR Filter</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+			</SubSystem>
+		</SubSystem>
+		<block>
+			<blkName>enc_reset</blkName>
+			<xpcblkName>Encoders/enc_reset</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Encoder Input</blkName>
+			<xpcblkName>Encoders/Encoder Input</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/Encoder Input</SLblockPath>
+			<isSrc>[0 6 6]</isSrc>
+			<parameter>
+				<paramName>P1</paramName>
+				<dim>[1, 6]</dim>
+			</parameter>
+			<parameter>
+				<paramName>P2</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<signal>
+			<sigName>Encoder Input/p1</sigName>
+			<xpcsigName>Encoders/Encoder Input/p1</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Encoder Input/p2</sigName>
+			<xpcsigName>Encoders/Encoder Input/p2</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Encoder Input/p3</sigName>
+			<xpcsigName>Encoders/Encoder Input/p3</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Encoder Input/p4</sigName>
+			<xpcsigName>Encoders/Encoder Input/p4</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Encoder Input/p5</sigName>
+			<xpcsigName>Encoders/Encoder Input/p5</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Encoder Input/p6</sigName>
+			<xpcsigName>Encoders/Encoder Input/p6</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+	</SubSystem>
+	<SubSystem>
+		<Name>PD Controller</Name>
+		<xPCName>twa_parallel/PD Controller</xPCName>
+		<SubSystem>
+			<Name>Discrete Derivative</Name>
+			<xPCName>twa_parallel/PD Controller/Discrete Derivative</xPCName>
+			<block>
+				<blkName>UD</blkName>
+				<xpcblkName>PD Controller/Discrete Derivative/UD</xpcblkName>
+				<SLblockPath>twa_parallel/PD Controller/Discrete Derivative/UD</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>TSamp</blkName>
+				<xpcblkName>PD Controller/Discrete Derivative/TSamp</xpcblkName>
+				<SLblockPath>twa_parallel/PD Controller/Discrete Derivative/TSamp</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>WtEt</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>Diff</sigName>
+				<xpcsigName>PD Controller/Discrete Derivative/Diff</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>UD</sigName>
+				<xpcsigName>PD Controller/Discrete Derivative/UD</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>TSamp</sigName>
+				<xpcsigName>PD Controller/Discrete Derivative/TSamp</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<block>
+			<blkName>manual_current</blkName>
+			<xpcblkName>PD Controller/manual_current</xpcblkName>
+			<SLblockPath>twa_parallel/PD Controller/manual_current</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[6, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>pd_mode</blkName>
+			<xpcblkName>PD Controller/pd_mode</xpcblkName>
+			<SLblockPath>twa_parallel/PD Controller/pd_mode</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Kd</blkName>
+			<xpcblkName>PD Controller/Kd</xpcblkName>
+			<SLblockPath>twa_parallel/PD Controller/Kd</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[6, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Kp</blkName>
+			<xpcblkName>PD Controller/Kp</xpcblkName>
+			<SLblockPath>twa_parallel/PD Controller/Kp</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[6, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Saturation</blkName>
+			<xpcblkName>PD Controller/Saturation</xpcblkName>
+			<SLblockPath>twa_parallel/PD Controller/Saturation</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>UpperLimit</paramName>
+				<dim>[1, 6]</dim>
+			</parameter>
+			<parameter>
+				<paramName>LowerLimit</paramName>
+				<dim>[1, 6]</dim>
+			</parameter>
+		</block>
+		<signal>
+			<sigName>Kd</sigName>
+			<xpcsigName>PD Controller/Kd</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Kp</sigName>
+			<xpcsigName>PD Controller/Kp</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Saturation</sigName>
+			<xpcsigName>PD Controller/Saturation</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Add</sigName>
+			<xpcsigName>PD Controller/Add</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Sum</sigName>
+			<xpcsigName>PD Controller/Sum</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Sum1</sigName>
+			<xpcsigName>PD Controller/Sum1</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Switch</sigName>
+			<xpcsigName>PD Controller/Switch</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+	</SubSystem>
+	<SubSystem>
+		<Name>Quintic Poly</Name>
+		<xPCName>twa_parallel/Quintic Poly</xPCName>
+		<SubSystem>
+			<Name>N-Sample
+Switch</Name>
+			<xPCName>twa_parallel/Quintic Poly/N-Sample Switch</xPCName>
+			<block>
+				<blkName>N-Sample
+Enable</blkName>
+				<xpcblkName>Quintic Poly/N-Sample Switch/N-Sample Enable</xpcblkName>
+				<SLblockPath>twa_parallel/Quintic Poly/N-Sample Switch/N-Sample Enable</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>TARGETCNT</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+				<parameter>
+					<paramName>ACTLEVEL</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>N-Sample
+Enable</sigName>
+				<xpcsigName>Quintic Poly/N-Sample Switch/N-Sample Enable</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Switch</sigName>
+				<xpcsigName>Quintic Poly/N-Sample Switch/Switch</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Embedded
+MATLAB Function</Name>
+			<xPCName>twa_parallel/Quintic Poly/Embedded MATLAB Function</xPCName>
+		</SubSystem>
+		<block>
+			<blkName>quintic_enable</blkName>
+			<xpcblkName>Quintic Poly/quintic_enable</xpcblkName>
+			<SLblockPath>twa_parallel/Quintic Poly/quintic_enable</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>tf</blkName>
+			<xpcblkName>Quintic Poly/tf</xpcblkName>
+			<SLblockPath>twa_parallel/Quintic Poly/tf</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Unit Delay</blkName>
+			<xpcblkName>Quintic Poly/Unit Delay</xpcblkName>
+			<SLblockPath>twa_parallel/Quintic Poly/Unit Delay</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>X0</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Unit Delay1</blkName>
+			<xpcblkName>Quintic Poly/Unit Delay1</xpcblkName>
+			<SLblockPath>twa_parallel/Quintic Poly/Unit Delay1</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>X0</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Unit Delay2</blkName>
+			<xpcblkName>Quintic Poly/Unit Delay2</xpcblkName>
+			<SLblockPath>twa_parallel/Quintic Poly/Unit Delay2</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>X0</paramName>
+				<dim>[6, 1]</dim>
+			</parameter>
+		</block>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p1</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p1</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p2</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p2</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p3</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p3</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p4</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p4</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p5</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p5</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p6</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p6</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Embedded
+MATLAB Function/p7</sigName>
+			<xpcsigName>Quintic Poly/Embedded MATLAB Function/p7</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Digital Clock</sigName>
+			<xpcsigName>Quintic Poly/Digital Clock</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Unit Delay</sigName>
+			<xpcsigName>Quintic Poly/Unit Delay</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Unit Delay1</sigName>
+			<xpcsigName>Quintic Poly/Unit Delay1</xpcsigName>
+			<sigWidth>1</sigWidth>
+			<sigDim>[1, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Unit Delay2</sigName>
+			<xpcsigName>Quintic Poly/Unit Delay2</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+	</SubSystem>
+	<SubSystem>
+		<Name>Scopes</Name>
+		<xPCName>twa_parallel/Scopes</xPCName>
+		<SubSystem>
+			<Name>Fir Filter</Name>
+			<xPCName>twa_parallel/Scopes/Fir Filter</xPCName>
+			<block>
+				<blkName>vel_filter_coeffs</blkName>
+				<xpcblkName>Scopes/Fir Filter/vel_filter_coeffs</xpcblkName>
+				<SLblockPath>twa_parallel/Scopes/Fir Filter/vel_filter_coeffs</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[2, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Gain</blkName>
+				<xpcblkName>Scopes/Fir Filter/Gain</xpcblkName>
+				<SLblockPath>twa_parallel/Scopes/Fir Filter/Gain</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Discrete FIR Filter</blkName>
+				<xpcblkName>Scopes/Fir Filter/Discrete FIR Filter</xpcblkName>
+				<SLblockPath>twa_parallel/Scopes/Fir Filter/Discrete FIR Filter</SLblockPath>
+				<isSrc>[0 2 1]</isSrc>
+				<parameter>
+					<paramName>IC</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>Gain</sigName>
+				<xpcsigName>Scopes/Fir Filter/Gain</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Discrete FIR Filter</sigName>
+				<xpcsigName>Scopes/Fir Filter/Discrete FIR Filter</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro1</Name>
+			<xPCName>twa_parallel/Scopes/q_cur_macro1</xPCName>
+		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro2</Name>
+			<xPCName>twa_parallel/Scopes/q_cur_macro2</xPCName>
+		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro3</Name>
+			<xPCName>twa_parallel/Scopes/q_cur_macro3</xPCName>
+		</SubSystem>
+	</SubSystem>
+	<SubSystem>
+		<Name>GetMacroLegLen</Name>
+		<xPCName>twa_parallel/GetMacroLegLen</xPCName>
+	</SubSystem>
+	<SubSystem>
+		<Name>GetMacroQDes</Name>
+		<xPCName>twa_parallel/GetMacroQDes</xPCName>
+	</SubSystem>
+	<SubSystem>
+		<Name>GetMicroQDes</Name>
+		<xPCName>twa_parallel/GetMicroQDes</xPCName>
+	</SubSystem>
+	<block>
+		<blkName>cntrl_mode</blkName>
+		<xpcblkName>cntrl_mode</xpcblkName>
+		<SLblockPath>twa_parallel/cntrl_mode</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>ee_rot</blkName>
+		<xpcblkName>ee_rot</xpcblkName>
+		<SLblockPath>twa_parallel/ee_rot</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>ee_velmex_pitch</blkName>
+		<xpcblkName>ee_velmex_pitch</xpcblkName>
+		<SLblockPath>twa_parallel/ee_velmex_pitch</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>micro_leg_len</blkName>
+		<xpcblkName>micro_leg_len</xpcblkName>
+		<SLblockPath>twa_parallel/micro_leg_len</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[3, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>q_des</blkName>
+		<xpcblkName>q_des</xpcblkName>
+		<SLblockPath>twa_parallel/q_des</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[6, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>x_des</blkName>
+		<xpcblkName>x_des</xpcblkName>
+		<SLblockPath>twa_parallel/x_des</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[3, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>Analog Output</blkName>
+		<xpcblkName>Analog Output</xpcblkName>
+		<SLblockPath>twa_parallel/Analog Output</SLblockPath>
+		<isSrc>[0 6 0]</isSrc>
+		<parameter>
+			<paramName>P1</paramName>
+			<dim>[1, 6]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>Init</blkName>
+		<xpcblkName>Init</xpcblkName>
+		<SLblockPath>twa_parallel/Init</SLblockPath>
+		<isSrc>[0 0 0]</isSrc>
+		<parameter>
+			<paramName>P1</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+		<parameter>
+			<paramName>P2</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+		<parameter>
+			<paramName>P3</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+		<parameter>
+			<paramName>P4</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+	</block>
+	<signal>
+		<sigName>GetMacroLegLen</sigName>
+		<xpcsigName>GetMacroLegLen</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>GetMacroQDes</sigName>
+		<xpcsigName>GetMacroQDes</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>GetMicroQDes</sigName>
+		<xpcsigName>GetMicroQDes</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Switch</sigName>
+		<xpcsigName>Switch</xpcsigName>
+		<sigWidth>6</sigWidth>
+		<sigDim>[6, 1]</sigDim>
+	</signal>
+</Root>
