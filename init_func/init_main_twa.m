@@ -11,8 +11,9 @@ vel_filter_coeffs = ones(N_velocity,1);
 N_pos = 1;
 pos_filter_coeffs = ones(N_pos,1);
 
-% PD Gains
-K_p = [35 45 20 1 1 1]';
+% PID Gains
+K_p = [35 35 35 1 1 1]';
+K_i = [1 1 1 0.25 0.25 0.25]';
 K_d = 0.25*ones(6,1);
 
 % Macro Actuation Unit parameters

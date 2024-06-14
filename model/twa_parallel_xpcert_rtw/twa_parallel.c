@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6678
+ * Model version              : 1.6680
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Wed Jun 12 14:50:22 2024
+ * C source code generated on : Wed Jun 12 15:41:39 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -547,13 +547,13 @@ void twa_parallel_output(int_T tid)
     [2];
 
   /* '<S3>:1:12' */
-  eml_velmex_stroke_idx = twa_parallel_B.macro_leg_len[0] - 120.0;
+  eml_velmex_stroke_idx = twa_parallel_B.macro_leg_len[0] - 114.98;
 
   /* '<S3>:1:13' */
-  eml_velmex_stroke_idx_0 = twa_parallel_B.macro_leg_len[1] - 120.0;
+  eml_velmex_stroke_idx_0 = twa_parallel_B.macro_leg_len[1] - 114.98;
 
   /* '<S3>:1:14' */
-  eml_velmex_stroke_idx_1 = twa_parallel_B.macro_leg_len[2] - 120.0;
+  eml_velmex_stroke_idx_1 = twa_parallel_B.macro_leg_len[2] - 114.98;
   eml_x[0] = (eml_velmex_stroke_idx < 196.0);
   eml_x[1] = (eml_velmex_stroke_idx_0 < 196.0);
   eml_x[2] = (eml_velmex_stroke_idx_1 < 196.0);
@@ -1114,10 +1114,10 @@ void twa_parallel_initialize(boolean_T firstTime)
   }
 
   /* external mode info */
-  twa_parallel_rtM->Sizes.checksums[0] = (3230455310U);
-  twa_parallel_rtM->Sizes.checksums[1] = (891657378U);
-  twa_parallel_rtM->Sizes.checksums[2] = (2237461116U);
-  twa_parallel_rtM->Sizes.checksums[3] = (3687892425U);
+  twa_parallel_rtM->Sizes.checksums[0] = (4195874555U);
+  twa_parallel_rtM->Sizes.checksums[1] = (1091379905U);
+  twa_parallel_rtM->Sizes.checksums[2] = (1704216433U);
+  twa_parallel_rtM->Sizes.checksums[3] = (1437862965U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;

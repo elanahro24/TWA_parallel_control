@@ -192,7 +192,7 @@ static void sf_c4_twa_parallel(SFc4_twa_parallelInstanceStruct *chartInstance)
   real_T c4_qmacro_des[3];
   int32_T c4_i10;
   int32_T c4_i11;
-  static real_T c4_dv1[6] = { 120.0, 120.0, 120.0, 196.0, 196.0, 196.0 };
+  static real_T c4_dv1[6] = { 114.98, 114.98, 114.98, 196.0, 196.0, 196.0 };
 
   int32_T c4_i12;
   real_T c4_b_macro_leg_limit;
@@ -770,10 +770,10 @@ static void init_dsm_address_info(SFc4_twa_parallelInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c4_twa_parallel_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3867058434U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4250761301U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3167950060U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3666209141U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3733204901U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3435764983U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2709967275U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3447465770U);
 }
 
 mxArray *sf_c4_twa_parallel_get_autoinheritance_info(void)
@@ -787,10 +787,10 @@ mxArray *sf_c4_twa_parallel_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(2241404492U);
-    pr[1] = (double)(3017036494U);
-    pr[2] = (double)(3021212667U);
-    pr[3] = (double)(2138406499U);
+    pr[0] = (double)(3556354240U);
+    pr[1] = (double)(2896546161U);
+    pr[2] = (double)(269799062U);
+    pr[3] = (double)(2413117464U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -988,8 +988,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
         /* Initialization of EML Model Coverage */
         _SFD_CV_INIT_EML(0,1,1,0,0,0,0,0,0);
-        _SFD_CV_INIT_EML_FCN(0,0,"eML_blk_kernel",0,-1,597);
-        _SFD_CV_INIT_EML_IF(0,0,501,545,-1,597);
+        _SFD_CV_INIT_EML_FCN(0,0,"eML_blk_kernel",0,-1,606);
+        _SFD_CV_INIT_EML_IF(0,0,510,554,-1,606);
         _SFD_TRANS_COV_WTS(0,0,0,1,0);
         if (chartAlreadyPresent==0) {
           _SFD_TRANS_COV_MAPS(0,
@@ -1179,10 +1179,10 @@ static void mdlSetWorkWidths_c4_twa_parallel(SimStruct *S)
     sf_set_sfun_dwork_info(S);
   }
 
-  ssSetChecksum0(S,(178246817U));
-  ssSetChecksum1(S,(1466382313U));
-  ssSetChecksum2(S,(1796696637U));
-  ssSetChecksum3(S,(318750467U));
+  ssSetChecksum0(S,(4163394106U));
+  ssSetChecksum1(S,(2465030128U));
+  ssSetChecksum2(S,(3772474209U));
+  ssSetChecksum3(S,(1043345026U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }
