@@ -5,9 +5,9 @@
  *
  * Model version                        : 1.6702
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Fri Jun 14 17:11:35 2024
+ * Real-Time Workshop file generated on : Fri Jun 14 18:29:03 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Fri Jun 14 17:11:36 2024
+ * C/C++ source code generated on       : Fri Jun 14 18:29:04 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -157,7 +157,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_p
    * Referenced by: '<S5>/Kp'
    */
-  { 250.0, 250.0, 250.0, 1.0, 1.0, 1.0 },
+  { 225.0, 200.0, 250.0, 1.0, 1.0, 1.0 },
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S5>/Integrator'
                                         */
@@ -165,7 +165,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_i
    * Referenced by: '<S5>/Ki'
    */
-  { 10.0, 10.0, 10.0, 0.25, 0.25, 0.25 },
+  { 18.0, 18.0, 18.0, 0.25, 0.25, 0.25 },
 
   /*  Expression: [5,5,5,.25,0.25,0.25]
    * Referenced by: '<S5>/saturate_int'
