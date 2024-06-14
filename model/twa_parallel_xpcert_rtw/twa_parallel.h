@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6680
+ * Model version              : 1.6702
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Wed Jun 12 15:41:39 2024
+ * C source code generated on : Fri Jun 14 17:11:36 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -143,11 +143,11 @@
 #endif
 
 #ifndef rtmGetIntgData
-# define rtmGetIntgData(rtm)           ()
+# define rtmGetIntgData(rtm)           ((rtm)->ModelData.intgData)
 #endif
 
 #ifndef rtmSetIntgData
-# define rtmSetIntgData(rtm, val)      ()
+# define rtmSetIntgData(rtm, val)      ((rtm)->ModelData.intgData = (val))
 #endif
 
 #ifndef rtmGetMdlRefGlobalTID
@@ -294,20 +294,28 @@
 # define rtmSetNumY(rtm, val)          ((rtm)->Sizes.numY = (val))
 #endif
 
+#ifndef rtmGetOdeDeltaY
+# define rtmGetOdeDeltaY(rtm)          ((rtm)->ModelData.OdeDeltaY)
+#endif
+
+#ifndef rtmSetOdeDeltaY
+# define rtmSetOdeDeltaY(rtm, val)     ((rtm)->ModelData.OdeDeltaY = (val))
+#endif
+
 #ifndef rtmGetOdeF
-# define rtmGetOdeF(rtm)               ()
+# define rtmGetOdeF(rtm)               ((rtm)->ModelData.odeF)
 #endif
 
 #ifndef rtmSetOdeF
-# define rtmSetOdeF(rtm, val)          ()
+# define rtmSetOdeF(rtm, val)          ((rtm)->ModelData.odeF = (val))
 #endif
 
-#ifndef rtmGetOdeY
-# define rtmGetOdeY(rtm)               ()
+#ifndef rtmGetOdeX0
+# define rtmGetOdeX0(rtm)              ((rtm)->ModelData.odeX0)
 #endif
 
-#ifndef rtmSetOdeY
-# define rtmSetOdeY(rtm, val)          ()
+#ifndef rtmSetOdeX0
+# define rtmSetOdeX0(rtm, val)         ((rtm)->ModelData.odeX0 = (val))
 #endif
 
 #ifndef rtmGetOffsetTimeArray
@@ -823,14 +831,16 @@ typedef struct {
   real_T Switch_f[6];                  /* '<S19>/Switch' */
   real_T Sum[6];                       /* '<S5>/Sum' */
   real_T Kp[6];                        /* '<S5>/Kp' */
-  real_T TSamp_a[6];                   /* '<S17>/TSamp' */
-  real_T Uk1_e[6];                     /* '<S17>/UD' */
-  real_T Diff_j[6];                    /* '<S17>/Diff' */
-  real_T Sum1[6];                      /* '<S5>/Sum1' */
+  real_T Integrator[6];                /* '<S5>/Integrator' */
+  real_T Ki[6];                        /* '<S5>/Ki' */
+  real_T saturate_int[6];              /* '<S5>/saturate_int' */
+  real_T TSamp_h[6];                   /* '<S17>/TSamp' */
+  real_T Uk1_j[6];                     /* '<S17>/UD' */
+  real_T Diff_d[6];                    /* '<S17>/Diff' */
   real_T Kd[6];                        /* '<S5>/Kd' */
   real_T Add[6];                       /* '<S5>/Add' */
   real_T Saturation[6];                /* '<S5>/Saturation' */
-  real_T Switch_l[6];                  /* '<S5>/Switch' */
+  real_T Switch_i[6];                  /* '<S5>/Switch' */
   real_T TmpSignalConversionAtSFunctionI[6];/* '<S6>/Embedded MATLAB Function' */
   real_T q_cmd[6];                     /* '<S6>/Embedded MATLAB Function' */
   real_T q_dot[6];                     /* '<S6>/Embedded MATLAB Function' */
@@ -855,17 +865,17 @@ typedef struct {
   real_T UnitDelay_DSTATE;             /* '<S6>/Unit Delay' */
   real_T UnitDelay1_DSTATE;            /* '<S6>/Unit Delay1' */
   real_T UnitDelay2_DSTATE[6];         /* '<S6>/Unit Delay2' */
-  real_T UD_DSTATE_k[6];               /* '<S17>/UD' */
+  real_T UD_DSTATE_o[6];               /* '<S17>/UD' */
   int32_T DiscreteFIRFilter_circBuf;   /* '<S16>/Discrete FIR Filter' */
   int32_T DiscreteFIRFilter_circBuf_l; /* '<S20>/Discrete FIR Filter' */
   uint32_T NSampleEnable_Counter;      /* '<S19>/N-Sample Enable' */
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK;                   /* '<S21>/S-Function' */
+  } SFunction_IWORK;                   /* '<S22>/S-Function' */
 
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK_j;                 /* '<S22>/S-Function' */
+  } SFunction_IWORK_j;                 /* '<S21>/S-Function' */
 
   struct {
     int_T AcquireOK;
@@ -885,13 +895,38 @@ typedef struct {
   boolean_T doneDoubleBufferReInit_f;  /* '<Root>/GetMacroLegLen' */
 } D_Work_twa_parallel;
 
+/* Continuous states (auto storage) */
+typedef struct {
+  real_T Integrator_CSTATE[6];         /* '<S5>/Integrator' */
+} ContinuousStates_twa_parallel;
+
+/* State derivatives (auto storage) */
+typedef struct {
+  real_T Integrator_CSTATE[6];         /* '<S5>/Integrator' */
+} StateDerivatives_twa_parallel;
+
+/* State disabled  */
+typedef struct {
+  boolean_T Integrator_CSTATE[6];      /* '<S5>/Integrator' */
+} StateDisabled_twa_parallel;
+
+#ifndef ODE8_INTG
+#define ODE8_INTG
+
+/* ODE8 Integration Data */
+typedef struct {
+  real_T *deltaY;                      /* output diff */
+  real_T *f[13];                       /* derivatives */
+  real_T *x0;                          /* Initial State */
+} ODE8_IntgData;
+
+#endif
+
 /* Backward compatible GRT Identifiers */
 #define rtB                            twa_parallel_B
 #define BlockIO                        BlockIO_twa_parallel
-#define rtXdot                         twa_parallel_Xdot
-#define StateDerivatives               StateDerivatives_twa_parallel
-#define tXdis                          twa_parallel_Xdis
-#define StateDisabled                  StateDisabled_twa_parallel
+#define rtX                            twa_parallel_X
+#define ContinuousStates               ContinuousStates_twa_parallel
 #define rtP                            twa_parallel_P
 #define Parameters                     Parameters_twa_parallel
 #define rtDWork                        twa_parallel_DWork
@@ -1019,10 +1054,22 @@ struct Parameters_twa_parallel_ {
   real_T Kp_Gain[6];                   /* Expression: K_p
                                         * Referenced by: '<S5>/Kp'
                                         */
-  real_T TSamp_WtEt_a;                 /* Computed Parameter: TSamp_WtEt_a
+  real_T Integrator_IC;                /* Expression: 0
+                                        * Referenced by: '<S5>/Integrator'
+                                        */
+  real_T Ki_Gain[6];                   /* Expression: K_i
+                                        * Referenced by: '<S5>/Ki'
+                                        */
+  real_T saturate_int_UpperSat[6];     /* Expression: [5,5,5,.25,0.25,0.25]
+                                        * Referenced by: '<S5>/saturate_int'
+                                        */
+  real_T saturate_int_LowerSat[6];     /* Expression: -1*[5,5,5,.25,0.25,0.25]
+                                        * Referenced by: '<S5>/saturate_int'
+                                        */
+  real_T TSamp_WtEt_p;                 /* Computed Parameter: TSamp_WtEt_p
                                         * Referenced by: '<S17>/TSamp'
                                         */
-  real_T UD_X0_o;                      /* Expression: ICPrevScaledInput
+  real_T UD_X0_f;                      /* Expression: ICPrevScaledInput
                                         * Referenced by: '<S17>/UD'
                                         */
   real_T Kd_Gain[6];                   /* Expression: K_d
@@ -1034,8 +1081,8 @@ struct Parameters_twa_parallel_ {
   real_T Saturation_LowerSat[6];       /* Expression: -1*[10,10,10,2,2,2]
                                         * Referenced by: '<S5>/Saturation'
                                         */
-  real_T pd_mode_Value;                /* Expression: 0
-                                        * Referenced by: '<S5>/pd_mode'
+  real_T pid_mode_Value;               /* Expression: 0
+                                        * Referenced by: '<S5>/pid_mode'
                                         */
   real_T manual_current_Value[6];      /* Expression: zeros(6,1)
                                         * Referenced by: '<S5>/manual_current'
@@ -1089,6 +1136,10 @@ struct rtModel_twa_parallel {
     boolean_T zCCacheNeedsReset;
     boolean_T derivCacheNeedsReset;
     boolean_T blkStateChange;
+    real_T OdeDeltaY[6];
+    real_T odeF[13][6];
+    real_T odeX0[6];
+    ODE8_IntgData intgData;
   } ModelData;
 
   /*
@@ -1177,6 +1228,9 @@ extern Parameters_twa_parallel twa_parallel_P;
 /* Block signals (auto storage) */
 extern BlockIO_twa_parallel twa_parallel_B;
 
+/* Continuous states (auto storage) */
+extern ContinuousStates_twa_parallel twa_parallel_X;
+
 /* Block states (auto storage) */
 extern D_Work_twa_parallel twa_parallel_DWork;
 
@@ -1208,7 +1262,7 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  * '<S2>'   : twa_parallel/GetMacroLegLen
  * '<S3>'   : twa_parallel/GetMacroQDes
  * '<S4>'   : twa_parallel/GetMicroQDes
- * '<S5>'   : twa_parallel/PD Controller
+ * '<S5>'   : twa_parallel/PID Controller
  * '<S6>'   : twa_parallel/Quintic Poly
  * '<S7>'   : twa_parallel/Scopes
  * '<S8>'   : twa_parallel/Encoders/Counts To Turns
@@ -1220,7 +1274,7 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  * '<S14>'  : twa_parallel/Encoders/Derivative
  * '<S15>'  : twa_parallel/Encoders/Derivative/Discrete Derivative
  * '<S16>'  : twa_parallel/Encoders/Derivative/Fir Filter
- * '<S17>'  : twa_parallel/PD Controller/Discrete Derivative
+ * '<S17>'  : twa_parallel/PID Controller/Discrete Derivative
  * '<S18>'  : twa_parallel/Quintic Poly/Embedded MATLAB Function
  * '<S19>'  : twa_parallel/Quintic Poly/N-Sample Switch
  * '<S20>'  : twa_parallel/Scopes/Fir Filter

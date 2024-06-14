@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6680
+ * Model version                        : 1.6702
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Wed Jun 12 15:41:39 2024
+ * Real-Time Workshop file generated on : Fri Jun 14 17:11:35 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Wed Jun 12 15:41:39 2024
+ * C/C++ source code generated on       : Fri Jun 14 17:11:36 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -157,8 +157,26 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_p
    * Referenced by: '<S5>/Kp'
    */
-  { 35.0, 45.0, 20.0, 1.0, 1.0, 1.0 },
-  500.0,                               /* Computed Parameter: TSamp_WtEt_a
+  { 250.0, 250.0, 250.0, 1.0, 1.0, 1.0 },
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S5>/Integrator'
+                                        */
+
+  /*  Expression: K_i
+   * Referenced by: '<S5>/Ki'
+   */
+  { 10.0, 10.0, 10.0, 0.25, 0.25, 0.25 },
+
+  /*  Expression: [5,5,5,.25,0.25,0.25]
+   * Referenced by: '<S5>/saturate_int'
+   */
+  { 5.0, 5.0, 5.0, 0.25, 0.25, 0.25 },
+
+  /*  Expression: -1*[5,5,5,.25,0.25,0.25]
+   * Referenced by: '<S5>/saturate_int'
+   */
+  { -5.0, -5.0, -5.0, -0.25, -0.25, -0.25 },
+  500.0,                               /* Computed Parameter: TSamp_WtEt_p
                                         * Referenced by: '<S17>/TSamp'
                                         */
   0.0,                                 /* Expression: ICPrevScaledInput
@@ -168,7 +186,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_d
    * Referenced by: '<S5>/Kd'
    */
-  { 0.25, 0.25, 0.25, 0.25, 0.25, 0.25 },
+  { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 },
 
   /*  Expression: [10,10,10,2,2,2]
    * Referenced by: '<S5>/Saturation'
@@ -180,7 +198,7 @@ Parameters_twa_parallel twa_parallel_P = {
    */
   { -10.0, -10.0, -10.0, -2.0, -2.0, -2.0 },
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S5>/pd_mode'
+                                        * Referenced by: '<S5>/pid_mode'
                                         */
 
   /*  Expression: zeros(6,1)

@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (twa_parallel_P)
     ;%
-      section.nData     = 47;
-      section.data(47)  = dumData; %prealloc
+      section.nData     = 51;
+      section.data(51)  = dumData; %prealloc
       
 	  ;% twa_parallel_P.Init_P1
 	  section.data(1).logicalSrcIdx = 0;
@@ -191,33 +191,49 @@
 	  section.data(40).logicalSrcIdx = 39;
 	  section.data(40).dtTransOffset = 65;
 	
-	  ;% twa_parallel_P.TSamp_WtEt_a
+	  ;% twa_parallel_P.Integrator_IC
 	  section.data(41).logicalSrcIdx = 40;
 	  section.data(41).dtTransOffset = 71;
 	
-	  ;% twa_parallel_P.UD_X0_o
+	  ;% twa_parallel_P.Ki_Gain
 	  section.data(42).logicalSrcIdx = 41;
 	  section.data(42).dtTransOffset = 72;
 	
-	  ;% twa_parallel_P.Kd_Gain
+	  ;% twa_parallel_P.saturate_int_UpperSat
 	  section.data(43).logicalSrcIdx = 42;
-	  section.data(43).dtTransOffset = 73;
+	  section.data(43).dtTransOffset = 78;
 	
-	  ;% twa_parallel_P.Saturation_UpperSat
+	  ;% twa_parallel_P.saturate_int_LowerSat
 	  section.data(44).logicalSrcIdx = 43;
-	  section.data(44).dtTransOffset = 79;
+	  section.data(44).dtTransOffset = 84;
 	
-	  ;% twa_parallel_P.Saturation_LowerSat
+	  ;% twa_parallel_P.TSamp_WtEt_p
 	  section.data(45).logicalSrcIdx = 44;
-	  section.data(45).dtTransOffset = 85;
+	  section.data(45).dtTransOffset = 90;
 	
-	  ;% twa_parallel_P.pd_mode_Value
+	  ;% twa_parallel_P.UD_X0_f
 	  section.data(46).logicalSrcIdx = 45;
 	  section.data(46).dtTransOffset = 91;
 	
-	  ;% twa_parallel_P.manual_current_Value
+	  ;% twa_parallel_P.Kd_Gain
 	  section.data(47).logicalSrcIdx = 46;
 	  section.data(47).dtTransOffset = 92;
+	
+	  ;% twa_parallel_P.Saturation_UpperSat
+	  section.data(48).logicalSrcIdx = 47;
+	  section.data(48).dtTransOffset = 98;
+	
+	  ;% twa_parallel_P.Saturation_LowerSat
+	  section.data(49).logicalSrcIdx = 48;
+	  section.data(49).dtTransOffset = 104;
+	
+	  ;% twa_parallel_P.pid_mode_Value
+	  section.data(50).logicalSrcIdx = 49;
+	  section.data(50).dtTransOffset = 110;
+	
+	  ;% twa_parallel_P.manual_current_Value
+	  section.data(51).logicalSrcIdx = 50;
+	  section.data(51).dtTransOffset = 111;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -227,11 +243,11 @@
       section.data(2)  = dumData; %prealloc
       
 	  ;% twa_parallel_P.NSampleEnable_TARGETCNT
-	  section.data(1).logicalSrcIdx = 47;
+	  section.data(1).logicalSrcIdx = 51;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% twa_parallel_P.NSampleEnable_ACTLEVEL
-	  section.data(2).logicalSrcIdx = 48;
+	  section.data(2).logicalSrcIdx = 52;
 	  section.data(2).dtTransOffset = 1;
 	
       nTotData = nTotData + section.nData;
@@ -279,8 +295,8 @@
     ;%
     ;% Auto data (twa_parallel_B)
     ;%
-      section.nData     = 55;
-      section.data(55)  = dumData; %prealloc
+      section.nData     = 57;
+      section.data(57)  = dumData; %prealloc
       
 	  ;% twa_parallel_B.EncoderInput_o1
 	  section.data(1).logicalSrcIdx = 0;
@@ -418,89 +434,97 @@
 	  section.data(34).logicalSrcIdx = 33;
 	  section.data(34).dtTransOffset = 93;
 	
-	  ;% twa_parallel_B.TSamp_a
+	  ;% twa_parallel_B.Integrator
 	  section.data(35).logicalSrcIdx = 34;
 	  section.data(35).dtTransOffset = 99;
 	
-	  ;% twa_parallel_B.Uk1_e
+	  ;% twa_parallel_B.Ki
 	  section.data(36).logicalSrcIdx = 35;
 	  section.data(36).dtTransOffset = 105;
 	
-	  ;% twa_parallel_B.Diff_j
+	  ;% twa_parallel_B.saturate_int
 	  section.data(37).logicalSrcIdx = 36;
 	  section.data(37).dtTransOffset = 111;
 	
-	  ;% twa_parallel_B.Sum1
+	  ;% twa_parallel_B.TSamp_h
 	  section.data(38).logicalSrcIdx = 37;
 	  section.data(38).dtTransOffset = 117;
 	
-	  ;% twa_parallel_B.Kd
+	  ;% twa_parallel_B.Uk1_j
 	  section.data(39).logicalSrcIdx = 38;
 	  section.data(39).dtTransOffset = 123;
 	
-	  ;% twa_parallel_B.Add
+	  ;% twa_parallel_B.Diff_d
 	  section.data(40).logicalSrcIdx = 39;
 	  section.data(40).dtTransOffset = 129;
 	
-	  ;% twa_parallel_B.Saturation
+	  ;% twa_parallel_B.Kd
 	  section.data(41).logicalSrcIdx = 40;
 	  section.data(41).dtTransOffset = 135;
 	
-	  ;% twa_parallel_B.Switch_l
+	  ;% twa_parallel_B.Add
 	  section.data(42).logicalSrcIdx = 41;
 	  section.data(42).dtTransOffset = 141;
 	
-	  ;% twa_parallel_B.TmpSignalConversionAtSFunctionI
+	  ;% twa_parallel_B.Saturation
 	  section.data(43).logicalSrcIdx = 42;
 	  section.data(43).dtTransOffset = 147;
 	
-	  ;% twa_parallel_B.q_cmd
+	  ;% twa_parallel_B.Switch_i
 	  section.data(44).logicalSrcIdx = 43;
 	  section.data(44).dtTransOffset = 153;
 	
-	  ;% twa_parallel_B.q_dot
+	  ;% twa_parallel_B.TmpSignalConversionAtSFunctionI
 	  section.data(45).logicalSrcIdx = 44;
 	  section.data(45).dtTransOffset = 159;
 	
-	  ;% twa_parallel_B.q_dub_dot
+	  ;% twa_parallel_B.q_cmd
 	  section.data(46).logicalSrcIdx = 45;
 	  section.data(46).dtTransOffset = 165;
 	
-	  ;% twa_parallel_B.confn
+	  ;% twa_parallel_B.q_dot
 	  section.data(47).logicalSrcIdx = 46;
 	  section.data(47).dtTransOffset = 171;
 	
-	  ;% twa_parallel_B.t0n
+	  ;% twa_parallel_B.q_dub_dot
 	  section.data(48).logicalSrcIdx = 47;
-	  section.data(48).dtTransOffset = 172;
+	  section.data(48).dtTransOffset = 177;
+	
+	  ;% twa_parallel_B.confn
+	  section.data(49).logicalSrcIdx = 48;
+	  section.data(49).dtTransOffset = 183;
+	
+	  ;% twa_parallel_B.t0n
+	  section.data(50).logicalSrcIdx = 49;
+	  section.data(50).dtTransOffset = 184;
 	
 	  ;% twa_parallel_B.q0n
-	  section.data(49).logicalSrcIdx = 48;
-	  section.data(49).dtTransOffset = 173;
+	  section.data(51).logicalSrcIdx = 50;
+	  section.data(51).dtTransOffset = 185;
 	
 	  ;% twa_parallel_B.robot_mov
-	  section.data(50).logicalSrcIdx = 49;
-	  section.data(50).dtTransOffset = 179;
+	  section.data(52).logicalSrcIdx = 51;
+	  section.data(52).dtTransOffset = 191;
 	
 	  ;% twa_parallel_B.TmpSignalConversionAtSFunctio_e
-	  section.data(51).logicalSrcIdx = 50;
-	  section.data(51).dtTransOffset = 180;
+	  section.data(53).logicalSrcIdx = 52;
+	  section.data(53).dtTransOffset = 192;
 	
 	  ;% twa_parallel_B.qmicro_des
-	  section.data(52).logicalSrcIdx = 51;
-	  section.data(52).dtTransOffset = 186;
+	  section.data(54).logicalSrcIdx = 53;
+	  section.data(54).dtTransOffset = 198;
 	
 	  ;% twa_parallel_B.TmpSignalConversionAtSFunctio_i
-	  section.data(53).logicalSrcIdx = 52;
-	  section.data(53).dtTransOffset = 189;
+	  section.data(55).logicalSrcIdx = 54;
+	  section.data(55).dtTransOffset = 201;
 	
 	  ;% twa_parallel_B.qmacro_des
-	  section.data(54).logicalSrcIdx = 53;
-	  section.data(54).dtTransOffset = 195;
+	  section.data(56).logicalSrcIdx = 55;
+	  section.data(56).dtTransOffset = 207;
 	
 	  ;% twa_parallel_B.macro_leg_len
-	  section.data(55).logicalSrcIdx = 54;
-	  section.data(55).dtTransOffset = 198;
+	  section.data(57).logicalSrcIdx = 56;
+	  section.data(57).dtTransOffset = 210;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(1) = section;
@@ -510,7 +534,7 @@
       section.data(1)  = dumData; %prealloc
       
 	  ;% twa_parallel_B.NSampleEnable
-	  section.data(1).logicalSrcIdx = 55;
+	  section.data(1).logicalSrcIdx = 57;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
@@ -585,7 +609,7 @@
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 20;
 	
-	  ;% twa_parallel_DWork.UD_DSTATE_k
+	  ;% twa_parallel_DWork.UD_DSTATE_o
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 26;
 	
@@ -726,8 +750,8 @@
   ;%
 
 
-  targMap.checksum0 = 4195874555;
-  targMap.checksum1 = 1091379905;
-  targMap.checksum2 = 1704216433;
-  targMap.checksum3 = 1437862965;
+  targMap.checksum0 = 2130740451;
+  targMap.checksum1 = 1199217746;
+  targMap.checksum2 = 4135643746;
+  targMap.checksum3 = 3337905401;
 

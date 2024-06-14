@@ -12,9 +12,9 @@ N_pos = 1;
 pos_filter_coeffs = ones(N_pos,1);
 
 % PID Gains
-K_p = [35 35 35 1 1 1]';
-K_i = [1 1 1 0.25 0.25 0.25]';
-K_d = 0.25*ones(6,1);
+K_p = [225 200 250 1 1 1]';
+K_i = [18 18 18 0.25 0.25 0.25]';
+K_d = ones(6,1);
 
 % Macro Actuation Unit parameters
 enc_res = 256*4; %[cnt/trn] * quadrature

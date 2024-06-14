@@ -373,15 +373,15 @@
 		</signal>
 	</SubSystem>
 	<SubSystem>
-		<Name>PD Controller</Name>
-		<xPCName>twa_parallel/PD Controller</xPCName>
+		<Name>PID Controller</Name>
+		<xPCName>twa_parallel/PID Controller</xPCName>
 		<SubSystem>
 			<Name>Discrete Derivative</Name>
-			<xPCName>twa_parallel/PD Controller/Discrete Derivative</xPCName>
+			<xPCName>twa_parallel/PID Controller/Discrete Derivative</xPCName>
 			<block>
 				<blkName>UD</blkName>
-				<xpcblkName>PD Controller/Discrete Derivative/UD</xpcblkName>
-				<SLblockPath>twa_parallel/PD Controller/Discrete Derivative/UD</SLblockPath>
+				<xpcblkName>PID Controller/Discrete Derivative/UD</xpcblkName>
+				<SLblockPath>twa_parallel/PID Controller/Discrete Derivative/UD</SLblockPath>
 				<isSrc>[0 1 1]</isSrc>
 				<parameter>
 					<paramName>X0</paramName>
@@ -390,8 +390,8 @@
 			</block>
 			<block>
 				<blkName>TSamp</blkName>
-				<xpcblkName>PD Controller/Discrete Derivative/TSamp</xpcblkName>
-				<SLblockPath>twa_parallel/PD Controller/Discrete Derivative/TSamp</SLblockPath>
+				<xpcblkName>PID Controller/Discrete Derivative/TSamp</xpcblkName>
+				<SLblockPath>twa_parallel/PID Controller/Discrete Derivative/TSamp</SLblockPath>
 				<isSrc>[0 1 1]</isSrc>
 				<parameter>
 					<paramName>WtEt</paramName>
@@ -400,27 +400,27 @@
 			</block>
 			<signal>
 				<sigName>Diff</sigName>
-				<xpcsigName>PD Controller/Discrete Derivative/Diff</xpcsigName>
+				<xpcsigName>PID Controller/Discrete Derivative/Diff</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>UD</sigName>
-				<xpcsigName>PD Controller/Discrete Derivative/UD</xpcsigName>
+				<xpcsigName>PID Controller/Discrete Derivative/UD</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>TSamp</sigName>
-				<xpcsigName>PD Controller/Discrete Derivative/TSamp</xpcsigName>
+				<xpcsigName>PID Controller/Discrete Derivative/TSamp</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 		</SubSystem>
 		<block>
 			<blkName>manual_current</blkName>
-			<xpcblkName>PD Controller/manual_current</xpcblkName>
-			<SLblockPath>twa_parallel/PD Controller/manual_current</SLblockPath>
+			<xpcblkName>PID Controller/manual_current</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/manual_current</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -428,9 +428,9 @@
 			</parameter>
 		</block>
 		<block>
-			<blkName>pd_mode</blkName>
-			<xpcblkName>PD Controller/pd_mode</xpcblkName>
-			<SLblockPath>twa_parallel/PD Controller/pd_mode</SLblockPath>
+			<blkName>pid_mode</blkName>
+			<xpcblkName>PID Controller/pid_mode</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/pid_mode</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -439,8 +439,18 @@
 		</block>
 		<block>
 			<blkName>Kd</blkName>
-			<xpcblkName>PD Controller/Kd</xpcblkName>
-			<SLblockPath>twa_parallel/PD Controller/Kd</SLblockPath>
+			<xpcblkName>PID Controller/Kd</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Kd</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[6, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Ki</blkName>
+			<xpcblkName>PID Controller/Ki</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Ki</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>Gain</paramName>
@@ -449,8 +459,8 @@
 		</block>
 		<block>
 			<blkName>Kp</blkName>
-			<xpcblkName>PD Controller/Kp</xpcblkName>
-			<SLblockPath>twa_parallel/PD Controller/Kp</SLblockPath>
+			<xpcblkName>PID Controller/Kp</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Kp</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>Gain</paramName>
@@ -458,9 +468,33 @@
 			</parameter>
 		</block>
 		<block>
+			<blkName>Integrator</blkName>
+			<xpcblkName>PID Controller/Integrator</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Integrator</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>InitialCondition</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
 			<blkName>Saturation</blkName>
-			<xpcblkName>PD Controller/Saturation</xpcblkName>
-			<SLblockPath>twa_parallel/PD Controller/Saturation</SLblockPath>
+			<xpcblkName>PID Controller/Saturation</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Saturation</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>UpperLimit</paramName>
+				<dim>[1, 6]</dim>
+			</parameter>
+			<parameter>
+				<paramName>LowerLimit</paramName>
+				<dim>[1, 6]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>saturate_int</blkName>
+			<xpcblkName>PID Controller/saturate_int</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/saturate_int</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>UpperLimit</paramName>
@@ -473,43 +507,55 @@
 		</block>
 		<signal>
 			<sigName>Kd</sigName>
-			<xpcsigName>PD Controller/Kd</xpcsigName>
+			<xpcsigName>PID Controller/Kd</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Ki</sigName>
+			<xpcsigName>PID Controller/Ki</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Kp</sigName>
-			<xpcsigName>PD Controller/Kp</xpcsigName>
+			<xpcsigName>PID Controller/Kp</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Integrator</sigName>
+			<xpcsigName>PID Controller/Integrator</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Saturation</sigName>
-			<xpcsigName>PD Controller/Saturation</xpcsigName>
+			<xpcsigName>PID Controller/Saturation</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>saturate_int</sigName>
+			<xpcsigName>PID Controller/saturate_int</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Add</sigName>
-			<xpcsigName>PD Controller/Add</xpcsigName>
+			<xpcsigName>PID Controller/Add</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Sum</sigName>
-			<xpcsigName>PD Controller/Sum</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Sum1</sigName>
-			<xpcsigName>PD Controller/Sum1</xpcsigName>
+			<xpcsigName>PID Controller/Sum</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Switch</sigName>
-			<xpcsigName>PD Controller/Switch</xpcsigName>
+			<xpcsigName>PID Controller/Switch</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
