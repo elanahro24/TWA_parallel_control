@@ -300,9 +300,9 @@ static void c1_c1_twa_parallel(SFc1_twa_parallelInstanceStruct *chartInstance)
   int32_T c1_i27;
   int32_T c1_i28;
   int32_T c1_i29;
-  static real_T c1_dv8[9] = { 1.4057324354229004E+002, -8.1160000000000068E+001,
-    0.0, 9.9392334218799176E-015, 1.6232E+002, 0.0,
-    -1.4057324354229007E+002, -8.1160000000000011E+001, 0.0 };
+  static real_T c1_dv8[9] = { 1.3686665481409264E+002, -7.9020000000000067E+001,
+    0.0, 9.6771590068623845E-015, 1.5804E+002, 0.0,
+    -1.3686665481409267E+002, -7.9020000000000010E+001, 0.0 };
 
   int32_T c1_i30;
   int32_T c1_i31;
@@ -362,7 +362,7 @@ static void c1_c1_twa_parallel(SFc1_twa_parallelInstanceStruct *chartInstance)
   /* [mm] */
   /*  base radius */
   _SFD_EML_CALL(0,10);
-  c1_b_rad = 1.6232E+002;
+  c1_b_rad = 1.5804E+002;
 
   /* [mm] */
   /*  position of flexure centers */
@@ -1214,10 +1214,10 @@ static void init_dsm_address_info(SFc1_twa_parallelInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c1_twa_parallel_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4104527018U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1783494570U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1081606871U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2487388417U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(492544177U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2576035688U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3992875612U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2581979471U);
 }
 
 mxArray *sf_c1_twa_parallel_get_autoinheritance_info(void)
@@ -1231,10 +1231,10 @@ mxArray *sf_c1_twa_parallel_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(1062101138U);
-    pr[1] = (double)(709776155U);
-    pr[2] = (double)(1072214150U);
-    pr[3] = (double)(893729667U);
+    pr[0] = (double)(4169690507U);
+    pr[1] = (double)(311736020U);
+    pr[2] = (double)(1251004924U);
+    pr[3] = (double)(26656177U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -1589,10 +1589,10 @@ static void mdlSetWorkWidths_c1_twa_parallel(SimStruct *S)
     sf_set_sfun_dwork_info(S);
   }
 
-  ssSetChecksum0(S,(3501145294U));
-  ssSetChecksum1(S,(333130372U));
-  ssSetChecksum2(S,(3125026119U));
-  ssSetChecksum3(S,(2484302358U));
+  ssSetChecksum0(S,(1604093375U));
+  ssSetChecksum1(S,(658636324U));
+  ssSetChecksum2(S,(605541320U));
+  ssSetChecksum3(S,(2024759345U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }

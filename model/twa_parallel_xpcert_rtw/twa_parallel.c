@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6702
+ * Model version              : 1.6705
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Fri Jun 14 18:29:04 2024
+ * C source code generated on : Tue Jun 18 15:08:15 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -255,13 +255,12 @@ static real_T twa_parallel_norm(const real_T eml_x[3])
 void twa_parallel_output(int_T tid)
 {
   real_T eml_vertex_dist[9];
-  boolean_T eml_y;
+  boolean_T eml_b_y;
   boolean_T eml_x[3];
   int32_T eml_k;
   boolean_T eml_exitg;
   real_T eml_eta[6];
   real_T eml_a[6];
-  real_T eml_b_c;
   real_T eml_g_c;
   real_T eml_h_c;
   real_T eml_i_c;
@@ -273,6 +272,7 @@ void twa_parallel_output(int_T tid)
   real_T tmp[9];
   real_T tmp_0[9];
   real_T tmp_1[9];
+  real_T eml_y;
   real_T eml_velmex_stroke_idx;
   real_T eml_velmex_stroke_idx_0;
   real_T eml_velmex_stroke_idx_1;
@@ -280,9 +280,9 @@ void twa_parallel_output(int_T tid)
     0.0, 2.7566799448806924E-015, 45.02, 0.0, -3.8988463678375432E+001,
     -2.2510000000000005E+001, 0.0 };
 
-  static real_T tmp_3[9] = { 1.4057324354229004E+002, -8.1160000000000068E+001,
-    0.0, 9.9392334218799176E-015, 1.6232E+002, 0.0, -1.4057324354229007E+002,
-    -8.1160000000000011E+001, 0.0 };
+  static real_T tmp_3[9] = { 1.3686665481409264E+002, -7.9020000000000067E+001,
+    0.0, 9.6771590068623845E-015, 1.5804E+002, 0.0, -1.3686665481409267E+002,
+    -7.9020000000000010E+001, 0.0 };
 
   if (rtmIsMajorTimeStep(twa_parallel_rtM)) {
     /* set solver stop time */
@@ -730,6 +730,8 @@ void twa_parallel_output(int_T tid)
     /*  lengths */
     /* '<S3>:1:5' */
     /* '<S3>:1:7' */
+    /* +-30 mm stroke from starting point at the velmex pivot  */
+    /* '<S3>:1:9' */
     /* '<S3>:1:11' */
     twa_parallel_B.qmacro_des[0] =
       twa_parallel_B.TmpSignalConversionAtSFunctio_i[0];
@@ -739,29 +741,32 @@ void twa_parallel_output(int_T tid)
       twa_parallel_B.TmpSignalConversionAtSFunctio_i[2];
 
     /* '<S3>:1:12' */
-    eml_velmex_stroke_idx = twa_parallel_B.macro_leg_len[0] - 114.98;
+    eml_velmex_stroke_idx = twa_parallel_B.macro_leg_len[0] - 1.30115E+002;
 
     /* '<S3>:1:13' */
-    eml_velmex_stroke_idx_0 = twa_parallel_B.macro_leg_len[1] - 114.98;
+    eml_velmex_stroke_idx_0 = twa_parallel_B.macro_leg_len[1] - 1.2905E+002;
 
     /* '<S3>:1:14' */
-    eml_velmex_stroke_idx_1 = twa_parallel_B.macro_leg_len[2] - 114.98;
-    eml_x[0] = (eml_velmex_stroke_idx < 196.0);
-    eml_x[1] = (eml_velmex_stroke_idx_0 < 196.0);
-    eml_x[2] = (eml_velmex_stroke_idx_1 < 196.0);
-    eml_y = TRUE;
+    eml_velmex_stroke_idx_1 = twa_parallel_B.macro_leg_len[2] - 130.495;
+    eml_y = fabs(eml_velmex_stroke_idx);
+    eml_x[0] = (eml_y < 30.0);
+    eml_y = fabs(eml_velmex_stroke_idx_0);
+    eml_x[1] = (eml_y < 30.0);
+    eml_y = fabs(eml_velmex_stroke_idx_1);
+    eml_x[2] = (eml_y < 30.0);
+    eml_b_y = TRUE;
     eml_k = 1;
     eml_exitg = FALSE;
     while (((uint32_T)eml_exitg == 0U) && (eml_k <= 3)) {
       if ((int32_T)eml_x[eml_k - 1] == 0) {
-        eml_y = FALSE;
+        eml_b_y = FALSE;
         eml_exitg = TRUE;
       } else {
         eml_k++;
       }
     }
 
-    if (eml_y) {
+    if (eml_b_y) {
       /* '<S3>:1:17' */
       twa_parallel_B.qmacro_des[0] = eml_velmex_stroke_idx /
         twa_parallel_P.ee_velmex_pitch_Value;
@@ -987,40 +992,40 @@ void twa_parallel_output(int_T tid)
 
             /* '<S18>:1:35' */
             eml_velmex_stroke_idx_1 = rt_pow_snf(eml_velmex_stroke_idx, 3.0);
-            eml_b_c = rt_pow_snf(eml_velmex_stroke_idx, 4.0);
+            eml_y = rt_pow_snf(eml_velmex_stroke_idx, 4.0);
             eml_velmex_stroke_idx = rt_pow_snf(eml_velmex_stroke_idx, 5.0);
             for (uIdx = 0; uIdx < 6; uIdx++) {
               twa_parallel_B.q_cmd[uIdx] = ((twa_parallel_B.q_dub_dot[uIdx] *
                 eml_velmex_stroke_idx_1 + twa_parallel_B.Switch_f[uIdx]) +
-                eml_eta[uIdx] * eml_b_c) + eml_a[uIdx] * eml_velmex_stroke_idx;
+                eml_eta[uIdx] * eml_y) + eml_a[uIdx] * eml_velmex_stroke_idx;
             }
 
             /* '<S18>:1:36' */
             eml_velmex_stroke_idx = rt_pow_snf(eml_velmex_stroke_idx_0, 2.0);
             eml_velmex_stroke_idx_1 = rt_pow_snf(twa_parallel_P.tf_Value, 3.0);
-            eml_b_c = rt_pow_snf(eml_velmex_stroke_idx_0, 3.0);
+            eml_y = rt_pow_snf(eml_velmex_stroke_idx_0, 3.0);
             eml_g_c = rt_pow_snf(twa_parallel_P.tf_Value, 4.0);
             eml_h_c = rt_pow_snf(eml_velmex_stroke_idx_0, 4.0);
             eml_i_c = rt_pow_snf(twa_parallel_P.tf_Value, 5.0);
             for (uIdx = 0; uIdx < 6; uIdx++) {
               twa_parallel_B.q_dot[uIdx] = (3.0 * twa_parallel_B.q_dub_dot[uIdx]
                 * eml_velmex_stroke_idx / eml_velmex_stroke_idx_1 + 4.0 *
-                eml_eta[uIdx] * eml_b_c / eml_g_c) + 5.0 * eml_a[uIdx] * eml_h_c
-                / eml_i_c;
+                eml_eta[uIdx] * eml_y / eml_g_c) + 5.0 * eml_a[uIdx] * eml_h_c /
+                eml_i_c;
             }
 
             /* '<S18>:1:37' */
             eml_velmex_stroke_idx = rt_pow_snf(twa_parallel_P.tf_Value, 3.0);
             eml_velmex_stroke_idx_1 = rt_pow_snf(eml_velmex_stroke_idx_0, 2.0);
-            eml_b_c = rt_pow_snf(twa_parallel_P.tf_Value, 4.0);
+            eml_y = rt_pow_snf(twa_parallel_P.tf_Value, 4.0);
             eml_g_c = rt_pow_snf(eml_velmex_stroke_idx_0, 3.0);
             eml_h_c = rt_pow_snf(twa_parallel_P.tf_Value, 5.0);
             for (uIdx = 0; uIdx < 6; uIdx++) {
               twa_parallel_B.q_dub_dot[uIdx] = (6.0 *
                 twa_parallel_B.q_dub_dot[uIdx] * eml_velmex_stroke_idx_0 /
                 eml_velmex_stroke_idx + 12.0 * eml_eta[uIdx] *
-                eml_velmex_stroke_idx_1 / eml_b_c) + 20.0 * eml_a[uIdx] *
-                eml_g_c / eml_h_c;
+                eml_velmex_stroke_idx_1 / eml_y) + 20.0 * eml_a[uIdx] * eml_g_c /
+                eml_h_c;
             }
           } else {
             /* '<S18>:1:39' */
@@ -1369,10 +1374,10 @@ void twa_parallel_initialize(boolean_T firstTime)
   }
 
   /* external mode info */
-  twa_parallel_rtM->Sizes.checksums[0] = (2130740451U);
-  twa_parallel_rtM->Sizes.checksums[1] = (1199217746U);
-  twa_parallel_rtM->Sizes.checksums[2] = (4135643746U);
-  twa_parallel_rtM->Sizes.checksums[3] = (3337905401U);
+  twa_parallel_rtM->Sizes.checksums[0] = (1608191922U);
+  twa_parallel_rtM->Sizes.checksums[1] = (3386614282U);
+  twa_parallel_rtM->Sizes.checksums[2] = (1107184590U);
+  twa_parallel_rtM->Sizes.checksums[3] = (2710160285U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
