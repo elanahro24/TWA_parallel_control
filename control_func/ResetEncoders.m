@@ -1,7 +1,7 @@
 % This function zeros the encoders. The first step is to turn off the PID
 % controller and turn off torque to all the motors then, reset the
 % encoders. Set q_des to zeros and reenable PID controller.
-function resetEncoders(tg)
+function ResetEncoders(tg)
 % turn off PID controller    
 setPidMode(tg,0);
 

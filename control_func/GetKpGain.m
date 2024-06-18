@@ -1,4 +1,4 @@
-function Kp = getKpGain(tg)
+function Kp = GetKpGain(tg)
     id = tg.getparamid('PID Controller/Kp','Gain');
     Kp = tg.getparam(id);
 end
