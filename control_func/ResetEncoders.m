@@ -3,7 +3,7 @@
 % encoders. Set q_des to zeros and reenable PID controller.
 function ResetEncoders(tg)
 % turn off PID controller    
-setPidMode(tg,0);
+SetPidMode(tg,0);
 
 % reset encoders
 id = tg.getparamid('Encoders/enc_reset','Value');
@@ -12,8 +12,8 @@ pause(1);
 tg.setparam(id,0);
 
 % reset q_des to zeros
-setQdes(tg,zeros(6,1));
+SetQdes(tg,zeros(6,1));
 
 % turn on PID Controller
-setPidMode(tg,1);
+SetPidMode(tg,1);
 end

@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6705"
+    ComputedModelVersion    "1.6709"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Jun 18 15:09:09 2024"
-  RTWModifiedTimeStamp	  640622096
-  ModelVersionFormat	  "1.%<AutoIncrement:6705>"
+  LastModifiedDate	  "Tue Jun 18 16:21:26 2024"
+  RTWModifiedTimeStamp	  640628480
+  ModelVersionFormat	  "1.%<AutoIncrement:6709>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1762,7 +1762,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [2, 75, 1918, 1019]
+    Location		    [0, 51, 1920, 1048]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -4521,7 +4521,7 @@ Model {
       BlockType		      Constant
       Name		      "x_des"
       SID		      3094
-      Position		      [100, 337, 160, 363]
+      Position		      [100, 317, 160, 343]
       Value		      "zeros(3,1)"
       SampleTime	      "dt"
     }
@@ -4768,16 +4768,17 @@ Stateflow {
       isEML		      1
       script		      "function macro_leg_len  = fcn(x_des,ee_rot)\n% This function solves for the vertex positions of t"
       "he base and moving\n% platform for a given desired end effector position.\n% With vertex positions known, leg le"
-      "ngths can be solved for.\n\n% moving platform radius\np_rad = 45.02; %[mm]\n\n% base radius\nb_rad = 158.04; %[m"
-      "m]\n\n% position of flexure centers\n% radius of position of flexure center\nf_rad = 80; %[mm]\nalpha = [-40 80 "
-      "200]*pi/180;\nf_in_w = f_rad*[cos(alpha);sin(alpha);zeros(1,3)];\n\n% position of twa pivot point, taken from CA"
-      "D\n% radius of position of twa pivot\nm_rad = 11.915;\nbeta = [-102.82 17.18 137.18]*pi/180;\nm_in_w = m_rad*[co"
-      "s(beta);sin(beta);zeros(1,3)];\n \n% rotation matrix of moving frame about z-xis\n% ee_rot = 0;\nrot_m2w = [cos("
-      "ee_rot) -sin(ee_rot) 0; sin(ee_rot) cos(ee_rot) 0; 0 0 1];\n\n% moving platform vertex locations\nvertex_locs = "
-      "[330 90 210]*pi/180;\np_in_m = p_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];\n\n% x_des = zeros(3,1);\np"
-      "_in_w = x_des*ones(1,3) + rot_m2w*p_in_m;\n\n% base vertex positions\nb_in_w = b_rad*[cos(vertex_locs);sin(verte"
-      "x_locs);zeros(1,3)];\n\nvertex_dist = p_in_w - b_in_w;\n\nmacro_leg_len = zeros(3,1);\nmacro_leg_len(1,1) = norm"
-      "(vertex_dist(:,1));\nmacro_leg_len(2,1) = norm(vertex_dist(:,2));\nmacro_leg_len(3,1) = norm(vertex_dist(:,3));"
+      "ngths can be solved for.\n\n% moving platform radius\np_rad = 45.00; %[mm]\n\n% base radius\nb_rad = 162.32;% 15"
+      "8.04; %[mm]\n\n% position of flexure centers\n% radius of position of flexure center\nf_rad = 80; %[mm]\nalpha ="
+      " [-40 80 200]*pi/180;\nf_in_w = f_rad*[cos(alpha);sin(alpha);zeros(1,3)];\n\n% position of twa pivot point, take"
+      "n from CAD\n% radius of position of twa pivot\nm_rad = 11.915;\nbeta = [-102.82 17.18 137.18]*pi/180;\nm_in_w = "
+      "m_rad*[cos(beta);sin(beta);zeros(1,3)];\n \n% rotation matrix of moving frame about z-xis\n% ee_rot = pi/6;\nrot"
+      "_m2w = [cos(ee_rot) -sin(ee_rot) 0; sin(ee_rot) cos(ee_rot) 0; 0 0 1];\n\n% moving platform vertex locations\nve"
+      "rtex_locs = [330 90 210]*pi/180;\np_in_m = p_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];\n\n% x_des = ze"
+      "ros(3,1);\np_in_w = x_des*ones(1,3) + rot_m2w*p_in_m;\n\n% base vertex positions\nb_in_w = b_rad*[cos(vertex_loc"
+      "s);sin(vertex_locs);zeros(1,3)];\n\nvertex_dist = p_in_w - b_in_w;\n\nmacro_leg_len = zeros(3,1);\nmacro_leg_len"
+      "(1,1) = norm(vertex_dist(:,1));\nmacro_leg_len(2,1) = norm(vertex_dist(:,2));\nmacro_leg_len(3,1) = norm(vertex_"
+      "dist(:,3));"
       editorLayout	      "100 M4x1[2185 28 874 985]"
     }
   }
@@ -5063,8 +5064,8 @@ Stateflow {
       script		      "function qmacro_des  = fcn(macro_leg_len,velmex_pitch,q_cur)\n% This function solves for command "
       "signal for given desired macro leg\n% lengths\n\nqmacro_des = (q_cur(1:3));\n\nvelmex_limit = 30; %+-30 mm strok"
       "e from starting point at the velmex pivot \n\ninitial_len = [130.115; 129.05; 130.495];\n               \nvelmex"
-      "_stroke = zeros(3,1);\nvelmex_stroke(1,1) = macro_leg_len(1,1) - initial_len(1,1);\nvelmex_stroke(2,1) = macro_l"
-      "eg_len(2,1) - initial_len(2,1);\nvelmex_stroke(3,1) = macro_leg_len(3,1) - initial_len(3,1);\n\nif all(abs(velme"
+      "_stroke = zeros(3,1);\nvelmex_stroke(1,1) = initial_len(1,1) - macro_leg_len(1,1);\nvelmex_stroke(2,1) = initial"
+      "_len(2,1) - macro_leg_len(2,1);\nvelmex_stroke(3,1) = initial_len(3,1) - macro_leg_len(3,1);\n\nif all(abs(velme"
       "x_stroke) < velmex_limit);\n    qmacro_des = velmex_stroke / velmex_pitch;\nend"
       editorLayout	      "100 M4x1[2185 28 874 985]"
     }
