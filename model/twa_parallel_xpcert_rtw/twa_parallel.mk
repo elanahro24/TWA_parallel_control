@@ -62,7 +62,7 @@ DEBUG_BUILD     = 0
 #  EXT_MODE        - yes (1) or no (0): Build for external mode
 
 MODEL           = twa_parallel
-MODULES         = global_vars.c rtGetInf.c rtGetNaN.c rt_logging.c rt_logging_mmi.c rt_nonfinite.c rt_pow_snf.c rtw_modelmap_utils.c stgmembs.c twa_parallel_capi.c twa_parallel_data.c xpc_datatype_ground.c 
+MODULES         = global_vars.c rtGetInf.c rtGetNaN.c rt_atan2_snf.c rt_logging.c rt_logging_mmi.c rt_nonfinite.c rt_pow_snf.c rtw_modelmap_utils.c stgmembs.c twa_parallel_capi.c twa_parallel_data.c xpc_datatype_ground.c 
 MAKEFILE        = twa_parallel.mk
 MATLAB_ROOT     = C:\MATLAB\R2010a
 ALT_MATLAB_ROOT = C:\MATLAB\R2010a

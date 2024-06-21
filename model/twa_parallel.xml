@@ -788,8 +788,8 @@ MATLAB Function/p7</sigName>
 		</SubSystem>
 	</SubSystem>
 	<SubSystem>
-		<Name>GetMacroLegLen</Name>
-		<xPCName>twa_parallel/GetMacroLegLen</xPCName>
+		<Name>GetLegLen</Name>
+		<xPCName>twa_parallel/GetLegLen</xPCName>
 	</SubSystem>
 	<SubSystem>
 		<Name>GetMacroQDes</Name>
@@ -830,16 +830,6 @@ MATLAB Function/p7</sigName>
 		</parameter>
 	</block>
 	<block>
-		<blkName>micro_leg_len</blkName>
-		<xpcblkName>micro_leg_len</xpcblkName>
-		<SLblockPath>twa_parallel/micro_leg_len</SLblockPath>
-		<isSrc>[1 0 1]</isSrc>
-		<parameter>
-			<paramName>Value</paramName>
-			<dim>[3, 1]</dim>
-		</parameter>
-	</block>
-	<block>
 		<blkName>q_des</blkName>
 		<xpcblkName>q_des</xpcblkName>
 		<SLblockPath>twa_parallel/q_des</SLblockPath>
@@ -847,6 +837,16 @@ MATLAB Function/p7</sigName>
 		<parameter>
 			<paramName>Value</paramName>
 			<dim>[6, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>twa_actuation</blkName>
+		<xpcblkName>twa_actuation</xpcblkName>
+		<SLblockPath>twa_parallel/twa_actuation</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[3, 1]</dim>
 		</parameter>
 	</block>
 	<block>
@@ -891,9 +891,51 @@ MATLAB Function/p7</sigName>
 			<dim>[1, 1]</dim>
 		</parameter>
 	</block>
+	<block>
+		<blkName>Unit Delay</blkName>
+		<xpcblkName>Unit Delay</xpcblkName>
+		<SLblockPath>twa_parallel/Unit Delay</SLblockPath>
+		<isSrc>[0 1 1]</isSrc>
+		<parameter>
+			<paramName>X0</paramName>
+			<dim>[3, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>Unit Delay1</blkName>
+		<xpcblkName>Unit Delay1</xpcblkName>
+		<SLblockPath>twa_parallel/Unit Delay1</SLblockPath>
+		<isSrc>[0 1 1]</isSrc>
+		<parameter>
+			<paramName>X0</paramName>
+			<dim>[3, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>Unit Delay2</blkName>
+		<xpcblkName>Unit Delay2</xpcblkName>
+		<SLblockPath>twa_parallel/Unit Delay2</SLblockPath>
+		<isSrc>[0 1 1]</isSrc>
+		<parameter>
+			<paramName>X0</paramName>
+			<dim>[3, 1]</dim>
+		</parameter>
+	</block>
 	<signal>
-		<sigName>GetMacroLegLen</sigName>
-		<xpcsigName>GetMacroLegLen</xpcsigName>
+		<sigName>GetLegLen/p1</sigName>
+		<xpcsigName>GetLegLen/p1</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>GetLegLen/p2</sigName>
+		<xpcsigName>GetLegLen/p2</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>GetLegLen/p3</sigName>
+		<xpcsigName>GetLegLen/p3</xpcsigName>
 		<sigWidth>3</sigWidth>
 		<sigDim>[3, 1]</sigDim>
 	</signal>
@@ -914,5 +956,23 @@ MATLAB Function/p7</sigName>
 		<xpcsigName>Switch</xpcsigName>
 		<sigWidth>6</sigWidth>
 		<sigDim>[6, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Unit Delay</sigName>
+		<xpcsigName>Unit Delay</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Unit Delay1</sigName>
+		<xpcsigName>Unit Delay1</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Unit Delay2</sigName>
+		<xpcsigName>Unit Delay2</xpcsigName>
+		<sigWidth>3</sigWidth>
+		<sigDim>[3, 1]</sigDim>
 	</signal>
 </Root>

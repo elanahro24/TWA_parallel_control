@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6705
+ * Model version              : 1.6743
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Tue Jun 18 15:08:15 2024
+ * C source code generated on : Fri Jun 21 16:16:36 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -29,9 +29,12 @@
 #include "dt_info.h"
 #include "ext_work.h"
 #include "rt_nonfinite.h"
+#include "rt_defines.h"
 #include "rtGetInf.h"
 #include "rtGetNaN.h"
+#include "rt_MAXd_snf.h"
 #include "rt_SATURATE.h"
+#include "rt_atan2_snf.h"
 #include "rt_pow_snf.h"
 #endif                                 /* twa_parallel_COMMON_INCLUDES_ */
 
@@ -823,11 +826,14 @@ typedef struct {
   real_T Diff[6];                      /* '<S15>/Diff' */
   real_T DiscreteFIRFilter_h[6];       /* '<S20>/Discrete FIR Filter' */
   real_T Gain_n[6];                    /* '<S20>/Gain' */
+  real_T UnitDelay1[3];                /* '<Root>/Unit Delay1' */
+  real_T UnitDelay2[3];                /* '<Root>/Unit Delay2' */
+  real_T UnitDelay[3];                 /* '<Root>/Unit Delay' */
   real_T Switch[6];                    /* '<Root>/Switch' */
   real_T DigitalClock;                 /* '<S6>/Digital Clock' */
-  real_T UnitDelay;                    /* '<S6>/Unit Delay' */
-  real_T UnitDelay1;                   /* '<S6>/Unit Delay1' */
-  real_T UnitDelay2[6];                /* '<S6>/Unit Delay2' */
+  real_T UnitDelay_k;                  /* '<S6>/Unit Delay' */
+  real_T UnitDelay1_b;                 /* '<S6>/Unit Delay1' */
+  real_T UnitDelay2_n[6];              /* '<S6>/Unit Delay2' */
   real_T Switch_f[6];                  /* '<S19>/Switch' */
   real_T Sum[6];                       /* '<S5>/Sum' */
   real_T Kp[6];                        /* '<S5>/Kp' */
@@ -853,7 +859,9 @@ typedef struct {
   real_T qmicro_des[3];                /* '<Root>/GetMicroQDes' */
   real_T TmpSignalConversionAtSFunctio_i[6];/* '<Root>/GetMacroQDes' */
   real_T qmacro_des[3];                /* '<Root>/GetMacroQDes' */
-  real_T macro_leg_len[3];             /* '<Root>/GetMacroLegLen' */
+  real_T macro_leg_len[3];             /* '<Root>/GetLegLen' */
+  real_T micro_leg_len[3];             /* '<Root>/GetLegLen' */
+  real_T x_cur[3];                     /* '<Root>/GetLegLen' */
   boolean_T NSampleEnable;             /* '<S19>/N-Sample Enable' */
 } BlockIO_twa_parallel;
 
@@ -862,9 +870,12 @@ typedef struct {
   real_T DiscreteFIRFilter_states[6];  /* '<S16>/Discrete FIR Filter' */
   real_T UD_DSTATE[6];                 /* '<S15>/UD' */
   real_T DiscreteFIRFilter_states_m[6];/* '<S20>/Discrete FIR Filter' */
-  real_T UnitDelay_DSTATE;             /* '<S6>/Unit Delay' */
-  real_T UnitDelay1_DSTATE;            /* '<S6>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE[6];         /* '<S6>/Unit Delay2' */
+  real_T UnitDelay1_DSTATE[3];         /* '<Root>/Unit Delay1' */
+  real_T UnitDelay2_DSTATE[3];         /* '<Root>/Unit Delay2' */
+  real_T UnitDelay_DSTATE[3];          /* '<Root>/Unit Delay' */
+  real_T UnitDelay_DSTATE_e;           /* '<S6>/Unit Delay' */
+  real_T UnitDelay1_DSTATE_h;          /* '<S6>/Unit Delay1' */
+  real_T UnitDelay2_DSTATE_k[6];       /* '<S6>/Unit Delay2' */
   real_T UD_DSTATE_o[6];               /* '<S17>/UD' */
   int32_T DiscreteFIRFilter_circBuf;   /* '<S16>/Discrete FIR Filter' */
   int32_T DiscreteFIRFilter_circBuf_l; /* '<S20>/Discrete FIR Filter' */
@@ -884,15 +895,15 @@ typedef struct {
   uint8_T is_active_c22_twa_parallel;  /* '<S6>/Embedded MATLAB Function' */
   uint8_T is_active_c2_twa_parallel;   /* '<Root>/GetMicroQDes' */
   uint8_T is_active_c4_twa_parallel;   /* '<Root>/GetMacroQDes' */
-  uint8_T is_active_c1_twa_parallel;   /* '<Root>/GetMacroLegLen' */
+  uint8_T is_active_c1_twa_parallel;   /* '<Root>/GetLegLen' */
   boolean_T isStable;                  /* '<S6>/Embedded MATLAB Function' */
   boolean_T doneDoubleBufferReInit;    /* '<S6>/Embedded MATLAB Function' */
   boolean_T isStable_b;                /* '<Root>/GetMicroQDes' */
   boolean_T doneDoubleBufferReInit_m;  /* '<Root>/GetMicroQDes' */
   boolean_T isStable_l;                /* '<Root>/GetMacroQDes' */
   boolean_T doneDoubleBufferReInit_n;  /* '<Root>/GetMacroQDes' */
-  boolean_T isStable_k;                /* '<Root>/GetMacroLegLen' */
-  boolean_T doneDoubleBufferReInit_f;  /* '<Root>/GetMacroLegLen' */
+  boolean_T isStable_j;                /* '<Root>/GetLegLen' */
+  boolean_T doneDoubleBufferReInit_nx; /* '<Root>/GetLegLen' */
 } D_Work_twa_parallel;
 
 /* Continuous states (auto storage) */
@@ -1021,14 +1032,23 @@ struct Parameters_twa_parallel_ {
   real_T x_des_Value[3];               /* Expression: zeros(3,1)
                                         * Referenced by: '<Root>/x_des'
                                         */
-  real_T ee_rot_Value;                 /* Expression: 0
+  real_T ee_rot_Value;                 /* Expression: pi/6
                                         * Referenced by: '<Root>/ee_rot'
+                                        */
+  real_T UnitDelay1_X0[3];             /* Expression: zeros(3,1)
+                                        * Referenced by: '<Root>/Unit Delay1'
+                                        */
+  real_T UnitDelay2_X0[3];             /* Expression: zeros(3,1)
+                                        * Referenced by: '<Root>/Unit Delay2'
+                                        */
+  real_T UnitDelay_X0[3];              /* Expression: zeros(3,1)
+                                        * Referenced by: '<Root>/Unit Delay'
                                         */
   real_T ee_velmex_pitch_Value;        /* Expression: velmex_pitch
                                         * Referenced by: '<Root>/ee_velmex_pitch'
                                         */
-  real_T micro_leg_len_Value[3];       /* Expression: zeros(3,1)
-                                        * Referenced by: '<Root>/micro_leg_len'
+  real_T twa_actuation_Value[3];       /* Expression: zeros(3,1)
+                                        * Referenced by: '<Root>/twa_actuation'
                                         */
   real_T cntrl_mode_Value;             /* Expression: 0
                                         * Referenced by: '<Root>/cntrl_mode'
@@ -1039,13 +1059,13 @@ struct Parameters_twa_parallel_ {
   real_T tf_Value;                     /* Expression: 5
                                         * Referenced by: '<S6>/tf'
                                         */
-  real_T UnitDelay_X0;                 /* Expression: 0
+  real_T UnitDelay_X0_p;               /* Expression: 0
                                         * Referenced by: '<S6>/Unit Delay'
                                         */
-  real_T UnitDelay1_X0;                /* Expression: 0
+  real_T UnitDelay1_X0_h;              /* Expression: 0
                                         * Referenced by: '<S6>/Unit Delay1'
                                         */
-  real_T UnitDelay2_X0[6];             /* Expression: zeros(6,1)
+  real_T UnitDelay2_X0_d[6];           /* Expression: zeros(6,1)
                                         * Referenced by: '<S6>/Unit Delay2'
                                         */
   real_T quintic_enable_Value;         /* Expression: 1
@@ -1259,7 +1279,7 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  *
  * '<Root>' : twa_parallel
  * '<S1>'   : twa_parallel/Encoders
- * '<S2>'   : twa_parallel/GetMacroLegLen
+ * '<S2>'   : twa_parallel/GetLegLen
  * '<S3>'   : twa_parallel/GetMacroQDes
  * '<S4>'   : twa_parallel/GetMicroQDes
  * '<S5>'   : twa_parallel/PID Controller

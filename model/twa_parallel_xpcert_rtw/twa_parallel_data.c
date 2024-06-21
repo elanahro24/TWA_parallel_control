@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6705
+ * Model version                        : 1.6743
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Tue Jun 18 15:08:15 2024
+ * Real-Time Workshop file generated on : Fri Jun 21 16:16:36 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Tue Jun 18 15:08:15 2024
+ * C/C++ source code generated on       : Fri Jun 21 16:16:36 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -117,15 +117,30 @@ Parameters_twa_parallel twa_parallel_P = {
    * Referenced by: '<Root>/x_des'
    */
   { 0.0, 0.0, 0.0 },
-  0.0,                                 /* Expression: 0
+  5.2359877559829882E-001,             /* Expression: pi/6
                                         * Referenced by: '<Root>/ee_rot'
                                         */
+
+  /*  Expression: zeros(3,1)
+   * Referenced by: '<Root>/Unit Delay1'
+   */
+  { 0.0, 0.0, 0.0 },
+
+  /*  Expression: zeros(3,1)
+   * Referenced by: '<Root>/Unit Delay2'
+   */
+  { 0.0, 0.0, 0.0 },
+
+  /*  Expression: zeros(3,1)
+   * Referenced by: '<Root>/Unit Delay'
+   */
+  { 0.0, 0.0, 0.0 },
   1.27,                                /* Expression: velmex_pitch
                                         * Referenced by: '<Root>/ee_velmex_pitch'
                                         */
 
   /*  Expression: zeros(3,1)
-   * Referenced by: '<Root>/micro_leg_len'
+   * Referenced by: '<Root>/twa_actuation'
    */
   { 0.0, 0.0, 0.0 },
   0.0,                                 /* Expression: 0

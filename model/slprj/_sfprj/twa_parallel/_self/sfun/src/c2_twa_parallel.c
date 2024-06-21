@@ -16,7 +16,7 @@
 
 /* Variable Definitions */
 static const char *c2_debug_family_names[8] = { "init_len", "wire_rad", "q_mu",
-  "nargin", "nargout", "q_cur", "micro_leg_len", "qmicro_des" };
+  "nargin", "nargout", "q_cur", "twa_actuation", "qmicro_des" };
 
 /* Function Declarations */
 static void initialize_c2_twa_parallel(SFc2_twa_parallelInstanceStruct
@@ -179,10 +179,10 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   int32_T c2_i8;
   real_T c2_q_cur[6];
   int32_T c2_i9;
-  real_T c2_micro_leg_len[3];
+  real_T c2_twa_actuation[3];
   uint32_T c2_debug_family_var_map[8];
   static const char *c2_sv0[8] = { "init_len", "wire_rad", "q_mu", "nargin",
-    "nargout", "q_cur", "micro_leg_len", "qmicro_des" };
+    "nargout", "q_cur", "twa_actuation", "qmicro_des" };
 
   real_T c2_init_len[3];
   real_T c2_wire_rad;
@@ -230,10 +230,10 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   int32_T c2_i17;
   int32_T c2_i18;
   real_T (*c2_b_qmicro_des)[3];
-  real_T (*c2_b_micro_leg_len)[3];
+  real_T (*c2_b_twa_actuation)[3];
   real_T (*c2_b_q_cur)[6];
   c2_b_qmicro_des = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 1);
-  c2_b_micro_leg_len = (real_T (*)[3])ssGetInputPortSignal(chartInstance->S, 1);
+  c2_b_twa_actuation = (real_T (*)[3])ssGetInputPortSignal(chartInstance->S, 1);
   c2_b_q_cur = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
   _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,1);
@@ -242,7 +242,7 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   }
 
   for (c2_i4 = 0; c2_i4 < 3; c2_i4 = c2_i4 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c2_b_micro_leg_len)[c2_i4], 1U);
+    _SFD_DATA_RANGE_CHECK((*c2_b_twa_actuation)[c2_i4], 1U);
   }
 
   for (c2_i5 = 0; c2_i5 < 3; c2_i5 = c2_i5 + 1) {
@@ -257,7 +257,7 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   }
 
   for (c2_i7 = 0; c2_i7 < 3; c2_i7 = c2_i7 + 1) {
-    c2_b_hoistedGlobal[c2_i7] = (*c2_b_micro_leg_len)[c2_i7];
+    c2_b_hoistedGlobal[c2_i7] = (*c2_b_twa_actuation)[c2_i7];
   }
 
   for (c2_i8 = 0; c2_i8 < 6; c2_i8 = c2_i8 + 1) {
@@ -265,7 +265,7 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   }
 
   for (c2_i9 = 0; c2_i9 < 3; c2_i9 = c2_i9 + 1) {
-    c2_micro_leg_len[c2_i9] = c2_b_hoistedGlobal[c2_i9];
+    c2_twa_actuation[c2_i9] = c2_b_hoistedGlobal[c2_i9];
   }
 
   sf_debug_symbol_scope_push_eml(0U, 8U, 8U, c2_sv0, c2_debug_family_var_map);
@@ -275,7 +275,7 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   sf_debug_symbol_scope_add_eml(&c2_nargin, c2_c_sf_marshall, 3U);
   sf_debug_symbol_scope_add_eml(&c2_nargout, c2_c_sf_marshall, 4U);
   sf_debug_symbol_scope_add_eml(&c2_q_cur, c2_b_sf_marshall, 5U);
-  sf_debug_symbol_scope_add_eml(&c2_micro_leg_len, c2_sf_marshall, 6U);
+  sf_debug_symbol_scope_add_eml(&c2_twa_actuation, c2_sf_marshall, 6U);
   sf_debug_symbol_scope_add_eml(&c2_qmicro_des, c2_sf_marshall, 7U);
   CV_EML_FCN(0, 0);
 
@@ -302,11 +302,11 @@ static void sf_c2_twa_parallel(SFc2_twa_parallelInstanceStruct *chartInstance)
   }
 
   _SFD_EML_CALL(0,11);
-  c2_q_mu[0] = c2_init_len[0] - c2_micro_leg_len[0];
+  c2_q_mu[0] = c2_init_len[0] - c2_twa_actuation[0];
   _SFD_EML_CALL(0,12);
-  c2_q_mu[1] = c2_init_len[1] - c2_micro_leg_len[1];
+  c2_q_mu[1] = c2_init_len[1] - c2_twa_actuation[1];
   _SFD_EML_CALL(0,13);
-  c2_q_mu[2] = c2_init_len[2] - c2_micro_leg_len[2];
+  c2_q_mu[2] = c2_init_len[2] - c2_twa_actuation[2];
   _SFD_EML_CALL(0,15);
   c2_A = c2_mpower(chartInstance, 2.258E+002) - c2_mpower(chartInstance,
     c2_q_mu[0]);
@@ -844,10 +844,10 @@ static void init_dsm_address_info(SFc2_twa_parallelInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c2_twa_parallel_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(688753221U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3404623629U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(914582318U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(823946499U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4114109200U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1811401319U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(341648610U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(523206912U);
 }
 
 mxArray *sf_c2_twa_parallel_get_autoinheritance_info(void)
@@ -861,10 +861,10 @@ mxArray *sf_c2_twa_parallel_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(1451098487U);
-    pr[1] = (double)(2942143618U);
-    pr[2] = (double)(537015542U);
-    pr[3] = (double)(766492832U);
+    pr[0] = (double)(3792451665U);
+    pr[1] = (double)(113668331U);
+    pr[2] = (double)(243399206U);
+    pr[3] = (double)(1553093214U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -1013,7 +1013,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
             unsigned int dimVector[1];
             dimVector[0]= 3;
             _SFD_SET_DATA_PROPS(1,1,1,0,SF_DOUBLE,1,&(dimVector[0]),0,0,0,0.0,
-                                1.0,0,"micro_leg_len",0,(MexFcnForType)
+                                1.0,0,"twa_actuation",0,(MexFcnForType)
                                 c2_sf_marshall);
           }
 
@@ -1052,15 +1052,15 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
         {
           real_T (*c2_q_cur)[6];
-          real_T (*c2_micro_leg_len)[3];
+          real_T (*c2_twa_actuation)[3];
           real_T (*c2_qmicro_des)[3];
           c2_qmicro_des = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S,
             1);
-          c2_micro_leg_len = (real_T (*)[3])ssGetInputPortSignal
+          c2_twa_actuation = (real_T (*)[3])ssGetInputPortSignal
             (chartInstance->S, 1);
           c2_q_cur = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
           _SFD_SET_DATA_VALUE_PTR(0U, c2_q_cur);
-          _SFD_SET_DATA_VALUE_PTR(1U, c2_micro_leg_len);
+          _SFD_SET_DATA_VALUE_PTR(1U, c2_twa_actuation);
           _SFD_SET_DATA_VALUE_PTR(2U, c2_qmicro_des);
         }
       }
@@ -1226,10 +1226,10 @@ static void mdlSetWorkWidths_c2_twa_parallel(SimStruct *S)
     sf_set_sfun_dwork_info(S);
   }
 
-  ssSetChecksum0(S,(2310143247U));
-  ssSetChecksum1(S,(2792969952U));
-  ssSetChecksum2(S,(3328058715U));
-  ssSetChecksum3(S,(2979424155U));
+  ssSetChecksum0(S,(497496266U));
+  ssSetChecksum1(S,(3610788975U));
+  ssSetChecksum2(S,(4235019371U));
+  ssSetChecksum3(S,(1132430700U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }
