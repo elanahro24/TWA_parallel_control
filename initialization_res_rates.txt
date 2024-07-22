@@ -1,0 +1,39 @@
+% An initialization/homing procedure for TWA parallel robot using
+% resolved-rates-like algorithm
+% Elan Ahronovich
+
+q_home = [physically measured leg lengths];
+t_wave = [0;0];
+r_wave = R(z,30deg);
+
+p_in_w = [0 0 0; 1 1 1; 2 2 2];
+b_in_w = [0 0 0; 1 1 1; 2 2 2];
+
+
+q_nom = inv_kin(t_wave,r_wave,p_in_w,b_in_w);
+
+eq = q_home - q_nom;
+
+while norm(eq) > 0.1
+	qdot = kp * eq;
+
+	jac = get3RPRjac(p_in_w,b_in_w);
+	tdot = jac*qdot;
+
+	v = tdot(1:2,1);
+	w = tdot(3,1);
+
+	t_wave = t_wave + v*dt;
+
+	del_r = r([0;0;1],w);
+
+	r_wave = del_r * r_wave;
+
+	for i = 1:3 
+		p_in_w(:,i) = t_wave + r_wave*p_in_w(:,i); 
+		q_cur(1,i) = norm(p_in_w(:,i) - b_in_w(:,i));
+	end
+
+	eq = q_home - q_cur; 
+
+end
