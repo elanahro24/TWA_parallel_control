@@ -2,18 +2,29 @@
 % controller and turn off torque to all the motors then, reset the
 % encoders. Set q_des to zeros and reenable PID controller.
 function ResetEncoders(tg)
+% disable quintic polynomial
+tg.EnableQuintic(0);
+
 % turn off PID controller    
 SetPidMode(tg,0);
 
-% reset encoders
-id = tg.getparamid('Encoders/enc_reset','Value');
-tg.setparam(id,1);
-pause(1);
-tg.setparam(id,0);
+% reset enocder counts
+enc_id = tg.getparamid('Encoders/enc_reset','Value');
+tg.setparam(enc_id,1);
 
 % reset q_des to zeros
 SetQdes(tg,zeros(6,1));
 
-% turn on PID Controller
+% integrator reset is necessary to eliminate effect of steady state error 
+reset_s_id = tg.getparamid('PID Controller/reset_integrator','Value');
+tg.setparam(reset_s_id,1);
+
+% turn off the encoder reset bit
+tg.setparam(enc_id,0);
+
+% set integrator reset back to 0
+tg.setparam(reset_s_id,0);
+
+% turn PID Controller back on
 SetPidMode(tg,1);
 end

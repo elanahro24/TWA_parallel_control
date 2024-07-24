@@ -180,7 +180,7 @@ static void sf_c4_twa_parallel(SFc4_twa_parallelInstanceStruct *chartInstance)
   c4_qmacro_des = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 1);
   c4_macro_leg_len = (real_T (*)[3])ssGetInputPortSignal(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,2);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,3);
   for (c4_i3 = 0; c4_i3 < 3; c4_i3 = c4_i3 + 1) {
     _SFD_DATA_RANGE_CHECK((*c4_macro_leg_len)[c4_i3], 0U);
   }
@@ -281,7 +281,7 @@ static void c4_c4_twa_parallel(SFc4_twa_parallelInstanceStruct *chartInstance)
   c4_b_velmex_pitch = (real_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c4_b_qmacro_des = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 1);
   c4_b_macro_leg_len = (real_T (*)[3])ssGetInputPortSignal(chartInstance->S, 0);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,2);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,3);
   for (c4_i6 = 0; c4_i6 < 3; c4_i6 = c4_i6 + 1) {
     c4_hoistedGlobal[c4_i6] = (*c4_b_macro_leg_len)[c4_i6];
   }
@@ -452,7 +452,7 @@ static void c4_c4_twa_parallel(SFc4_twa_parallelInstanceStruct *chartInstance)
     (*c4_b_qmacro_des)[c4_i24] = c4_qmacro_des[c4_i24];
   }
 
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,2);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,3);
 }
 
 static void init_script_number_translation(uint32_T c4_machineNumber, uint32_T

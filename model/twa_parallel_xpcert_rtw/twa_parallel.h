@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6743
+ * Model version              : 1.6812
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Fri Jun 21 16:16:36 2024
+ * C source code generated on : Wed Jul 24 11:51:19 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -28,11 +28,11 @@
 #include "rt_logging.h"
 #include "dt_info.h"
 #include "ext_work.h"
+#include "rt_zcfcn.h"
 #include "rt_nonfinite.h"
 #include "rt_defines.h"
 #include "rtGetInf.h"
 #include "rtGetNaN.h"
-#include "rt_MAXd_snf.h"
 #include "rt_SATURATE.h"
 #include "rt_atan2_snf.h"
 #include "rt_pow_snf.h"
@@ -806,120 +806,149 @@ typedef struct {
   real_T EncoderInput_o4;              /* '<S1>/Encoder Input' */
   real_T EncoderInput_o5;              /* '<S1>/Encoder Input' */
   real_T EncoderInput_o6;              /* '<S1>/Encoder Input' */
-  real_T enc_res;                      /* '<S8>/enc_res' */
-  real_T gear_ratio;                   /* '<S8>/gear_ratio' */
-  real_T enc_res_l;                    /* '<S9>/enc_res' */
-  real_T gear_ratio_p;                 /* '<S9>/gear_ratio' */
-  real_T enc_res_f;                    /* '<S10>/enc_res' */
-  real_T gear_ratio_c;                 /* '<S10>/gear_ratio' */
-  real_T enc_res_c;                    /* '<S11>/enc_res' */
-  real_T gear_ratio_l;                 /* '<S11>/gear_ratio' */
-  real_T enc_res_fa;                   /* '<S12>/enc_res' */
-  real_T gear_ratio_j;                 /* '<S12>/gear_ratio' */
-  real_T enc_res_b;                    /* '<S13>/enc_res' */
-  real_T gear_ratio_n;                 /* '<S13>/gear_ratio' */
+  real_T enc_res;                      /* '<S7>/enc_res' */
+  real_T gear_ratio;                   /* '<S7>/gear_ratio' */
+  real_T enc_res_l;                    /* '<S8>/enc_res' */
+  real_T gear_ratio_p;                 /* '<S8>/gear_ratio' */
+  real_T enc_res_f;                    /* '<S9>/enc_res' */
+  real_T gear_ratio_c;                 /* '<S9>/gear_ratio' */
+  real_T enc_res_c;                    /* '<S10>/enc_res' */
+  real_T gear_ratio_l;                 /* '<S10>/gear_ratio' */
+  real_T enc_res_fa;                   /* '<S11>/enc_res' */
+  real_T gear_ratio_j;                 /* '<S11>/gear_ratio' */
+  real_T enc_res_b;                    /* '<S12>/enc_res' */
+  real_T gear_ratio_n;                 /* '<S12>/gear_ratio' */
   real_T TmpSignalConversionAtDiscreteFI[6];
-  real_T DiscreteFIRFilter[6];         /* '<S16>/Discrete FIR Filter' */
-  real_T Gain[6];                      /* '<S16>/Gain' */
-  real_T TSamp[6];                     /* '<S15>/TSamp' */
-  real_T Uk1[6];                       /* '<S15>/UD' */
-  real_T Diff[6];                      /* '<S15>/Diff' */
-  real_T DiscreteFIRFilter_h[6];       /* '<S20>/Discrete FIR Filter' */
-  real_T Gain_n[6];                    /* '<S20>/Gain' */
-  real_T UnitDelay1[3];                /* '<Root>/Unit Delay1' */
-  real_T UnitDelay2[3];                /* '<Root>/Unit Delay2' */
-  real_T UnitDelay[3];                 /* '<Root>/Unit Delay' */
-  real_T Switch[6];                    /* '<Root>/Switch' */
-  real_T DigitalClock;                 /* '<S6>/Digital Clock' */
-  real_T UnitDelay_k;                  /* '<S6>/Unit Delay' */
-  real_T UnitDelay1_b;                 /* '<S6>/Unit Delay1' */
-  real_T UnitDelay2_n[6];              /* '<S6>/Unit Delay2' */
-  real_T Switch_f[6];                  /* '<S19>/Switch' */
-  real_T Sum[6];                       /* '<S5>/Sum' */
-  real_T Kp[6];                        /* '<S5>/Kp' */
-  real_T Integrator[6];                /* '<S5>/Integrator' */
-  real_T Ki[6];                        /* '<S5>/Ki' */
-  real_T saturate_int[6];              /* '<S5>/saturate_int' */
-  real_T TSamp_h[6];                   /* '<S17>/TSamp' */
-  real_T Uk1_j[6];                     /* '<S17>/UD' */
-  real_T Diff_d[6];                    /* '<S17>/Diff' */
-  real_T Kd[6];                        /* '<S5>/Kd' */
-  real_T Add[6];                       /* '<S5>/Add' */
-  real_T Saturation[6];                /* '<S5>/Saturation' */
-  real_T Switch_i[6];                  /* '<S5>/Switch' */
-  real_T TmpSignalConversionAtSFunctionI[6];/* '<S6>/Embedded MATLAB Function' */
-  real_T q_cmd[6];                     /* '<S6>/Embedded MATLAB Function' */
-  real_T q_dot[6];                     /* '<S6>/Embedded MATLAB Function' */
-  real_T q_dub_dot[6];                 /* '<S6>/Embedded MATLAB Function' */
-  real_T confn;                        /* '<S6>/Embedded MATLAB Function' */
-  real_T t0n;                          /* '<S6>/Embedded MATLAB Function' */
-  real_T q0n[6];                       /* '<S6>/Embedded MATLAB Function' */
-  real_T robot_mov;                    /* '<S6>/Embedded MATLAB Function' */
-  real_T TmpSignalConversionAtSFunctio_e[6];/* '<Root>/GetMicroQDes' */
-  real_T qmicro_des[3];                /* '<Root>/GetMicroQDes' */
-  real_T TmpSignalConversionAtSFunctio_i[6];/* '<Root>/GetMacroQDes' */
-  real_T qmacro_des[3];                /* '<Root>/GetMacroQDes' */
-  real_T macro_leg_len[3];             /* '<Root>/GetLegLen' */
-  real_T micro_leg_len[3];             /* '<Root>/GetLegLen' */
-  real_T x_cur[3];                     /* '<Root>/GetLegLen' */
-  boolean_T NSampleEnable;             /* '<S19>/N-Sample Enable' */
+  real_T DiscreteFIRFilter[6];         /* '<S15>/Discrete FIR Filter' */
+  real_T Gain[6];                      /* '<S15>/Gain' */
+  real_T TSamp[6];                     /* '<S14>/TSamp' */
+  real_T Uk1[6];                       /* '<S14>/UD' */
+  real_T Diff[6];                      /* '<S14>/Diff' */
+  real_T DiscreteFIRFilter_h[6];       /* '<S22>/Discrete FIR Filter' */
+  real_T Gain_n[6];                    /* '<S22>/Gain' */
+  real_T UnitDelay5[3];                /* '<S2>/Unit Delay5' */
+  real_T UnitDelay3[3];                /* '<S2>/Unit Delay3' */
+  real_T UnitDelay2[9];                /* '<S2>/Unit Delay2' */
+  real_T UnitDelay4;                   /* '<S2>/Unit Delay4' */
+  real_T Switch;                       /* '<S17>/Switch' */
+  real_T UnitDelay1[3];                /* '<S6>/Unit Delay1' */
+  real_T UnitDelay2_c[3];              /* '<S6>/Unit Delay2' */
+  real_T UnitDelay[3];                 /* '<S6>/Unit Delay' */
+  real_T cntrl_switch[6];              /* '<Root>/cntrl_switch' */
+  real_T DigitalClock;                 /* '<S4>/Digital Clock' */
+  real_T UnitDelay_k;                  /* '<S4>/Unit Delay' */
+  real_T UnitDelay1_b;                 /* '<S4>/Unit Delay1' */
+  real_T UnitDelay2_n[6];              /* '<S4>/Unit Delay2' */
+  real_T Switch_f[6];                  /* '<S21>/Switch' */
+  real_T Sum[6];                       /* '<S3>/Sum' */
+  real_T Kp[6];                        /* '<S3>/Kp' */
+  real_T Integrator[6];                /* '<S3>/Integrator' */
+  real_T Ki[6];                        /* '<S3>/Ki' */
+  real_T saturate_int[6];              /* '<S3>/saturate_int' */
+  real_T TSamp_h[6];                   /* '<S18>/TSamp' */
+  real_T Uk1_j[6];                     /* '<S18>/UD' */
+  real_T Diff_d[6];                    /* '<S18>/Diff' */
+  real_T Kd[6];                        /* '<S3>/Kd' */
+  real_T Add[6];                       /* '<S3>/Add' */
+  real_T Saturation[6];                /* '<S3>/Saturation' */
+  real_T Switch_i[6];                  /* '<S3>/Switch' */
+  real_T TmpSignalConversionAtSFunctionI[6];/* '<S27>/GetMicroQDes' */
+  real_T qmicro_des[3];                /* '<S27>/GetMicroQDes' */
+  real_T TmpSignalConversionAtSFunctio_a[6];/* '<S27>/GetMacroQDes' */
+  real_T qmacro_des[3];                /* '<S27>/GetMacroQDes' */
+  real_T macro_leg_len[3];             /* '<S6>/GetLegLen' */
+  real_T micro_leg_len[3];             /* '<S6>/GetLegLen' */
+  real_T x_cur[3];                     /* '<S6>/GetLegLen' */
+  real_T TmpSignalConversionAtSFunctio_c[6];/* '<S4>/Embedded MATLAB Function' */
+  real_T q_cmd[6];                     /* '<S4>/Embedded MATLAB Function' */
+  real_T q_dot[6];                     /* '<S4>/Embedded MATLAB Function' */
+  real_T q_dub_dot[6];                 /* '<S4>/Embedded MATLAB Function' */
+  real_T confn;                        /* '<S4>/Embedded MATLAB Function' */
+  real_T t0n;                          /* '<S4>/Embedded MATLAB Function' */
+  real_T q0n[6];                       /* '<S4>/Embedded MATLAB Function' */
+  real_T robot_mov;                    /* '<S4>/Embedded MATLAB Function' */
+  real_T TmpSignalConversionAtSFunctio_n[6];/* '<S2>/Homing' */
+  real_T qdes[6];                      /* '<S2>/Homing' */
+  real_T eq_out[3];                    /* '<S2>/Homing' */
+  real_T twave_out[3];                 /* '<S2>/Homing' */
+  real_T rwave_out[9];                 /* '<S2>/Homing' */
+  real_T counter_out;                  /* '<S2>/Homing' */
+  boolean_T NSampleEnable;             /* '<S17>/N-Sample Enable' */
+  boolean_T NSampleEnable_c;           /* '<S21>/N-Sample Enable' */
 } BlockIO_twa_parallel;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
-  real_T DiscreteFIRFilter_states[6];  /* '<S16>/Discrete FIR Filter' */
-  real_T UD_DSTATE[6];                 /* '<S15>/UD' */
-  real_T DiscreteFIRFilter_states_m[6];/* '<S20>/Discrete FIR Filter' */
-  real_T UnitDelay1_DSTATE[3];         /* '<Root>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE[3];         /* '<Root>/Unit Delay2' */
-  real_T UnitDelay_DSTATE[3];          /* '<Root>/Unit Delay' */
-  real_T UnitDelay_DSTATE_e;           /* '<S6>/Unit Delay' */
-  real_T UnitDelay1_DSTATE_h;          /* '<S6>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE_k[6];       /* '<S6>/Unit Delay2' */
-  real_T UD_DSTATE_o[6];               /* '<S17>/UD' */
-  int32_T DiscreteFIRFilter_circBuf;   /* '<S16>/Discrete FIR Filter' */
-  int32_T DiscreteFIRFilter_circBuf_l; /* '<S20>/Discrete FIR Filter' */
-  uint32_T NSampleEnable_Counter;      /* '<S19>/N-Sample Enable' */
+  real_T DiscreteFIRFilter_states[6];  /* '<S15>/Discrete FIR Filter' */
+  real_T UD_DSTATE[6];                 /* '<S14>/UD' */
+  real_T DiscreteFIRFilter_states_m[6];/* '<S22>/Discrete FIR Filter' */
+  real_T UnitDelay5_DSTATE[3];         /* '<S2>/Unit Delay5' */
+  real_T UnitDelay3_DSTATE[3];         /* '<S2>/Unit Delay3' */
+  real_T UnitDelay2_DSTATE[9];         /* '<S2>/Unit Delay2' */
+  real_T UnitDelay4_DSTATE;            /* '<S2>/Unit Delay4' */
+  real_T UnitDelay1_DSTATE[3];         /* '<S6>/Unit Delay1' */
+  real_T UnitDelay2_DSTATE_p[3];       /* '<S6>/Unit Delay2' */
+  real_T UnitDelay_DSTATE[3];          /* '<S6>/Unit Delay' */
+  real_T UnitDelay_DSTATE_e;           /* '<S4>/Unit Delay' */
+  real_T UnitDelay1_DSTATE_h;          /* '<S4>/Unit Delay1' */
+  real_T UnitDelay2_DSTATE_k[6];       /* '<S4>/Unit Delay2' */
+  real_T UD_DSTATE_o[6];               /* '<S18>/UD' */
+  int32_T DiscreteFIRFilter_circBuf;   /* '<S15>/Discrete FIR Filter' */
+  int32_T DiscreteFIRFilter_circBuf_l; /* '<S22>/Discrete FIR Filter' */
+  uint32_T NSampleEnable_Counter;      /* '<S17>/N-Sample Enable' */
+  uint32_T NSampleEnable_Counter_h;    /* '<S21>/N-Sample Enable' */
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK;                   /* '<S22>/S-Function' */
+  } SFunction_IWORK;                   /* '<S24>/S-Function' */
 
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK_j;                 /* '<S21>/S-Function' */
+  } SFunction_IWORK_j;                 /* '<S23>/S-Function' */
 
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK_i;                 /* '<S23>/S-Function' */
+  } SFunction_IWORK_i;                 /* '<S25>/S-Function' */
 
-  uint8_T is_active_c22_twa_parallel;  /* '<S6>/Embedded MATLAB Function' */
-  uint8_T is_active_c2_twa_parallel;   /* '<Root>/GetMicroQDes' */
-  uint8_T is_active_c4_twa_parallel;   /* '<Root>/GetMacroQDes' */
-  uint8_T is_active_c1_twa_parallel;   /* '<Root>/GetLegLen' */
-  boolean_T isStable;                  /* '<S6>/Embedded MATLAB Function' */
-  boolean_T doneDoubleBufferReInit;    /* '<S6>/Embedded MATLAB Function' */
-  boolean_T isStable_b;                /* '<Root>/GetMicroQDes' */
-  boolean_T doneDoubleBufferReInit_m;  /* '<Root>/GetMicroQDes' */
-  boolean_T isStable_l;                /* '<Root>/GetMacroQDes' */
-  boolean_T doneDoubleBufferReInit_n;  /* '<Root>/GetMacroQDes' */
-  boolean_T isStable_j;                /* '<Root>/GetLegLen' */
-  boolean_T doneDoubleBufferReInit_nx; /* '<Root>/GetLegLen' */
+  struct {
+    int_T AcquireOK;
+  } SFunction_IWORK_m;                 /* '<S19>/S-Function' */
+
+  uint8_T is_active_c2_twa_parallel;   /* '<S27>/GetMicroQDes' */
+  uint8_T is_active_c4_twa_parallel;   /* '<S27>/GetMacroQDes' */
+  uint8_T is_active_c1_twa_parallel;   /* '<S6>/GetLegLen' */
+  uint8_T is_active_c22_twa_parallel;  /* '<S4>/Embedded MATLAB Function' */
+  uint8_T is_active_c3_twa_parallel;   /* '<S2>/Homing' */
+  boolean_T isStable;                  /* '<S27>/GetMicroQDes' */
+  boolean_T doneDoubleBufferReInit;    /* '<S27>/GetMicroQDes' */
+  boolean_T isStable_m;                /* '<S27>/GetMacroQDes' */
+  boolean_T doneDoubleBufferReInit_k;  /* '<S27>/GetMacroQDes' */
+  boolean_T isStable_o;                /* '<S6>/GetLegLen' */
+  boolean_T doneDoubleBufferReInit_p;  /* '<S6>/GetLegLen' */
+  boolean_T isStable_n;                /* '<S4>/Embedded MATLAB Function' */
+  boolean_T doneDoubleBufferReInit_b;  /* '<S4>/Embedded MATLAB Function' */
+  boolean_T isStable_j;                /* '<S2>/Homing' */
+  boolean_T doneDoubleBufferReInit_h;  /* '<S2>/Homing' */
 } D_Work_twa_parallel;
 
 /* Continuous states (auto storage) */
 typedef struct {
-  real_T Integrator_CSTATE[6];         /* '<S5>/Integrator' */
+  real_T Integrator_CSTATE[6];         /* '<S3>/Integrator' */
 } ContinuousStates_twa_parallel;
 
 /* State derivatives (auto storage) */
 typedef struct {
-  real_T Integrator_CSTATE[6];         /* '<S5>/Integrator' */
+  real_T Integrator_CSTATE[6];         /* '<S3>/Integrator' */
 } StateDerivatives_twa_parallel;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Integrator_CSTATE[6];      /* '<S5>/Integrator' */
+  boolean_T Integrator_CSTATE[6];      /* '<S3>/Integrator' */
 } StateDisabled_twa_parallel;
+
+/* Zero-crossing (trigger) state */
+typedef struct {
+  ZCSigState Integrator_Reset_ZCE;     /* '<S3>/Integrator' */
+} PrevZCSigStates_twa_parallel;
 
 #ifndef ODE8_INTG
 #define ODE8_INTG
@@ -942,6 +971,8 @@ typedef struct {
 #define Parameters                     Parameters_twa_parallel
 #define rtDWork                        twa_parallel_DWork
 #define D_Work                         D_Work_twa_parallel
+#define rtPrevZCSigState               twa_parallel_PrevZCSigState
+#define PrevZCSigStates                PrevZCSigStates_twa_parallel
 
 /* Parameters (auto storage) */
 struct Parameters_twa_parallel_ {
@@ -967,151 +998,184 @@ struct Parameters_twa_parallel_ {
                                         * Referenced by: '<S1>/Encoder Input'
                                         */
   real_T enc_res_Gain;                 /* Expression: 1/enc_res
-                                        * Referenced by: '<S8>/enc_res'
+                                        * Referenced by: '<S7>/enc_res'
                                         */
   real_T gear_ratio_Gain;              /* Expression: 1/gear_rat
-                                        * Referenced by: '<S8>/gear_ratio'
+                                        * Referenced by: '<S7>/gear_ratio'
                                         */
   real_T enc_res_Gain_j;               /* Expression: 1/enc_res
-                                        * Referenced by: '<S9>/enc_res'
+                                        * Referenced by: '<S8>/enc_res'
                                         */
   real_T gear_ratio_Gain_i;            /* Expression: 1/gear_rat
-                                        * Referenced by: '<S9>/gear_ratio'
+                                        * Referenced by: '<S8>/gear_ratio'
                                         */
   real_T enc_res_Gain_jz;              /* Expression: 1/enc_res
-                                        * Referenced by: '<S10>/enc_res'
+                                        * Referenced by: '<S9>/enc_res'
                                         */
   real_T gear_ratio_Gain_d;            /* Expression: 1/gear_rat
-                                        * Referenced by: '<S10>/gear_ratio'
+                                        * Referenced by: '<S9>/gear_ratio'
                                         */
   real_T enc_res_Gain_i;               /* Expression: 1/twa_enc_res
-                                        * Referenced by: '<S11>/enc_res'
+                                        * Referenced by: '<S10>/enc_res'
                                         */
   real_T gear_ratio_Gain_a;            /* Expression: 1/twa_gear_rat
-                                        * Referenced by: '<S11>/gear_ratio'
+                                        * Referenced by: '<S10>/gear_ratio'
                                         */
   real_T enc_res_Gain_g;               /* Expression: 1/twa_enc_res
-                                        * Referenced by: '<S12>/enc_res'
+                                        * Referenced by: '<S11>/enc_res'
                                         */
   real_T gear_ratio_Gain_o;            /* Expression: 1/twa_gear_rat
-                                        * Referenced by: '<S12>/gear_ratio'
+                                        * Referenced by: '<S11>/gear_ratio'
                                         */
   real_T enc_res_Gain_ij;              /* Expression: 1/twa_enc_res
-                                        * Referenced by: '<S13>/enc_res'
+                                        * Referenced by: '<S12>/enc_res'
                                         */
   real_T gear_ratio_Gain_da;           /* Expression: 1/twa_gear_rat
-                                        * Referenced by: '<S13>/gear_ratio'
+                                        * Referenced by: '<S12>/gear_ratio'
                                         */
   real_T vel_filter_coeffs_Value[2];   /* Expression: vel_filter_coeffs
-                                        * Referenced by: '<S16>/vel_filter_coeffs'
+                                        * Referenced by: '<S15>/vel_filter_coeffs'
                                         */
   real_T DiscreteFIRFilter_IC;         /* Expression: 0
-                                        * Referenced by: '<S16>/Discrete FIR Filter'
+                                        * Referenced by: '<S15>/Discrete FIR Filter'
                                         */
   real_T Gain_Gain;                    /* Expression: 1/N_velocity
-                                        * Referenced by: '<S16>/Gain'
+                                        * Referenced by: '<S15>/Gain'
                                         */
   real_T TSamp_WtEt;                   /* Computed Parameter: TSamp_WtEt
-                                        * Referenced by: '<S15>/TSamp'
+                                        * Referenced by: '<S14>/TSamp'
                                         */
   real_T UD_X0;                        /* Expression: ICPrevScaledInput
-                                        * Referenced by: '<S15>/UD'
+                                        * Referenced by: '<S14>/UD'
                                         */
   real_T enc_reset_Value;              /* Expression: 0
                                         * Referenced by: '<S1>/enc_reset'
                                         */
   real_T vel_filter_coeffs_Value_m[2]; /* Expression: vel_filter_coeffs
-                                        * Referenced by: '<S20>/vel_filter_coeffs'
+                                        * Referenced by: '<S22>/vel_filter_coeffs'
                                         */
   real_T DiscreteFIRFilter_IC_b;       /* Expression: 0
-                                        * Referenced by: '<S20>/Discrete FIR Filter'
+                                        * Referenced by: '<S22>/Discrete FIR Filter'
                                         */
   real_T Gain_Gain_d;                  /* Expression: 1/N_velocity
-                                        * Referenced by: '<S20>/Gain'
+                                        * Referenced by: '<S22>/Gain'
                                         */
-  real_T x_des_Value[3];               /* Expression: zeros(3,1)
-                                        * Referenced by: '<Root>/x_des'
+  real_T do_homing_Value;              /* Expression: 0
+                                        * Referenced by: '<S2>/do_homing'
                                         */
-  real_T ee_rot_Value;                 /* Expression: pi/6
-                                        * Referenced by: '<Root>/ee_rot'
+  real_T eq_eps_Value;                 /* Expression: 0.1
+                                        * Referenced by: '<S2>/eq_eps'
                                         */
-  real_T UnitDelay1_X0[3];             /* Expression: zeros(3,1)
-                                        * Referenced by: '<Root>/Unit Delay1'
+  real_T kp_Value;                     /* Expression: 0.5
+                                        * Referenced by: '<S2>/kp'
                                         */
-  real_T UnitDelay2_X0[3];             /* Expression: zeros(3,1)
-                                        * Referenced by: '<Root>/Unit Delay2'
+  real_T dt_Value;                     /* Expression: dt
+                                        * Referenced by: '<S2>/dt'
                                         */
-  real_T UnitDelay_X0[3];              /* Expression: zeros(3,1)
-                                        * Referenced by: '<Root>/Unit Delay'
+  real_T velmex_pitch_Value;           /* Expression: velmex_pitch
+                                        * Referenced by: '<S2>/velmex_pitch'
                                         */
-  real_T ee_velmex_pitch_Value;        /* Expression: velmex_pitch
-                                        * Referenced by: '<Root>/ee_velmex_pitch'
+  real_T UnitDelay5_X0[3];             /* Expression: 0.2*[1; 1; 1]
+                                        * Referenced by: '<S2>/Unit Delay5'
                                         */
-  real_T twa_actuation_Value[3];       /* Expression: zeros(3,1)
-                                        * Referenced by: '<Root>/twa_actuation'
+  real_T UnitDelay3_X0[3];             /* Expression: zeros(3,1)
+                                        * Referenced by: '<S2>/Unit Delay3'
                                         */
-  real_T cntrl_mode_Value;             /* Expression: 0
+  real_T UnitDelay2_X0[9];             /* Expression: [cos(pi/6) -sin(pi/6) 0;sin(pi/6) cos(pi/6) 0;0 0 1];
+                                        * Referenced by: '<S2>/Unit Delay2'
+                                        */
+  real_T UnitDelay4_X0;                /* Expression: 0
+                                        * Referenced by: '<S2>/Unit Delay4'
+                                        */
+  real_T cntrl_mode_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/cntrl_mode'
                                         */
   real_T q_des_Value[6];               /* Expression: zeros(6,1)
                                         * Referenced by: '<Root>/q_des'
                                         */
-  real_T tf_Value;                     /* Expression: 5
-                                        * Referenced by: '<S6>/tf'
+  real_T x_des_Value[3];               /* Expression: zeros(3,1)
+                                        * Referenced by: '<S6>/x_des'
                                         */
-  real_T UnitDelay_X0_p;               /* Expression: 0
-                                        * Referenced by: '<S6>/Unit Delay'
+  real_T ee_rot_Value;                 /* Expression: pi/6
+                                        * Referenced by: '<S6>/ee_rot'
                                         */
-  real_T UnitDelay1_X0_h;              /* Expression: 0
+  real_T UnitDelay1_X0[3];             /* Expression: zeros(3,1)
                                         * Referenced by: '<S6>/Unit Delay1'
                                         */
-  real_T UnitDelay2_X0_d[6];           /* Expression: zeros(6,1)
+  real_T UnitDelay2_X0_p[3];           /* Expression: zeros(3,1)
                                         * Referenced by: '<S6>/Unit Delay2'
                                         */
+  real_T UnitDelay_X0[3];              /* Expression: zeros(3,1)
+                                        * Referenced by: '<S6>/Unit Delay'
+                                        */
+  real_T ee_velmex_pitch_Value;        /* Expression: velmex_pitch
+                                        * Referenced by: '<S27>/ee_velmex_pitch'
+                                        */
+  real_T tf_Value;                     /* Expression: 5
+                                        * Referenced by: '<S4>/tf'
+                                        */
+  real_T UnitDelay_X0_p;               /* Expression: 0
+                                        * Referenced by: '<S4>/Unit Delay'
+                                        */
+  real_T UnitDelay1_X0_h;              /* Expression: 0
+                                        * Referenced by: '<S4>/Unit Delay1'
+                                        */
+  real_T UnitDelay2_X0_d[6];           /* Expression: zeros(6,1)
+                                        * Referenced by: '<S4>/Unit Delay2'
+                                        */
   real_T quintic_enable_Value;         /* Expression: 1
-                                        * Referenced by: '<S6>/quintic_enable'
+                                        * Referenced by: '<S4>/quintic_enable'
                                         */
   real_T Kp_Gain[6];                   /* Expression: K_p
-                                        * Referenced by: '<S5>/Kp'
+                                        * Referenced by: '<S3>/Kp'
+                                        */
+  real_T reset_integrator_Value;       /* Expression: 0
+                                        * Referenced by: '<S3>/reset_integrator'
                                         */
   real_T Integrator_IC;                /* Expression: 0
-                                        * Referenced by: '<S5>/Integrator'
+                                        * Referenced by: '<S3>/Integrator'
                                         */
   real_T Ki_Gain[6];                   /* Expression: K_i
-                                        * Referenced by: '<S5>/Ki'
+                                        * Referenced by: '<S3>/Ki'
                                         */
   real_T saturate_int_UpperSat[6];     /* Expression: [5,5,5,.25,0.25,0.25]
-                                        * Referenced by: '<S5>/saturate_int'
+                                        * Referenced by: '<S3>/saturate_int'
                                         */
   real_T saturate_int_LowerSat[6];     /* Expression: -1*[5,5,5,.25,0.25,0.25]
-                                        * Referenced by: '<S5>/saturate_int'
+                                        * Referenced by: '<S3>/saturate_int'
                                         */
   real_T TSamp_WtEt_p;                 /* Computed Parameter: TSamp_WtEt_p
-                                        * Referenced by: '<S17>/TSamp'
+                                        * Referenced by: '<S18>/TSamp'
                                         */
   real_T UD_X0_f;                      /* Expression: ICPrevScaledInput
-                                        * Referenced by: '<S17>/UD'
+                                        * Referenced by: '<S18>/UD'
                                         */
   real_T Kd_Gain[6];                   /* Expression: K_d
-                                        * Referenced by: '<S5>/Kd'
+                                        * Referenced by: '<S3>/Kd'
                                         */
   real_T Saturation_UpperSat[6];       /* Expression: [10,10,10,2,2,2]
-                                        * Referenced by: '<S5>/Saturation'
+                                        * Referenced by: '<S3>/Saturation'
                                         */
   real_T Saturation_LowerSat[6];       /* Expression: -1*[10,10,10,2,2,2]
-                                        * Referenced by: '<S5>/Saturation'
+                                        * Referenced by: '<S3>/Saturation'
                                         */
   real_T pid_mode_Value;               /* Expression: 0
-                                        * Referenced by: '<S5>/pid_mode'
+                                        * Referenced by: '<S3>/pid_mode'
                                         */
   real_T manual_current_Value[6];      /* Expression: zeros(6,1)
-                                        * Referenced by: '<S5>/manual_current'
+                                        * Referenced by: '<S3>/manual_current'
                                         */
   uint32_T NSampleEnable_TARGETCNT;    /* Computed Parameter: NSampleEnable_TARGETCNT
-                                        * Referenced by: '<S19>/N-Sample Enable'
+                                        * Referenced by: '<S17>/N-Sample Enable'
                                         */
   uint32_T NSampleEnable_ACTLEVEL;     /* Computed Parameter: NSampleEnable_ACTLEVEL
-                                        * Referenced by: '<S19>/N-Sample Enable'
+                                        * Referenced by: '<S17>/N-Sample Enable'
+                                        */
+  uint32_T NSampleEnable_TARGETCNT_p;  /* Computed Parameter: NSampleEnable_TARGETCNT_p
+                                        * Referenced by: '<S21>/N-Sample Enable'
+                                        */
+  uint32_T NSampleEnable_ACTLEVEL_i;   /* Computed Parameter: NSampleEnable_ACTLEVEL_i
+                                        * Referenced by: '<S21>/N-Sample Enable'
                                         */
 };
 
@@ -1254,6 +1318,11 @@ extern ContinuousStates_twa_parallel twa_parallel_X;
 /* Block states (auto storage) */
 extern D_Work_twa_parallel twa_parallel_DWork;
 
+/* External data declarations for dependent source files */
+
+/* Zero-crossing (trigger) state */
+extern PrevZCSigStates_twa_parallel twa_parallel_PrevZCSigState;
+
 /* Model entry point functions */
 extern void twa_parallel_initialize(boolean_T firstTime);
 extern void twa_parallel_output(int_T tid);
@@ -1279,27 +1348,33 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  *
  * '<Root>' : twa_parallel
  * '<S1>'   : twa_parallel/Encoders
- * '<S2>'   : twa_parallel/GetLegLen
- * '<S3>'   : twa_parallel/GetMacroQDes
- * '<S4>'   : twa_parallel/GetMicroQDes
- * '<S5>'   : twa_parallel/PID Controller
- * '<S6>'   : twa_parallel/Quintic Poly
- * '<S7>'   : twa_parallel/Scopes
- * '<S8>'   : twa_parallel/Encoders/Counts To Turns
- * '<S9>'   : twa_parallel/Encoders/Counts To Turns1
- * '<S10>'  : twa_parallel/Encoders/Counts To Turns2
- * '<S11>'  : twa_parallel/Encoders/Counts To Turns3
- * '<S12>'  : twa_parallel/Encoders/Counts To Turns4
- * '<S13>'  : twa_parallel/Encoders/Counts To Turns5
- * '<S14>'  : twa_parallel/Encoders/Derivative
- * '<S15>'  : twa_parallel/Encoders/Derivative/Discrete Derivative
- * '<S16>'  : twa_parallel/Encoders/Derivative/Fir Filter
- * '<S17>'  : twa_parallel/PID Controller/Discrete Derivative
- * '<S18>'  : twa_parallel/Quintic Poly/Embedded MATLAB Function
- * '<S19>'  : twa_parallel/Quintic Poly/N-Sample Switch
- * '<S20>'  : twa_parallel/Scopes/Fir Filter
- * '<S21>'  : twa_parallel/Scopes/q_cur_macro1
- * '<S22>'  : twa_parallel/Scopes/q_cur_macro2
- * '<S23>'  : twa_parallel/Scopes/q_cur_macro3
+ * '<S2>'   : twa_parallel/Homing
+ * '<S3>'   : twa_parallel/PID Controller
+ * '<S4>'   : twa_parallel/Quintic Poly
+ * '<S5>'   : twa_parallel/Scopes
+ * '<S6>'   : twa_parallel/task_space
+ * '<S7>'   : twa_parallel/Encoders/Counts To Turns
+ * '<S8>'   : twa_parallel/Encoders/Counts To Turns1
+ * '<S9>'   : twa_parallel/Encoders/Counts To Turns2
+ * '<S10>'  : twa_parallel/Encoders/Counts To Turns3
+ * '<S11>'  : twa_parallel/Encoders/Counts To Turns4
+ * '<S12>'  : twa_parallel/Encoders/Counts To Turns5
+ * '<S13>'  : twa_parallel/Encoders/Derivative
+ * '<S14>'  : twa_parallel/Encoders/Derivative/Discrete Derivative
+ * '<S15>'  : twa_parallel/Encoders/Derivative/Fir Filter
+ * '<S16>'  : twa_parallel/Homing/Homing
+ * '<S17>'  : twa_parallel/Homing/N-Sample Switch
+ * '<S18>'  : twa_parallel/PID Controller/Discrete Derivative
+ * '<S19>'  : twa_parallel/PID Controller/q_cur_macro3
+ * '<S20>'  : twa_parallel/Quintic Poly/Embedded MATLAB Function
+ * '<S21>'  : twa_parallel/Quintic Poly/N-Sample Switch
+ * '<S22>'  : twa_parallel/Scopes/Fir Filter
+ * '<S23>'  : twa_parallel/Scopes/q_cur_macro1
+ * '<S24>'  : twa_parallel/Scopes/q_cur_macro2
+ * '<S25>'  : twa_parallel/Scopes/q_cur_macro3
+ * '<S26>'  : twa_parallel/task_space/GetLegLen
+ * '<S27>'  : twa_parallel/task_space/gear_ratio
+ * '<S28>'  : twa_parallel/task_space/gear_ratio/GetMacroQDes
+ * '<S29>'  : twa_parallel/task_space/gear_ratio/GetMicroQDes
  */
 #endif                                 /* RTW_HEADER_twa_parallel_h_ */

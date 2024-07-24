@@ -3,6 +3,7 @@
 #include "twa_parallel_sfun.h"
 #include "c1_twa_parallel.h"
 #include "c2_twa_parallel.h"
+#include "c3_twa_parallel.h"
 #include "c4_twa_parallel.h"
 #include "c22_twa_parallel.h"
 
@@ -40,6 +41,11 @@ unsigned int sf_twa_parallel_method_dispatcher(SimStruct *simstructPtr, unsigned
 
   if (chartFileNumber==2) {
     c2_twa_parallel_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
+  if (chartFileNumber==3) {
+    c3_twa_parallel_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
@@ -86,10 +92,10 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1674561162U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3025029129U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2945967229U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1059141790U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3769624768U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(12608541U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3959600479U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1187467832U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
@@ -105,6 +111,13 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
         {
           extern void sf_c2_twa_parallel_get_check_sum(mxArray *plhs[]);
           sf_c2_twa_parallel_get_check_sum(plhs);
+          break;
+        }
+
+       case 3:
+        {
+          extern void sf_c3_twa_parallel_get_check_sum(mxArray *plhs[]);
+          sf_c3_twa_parallel_get_check_sum(plhs);
           break;
         }
 
@@ -137,10 +150,10 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3561742502U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3846705703U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(240098815U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4161942675U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2636133092U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2041946405U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3797663275U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1539605927U);
   }
 
   return 1;
@@ -184,6 +197,13 @@ unsigned int sf_twa_parallel_autoinheritance_info( int nlhs, mxArray * plhs[],
       {
         extern mxArray *sf_c2_twa_parallel_get_autoinheritance_info(void);
         plhs[0] = sf_c2_twa_parallel_get_autoinheritance_info();
+        break;
+      }
+
+     case 3:
+      {
+        extern mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void);
+        plhs[0] = sf_c3_twa_parallel_get_autoinheritance_info();
         break;
       }
 
@@ -258,6 +278,17 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
         break;
       }
 
+     case 3:
+      {
+        extern const mxArray *sf_c3_twa_parallel_get_eml_resolved_functions_info
+          (void);
+        mxArray *persistentMxArray = (mxArray *)
+          sf_c3_twa_parallel_get_eml_resolved_functions_info();
+        plhs[0] = mxDuplicateArray(persistentMxArray);
+        mxDestroyArray(persistentMxArray);
+        break;
+      }
+
      case 4:
       {
         extern const mxArray *sf_c4_twa_parallel_get_eml_resolved_functions_info
@@ -298,7 +329,7 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
 void twa_parallel_debug_initialize(void)
 {
   _twa_parallelMachineNumber_ = sf_debug_initialize_machine("twa_parallel",
-    "sfun",0,4,0,0,0);
+    "sfun",0,5,0,0,0);
   sf_debug_set_machine_event_thresholds(_twa_parallelMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_twa_parallelMachineNumber_,0);
 }

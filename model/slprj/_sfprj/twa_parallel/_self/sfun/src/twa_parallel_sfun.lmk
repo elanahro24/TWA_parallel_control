@@ -10,6 +10,7 @@ OBJECTS = \
 	"twa_parallel_sfun_registry.obj"\
 	"c1_twa_parallel.obj"\
 	"c2_twa_parallel.obj"\
+	"c3_twa_parallel.obj"\
 	"c4_twa_parallel.obj"\
 	"c22_twa_parallel.obj"\
 	"lccstub.obj"\
@@ -37,6 +38,8 @@ c1_twa_parallel.obj :	"c1_twa_parallel.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_twa_parallel.c"
 c2_twa_parallel.obj :	"c2_twa_parallel.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_twa_parallel.c"
+c3_twa_parallel.obj :	"c3_twa_parallel.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_twa_parallel.c"
 c4_twa_parallel.obj :	"c4_twa_parallel.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_twa_parallel.c"
 c22_twa_parallel.obj :	"c22_twa_parallel.c"

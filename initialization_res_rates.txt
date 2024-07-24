@@ -6,6 +6,7 @@ q_home = [physically measured leg lengths];
 t_wave = [0;0];
 r_wave = R(z,30deg);
 
+% nominal locations of moving platform verteces and base verteces
 p_in_w = [0 0 0; 1 1 1; 2 2 2];
 b_in_w = [0 0 0; 1 1 1; 2 2 2];
 
@@ -31,9 +32,9 @@ while norm(eq) > 0.1
 
 	for i = 1:3 
 		p_in_w(:,i) = t_wave + r_wave*p_in_w(:,i); 
-		q_cur(1,i) = norm(p_in_w(:,i) - b_in_w(:,i));
+		q_des(1,i) = norm(p_in_w(:,i) - b_in_w(:,i));
 	end
 
-	eq = q_home - q_cur; 
+	eq = q_home - q_des; 
 
 end

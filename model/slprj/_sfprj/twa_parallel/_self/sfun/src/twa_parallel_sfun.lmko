@@ -2,6 +2,7 @@
 "twa_parallel_sfun_registry.obj"
 "c1_twa_parallel.obj"
 "c2_twa_parallel.obj"
+"c3_twa_parallel.obj"
 "c4_twa_parallel.obj"
 "c22_twa_parallel.obj"
 "lccstub.obj"
