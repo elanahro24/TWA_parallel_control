@@ -376,46 +376,27 @@
 		<Name>Homing</Name>
 		<xPCName>twa_parallel/Homing</xPCName>
 		<SubSystem>
-			<Name>N-Sample
-Switch</Name>
-			<xPCName>twa_parallel/Homing/N-Sample Switch</xPCName>
-			<block>
-				<blkName>N-Sample
-Enable</blkName>
-				<xpcblkName>Homing/N-Sample Switch/N-Sample Enable</xpcblkName>
-				<SLblockPath>twa_parallel/Homing/N-Sample Switch/N-Sample Enable</SLblockPath>
-				<isSrc>[1 0 1]</isSrc>
-				<parameter>
-					<paramName>TARGETCNT</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-				<parameter>
-					<paramName>ACTLEVEL</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<signal>
-				<sigName>N-Sample
-Enable</sigName>
-				<xpcsigName>Homing/N-Sample Switch/N-Sample Enable</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>Switch</sigName>
-				<xpcsigName>Homing/N-Sample Switch/Switch</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-		</SubSystem>
-		<SubSystem>
 			<Name>Homing</Name>
 			<xPCName>twa_parallel/Homing/Homing</xPCName>
 		</SubSystem>
+		<SubSystem>
+			<Name>get initial eq</Name>
+			<xPCName>twa_parallel/Homing/get initial eq</xPCName>
+		</SubSystem>
 		<block>
-			<blkName>do_homing</blkName>
-			<xpcblkName>Homing/do_homing</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/do_homing</SLblockPath>
+			<blkName>b_in_w</blkName>
+			<xpcblkName>Homing/b_in_w</xpcblkName>
+			<SLblockPath>twa_parallel/Homing/b_in_w</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>dt</blkName>
+			<xpcblkName>Homing/dt</xpcblkName>
+			<SLblockPath>twa_parallel/Homing/dt</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -423,9 +404,9 @@ Enable</sigName>
 			</parameter>
 		</block>
 		<block>
-			<blkName>dt</blkName>
-			<xpcblkName>Homing/dt</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/dt</SLblockPath>
+			<blkName>ee_rot</blkName>
+			<xpcblkName>Homing/ee_rot</xpcblkName>
+			<SLblockPath>twa_parallel/Homing/ee_rot</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -453,6 +434,26 @@ Enable</sigName>
 			</parameter>
 		</block>
 		<block>
+			<blkName>meas_macro_len</blkName>
+			<xpcblkName>Homing/meas_macro_len</xpcblkName>
+			<SLblockPath>twa_parallel/Homing/meas_macro_len</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>p_in_m</blkName>
+			<xpcblkName>Homing/p_in_m</xpcblkName>
+			<SLblockPath>twa_parallel/Homing/p_in_m</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
 			<blkName>velmex_pitch</blkName>
 			<xpcblkName>Homing/velmex_pitch</xpcblkName>
 			<SLblockPath>twa_parallel/Homing/velmex_pitch</SLblockPath>
@@ -460,6 +461,16 @@ Enable</sigName>
 			<parameter>
 				<paramName>Value</paramName>
 				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Unit Delay1</blkName>
+			<xpcblkName>Homing/Unit Delay1</xpcblkName>
+			<SLblockPath>twa_parallel/Homing/Unit Delay1</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>X0</paramName>
+				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
 		<block>
@@ -489,16 +500,6 @@ Enable</sigName>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>X0</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>Unit Delay5</blkName>
-			<xpcblkName>Homing/Unit Delay5</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/Unit Delay5</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
 				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
@@ -523,14 +524,32 @@ Enable</sigName>
 		<signal>
 			<sigName>Homing/p4</sigName>
 			<xpcsigName>Homing/Homing/p4</xpcsigName>
-			<sigWidth>9</sigWidth>
-			<sigDim>[3, 3]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Homing/p5</sigName>
 			<xpcsigName>Homing/Homing/p5</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
+			<sigWidth>9</sigWidth>
+			<sigDim>[3, 3]</sigDim>
+		</signal>
+		<signal>
+			<sigName>get initial eq/p1</sigName>
+			<xpcsigName>Homing/get initial eq/p1</xpcsigName>
+			<sigWidth>9</sigWidth>
+			<sigDim>[3, 3]</sigDim>
+		</signal>
+		<signal>
+			<sigName>get initial eq/p2</sigName>
+			<xpcsigName>Homing/get initial eq/p2</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Unit Delay1</sigName>
+			<xpcsigName>Homing/Unit Delay1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Unit Delay2</sigName>
@@ -547,12 +566,6 @@ Enable</sigName>
 		<signal>
 			<sigName>Unit Delay4</sigName>
 			<xpcsigName>Homing/Unit Delay4</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay5</sigName>
-			<xpcsigName>Homing/Unit Delay5</xpcsigName>
 			<sigWidth>3</sigWidth>
 			<sigDim>[3, 1]</sigDim>
 		</signal>
@@ -1118,6 +1131,16 @@ MATLAB Function/p7</sigName>
 		<blkName>cntrl_mode</blkName>
 		<xpcblkName>cntrl_mode</xpcblkName>
 		<SLblockPath>twa_parallel/cntrl_mode</SLblockPath>
+		<isSrc>[1 0 1]</isSrc>
+		<parameter>
+			<paramName>Value</paramName>
+			<dim>[1, 1]</dim>
+		</parameter>
+	</block>
+	<block>
+		<blkName>do_homing</blkName>
+		<xpcblkName>do_homing</xpcblkName>
+		<SLblockPath>twa_parallel/do_homing</SLblockPath>
 		<isSrc>[1 0 1]</isSrc>
 		<parameter>
 			<paramName>Value</paramName>

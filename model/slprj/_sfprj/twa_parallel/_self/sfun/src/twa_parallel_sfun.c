@@ -5,6 +5,7 @@
 #include "c2_twa_parallel.h"
 #include "c3_twa_parallel.h"
 #include "c4_twa_parallel.h"
+#include "c5_twa_parallel.h"
 #include "c22_twa_parallel.h"
 
 /* Type Definitions */
@@ -54,6 +55,11 @@ unsigned int sf_twa_parallel_method_dispatcher(SimStruct *simstructPtr, unsigned
     return 1;
   }
 
+  if (chartFileNumber==5) {
+    c5_twa_parallel_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
   if (chartFileNumber==22) {
     c22_twa_parallel_method_dispatcher(simstructPtr, method, data);
     return 1;
@@ -92,10 +98,10 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3769624768U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(12608541U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3959600479U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1187467832U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1928089839U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2611823296U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(611811035U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3994663466U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
@@ -128,6 +134,13 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
           break;
         }
 
+       case 5:
+        {
+          extern void sf_c5_twa_parallel_get_check_sum(mxArray *plhs[]);
+          sf_c5_twa_parallel_get_check_sum(plhs);
+          break;
+        }
+
        case 22:
         {
           extern void sf_c22_twa_parallel_get_check_sum(mxArray *plhs[]);
@@ -150,10 +163,10 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2636133092U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2041946405U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3797663275U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1539605927U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3774844599U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(704608426U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4214518707U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(246799503U);
   }
 
   return 1;
@@ -211,6 +224,13 @@ unsigned int sf_twa_parallel_autoinheritance_info( int nlhs, mxArray * plhs[],
       {
         extern mxArray *sf_c4_twa_parallel_get_autoinheritance_info(void);
         plhs[0] = sf_c4_twa_parallel_get_autoinheritance_info();
+        break;
+      }
+
+     case 5:
+      {
+        extern mxArray *sf_c5_twa_parallel_get_autoinheritance_info(void);
+        plhs[0] = sf_c5_twa_parallel_get_autoinheritance_info();
         break;
       }
 
@@ -300,6 +320,17 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
         break;
       }
 
+     case 5:
+      {
+        extern const mxArray *sf_c5_twa_parallel_get_eml_resolved_functions_info
+          (void);
+        mxArray *persistentMxArray = (mxArray *)
+          sf_c5_twa_parallel_get_eml_resolved_functions_info();
+        plhs[0] = mxDuplicateArray(persistentMxArray);
+        mxDestroyArray(persistentMxArray);
+        break;
+      }
+
      case 22:
       {
         extern const mxArray
@@ -329,7 +360,7 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
 void twa_parallel_debug_initialize(void)
 {
   _twa_parallelMachineNumber_ = sf_debug_initialize_machine("twa_parallel",
-    "sfun",0,5,0,0,0);
+    "sfun",0,6,0,0,0);
   sf_debug_set_machine_event_thresholds(_twa_parallelMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_twa_parallelMachineNumber_,0);
 }
