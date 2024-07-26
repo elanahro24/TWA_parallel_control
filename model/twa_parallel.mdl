@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6855"
+    ComputedModelVersion    "1.6857"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jul 25 18:35:33 2024"
-  RTWModifiedTimeStamp	  643833331
-  ModelVersionFormat	  "1.%<AutoIncrement:6855>"
+  LastModifiedDate	  "Fri Jul 26 17:14:52 2024"
+  RTWModifiedTimeStamp	  643914888
+  ModelVersionFormat	  "1.%<AutoIncrement:6857>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1806,9 +1806,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "136"
+    ZoomFactor		    "210"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3259
+    SIDHighWatermark	    3260
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -2819,7 +2819,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Homing"
-	Location		[696, 122, 1591, 1037]
+	Location		[533, 100, 1475, 966]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2831,7 +2831,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"152"
+	ZoomFactor		"162"
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_cur"
@@ -2851,41 +2851,11 @@ Model {
 	}
 	Block {
 	  BlockType		  From
-	  Name			  "From"
-	  SID			  3247
-	  Position		  [520, 480, 545, 500]
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  ShowName		  off
-	  GotoTag		  "A"
-	}
-	Block {
-	  BlockType		  From
 	  Name			  "From1"
 	  SID			  3254
 	  Position		  [60, 160, 85, 180]
 	  ShowName		  off
 	  GotoTag		  "A"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From2"
-	  SID			  3251
-	  Position		  [520, 500, 545, 520]
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  ShowName		  off
-	  GotoTag		  "B"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From3"
-	  SID			  3252
-	  Position		  [520, 520, 545, 540]
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  ShowName		  off
-	  GotoTag		  "C"
 	}
 	Block {
 	  BlockType		  From
@@ -3352,211 +3322,11 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "ee_rot"
-	  SID			  3240
-	  Position		  [515, 441, 550, 459]
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  Value			  "pi/6"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
 	  Name			  "eq_eps"
 	  SID			  3207
 	  Position		  [40, 61, 60, 79]
 	  Value			  "0.1"
 	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "get initial eq"
-	  SID			  3234
-	  Ports			  [4, 2]
-	  Position		  [375, 458, 485, 542]
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  LibraryVersion	  "1.31"
-	  PermitHierarchicalResolution "ExplicitOnly"
-	  TreatAsAtomicUnit	  on
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    0
-	    PropName		    "AvailSigsLoadSave"
-	  }
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "Stateflow"
-	  MaskDescription	  "Embedded MATLAB block"
-	  MaskDisplay		  "disp('fcn');"
-	  MaskSelfModifiable	  on
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  off
-	  MaskIconRotate	  "none"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  System {
-	    Name		    "get initial eq"
-	    Location		    [257, 457, 812, 717]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    SIDHighWatermark	    21
-	    SIDPrevWatermark	    13
-	    Block {
-	      BlockType		      Inport
-	      Name		      "ee_rot"
-	      SID		      20
-	      Position		      [20, 101, 40, 119]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "p_in_m"
-	      SID		      1
-	      Position		      [20, 136, 40, 154]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	      OutDataType	      "sfix(16)"
-	      OutScaling	      "2^0"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "b_in_w"
-	      SID		      18
-	      Position		      [20, 171, 40, 189]
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "meas_macro_len"
-	      SID		      19
-	      Position		      [20, 206, 40, 224]
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Demux
-	      Name		      " Demux "
-	      SID		      15
-	      Ports		      [1, 1]
-	      Position		      [270, 205, 320, 245]
-	      Outputs		      "1"
-	    }
-	    Block {
-	      BlockType		      "S-Function"
-	      Name		      " SFunction "
-	      SID		      14
-	      Tag		      "Stateflow S-Function twa_parallel 5"
-	      Ports		      [4, 3]
-	      Position		      [180, 102, 230, 203]
-	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[4 3]"
-	      EnableBusSupport	      on
-	      Port {
-		PortNumber		2
-		Name			"rm2w"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		3
-		Name			"eq_start"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      " Terminator "
-	      SID		      17
-	      Position		      [460, 216, 480, 234]
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "rm2w"
-	      SID		      21
-	      Position		      [460, 101, 480, 119]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "eq_start"
-	      SID		      5
-	      Position		      [460, 136, 480, 154]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	      OutDataType	      "sfix(16)"
-	      OutScaling	      "2^0"
-	    }
-	    Line {
-	      SrcBlock		      " SFunction "
-	      SrcPort		      1
-	      DstBlock		      " Demux "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "ee_rot"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "p_in_m"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "b_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "meas_macro_len"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      4
-	    }
-	    Line {
-	      Name		      "rm2w"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      2
-	      DstBlock		      "rm2w"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "eq_start"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      3
-	      DstBlock		      "eq_start"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " Demux "
-	      SrcPort		      1
-	      DstBlock		      " Terminator "
-	      DstPort		      1
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Constant
@@ -3666,13 +3436,6 @@ Model {
 	  DstPort		  9
 	}
 	Line {
-	  SrcBlock		  "ee_rot"
-	  SrcPort		  1
-	  Points		  [-10, 0]
-	  DstBlock		  "get initial eq"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "Homing"
 	  SrcPort		  5
 	  Points		  [10, 0; 0, 70]
@@ -3693,12 +3456,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "get initial eq"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "b_in_w"
 	  SrcPort		  1
 	  DstBlock		  "Goto1"
@@ -3709,18 +3466,6 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Goto2"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From2"
-	  SrcPort		  1
-	  DstBlock		  "get initial eq"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From3"
-	  SrcPort		  1
-	  DstBlock		  "get initial eq"
-	  DstPort		  4
 	}
 	Line {
 	  SrcBlock		  "From5"
@@ -4814,7 +4559,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Scopes"
-	Location		[858, 407, 1826, 929]
+	Location		[864, 325, 1832, 847]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -5154,7 +4899,7 @@ Model {
       BlockType		      Constant
       Name		      "do_homing"
       SID		      3239
-      Position		      [166, 360, 184, 380]
+      Position		      [166, 355, 184, 375]
       BlockRotation	      270
       BlockMirror	      on
       NamePlacement	      "alternate"
@@ -5184,7 +4929,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"task_space"
-	Location		[2, 83, 1070, 717]
+	Location		[2, 83, 1212, 768]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -6145,7 +5890,7 @@ Stateflow {
     name		    "twa_parallel"
     created		    "16-Jul-2009 15:54:41"
     isLibrary		    0
-    firstTarget		    85
+    firstTarget		    74
     debug {
     }
     sfVersion		    75014000
@@ -7227,27 +6972,25 @@ Stateflow {
   }
   chart {
     id			    54
-    name		    "Homing/get initial eq"
-    windowPosition	    [375.75 203.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
+    name		    "Quintic Poly/Embedded\nMATLAB Function"
+    windowPosition	    [1008 -716.25 998 1455]
+    viewLimits		    [0 471 0 348.75]
     screen		    [1 1 1920 1080 1.333333333333333]
     treeNode		    [0 55 0 0]
     firstTransition	    57
     firstJunction	    56
     viewObj		    54
     machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
-    ssIdHighWaterMark	    9
+    ssIdHighWaterMark	    33
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    58
-    chartFileNumber	    5
+    chartFileNumber	    22
     disableImplicitCasting  1
     eml {
-      name		      "fcn"
+      name		      "fifth_order_p"
     }
+    supportVariableSizing   0
   }
   state {
     id			    55
@@ -7258,214 +7001,6 @@ Stateflow {
     treeNode		    [54 0 0 0]
     superState		    SUBCHART
     subviewer		    54
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "%this function calculates the error in leg lengths for the first iteration\n% of the resolved rat"
-      "es initialization process\nfunction [rm2w,eq_start] = fcn(ee_rot,p_in_m,b_in_w,meas_macro_len)\n%#eml\nrm2w = [c"
-      "os(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];\n\n% moving platform starts at the origin with 30 de"
-      "gree rotation\np_in_w = zeros(3,3) + rm2w*p_in_m;\n\nqnom = zeros(3,1);\nqnom(1,1) = norm(p_in_w(:,1) - b_in_w(:"
-      ",1));\nqnom(2,1) = norm(p_in_w(:,2) - b_in_w(:,2));\nqnom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));\neq_start = me"
-      "as_macro_len - qnom;\n"
-      editorLayout	      "100 M4x1[725 8 1161 1047]"
-    }
-  }
-  junction {
-    id			    56
-    position		    [23.5747 49.5747 7]
-    chart		    54
-    linkNode		    [54 0 0]
-    subviewer		    54
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    57
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      56
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    54
-    linkNode		    [54 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    54
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    58
-    ssIdNumber		    9
-    name		    "rm2w"
-    linkNode		    [54 0 59]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    59
-    ssIdNumber		    8
-    name		    "ee_rot"
-    linkNode		    [54 58 60]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    60
-    ssIdNumber		    4
-    name		    "p_in_m"
-    linkNode		    [54 59 61]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    61
-    ssIdNumber		    5
-    name		    "eq_start"
-    linkNode		    [54 60 62]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    62
-    ssIdNumber		    6
-    name		    "b_in_w"
-    linkNode		    [54 61 63]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    63
-    ssIdNumber		    7
-    name		    "meas_macro_len"
-    linkNode		    [54 62 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    64
-    name		    "Homing/get initial eq"
-    machine		    1
-    chart		    54
-  }
-  chart {
-    id			    65
-    name		    "Quintic Poly/Embedded\nMATLAB Function"
-    windowPosition	    [1008 -716.25 998 1455]
-    viewLimits		    [0 471 0 348.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 66 0 0]
-    firstTransition	    68
-    firstJunction	    67
-    viewObj		    65
-    machine		    1
-    ssIdHighWaterMark	    33
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    69
-    chartFileNumber	    22
-    disableImplicitCasting  1
-    eml {
-      name		      "fifth_order_p"
-    }
-    supportVariableSizing   0
-  }
-  state {
-    id			    66
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    65
-    treeNode		    [65 0 0 0]
-    superState		    SUBCHART
-    subviewer		    65
     ssIdNumber		    1
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
@@ -7493,16 +7028,16 @@ Stateflow {
     }
   }
   junction {
-    id			    67
+    id			    56
     position		    [23.5747 49.5747 7]
-    chart		    65
-    linkNode		    [65 0 0]
-    subviewer		    65
+    chart		    54
+    linkNode		    [54 0 0]
+    subviewer		    54
     ssIdNumber		    3
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    68
+    id			    57
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.7 14.971]
     fontSize		    12
@@ -7510,14 +7045,14 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      67
+      id		      56
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
-    chart		    65
-    linkNode		    [65 0 0]
+    chart		    54
+    linkNode		    [54 0 0]
     dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    65
+    subviewer		    54
     drawStyle		    SMART
     slide {
       sticky		      BOTH_STICK
@@ -7526,10 +7061,249 @@ Stateflow {
     ssIdNumber		    2
   }
   data {
-    id			    69
+    id			    58
     ssIdNumber		    31
     name		    "q_cmd"
-    linkNode		    [65 0 70]
+    linkNode		    [54 0 59]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    59
+    ssIdNumber		    4
+    name		    "q_des"
+    linkNode		    [54 58 60]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    60
+    ssIdNumber		    27
+    name		    "q_curr"
+    linkNode		    [54 59 61]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    61
+    ssIdNumber		    28
+    name		    "tf"
+    linkNode		    [54 60 62]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    62
+    ssIdNumber		    13
+    name		    "tc"
+    linkNode		    [54 61 63]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    63
+    ssIdNumber		    25
+    name		    "q_dot"
+    linkNode		    [54 62 64]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    64
+    ssIdNumber		    32
+    name		    "q_dub_dot"
+    linkNode		    [54 63 65]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    65
+    ssIdNumber		    11
+    name		    "conf"
+    linkNode		    [54 64 66]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    66
+    ssIdNumber		    12
+    name		    "confn"
+    linkNode		    [54 65 67]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    67
+    ssIdNumber		    18
+    name		    "t0"
+    linkNode		    [54 66 68]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    68
+    ssIdNumber		    14
+    name		    "t0n"
+    linkNode		    [54 67 69]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    69
+    ssIdNumber		    15
+    name		    "q0n"
+    linkNode		    [54 68 70]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7549,9 +7323,9 @@ Stateflow {
   }
   data {
     id			    70
-    ssIdNumber		    4
-    name		    "q_des"
-    linkNode		    [65 69 71]
+    ssIdNumber		    16
+    name		    "q0"
+    linkNode		    [54 69 71]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7561,16 +7335,19 @@ Stateflow {
       type {
 	method			SF_INHERITED_TYPE
 	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    71
-    ssIdNumber		    27
-    name		    "q_curr"
-    linkNode		    [65 70 72]
+    ssIdNumber		    30
+    name		    "enable"
+    linkNode		    [54 70 72]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7590,251 +7367,9 @@ Stateflow {
   }
   data {
     id			    72
-    ssIdNumber		    28
-    name		    "tf"
-    linkNode		    [65 71 73]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    73
-    ssIdNumber		    13
-    name		    "tc"
-    linkNode		    [65 72 74]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    74
-    ssIdNumber		    25
-    name		    "q_dot"
-    linkNode		    [65 73 75]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    75
-    ssIdNumber		    32
-    name		    "q_dub_dot"
-    linkNode		    [65 74 76]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    76
-    ssIdNumber		    11
-    name		    "conf"
-    linkNode		    [65 75 77]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    77
-    ssIdNumber		    12
-    name		    "confn"
-    linkNode		    [65 76 78]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    78
-    ssIdNumber		    18
-    name		    "t0"
-    linkNode		    [65 77 79]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    79
-    ssIdNumber		    14
-    name		    "t0n"
-    linkNode		    [65 78 80]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    80
-    ssIdNumber		    15
-    name		    "q0n"
-    linkNode		    [65 79 81]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    81
-    ssIdNumber		    16
-    name		    "q0"
-    linkNode		    [65 80 82]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    82
-    ssIdNumber		    30
-    name		    "enable"
-    linkNode		    [65 81 83]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    83
     ssIdNumber		    33
     name		    "robot_mov"
-    linkNode		    [65 82 0]
+    linkNode		    [54 71 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7853,24 +7388,24 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   instance {
-    id			    84
+    id			    73
     name		    "Quintic Poly/Embedded\nMATLAB Function"
     machine		    1
-    chart		    65
+    chart		    54
   }
   target {
-    id			    85
+    id			    74
     name		    "sfun"
     codeFlags		    ""
     machine		    1
-    linkNode		    [1 0 86]
+    linkNode		    [1 0 75]
   }
   target {
-    id			    86
+    id			    75
     name		    "rtw"
     codeFlags		    " comments=1 statebitsets=1 databitsets=1 emitlogicalops=1 elseifdetection=1 constantfolding=1 redu"
     "ndantloadelimination=0 preservenames=0 preservenameswithparent=0 exportcharts=0"
     machine		    1
-    linkNode		    [1 85 0]
+    linkNode		    [1 74 0]
   }
 }
