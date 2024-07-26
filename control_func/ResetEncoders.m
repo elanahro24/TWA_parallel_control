@@ -3,10 +3,10 @@
 % encoders. Set q_des to zeros and reenable PID controller.
 function resetencoders(tg)
 % disable quintic polynomial
-tg.EnableQuintic(0);
+tg.enablequintic(0);
 
 % turn off PID controller    
-SetPidMode(tg,0);
+setpidmode(tg,0);
 
 % reset enocder counts
 enc_id = tg.getparamid('Encoders/enc_reset','Value');
@@ -26,6 +26,6 @@ tg.setparam(enc_id,0);
 tg.setparam(reset_s_id,0);
 
 % turn PID Controller and quintic polynomial back on
-SetPidMode(tg,1);
-tg.EnableQuintic(1);
+setpidmode(tg,1);
+tg.enablequintic(1);
 end
