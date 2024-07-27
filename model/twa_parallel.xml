@@ -379,10 +379,6 @@
 			<Name>Homing</Name>
 			<xPCName>twa_parallel/Homing/Homing</xPCName>
 		</SubSystem>
-		<SubSystem>
-			<Name>get initial eq</Name>
-			<xPCName>twa_parallel/Homing/get initial eq</xPCName>
-		</SubSystem>
 		<block>
 			<blkName>b_in_w</blkName>
 			<xpcblkName>Homing/b_in_w</xpcblkName>
@@ -397,16 +393,6 @@
 			<blkName>dt</blkName>
 			<xpcblkName>Homing/dt</xpcblkName>
 			<SLblockPath>twa_parallel/Homing/dt</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>ee_rot</blkName>
-			<xpcblkName>Homing/ee_rot</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/ee_rot</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -532,18 +518,6 @@
 			<xpcsigName>Homing/Homing/p5</xpcsigName>
 			<sigWidth>9</sigWidth>
 			<sigDim>[3, 3]</sigDim>
-		</signal>
-		<signal>
-			<sigName>get initial eq/p1</sigName>
-			<xpcsigName>Homing/get initial eq/p1</xpcsigName>
-			<sigWidth>9</sigWidth>
-			<sigDim>[3, 3]</sigDim>
-		</signal>
-		<signal>
-			<sigName>get initial eq/p2</sigName>
-			<xpcsigName>Homing/get initial eq/p2</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Unit Delay1</sigName>
@@ -1014,9 +988,19 @@ MATLAB Function/p7</sigName>
 				<xPCName>twa_parallel/task_space/gear_ratio/GetMicroQDes</xPCName>
 			</SubSystem>
 			<block>
-				<blkName>ee_velmex_pitch</blkName>
-				<xpcblkName>task_space/gear_ratio/ee_velmex_pitch</xpcblkName>
-				<SLblockPath>twa_parallel/task_space/gear_ratio/ee_velmex_pitch</SLblockPath>
+				<blkName>meas_macro_len</blkName>
+				<xpcblkName>task_space/gear_ratio/meas_macro_len</xpcblkName>
+				<SLblockPath>twa_parallel/task_space/gear_ratio/meas_macro_len</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>velmex_pitch</blkName>
+				<xpcblkName>task_space/gear_ratio/velmex_pitch</xpcblkName>
+				<SLblockPath>twa_parallel/task_space/gear_ratio/velmex_pitch</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -1071,16 +1055,6 @@ MATLAB Function/p7</sigName>
 			</parameter>
 		</block>
 		<block>
-			<blkName>Unit Delay1</blkName>
-			<xpcblkName>task_space/Unit Delay1</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/Unit Delay1</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[3, 1]</dim>
-			</parameter>
-		</block>
-		<block>
 			<blkName>Unit Delay2</blkName>
 			<xpcblkName>task_space/Unit Delay2</xpcblkName>
 			<SLblockPath>twa_parallel/task_space/Unit Delay2</SLblockPath>
@@ -1111,12 +1085,6 @@ MATLAB Function/p7</sigName>
 		<signal>
 			<sigName>Unit Delay</sigName>
 			<xpcsigName>task_space/Unit Delay</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay1</sigName>
-			<xpcsigName>task_space/Unit Delay1</xpcsigName>
 			<sigWidth>3</sigWidth>
 			<sigDim>[3, 1]</sigDim>
 		</signal>

@@ -1618,7 +1618,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     /*  the last leg length and the new leg length */
     _SFD_EML_CALL(0,52);
     for (c3_i184 = 0; c3_i184 < 3; c3_i184 = c3_i184 + 1) {
-      c3_v_A[c3_i184] = c3_measured_len[c3_i184] - c3_des_leg_len[c3_i184];
+      c3_v_A[c3_i184] = c3_des_leg_len[c3_i184] - c3_measured_len[c3_i184];
     }
 
     c3_v_B = c3_velmex_pitch;
@@ -2565,10 +2565,10 @@ static void init_dsm_address_info(SFc3_twa_parallelInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c3_twa_parallel_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4174660877U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1339959007U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3004039193U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1415700140U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1619531107U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1127621031U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1573687453U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2533519424U);
 }
 
 mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
@@ -2582,10 +2582,10 @@ mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(3043451842U);
-    pr[1] = (double)(3633874054U);
-    pr[2] = (double)(224265917U);
-    pr[3] = (double)(1760102700U);
+    pr[0] = (double)(52686302U);
+    pr[1] = (double)(2176574524U);
+    pr[2] = (double)(792429901U);
+    pr[3] = (double)(184182463U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -3358,10 +3358,10 @@ static void mdlSetWorkWidths_c3_twa_parallel(SimStruct *S)
     sf_set_sfun_dwork_info(S);
   }
 
-  ssSetChecksum0(S,(2346785156U));
-  ssSetChecksum1(S,(211032420U));
-  ssSetChecksum2(S,(3594839285U));
-  ssSetChecksum3(S,(3781380574U));
+  ssSetChecksum0(S,(1198929146U));
+  ssSetChecksum1(S,(3147709145U));
+  ssSetChecksum2(S,(1842559415U));
+  ssSetChecksum3(S,(2057444590U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }

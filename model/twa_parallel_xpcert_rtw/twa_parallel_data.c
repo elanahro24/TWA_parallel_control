@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6855
+ * Model version                        : 1.6873
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Thu Jul 25 18:36:06 2024
+ * Real-Time Workshop file generated on : Fri Jul 26 19:20:17 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Thu Jul 25 18:36:06 2024
+ * C/C++ source code generated on       : Fri Jul 26 19:20:17 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -73,9 +73,6 @@ Parameters_twa_parallel twa_parallel_P = {
    */
   { 8.6602540378443871E-001, 4.9999999999999994E-001, 0.0,
     -4.9999999999999994E-001, 8.6602540378443871E-001, 0.0, 0.0, 0.0, 1.0 },
-  5.2359877559829882E-001,             /* Expression: pi/6
-                                        * Referenced by: '<S2>/ee_rot'
-                                        */
   0.002,                               /* Expression: sampletime
                                         * Referenced by: '<Root>/Init'
                                         */
@@ -159,14 +156,14 @@ Parameters_twa_parallel twa_parallel_P = {
                                         */
 
   /*  Expression: vel_filter_coeffs
-   * Referenced by: '<S22>/vel_filter_coeffs'
+   * Referenced by: '<S21>/vel_filter_coeffs'
    */
   { 1.0, 1.0 },
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S22>/Discrete FIR Filter'
+                                        * Referenced by: '<S21>/Discrete FIR Filter'
                                         */
   0.5,                                 /* Expression: 1/N_velocity
-                                        * Referenced by: '<S22>/Gain'
+                                        * Referenced by: '<S21>/Gain'
                                         */
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<Root>/do_homing'
@@ -189,11 +186,6 @@ Parameters_twa_parallel twa_parallel_P = {
                                         */
 
   /*  Expression: zeros(3,1)
-   * Referenced by: '<S6>/Unit Delay1'
-   */
-  { 0.0, 0.0, 0.0 },
-
-  /*  Expression: zeros(3,1)
    * Referenced by: '<S6>/Unit Delay2'
    */
   { 0.0, 0.0, 0.0 },
@@ -202,8 +194,13 @@ Parameters_twa_parallel twa_parallel_P = {
    * Referenced by: '<S6>/Unit Delay'
    */
   { 0.0, 0.0, 0.0 },
+
+  /*  Expression: meas_macro_len
+   * Referenced by: '<S26>/meas_macro_len'
+   */
+  { 1.2479E+002, 125.42, 125.23 },
   1.27,                                /* Expression: velmex_pitch
-                                        * Referenced by: '<S27>/ee_velmex_pitch'
+                                        * Referenced by: '<S26>/velmex_pitch'
                                         */
   5.0,                                 /* Expression: 5
                                         * Referenced by: '<S4>/tf'
@@ -249,10 +246,10 @@ Parameters_twa_parallel twa_parallel_P = {
    */
   { -5.0, -5.0, -5.0, -0.25, -0.25, -0.25 },
   500.0,                               /* Computed Parameter: TSamp_WtEt_p
-                                        * Referenced by: '<S18>/TSamp'
+                                        * Referenced by: '<S17>/TSamp'
                                         */
   0.0,                                 /* Expression: ICPrevScaledInput
-                                        * Referenced by: '<S18>/UD'
+                                        * Referenced by: '<S17>/UD'
                                         */
 
   /*  Expression: K_d
@@ -278,10 +275,10 @@ Parameters_twa_parallel twa_parallel_P = {
    */
   { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
   1U,                                  /* Computed Parameter: NSampleEnable_TARGETCNT
-                                        * Referenced by: '<S21>/N-Sample Enable'
+                                        * Referenced by: '<S20>/N-Sample Enable'
                                         */
   2U                                   /* Computed Parameter: NSampleEnable_ACTLEVEL
-                                        * Referenced by: '<S21>/N-Sample Enable'
+                                        * Referenced by: '<S20>/N-Sample Enable'
                                         */
 };
 
