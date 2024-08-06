@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6873"
+    ComputedModelVersion    "1.6875"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 26 19:16:14 2024"
-  RTWModifiedTimeStamp	  643922169
-  ModelVersionFormat	  "1.%<AutoIncrement:6873>"
+  LastModifiedDate	  "Tue Aug 06 14:01:43 2024"
+  RTWModifiedTimeStamp	  644853656
+  ModelVersionFormat	  "1.%<AutoIncrement:6875>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1794,7 +1794,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [2, 75, 1918, 1019]
+    Location		    [2, 83, 1918, 1027]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -2460,7 +2460,7 @@ Model {
 	      SourceType	      "Discrete Derivative"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -2474,9 +2474,9 @@ Model {
 	      OutputDataTypeScalingMode	"Inherit via internal rule"
 	      OutDataType	      "fixdt(1, 16)"
 	      OutScaling	      "2^-10"
-	      LockScale		      off
+	      LockScale		      "off"
 	      RndMeth		      "Floor"
-	      DoSatur		      off
+	      DoSatur		      "off"
 	    }
 	    Block {
 	      BlockType		      SubSystem
@@ -2819,7 +2819,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Homing"
-	Location		[533, 100, 1475, 966]
+	Location		[531, 68, 1477, 987]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2831,12 +2831,12 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"162"
+	ZoomFactor		"141"
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_cur"
 	  SID			  3217
-	  Position		  [86, 40, 104, 55]
+	  Position		  [136, 120, 154, 135]
 	  BlockRotation		  270
 	  BlockMirror		  on
 	  NamePlacement		  "alternate"
@@ -2847,13 +2847,13 @@ Model {
 	  Name			  "Enable"
 	  SID			  3238
 	  Ports			  []
-	  Position		  [230, 15, 250, 35]
+	  Position		  [200, 15, 220, 35]
 	}
 	Block {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  3254
-	  Position		  [60, 160, 85, 180]
+	  Position		  [110, 240, 135, 260]
 	  ShowName		  off
 	  GotoTag		  "A"
 	}
@@ -2861,7 +2861,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From4"
 	  SID			  3255
-	  Position		  [60, 185, 85, 205]
+	  Position		  [110, 265, 135, 285]
 	  ShowName		  off
 	  GotoTag		  "B"
 	}
@@ -2869,7 +2869,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From5"
 	  SID			  3256
-	  Position		  [60, 210, 85, 230]
+	  Position		  [110, 290, 135, 310]
 	  ShowName		  off
 	  GotoTag		  "C"
 	}
@@ -2877,7 +2877,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  3246
-	  Position		  [390, 17, 415, 33]
+	  Position		  [115, 72, 140, 88]
 	  ShowName		  off
 	  GotoTag		  "A"
 	  TagVisibility		  "local"
@@ -2886,7 +2886,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  3249
-	  Position		  [530, 16, 555, 34]
+	  Position		  [265, 71, 290, 89]
 	  ShowName		  off
 	  GotoTag		  "B"
 	  TagVisibility		  "local"
@@ -2895,7 +2895,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  3250
-	  Position		  [480, 56, 505, 74]
+	  Position		  [430, 71, 455, 89]
 	  ShowName		  off
 	  GotoTag		  "C"
 	  TagVisibility		  "local"
@@ -2905,7 +2905,7 @@ Model {
 	  Name			  "Homing"
 	  SID			  3205
 	  Ports			  [12, 5]
-	  Position		  [110, 64, 215, 351]
+	  Position		  [160, 144, 265, 431]
 	  LibraryVersion	  "1.31"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -2914,11 +2914,6 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    0
-	    PropName		    "AvailSigsLoadSave"
-	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -3268,7 +3263,7 @@ Model {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay1"
 	  SID			  3231
-	  Position		  [150, 493, 175, 527]
+	  Position		  [200, 573, 225, 607]
 	  BlockMirror		  on
 	  ShowName		  off
 	  X0			  "meas_macro_len"
@@ -3278,7 +3273,7 @@ Model {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay2"
 	  SID			  3258
-	  Position		  [150, 373, 175, 407]
+	  Position		  [200, 453, 225, 487]
 	  BlockMirror		  on
 	  ShowName		  off
 	  X0			  "rm2w_homing"
@@ -3288,7 +3283,7 @@ Model {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay3"
 	  SID			  3220
-	  Position		  [150, 413, 175, 447]
+	  Position		  [200, 493, 225, 527]
 	  BlockMirror		  on
 	  ShowName		  off
 	  X0			  "zeros(3,1)"
@@ -3298,7 +3293,7 @@ Model {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay4"
 	  SID			  3259
-	  Position		  [150, 453, 175, 487]
+	  Position		  [200, 533, 225, 567]
 	  BlockMirror		  on
 	  ShowName		  off
 	  X0			  "eq_homing"
@@ -3308,7 +3303,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "b_in_w"
 	  SID			  3236
-	  Position		  [440, 16, 510, 34]
+	  Position		  [175, 71, 245, 89]
 	  Value			  "b_in_w"
 	  SampleTime		  "dt"
 	}
@@ -3316,7 +3311,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "dt"
 	  SID			  3211
-	  Position		  [40, 131, 60, 149]
+	  Position		  [90, 211, 110, 229]
 	  Value			  "dt"
 	  SampleTime		  "dt"
 	}
@@ -3324,7 +3319,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "eq_eps"
 	  SID			  3207
-	  Position		  [40, 61, 60, 79]
+	  Position		  [90, 141, 110, 159]
 	  Value			  "0.1"
 	  SampleTime		  "dt"
 	}
@@ -3332,7 +3327,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "kp"
 	  SID			  3208
-	  Position		  [35, 95, 65, 115]
+	  Position		  [85, 175, 115, 195]
 	  Value			  "0.25"
 	  SampleTime		  "dt"
 	}
@@ -3340,7 +3335,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "meas_macro_len"
 	  SID			  3237
-	  Position		  [375, 55, 460, 75]
+	  Position		  [325, 70, 410, 90]
 	  Value			  "meas_macro_len"
 	  SampleTime		  "dt"
 	}
@@ -3348,7 +3343,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "p_in_m"
 	  SID			  3235
-	  Position		  [305, 16, 375, 34]
+	  Position		  [30, 71, 100, 89]
 	  Value			  "p_in_m"
 	  SampleTime		  "dt"
 	}
@@ -3356,7 +3351,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "velmex_pitch"
 	  SID			  3223
-	  Position		  [15, 236, 85, 254]
+	  Position		  [65, 316, 135, 334]
 	  Value			  "velmex_pitch"
 	  SampleTime		  "dt"
 	}
@@ -3364,7 +3359,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "qcmd"
 	  SID			  3218
-	  Position		  [240, 93, 270, 107]
+	  Position		  [290, 173, 320, 187]
 	  IconDisplay		  "Port number"
 	}
 	Line {
@@ -3594,7 +3589,7 @@ Model {
 	  SourceType		  "Discrete Derivative"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3608,9 +3603,9 @@ Model {
 	  OutputDataTypeScalingMode "Inherit via internal rule"
 	  OutDataType		  "fixdt(1, 16)"
 	  OutScaling		  "2^-10"
-	  LockScale		  off
+	  LockScale		  "off"
 	  RndMeth		  "Floor"
-	  DoSatur		  off
+	  DoSatur		  "off"
 	}
 	Block {
 	  BlockType		  Integrator
@@ -3726,7 +3721,7 @@ Model {
 	  SourceType		  "xpcscopeblock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -3734,10 +3729,10 @@ Model {
 	  RTWMemSecDataParameters "Inherit from model"
 	  scopeno		  "5"
 	  scopetype		  "Target"
-	  autostart		  on
+	  autostart		  "on"
 	  viewmode		  "Numerical"
 	  formatstr		  "qcmd_format"
-	  grid			  on
+	  grid			  "on"
 	  ylimits		  "[0,0]"
 	  nosamples		  "25"
 	  noprepostsamples	  "0"
@@ -3751,8 +3746,8 @@ Model {
 	  filename		  "data.dat"
 	  mode			  "Lazy"
 	  writesize		  "512"
-	  autorestart		  off
-	  dynamicfilemode	  off
+	  autorestart		  "off"
+	  dynamicfilemode	  "off"
 	  maxwritefilesize	  "512*1024^2"
 	}
 	Block {
@@ -3973,11 +3968,6 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    0
-	    PropName		    "AvailSigsLoadSave"
-	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -4343,14 +4333,14 @@ Model {
 	  SourceType		  "N-Sample Switch"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
 	  RTWMemSecDataInternal	  "Inherit from model"
 	  RTWMemSecDataParameters "Inherit from model"
 	  N			  "1"
-	  reset			  off
+	  reset			  "off"
 	  TriggerType		  "Rising edge"
 	  Ts			  "dt"
 	}
@@ -4724,7 +4714,7 @@ Model {
 	  SourceType		  "xpcscopeblock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -4732,10 +4722,10 @@ Model {
 	  RTWMemSecDataParameters "Inherit from model"
 	  scopeno		  "2"
 	  scopetype		  "Target"
-	  autostart		  on
+	  autostart		  "on"
 	  viewmode		  "Numerical"
 	  formatstr		  "qd_format"
-	  grid			  on
+	  grid			  "on"
 	  ylimits		  "[0,0]"
 	  nosamples		  "25"
 	  noprepostsamples	  "0"
@@ -4749,8 +4739,8 @@ Model {
 	  filename		  "data.dat"
 	  mode			  "Lazy"
 	  writesize		  "512"
-	  autorestart		  off
-	  dynamicfilemode	  off
+	  autorestart		  "off"
+	  dynamicfilemode	  "off"
 	  maxwritefilesize	  "512*1024^2"
 	}
 	Block {
@@ -4765,7 +4755,7 @@ Model {
 	  SourceType		  "xpcscopeblock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -4773,10 +4763,10 @@ Model {
 	  RTWMemSecDataParameters "Inherit from model"
 	  scopeno		  "1"
 	  scopetype		  "Target"
-	  autostart		  on
+	  autostart		  "on"
 	  viewmode		  "Numerical"
 	  formatstr		  "q_format"
-	  grid			  on
+	  grid			  "on"
 	  ylimits		  "[0,0]"
 	  nosamples		  "25"
 	  noprepostsamples	  "0"
@@ -4790,8 +4780,8 @@ Model {
 	  filename		  "data.dat"
 	  mode			  "Lazy"
 	  writesize		  "512"
-	  autorestart		  off
-	  dynamicfilemode	  off
+	  autorestart		  "off"
+	  dynamicfilemode	  "off"
 	  maxwritefilesize	  "512*1024^2"
 	}
 	Block {
@@ -4806,7 +4796,7 @@ Model {
 	  SourceType		  "xpcscopeblock"
 	  ShowPortLabels	  "FromPortIcon"
 	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
+	  FunctionWithSeparateData "off"
 	  RTWMemSecFuncInitTerm	  "Inherit from model"
 	  RTWMemSecFuncExecute	  "Inherit from model"
 	  RTWMemSecDataConstants  "Inherit from model"
@@ -4814,10 +4804,10 @@ Model {
 	  RTWMemSecDataParameters "Inherit from model"
 	  scopeno		  "3"
 	  scopetype		  "Target"
-	  autostart		  on
+	  autostart		  "on"
 	  viewmode		  "Numerical"
 	  formatstr		  "qdes_format"
-	  grid			  on
+	  grid			  "on"
 	  ylimits		  "[0,0]"
 	  nosamples		  "25"
 	  noprepostsamples	  "0"
@@ -4831,8 +4821,8 @@ Model {
 	  filename		  "data.dat"
 	  mode			  "Lazy"
 	  writesize		  "512"
-	  autorestart		  off
-	  dynamicfilemode	  off
+	  autorestart		  "off"
+	  dynamicfilemode	  "off"
 	  maxwritefilesize	  "512*1024^2"
 	}
 	Line {
@@ -4930,7 +4920,7 @@ Model {
       System {
 	Name			"task_space"
 	Location		[345, 168, 1555, 853]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -4963,11 +4953,6 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    0
-	    PropName		    "AvailSigsLoadSave"
-	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -5251,11 +5236,6 @@ Model {
 	      RTWSystemCode	      "Auto"
 	      FunctionWithSeparateData off
 	      Opaque		      off
-	      Array {
-		Type			"Handle"
-		Dimension		0
-		PropName		"AvailSigsLoadSave"
-	      }
 	      RequestExecContextInheritance off
 	      MaskHideContents	      off
 	      MaskType		      "Stateflow"
@@ -5413,11 +5393,6 @@ Model {
 	      RTWSystemCode	      "Auto"
 	      FunctionWithSeparateData off
 	      Opaque		      off
-	      Array {
-		Type			"Handle"
-		Dimension		0
-		PropName		"AvailSigsLoadSave"
-	      }
 	      RequestExecContextInheritance off
 	      MaskHideContents	      off
 	      MaskType		      "Stateflow"
@@ -5879,8 +5854,6 @@ Stateflow {
     created		    "16-Jul-2009 15:54:41"
     isLibrary		    0
     firstTarget		    74
-    debug {
-    }
     sfVersion		    75014000
   }
   chart {
@@ -6314,8 +6287,6 @@ Stateflow {
     viewObj		    22
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    25
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -6342,22 +6313,22 @@ Stateflow {
       isEML		      1
       script		      "function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = fcn(qcur,eqeps,kp,dt,p_in_m,b_in_w,measu"
       "red_len,velmex_pitch,macro_leg_len,eq,twave,rwave)\n%#eml\nqcmd = qcur;\n\nz0 = [0 0 1]';\n\n% moving platform v"
-      "ertex locations\np_in_w = twave*ones(1,3) + rwave*p_in_m;\n\nif norm(eq) > eqeps\n    % get parallel (macro) jac"
-      "obian\n    n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));\n    n2hat = (p_in_w(:,2)-b_in_w("
-      ":,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n    n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));"
-      "\n    \n    % Inverse kinematics jacobian components\n    a13 = z0'*(cross(rwave*p_in_m(:,1),n1hat));\n    a23 ="
-      " z0'*(cross(rwave*p_in_m(:,2),n2hat));\n    a33 = z0'*(cross(rwave*p_in_m(:,3),n3hat));\n    \n    jac = [n1hat("
-      "1,1) n1hat(2,1) a13; ...\n        n2hat(1,1) n2hat(2,1) a23; ...\n        n3hat(1,1) n3hat(2,1) a33];\n    \n   "
-      " % joint velocities and ee velocity proportional to joint error\n    qdot = kp * eq;\n    tdot = jac*qdot;\n    "
-      "\n    % separate translational and rotational components of twist\n    v = tdot(1:2,1);\n    w = tdot(3,1);\n   "
-      " \n    % new end effector position\n    twave(1:2,1) = twave(1:2,1) + v*dt;\n    \n    % change in end effector "
-      "orientation\n    del_r = [cos(w*dt) -sin(w*dt) 0;sin(w*dt) cos(w*dt) 0;0 0 1];\n    \n    % new end effector ori"
-      "entation\n    rwave = del_r*rwave;\n    \n    des_leg_len = zeros(3,1);\n    for i = 1:3\n        p_in_w(:,i) = "
-      "twave + rwave*p_in_m(:,i);\n        des_leg_len(i,1) = norm(p_in_w(:,i) - b_in_w(:,i));\n    end\n    \n    eq_o"
-      "ut = macro_leg_len - des_leg_len;\n    \n    % the amount each velmex slides need to move is the difference betw"
-      "een \n    % the last leg length and the new leg length\n    qcmd(1:3,1) = (des_leg_len - measured_len)/velmex_pi"
-      "tch;\n    \n    twave_out = twave;\n    rwave_out = rwave;\nelse\n    des_leg_len = macro_leg_len;\n    eq_out ="
-      " eq;\n    twave_out = twave;\n    rwave_out = rwave;\nend"
+      "ertex locations\np_in_w = twave*ones(1,3) + rwave*p_in_m;\n\nif norm(eq) > eqeps\n    % instantaneous direct kin"
+      "ematics jacobian\n    \n    n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));\n    n2hat = (p_"
+      "in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n    n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3"
+      ") - p_in_w(:,3));\n    \n    % Inverse kinematics jacobian components\n    a13 = z0'*(cross(rwave*p_in_m(:,1),n1"
+      "hat));\n    a23 = z0'*(cross(rwave*p_in_m(:,2),n2hat));\n    a33 = z0'*(cross(rwave*p_in_m(:,3),n3hat));\n    \n"
+      "    jac = [n1hat(1,1) n1hat(2,1) a13; ...\n        n2hat(1,1) n2hat(2,1) a23; ...\n        n3hat(1,1) n3hat(2,1)"
+      " a33];\n    \n    % joint velocities and ee velocity proportional to joint error\n    qdot = kp * eq;\n    tdot "
+      "= jac*qdot;\n    \n    % separate translational and rotational components of twist\n    v = tdot(1:2,1);\n    w "
+      "= tdot(3,1);\n    \n    % new end effector position\n    twave(1:2,1) = twave(1:2,1) + v*dt;\n    \n    % change"
+      " in end effector orientation\n    del_r = [cos(w*dt) -sin(w*dt) 0;sin(w*dt) cos(w*dt) 0;0 0 1];\n    \n    % new"
+      " end effector orientation\n    rwave = del_r*rwave;\n    \n    des_leg_len = zeros(3,1);\n    for i = 1:3\n     "
+      "   p_in_w(:,i) = twave + rwave*p_in_m(:,i);\n        des_leg_len(i,1) = norm(p_in_w(:,i) - b_in_w(:,i));\n    en"
+      "d\n    \n    eq_out = macro_leg_len - des_leg_len;\n    \n    % the amount each velmex slides need to move is th"
+      "e difference between \n    % the last leg length and the new leg length\n    qcmd(1:3,1) = (des_leg_len - measur"
+      "ed_len)/velmex_pitch;\n    \n    twave_out = twave;\n    rwave_out = rwave;\nelse\n    des_leg_len = macro_leg_l"
+      "en;\n    eq_out = eq;\n    twave_out = twave;\n    rwave_out = rwave;\nend"
       editorLayout	      "100 M4x1[725 8 1161 1047]"
     }
   }

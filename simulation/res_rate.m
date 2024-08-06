@@ -69,7 +69,7 @@ if norm(eq) > eqeps
     iik_jac = [b_m,b_mu];
     
     % the full manipulator jacobian with redundancy resolution weighting
-    w_mat = diag([1,1,1,1e10,1e10,1e10]);
+    w_mat = diag([1e10,1e10,1e10,1,1,1]);
     full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
 
     %%
