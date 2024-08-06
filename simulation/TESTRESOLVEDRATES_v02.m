@@ -14,21 +14,23 @@ rwave = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
 % locations of moving platform and base verteces
 vertex_locs = [330 90 210]*pi/180;
 
-% moving platform radius
-p_rad = 45.00; %[mm]
-
-% base radius
-b_rad = 162.32;% 158.04; %[mm]
-
-% flexure rotation center radius
-
-% TWA motor position radius
-
 % moving platform vertex locations
+p_rad = 45.00; %[mm]
 p_in_m = p_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];
 
-% base vertex positions
+% base vertex locations
+b_rad = 162.32;% 158.04; %[mm]
 b_in_w = b_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];
+
+% flexure rotation center
+f_rad = 80; %[mm]
+flexure_locs = [-40 80 200]*pi/180;
+f_in_w = f_rad*[cos(flexure_locs);sin(flexure_locs);zeros(1,3)];
+
+% TWA motor position
+m_rad = 11.915; %from CAD [mm]
+motor_locs = [257.18 17.18 137.18]*pi/180;
+m_in_w = m_rad*[cos(motor_locs);sin(motor_locs);zeros(1,3)];
 
 % moving platform starts at the origin with 30 degree rotation
 p_in_w = zeros(3,3) + rwave*p_in_m;
@@ -43,6 +45,6 @@ loops = 0;
 while norm(eq) > eqeps
 
 [qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
-    p_in_m,b_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
-loops = loops +1
+    p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
+loops = loops + 1
 end

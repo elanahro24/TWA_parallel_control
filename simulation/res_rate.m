@@ -1,4 +1,4 @@
-function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = res_rate(qcur,eqeps,kp,dt,p_in_m,b_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave)
+function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = res_rate(qcur,eqeps,kp,dt,p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave)
 
 qcmd = qcur;
 z0 = [0 0 1]';
@@ -17,9 +17,9 @@ if norm(eq) > eqeps
     a23 = z0'*(cross(rwave*p_in_m(:,2),n2hat));
     a33 = z0'*(cross(rwave*p_in_m(:,3),n3hat));
     
-    jac = [n1hat(1,1) n1hat(2,1) a13; ...
-        n2hat(1,1) n2hat(2,1) a23; ...
-        n3hat(1,1) n3hat(2,1) a33];
+    idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...
+               n2hat(1,1) n2hat(2,1) a23; ...
+               n3hat(1,1) n3hat(2,1) a33];
     
     %% instantaneous inverse kinematics jacobian
     % micro actuator (TWA) lengths
@@ -57,14 +57,25 @@ if norm(eq) > eqeps
     e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);
     e3 = n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);
     
-    % instantaneous inverse kinematics matrix for micro motion
-    Bmu = [e1 0 0;...
-        0 e2 0;...
-        0 0 e3];
+    % micro motion instantaneous inverse kinematics jacobian
+    b_mu = [e1 0 0;...
+            0 e2 0;...
+            0 0 e3];
+    
+    % macro motion instantaneous inverse kinematics jacobian
+    b_m = eye(3);
+
+    % combined macro-micro motion IIK jacobian
+    iik_jac = [b_m,b_mu];
+    
+    % the full manipulator jacobian with redundancy resolution weighting
+    w_mat = diag([1,1,1,1e10,1e10,1e10]);
+    full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
+
     %%
     % joint velocities and ee velocity proportional to joint error
     qdot = kp * eq;
-    tdot = jac\qdot;
+    tdot = full_jac*qdot;
     
     % separate translational and rotational components of twist
     v = tdot(1:2,1);
