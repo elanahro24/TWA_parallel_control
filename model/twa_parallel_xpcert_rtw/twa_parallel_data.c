@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6873
+ * Model version                        : 1.6878
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Fri Jul 26 19:20:17 2024
+ * Real-Time Workshop file generated on : Tue Aug 06 14:37:24 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Fri Jul 26 19:20:17 2024
+ * C/C++ source code generated on       : Tue Aug 06 14:37:24 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -43,6 +43,20 @@ Parameters_twa_parallel twa_parallel_P = {
   { 1.4057324354229004E+002, -8.1160000000000068E+001, 0.0,
     9.9392334218799176E-015, 1.6232E+002, 0.0, -1.4057324354229007E+002,
     -8.1160000000000011E+001, 0.0 },
+
+  /*  Expression: m_in_w
+   * Referenced by: '<S2>/m_in_w'
+   */
+  { -2.6438059510305436E+000, -1.1617982402004897E+001, 0.0,
+    1.1383370876372062E+001, 3.5193880847335253E+000, 0.0,
+    -8.7395649253415257E+000, 8.0985943172713704E+000, 0.0 },
+
+  /*  Expression: f_in_w
+   * Referenced by: '<S2>/f_in_w'
+   */
+  { 6.1283555449518239E+001, -5.1423008774923140E+001, 0.0,
+    1.3891854213354433E+001, 7.8784620240976636E+001, 0.0,
+    -7.5175409662872681E+001, -2.7361611466053493E+001, 0.0 },
 
   /*  Expression: meas_macro_len
    * Referenced by: '<S2>/meas_macro_len'

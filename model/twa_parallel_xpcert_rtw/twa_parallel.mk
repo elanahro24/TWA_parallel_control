@@ -115,8 +115,9 @@ MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\libsrc
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\rtw\c\src\ext_mode\common
 
 # Additional file include paths
-MATLAB_INCLUDES = $(MATLAB_INCLUDES);D:\projects\TwistedWireActuator\TWA_parallel_control\model\twa_parallel_xpcert_rtw
-MATLAB_INCLUDES = $(MATLAB_INCLUDES);D:\projects\TwistedWireActuator\TWA_parallel_control\model
+MATLAB_INCLUDES = $(MATLAB_INCLUDES);D:\Projects\TwistedWireActuator\TWA_parallel_control\model\twa_parallel_xpcert_rtw
+MATLAB_INCLUDES = $(MATLAB_INCLUDES);D:\Projects\TwistedWireActuator\TWA_parallel_control\model
+MATLAB_INCLUDES = $(MATLAB_INCLUDES);D:\Projects\TwistedWireActuator\TWA_parallel_control\model\twa_parallel_xpcert_rtw
 MATLAB_INCLUDES = $(MATLAB_INCLUDES);$(MATLAB_ROOT)\toolbox\dspblks\include
 
 

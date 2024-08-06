@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6873
+ * Model version              : 1.6878
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Fri Jul 26 19:20:17 2024
+ * C source code generated on : Tue Aug 06 14:37:24 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -985,6 +985,12 @@ struct Parameters_twa_parallel_ {
                                         */
   real_T b_in_w_Value[9];              /* Expression: b_in_w
                                         * Referenced by: '<S2>/b_in_w'
+                                        */
+  real_T m_in_w_Value[9];              /* Expression: m_in_w
+                                        * Referenced by: '<S2>/m_in_w'
+                                        */
+  real_T f_in_w_Value[9];              /* Expression: f_in_w
+                                        * Referenced by: '<S2>/f_in_w'
                                         */
   real_T meas_macro_len_Value[3];      /* Expression: meas_macro_len
                                         * Referenced by: '<S2>/meas_macro_len'
