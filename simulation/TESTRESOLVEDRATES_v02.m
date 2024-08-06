@@ -20,6 +20,10 @@ p_rad = 45.00; %[mm]
 % base radius
 b_rad = 162.32;% 158.04; %[mm]
 
+% flexure rotation center radius
+
+% TWA motor position radius
+
 % moving platform vertex locations
 p_in_m = p_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];
 
