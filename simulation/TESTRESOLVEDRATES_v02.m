@@ -13,12 +13,11 @@ rwave = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
 
 % locations of moving platform and base verteces
 vertex_locs = [330 90 210]*pi/180;
-
-% moving platform vertex locations
 p_rad = 45.00; %[mm]
 p_in_m = p_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];
 
 % base vertex locations
+vertex_locs = [333.03 93.02 213.03]*pi/180;
 b_rad = 162.32;% 158.04; %[mm]
 b_in_w = b_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];
 

@@ -29,8 +29,16 @@ m_rad = 238.30; %from CAD [mm] (old number, not sure where it came from 11.915)
 motor_locs = [257.18 17.18 137.18]*pi/180;
 m_in_w = m_rad*[cos(motor_locs);sin(motor_locs);zeros(1,3)];
 
+% TWA attachment point position 
+t_rad = 169.69;
+t_locs = [327.07 87.07 207.07];
+t_in_w = t_rad*[cos(t_locs);sin(t_locs);zeros(1,3)];
+
+% angle between base vertex and twa attachment point
+twa_gamma_offset = 5.96 * pi/180;
+
 % distance from rotation axis to start of TWA measured from CAD
-axis_offset = 16.7;
+twa_flange_offset = 16.7; %[mm]
 
 % moving platform starts at the origin with 30 degree rotation
 p_in_w = zeros(3,3) + rm2w_homing*p_in_m;
@@ -42,7 +50,7 @@ qmacro_nom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
 eq_homing = meas_macro_len - qmacro_nom;
 
 qmicro_nom = zeros(3,1);
-qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - axis_offset;
-qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - axis_offset;
-qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - axis_offset;
+qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
+qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
+qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
 
