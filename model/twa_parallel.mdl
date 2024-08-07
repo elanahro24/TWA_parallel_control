@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6880"
+    ComputedModelVersion    "1.6881"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Aug 06 15:20:24 2024"
-  RTWModifiedTimeStamp	  644858416
-  ModelVersionFormat	  "1.%<AutoIncrement:6880>"
+  LastModifiedDate	  "Tue Aug 06 19:35:50 2024"
+  RTWModifiedTimeStamp	  644866484
+  ModelVersionFormat	  "1.%<AutoIncrement:6881>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -2869,7 +2869,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  3267
-	  Position		  [65, 310, 90, 330]
+	  Position		  [30, 310, 55, 330]
 	  ShowName		  off
 	  GotoTag		  "E"
 	}
@@ -3633,7 +3633,7 @@ Model {
       System {
 	Name			"PID Controller"
 	Location		[219, 90, 1700, 972]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5022,7 +5022,7 @@ Model {
       System {
 	Name			"task_space"
 	Location		[484, 208, 1694, 893]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5287,7 +5287,7 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "gear_ratio"
-	    Location		    [2, 83, 1918, 1027]
+	    Location		    [2, 75, 1918, 1019]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -6040,7 +6040,7 @@ Stateflow {
       "%         alpha =  acos((c^2 - a^2 - b^2)/(-2*a*b));\n%         \n%         % calculate required twa length to f"
       "acilitate flexure bend\n%         micro_len_out(i,1) = sqrt(a^2 - b^2 - 2*a*b*cos(alpha - beta_cmd));\n%     end"
       "\n% end"
-      editorLayout	      "100 M4x1[1944 34 1161 1047]"
+      editorLayout	      "100 M4x1[725 8 1161 1047]"
     }
   }
   junction {
@@ -6451,7 +6451,7 @@ Stateflow {
       "eg_len)/velmex_pitch\n    qcmd(1:3,1) = (des_leg_len - measured_len)/velmex_pitch;\n    \n    twave_out = twave;"
       "\n    rwave_out = rwave;\nelse\n    des_leg_len = macro_leg_len;\n    eq_out = eq;\n    twave_out = twave;\n    "
       "rwave_out = rwave;\nend"
-      editorLayout	      "100 M4x1[1944 34 1161 1047]"
+      editorLayout	      "100 M4x1[725 8 1161 1047]"
     }
   }
   junction {

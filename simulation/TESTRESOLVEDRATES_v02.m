@@ -1,5 +1,5 @@
-qcur = rand(6,1);
-eqeps = 0.00001;
+qcur = zeros(6,1);
+eqeps = sqrt(3*0.01^2); %10 microns per actuator
 kp = 0.15;
 dt = 0.002;
 velmex_pitch = 1.27;
@@ -46,5 +46,8 @@ while norm(eq) > eqeps
 
 [qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
     p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
-loops = loops + 1
+measured_len = macro_leg_len;
+loops = loops + 1;
+disp(['Number of loops to converge: ',num2str(loops)]);
+
 end

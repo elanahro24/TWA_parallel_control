@@ -1,4 +1,6 @@
-function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = res_rate(qcur,eqeps,kp,dt,p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave)
+function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = res_rate(qcur,eqeps,...
+                        kp,dt,p_in_m,b_in_w,f_in_w,m_in_w,measured_len,...
+                        velmex_pitch,macro_leg_len,eq,twave,rwave)
 
 qcmd = qcur;
 z0 = [0 0 1]';
@@ -69,7 +71,7 @@ if norm(eq) > eqeps
     iik_jac = [b_m,b_mu];
     
     % the full manipulator jacobian with redundancy resolution weighting
-    w_mat = diag([1e10,1e10,1e10,1,1,1]);
+    w_mat = diag([1,1,1,1e10,1e10,1e10]);
     full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
 
     %%
