@@ -2,7 +2,7 @@
 % amount of stroke
 function setmicrostroke(tg,micro_stroke)
 % wire properties
-init_len = [229.37;228.33;227.27]; %[230.32;226.3;224.5]; %[mm]
+init_len = [229.37;228.33;227.27]; %from hook to flange %[mm]
 wire_rad = 0.011 * 25.4 / 2; %[mm]
 E = 60e9;
 A = pi * wire_rad^2;
