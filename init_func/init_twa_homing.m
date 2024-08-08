@@ -35,7 +35,7 @@ t_locs = [327.0745 87.0745 207.0745]*pi/180;
 t_in_w = t_rad*[cos(t_locs);sin(t_locs);zeros(1,3)];
 
 % angle between base vertex and twa attachment point
-twa_gamma = 5.96 * pi/180;
+twa_gamma = 11.6087 * pi/180;
 
 % distance from rotation axis to start of TWA measured from CAD
 twa_flange_offset = 16.7; %[mm]

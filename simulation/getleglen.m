@@ -36,12 +36,12 @@ des_macro_len(3,1) = norm(vertex_dist(:,3));
 
 if x_delta(1,1) < conv_rad || x_delta(2,1) < conv_rad
     % initial flexure bend
-    beta_cmd = 5*pi/180;
+    beta_cmd = 0;
     
     % loop through each vertex
     for i = 1:3
         post_flex_angle = zeros(1,2);
-        beta = NaN(1,2);
+        beta = zeros(1,2);
         
         % vector from flexure center to moving platform vertex
         rho_vec = p_in_w(:,i) - f_in_w(:,i);
@@ -108,13 +108,16 @@ if x_delta(1,1) < conv_rad || x_delta(2,1) < conv_rad
         %c = init_twa_len(i,1);
         
         alpha =  acos((c^2 - a^2 - b^2)/(-2*a*b));
+        
+        
         delta = alpha - beta_cmd;
         % distance between base vertex and twa motor position after flex
-        c_prime = sqrt(a^2 - b^2 - 2*a*b*cos(delta));
+        c_prime = sqrt(a^2 + b^2 - 2*a*b*cos(delta));
         
         % required twa length to facilitate flexure bend
-        d = norm(f_in_w(:,1) - t_in_w(:,1));
+        d = norm(f_in_w(:,i) - t_in_w(:,i));
         
-        micro_len_out(i,1) = sqrt(a^2 - d^2 - 2*a*d*cos(delta - twa_gamma));
+        micro_len_out(i,1) = sqrt(a^2 + d^2 - 2*a*d*cos(delta - twa_gamma));
+        disp(['Vertex Num: ',num2str(i),' twa length = ',num2str(micro_len_out(i)),' Beta = ',num2str(beta_cmd*180/pi)])
     end
 end
