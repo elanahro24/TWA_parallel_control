@@ -10,8 +10,8 @@ velmex_pitch = 1.27;
 q_cur = zeros(6,1);
 
 % points for a circle
-x = 0.5*cos(0:pi/90:2*pi);
-y = 0.5*sin(0:pi/90:2*pi);
+x = 2*cos(0:pi/90:2*pi);
+y = 2*sin(0:pi/90:2*pi);
 
 for i = 1:length(x)
     xdes = [10+x(i);y(i);0];
