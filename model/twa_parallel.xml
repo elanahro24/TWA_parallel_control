@@ -1045,9 +1045,69 @@ MATLAB Function/p7</sigName>
 			<xPCName>twa_parallel/task_space/GetLegLen</xPCName>
 		</SubSystem>
 		<block>
+			<blkName>b_in_w</blkName>
+			<xpcblkName>task_space/b_in_w</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/b_in_w</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
 			<blkName>ee_rot</blkName>
 			<xpcblkName>task_space/ee_rot</xpcblkName>
 			<SLblockPath>twa_parallel/task_space/ee_rot</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>f_in_w</blkName>
+			<xpcblkName>task_space/f_in_w</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/f_in_w</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>m_in_w</blkName>
+			<xpcblkName>task_space/m_in_w</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/m_in_w</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>p_in_m</blkName>
+			<xpcblkName>task_space/p_in_m</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/p_in_m</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>t_in_w</blkName>
+			<xpcblkName>task_space/t_in_w</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/t_in_w</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>twa_gamma</blkName>
+			<xpcblkName>task_space/twa_gamma</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/twa_gamma</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>

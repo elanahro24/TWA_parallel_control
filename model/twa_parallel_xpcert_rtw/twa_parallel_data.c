@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6878
+ * Model version                        : 1.6896
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Tue Aug 06 14:37:24 2024
+ * Real-Time Workshop file generated on : Wed Aug 07 18:57:01 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Tue Aug 06 14:37:24 2024
+ * C/C++ source code generated on       : Wed Aug 07 18:57:01 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -40,16 +40,16 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: b_in_w
    * Referenced by: '<S2>/b_in_w'
    */
-  { 1.4057324354229004E+002, -8.1160000000000068E+001, 0.0,
-    9.9392334218799176E-015, 1.6232E+002, 0.0, -1.4057324354229007E+002,
-    -8.1160000000000011E+001, 0.0 },
+  { 1.4465783164181136E+002, -7.3611465443158764E+001, 0.0,
+    -8.5795167373298948E+000, 1.6208308977976043E+002, 0.0,
+    -1.3607831490448149E+002, -8.8471624336601678E+001, 0.0 },
 
   /*  Expression: m_in_w
    * Referenced by: '<S2>/m_in_w'
    */
-  { -2.6438059510305436E+000, -1.1617982402004897E+001, 0.0,
-    1.1383370876372062E+001, 3.5193880847335253E+000, 0.0,
-    -8.7395649253415257E+000, 8.0985943172713704E+000, 0.0 },
+  { -5.2876119020610879E+001, -2.3235964804009797E+002, 0.0,
+    2.2766741752744127E+002, 7.0387761694670516E+001, 0.0,
+    -1.7479129850683054E+002, 1.6197188634542741E+002, 0.0 },
 
   /*  Expression: f_in_w
    * Referenced by: '<S2>/f_in_w'
@@ -74,8 +74,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: eq_homing
    * Referenced by: '<S2>/Unit Delay4'
    */
-  { -5.9417157358376471E-001, 3.5828426416230741E-002, -1.5417157358376699E-001
-  },
+  { 8.9354624834103902E-001, 1.5235462483410060E+000, 1.3335462483410225E+000 },
 
   /*  Expression: zeros(3,1)
    * Referenced by: '<S2>/Unit Delay3'
@@ -197,6 +196,44 @@ Parameters_twa_parallel twa_parallel_P = {
   { 0.0, 0.0, 0.0 },
   5.2359877559829882E-001,             /* Expression: pi/6
                                         * Referenced by: '<S6>/ee_rot'
+                                        */
+
+  /*  Expression: p_in_m
+   * Referenced by: '<S6>/p_in_m'
+   */
+  { 3.8971143170299726E+001, -2.2500000000000021E+001, 0.0,
+    2.7554552980815448E-015, 45.0, 0.0, -3.8971143170299740E+001,
+    -2.2500000000000004E+001, 0.0 },
+
+  /*  Expression: b_in_w
+   * Referenced by: '<S6>/b_in_w'
+   */
+  { 1.4465783164181136E+002, -7.3611465443158764E+001, 0.0,
+    -8.5795167373298948E+000, 1.6208308977976043E+002, 0.0,
+    -1.3607831490448149E+002, -8.8471624336601678E+001, 0.0 },
+
+  /*  Expression: m_in_w
+   * Referenced by: '<S6>/m_in_w'
+   */
+  { -5.2876119020610879E+001, -2.3235964804009797E+002, 0.0,
+    2.2766741752744127E+002, 7.0387761694670516E+001, 0.0,
+    -1.7479129850683054E+002, 1.6197188634542741E+002, 0.0 },
+
+  /*  Expression: f_in_w
+   * Referenced by: '<S6>/f_in_w'
+   */
+  { 6.1283555449518239E+001, -5.1423008774923140E+001, 0.0,
+    1.3891854213354433E+001, 7.8784620240976636E+001, 0.0,
+    -7.5175409662872681E+001, -2.7361611466053493E+001, 0.0 },
+
+  /*  Expression: t_in_w
+   * Referenced by: '<S6>/t_in_w'
+   */
+  { 1.5972755887166480E+002, 5.7287023285372875E+001, 0.0,
+    1.0619799126416217E+002, -1.3235060540646174E+002, 0.0,
+    1.6330862533168934E+002, -4.6097602890756818E+001, 0.0 },
+  1.0402162341886204E-001,             /* Expression: twa_gamma
+                                        * Referenced by: '<S6>/twa_gamma'
                                         */
 
   /*  Expression: zeros(3,1)

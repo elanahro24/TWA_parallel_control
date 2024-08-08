@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (twa_parallel_P)
     ;%
-      section.nData     = 68;
-      section.data(68)  = dumData; %prealloc
+      section.nData     = 74;
+      section.data(74)  = dumData; %prealloc
       
 	  ;% twa_parallel_P.eq_eps_Value
 	  section.data(1).logicalSrcIdx = 0;
@@ -215,93 +215,117 @@
 	  section.data(46).logicalSrcIdx = 45;
 	  section.data(46).dtTransOffset = 112;
 	
-	  ;% twa_parallel_P.UnitDelay2_X0_p
+	  ;% twa_parallel_P.p_in_m_Value_m
 	  section.data(47).logicalSrcIdx = 46;
 	  section.data(47).dtTransOffset = 113;
 	
-	  ;% twa_parallel_P.UnitDelay_X0
+	  ;% twa_parallel_P.b_in_w_Value_i
 	  section.data(48).logicalSrcIdx = 47;
-	  section.data(48).dtTransOffset = 116;
+	  section.data(48).dtTransOffset = 122;
+	
+	  ;% twa_parallel_P.m_in_w_Value_n
+	  section.data(49).logicalSrcIdx = 48;
+	  section.data(49).dtTransOffset = 131;
+	
+	  ;% twa_parallel_P.f_in_w_Value_b
+	  section.data(50).logicalSrcIdx = 49;
+	  section.data(50).dtTransOffset = 140;
+	
+	  ;% twa_parallel_P.t_in_w_Value
+	  section.data(51).logicalSrcIdx = 50;
+	  section.data(51).dtTransOffset = 149;
+	
+	  ;% twa_parallel_P.twa_gamma_Value
+	  section.data(52).logicalSrcIdx = 51;
+	  section.data(52).dtTransOffset = 158;
+	
+	  ;% twa_parallel_P.UnitDelay2_X0_p
+	  section.data(53).logicalSrcIdx = 52;
+	  section.data(53).dtTransOffset = 159;
+	
+	  ;% twa_parallel_P.UnitDelay_X0
+	  section.data(54).logicalSrcIdx = 53;
+	  section.data(54).dtTransOffset = 162;
 	
 	  ;% twa_parallel_P.meas_macro_len_Value_d
-	  section.data(49).logicalSrcIdx = 48;
-	  section.data(49).dtTransOffset = 119;
+	  section.data(55).logicalSrcIdx = 54;
+	  section.data(55).dtTransOffset = 165;
 	
 	  ;% twa_parallel_P.velmex_pitch_Value_e
-	  section.data(50).logicalSrcIdx = 49;
-	  section.data(50).dtTransOffset = 122;
+	  section.data(56).logicalSrcIdx = 55;
+	  section.data(56).dtTransOffset = 168;
 	
 	  ;% twa_parallel_P.tf_Value
-	  section.data(51).logicalSrcIdx = 50;
-	  section.data(51).dtTransOffset = 123;
+	  section.data(57).logicalSrcIdx = 56;
+	  section.data(57).dtTransOffset = 169;
 	
 	  ;% twa_parallel_P.UnitDelay_X0_p
-	  section.data(52).logicalSrcIdx = 51;
-	  section.data(52).dtTransOffset = 124;
+	  section.data(58).logicalSrcIdx = 57;
+	  section.data(58).dtTransOffset = 170;
 	
 	  ;% twa_parallel_P.UnitDelay1_X0_h
-	  section.data(53).logicalSrcIdx = 52;
-	  section.data(53).dtTransOffset = 125;
+	  section.data(59).logicalSrcIdx = 58;
+	  section.data(59).dtTransOffset = 171;
 	
 	  ;% twa_parallel_P.UnitDelay2_X0_d
-	  section.data(54).logicalSrcIdx = 53;
-	  section.data(54).dtTransOffset = 126;
+	  section.data(60).logicalSrcIdx = 59;
+	  section.data(60).dtTransOffset = 172;
 	
 	  ;% twa_parallel_P.quintic_enable_Value
-	  section.data(55).logicalSrcIdx = 54;
-	  section.data(55).dtTransOffset = 132;
+	  section.data(61).logicalSrcIdx = 60;
+	  section.data(61).dtTransOffset = 178;
 	
 	  ;% twa_parallel_P.Kp_Gain
-	  section.data(56).logicalSrcIdx = 55;
-	  section.data(56).dtTransOffset = 133;
+	  section.data(62).logicalSrcIdx = 61;
+	  section.data(62).dtTransOffset = 179;
 	
 	  ;% twa_parallel_P.reset_integrator_Value
-	  section.data(57).logicalSrcIdx = 56;
-	  section.data(57).dtTransOffset = 139;
+	  section.data(63).logicalSrcIdx = 62;
+	  section.data(63).dtTransOffset = 185;
 	
 	  ;% twa_parallel_P.Integrator_IC
-	  section.data(58).logicalSrcIdx = 57;
-	  section.data(58).dtTransOffset = 140;
+	  section.data(64).logicalSrcIdx = 63;
+	  section.data(64).dtTransOffset = 186;
 	
 	  ;% twa_parallel_P.Ki_Gain
-	  section.data(59).logicalSrcIdx = 58;
-	  section.data(59).dtTransOffset = 141;
+	  section.data(65).logicalSrcIdx = 64;
+	  section.data(65).dtTransOffset = 187;
 	
 	  ;% twa_parallel_P.saturate_int_UpperSat
-	  section.data(60).logicalSrcIdx = 59;
-	  section.data(60).dtTransOffset = 147;
+	  section.data(66).logicalSrcIdx = 65;
+	  section.data(66).dtTransOffset = 193;
 	
 	  ;% twa_parallel_P.saturate_int_LowerSat
-	  section.data(61).logicalSrcIdx = 60;
-	  section.data(61).dtTransOffset = 153;
+	  section.data(67).logicalSrcIdx = 66;
+	  section.data(67).dtTransOffset = 199;
 	
 	  ;% twa_parallel_P.TSamp_WtEt_p
-	  section.data(62).logicalSrcIdx = 61;
-	  section.data(62).dtTransOffset = 159;
+	  section.data(68).logicalSrcIdx = 67;
+	  section.data(68).dtTransOffset = 205;
 	
 	  ;% twa_parallel_P.UD_X0_f
-	  section.data(63).logicalSrcIdx = 62;
-	  section.data(63).dtTransOffset = 160;
+	  section.data(69).logicalSrcIdx = 68;
+	  section.data(69).dtTransOffset = 206;
 	
 	  ;% twa_parallel_P.Kd_Gain
-	  section.data(64).logicalSrcIdx = 63;
-	  section.data(64).dtTransOffset = 161;
+	  section.data(70).logicalSrcIdx = 69;
+	  section.data(70).dtTransOffset = 207;
 	
 	  ;% twa_parallel_P.Saturation_UpperSat
-	  section.data(65).logicalSrcIdx = 64;
-	  section.data(65).dtTransOffset = 167;
+	  section.data(71).logicalSrcIdx = 70;
+	  section.data(71).dtTransOffset = 213;
 	
 	  ;% twa_parallel_P.Saturation_LowerSat
-	  section.data(66).logicalSrcIdx = 65;
-	  section.data(66).dtTransOffset = 173;
+	  section.data(72).logicalSrcIdx = 71;
+	  section.data(72).dtTransOffset = 219;
 	
 	  ;% twa_parallel_P.pid_mode_Value
-	  section.data(67).logicalSrcIdx = 66;
-	  section.data(67).dtTransOffset = 179;
+	  section.data(73).logicalSrcIdx = 72;
+	  section.data(73).dtTransOffset = 225;
 	
 	  ;% twa_parallel_P.manual_current_Value
-	  section.data(68).logicalSrcIdx = 67;
-	  section.data(68).dtTransOffset = 180;
+	  section.data(74).logicalSrcIdx = 73;
+	  section.data(74).dtTransOffset = 226;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -311,11 +335,11 @@
       section.data(2)  = dumData; %prealloc
       
 	  ;% twa_parallel_P.NSampleEnable_TARGETCNT
-	  section.data(1).logicalSrcIdx = 68;
+	  section.data(1).logicalSrcIdx = 74;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% twa_parallel_P.NSampleEnable_ACTLEVEL
-	  section.data(2).logicalSrcIdx = 69;
+	  section.data(2).logicalSrcIdx = 75;
 	  section.data(2).dtTransOffset = 1;
 	
       nTotData = nTotData + section.nData;
@@ -929,8 +953,8 @@
   ;%
 
 
-  targMap.checksum0 = 3133452492;
-  targMap.checksum1 = 1086239504;
-  targMap.checksum2 = 3367362280;
-  targMap.checksum3 = 1883854442;
+  targMap.checksum0 = 561695553;
+  targMap.checksum1 = 2564714590;
+  targMap.checksum2 = 2872082143;
+  targMap.checksum3 = 15232862;
 

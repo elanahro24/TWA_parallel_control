@@ -27,7 +27,9 @@ Z=[B(3,:); P(3,:)];
 h=line(X,Y,Z);
 
 for i = 1:3
-    if qmacro_des(i,1) > 0
+    if qmacro_des(i,1) == 0
+        set(h(i),'Color','black','linewidth',LineWidth);
+    elseif qmacro_des(i,1) > 0
         set(h(i),'Color','green','linewidth',LineWidth);
     else
         set(h(i),'Color','red','linewidth',LineWidth);

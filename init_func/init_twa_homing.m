@@ -15,27 +15,27 @@ p_in_m = p_rad*[cos(platform_vertex_locs);sin(platform_vertex_locs);zeros(1,3)];
 % base vertex locations 
 % angular offset for base verteces is different than moving platform due to
 % a miscommunication during the designing process
-base_vertex_locations = [333.03 93.03 213.03]*pi/180;
-b_rad = 162.31;% 158.04; %[mm]
-b_in_w = b_rad*[cos(vertex_locs);sin(vertex_locs);zeros(1,3)];
+base_vertex_locations = [333.0315 93.0315 213.0315]*pi/180;
+b_rad = 162.3142;% 158.04; %[mm]
+b_in_w = b_rad*[cos(base_vertex_locations);sin(base_vertex_locations);zeros(1,3)];
 
 % flexure rotation center
 f_rad = 80; %[mm]
-flexure_locs = [-40 80 200]*pi/180;
+flexure_locs = [-45 75 196]*pi/180;
 f_in_w = f_rad*[cos(flexure_locs);sin(flexure_locs);zeros(1,3)];
 
 % TWA motor position
-m_rad = 238.30; %from CAD [mm] (old number, not sure where it came from 11.915)
-motor_locs = [257.18 17.18 137.18]*pi/180;
+m_rad = 238.2998; %from CAD [mm] (old number, not sure where it came from 11.915)
+motor_locs = [257.177 17.177 137.177]*pi/180;
 m_in_w = m_rad*[cos(motor_locs);sin(motor_locs);zeros(1,3)];
 
 % TWA attachment point position 
-t_rad = 169.69;
-t_locs = [327.07 87.07 207.07];
+t_rad = 169.6918;
+t_locs = [327.0745 87.0745 207.0745]*pi/180;
 t_in_w = t_rad*[cos(t_locs);sin(t_locs);zeros(1,3)];
 
 % angle between base vertex and twa attachment point
-twa_gamma_offset = 5.96 * pi/180;
+twa_gamma = 5.96 * pi/180;
 
 % distance from rotation axis to start of TWA measured from CAD
 twa_flange_offset = 16.7; %[mm]

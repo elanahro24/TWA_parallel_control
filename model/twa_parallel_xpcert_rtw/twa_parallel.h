@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6878
+ * Model version              : 1.6896
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Tue Aug 06 14:37:24 2024
+ * C source code generated on : Wed Aug 07 18:57:01 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -30,9 +30,11 @@
 #include "ext_work.h"
 #include "rt_zcfcn.h"
 #include "rt_nonfinite.h"
+#include "rt_defines.h"
 #include "rtGetInf.h"
 #include "rtGetNaN.h"
 #include "rt_SATURATE.h"
+#include "rt_atan2_snf.h"
 #include "rt_pow_snf.h"
 #endif                                 /* twa_parallel_COMMON_INCLUDES_ */
 
@@ -1108,6 +1110,24 @@ struct Parameters_twa_parallel_ {
                                         */
   real_T ee_rot_Value;                 /* Expression: pi/6
                                         * Referenced by: '<S6>/ee_rot'
+                                        */
+  real_T p_in_m_Value_m[9];            /* Expression: p_in_m
+                                        * Referenced by: '<S6>/p_in_m'
+                                        */
+  real_T b_in_w_Value_i[9];            /* Expression: b_in_w
+                                        * Referenced by: '<S6>/b_in_w'
+                                        */
+  real_T m_in_w_Value_n[9];            /* Expression: m_in_w
+                                        * Referenced by: '<S6>/m_in_w'
+                                        */
+  real_T f_in_w_Value_b[9];            /* Expression: f_in_w
+                                        * Referenced by: '<S6>/f_in_w'
+                                        */
+  real_T t_in_w_Value[9];              /* Expression: t_in_w
+                                        * Referenced by: '<S6>/t_in_w'
+                                        */
+  real_T twa_gamma_Value;              /* Expression: twa_gamma
+                                        * Referenced by: '<S6>/twa_gamma'
                                         */
   real_T UnitDelay2_X0_p[3];           /* Expression: zeros(3,1)
                                         * Referenced by: '<S6>/Unit Delay2'

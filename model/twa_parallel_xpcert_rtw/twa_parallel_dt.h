@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6878
+ * Model version              : 1.6896
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Tue Aug 06 14:37:24 2024
+ * C source code generated on : Wed Aug 07 18:57:01 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -81,7 +81,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&twa_parallel_P.eq_eps_Value), 0, 0, 186 },
+  { (char_T *)(&twa_parallel_P.eq_eps_Value), 0, 0, 232 },
 
   { (char_T *)(&twa_parallel_P.NSampleEnable_TARGETCNT), 7, 0, 2 }
 };

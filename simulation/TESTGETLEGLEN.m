@@ -1,3 +1,7 @@
+clear
+close all
+init_twa_homing()
+
 ee_rot = pi/6;
 micro_len = zeros(3,1);
 x_prev = zeros(3,1);
@@ -5,15 +9,20 @@ meas_macro_len = [124.79;125.42;125.23];
 velmex_pitch = 1.27;
 q_cur = zeros(6,1);
 
-for i = 1:1:20
-    xdes = [i;0;0];
+% points for a circle
+x = 2*cos(0:pi/90:2*pi);
+y = 2*sin(0:pi/90:2*pi);
 
-    [des_macro_len,micro_len_out, x_cur,p_in_w, b_in_w]  = getleglen(xdes,ee_rot,micro_len,x_prev)
+for i = 1:length(x)
+    xdes = [x(i);y(i);0];
 
-    qmacro_des  = getmacroqdes(des_macro_len,meas_macro_len,velmex_pitch,q_cur)
+    [des_macro_len,micro_len_out, x_cur,p_in_w, b_in_w]  = getleglen(xdes,...
+    ee_rot,p_in_m,b_in_w,m_in_w,f_in_w,t_in_w,twa_gamma,micro_len,x_prev);
+    disp(num2str(micro_len_out));
+
+    qmacro_des  = getmacroqdes(des_macro_len,meas_macro_len,velmex_pitch,q_cur);
     meas_macro_len = des_macro_len;
     cla
     draw_robot(b_in_w,p_in_w,qmacro_des)
     pause(0.25)
-
 end

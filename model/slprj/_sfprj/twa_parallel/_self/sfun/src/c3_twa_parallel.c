@@ -1037,10 +1037,10 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   int32_T c3_i193;
   int32_T c3_i194;
   int32_T c3_i195;
-  static real_T c3_dv13[36] = { 1.0E+010, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E+010,
-    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E+010, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 1.0 };
+  static real_T c3_dv13[36] = { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 1.0E+010, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E+010, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 1.0E+010 };
 
   int32_T c3_i196;
   real_T c3_v_A[18];
@@ -1445,18 +1445,18 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   sf_debug_symbol_scope_add_eml(&c3_twave_out, c3_b_sf_marshall, 60U);
   sf_debug_symbol_scope_add_eml(&c3_rwave_out, c3_sf_marshall, 61U);
   CV_EML_FCN(0, 0);
-  _SFD_EML_CALL(0,3);
+  _SFD_EML_CALL(0,5);
   for (c3_i50 = 0; c3_i50 < 6; c3_i50 = c3_i50 + 1) {
     c3_qcmd[c3_i50] = c3_qcur[c3_i50];
   }
 
-  _SFD_EML_CALL(0,5);
+  _SFD_EML_CALL(0,7);
   for (c3_i51 = 0; c3_i51 < 3; c3_i51 = c3_i51 + 1) {
     c3_z0[c3_i51] = c3_dv5[c3_i51];
   }
 
   /*  moving platform vertex locations */
-  _SFD_EML_CALL(0,8);
+  _SFD_EML_CALL(0,10);
   for (c3_i52 = 0; c3_i52 < 3; c3_i52 = c3_i52 + 1) {
     c3_a[c3_i52] = c3_twave[c3_i52];
   }
@@ -1523,7 +1523,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_p_in_w[c3_i69] = c3_y[c3_i69] + c3_b_y[c3_i69];
   }
 
-  _SFD_EML_CALL(0,10);
+  _SFD_EML_CALL(0,12);
   for (c3_i70 = 0; c3_i70 < 3; c3_i70 = c3_i70 + 1) {
     c3_b_eq[c3_i70] = c3_eq[c3_i70];
   }
@@ -1531,7 +1531,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   if (CV_EML_IF(0, 0, c3_norm(chartInstance, c3_b_eq) > c3_eqeps)) {
     /*     %% instantaneous direct kinematics jacobian */
     /*  vector from base vertex to moving platform vertex */
-    _SFD_EML_CALL(0,13);
+    _SFD_EML_CALL(0,15);
     for (c3_i71 = 0; c3_i71 < 3; c3_i71 = c3_i71 + 1) {
       c3_x[c3_i71] = c3_p_in_w[c3_i71] - c3_b_in_w[c3_i71];
     }
@@ -1555,7 +1555,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_n1hat[c3_i75] = c3_c_x[c3_i75] / c3_e_y;
     }
 
-    _SFD_EML_CALL(0,14);
+    _SFD_EML_CALL(0,16);
     for (c3_i76 = 0; c3_i76 < 3; c3_i76 = c3_i76 + 1) {
       c3_d_x[c3_i76] = c3_p_in_w[c3_i76 + 3] - c3_b_in_w[c3_i76 + 3];
     }
@@ -1579,7 +1579,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_n2hat[c3_i80] = c3_f_x[c3_i80] / c3_h_y;
     }
 
-    _SFD_EML_CALL(0,15);
+    _SFD_EML_CALL(0,17);
     for (c3_i81 = 0; c3_i81 < 3; c3_i81 = c3_i81 + 1) {
       c3_g_x[c3_i81] = c3_p_in_w[c3_i81 + 6] - c3_b_in_w[c3_i81 + 6];
     }
@@ -1603,7 +1603,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_n3hat[c3_i85] = c3_i_x[c3_i85] / c3_k_y;
     }
 
-    _SFD_EML_CALL(0,17);
+    _SFD_EML_CALL(0,19);
     for (c3_i86 = 0; c3_i86 < 9; c3_i86 = c3_i86 + 1) {
       c3_c_a[c3_i86] = c3_rwave[c3_i86];
     }
@@ -1667,7 +1667,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     c3_a13 = c3_eml_xdotu(chartInstance, c3_dv6, c3_d_b);
-    _SFD_EML_CALL(0,18);
+    _SFD_EML_CALL(0,20);
     for (c3_i101 = 0; c3_i101 < 9; c3_i101 = c3_i101 + 1) {
       c3_d_a[c3_i101] = c3_rwave[c3_i101];
     }
@@ -1731,7 +1731,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     c3_a23 = c3_eml_xdotu(chartInstance, c3_dv7, c3_g_b);
-    _SFD_EML_CALL(0,19);
+    _SFD_EML_CALL(0,21);
     for (c3_i116 = 0; c3_i116 < 9; c3_i116 = c3_i116 + 1) {
       c3_e_a[c3_i116] = c3_rwave[c3_i116];
     }
@@ -1795,7 +1795,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     c3_a33 = c3_eml_xdotu(chartInstance, c3_dv8, c3_j_b);
-    _SFD_EML_CALL(0,21);
+    _SFD_EML_CALL(0,23);
     c3_idk_jac[0] = c3_n1hat[0];
     c3_idk_jac[3] = c3_n1hat[1];
     c3_idk_jac[6] = c3_a13;
@@ -1808,19 +1808,19 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     /*     %% instantaneous inverse kinematics jacobian */
     /*  micro actuator (TWA) lengths */
-    _SFD_EML_CALL(0,27);
+    _SFD_EML_CALL(0,29);
     for (c3_i131 = 0; c3_i131 < 3; c3_i131 = c3_i131 + 1) {
       c3_e_b_in_w[c3_i131] = c3_b_in_w[c3_i131] - c3_m_in_w[c3_i131];
     }
 
     c3_q1_mu = c3_norm(chartInstance, c3_e_b_in_w);
-    _SFD_EML_CALL(0,28);
+    _SFD_EML_CALL(0,30);
     for (c3_i132 = 0; c3_i132 < 3; c3_i132 = c3_i132 + 1) {
       c3_f_b_in_w[c3_i132] = c3_b_in_w[c3_i132 + 3] - c3_m_in_w[c3_i132 + 3];
     }
 
     c3_q2_mu = c3_norm(chartInstance, c3_f_b_in_w);
-    _SFD_EML_CALL(0,29);
+    _SFD_EML_CALL(0,31);
     for (c3_i133 = 0; c3_i133 < 3; c3_i133 = c3_i133 + 1) {
       c3_g_b_in_w[c3_i133] = c3_b_in_w[c3_i133 + 6] - c3_m_in_w[c3_i133 + 6];
     }
@@ -1828,7 +1828,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_q3_mu = c3_norm(chartInstance, c3_g_b_in_w);
 
     /*  vector from base vertex to twa motor attachment point */
-    _SFD_EML_CALL(0,32);
+    _SFD_EML_CALL(0,34);
     for (c3_i134 = 0; c3_i134 < 3; c3_i134 = c3_i134 + 1) {
       c3_j_x[c3_i134] = c3_m_in_w[c3_i134] - c3_b_in_w[c3_i134];
     }
@@ -1852,7 +1852,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_l1_hat[c3_i138] = c3_l_x[c3_i138] / c3_t_y;
     }
 
-    _SFD_EML_CALL(0,33);
+    _SFD_EML_CALL(0,35);
     for (c3_i139 = 0; c3_i139 < 3; c3_i139 = c3_i139 + 1) {
       c3_m_x[c3_i139] = c3_m_in_w[c3_i139 + 3] - c3_b_in_w[c3_i139 + 3];
     }
@@ -1876,7 +1876,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_l2_hat[c3_i143] = c3_o_x[c3_i143] / c3_w_y;
     }
 
-    _SFD_EML_CALL(0,34);
+    _SFD_EML_CALL(0,36);
     for (c3_i144 = 0; c3_i144 < 3; c3_i144 = c3_i144 + 1) {
       c3_p_x[c3_i144] = c3_m_in_w[c3_i144 + 6] - c3_b_in_w[c3_i144 + 6];
     }
@@ -1902,19 +1902,19 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     /*  distance from micro actuator attachmnet point (m_i) to flexure rotation */
     /* center (f_i) */
-    _SFD_EML_CALL(0,38);
+    _SFD_EML_CALL(0,40);
     for (c3_i149 = 0; c3_i149 < 3; c3_i149 = c3_i149 + 1) {
       c3_e_m_in_w[c3_i149] = c3_m_in_w[c3_i149] - c3_f_in_w[c3_i149];
     }
 
     c3_a1 = c3_norm(chartInstance, c3_e_m_in_w);
-    _SFD_EML_CALL(0,39);
+    _SFD_EML_CALL(0,41);
     for (c3_i150 = 0; c3_i150 < 3; c3_i150 = c3_i150 + 1) {
       c3_f_m_in_w[c3_i150] = c3_m_in_w[c3_i150 + 3] - c3_f_in_w[c3_i150 + 3];
     }
 
     c3_a2 = c3_norm(chartInstance, c3_f_m_in_w);
-    _SFD_EML_CALL(0,40);
+    _SFD_EML_CALL(0,42);
     for (c3_i151 = 0; c3_i151 < 3; c3_i151 = c3_i151 + 1) {
       c3_g_m_in_w[c3_i151] = c3_m_in_w[c3_i151 + 6] - c3_f_in_w[c3_i151 + 6];
     }
@@ -1922,19 +1922,19 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_a3 = c3_norm(chartInstance, c3_g_m_in_w);
 
     /*  distance from flexure rotation center (f_i) to base vertex */
-    _SFD_EML_CALL(0,43);
+    _SFD_EML_CALL(0,45);
     for (c3_i152 = 0; c3_i152 < 3; c3_i152 = c3_i152 + 1) {
       c3_h_b_in_w[c3_i152] = c3_b_in_w[c3_i152] - c3_f_in_w[c3_i152];
     }
 
     c3_c1 = c3_norm(chartInstance, c3_h_b_in_w);
-    _SFD_EML_CALL(0,44);
+    _SFD_EML_CALL(0,46);
     for (c3_i153 = 0; c3_i153 < 3; c3_i153 = c3_i153 + 1) {
       c3_i_b_in_w[c3_i153] = c3_b_in_w[c3_i153 + 3] - c3_f_in_w[c3_i153 + 3];
     }
 
     c3_c2 = c3_norm(chartInstance, c3_i_b_in_w);
-    _SFD_EML_CALL(0,45);
+    _SFD_EML_CALL(0,47);
     for (c3_i154 = 0; c3_i154 < 3; c3_i154 = c3_i154 + 1) {
       c3_j_b_in_w[c3_i154] = c3_b_in_w[c3_i154 + 6] - c3_f_in_w[c3_i154 + 6];
     }
@@ -1942,7 +1942,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_c3 = c3_norm(chartInstance, c3_j_b_in_w);
 
     /*  term to paramterize angle between a_i and qimu, delta */
-    _SFD_EML_CALL(0,48);
+    _SFD_EML_CALL(0,50);
     c3_k_b = c3_a1;
     c3_bb_y = -2.0 * c3_k_b;
     c3_f_a = c3_bb_y;
@@ -1958,7 +1958,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_u_x = c3_t_x;
     c3_fb_y = c3_eb_y;
     c3_h1 = c3_u_x / c3_fb_y;
-    _SFD_EML_CALL(0,49);
+    _SFD_EML_CALL(0,51);
     c3_m_b = c3_a2;
     c3_gb_y = -2.0 * c3_m_b;
     c3_g_a = c3_gb_y;
@@ -1974,7 +1974,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_x_x = c3_w_x;
     c3_kb_y = c3_jb_y;
     c3_h2 = c3_x_x / c3_kb_y;
-    _SFD_EML_CALL(0,50);
+    _SFD_EML_CALL(0,52);
     c3_o_b = c3_a3;
     c3_lb_y = -2.0 * c3_o_b;
     c3_h_a = c3_lb_y;
@@ -1992,7 +1992,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_h3 = c3_bb_x / c3_pb_y;
 
     /*  time derivatives */
-    _SFD_EML_CALL(0,53);
+    _SFD_EML_CALL(0,55);
     c3_q_b = c3_a1;
     c3_qb_y = 4.0 * c3_q_b;
     c3_i_a = c3_qb_y;
@@ -2018,7 +2018,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_eb_x = c3_db_x;
     c3_yb_y = c3_xb_y;
     c3_h1dot = c3_eb_x / c3_yb_y;
-    _SFD_EML_CALL(0,54);
+    _SFD_EML_CALL(0,56);
     c3_v_b = c3_a2;
     c3_ac_y = 4.0 * c3_v_b;
     c3_m_a = c3_ac_y;
@@ -2044,7 +2044,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_hb_x = c3_gb_x;
     c3_ic_y = c3_hc_y;
     c3_h2dot = c3_hb_x / c3_ic_y;
-    _SFD_EML_CALL(0,55);
+    _SFD_EML_CALL(0,57);
     c3_bb_b = c3_a3;
     c3_jc_y = 4.0 * c3_bb_b;
     c3_q_a = c3_jc_y;
@@ -2070,7 +2070,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_kb_x = c3_jb_x;
     c3_rc_y = c3_qc_y;
     c3_h3dot = c3_kb_x / c3_rc_y;
-    _SFD_EML_CALL(0,57);
+    _SFD_EML_CALL(0,59);
     for (c3_i155 = 0; c3_i155 < 3; c3_i155 = c3_i155 + 1) {
       c3_u_a[c3_i155] = c3_n1hat[c3_i155];
     }
@@ -2134,7 +2134,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     c3_ad_y = c3_eml_xdotu(chartInstance, c3_ab_a, c3_lb_b);
     c3_e1 = c3_sc_y + c3_ad_y;
-    _SFD_EML_CALL(0,58);
+    _SFD_EML_CALL(0,60);
     for (c3_i166 = 0; c3_i166 < 3; c3_i166 = c3_i166 + 1) {
       c3_bb_a[c3_i166] = c3_n2hat[c3_i166];
     }
@@ -2198,7 +2198,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     c3_id_y = c3_eml_xdotu(chartInstance, c3_gb_a, c3_rb_b);
     c3_e2 = c3_bd_y + c3_id_y;
-    _SFD_EML_CALL(0,59);
+    _SFD_EML_CALL(0,61);
     for (c3_i177 = 0; c3_i177 < 3; c3_i177 = c3_i177 + 1) {
       c3_hb_a[c3_i177] = c3_n3hat[c3_i177];
     }
@@ -2264,7 +2264,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_e3 = c3_jd_y + c3_qd_y;
 
     /*  micro motion instantaneous inverse kinematics jacobian */
-    _SFD_EML_CALL(0,62);
+    _SFD_EML_CALL(0,64);
     c3_b_mu[0] = c3_e1;
     c3_b_mu[3] = 0.0;
     c3_b_mu[6] = 0.0;
@@ -2276,13 +2276,13 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_b_mu[8] = c3_e3;
 
     /*  macro motion instantaneous inverse kinematics jacobian */
-    _SFD_EML_CALL(0,67);
+    _SFD_EML_CALL(0,69);
     for (c3_i188 = 0; c3_i188 < 9; c3_i188 = c3_i188 + 1) {
       c3_b_m[c3_i188] = c3_dv12[c3_i188];
     }
 
     /*  combined macro-micro motion IIK jacobian */
-    _SFD_EML_CALL(0,70);
+    _SFD_EML_CALL(0,72);
     c3_i189 = 0;
     for (c3_i190 = 0; c3_i190 < 3; c3_i190 = c3_i190 + 1) {
       for (c3_i191 = 0; c3_i191 < 3; c3_i191 = c3_i191 + 1) {
@@ -2302,12 +2302,12 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     /*  the full manipulator jacobian with redundancy resolution weighting */
-    _SFD_EML_CALL(0,73);
+    _SFD_EML_CALL(0,75);
     for (c3_i195 = 0; c3_i195 < 36; c3_i195 = c3_i195 + 1) {
       c3_w_mat[c3_i195] = c3_dv13[c3_i195];
     }
 
-    _SFD_EML_CALL(0,74);
+    _SFD_EML_CALL(0,76);
     for (c3_i196 = 0; c3_i196 < 18; c3_i196 = c3_i196 + 1) {
       c3_v_A[c3_i196] = c3_iik_jac[c3_i196];
     }
@@ -2475,7 +2475,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     /*     %% */
     /*  joint velocities and ee velocity proportional to joint error */
-    _SFD_EML_CALL(0,78);
+    _SFD_EML_CALL(0,80);
     c3_pb_a = c3_kp;
     for (c3_i244 = 0; c3_i244 < 3; c3_i244 = c3_i244 + 1) {
       c3_bc_b[c3_i244] = c3_eq[c3_i244];
@@ -2485,7 +2485,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_qdot[c3_i245] = c3_pb_a * c3_bc_b[c3_i245];
     }
 
-    _SFD_EML_CALL(0,79);
+    _SFD_EML_CALL(0,81);
     for (c3_i246 = 0; c3_i246 < 18; c3_i246 = c3_i246 + 1) {
       c3_qb_a[c3_i246] = c3_full_jac[c3_i246];
     }
@@ -2535,16 +2535,16 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     /*  separate translational and rotational components of twist */
-    _SFD_EML_CALL(0,82);
+    _SFD_EML_CALL(0,84);
     for (c3_i258 = 0; c3_i258 < 2; c3_i258 = c3_i258 + 1) {
       c3_v[c3_i258] = c3_tdot[c3_i258];
     }
 
-    _SFD_EML_CALL(0,83);
+    _SFD_EML_CALL(0,85);
     c3_w = c3_tdot[2];
 
     /*  new end effector position */
-    _SFD_EML_CALL(0,86);
+    _SFD_EML_CALL(0,88);
     for (c3_i259 = 0; c3_i259 < 2; c3_i259 = c3_i259 + 1) {
       c3_rb_a[c3_i259] = c3_v[c3_i259];
     }
@@ -2563,7 +2563,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     /*  change in end effector orientation */
-    _SFD_EML_CALL(0,89);
+    _SFD_EML_CALL(0,91);
     c3_sb_a = c3_w;
     c3_ec_b = c3_dt;
     c3_vd_y = c3_sb_a * c3_ec_b;
@@ -2609,7 +2609,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     /*  new end effector orientation */
-    _SFD_EML_CALL(0,92);
+    _SFD_EML_CALL(0,94);
     for (c3_i265 = 0; c3_i265 < 9; c3_i265 = c3_i265 + 1) {
       c3_wb_a[c3_i265] = c3_del_r[c3_i265];
     }
@@ -2663,7 +2663,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       }
     }
 
-    _SFD_EML_CALL(0,94);
+    _SFD_EML_CALL(0,96);
     for (c3_i279 = 0; c3_i279 < 3; c3_i279 = c3_i279 + 1) {
       c3_des_leg_len[c3_i279] = 0.0;
     }
@@ -2673,7 +2673,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     while (c3_b_i <= 3.0) {
       c3_i = c3_b_i;
       CV_EML_FOR(0, 0, 1);
-      _SFD_EML_CALL(0,96);
+      _SFD_EML_CALL(0,98);
       for (c3_i280 = 0; c3_i280 < 9; c3_i280 = c3_i280 + 1) {
         c3_xb_a[c3_i280] = c3_rwave[c3_i280];
       }
@@ -2726,7 +2726,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
         c3_p_in_w[c3_i291 + 3 * c3_d_i] = c3_twave[c3_i291] + c3_ae_y[c3_i291];
       }
 
-      _SFD_EML_CALL(0,97);
+      _SFD_EML_CALL(0,99);
       c3_e_i = _SFD_EML_ARRAY_BOUNDS_CHECK("p_in_w", (int32_T)_SFD_INTEGER_CHECK
         ("i", c3_i), 1, 3, 2, 0) - 1;
       c3_f_i = _SFD_EML_ARRAY_BOUNDS_CHECK("b_in_w", (int32_T)_SFD_INTEGER_CHECK
@@ -2744,7 +2744,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     }
 
     CV_EML_FOR(0, 0, 0);
-    _SFD_EML_CALL(0,100);
+    _SFD_EML_CALL(0,102);
     for (c3_i293 = 0; c3_i293 < 3; c3_i293 = c3_i293 + 1) {
       c3_eq_out[c3_i293] = c3_macro_leg_len[c3_i293] - c3_des_leg_len[c3_i293];
     }
@@ -2752,7 +2752,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     /*  the amount each velmex slides need to move is the difference between */
     /*  the last leg length and the new leg length */
     /*      qcmd(1:3,1) = (measured_len - des_leg_len)/velmex_pitch */
-    _SFD_EML_CALL(0,105);
+    _SFD_EML_CALL(0,107);
     for (c3_i294 = 0; c3_i294 < 3; c3_i294 = c3_i294 + 1) {
       c3_nb_A[c3_i294] = c3_des_leg_len[c3_i294] - c3_measured_len[c3_i294];
     }
@@ -2781,38 +2781,38 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_qcmd[c3_i299] = c3_ee_y[c3_i299];
     }
 
-    _SFD_EML_CALL(0,107);
+    _SFD_EML_CALL(0,109);
     for (c3_i300 = 0; c3_i300 < 3; c3_i300 = c3_i300 + 1) {
       c3_twave_out[c3_i300] = c3_twave[c3_i300];
     }
 
-    _SFD_EML_CALL(0,108);
+    _SFD_EML_CALL(0,110);
     for (c3_i301 = 0; c3_i301 < 9; c3_i301 = c3_i301 + 1) {
       c3_rwave_out[c3_i301] = c3_rwave[c3_i301];
     }
   } else {
-    _SFD_EML_CALL(0,110);
+    _SFD_EML_CALL(0,112);
     for (c3_i302 = 0; c3_i302 < 3; c3_i302 = c3_i302 + 1) {
       c3_des_leg_len[c3_i302] = c3_macro_leg_len[c3_i302];
     }
 
-    _SFD_EML_CALL(0,111);
+    _SFD_EML_CALL(0,113);
     for (c3_i303 = 0; c3_i303 < 3; c3_i303 = c3_i303 + 1) {
       c3_eq_out[c3_i303] = c3_eq[c3_i303];
     }
 
-    _SFD_EML_CALL(0,112);
+    _SFD_EML_CALL(0,114);
     for (c3_i304 = 0; c3_i304 < 3; c3_i304 = c3_i304 + 1) {
       c3_twave_out[c3_i304] = c3_twave[c3_i304];
     }
 
-    _SFD_EML_CALL(0,113);
+    _SFD_EML_CALL(0,115);
     for (c3_i305 = 0; c3_i305 < 9; c3_i305 = c3_i305 + 1) {
       c3_rwave_out[c3_i305] = c3_rwave[c3_i305];
     }
   }
 
-  _SFD_EML_CALL(0,-113);
+  _SFD_EML_CALL(0,-115);
   sf_debug_symbol_scope_pop();
   for (c3_i306 = 0; c3_i306 < 6; c3_i306 = c3_i306 + 1) {
     (*c3_b_qcmd)[c3_i306] = c3_qcmd[c3_i306];
@@ -5303,10 +5303,10 @@ static void init_dsm_address_info(SFc3_twa_parallelInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c3_twa_parallel_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3125513861U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3162348885U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2574572312U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1149452505U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1188491320U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(493678417U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2273060043U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2921331843U);
 }
 
 mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
@@ -5320,10 +5320,10 @@ mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(3959066677U);
-    pr[1] = (double)(3102943938U);
-    pr[2] = (double)(4206513341U);
-    pr[3] = (double)(2717381764U);
+    pr[0] = (double)(3983684211U);
+    pr[1] = (double)(4129540354U);
+    pr[2] = (double)(2398921583U);
+    pr[3] = (double)(4053905425U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -5907,9 +5907,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
         /* Initialization of EML Model Coverage */
         _SFD_CV_INIT_EML(0,1,1,0,0,1,0,0,0);
-        _SFD_CV_INIT_EML_FCN(0,0,"eML_blk_kernel",0,-1,4151);
-        _SFD_CV_INIT_EML_IF(0,0,275,294,4047,4151);
-        _SFD_CV_INIT_EML_FOR(0,0,3564,3576,3692);
+        _SFD_CV_INIT_EML_FCN(0,0,"eML_blk_kernel",0,-1,4167);
+        _SFD_CV_INIT_EML_IF(0,0,291,310,4063,4167);
+        _SFD_CV_INIT_EML_FOR(0,0,3580,3592,3708);
         _SFD_TRANS_COV_WTS(0,0,0,1,0);
         if (chartAlreadyPresent==0) {
           _SFD_TRANS_COV_MAPS(0,
@@ -6158,10 +6158,10 @@ static void mdlSetWorkWidths_c3_twa_parallel(SimStruct *S)
     sf_set_sfun_dwork_info(S);
   }
 
-  ssSetChecksum0(S,(2668090163U));
-  ssSetChecksum1(S,(3153357714U));
-  ssSetChecksum2(S,(330800342U));
-  ssSetChecksum3(S,(3998050496U));
+  ssSetChecksum0(S,(4234006789U));
+  ssSetChecksum1(S,(2809604288U));
+  ssSetChecksum2(S,(3869888707U));
+  ssSetChecksum3(S,(1685442956U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }

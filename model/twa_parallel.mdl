@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6894"
+    ComputedModelVersion    "1.6896"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 07 18:25:56 2024"
-  RTWModifiedTimeStamp	  644955953
-  ModelVersionFormat	  "1.%<AutoIncrement:6894>"
+  LastModifiedDate	  "Wed Aug 07 18:56:47 2024"
+  RTWModifiedTimeStamp	  644957805
+  ModelVersionFormat	  "1.%<AutoIncrement:6896>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1808,7 +1808,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "210"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3288
+    SIDHighWatermark	    3289
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -5082,11 +5082,19 @@ Model {
 	  GotoTag		  "E"
 	}
 	Block {
+	  BlockType		  From
+	  Name			  "From5"
+	  SID			  3289
+	  Position		  [115, 271, 140, 289]
+	  ShowName		  off
+	  GotoTag		  "F"
+	}
+	Block {
 	  BlockType		  SubSystem
 	  Name			  "GetLegLen"
 	  SID			  3036
 	  Ports			  [10, 3]
-	  Position		  [180, 122, 370, 318]
+	  Position		  [180, 121, 370, 339]
 	  LibraryVersion	  "1.31"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -5419,14 +5427,14 @@ Model {
 	  SID			  3287
 	  Position		  [345, 51, 370, 69]
 	  ShowName		  off
-	  GotoTag		  "E"
+	  GotoTag		  "F"
 	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay"
 	  SID			  3166
-	  Position		  [260, 339, 285, 371]
+	  Position		  [260, 359, 285, 391]
 	  BlockMirror		  on
 	  ShowName		  off
 	  X0			  "zeros(3,1)"
@@ -5436,7 +5444,7 @@ Model {
 	  BlockType		  UnitDelay
 	  Name			  "Unit Delay2"
 	  SID			  3168
-	  Position		  [260, 373, 285, 407]
+	  Position		  [260, 393, 285, 427]
 	  BlockMirror		  on
 	  ShowName		  off
 	  X0			  "zeros(3,1)"
@@ -5948,20 +5956,21 @@ Model {
 	Line {
 	  SrcBlock		  "ee_rot"
 	  SrcPort		  1
+	  Points		  [25, 0]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "x_des"
 	  SrcPort		  1
-	  Points		  [5, 0; 0, 20]
+	  Points		  [5, 0; 0, 30]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "GetLegLen"
 	  SrcPort		  3
-	  Points		  [0, 70]
+	  Points		  [0, 75]
 	  DstBlock		  "Unit Delay"
 	  DstPort		  1
 	}
@@ -5975,9 +5984,9 @@ Model {
 	Line {
 	  SrcBlock		  "GetLegLen"
 	  SrcPort		  2
-	  Points		  [10, 0]
+	  Points		  [0, -10; 10, 0]
 	  Branch {
-	    Points		    [0, 170]
+	    Points		    [0, 190]
 	    DstBlock		    "Unit Delay2"
 	    DstPort		    1
 	  }
@@ -5990,13 +5999,14 @@ Model {
 	Line {
 	  SrcBlock		  "Unit Delay2"
 	  SrcPort		  1
-	  Points		  [-100, 0; 0, -100]
+	  Points		  [-100, 0; 0, -110]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  9
 	}
 	Line {
 	  SrcBlock		  "GetLegLen"
 	  SrcPort		  1
+	  Points		  [0, -5]
 	  DstBlock		  "gear_ratio"
 	  DstPort		  1
 	}
@@ -6039,35 +6049,30 @@ Model {
 	Line {
 	  SrcBlock		  "From"
 	  SrcPort		  1
-	  Points		  [-5, 0]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  3
 	}
 	Line {
 	  SrcBlock		  "From1"
 	  SrcPort		  1
-	  Points		  [20, 0]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  4
 	}
 	Line {
 	  SrcBlock		  "From2"
 	  SrcPort		  1
-	  Points		  [-5, 0]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  5
 	}
 	Line {
 	  SrcBlock		  "From3"
 	  SrcPort		  1
-	  Points		  [20, 0]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  6
 	}
 	Line {
 	  SrcBlock		  "From4"
 	  SrcPort		  1
-	  Points		  [-5, 0]
 	  DstBlock		  "GetLegLen"
 	  DstPort		  7
 	}
@@ -6083,9 +6088,15 @@ Model {
 	  DstBlock		  "Goto5"
 	  DstPort		  1
 	}
+	Line {
+	  SrcBlock		  "From5"
+	  SrcPort		  1
+	  DstBlock		  "GetLegLen"
+	  DstPort		  8
+	}
 	Annotation {
 	  Name			  "update micro_len_out initializaed value to preload length"
-	  Position		  [288, 412]
+	  Position		  [288, 432]
 	  BackgroundColor	  "red"
 	}
       }
@@ -6318,26 +6329,26 @@ Stateflow {
       "  % center to the platform vertex\n        flexure_frame_rot_angle = atan2(rho_vec(2,1),rho_vec(1,1));\n        "
       "\n        % rotation matrix from flexure frame to world\n        n = [0;0;1] ./ norm([0;0;1]);\n        rot_f_2_"
       "w = expm(flexure_frame_rot_angle*[0 -n(3) n(2);n(3) 0 -n(1);n(2) n(1) 0]);\n        \n        % condition for ac"
-      "os solvability\n        check = (macro_len(i,1)^2-rho^2-eta^2)/(-2*rho*eta);\n        \n        if check >= -1 &"
-      "& check <= 1\n            % calculate angle between mf and fb vectors, lambda, with\n            % law of cosine"
-      "s\n            lambda = acos(check);\n            \n            % calculate flexed base vertex position for both"
-      " elbow up\n            % and down configurations in the flexure frame\n            b_prime_in_f_dwn = eta*[cos(-"
-      "lambda);sin(-lambda);0];\n            b_prime_in_f_up = eta*[cos(lambda);sin(lambda);0];\n            \n        "
-      "    % vector from flexure center point to new base vertex location\n            % rotated to world frame\n      "
-      "      eta_prime_vec_dwn = rot_f_2_w*b_prime_in_f_dwn;\n            eta_prime_vec_up = rot_f_2_w*b_prime_in_f_up;"
-      "\n            \n            post_flex_angle(1,1) = atan2(eta_prime_vec_dwn(2,1),eta_prime_vec_dwn(1,1));\n      "
-      "      post_flex_angle(1,2) = atan2(eta_prime_vec_up(2,1),eta_prime_vec_up(1,1));\n            \n            % de"
-      "termine if flex angle is within mechanical range\n            for j = 1:2\n                if pre_flex_angle < 0"
-      " && post_flex_angle(1,i) < 0\n                    beta(1,j) = (-1*pre_flex_angle)-(-1*post_flex_angle(1,j));\n  "
-      "              else\n                    beta(1,j) = pre_flex_angle - post_flex_angle(1,j);\n                end\n"
-      "                \n                if beta(1,j) >= -pi/18 && beta(1,j) <= pi/18\n                    beta_cmd = b"
-      "eta(1,j);\n                end\n            end\n        end\n        \n        % initial angle prior to flexure"
-      " bend\n        a = norm(f_in_w(:,i) - m_in_w(:,i));\n        b = norm(f_in_w(:,i) - b_in_w(:,i));\n        c = n"
-      "orm(m_in_w(:,i) - b_in_w(:,i));\n        %c = init_twa_len(i,1);\n        \n        alpha =  acos((c^2 - a^2 - b"
-      "^2)/(-2*a*b));\n        delta = alpha - beta_cmd;\n        % distance between base vertex and twa motor position"
-      " after flex\n        c_prime = sqrt(a^2 - b^2 - 2*a*b*cos(delta));\n        \n        % required twa length to f"
-      "acilitate flexure bend\n        d = norm(f_in_w(:,1) - t_in_w(:,1));\n        \n        micro_len_out(i,1) = sqr"
-      "t(a^2 - d^2 - 2*a*d*cos(delta - twa_gamma));\n    end\nend"
+      "os solvability\n        check = (des_macro_len(i,1)^2-rho^2-eta^2)/(-2*rho*eta);\n        \n        if check >= "
+      "-1 && check <= 1\n            % calculate angle between mf and fb vectors, lambda, with\n            % law of co"
+      "sines\n            lambda = acos(check);\n            \n            % calculate flexed base vertex position for "
+      "both elbow up\n            % and down configurations in the flexure frame\n            b_prime_in_f_dwn = eta*[c"
+      "os(-lambda);sin(-lambda);0];\n            b_prime_in_f_up = eta*[cos(lambda);sin(lambda);0];\n            \n    "
+      "        % vector from flexure center point to new base vertex location\n            % rotated to world frame\n  "
+      "          eta_prime_vec_dwn = rot_f_2_w*b_prime_in_f_dwn;\n            eta_prime_vec_up = rot_f_2_w*b_prime_in_f"
+      "_up;\n            \n            post_flex_angle(1,1) = atan2(eta_prime_vec_dwn(2,1),eta_prime_vec_dwn(1,1));\n  "
+      "          post_flex_angle(1,2) = atan2(eta_prime_vec_up(2,1),eta_prime_vec_up(1,1));\n            \n            "
+      "% determine if flex angle is within mechanical range\n            for j = 1:2\n                if pre_flex_angle"
+      " < 0 && post_flex_angle(1,j) < 0\n                    beta(1,j) = (-1*pre_flex_angle)-(-1*post_flex_angle(1,j));"
+      "\n                else\n                    beta(1,j) = pre_flex_angle - post_flex_angle(1,j);\n                "
+      "end\n                \n                if beta(1,j) >= -pi/18 && beta(1,j) <= pi/18\n                    beta_cm"
+      "d = beta(1,j);\n                end\n            end\n        end\n        \n        % initial angle prior to fl"
+      "exure bend\n        a = norm(f_in_w(:,i) - m_in_w(:,i));\n        b = norm(f_in_w(:,i) - b_in_w(:,i));\n        "
+      "c = norm(m_in_w(:,i) - b_in_w(:,i));\n        %c = init_twa_len(i,1);\n        \n        alpha =  acos((c^2 - a^"
+      "2 - b^2)/(-2*a*b));\n        delta = alpha - beta_cmd;\n        % distance between base vertex and twa motor pos"
+      "ition after flex\n        c_prime = sqrt(a^2 - b^2 - 2*a*b*cos(delta));\n        \n        % required twa length"
+      " to facilitate flexure bend\n        d = norm(f_in_w(:,1) - t_in_w(:,1));\n        \n        micro_len_out(i,1) "
+      "= sqrt(a^2 - d^2 - 2*a*d*cos(delta - twa_gamma));\n    end\nend"
       editorLayout	      "100 M4x1[738 39 874 985]"
     }
   }
