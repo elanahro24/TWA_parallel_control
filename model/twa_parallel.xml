@@ -1008,6 +1008,16 @@ MATLAB Function/p7</sigName>
 				<xPCName>twa_parallel/task_space/gear_ratio/GetMicroQDes</xPCName>
 			</SubSystem>
 			<block>
+				<blkName>helix_rad</blkName>
+				<xpcblkName>task_space/gear_ratio/helix_rad</xpcblkName>
+				<SLblockPath>twa_parallel/task_space/gear_ratio/helix_rad</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>meas_macro_len</blkName>
 				<xpcblkName>task_space/gear_ratio/meas_macro_len</xpcblkName>
 				<SLblockPath>twa_parallel/task_space/gear_ratio/meas_macro_len</SLblockPath>
@@ -1018,9 +1028,29 @@ MATLAB Function/p7</sigName>
 				</parameter>
 			</block>
 			<block>
+				<blkName>meas_twa_len</blkName>
+				<xpcblkName>task_space/gear_ratio/meas_twa_len</xpcblkName>
+				<SLblockPath>twa_parallel/task_space/gear_ratio/meas_twa_len</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 3]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>velmex_pitch</blkName>
 				<xpcblkName>task_space/gear_ratio/velmex_pitch</xpcblkName>
 				<SLblockPath>twa_parallel/task_space/gear_ratio/velmex_pitch</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>wire_delta</blkName>
+				<xpcblkName>task_space/gear_ratio/wire_delta</xpcblkName>
+				<SLblockPath>twa_parallel/task_space/gear_ratio/wire_delta</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -1039,6 +1069,10 @@ MATLAB Function/p7</sigName>
 				<sigWidth>3</sigWidth>
 				<sigDim>[3, 1]</sigDim>
 			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro3</Name>
+			<xPCName>twa_parallel/task_space/q_cur_macro3</xPCName>
 		</SubSystem>
 		<SubSystem>
 			<Name>GetLegLen</Name>
@@ -1105,9 +1139,29 @@ MATLAB Function/p7</sigName>
 			</parameter>
 		</block>
 		<block>
+			<blkName>twa_flange_offset</blkName>
+			<xpcblkName>task_space/twa_flange_offset</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/twa_flange_offset</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
 			<blkName>twa_gamma</blkName>
 			<xpcblkName>task_space/twa_gamma</xpcblkName>
 			<SLblockPath>twa_parallel/task_space/twa_gamma</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>use_twa</blkName>
+			<xpcblkName>task_space/use_twa</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/use_twa</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -1125,9 +1179,9 @@ MATLAB Function/p7</sigName>
 			</parameter>
 		</block>
 		<block>
-			<blkName>Unit Delay</blkName>
-			<xpcblkName>task_space/Unit Delay</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/Unit Delay</SLblockPath>
+			<blkName>Unit Delay1</blkName>
+			<xpcblkName>task_space/Unit Delay1</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/Unit Delay1</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>X0</paramName>
@@ -1157,14 +1211,8 @@ MATLAB Function/p7</sigName>
 			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
-			<sigName>GetLegLen/p3</sigName>
-			<xpcsigName>task_space/GetLegLen/p3</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay</sigName>
-			<xpcsigName>task_space/Unit Delay</xpcsigName>
+			<sigName>Unit Delay1</sigName>
+			<xpcsigName>task_space/Unit Delay1</xpcsigName>
 			<sigWidth>3</sigWidth>
 			<sigDim>[3, 1]</sigDim>
 		</signal>

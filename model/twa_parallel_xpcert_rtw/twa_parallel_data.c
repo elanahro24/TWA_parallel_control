@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6896
+ * Model version                        : 1.6922
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Wed Aug 07 18:57:01 2024
+ * Real-Time Workshop file generated on : Thu Aug 08 19:39:42 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Wed Aug 07 18:57:01 2024
+ * C/C++ source code generated on       : Thu Aug 08 19:39:42 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -40,23 +40,23 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: b_in_w
    * Referenced by: '<S2>/b_in_w'
    */
-  { 1.4465783164181136E+002, -7.3611465443158764E+001, 0.0,
-    -8.5795167373298948E+000, 1.6208308977976043E+002, 0.0,
-    -1.3607831490448149E+002, -8.8471624336601678E+001, 0.0 },
+  { 1.4466350201102856E+002, -7.3609582987170469E+001, 0.0,
+    -8.5839821766459057E+000, 1.6208705923555718E+002, 0.0,
+    -1.3607951983438267E+002, -8.8477476248386822E+001, 0.0 },
 
   /*  Expression: m_in_w
    * Referenced by: '<S2>/m_in_w'
    */
-  { -5.2876119020610879E+001, -2.3235964804009797E+002, 0.0,
-    2.2766741752744127E+002, 7.0387761694670516E+001, 0.0,
-    -1.7479129850683054E+002, 1.6197188634542741E+002, 0.0 },
+  { -5.2888240882858959E+001, -2.3235668412239983E+002, 0.0,
+    2.2767091163054408E+002, 7.0375781895173233E+001, 0.0,
+    -1.7478267074768499E+002, 1.6198090222722661E+002, 0.0 },
 
   /*  Expression: f_in_w
    * Referenced by: '<S2>/f_in_w'
    */
-  { 6.1283555449518239E+001, -5.1423008774923140E+001, 0.0,
-    1.3891854213354433E+001, 7.8784620240976636E+001, 0.0,
-    -7.5175409662872681E+001, -2.7361611466053493E+001, 0.0 },
+  { 5.6568542494923804E+001, -5.6568542494923797E+001, 0.0,
+    2.0705523608201659E+001, 7.7274066103125463E+001, 0.0,
+    -7.6900935675065512E+001, -2.2050988465359922E+001, 0.0 },
 
   /*  Expression: meas_macro_len
    * Referenced by: '<S2>/meas_macro_len'
@@ -74,7 +74,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: eq_homing
    * Referenced by: '<S2>/Unit Delay4'
    */
-  { 8.9354624834103902E-001, 1.5235462483410060E+000, 1.3335462483410225E+000 },
+  { 8.9010354868159425E-001, 1.5201035486815897E+000, 1.3301035486815920E+000 },
 
   /*  Expression: zeros(3,1)
    * Referenced by: '<S2>/Unit Delay3'
@@ -208,43 +208,49 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: b_in_w
    * Referenced by: '<S6>/b_in_w'
    */
-  { 1.4465783164181136E+002, -7.3611465443158764E+001, 0.0,
-    -8.5795167373298948E+000, 1.6208308977976043E+002, 0.0,
-    -1.3607831490448149E+002, -8.8471624336601678E+001, 0.0 },
+  { 1.4466350201102856E+002, -7.3609582987170469E+001, 0.0,
+    -8.5839821766459057E+000, 1.6208705923555718E+002, 0.0,
+    -1.3607951983438267E+002, -8.8477476248386822E+001, 0.0 },
 
   /*  Expression: m_in_w
    * Referenced by: '<S6>/m_in_w'
    */
-  { -5.2876119020610879E+001, -2.3235964804009797E+002, 0.0,
-    2.2766741752744127E+002, 7.0387761694670516E+001, 0.0,
-    -1.7479129850683054E+002, 1.6197188634542741E+002, 0.0 },
+  { -5.2888240882858959E+001, -2.3235668412239983E+002, 0.0,
+    2.2767091163054408E+002, 7.0375781895173233E+001, 0.0,
+    -1.7478267074768499E+002, 1.6198090222722661E+002, 0.0 },
 
   /*  Expression: f_in_w
    * Referenced by: '<S6>/f_in_w'
    */
-  { 6.1283555449518239E+001, -5.1423008774923140E+001, 0.0,
-    1.3891854213354433E+001, 7.8784620240976636E+001, 0.0,
-    -7.5175409662872681E+001, -2.7361611466053493E+001, 0.0 },
+  { 5.6568542494923804E+001, -5.6568542494923797E+001, 0.0,
+    2.0705523608201659E+001, 7.7274066103125463E+001, 0.0,
+    -7.6900935675065512E+001, -2.2050988465359922E+001, 0.0 },
 
   /*  Expression: t_in_w
    * Referenced by: '<S6>/t_in_w'
    */
-  { 1.5972755887166480E+002, 5.7287023285372875E+001, 0.0,
-    1.0619799126416217E+002, -1.3235060540646174E+002, 0.0,
-    1.6330862533168934E+002, -4.6097602890756818E+001, 0.0 },
-  1.0402162341886204E-001,             /* Expression: twa_gamma
+  { 1.4243556993353818E+002, -9.2235651485464956E+001, 0.0,
+    8.6606323542513639E+000, 1.6947064770769154E+002, 0.0,
+    -1.5109620228778959E+002, -7.7234996222226684E+001, 0.0 },
+  2.0261003687626575E-001,             /* Expression: twa_gamma
                                         * Referenced by: '<S6>/twa_gamma'
                                         */
+  16.7,                                /* Expression: twa_flange_offset
+                                        * Referenced by: '<S6>/twa_flange_offset'
+                                        */
+  0.0,                                 /* Expression: use_twa
+                                        * Referenced by: '<S6>/use_twa'
+                                        */
 
-  /*  Expression: zeros(3,1)
+  /*  Expression: meas_macro_len
+   * Referenced by: '<S6>/Unit Delay1'
+   */
+  { 1.2479E+002, 125.42, 125.23 },
+
+  /*  Expression: 223.6857*ones(3,1)
    * Referenced by: '<S6>/Unit Delay2'
    */
-  { 0.0, 0.0, 0.0 },
-
-  /*  Expression: zeros(3,1)
-   * Referenced by: '<S6>/Unit Delay'
-   */
-  { 0.0, 0.0, 0.0 },
+  { 223.6857, 223.6857, 223.6857 },
 
   /*  Expression: meas_macro_len
    * Referenced by: '<S26>/meas_macro_len'
@@ -252,6 +258,17 @@ Parameters_twa_parallel twa_parallel_P = {
   { 1.2479E+002, 125.42, 125.23 },
   1.27,                                /* Expression: velmex_pitch
                                         * Referenced by: '<S26>/velmex_pitch'
+                                        */
+
+  /*  Expression: meas_twa_len
+   * Referenced by: '<S26>/meas_twa_len'
+   */
+  { 229.37, 2.2833E+002, 2.2727E+002 },
+  0.2794,                              /* Expression: helix_rad
+                                        * Referenced by: '<S26>/helix_rad'
+                                        */
+  5.4367086539669017E-009,             /* Expression: wire_delta
+                                        * Referenced by: '<S26>/wire_delta'
                                         */
   5.0,                                 /* Expression: 5
                                         * Referenced by: '<S4>/tf'

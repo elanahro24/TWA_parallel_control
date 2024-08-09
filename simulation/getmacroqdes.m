@@ -14,8 +14,9 @@ velmex_stroke(1,1) = des_macro_len(1,1) - meas_macro_len(1,1);
 velmex_stroke(2,1) = des_macro_len(2,1) - meas_macro_len(2,1);
 velmex_stroke(3,1) = des_macro_len(3,1) - meas_macro_len(3,1);
 
+
 for i = 1:3
-    if abs(velmex_stroke(i,1)) < velmex_limit && abs(velmex_stroke(i,1)) > converg_rad
+    if abs(velmex_stroke(i,1)) < velmex_limit
         qmacro_des(i,1) = velmex_stroke(i,1) / velmex_pitch;
     end
 end

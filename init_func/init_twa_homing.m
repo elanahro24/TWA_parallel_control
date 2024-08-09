@@ -2,8 +2,6 @@
 % physically measured macro leg lengths at initial position
 meas_macro_len = [124.79;125.42;125.23];
 
-% physically measured UNTWISTED twa lengths
-meas_twa_len = [229.37 228.33 227.27];
 ee_rot = pi/6;
 rm2w_homing = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
 
@@ -34,11 +32,8 @@ t_rad = 169.6918;
 t_locs = [327.0745 87.0745 207.0745]*pi/180;
 t_in_w = t_rad*[cos(t_locs);sin(t_locs);zeros(1,3)];
 
-% angle between base vertex and twa attachment point
+% angle between base vertex and twa attachment point, in flexure frame
 twa_gamma = 11.6087 * pi/180;
-
-% distance from rotation axis to start of TWA measured from CAD
-twa_flange_offset = 16.7; %[mm]
 
 % moving platform starts at the origin with 30 degree rotation
 p_in_w = zeros(3,3) + rm2w_homing*p_in_m;
@@ -48,9 +43,3 @@ qmacro_nom(1,1) = norm(p_in_w(:,1) - b_in_w(:,1));
 qmacro_nom(2,1) = norm(p_in_w(:,2) - b_in_w(:,2));
 qmacro_nom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
 eq_homing = meas_macro_len - qmacro_nom;
-
-qmicro_nom = zeros(3,1);
-qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
-qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
-qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
-

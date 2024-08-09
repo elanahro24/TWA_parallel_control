@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6896
+ * Model version              : 1.6922
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Wed Aug 07 18:57:01 2024
+ * C source code generated on : Thu Aug 08 19:39:42 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -862,20 +862,22 @@ void twa_parallel_output(int_T tid)
   real_T tmp_c[3];
   real_T tmp_d[3];
   real_T tmp_e[3];
+  real_T tmp_f[9];
   real_T eml_n1hat_0[9];
   real_T eml_Y[18];
-  static real_T tmp_f[5] = { 1.4955852179582920E-002, 2.5393983300632300E-001,
+  real_T eml_c3_idx;
+  static real_T tmp_g[5] = { 1.4955852179582920E-002, 2.5393983300632300E-001,
     9.5041789961629319E-001, 2.0978479612570680E+000, 5.3719203511481517E+000 };
 
-  static int8_T tmp_g[9] = { 0, 1, 0, -1, 0, 0, 0, 0, 0 };
+  static int8_T tmp_h[9] = { 0, 1, 0, -1, 0, 0, 0, 0, 0 };
 
-  static int8_T tmp_h[9] = { 1, 0, 0, 0, 1, 0, 0, 0, 1 };
+  static int8_T tmp_i[9] = { 1, 0, 0, 0, 1, 0, 0, 0, 1 };
 
-  static int8_T tmp_i[5] = { 3, 5, 7, 9, 13 };
+  static int8_T tmp_j[5] = { 3, 5, 7, 9, 13 };
 
-  static real_T tmp_j[3] = { 0.0, 0.0, 1.0 };
+  static real_T tmp_k[3] = { 0.0, 0.0, 1.0 };
 
-  static real_T tmp_k[36] = { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
+  static real_T tmp_l[36] = { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E+010, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 1.0E+010, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E+010 };
 
@@ -1176,8 +1178,11 @@ void twa_parallel_output(int_T tid)
         twa_parallel_B.Uk1[uIdx];
     }
 
-    /* ok to acquire for <S23>/S-Function */
+    /* ok to acquire for <S22>/S-Function */
     twa_parallel_DWork.SFunction_IWORK.AcquireOK = 1;
+
+    /* ok to acquire for <S23>/S-Function */
+    twa_parallel_DWork.SFunction_IWORK_j.AcquireOK = 1;
 
     /* DiscreteFir: '<S21>/Discrete FIR Filter' incorporates:
      *  Constant: '<S21>/vel_filter_coeffs'
@@ -1211,9 +1216,6 @@ void twa_parallel_output(int_T tid)
       twa_parallel_B.Gain_n[uIdx] = twa_parallel_P.Gain_Gain_d *
         twa_parallel_B.DiscreteFIRFilter_h[uIdx];
     }
-
-    /* ok to acquire for <S22>/S-Function */
-    twa_parallel_DWork.SFunction_IWORK_j.AcquireOK = 1;
 
     /* ok to acquire for <S24>/S-Function */
     twa_parallel_DWork.SFunction_IWORK_i.AcquireOK = 1;
@@ -1308,25 +1310,23 @@ void twa_parallel_output(int_T tid)
 
       for (uIdx = 0; uIdx < 3; uIdx++) {
         for (uIdx_0 = 0; uIdx_0 < 3; uIdx_0++) {
-          eml_vertex_dist[uIdx + 3 * uIdx_0] = 0.0;
-          eml_vertex_dist[uIdx + 3 * uIdx_0] = eml_vertex_dist[3 * uIdx_0 + uIdx]
-            + twa_parallel_P.p_in_m_Value[3 * uIdx_0] *
+          tmp_f[uIdx + 3 * uIdx_0] = 0.0;
+          tmp_f[uIdx + 3 * uIdx_0] = tmp_f[3 * uIdx_0 + uIdx] +
+            twa_parallel_P.p_in_m_Value[3 * uIdx_0] *
             twa_parallel_B.UnitDelay2_j[uIdx];
-          eml_vertex_dist[uIdx + 3 * uIdx_0] = twa_parallel_P.p_in_m_Value[3 *
-            uIdx_0 + 1] * twa_parallel_B.UnitDelay2_j[uIdx + 3] +
-            eml_vertex_dist[3 * uIdx_0 + uIdx];
-          eml_vertex_dist[uIdx + 3 * uIdx_0] = twa_parallel_P.p_in_m_Value[3 *
-            uIdx_0 + 2] * twa_parallel_B.UnitDelay2_j[uIdx + 6] +
-            eml_vertex_dist[3 * uIdx_0 + uIdx];
+          tmp_f[uIdx + 3 * uIdx_0] = twa_parallel_P.p_in_m_Value[3 * uIdx_0 + 1]
+            * twa_parallel_B.UnitDelay2_j[uIdx + 3] + tmp_f[3 * uIdx_0 + uIdx];
+          tmp_f[uIdx + 3 * uIdx_0] = twa_parallel_P.p_in_m_Value[3 * uIdx_0 + 2]
+            * twa_parallel_B.UnitDelay2_j[uIdx + 6] + tmp_f[3 * uIdx_0 + uIdx];
         }
       }
 
       for (uIdx = 0; uIdx < 3; uIdx++) {
-        eml_p_in_w[3 * uIdx] = eml_n1hat_0[3 * uIdx] + eml_vertex_dist[3 * uIdx];
-        eml_p_in_w[1 + 3 * uIdx] = eml_n1hat_0[3 * uIdx + 1] + eml_vertex_dist[3
-          * uIdx + 1];
-        eml_p_in_w[2 + 3 * uIdx] = eml_n1hat_0[3 * uIdx + 2] + eml_vertex_dist[3
-          * uIdx + 2];
+        eml_p_in_w[3 * uIdx] = eml_n1hat_0[3 * uIdx] + tmp_f[3 * uIdx];
+        eml_p_in_w[1 + 3 * uIdx] = eml_n1hat_0[3 * uIdx + 1] + tmp_f[3 * uIdx +
+          1];
+        eml_p_in_w[2 + 3 * uIdx] = eml_n1hat_0[3 * uIdx + 2] + tmp_f[3 * uIdx +
+          2];
       }
 
       if (twa_parallel_norm(&twa_parallel_B.UnitDelay4[0]) >
@@ -1374,23 +1374,23 @@ void twa_parallel_output(int_T tid)
         for (uIdx = 0; uIdx < 3; uIdx++) {
           eml_n3hat[uIdx] = (eml_p_in_w[6 + uIdx] - twa_parallel_P.b_in_w_Value
                              [6 + uIdx]) / eml_y_0;
-          eml_q1_mu = twa_parallel_B.UnitDelay2_j[uIdx] *
+          eml_a_0 = twa_parallel_B.UnitDelay2_j[uIdx] *
             twa_parallel_P.p_in_m_Value[0];
-          eml_q1_mu += twa_parallel_B.UnitDelay2_j[uIdx + 3] *
+          eml_a_0 += twa_parallel_B.UnitDelay2_j[uIdx + 3] *
             twa_parallel_P.p_in_m_Value[1];
-          eml_q1_mu += twa_parallel_B.UnitDelay2_j[uIdx + 6] *
+          eml_a_0 += twa_parallel_B.UnitDelay2_j[uIdx + 6] *
             twa_parallel_P.p_in_m_Value[2];
-          eml_q2_mu = twa_parallel_B.UnitDelay2_j[uIdx] *
+          eml_c_0 = twa_parallel_B.UnitDelay2_j[uIdx] *
             twa_parallel_P.p_in_m_Value[3];
-          eml_q2_mu += twa_parallel_B.UnitDelay2_j[uIdx + 3] *
+          eml_c_0 += twa_parallel_B.UnitDelay2_j[uIdx + 3] *
             twa_parallel_P.p_in_m_Value[4];
-          eml_q2_mu += twa_parallel_B.UnitDelay2_j[uIdx + 6] *
+          eml_c_0 += twa_parallel_B.UnitDelay2_j[uIdx + 6] *
             twa_parallel_P.p_in_m_Value[5];
-          eml_q3_mu = twa_parallel_B.UnitDelay2_j[uIdx] *
+          eml_c = twa_parallel_B.UnitDelay2_j[uIdx] *
             twa_parallel_P.p_in_m_Value[6];
-          eml_q3_mu += twa_parallel_B.UnitDelay2_j[uIdx + 3] *
+          eml_c += twa_parallel_B.UnitDelay2_j[uIdx + 3] *
             twa_parallel_P.p_in_m_Value[7];
-          eml_q3_mu += twa_parallel_B.UnitDelay2_j[uIdx + 6] *
+          eml_c += twa_parallel_B.UnitDelay2_j[uIdx + 6] *
             twa_parallel_P.p_in_m_Value[8];
           eml_q1_mu_0[uIdx] = twa_parallel_P.b_in_w_Value[uIdx] -
             twa_parallel_P.m_in_w_Value[uIdx];
@@ -1400,9 +1400,9 @@ void twa_parallel_output(int_T tid)
             twa_parallel_P.m_in_w_Value[6 + uIdx];
           tmp_a[uIdx] = twa_parallel_P.m_in_w_Value[uIdx] -
             twa_parallel_P.b_in_w_Value[uIdx];
-          eml_f_y[uIdx] = eml_q3_mu;
-          eml_e_y[uIdx] = eml_q2_mu;
-          eml_d_y[uIdx] = eml_q1_mu;
+          eml_f_y[uIdx] = eml_c;
+          eml_e_y[uIdx] = eml_c_0;
+          eml_d_y[uIdx] = eml_a_0;
         }
 
         eml_q1_mu = twa_parallel_norm(eml_q1_mu_0);
@@ -1567,27 +1567,27 @@ void twa_parallel_output(int_T tid)
         tmp_1[0] = 0.0 * eml_l3_hat[2] - eml_l3_hat[1];
         tmp_1[1] = eml_l3_hat[0] - 0.0 * eml_l3_hat[2];
         tmp_1[2] = 0.0 * eml_l3_hat[1] - 0.0 * eml_l3_hat[0];
-        eml_q1_mu = twa_parallel_eml_xdotu(eml_n1hat, eml_l1_hat) +
+        eml_a_0 = twa_parallel_eml_xdotu(eml_n1hat, eml_l1_hat) +
           twa_parallel_eml_xdotu(eml_q1_mu_0, tmp);
-        eml_q2_mu = twa_parallel_eml_xdotu(eml_n2hat, eml_l2_hat) +
+        eml_c_0 = twa_parallel_eml_xdotu(eml_n2hat, eml_l2_hat) +
           twa_parallel_eml_xdotu(eml_a_2, tmp_0);
-        eml_q3_mu = twa_parallel_eml_xdotu(eml_n3hat, eml_l3_hat) +
+        eml_c = twa_parallel_eml_xdotu(eml_n3hat, eml_l3_hat) +
           twa_parallel_eml_xdotu(eml_y_1, tmp_1);
         for (uIdx = 0; uIdx < 3; uIdx++) {
-          eml_iik_jac[3 * uIdx] = (real_T)tmp_h[3 * uIdx];
-          eml_iik_jac[1 + 3 * uIdx] = (real_T)tmp_h[3 * uIdx + 1];
-          eml_iik_jac[2 + 3 * uIdx] = (real_T)tmp_h[3 * uIdx + 2];
+          eml_iik_jac[3 * uIdx] = (real_T)tmp_i[3 * uIdx];
+          eml_iik_jac[1 + 3 * uIdx] = (real_T)tmp_i[3 * uIdx + 1];
+          eml_iik_jac[2 + 3 * uIdx] = (real_T)tmp_i[3 * uIdx + 2];
         }
 
-        eml_iik_jac[9] = eml_q1_mu;
+        eml_iik_jac[9] = eml_a_0;
         eml_iik_jac[12] = 0.0;
         eml_iik_jac[15] = 0.0;
         eml_iik_jac[10] = 0.0;
-        eml_iik_jac[13] = eml_q2_mu;
+        eml_iik_jac[13] = eml_c_0;
         eml_iik_jac[16] = 0.0;
         eml_iik_jac[11] = 0.0;
         eml_iik_jac[14] = 0.0;
-        eml_iik_jac[17] = eml_q3_mu;
+        eml_iik_jac[17] = eml_c;
 
         /*  the full manipulator jacobian with redundancy resolution weighting */
         /* '<S16>:1:76' */
@@ -1597,7 +1597,7 @@ void twa_parallel_output(int_T tid)
           }
         }
 
-        twa_parallel_mldivide(tmp_k, eml_iik_jac_1, eml_Y);
+        twa_parallel_mldivide(tmp_l, eml_iik_jac_1, eml_Y);
         for (uIdx = 0; uIdx < 3; uIdx++) {
           for (uIdx_0 = 0; uIdx_0 < 3; uIdx_0++) {
             eml_A[uIdx + 3 * uIdx_0] = 0.0;
@@ -1614,7 +1614,7 @@ void twa_parallel_output(int_T tid)
           }
         }
 
-        twa_parallel_mldivide(tmp_k, eml_iik_jac_0, eml_Y);
+        twa_parallel_mldivide(tmp_l, eml_iik_jac_0, eml_Y);
         for (uIdx = 0; uIdx < 6; uIdx++) {
           eml_iik_jac[3 * uIdx] = eml_Y[uIdx];
           eml_iik_jac[1 + 3 * uIdx] = eml_Y[uIdx + 6];
@@ -1688,18 +1688,18 @@ void twa_parallel_output(int_T tid)
         eml_f_y_0[0] = eml_f_y[1] * eml_n3hat[2] - eml_f_y[2] * eml_n3hat[1];
         eml_f_y_0[1] = eml_f_y[2] * eml_n3hat[0] - eml_f_y[0] * eml_n3hat[2];
         eml_f_y_0[2] = eml_f_y[0] * eml_n3hat[1] - eml_f_y[1] * eml_n3hat[0];
-        eml_q1_mu = twa_parallel_eml_xdotu(tmp_j, eml_d_y_0);
-        eml_q2_mu = twa_parallel_eml_xdotu(tmp_j, eml_e_y_0);
-        eml_q3_mu = twa_parallel_eml_xdotu(tmp_j, eml_f_y_0);
+        eml_a_0 = twa_parallel_eml_xdotu(tmp_k, eml_d_y_0);
+        eml_c_0 = twa_parallel_eml_xdotu(tmp_k, eml_e_y_0);
+        eml_c = twa_parallel_eml_xdotu(tmp_k, eml_f_y_0);
         eml_n1hat_0[0] = eml_n1hat[0];
         eml_n1hat_0[3] = eml_n1hat[1];
-        eml_n1hat_0[6] = eml_q1_mu;
+        eml_n1hat_0[6] = eml_a_0;
         eml_n1hat_0[1] = eml_n2hat[0];
         eml_n1hat_0[4] = eml_n2hat[1];
-        eml_n1hat_0[7] = eml_q2_mu;
+        eml_n1hat_0[7] = eml_c_0;
         eml_n1hat_0[2] = eml_n3hat[0];
         eml_n1hat_0[5] = eml_n3hat[1];
-        eml_n1hat_0[8] = eml_q3_mu;
+        eml_n1hat_0[8] = eml_c;
         for (uIdx = 0; uIdx < 6; uIdx++) {
           for (uIdx_0 = 0; uIdx_0 < 3; uIdx_0++) {
             eml_Y[uIdx + 6 * uIdx_0] = 0.0;
@@ -1713,13 +1713,13 @@ void twa_parallel_output(int_T tid)
         }
 
         for (uIdx = 0; uIdx < 6; uIdx++) {
-          eml_q1_mu = twa_parallel_P.kp_Value * twa_parallel_B.UnitDelay4[0] *
+          eml_a_0 = twa_parallel_P.kp_Value * twa_parallel_B.UnitDelay4[0] *
             eml_Y[uIdx];
-          eml_q1_mu += eml_Y[uIdx + 6] * (twa_parallel_P.kp_Value *
+          eml_a_0 += eml_Y[uIdx + 6] * (twa_parallel_P.kp_Value *
             twa_parallel_B.UnitDelay4[1]);
-          eml_q1_mu += eml_Y[uIdx + 12] * (twa_parallel_P.kp_Value *
+          eml_a_0 += eml_Y[uIdx + 12] * (twa_parallel_P.kp_Value *
             twa_parallel_B.UnitDelay4[2]);
-          eml_tdot[uIdx] = eml_q1_mu;
+          eml_tdot[uIdx] = eml_a_0;
         }
 
         /*  separate translational and rotational components of twist */
@@ -1768,13 +1768,13 @@ void twa_parallel_output(int_T tid)
           /* '<S16>:1:97' */
           /* '<S16>:1:98' */
           for (uIdx = 0; uIdx < 3; uIdx++) {
-            eml_q1_mu = twa_parallel_P.p_in_m_Value[3 * eml_rtemp] *
+            eml_a_0 = twa_parallel_P.p_in_m_Value[3 * eml_rtemp] *
               twa_parallel_B.rwave_out[uIdx];
-            eml_q1_mu += twa_parallel_P.p_in_m_Value[3 * eml_rtemp + 1] *
+            eml_a_0 += twa_parallel_P.p_in_m_Value[3 * eml_rtemp + 1] *
               twa_parallel_B.rwave_out[uIdx + 3];
-            eml_q1_mu += twa_parallel_P.p_in_m_Value[3 * eml_rtemp + 2] *
+            eml_a_0 += twa_parallel_P.p_in_m_Value[3 * eml_rtemp + 2] *
               twa_parallel_B.rwave_out[uIdx + 6];
-            eml_q1_mu_0[uIdx] = twa_parallel_B.twave_out[uIdx] + eml_q1_mu;
+            eml_q1_mu_0[uIdx] = twa_parallel_B.twave_out[uIdx] + eml_a_0;
           }
 
           eml_p_in_w[3 * eml_rtemp] = eml_q1_mu_0[0];
@@ -1846,61 +1846,54 @@ void twa_parallel_output(int_T tid)
      *  Constant: '<S6>/m_in_w'
      *  Constant: '<S6>/p_in_m'
      *  Constant: '<S6>/t_in_w'
+     *  Constant: '<S6>/twa_flange_offset'
      *  Constant: '<S6>/twa_gamma'
+     *  Constant: '<S6>/use_twa'
      *  Constant: '<S6>/x_des'
      */
-    eml_a_1 = twa_parallel_P.twa_gamma_Value;
+    eml_q1_mu = twa_parallel_P.twa_gamma_Value;
+    eml_q2_mu = twa_parallel_P.twa_flange_offset_Value;
 
     /* Embedded MATLAB Function 'task_space/GetLegLen': '<S25>:1' */
     /*  This function solves for the vertex positions of the base and moving */
     /*  platform for a given desired end effector position. */
     /*  With vertex positions known, leg lengths can be solved for. */
-    /*  initialization */
     /* '<S25>:1:9' */
-    /* [mm] */
-    /* '<S25>:1:10' */
-    /* '<S25>:1:12' */
-    /* '<S25>:1:13' */
+    /* '<S25>:1:11' */
+
+    /* UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_B.UnitDelay1[0] = twa_parallel_DWork.UnitDelay1_DSTATE[0];
 
     /* UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_B.UnitDelay2[0] = twa_parallel_DWork.UnitDelay2_DSTATE[0];
-
-    /* UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_B.UnitDelay[0] = twa_parallel_DWork.UnitDelay_DSTATE[0];
+    twa_parallel_B.des_macro_len[0] = twa_parallel_B.UnitDelay1[0];
     twa_parallel_B.micro_len_out[0] = twa_parallel_B.UnitDelay2[0];
-    eml_q1_mu = twa_parallel_P.x_des_Value[0] - twa_parallel_B.UnitDelay[0];
-    eml_n2hat[0] = fabs(eml_q1_mu);
-    eml_n1hat[0] = eml_q1_mu;
+
+    /* UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_B.UnitDelay1[1] = twa_parallel_DWork.UnitDelay1_DSTATE[1];
 
     /* UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_B.UnitDelay2[1] = twa_parallel_DWork.UnitDelay2_DSTATE[1];
-
-    /* UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_B.UnitDelay[1] = twa_parallel_DWork.UnitDelay_DSTATE[1];
+    twa_parallel_B.des_macro_len[1] = twa_parallel_B.UnitDelay1[1];
     twa_parallel_B.micro_len_out[1] = twa_parallel_B.UnitDelay2[1];
-    eml_q1_mu = twa_parallel_P.x_des_Value[1] - twa_parallel_B.UnitDelay[1];
-    eml_n2hat[1] = fabs(eml_q1_mu);
-    eml_n1hat[1] = eml_q1_mu;
+
+    /* UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_B.UnitDelay1[2] = twa_parallel_DWork.UnitDelay1_DSTATE[2];
 
     /* UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_B.UnitDelay2[2] = twa_parallel_DWork.UnitDelay2_DSTATE[2];
-
-    /* UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_B.UnitDelay[2] = twa_parallel_DWork.UnitDelay_DSTATE[2];
+    twa_parallel_B.des_macro_len[2] = twa_parallel_B.UnitDelay1[2];
     twa_parallel_B.micro_len_out[2] = twa_parallel_B.UnitDelay2[2];
-    eml_q1_mu = twa_parallel_P.x_des_Value[2] - twa_parallel_B.UnitDelay[2];
-    eml_n2hat[2] = fabs(eml_q1_mu);
-    eml_n1hat[2] = eml_q1_mu;
 
     /* %%% */
     /* % This should be the initially measured lengths of the twas minus the */
     /* % amount of twist experienced  */
     /* %%% */
     /*  initial twa wire length */
-    /* [mm] */
+    /* init_twa_len = [225.8;226.3;224.5]; %[mm] */
     /*  rotation matrix of moving frame about z-xis */
+    /* '<S25>:1:21' */
     /* '<S25>:1:23' */
-    /* '<S25>:1:25' */
     eml_n1hat_0[0] = cos(twa_parallel_P.ee_rot_Value);
     eml_n1hat_0[3] = -sin(twa_parallel_P.ee_rot_Value);
     eml_n1hat_0[6] = 0.0;
@@ -1911,12 +1904,12 @@ void twa_parallel_output(int_T tid)
     eml_n1hat_0[5] = 0.0;
     eml_n1hat_0[8] = 1.0;
     for (uIdx = 0; uIdx < 3; uIdx++) {
-      eml_vertex_dist[uIdx] = 0.0;
-      eml_vertex_dist[uIdx] += twa_parallel_P.x_des_Value[uIdx];
-      eml_vertex_dist[uIdx + 3] = 0.0;
-      eml_vertex_dist[uIdx + 3] += twa_parallel_P.x_des_Value[uIdx];
-      eml_vertex_dist[uIdx + 6] = 0.0;
-      eml_vertex_dist[uIdx + 6] += twa_parallel_P.x_des_Value[uIdx];
+      tmp_f[uIdx] = 0.0;
+      tmp_f[uIdx] += twa_parallel_P.x_des_Value[uIdx];
+      tmp_f[uIdx + 3] = 0.0;
+      tmp_f[uIdx + 3] += twa_parallel_P.x_des_Value[uIdx];
+      tmp_f[uIdx + 6] = 0.0;
+      tmp_f[uIdx + 6] += twa_parallel_P.x_des_Value[uIdx];
     }
 
     for (uIdx = 0; uIdx < 3; uIdx++) {
@@ -1932,58 +1925,53 @@ void twa_parallel_output(int_T tid)
     }
 
     for (uIdx = 0; uIdx < 3; uIdx++) {
-      eml_p_in_w[3 * uIdx] = eml_vertex_dist[3 * uIdx] + eml_A[3 * uIdx];
-      eml_p_in_w[1 + 3 * uIdx] = eml_vertex_dist[3 * uIdx + 1] + eml_A[3 * uIdx
-        + 1];
-      eml_p_in_w[2 + 3 * uIdx] = eml_vertex_dist[3 * uIdx + 2] + eml_A[3 * uIdx
-        + 2];
+      eml_p_in_w[3 * uIdx] = tmp_f[3 * uIdx] + eml_A[3 * uIdx];
+      eml_p_in_w[1 + 3 * uIdx] = tmp_f[3 * uIdx + 1] + eml_A[3 * uIdx + 1];
+      eml_p_in_w[2 + 3 * uIdx] = tmp_f[3 * uIdx + 2] + eml_A[3 * uIdx + 2];
     }
 
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*         Macro Actuator        % */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    /* '<S25>:1:31' */
-    for (uIdx = 0; uIdx < 9; uIdx++) {
-      eml_vertex_dist[uIdx] = eml_p_in_w[uIdx] -
-        twa_parallel_P.b_in_w_Value_i[uIdx];
+    if (!(twa_parallel_P.use_twa_Value != 0.0)) {
+      /* '<S25>:1:29' */
+      /* '<S25>:1:30' */
+      for (uIdx = 0; uIdx < 9; uIdx++) {
+        eml_vertex_dist[uIdx] = eml_p_in_w[uIdx] -
+          twa_parallel_P.b_in_w_Value_i[uIdx];
+      }
+
+      /* '<S25>:1:31' */
+      twa_parallel_B.des_macro_len[0] = twa_parallel_norm_n(*((real_T (*)[3])&
+        eml_vertex_dist[0]));
+
+      /* '<S25>:1:32' */
+      twa_parallel_B.des_macro_len[1] = twa_parallel_norm_n(*((real_T (*)[3])&
+        eml_vertex_dist[3]));
+
+      /* '<S25>:1:33' */
+      twa_parallel_B.des_macro_len[2] = twa_parallel_norm_n(*((real_T (*)[3])&
+        eml_vertex_dist[6]));
     }
-
-    /* '<S25>:1:33' */
-    twa_parallel_B.des_macro_len[0] = 0.0;
-    twa_parallel_B.des_macro_len[1] = 0.0;
-    twa_parallel_B.des_macro_len[2] = 0.0;
-
-    /* '<S25>:1:34' */
-    twa_parallel_B.des_macro_len[0] = twa_parallel_norm_n(*((real_T (*)[3])&
-      eml_vertex_dist[0]));
-
-    /* '<S25>:1:35' */
-    twa_parallel_B.des_macro_len[1] = twa_parallel_norm_n(*((real_T (*)[3])&
-      eml_vertex_dist[3]));
-
-    /* '<S25>:1:36' */
-    twa_parallel_B.des_macro_len[2] = twa_parallel_norm_n(*((real_T (*)[3])&
-      eml_vertex_dist[6]));
 
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
     /*        Micro Actuator         % */
     /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-    if ((eml_n2hat[0] < 0.5) || (eml_n2hat[1] < 0.5)) {
-      /* '<S25>:1:42' */
+    if (twa_parallel_P.use_twa_Value != 0.0) {
       /*  initial flexure bend */
-      /* '<S25>:1:44' */
-      eml_c_1 = 8.7266462599716474E-002;
+      /* '<S25>:1:42' */
+      eml_q3_mu = 0.0;
 
       /*  loop through each vertex */
-      /* '<S25>:1:47' */
+      /* '<S25>:1:45' */
       for (k = 0; k < 3; k++) {
+        /* '<S25>:1:45' */
+        /* '<S25>:1:46' */
         /* '<S25>:1:47' */
-        /* '<S25>:1:48' */
-        /* '<S25>:1:49' */
         /*  vector from flexure center to moving platform vertex */
-        /* '<S25>:1:52' */
+        /* '<S25>:1:50' */
         /*  distance between flexure and moving platform verteces */
-        /* '<S25>:1:55' */
+        /* '<S25>:1:53' */
         eml_n1hat[0] = eml_p_in_w[3 * k] - twa_parallel_P.f_in_w_Value_b[3 * k];
         eml_n2hat[0] = twa_parallel_P.b_in_w_Value_i[3 * k] -
           twa_parallel_P.f_in_w_Value_b[3 * k];
@@ -1995,27 +1983,27 @@ void twa_parallel_output(int_T tid)
           k + 2];
         eml_n2hat[2] = twa_parallel_P.b_in_w_Value_i[3 * k + 2] -
           twa_parallel_P.f_in_w_Value_b[3 * k + 2];
-        eml_q1_mu = twa_parallel_norm_n(eml_n1hat);
+        eml_c_0 = twa_parallel_norm_n(eml_n1hat);
 
         /*  vector from flexure center to base vertex pre flexure rotation */
-        /* '<S25>:1:58' */
+        /* '<S25>:1:56' */
         /*  flexure angle at the start (e.g. 5 deg preload) in world frame */
-        /* '<S25>:1:61' */
-        eml_a_0 = rt_atan2_snf(eml_n2hat[1], eml_n2hat[0]);
+        /* '<S25>:1:59' */
+        eml_a_1 = rt_atan2_snf(eml_n2hat[1], eml_n2hat[0]);
 
         /*  magnitude of flexure swing-arm radius from flexure to base vertex */
-        /* '<S25>:1:64' */
-        eml_c_0 = twa_parallel_norm_n(eml_n2hat);
+        /* '<S25>:1:62' */
+        eml_c_1 = twa_parallel_norm_n(eml_n2hat);
 
         /*  angle from world horizontal to the vector from the flexure */
         /*  center to the platform vertex */
-        /* '<S25>:1:68' */
+        /* '<S25>:1:66' */
         eml_y_0 = rt_atan2_snf(eml_n1hat[1], eml_n1hat[0]);
 
         /*  rotation matrix from flexure frame to world */
-        /* '<S25>:1:72' */
+        /* '<S25>:1:70' */
         for (uIdx = 0; uIdx < 9; uIdx++) {
-          eml_vertex_dist[uIdx] = eml_y_0 * (real_T)tmp_g[uIdx];
+          eml_vertex_dist[uIdx] = eml_y_0 * (real_T)tmp_h[uIdx];
         }
 
         eml_y_0 = 0.0;
@@ -2041,11 +2029,11 @@ void twa_parallel_output(int_T tid)
           eml_rtemp = 1;
           eml_y = FALSE;
           while (((uint32_T)eml_y == 0U) && (eml_rtemp <= 5)) {
-            if (eml_y_0 <= tmp_f[eml_rtemp - 1]) {
+            if (eml_y_0 <= tmp_g[eml_rtemp - 1]) {
               memcpy((void *)&eml_n1hat_0[0], (void *)&eml_vertex_dist[0], 9U *
                      sizeof(real_T));
               twa_par_PadeApproximantOfDegree(eml_n1hat_0, (real_T)
-                tmp_i[eml_rtemp - 1], eml_vertex_dist);
+                tmp_j[eml_rtemp - 1], eml_vertex_dist);
               eml_y = TRUE;
             } else {
               eml_rtemp++;
@@ -2061,18 +2049,18 @@ void twa_parallel_output(int_T tid)
             eml_rtemp = 0;
           }
 
-          eml_c = (real_T)eml_rtemp;
+          eml_a_0 = (real_T)eml_rtemp;
           if (eml_y_0 == 0.5) {
-            eml_c = (real_T)eml_rtemp - 1.0;
+            eml_a_0 = (real_T)eml_rtemp - 1.0;
           }
 
-          eml_y_0 = rt_pow_snf(2.0, eml_c);
+          eml_y_0 = rt_pow_snf(2.0, eml_a_0);
           for (uIdx = 0; uIdx < 9; uIdx++) {
             eml_n1hat_0[uIdx] = eml_vertex_dist[uIdx] / eml_y_0;
           }
 
           twa_par_PadeApproximantOfDegree(eml_n1hat_0, 13.0, eml_vertex_dist);
-          for (eml_b_j = 1U; (real_T)eml_b_j <= eml_c; eml_b_j++) {
+          for (eml_b_j = 1U; (real_T)eml_b_j <= eml_a_0; eml_b_j++) {
             for (uIdx = 0; uIdx < 3; uIdx++) {
               for (uIdx_0 = 0; uIdx_0 < 3; uIdx_0++) {
                 eml_n1hat_0[uIdx + 3 * uIdx_0] = 0.0;
@@ -2094,93 +2082,93 @@ void twa_parallel_output(int_T tid)
         }
 
         /*  condition for acos solvability */
-        /* '<S25>:1:75' */
+        /* '<S25>:1:73' */
         eml_y_0 = ((rt_pow_snf(twa_parallel_B.des_macro_len[k], 2.0) -
-                    rt_pow_snf(eml_q1_mu, 2.0)) - rt_pow_snf(eml_c_0, 2.0)) /
-          (-2.0 * eml_q1_mu * eml_c_0);
+                    rt_pow_snf(eml_c_0, 2.0)) - rt_pow_snf(eml_c_1, 2.0)) /
+          (-2.0 * eml_c_0 * eml_c_1);
         if ((eml_y_0 >= -1.0) && (eml_y_0 <= 1.0)) {
-          /* '<S25>:1:77' */
+          /* '<S25>:1:75' */
           /*  calculate angle between mf and fb vectors, lambda, with */
           /*  law of cosines */
-          /* '<S25>:1:80' */
+          /* '<S25>:1:78' */
           eml_y_0 = acos(eml_y_0);
 
           /*  calculate flexed base vertex position for both elbow up */
           /*  and down configurations in the flexure frame */
-          /* '<S25>:1:84' */
-          /* '<S25>:1:85' */
+          /* '<S25>:1:82' */
+          /* '<S25>:1:83' */
           /*  vector from flexure center point to new base vertex location */
           /*  rotated to world frame */
-          /* '<S25>:1:89' */
-          eml_q1_mu = cos(-eml_y_0);
-          eml_q3_mu = sin(-eml_y_0);
-          eml_c = eml_c_0 * eml_q1_mu;
-          eml_q2_mu = eml_c_0 * eml_q3_mu;
-          eml_q3_mu = eml_c_0 * 0.0;
+          /* '<S25>:1:87' */
+          eml_a_0 = cos(-eml_y_0);
+          eml_c = sin(-eml_y_0);
+          eml_c3_idx = eml_c_1 * eml_a_0;
+          eml_c *= eml_c_1;
+          eml_c_0 = eml_c_1 * 0.0;
 
-          /* '<S25>:1:90' */
+          /* '<S25>:1:88' */
           eml_q1_mu_0[0] = cos(eml_y_0);
           eml_q1_mu_0[1] = sin(eml_y_0);
           eml_q1_mu_0[2] = 0.0;
           for (uIdx = 0; uIdx < 3; uIdx++) {
-            eml_q1_mu = eml_vertex_dist[uIdx] * eml_c;
-            eml_q1_mu += eml_vertex_dist[uIdx + 3] * eml_q2_mu;
-            eml_q1_mu += eml_vertex_dist[uIdx + 6] * eml_q3_mu;
-            eml_a_2[uIdx] = eml_c_0 * eml_q1_mu_0[uIdx];
-            eml_n1hat[uIdx] = eml_q1_mu;
+            eml_a_0 = eml_vertex_dist[uIdx] * eml_c3_idx;
+            eml_a_0 += eml_vertex_dist[uIdx + 3] * eml_c;
+            eml_a_0 += eml_vertex_dist[uIdx + 6] * eml_c_0;
+            eml_a_2[uIdx] = eml_c_1 * eml_q1_mu_0[uIdx];
+            eml_n1hat[uIdx] = eml_a_0;
           }
 
           for (uIdx = 0; uIdx < 3; uIdx++) {
-            eml_q1_mu = eml_vertex_dist[uIdx] * eml_a_2[0];
-            eml_q1_mu += eml_vertex_dist[uIdx + 3] * eml_a_2[1];
-            eml_q1_mu += eml_vertex_dist[uIdx + 6] * eml_a_2[2];
-            eml_n2hat[uIdx] = eml_q1_mu;
+            eml_a_0 = eml_vertex_dist[uIdx] * eml_a_2[0];
+            eml_a_0 += eml_vertex_dist[uIdx + 3] * eml_a_2[1];
+            eml_a_0 += eml_vertex_dist[uIdx + 6] * eml_a_2[2];
+            eml_n2hat[uIdx] = eml_a_0;
           }
 
-          /* '<S25>:1:92' */
-          eml_q1_mu = rt_atan2_snf(eml_n1hat[1], eml_n1hat[0]);
+          /* '<S25>:1:90' */
+          eml_a_0 = rt_atan2_snf(eml_n1hat[1], eml_n1hat[0]);
 
-          /* '<S25>:1:93' */
-          eml_q2_mu = rt_atan2_snf(eml_n2hat[1], eml_n2hat[0]);
+          /* '<S25>:1:91' */
+          eml_c_0 = rt_atan2_snf(eml_n2hat[1], eml_n2hat[0]);
 
           /*  determine if flex angle is within mechanical range */
-          /* '<S25>:1:96' */
-          if ((eml_a_0 < 0.0) && (eml_q1_mu < 0.0)) {
-            /* '<S25>:1:97' */
-            /* '<S25>:1:98' */
-            eml_q1_mu = (-eml_a_0) - (-eml_q1_mu);
+          /* '<S25>:1:94' */
+          if ((eml_a_1 < 0.0) && (eml_a_0 < 0.0)) {
+            /* '<S25>:1:95' */
+            /* '<S25>:1:96' */
+            eml_a_0 = (-eml_a_1) - (-eml_a_0);
           } else {
-            /* '<S25>:1:100' */
-            eml_q1_mu = eml_a_0 - eml_q1_mu;
-          }
-
-          if ((eml_q1_mu >= -1.7453292519943295E-001) && (eml_q1_mu <=
-               1.7453292519943295E-001)) {
-            /* '<S25>:1:103' */
-            /* '<S25>:1:104' */
-            eml_c_1 = eml_q1_mu;
-          }
-
-          /* '<S25>:1:96' */
-          if ((eml_a_0 < 0.0) && (eml_q2_mu < 0.0)) {
-            /* '<S25>:1:97' */
             /* '<S25>:1:98' */
-            eml_q1_mu = (-eml_a_0) - (-eml_q2_mu);
-          } else {
-            /* '<S25>:1:100' */
-            eml_q1_mu = eml_a_0 - eml_q2_mu;
+            eml_a_0 = eml_a_1 - eml_a_0;
           }
 
-          if ((eml_q1_mu >= -1.7453292519943295E-001) && (eml_q1_mu <=
-               1.7453292519943295E-001)) {
-            /* '<S25>:1:103' */
-            /* '<S25>:1:104' */
-            eml_c_1 = eml_q1_mu;
+          if ((eml_a_0 >= -6.9813170079773182E-002) && (eml_a_0 <=
+               6.9813170079773182E-002)) {
+            /* '<S25>:1:101' */
+            /* '<S25>:1:102' */
+            eml_q3_mu = eml_a_0;
+          }
+
+          /* '<S25>:1:94' */
+          if ((eml_a_1 < 0.0) && (eml_c_0 < 0.0)) {
+            /* '<S25>:1:95' */
+            /* '<S25>:1:96' */
+            eml_a_0 = (-eml_a_1) - (-eml_c_0);
+          } else {
+            /* '<S25>:1:98' */
+            eml_a_0 = eml_a_1 - eml_c_0;
+          }
+
+          if ((eml_a_0 >= -6.9813170079773182E-002) && (eml_a_0 <=
+               6.9813170079773182E-002)) {
+            /* '<S25>:1:101' */
+            /* '<S25>:1:102' */
+            eml_q3_mu = eml_a_0;
           }
         }
 
         /*  initial angle prior to flexure bend */
-        /* '<S25>:1:110' */
+        /* '<S25>:1:108' */
         tmp_e[0] = twa_parallel_P.f_in_w_Value_b[3 * k] -
           twa_parallel_P.m_in_w_Value_n[3 * k];
         tmp_d[0] = twa_parallel_P.f_in_w_Value_b[3 * k] -
@@ -2207,28 +2195,28 @@ void twa_parallel_output(int_T tid)
           twa_parallel_P.b_in_w_Value_i[3 * k + 2];
         eml_y_0 = twa_parallel_norm_n(tmp_e);
 
-        /* '<S25>:1:111' */
-        eml_a_0 = twa_parallel_norm_n(tmp_d);
+        /* '<S25>:1:109' */
+        eml_c = twa_parallel_norm_n(tmp_d);
 
-        /* '<S25>:1:112' */
+        /* '<S25>:1:110' */
         /* c = init_twa_len(i,1); */
-        /* '<S25>:1:115' */
-        /* '<S25>:1:116' */
+        /* '<S25>:1:113' */
+        /* '<S25>:1:114' */
         /*  distance between base vertex and twa motor position after flex */
         /*  required twa length to facilitate flexure bend */
-        /* '<S25>:1:121' */
-        eml_c = twa_parallel_norm_n(tmp_c);
+        /* '<S25>:1:119' */
+        eml_a_0 = twa_parallel_norm_n(tmp_c);
 
-        /* '<S25>:1:123' */
-        twa_parallel_B.micro_len_out[k] = sqrt((rt_pow_snf(eml_y_0, 2.0) -
-          rt_pow_snf(eml_c, 2.0)) - cos((acos(((rt_pow_snf(twa_parallel_norm_n
-          (tmp_b), 2.0) - rt_pow_snf(eml_y_0, 2.0)) - rt_pow_snf(eml_a_0, 2.0)) /
-          (-2.0 * eml_y_0 * eml_a_0)) - eml_c_1) - eml_a_1) * (2.0 * eml_y_0 *
-          eml_c));
+        /* '<S25>:1:121' */
+        twa_parallel_B.micro_len_out[k] = sqrt((rt_pow_snf(eml_y_0, 2.0) +
+          rt_pow_snf(eml_a_0, 2.0)) - cos((acos(((rt_pow_snf(twa_parallel_norm_n
+          (tmp_b), 2.0) - rt_pow_snf(eml_y_0, 2.0)) - rt_pow_snf(eml_c, 2.0)) /
+          (-2.0 * eml_y_0 * eml_c)) - eml_q3_mu) - eml_q1_mu) * (2.0 * eml_y_0 *
+          eml_a_0)) - eml_q2_mu;
       }
     }
 
-    /* SignalConversion: '<S27>/TmpSignal ConversionAt SFunction Inport4' */
+    /* SignalConversion: '<S28>/TmpSignal ConversionAt SFunction Inport4' */
     twa_parallel_B.TmpSignalConversionAtSFunctio_d[0] =
       twa_parallel_B.gear_ratio;
     twa_parallel_B.TmpSignalConversionAtSFunctio_d[1] =
@@ -2246,41 +2234,38 @@ void twa_parallel_output(int_T tid)
      *  Constant: '<S26>/meas_macro_len'
      *  Constant: '<S26>/velmex_pitch'
      */
-    /* Embedded MATLAB Function 'task_space/gear_ratio/GetMacroQDes': '<S27>:1' */
+    /* Embedded MATLAB Function 'task_space/gear_ratio/GetMacroQDes': '<S28>:1' */
     /*  This function solves for command signal for given desired macro leg */
     /*  lengths */
     /*  if required velmex motion is less than 0.5 mm, do not move velmex */
-    /* '<S27>:1:6' */
-    /* '<S27>:1:8' */
-    /* '<S27>:1:10' */
+    /* '<S28>:1:6' */
+    /* '<S28>:1:8' */
+    /* '<S28>:1:10' */
     /* +-30 mm stroke from starting point at the velmex pivot */
-    /* '<S27>:1:12' */
-    twa_parallel_B.x_cur[0] = twa_parallel_P.x_des_Value[0];
+    /* '<S28>:1:12' */
     twa_parallel_B.qmacro_des[0] =
       twa_parallel_B.TmpSignalConversionAtSFunctio_d[0];
     eml_n1hat[0] = 0.0;
-    twa_parallel_B.x_cur[1] = twa_parallel_P.x_des_Value[1];
     twa_parallel_B.qmacro_des[1] =
       twa_parallel_B.TmpSignalConversionAtSFunctio_d[1];
     eml_n1hat[1] = 0.0;
-    twa_parallel_B.x_cur[2] = twa_parallel_P.x_des_Value[2];
     twa_parallel_B.qmacro_des[2] =
       twa_parallel_B.TmpSignalConversionAtSFunctio_d[2];
     eml_n1hat[2] = 0.0;
 
-    /* '<S27>:1:13' */
+    /* '<S28>:1:13' */
     eml_n1hat[0] = twa_parallel_B.des_macro_len[0] -
       twa_parallel_P.meas_macro_len_Value_d[0];
 
-    /* '<S27>:1:14' */
+    /* '<S28>:1:14' */
     eml_n1hat[1] = twa_parallel_B.des_macro_len[1] -
       twa_parallel_P.meas_macro_len_Value_d[1];
 
-    /* '<S27>:1:15' */
+    /* '<S28>:1:15' */
     eml_n1hat[2] = twa_parallel_B.des_macro_len[2] -
       twa_parallel_P.meas_macro_len_Value_d[2];
 
-    /* '<S27>:1:18' */
+    /* '<S28>:1:18' */
     eml_y = TRUE;
     eml_rtemp = 1;
     eml_exitg = FALSE;
@@ -2294,21 +2279,21 @@ void twa_parallel_output(int_T tid)
     }
 
     if ((real_T)eml_y > 0.5) {
-      /* '<S27>:1:18' */
-      /* '<S27>:1:19' */
+      /* '<S28>:1:18' */
+      /* '<S28>:1:19' */
       twa_parallel_B.qmacro_des[0] = eml_n1hat[0] /
         twa_parallel_P.velmex_pitch_Value_e;
 
-      /* '<S27>:1:20' */
+      /* '<S28>:1:20' */
       twa_parallel_B.qmacro_des[1] = eml_n1hat[1] /
         twa_parallel_P.velmex_pitch_Value_e;
 
-      /* '<S27>:1:21' */
+      /* '<S28>:1:21' */
       twa_parallel_B.qmacro_des[2] = eml_n1hat[2] /
         twa_parallel_P.velmex_pitch_Value_e;
     }
 
-    /* SignalConversion: '<S28>/TmpSignal ConversionAt SFunction Inport1' */
+    /* SignalConversion: '<S29>/TmpSignal ConversionAt SFunction Inport1' */
     twa_parallel_B.TmpSignalConversionAtSFunctionI[0] =
       twa_parallel_B.gear_ratio;
     twa_parallel_B.TmpSignalConversionAtSFunctionI[1] =
@@ -2322,53 +2307,58 @@ void twa_parallel_output(int_T tid)
     twa_parallel_B.TmpSignalConversionAtSFunctionI[5] =
       twa_parallel_B.gear_ratio_n;
 
-    /* Embedded MATLAB: '<S26>/GetMicroQDes' */
-    /* Embedded MATLAB Function 'task_space/gear_ratio/GetMicroQDes': '<S28>:1' */
+    /* Embedded MATLAB: '<S26>/GetMicroQDes' incorporates:
+     *  Constant: '<S26>/helix_rad'
+     *  Constant: '<S26>/meas_twa_len'
+     *  Constant: '<S26>/wire_delta'
+     */
+    /* Embedded MATLAB Function 'task_space/gear_ratio/GetMicroQDes': '<S29>:1' */
     /*  This function solves for command signal for the twa's given a desired */
     /*  micro leg length */
-    /* '<S28>:1:5' */
-    /* '<S28>:1:7' */
-    /* [mm] */
-    /* '<S28>:1:10' */
-    twa_parallel_B.qmicro_des[0] =
-      twa_parallel_B.TmpSignalConversionAtSFunctionI[3];
-    eml_n1hat[0] = 0.0;
-    twa_parallel_B.qmicro_des[1] =
-      twa_parallel_B.TmpSignalConversionAtSFunctionI[4];
-    eml_n1hat[1] = 0.0;
-    twa_parallel_B.qmicro_des[2] =
-      twa_parallel_B.TmpSignalConversionAtSFunctionI[5];
-    eml_n1hat[2] = 0.0;
+    /* '<S29>:1:6' */
+    twa_parallel_B.theta_mu[0] = 0.0;
+    twa_parallel_B.theta_mu[1] = 0.0;
+    twa_parallel_B.theta_mu[2] = 0.0;
 
-    /* '<S28>:1:11' */
-    eml_n1hat[0] = 2.258E+002 - twa_parallel_B.micro_len_out[0];
-
-    /* '<S28>:1:12' */
-    eml_n1hat[1] = 2.263E+002 - twa_parallel_B.micro_len_out[1];
-
-    /* '<S28>:1:13' */
-    eml_n1hat[2] = 224.5 - twa_parallel_B.micro_len_out[2];
-
-    /* '<S28>:1:15' */
-    twa_parallel_B.qmicro_des[0] = sqrt((5.0985640000000007E+004 - rt_pow_snf
-      (eml_n1hat[0], 2.0)) / 1.9516089999999996E-002);
+    /*  qmu = zeros(3,1); */
+    /*  qmu(1,1) = meas_twa_len(1,1) - des_micro_len(1,1); */
+    /*  qmu(2,1) = meas_twa_len(2,1) - des_micro_len(2,1); */
+    /*  qmu(3,1) = meas_twa_len(3,1) - des_micro_len(3,1); */
+    /*  for i = 1:3 */
+    /*      num = meas_twa_len(i,1)^2 * (1 + wire_delta)^2 - des_micro_len(i,1)^2; */
+    /*      theta_mu(i,1) = sqrt(num/helix_rad^2); */
+    /*  end */
+    /* '<S29>:1:17' */
+    twa_parallel_B.theta_mu[0] = sqrt((rt_pow_snf(1.0 +
+      twa_parallel_P.wire_delta_Value, 2.0) * rt_pow_snf
+      (twa_parallel_P.meas_twa_len_Value[0], 2.0) - rt_pow_snf
+      (twa_parallel_B.micro_len_out[0], 2.0)) * (1.0 / rt_pow_snf
+      (twa_parallel_P.helix_rad_Value, 2.0)));
 
     /* [rad] */
-    /* '<S28>:1:16' */
-    twa_parallel_B.qmicro_des[1] = sqrt((5.121169E+004 - rt_pow_snf(eml_n1hat[1],
-      2.0)) / 1.9516089999999996E-002);
+    /* '<S29>:1:19' */
+    twa_parallel_B.theta_mu[1] = sqrt((rt_pow_snf(1.0 +
+      twa_parallel_P.wire_delta_Value, 2.0) * rt_pow_snf
+      (twa_parallel_P.meas_twa_len_Value[1], 2.0) - rt_pow_snf
+      (twa_parallel_B.micro_len_out[1], 2.0)) * (1.0 / rt_pow_snf
+      (twa_parallel_P.helix_rad_Value, 2.0)));
 
-    /* '<S28>:1:17' */
-    twa_parallel_B.qmicro_des[2] = sqrt((50400.25 - rt_pow_snf(eml_n1hat[2], 2.0))
-      / 1.9516089999999996E-002);
+    /* [rad] */
+    /* '<S29>:1:21' */
+    twa_parallel_B.theta_mu[2] = sqrt((rt_pow_snf(1.0 +
+      twa_parallel_P.wire_delta_Value, 2.0) * rt_pow_snf
+      (twa_parallel_P.meas_twa_len_Value[2], 2.0) - rt_pow_snf
+      (twa_parallel_B.micro_len_out[2], 2.0)) * (1.0 / rt_pow_snf
+      (twa_parallel_P.helix_rad_Value, 2.0)));
 
+    /* [rad] */
     /* convert to rotations from radians */
-    /* '<S28>:1:20' */
-    twa_parallel_B.qmicro_des[0] = twa_parallel_B.qmicro_des[0] /
+    /* '<S29>:1:25' */
+    twa_parallel_B.theta_mu[0] = twa_parallel_B.theta_mu[0] /
       6.2831853071795862E+000;
-    twa_parallel_B.qmicro_des[1] = twa_parallel_B.qmicro_des[1] /
+    twa_parallel_B.theta_mu[1] = twa_parallel_B.theta_mu[1] /
       6.2831853071795862E+000;
-    twa_parallel_B.qmicro_des[2] = twa_parallel_B.qmicro_des[2] /
+    twa_parallel_B.theta_mu[2] = twa_parallel_B.theta_mu[2] /
       6.2831853071795862E+000;
 
     /* MultiPortSwitch: '<Root>/cntrl_switch' incorporates:
@@ -2386,9 +2376,9 @@ void twa_parallel_output(int_T tid)
       twa_parallel_B.cntrl_switch[0] = twa_parallel_B.qmacro_des[0];
       twa_parallel_B.cntrl_switch[1] = twa_parallel_B.qmacro_des[1];
       twa_parallel_B.cntrl_switch[2] = twa_parallel_B.qmacro_des[2];
-      twa_parallel_B.cntrl_switch[3] = twa_parallel_B.qmicro_des[0];
-      twa_parallel_B.cntrl_switch[4] = twa_parallel_B.qmicro_des[1];
-      twa_parallel_B.cntrl_switch[5] = twa_parallel_B.qmicro_des[2];
+      twa_parallel_B.cntrl_switch[3] = twa_parallel_B.theta_mu[0];
+      twa_parallel_B.cntrl_switch[4] = twa_parallel_B.theta_mu[1];
+      twa_parallel_B.cntrl_switch[5] = twa_parallel_B.theta_mu[2];
       break;
 
      default:
@@ -2402,10 +2392,10 @@ void twa_parallel_output(int_T tid)
     twa_parallel_B.DigitalClock = twa_parallel_rtM->Timing.t[1];
 
     /* UnitDelay: '<S4>/Unit Delay' */
-    twa_parallel_B.UnitDelay_k = twa_parallel_DWork.UnitDelay_DSTATE_e;
+    twa_parallel_B.UnitDelay = twa_parallel_DWork.UnitDelay_DSTATE;
 
     /* UnitDelay: '<S4>/Unit Delay1' */
-    twa_parallel_B.UnitDelay1 = twa_parallel_DWork.UnitDelay1_DSTATE;
+    twa_parallel_B.UnitDelay1_b = twa_parallel_DWork.UnitDelay1_DSTATE_h;
 
     /* Signal Processing Blockset N-Sample Enable  (sdspnsamp2) - '<S20>/N-Sample Enable' */
     {
@@ -2482,7 +2472,7 @@ void twa_parallel_output(int_T tid)
         /*  conf = 0 means that the 5th order poly */
         /*  is not configured for the desired trajectory. */
         /*  Therefore, the block is initialized. */
-        if (twa_parallel_B.UnitDelay_k == 0.0) {
+        if (twa_parallel_B.UnitDelay == 0.0) {
           /* '<S19>:1:13' */
           /* '<S19>:1:14' */
           /* '<S19>:1:15' */
@@ -2503,27 +2493,26 @@ void twa_parallel_output(int_T tid)
         } else {
           /* '<S19>:1:21' */
           /* '<S19>:1:22' */
-          twa_parallel_B.t0n = twa_parallel_B.UnitDelay1;
+          twa_parallel_B.t0n = twa_parallel_B.UnitDelay1_b;
 
           /* '<S19>:1:23' */
-          twa_parallel_B.confn = twa_parallel_B.UnitDelay_k;
+          twa_parallel_B.confn = twa_parallel_B.UnitDelay;
 
           /*  5th order polynomial */
           /* '<S19>:1:27' */
           /* '<S19>:1:28' */
           /* '<S19>:1:29' */
           for (uIdx = 0; uIdx < 6; uIdx++) {
-            eml_q1_mu = eml_tdot[uIdx];
+            eml_a_0 = eml_tdot[uIdx];
             twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch[uIdx];
-            eml_q1_mu *= -15.0;
-            twa_parallel_B.q_dub_dot[uIdx] = -6.6666666666666663E-001 *
-              eml_q1_mu;
-            eml_a[uIdx] = -0.4 * eml_q1_mu;
-            eml_tdot[uIdx] = eml_q1_mu;
+            eml_a_0 *= -15.0;
+            twa_parallel_B.q_dub_dot[uIdx] = -6.6666666666666663E-001 * eml_a_0;
+            eml_a[uIdx] = -0.4 * eml_a_0;
+            eml_tdot[uIdx] = eml_a_0;
           }
 
           /* '<S19>:1:30' */
-          eml_c_1 = twa_parallel_B.DigitalClock - twa_parallel_B.UnitDelay1;
+          eml_c_1 = twa_parallel_B.DigitalClock - twa_parallel_B.UnitDelay1_b;
 
           /* '<S19>:1:31' */
           eml_y_0 = eml_c_1 / twa_parallel_P.tf_Value;
@@ -2596,7 +2585,7 @@ void twa_parallel_output(int_T tid)
         }
 
         /* '<S19>:1:51' */
-        twa_parallel_B.t0n = twa_parallel_B.UnitDelay1;
+        twa_parallel_B.t0n = twa_parallel_B.UnitDelay1_b;
       }
     } else {
       /*  Configuration space is not used (pdot = 0). */
@@ -2671,8 +2660,8 @@ void twa_parallel_output(int_T tid)
       /* Gain: '<S3>/Ki' */
       twa_parallel_B.Ki[uIdx] = twa_parallel_P.Ki_Gain[uIdx] *
         twa_parallel_B.Integrator[uIdx];
-      eml_q1_mu = twa_parallel_B.Ki[uIdx];
-      twa_parallel_B.saturate_int[uIdx] = rt_SATURATE(eml_q1_mu,
+      eml_a_0 = twa_parallel_B.Ki[uIdx];
+      twa_parallel_B.saturate_int[uIdx] = rt_SATURATE(eml_a_0,
         twa_parallel_P.saturate_int_LowerSat[uIdx],
         twa_parallel_P.saturate_int_UpperSat[uIdx]);
 
@@ -2698,8 +2687,8 @@ void twa_parallel_output(int_T tid)
       /* Sum: '<S3>/Add' */
       twa_parallel_B.Add[uIdx] = (twa_parallel_B.Kp[uIdx] +
         twa_parallel_B.saturate_int[uIdx]) + twa_parallel_B.Kd[uIdx];
-      eml_q1_mu = twa_parallel_B.Add[uIdx];
-      twa_parallel_B.Saturation[uIdx] = rt_SATURATE(eml_q1_mu,
+      eml_a_0 = twa_parallel_B.Add[uIdx];
+      twa_parallel_B.Saturation[uIdx] = rt_SATURATE(eml_a_0,
         twa_parallel_P.Saturation_LowerSat[uIdx],
         twa_parallel_P.Saturation_UpperSat[uIdx]);
 
@@ -2713,6 +2702,9 @@ void twa_parallel_output(int_T tid)
         twa_parallel_B.Switch_i[uIdx] = twa_parallel_P.manual_current_Value[uIdx];
       }
     }
+
+    /* ok to acquire for <S27>/S-Function */
+    twa_parallel_DWork.SFunction_IWORK_a.AcquireOK = 1;
   }
 
   /* tid is required for a uniform function interface.
@@ -2792,29 +2784,29 @@ void twa_parallel_update(int_T tid)
 
     /* end of Update for SubSystem: '<Root>/Homing' */
 
+    /* Update for UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_DWork.UnitDelay1_DSTATE[0] = twa_parallel_B.des_macro_len[0];
+
     /* Update for UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_DWork.UnitDelay2_DSTATE[0] = twa_parallel_B.micro_len_out[0];
 
-    /* Update for UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE[0] = twa_parallel_B.x_cur[0];
+    /* Update for UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_DWork.UnitDelay1_DSTATE[1] = twa_parallel_B.des_macro_len[1];
 
     /* Update for UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_DWork.UnitDelay2_DSTATE[1] = twa_parallel_B.micro_len_out[1];
 
-    /* Update for UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE[1] = twa_parallel_B.x_cur[1];
+    /* Update for UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_DWork.UnitDelay1_DSTATE[2] = twa_parallel_B.des_macro_len[2];
 
     /* Update for UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_DWork.UnitDelay2_DSTATE[2] = twa_parallel_B.micro_len_out[2];
 
-    /* Update for UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE[2] = twa_parallel_B.x_cur[2];
-
     /* Update for UnitDelay: '<S4>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE_e = twa_parallel_B.confn;
+    twa_parallel_DWork.UnitDelay_DSTATE = twa_parallel_B.confn;
 
     /* Update for UnitDelay: '<S4>/Unit Delay1' */
-    twa_parallel_DWork.UnitDelay1_DSTATE = twa_parallel_B.t0n;
+    twa_parallel_DWork.UnitDelay1_DSTATE_h = twa_parallel_B.t0n;
 
     /* Update for UnitDelay: '<S4>/Unit Delay2' */
     for (k = 0; k < 6; k++) {
@@ -3003,10 +2995,10 @@ void twa_parallel_initialize(boolean_T firstTime)
   }
 
   /* external mode info */
-  twa_parallel_rtM->Sizes.checksums[0] = (561695553U);
-  twa_parallel_rtM->Sizes.checksums[1] = (2564714590U);
-  twa_parallel_rtM->Sizes.checksums[2] = (2872082143U);
-  twa_parallel_rtM->Sizes.checksums[3] = (15232862U);
+  twa_parallel_rtM->Sizes.checksums[0] = (4278547763U);
+  twa_parallel_rtM->Sizes.checksums[1] = (142775865U);
+  twa_parallel_rtM->Sizes.checksums[2] = (3159325380U);
+  twa_parallel_rtM->Sizes.checksums[3] = (3516417542U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -3195,18 +3187,18 @@ void twa_parallel_initialize(boolean_T firstTime)
     twa_parallel_B.enc_res_b = 0.0;
     twa_parallel_B.gear_ratio_n = 0.0;
     twa_parallel_B.HiddenBuf_InsertedFor_Homing_at = 0.0;
+    twa_parallel_B.UnitDelay1[0] = 0.0;
+    twa_parallel_B.UnitDelay1[1] = 0.0;
+    twa_parallel_B.UnitDelay1[2] = 0.0;
     twa_parallel_B.UnitDelay2[0] = 0.0;
     twa_parallel_B.UnitDelay2[1] = 0.0;
     twa_parallel_B.UnitDelay2[2] = 0.0;
-    twa_parallel_B.UnitDelay[0] = 0.0;
-    twa_parallel_B.UnitDelay[1] = 0.0;
-    twa_parallel_B.UnitDelay[2] = 0.0;
     twa_parallel_B.DigitalClock = 0.0;
-    twa_parallel_B.UnitDelay_k = 0.0;
-    twa_parallel_B.UnitDelay1 = 0.0;
-    twa_parallel_B.qmicro_des[0] = 0.0;
-    twa_parallel_B.qmicro_des[1] = 0.0;
-    twa_parallel_B.qmicro_des[2] = 0.0;
+    twa_parallel_B.UnitDelay = 0.0;
+    twa_parallel_B.UnitDelay1_b = 0.0;
+    twa_parallel_B.theta_mu[0] = 0.0;
+    twa_parallel_B.theta_mu[1] = 0.0;
+    twa_parallel_B.theta_mu[2] = 0.0;
     twa_parallel_B.qmacro_des[0] = 0.0;
     twa_parallel_B.qmacro_des[1] = 0.0;
     twa_parallel_B.qmacro_des[2] = 0.0;
@@ -3216,9 +3208,6 @@ void twa_parallel_initialize(boolean_T firstTime)
     twa_parallel_B.micro_len_out[0] = 0.0;
     twa_parallel_B.micro_len_out[1] = 0.0;
     twa_parallel_B.micro_len_out[2] = 0.0;
-    twa_parallel_B.x_cur[0] = 0.0;
-    twa_parallel_B.x_cur[1] = 0.0;
-    twa_parallel_B.x_cur[2] = 0.0;
     twa_parallel_B.confn = 0.0;
     twa_parallel_B.t0n = 0.0;
     twa_parallel_B.robot_mov = 0.0;
@@ -3279,14 +3268,14 @@ void twa_parallel_initialize(boolean_T firstTime)
     }
   }
 
+  twa_parallel_DWork.UnitDelay1_DSTATE[0] = 0.0;
+  twa_parallel_DWork.UnitDelay1_DSTATE[1] = 0.0;
+  twa_parallel_DWork.UnitDelay1_DSTATE[2] = 0.0;
   twa_parallel_DWork.UnitDelay2_DSTATE[0] = 0.0;
   twa_parallel_DWork.UnitDelay2_DSTATE[1] = 0.0;
   twa_parallel_DWork.UnitDelay2_DSTATE[2] = 0.0;
-  twa_parallel_DWork.UnitDelay_DSTATE[0] = 0.0;
-  twa_parallel_DWork.UnitDelay_DSTATE[1] = 0.0;
-  twa_parallel_DWork.UnitDelay_DSTATE[2] = 0.0;
-  twa_parallel_DWork.UnitDelay_DSTATE_e = 0.0;
-  twa_parallel_DWork.UnitDelay1_DSTATE = 0.0;
+  twa_parallel_DWork.UnitDelay_DSTATE = 0.0;
+  twa_parallel_DWork.UnitDelay1_DSTATE_h = 0.0;
 
   {
     int_T i;
@@ -3420,9 +3409,9 @@ void MdlInitializeSizes(void)
   twa_parallel_rtM->Sizes.numU = (0);  /* Number of model inputs */
   twa_parallel_rtM->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   twa_parallel_rtM->Sizes.numSampTimes = (2);/* Number of sample times */
-  twa_parallel_rtM->Sizes.numBlocks = (100);/* Number of blocks */
-  twa_parallel_rtM->Sizes.numBlockIO = (73);/* Number of block outputs */
-  twa_parallel_rtM->Sizes.numBlockPrms = (234);/* Sum of parameter "widths" */
+  twa_parallel_rtM->Sizes.numBlocks = (106);/* Number of blocks */
+  twa_parallel_rtM->Sizes.numBlockIO = (72);/* Number of block outputs */
+  twa_parallel_rtM->Sizes.numBlockPrms = (241);/* Sum of parameter "widths" */
 }
 
 void MdlInitializeSampleTimes(void)
@@ -3450,23 +3439,23 @@ void MdlInitialize(void)
 
     twa_parallel_DWork.DiscreteFIRFilter_circBuf_l = 0;
 
+    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_DWork.UnitDelay1_DSTATE[0] = twa_parallel_P.UnitDelay1_X0_g[0];
+
     /* InitializeConditions for UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_DWork.UnitDelay2_DSTATE[0] = twa_parallel_P.UnitDelay2_X0_p[0];
 
-    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE[0] = twa_parallel_P.UnitDelay_X0[0];
+    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_DWork.UnitDelay1_DSTATE[1] = twa_parallel_P.UnitDelay1_X0_g[1];
 
     /* InitializeConditions for UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_DWork.UnitDelay2_DSTATE[1] = twa_parallel_P.UnitDelay2_X0_p[1];
 
-    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE[1] = twa_parallel_P.UnitDelay_X0[1];
+    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay1' */
+    twa_parallel_DWork.UnitDelay1_DSTATE[2] = twa_parallel_P.UnitDelay1_X0_g[2];
 
     /* InitializeConditions for UnitDelay: '<S6>/Unit Delay2' */
     twa_parallel_DWork.UnitDelay2_DSTATE[2] = twa_parallel_P.UnitDelay2_X0_p[2];
-
-    /* InitializeConditions for UnitDelay: '<S6>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE[2] = twa_parallel_P.UnitDelay_X0[2];
 
     /* InitializeConditions for Embedded MATLAB: '<S6>/GetLegLen' */
     twa_parallel_DWork.is_active_c1_twa_parallel = 0U;
@@ -3478,10 +3467,10 @@ void MdlInitialize(void)
     twa_parallel_DWork.is_active_c2_twa_parallel = 0U;
 
     /* InitializeConditions for UnitDelay: '<S4>/Unit Delay' */
-    twa_parallel_DWork.UnitDelay_DSTATE_e = twa_parallel_P.UnitDelay_X0_p;
+    twa_parallel_DWork.UnitDelay_DSTATE = twa_parallel_P.UnitDelay_X0;
 
     /* InitializeConditions for UnitDelay: '<S4>/Unit Delay1' */
-    twa_parallel_DWork.UnitDelay1_DSTATE = twa_parallel_P.UnitDelay1_X0_h;
+    twa_parallel_DWork.UnitDelay1_DSTATE_h = twa_parallel_P.UnitDelay1_X0_h;
 
     /* Signal Processing Blockset N-Sample Enable  (sdspnsamp2) - '<S20>/N-Sample Enable' */
     twa_parallel_DWork.NSampleEnable_Counter = (uint32_T) 0;
@@ -3531,6 +3520,32 @@ void MdlStart(void)
       SetEncoderCounts(i, 0);
   }
 
+  /* S-Function Block: <S22>/S-Function (scblock) */
+  {
+    int i;
+    if ((i = rl32eScopeExists(2)) == 0) {
+      if ((i = rl32eDefScope(2,2)) != 0) {
+        printf("Error creating scope 2\n");
+      } else {
+        rl32eSetScope(2, 4, 25);
+        rl32eSetScope(2, 40, 0);
+        rl32eSetScope(2, 7, 1);
+        rl32eSetScope(2, 0, 0);
+        rl32eSetScope(2, 1, 0.0);
+        rl32eSetScope(2, 2, 0);
+        rl32eSetScope(2, 10, 0);
+        rl32eSetTargetScope(2, 1, 0.0);
+        rl32eSetTargetScope(2, 11, 0.0);
+        rl32eSetTargetScope(2, 10, 0.0);
+        xpceScopeAcqOK(2, &twa_parallel_DWork.SFunction_IWORK.AcquireOK);
+      }
+    }
+
+    if (i) {
+      rl32eRestartAcquisition(2);
+    }
+  }
+
   /* S-Function Block: <S23>/S-Function (scblock) */
   {
     int i;
@@ -3567,64 +3582,12 @@ void MdlStart(void)
         rl32eSetTargetScope(1, 1, 0.0);
         rl32eSetTargetScope(1, 11, 0.0);
         rl32eSetTargetScope(1, 10, 0.0);
-        xpceScopeAcqOK(1, &twa_parallel_DWork.SFunction_IWORK.AcquireOK);
+        xpceScopeAcqOK(1, &twa_parallel_DWork.SFunction_IWORK_j.AcquireOK);
       }
     }
 
     if (i) {
       rl32eRestartAcquisition(1);
-    }
-  }
-
-  /* S-Function Block: <S22>/S-Function (scblock) */
-  {
-    int i;
-    if ((i = rl32eScopeExists(2)) == 0) {
-      if ((i = rl32eDefScope(2,2)) != 0) {
-        printf("Error creating scope 2\n");
-      } else {
-        rl32eAddSignal(2, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s1"));
-        rl32eAddSignal(2, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s2"));
-        rl32eAddSignal(2, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s3"));
-        rl32eAddSignal(2, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s4"));
-        rl32eAddSignal(2, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s5"));
-        rl32eAddSignal(2, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s6"));
-        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s1"),"q1d [cnt] %12.4f");
-        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s2"),"q2d [cnt] %12.4f");
-        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s3"),"q3d [cnt] %12.4f");
-        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s4"),"q4d [cnt] %12.4f");
-        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s5"),"q5d [cnt] %12.4f");
-        rl32eSetTargetScopeSigFt(2,rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s6"),"q6d [cnt] %12.4f");
-        rl32eSetScope(2, 4, 25);
-        rl32eSetScope(2, 40, 0);
-        rl32eSetScope(2, 7, 1);
-        rl32eSetScope(2, 0, 0);
-        rl32eSetScope(2, 3, rl32eGetSignalNo(
-          "Encoders/Derivative/Discrete Derivative/Diff/s1"));
-        rl32eSetScope(2, 1, 0.0);
-        rl32eSetScope(2, 2, 0);
-        rl32eSetScope(2, 10, 0);
-        rl32eSetTargetScope(2, 1, 0.0);
-        rl32eSetTargetScope(2, 11, 0.0);
-        rl32eSetTargetScope(2, 10, 0.0);
-        xpceScopeAcqOK(2, &twa_parallel_DWork.SFunction_IWORK_j.AcquireOK);
-      }
-    }
-
-    if (i) {
-      rl32eRestartAcquisition(2);
     }
   }
 
@@ -3744,6 +3707,42 @@ void MdlStart(void)
 
     if (i) {
       rl32eRestartAcquisition(5);
+    }
+  }
+
+  /* S-Function Block: <S27>/S-Function (scblock) */
+  {
+    int i;
+    if ((i = rl32eScopeExists(4)) == 0) {
+      if ((i = rl32eDefScope(4,2)) != 0) {
+        printf("Error creating scope 4\n");
+      } else {
+        rl32eAddSignal(4, rl32eGetSignalNo("task_space/GetLegLen/p2/s1"));
+        rl32eAddSignal(4, rl32eGetSignalNo("task_space/GetLegLen/p2/s2"));
+        rl32eAddSignal(4, rl32eGetSignalNo("task_space/GetLegLen/p2/s3"));
+        rl32eSetTargetScopeSigFt(4,rl32eGetSignalNo("task_space/GetLegLen/p2/s1"),
+          "mu1 [mm] %12.4f");
+        rl32eSetTargetScopeSigFt(4,rl32eGetSignalNo("task_space/GetLegLen/p2/s2"),
+          "mu2 [mm] %12.4f");
+        rl32eSetTargetScopeSigFt(4,rl32eGetSignalNo("task_space/GetLegLen/p2/s3"),
+          "mu3 [mm] %12.4f");
+        rl32eSetScope(4, 4, 25);
+        rl32eSetScope(4, 40, 0);
+        rl32eSetScope(4, 7, 1);
+        rl32eSetScope(4, 0, 0);
+        rl32eSetScope(4, 3, rl32eGetSignalNo("task_space/GetLegLen/p2/s1"));
+        rl32eSetScope(4, 1, 0.0);
+        rl32eSetScope(4, 2, 0);
+        rl32eSetScope(4, 10, 0);
+        rl32eSetTargetScope(4, 1, 0.0);
+        rl32eSetTargetScope(4, 11, 0.0);
+        rl32eSetTargetScope(4, 10, 0.0);
+        xpceScopeAcqOK(4, &twa_parallel_DWork.SFunction_IWORK_a.AcquireOK);
+      }
+    }
+
+    if (i) {
+      rl32eRestartAcquisition(4);
     }
   }
 
