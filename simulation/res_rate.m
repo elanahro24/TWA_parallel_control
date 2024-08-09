@@ -98,14 +98,14 @@ if norm(eq) > eqeps
         des_leg_len(i,1) = norm(p_in_w(:,i) - b_in_w(:,i));
     end
     
-    eq_out = macro_leg_len - des_leg_len
-    normeq = norm(eq_out)
+    eq_out = macro_leg_len - des_leg_len;
+    normeq = norm(eq_out);
     
     % the amount each velmex slides need to move is the difference between
     % the last leg length and the new leg length
     %     qcmd(1:3,1) = (measured_len - des_leg_len)/velmex_pitch
-    qcmd(1:3,1) = (des_leg_len - measured_len)/velmex_pitch
+    qcmd(1:3,1) = (des_leg_len - measured_len)/velmex_pitch;
     
-    twave_out = twave;
-    rwave_out = rwave;
+    twave_out = twave
+    rwave_out = rwave
 end

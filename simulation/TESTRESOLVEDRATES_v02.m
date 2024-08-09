@@ -43,6 +43,7 @@ eq = measured_len - qnom;
 loops = 0;
 while norm(eq) > eqeps
 
+%% 
 [qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
     p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
 measured_len = macro_leg_len;
