@@ -1,23 +1,22 @@
-function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = res_rate(qcur,eqeps,...
-                        kp,dt,p_in_m,b_in_w,f_in_w,m_in_w,measured_len,...
-                        velmex_pitch,macro_leg_len,eq,twave,rwave)
+function [deltaq] = res_rate_cmd(x_des,des_ee_rot,x_cur,r_cur,eqeps,...
+                        dt,p_in_m,b_in_w,f_in_w,m_in_w,ep_p)
 
-qcmd = qcur;
+deltaq = zeros(6,1);
 z0 = [0 0 1]';
 
 % moving platform vertex locations
-p_in_w = twave*ones(1,3) + rwave*p_in_m;
+p_in_w = x_cur*ones(1,3) + r_cur*p_in_m;
 
-if norm(eq) > eqeps
+if norm(ep_p) > eqeps
     %% instantaneous direct kinematics jacobian
     % vector from base vertex to moving platform vertex
     n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));
     n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));
     n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));
     
-    a13 = z0'*(cross(rwave*p_in_m(:,1),n1hat));
-    a23 = z0'*(cross(rwave*p_in_m(:,2),n2hat));
-    a33 = z0'*(cross(rwave*p_in_m(:,3),n3hat));
+    a13 = z0'*(cross(r_cur*p_in_m(:,1),n1hat));
+    a23 = z0'*(cross(r_cur*p_in_m(:,2),n2hat));
+    a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat));
     
     idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...
                n2hat(1,1) n2hat(2,1) a23; ...
@@ -73,40 +72,25 @@ if norm(eq) > eqeps
     % the full manipulator jacobian with redundancy resolution weighting
     w_mat = diag([1,1,1,1e10,1e10,1e10]);
     full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
+    
+    % positional error and direction
+    ep_p = norm(x_des - x_cur);
+    nhat = (x_des-x_cur)/ep_p;
+    
+    % orientational error and direction
+    % this is always about the z-axis, shouldnt need to calculate me.
+    r_des = [cos(des_ee_rot) -sin(des_ee_rot) 0;sin(des_ee_rot) cos(des_ee_rot) 0;0 0 1];
+    r_ep = r_des * r_cur';
 
-    %%
-    % joint velocities and ee velocity proportional to joint error
-    qdot = kp * eq;
-%     tdot = full_jac*qdot
-    tdot = idk_jac \ qdot;
-    
-    % separate translational and rotational components of twist
-    v = tdot(1:2,1);
-    w = tdot(3,1);
-    
-    % new end effector position
-    twave(1:2,1) = twave(1:2,1) + v*dt;
-    
-    % change in end effector orientation
-    del_r = [cos(w*dt) -sin(w*dt) 0;sin(w*dt) cos(w*dt) 0;0 0 1];
-    
-    % new end effector orientation
-    rwave = del_r * rwave;
-    
-    des_leg_len = zeros(3,1);
-    for i = 1:3
-        p_in_w(:,i) = twave + rwave*p_in_m(:,i);
-        des_leg_len(i,1) = norm(p_in_w(:,i) - b_in_w(:,i));
-    end
-    
-    eq_out = macro_leg_len - des_leg_len;
-    normeq = norm(eq_out);
-    
-    % the amount each velmex slides need to move is the difference between
-    % the last leg length and the new leg length
-    %     qcmd(1:3,1) = (measured_len - des_leg_len)/velmex_pitch
-    qcmd(1:3,1) = (des_leg_len - measured_len)/velmex_pitch;
-    
-    twave_out = twave
-    rwave_out = rwave
+    theta_e = acos((trace(r_ep)-1)/2);
+
+    me = (1/(2*sin(theta_e)))*[r_ep(3,2)-r_ep(2,3);r_ep(1,3)-r_ep(3,1);r_ep(2,1)-r_ep(1,2)];
+    vmax = 1;
+    wmax = 1;
+    v = vmax * nhat;
+    w = wmax * me;
+    qdot = full_jac * [v(1:2);w(3)];
+
+    deltaq = qdot * dt;
+
 end

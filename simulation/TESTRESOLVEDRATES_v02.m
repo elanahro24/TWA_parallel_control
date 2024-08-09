@@ -1,6 +1,6 @@
 qcur = zeros(6,1);
-eqeps = sqrt(3*0.01^2); %10 microns per actuator
-kp = 0.15;
+eqeps = 2%sqrt(3*0.01^2); %10 microns per actuator
+kp = 0.5;
 dt = 0.002;
 velmex_pitch = 1.27;
 twave = zeros(3,1);
@@ -10,7 +10,7 @@ measured_len = [124.79;125.42;125.23];
 macro_leg_len = measured_len;
 ee_rot = pi/6;
 rwave = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
-
+r_cur = rwave;
 % locations of moving platform and base verteces
 vertex_locs = [330 90 210]*pi/180;
 p_rad = 45.00; %[mm]
@@ -40,13 +40,21 @@ qnom(2,1) = norm(p_in_w(:,2) - b_in_w(:,2));
 qnom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
 eq = measured_len - qnom;
 
+x_cur = zeros(3,1);
+x_des = [5;3;0];
+des_ee_rot = pi/3;
+ep_p = 1000;
+
 loops = 0;
 while norm(eq) > eqeps
 
 %% 
-[qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
-    p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
-measured_len = macro_leg_len;
+% [qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
+%     p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
+% measured_len = macro_leg_len;
+
+[deltaq] = res_rate_cmd(x_des,des_ee_rot,x_cur,r_cur,eqeps,...
+                        dt,p_in_m,b_in_w,f_in_w,m_in_w,ep_p)
 loops = loops + 1;
 disp(['Number of loops to converge: ',num2str(loops)]);
 
