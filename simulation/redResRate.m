@@ -1,5 +1,8 @@
-function [deltaq,xcur,ep_p] = res_rate_cmd(x_des,des_ee_rot,x_cur,r_cur,...
+function [deltaq,xcur,eerot,p_del] = redResRate(x_des,x_cur,ee_rot_cur,ee_rot_des,...
     dt,p_in_m,b_in_w,f_in_w,m_in_w)
+
+r_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;sin(ee_rot_des) cos(ee_rot_des) 0;0 0 1];
+r_cur = [cos(ee_rot_cur) -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot_cur) 0;0 0 1];
 
 z0 = [0 0 1]';
 
@@ -73,25 +76,47 @@ w_mat = diag([1,1,1,1e10,1e10,1e10]);
 full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
 
 % positional error and direction
-ep_p = norm(x_des - x_cur);
-nhat = (x_des-x_cur)/ep_p;
+p_del = norm(x_des - x_cur);
+p_ep_hat = (x_des-x_cur)/p_del;
 
 % desired orientation angle rotation matrix and error roation matrix
-r_des = [cos(des_ee_rot) -sin(des_ee_rot) 0;sin(des_ee_rot) cos(des_ee_rot) 0;0 0 1];
-r_ep = r_des * r_cur';
+r_del = r_des * r_cur';
 
 % orientational error angle and axis
-theta_e = acos((trace(r_ep)-1)/2);
-me = (1/(2*sin(theta_e)))*[r_ep(3,2)-r_ep(2,3);r_ep(1,3)-r_ep(3,1);r_ep(2,1)-r_ep(1,2)];
+theta_e = acos((trace(r_del)-1)/2);
+me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);r_del(1,3)-r_del(3,1);r_del(2,1)-r_del(1,2)];
 
-vmax = 1;
-wmax = 1;
+% inverse kinematics based on pose error
+vmax = 5;
+vmin = 0.1;
+wmin = 0.1;
+wmax = 5;
+p_epsilon = 0.01;
+w_epsilon = 0.01;
+p_lambda = 1.1;
+w_lambda = 1.1;
 
-v = vmax * nhat;
-w = wmax * me;
+if theta_e > w_epsilon || p_del > p_epsilon
+    if p_del/p_epsilon <= p_lambda
+        vdot = vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));
+    else
+        vdot = vmax;
+    end
+    
+    if theta_e/w_epsilon <= w_lambda
+        wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));
+    else
+        wdot = wmax;
+    end
+end
+
+v = vdot * p_ep_hat;
+w = wdot * me;
+
 qdot = full_jac * [v(1:2);w(3)];
 
 deltaq = qdot * dt;
 disp(['Delta q : ',num2str(deltaq(1)),num2str(deltaq(2)),num2str(deltaq(3))]);
 
-xcur = x_des;
+xcur = x_cur + v * dt;
+eerot = ee_rot_cur + w(3) * dt;

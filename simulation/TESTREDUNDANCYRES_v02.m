@@ -1,5 +1,5 @@
 qcur = zeros(6,1);
-eqeps = 0.01;%sqrt(3*0.01^2); %10 microns per actuator
+epeps = 0.01;%sqrt(3*0.01^2); %10 microns per actuator
 kp = 0.5;
 dt = 0.002;
 velmex_pitch = 1.27;
@@ -10,7 +10,7 @@ measured_len = [124.79;125.42;125.23];
 macro_leg_len = measured_len;
 ee_rot = pi/6;
 rwave = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
-r_cur = rwave;
+
 % locations of moving platform and base verteces
 vertex_locs = [330 90 210]*pi/180;
 p_rad = 45.00; %[mm]
@@ -40,21 +40,27 @@ qnom(2,1) = norm(p_in_w(:,2) - b_in_w(:,2));
 qnom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
 eq = measured_len - qnom;
 
-x_cur = zeros(3,1);
+x_cur = [0;0;0];
 x_des = [5;3;0];
-des_ee_rot = pi/3;
-ep_p = 0.01;
 
+ee_rot_des = pi/3;
+
+disp(['Current Pose: x:',num2str(x_cur(1)),' y:',num2str(x_cur(3)),...
+    ' gamma:',num2str(ee_rot)]);
+disp(['Desired Pose: x:',num2str(x_des(1)),' y:',num2str(x_des(3)),...
+    ' gamma:',num2str(ee_rot_des)]);
+
+p_ep = 100;
 loops = 0;
-while norm(eq) > eqeps
+while norm(p_ep) > epeps
 
-%% 
-% [qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
-%     p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
-% measured_len = macro_leg_len;
+[deltaq,xcur,eerot,p_ep] = redResRate(x_des,x_cur,ee_rot,ee_rot_des,...
+    dt,p_in_m,b_in_w,f_in_w,m_in_w);
 
-[deltaq] = res_rate_cmd(x_des,des_ee_rot,x_cur,r_cur,eqeps,...
-                        dt,p_in_m,b_in_w,f_in_w,m_in_w,ep_p);
+x_cur = xcur;
+ee_rot = eerot;
+disp(['Current Pose: x:',num2str(x_cur(1)),' y:',num2str(x_cur(2)),...
+    ' gamma:',num2str(ee_rot)]);
 loops = loops + 1;
 disp(['Number of loops: ',num2str(loops)]);
 

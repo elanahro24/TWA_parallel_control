@@ -1,5 +1,5 @@
 qcur = zeros(6,1);
-eqeps = 0.01;%sqrt(3*0.01^2); %10 microns per actuator
+epeps = 0.01;%sqrt(3*0.01^2); %10 microns per actuator
 kp = 0.5;
 dt = 0.002;
 velmex_pitch = 1.27;
@@ -43,18 +43,14 @@ eq = measured_len - qnom;
 x_cur = zeros(3,1);
 x_des = [5;3;0];
 des_ee_rot = pi/3;
-ep_p = 0.01;
+ep_p = 100;
 
 loops = 0;
-while norm(eq) > eqeps
+while norm(ep_p) > epeps
 
-%% 
-% [qcur,macro_leg_len,eq,twave,rwave] = res_rate(qcur,eqeps,kp,dt,...
-%     p_in_m,b_in_w,f_in_w,m_in_w,measured_len,velmex_pitch,macro_leg_len,eq,twave,rwave);
-% measured_len = macro_leg_len;
+[deltaq,x_cur,ep_p] = res_rate_cmd(x_des,des_ee_rot,x_cur,r_cur,...
+    dt,p_in_m,b_in_w,f_in_w,m_in_w);
 
-[deltaq] = res_rate_cmd(x_des,des_ee_rot,x_cur,r_cur,eqeps,...
-                        dt,p_in_m,b_in_w,f_in_w,m_in_w,ep_p);
 loops = loops + 1;
 disp(['Number of loops: ',num2str(loops)]);
 
