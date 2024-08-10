@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6929"
+    ComputedModelVersion    "1.6938"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 09 18:18:00 2024"
-  RTWModifiedTimeStamp	  645122470
-  ModelVersionFormat	  "1.%<AutoIncrement:6929>"
+  LastModifiedDate	  "Sat Aug 10 17:23:13 2024"
+  RTWModifiedTimeStamp	  645211392
+  ModelVersionFormat	  "1.%<AutoIncrement:6938>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1831,7 +1831,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "210"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3308
+    SIDHighWatermark	    3313
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -2856,7 +2856,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Homing"
-	Location		[2930, 121, 3714, 987]
+	Location		[2928, 89, 3716, 1008]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -5066,7 +5066,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"task_space"
-	Location		[962, 83, 1899, 1011]
+	Location		[962, 83, 1916, 1028]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -5078,19 +5078,35 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"166"
+	ZoomFactor		"161"
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_cur"
 	  SID			  3179
-	  Position		  [405, 168, 435, 182]
+	  Position		  [401, 245, 419, 265]
+	  BlockRotation		  270
 	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Add"
+	  SID			  3312
+	  Ports			  [2, 1]
+	  Position		  [400, 205, 420, 225]
+	  ShowName		  off
+	  IconShape		  "round"
+	  Inputs		  "|++"
+	  InputSameDT		  off
+	  OutDataTypeMode	  "Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	  SampleTime		  "dt"
 	}
 	Block {
 	  BlockType		  From
 	  Name			  "From"
 	  SID			  3278
-	  Position		  [140, 171, 165, 189]
+	  Position		  [125, 266, 150, 284]
 	  ShowName		  off
 	  GotoTag		  "A"
 	}
@@ -5098,7 +5114,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  3279
-	  Position		  [115, 191, 140, 209]
+	  Position		  [125, 296, 150, 314]
 	  ShowName		  off
 	  GotoTag		  "B"
 	}
@@ -5106,7 +5122,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From2"
 	  SID			  3280
-	  Position		  [140, 211, 165, 229]
+	  Position		  [125, 326, 150, 344]
 	  ShowName		  off
 	  GotoTag		  "C"
 	}
@@ -5114,334 +5130,9 @@ Model {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  3283
-	  Position		  [115, 231, 140, 249]
+	  Position		  [125, 356, 150, 374]
 	  ShowName		  off
 	  GotoTag		  "D"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From4"
-	  SID			  3284
-	  Position		  [140, 251, 165, 269]
-	  ShowName		  off
-	  GotoTag		  "E"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From5"
-	  SID			  3289
-	  Position		  [115, 271, 140, 289]
-	  ShowName		  off
-	  GotoTag		  "F"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From6"
-	  SID			  3301
-	  Position		  [140, 291, 165, 309]
-	  ShowName		  off
-	  GotoTag		  "G"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From7"
-	  SID			  3304
-	  Position		  [115, 311, 140, 329]
-	  ShowName		  off
-	  GotoTag		  "H"
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "GetLegLen"
-	  SID			  3036
-	  Ports			  [12, 2]
-	  Position		  [180, 120, 370, 380]
-	  LibraryVersion	  "1.31"
-	  PermitHierarchicalResolution "ExplicitOnly"
-	  TreatAsAtomicUnit	  on
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "Stateflow"
-	  MaskDescription	  "Embedded MATLAB block"
-	  MaskDisplay		  "disp('fcn');"
-	  MaskSelfModifiable	  on
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  off
-	  MaskIconRotate	  "none"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  System {
-	    Name		    "GetLegLen"
-	    Location		    [257, 457, 812, 717]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    SIDHighWatermark	    42
-	    SIDPrevWatermark	    32
-	    Block {
-	      BlockType		      Inport
-	      Name		      "x_des"
-	      SID		      1
-	      Position		      [20, 101, 40, 119]
-	      IconDisplay	      "Port number"
-	      OutDataType	      "sfix(16)"
-	      OutScaling	      "2^0"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "ee_rot"
-	      SID		      18
-	      Position		      [20, 136, 40, 154]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "p_in_m"
-	      SID		      34
-	      Position		      [20, 171, 40, 189]
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "b_in_w"
-	      SID		      35
-	      Position		      [20, 206, 40, 224]
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "m_in_w"
-	      SID		      36
-	      Position		      [20, 246, 40, 264]
-	      Port		      "5"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "f_in_w"
-	      SID		      37
-	      Position		      [20, 281, 40, 299]
-	      Port		      "6"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "t_in_w"
-	      SID		      38
-	      Position		      [20, 316, 40, 334]
-	      Port		      "7"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "twa_gamma"
-	      SID		      39
-	      Position		      [20, 351, 40, 369]
-	      Port		      "8"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "twa_flange_offset"
-	      SID		      42
-	      Position		      [20, 386, 40, 404]
-	      Port		      "9"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "use_twa"
-	      SID		      41
-	      Position		      [20, 426, 40, 444]
-	      Port		      "10"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "macro_len_prev"
-	      SID		      40
-	      Position		      [20, 461, 40, 479]
-	      Port		      "11"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "micro_len"
-	      SID		      32
-	      Position		      [20, 496, 40, 514]
-	      Port		      "12"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Demux
-	      Name		      " Demux "
-	      SID		      15
-	      Ports		      [1, 1]
-	      Position		      [270, 400, 320, 440]
-	      Outputs		      "1"
-	    }
-	    Block {
-	      BlockType		      "S-Function"
-	      Name		      " SFunction "
-	      SID		      14
-	      Tag		      "Stateflow S-Function twa_parallel 1"
-	      Ports		      [12, 3]
-	      Position		      [180, 140, 230, 400]
-	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[12 3]"
-	      EnableBusSupport	      on
-	      Port {
-		PortNumber		2
-		Name			"des_macro_len"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		3
-		Name			"micro_len_out"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      " Terminator "
-	      SID		      17
-	      Position		      [460, 411, 480, 429]
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "des_macro_len"
-	      SID		      33
-	      Position		      [460, 101, 480, 119]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "micro_len_out"
-	      SID		      28
-	      Position		      [460, 136, 480, 154]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      " SFunction "
-	      SrcPort		      1
-	      DstBlock		      " Demux "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "x_des"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "ee_rot"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "p_in_m"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "b_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      4
-	    }
-	    Line {
-	      SrcBlock		      "m_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      5
-	    }
-	    Line {
-	      SrcBlock		      "f_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      6
-	    }
-	    Line {
-	      SrcBlock		      "t_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      7
-	    }
-	    Line {
-	      SrcBlock		      "twa_gamma"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      8
-	    }
-	    Line {
-	      SrcBlock		      "twa_flange_offset"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      9
-	    }
-	    Line {
-	      SrcBlock		      "use_twa"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      10
-	    }
-	    Line {
-	      SrcBlock		      "macro_len_prev"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      11
-	    }
-	    Line {
-	      SrcBlock		      "micro_len"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      12
-	    }
-	    Line {
-	      Name		      "des_macro_len"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      2
-	      DstBlock		      "des_macro_len"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "micro_len_out"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      3
-	      DstBlock		      "micro_len_out"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " Demux "
-	      SrcPort		      1
-	      DstBlock		      " Terminator "
-	      DstPort		      1
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Goto
@@ -5519,8 +5210,8 @@ Model {
 	  BlockType		  SubSystem
 	  Name			  "ResolvedRates"
 	  SID			  3308
-	  Ports			  [8, 2]
-	  Position		  [215, 602, 405, 873]
+	  Ports			  [9, 3]
+	  Position		  [180, 169, 370, 441]
 	  LibraryVersion	  "1.31"
 	  PermitHierarchicalResolution "ExplicitOnly"
 	  TreatAsAtomicUnit	  on
@@ -5533,7 +5224,7 @@ Model {
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
 	  MaskDescription	  "Embedded MATLAB block"
-	  MaskDisplay		  "disp('fcn');"
+	  MaskDisplay		  "disp('redResRate');"
 	  MaskSelfModifiable	  on
 	  MaskIconFrame		  on
 	  MaskIconOpaque	  off
@@ -5555,28 +5246,28 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    47
+	    SIDHighWatermark	    50
 	    SIDPrevWatermark	    42
 	    Block {
 	      BlockType		      Inport
-	      Name		      "x_cur"
-	      SID		      34
-	      Position		      [20, 101, 40, 119]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "xdes"
+	      Name		      "x_des"
 	      SID		      1
-	      Position		      [20, 136, 40, 154]
-	      Port		      "2"
+	      Position		      [20, 101, 40, 119]
 	      IconDisplay	      "Port number"
 	      OutDataType	      "sfix(16)"
 	      OutScaling	      "2^0"
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "rdes"
+	      Name		      "ee_rot_des"
+	      SID		      46
+	      Position		      [20, 136, 40, 154]
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "dt"
 	      SID		      47
 	      Position		      [20, 171, 40, 189]
 	      Port		      "3"
@@ -5584,8 +5275,8 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "ee_rot"
-	      SID		      18
+	      Name		      "p_in_m"
+	      SID		      44
 	      Position		      [20, 206, 40, 224]
 	      Port		      "4"
 	      IconDisplay	      "Port number"
@@ -5600,8 +5291,8 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "p_in_m"
-	      SID		      44
+	      Name		      "m_in_w"
+	      SID		      48
 	      Position		      [20, 281, 40, 299]
 	      Port		      "6"
 	      IconDisplay	      "Port number"
@@ -5616,10 +5307,18 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "t_in_w"
-	      SID		      46
+	      Name		      "x_cur"
+	      SID		      34
 	      Position		      [20, 351, 40, 369]
 	      Port		      "8"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "ee_rot_cur"
+	      SID		      18
+	      Position		      [20, 386, 40, 404]
+	      Port		      "9"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -5635,20 +5334,26 @@ Model {
 	      Name		      " SFunction "
 	      SID		      14
 	      Tag		      "Stateflow S-Function twa_parallel 5"
-	      Ports		      [8, 3]
-	      Position		      [180, 162, 230, 433]
+	      Ports		      [9, 4]
+	      Position		      [180, 164, 230, 436]
 	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[8 3]"
+	      PortCounts	      "[9 4]"
 	      EnableBusSupport	      on
 	      Port {
 		PortNumber		2
-		Name			"delta_q"
+		Name			"deltaq"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
 	      Port {
 		PortNumber		3
-		Name			"x_out"
+		Name			"xcur"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		4
+		Name			"eerot"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
@@ -5661,17 +5366,25 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "delta_q"
+	      Name		      "deltaq"
 	      SID		      33
 	      Position		      [460, 101, 480, 119]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "x_out"
+	      Name		      "xcur"
 	      SID		      28
 	      Position		      [460, 136, 480, 154]
 	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "eerot"
+	      SID		      49
+	      Position		      [460, 171, 480, 189]
+	      Port		      "3"
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -5681,25 +5394,25 @@ Model {
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "x_cur"
+	      SrcBlock		      "x_des"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      1
 	    }
 	    Line {
-	      SrcBlock		      "xdes"
+	      SrcBlock		      "ee_rot_des"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      2
 	    }
 	    Line {
-	      SrcBlock		      "rdes"
+	      SrcBlock		      "dt"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      3
 	    }
 	    Line {
-	      SrcBlock		      "ee_rot"
+	      SrcBlock		      "p_in_m"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      4
@@ -5711,7 +5424,7 @@ Model {
 	      DstPort		      5
 	    }
 	    Line {
-	      SrcBlock		      "p_in_m"
+	      SrcBlock		      "m_in_w"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      6
@@ -5723,25 +5436,39 @@ Model {
 	      DstPort		      7
 	    }
 	    Line {
-	      SrcBlock		      "t_in_w"
+	      SrcBlock		      "x_cur"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      8
 	    }
 	    Line {
-	      Name		      "delta_q"
+	      SrcBlock		      "ee_rot_cur"
+	      SrcPort		      1
+	      DstBlock		      " SFunction "
+	      DstPort		      9
+	    }
+	    Line {
+	      Name		      "deltaq"
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
 	      SrcPort		      2
-	      DstBlock		      "delta_q"
+	      DstBlock		      "deltaq"
 	      DstPort		      1
 	    }
 	    Line {
-	      Name		      "x_out"
+	      Name		      "xcur"
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
 	      SrcPort		      3
-	      DstBlock		      "x_out"
+	      DstBlock		      "xcur"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "eerot"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      4
+	      DstBlock		      "eerot"
 	      DstPort		      1
 	    }
 	    Line {
@@ -5754,22 +5481,22 @@ Model {
 	}
 	Block {
 	  BlockType		  UnitDelay
-	  Name			  "Unit Delay1"
-	  SID			  3290
-	  Position		  [260, 468, 285, 502]
+	  Name			  "Unit Delay3"
+	  SID			  3309
+	  Position		  [265, 463, 290, 497]
 	  BlockMirror		  on
 	  ShowName		  off
-	  X0			  "meas_macro_len"
+	  X0			  "pi/6"
 	  SampleTime		  "dt"
 	}
 	Block {
 	  BlockType		  UnitDelay
-	  Name			  "Unit Delay2"
-	  SID			  3168
-	  Position		  [260, 423, 285, 457]
+	  Name			  "Unit Delay4"
+	  SID			  3310
+	  Position		  [265, 503, 290, 537]
 	  BlockMirror		  on
 	  ShowName		  off
-	  X0			  "223.6857*ones(3,1)"
+	  X0			  "zeros(3,1)"
 	  SampleTime		  "dt"
 	}
 	Block {
@@ -5782,9 +5509,18 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "ee_rot"
+	  Name			  "dt"
+	  SID			  3311
+	  Position		  [125, 236, 150, 254]
+	  ShowName		  off
+	  Value			  "dt"
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "ee_rot_des"
 	  SID			  3093
-	  Position		  [110, 141, 135, 159]
+	  Position		  [125, 206, 150, 224]
 	  Value			  "pi/6"
 	  SampleTime		  "dt"
 	}
@@ -5795,523 +5531,6 @@ Model {
 	  Position		  [455, 16, 525, 34]
 	  Value			  "f_in_w"
 	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "gear_ratio"
-	  SID			  3169
-	  Ports			  [3, 1]
-	  Position		  [470, 145, 545, 205]
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "gear_ratio"
-	    Location		    [84, 163, 892, 861]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "144"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "des_macro_len"
-	      SID		      3170
-	      Position		      [165, 33, 195, 47]
-	      NamePlacement	      "alternate"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "q_cur"
-	      SID		      3171
-	      Position		      [155, 148, 185, 162]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "des_micro_len"
-	      SID		      3177
-	      Position		      [155, 213, 185, 227]
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      SubSystem
-	      Name		      "GetMacroQDes"
-	      SID		      3107
-	      Ports		      [4, 1]
-	      Position		      [230, 63, 405, 137]
-	      LibraryVersion	      "1.31"
-	      PermitHierarchicalResolution "ExplicitOnly"
-	      TreatAsAtomicUnit	      on
-	      MinAlgLoopOccurrences   off
-	      PropExecContextOutsideSubsystem off
-	      RTWSystemCode	      "Auto"
-	      FunctionWithSeparateData off
-	      Opaque		      off
-	      RequestExecContextInheritance off
-	      MaskHideContents	      off
-	      MaskType		      "Stateflow"
-	      MaskDescription	      "Embedded MATLAB block"
-	      MaskDisplay	      "disp('fcn');"
-	      MaskSelfModifiable      on
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      off
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	      System {
-		Name			"GetMacroQDes"
-		Location		[257, 457, 812, 717]
-		Open			off
-		ModelBrowserVisibility	off
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"usletter"
-		PaperUnits		"inches"
-		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"100"
-		SIDHighWatermark	24
-		SIDPrevWatermark	23
-		Block {
-		  BlockType		  Inport
-		  Name			  "des_macro_len"
-		  SID			  20
-		  Position		  [20, 101, 40, 119]
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "meas_macro_len"
-		  SID			  24
-		  Position		  [20, 136, 40, 154]
-		  Port			  "2"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "velmex_pitch"
-		  SID			  22
-		  Position		  [20, 171, 40, 189]
-		  Port			  "3"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "q_cur"
-		  SID			  23
-		  Position		  [20, 206, 40, 224]
-		  Port			  "4"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Demux
-		  Name			  " Demux "
-		  SID			  15
-		  Ports			  [1, 1]
-		  Position		  [270, 280, 320, 320]
-		  Outputs		  "1"
-		}
-		Block {
-		  BlockType		  "S-Function"
-		  Name			  " SFunction "
-		  SID			  14
-		  Tag			  "Stateflow S-Function twa_parallel 4"
-		  Ports			  [4, 2]
-		  Position		  [180, 128, 230, 282]
-		  FunctionName		  "sf_sfun"
-		  PortCounts		  "[4 2]"
-		  EnableBusSupport	  on
-		  Port {
-		    PortNumber		    2
-		    Name		    "qmacro_des"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Terminator
-		  Name			  " Terminator "
-		  SID			  17
-		  Position		  [460, 291, 480, 309]
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "qmacro_des"
-		  SID			  21
-		  Position		  [460, 101, 480, 119]
-		  IconDisplay		  "Port number"
-		}
-		Line {
-		  SrcBlock		  " SFunction "
-		  SrcPort		  1
-		  DstBlock		  " Demux "
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "des_macro_len"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "meas_macro_len"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  2
-		}
-		Line {
-		  SrcBlock		  "velmex_pitch"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  3
-		}
-		Line {
-		  SrcBlock		  "q_cur"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  4
-		}
-		Line {
-		  Name			  "qmacro_des"
-		  Labels		  [0, 0]
-		  SrcBlock		  " SFunction "
-		  SrcPort		  2
-		  DstBlock		  "qmacro_des"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  " Demux "
-		  SrcPort		  1
-		  DstBlock		  " Terminator "
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Block {
-	      BlockType		      SubSystem
-	      Name		      "GetMicroQDes"
-	      SID		      3137
-	      Ports		      [5, 1]
-	      Position		      [230, 172, 400, 338]
-	      LibraryVersion	      "1.31"
-	      PermitHierarchicalResolution "ExplicitOnly"
-	      TreatAsAtomicUnit	      on
-	      MinAlgLoopOccurrences   off
-	      PropExecContextOutsideSubsystem off
-	      RTWSystemCode	      "Auto"
-	      FunctionWithSeparateData off
-	      Opaque		      off
-	      RequestExecContextInheritance off
-	      MaskHideContents	      off
-	      MaskType		      "Stateflow"
-	      MaskDescription	      "Embedded MATLAB block"
-	      MaskDisplay	      "disp('fcn');"
-	      MaskSelfModifiable      on
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      off
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	      System {
-		Name			"GetMicroQDes"
-		Location		[257, 457, 812, 717]
-		Open			off
-		ModelBrowserVisibility	off
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"usletter"
-		PaperUnits		"inches"
-		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"100"
-		SIDHighWatermark	27
-		SIDPrevWatermark	24
-		Block {
-		  BlockType		  Inport
-		  Name			  "q_cur"
-		  SID			  24
-		  Position		  [20, 101, 40, 119]
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "des_micro_len"
-		  SID			  20
-		  Position		  [20, 136, 40, 154]
-		  Port			  "2"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "meas_twa_len"
-		  SID			  25
-		  Position		  [20, 171, 40, 189]
-		  Port			  "3"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "helix_rad"
-		  SID			  26
-		  Position		  [20, 206, 40, 224]
-		  Port			  "4"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Inport
-		  Name			  "wire_delta"
-		  SID			  27
-		  Position		  [20, 246, 40, 264]
-		  Port			  "5"
-		  IconDisplay		  "Port number"
-		}
-		Block {
-		  BlockType		  Demux
-		  Name			  " Demux "
-		  SID			  15
-		  Ports			  [1, 1]
-		  Position		  [270, 290, 320, 330]
-		  Outputs		  "1"
-		}
-		Block {
-		  BlockType		  "S-Function"
-		  Name			  " SFunction "
-		  SID			  14
-		  Tag			  "Stateflow S-Function twa_parallel 2"
-		  Ports			  [5, 2]
-		  Position		  [180, 132, 230, 288]
-		  FunctionName		  "sf_sfun"
-		  PortCounts		  "[5 2]"
-		  EnableBusSupport	  on
-		  Port {
-		    PortNumber		    2
-		    Name		    "theta_mu"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Terminator
-		  Name			  " Terminator "
-		  SID			  17
-		  Position		  [460, 301, 480, 319]
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "theta_mu"
-		  SID			  21
-		  Position		  [460, 101, 480, 119]
-		  IconDisplay		  "Port number"
-		}
-		Line {
-		  SrcBlock		  " SFunction "
-		  SrcPort		  1
-		  DstBlock		  " Demux "
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "q_cur"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "des_micro_len"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  2
-		}
-		Line {
-		  SrcBlock		  "meas_twa_len"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  3
-		}
-		Line {
-		  SrcBlock		  "helix_rad"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  4
-		}
-		Line {
-		  SrcBlock		  "wire_delta"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  5
-		}
-		Line {
-		  Name			  "theta_mu"
-		  Labels		  [0, 0]
-		  SrcBlock		  " SFunction "
-		  SrcPort		  2
-		  DstBlock		  "theta_mu"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  " Demux "
-		  SrcPort		  1
-		  DstBlock		  " Terminator "
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Block {
-	      BlockType		      Mux
-	      Name		      "Mux"
-	      SID		      3138
-	      Ports		      [2, 1]
-	      Position		      [465, 45, 470, 265]
-	      ShowName		      off
-	      Inputs		      "2"
-	      DisplayOption	      "bar"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "helix_rad"
-	      SID		      3295
-	      Position		      [135, 278, 205, 302]
-	      Value		      "helix_rad"
-	      SampleTime	      "dt"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "meas_macro_len"
-	      SID		      3261
-	      Position		      [65, 59, 150, 81]
-	      Value		      "meas_macro_len"
-	      SampleTime	      "dt"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "meas_twa_len"
-	      SID		      3294
-	      Position		      [135, 243, 205, 267]
-	      Value		      "meas_twa_len"
-	      SampleTime	      "dt"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "velmex_pitch"
-	      SID		      3111
-	      Position		      [100, 98, 170, 122]
-	      Value		      "velmex_pitch"
-	      SampleTime	      "dt"
-	    }
-	    Block {
-	      BlockType		      Constant
-	      Name		      "wire_delta"
-	      SID		      3296
-	      Position		      [135, 313, 205, 337]
-	      Value		      "wire_delta"
-	      SampleTime	      "dt"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "q_des"
-	      SID		      3172
-	      Position		      [515, 148, 545, 162]
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "velmex_pitch"
-	      SrcPort		      1
-	      DstBlock		      "GetMacroQDes"
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "GetMacroQDes"
-	      SrcPort		      1
-	      DstBlock		      "Mux"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "des_macro_len"
-	      SrcPort		      1
-	      Points		      [5, 0; 0, 30]
-	      DstBlock		      "GetMacroQDes"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "Mux"
-	      SrcPort		      1
-	      DstBlock		      "q_des"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "GetMicroQDes"
-	      SrcPort		      1
-	      Points		      [25, 0; 0, -45]
-	      DstBlock		      "Mux"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "q_cur"
-	      SrcPort		      1
-	      Points		      [15, 0]
-	      Branch {
-		Points			[0, -25]
-		DstBlock		"GetMacroQDes"
-		DstPort			4
-	      }
-	      Branch {
-		Points			[0, 30]
-		DstBlock		"GetMicroQDes"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "des_micro_len"
-	      SrcPort		      1
-	      DstBlock		      "GetMicroQDes"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "meas_macro_len"
-	      SrcPort		      1
-	      Points		      [40, 0; 0, 20]
-	      DstBlock		      "GetMacroQDes"
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "meas_twa_len"
-	      SrcPort		      1
-	      DstBlock		      "GetMicroQDes"
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "helix_rad"
-	      SrcPort		      1
-	      DstBlock		      "GetMicroQDes"
-	      DstPort		      4
-	    }
-	    Line {
-	      SrcBlock		      "wire_delta"
-	      SrcPort		      1
-	      DstBlock		      "GetMicroQDes"
-	      DstPort		      5
-	    }
-	  }
 	}
 	Block {
 	  BlockType		  Constant
@@ -6334,7 +5553,7 @@ Model {
 	  Name			  "q_cur_macro3"
 	  SID			  3297
 	  Ports			  [1]
-	  Position		  [510, 355, 585, 405]
+	  Position		  [510, 245, 585, 295]
 	  ShowName		  off
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
@@ -6406,7 +5625,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "x_des"
 	  SID			  3094
-	  Position		  [90, 97, 150, 123]
+	  Position		  [65, 152, 125, 178]
 	  Value			  "zeros(3,1)"
 	  SampleTime		  "dt"
 	}
@@ -6414,78 +5633,8 @@ Model {
 	  BlockType		  Outport
 	  Name			  "q_des"
 	  SID			  3180
-	  Position		  [570, 168, 600, 182]
+	  Position		  [510, 348, 540, 362]
 	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "ee_rot"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "GetLegLen"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "x_des"
-	  SrcPort		  1
-	  Points		  [5, 0; 0, 30]
-	  DstBlock		  "GetLegLen"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "GetLegLen"
-	  SrcPort		  2
-	  Points		  [0, -15; 10, 0]
-	  Branch {
-	    Points		    [0, 140]
-	    DstBlock		    "Unit Delay2"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [55, 0]
-	    Branch {
-	      Points		      [15, 0]
-	      DstBlock		      "gear_ratio"
-	      DstPort		      3
-	    }
-	    Branch {
-	      Points		      [0, 80]
-	      DstBlock		      "q_cur_macro3"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "Unit Delay2"
-	  SrcPort		  1
-	  Points		  [-100, 0; 0, -80]
-	  DstBlock		  "GetLegLen"
-	  DstPort		  12
-	}
-	Line {
-	  SrcBlock		  "GetLegLen"
-	  SrcPort		  1
-	  Points		  [0, -30; 25, 0]
-	  Branch {
-	    DstBlock		    "gear_ratio"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [0, 330]
-	    DstBlock		    "Unit Delay1"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "q_cur"
-	  SrcPort		  1
-	  DstBlock		  "gear_ratio"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "gear_ratio"
-	  SrcPort		  1
-	  DstBlock		  "q_des"
-	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "p_in_m"
@@ -6512,36 +5661,6 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "From"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "From2"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "From3"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "From4"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  7
-	}
-	Line {
 	  SrcBlock		  "t_in_w"
 	  SrcPort		  1
 	  DstBlock		  "Goto4"
@@ -6552,31 +5671,6 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Goto5"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From5"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  8
-	}
-	Line {
-	  SrcBlock		  "Unit Delay1"
-	  SrcPort		  1
-	  Points		  [-110, 0; 0, -145]
-	  DstBlock		  "GetLegLen"
-	  DstPort		  11
-	}
-	Line {
-	  SrcBlock		  "From6"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  9
-	}
-	Line {
-	  SrcBlock		  "From7"
-	  SrcPort		  1
-	  DstBlock		  "GetLegLen"
-	  DstPort		  10
 	}
 	Line {
 	  SrcBlock		  "twa_flange_offset"
@@ -6590,15 +5684,103 @@ Model {
 	  DstBlock		  "Goto6"
 	  DstPort		  1
 	}
-	Annotation {
-	  Name			  "update micro_len_out initializaed value to preload length"
-	  Position		  [288, 462]
-	  BackgroundColor	  "red"
+	Line {
+	  SrcBlock		  "ResolvedRates"
+	  SrcPort		  3
+	  Points		  [10, 0; 0, 85]
+	  DstBlock		  "Unit Delay3"
+	  DstPort		  1
 	}
-	Annotation {
-	  Name			  "update des_macro_len initializaed value to post-initialization length"
-	  Position		  [283, 507]
-	  BackgroundColor	  "red"
+	Line {
+	  SrcBlock		  "Unit Delay3"
+	  SrcPort		  1
+	  Points		  [-105, 0; 0, -55]
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  9
+	}
+	Line {
+	  SrcBlock		  "ResolvedRates"
+	  SrcPort		  2
+	  Points		  [20, 0; 0, 215]
+	  DstBlock		  "Unit Delay4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Unit Delay4"
+	  SrcPort		  1
+	  Points		  [-115, 0; 0, -125]
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "x_des"
+	  SrcPort		  1
+	  Points		  [0, 20]
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ee_rot_des"
+	  SrcPort		  1
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "From"
+	  SrcPort		  1
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "From2"
+	  SrcPort		  1
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "From3"
+	  SrcPort		  1
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "dt"
+	  SrcPort		  1
+	  DstBlock		  "ResolvedRates"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "q_cur"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    DstBlock		    "Add"
+	    DstPort		    2
+	  }
+	  Branch {
+	    Points		    [45, 0; 0, 115]
+	    DstBlock		    "q_des"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Add"
+	  SrcPort		  1
+	  Points		  [55, 0; 0, 55]
+	  DstBlock		  "q_cur_macro3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ResolvedRates"
+	  SrcPort		  1
+	  DstBlock		  "Add"
+	  DstPort		  1
 	}
       }
     }
@@ -6768,13 +5950,13 @@ Stateflow {
     name		    "twa_parallel"
     created		    "16-Jul-2009 15:54:41"
     isLibrary		    0
-    firstTarget		    101
+    firstTarget		    63
     sfVersion		    75014000
   }
   chart {
     id			    2
-    name		    "task_space/GetLegLen"
-    windowPosition	    [390.75 188.25 200.25 189.75]
+    name		    "Homing/Homing"
+    windowPosition	    [375.75 203.25 200.25 189.75]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1080 1.333333333333333]
     treeNode		    [0 3 0 0]
@@ -6783,11 +5965,11 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    29
+    ssIdHighWaterMark	    27
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    6
-    chartFileNumber	    1
+    chartFileNumber	    3
     disableImplicitCasting  1
     eml {
       name		      "fcn"
@@ -6802,644 +5984,6 @@ Stateflow {
     treeNode		    [2 0 0 0]
     superState		    SUBCHART
     subviewer		    2
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function [des_macro_len,micro_len_out]  = fcn(x_des,ee_rot,p_in_m,...\n                          "
-      "          b_in_w,m_in_w,f_in_w,t_in_w,twa_gamma,...\n                                    twa_flange_offset,use_t"
-      "wa,...\n                                    macro_len_prev,micro_len)\n% This function solves for the vertex pos"
-      "itions of the base and moving\n% platform for a given desired end effector position.\n% With vertex positions kn"
-      "own, leg lengths can be solved for.\n\ndes_macro_len = macro_len_prev;\n\nmicro_len_out = micro_len;\n\n%%%%\n%%"
-      " This should be the initially measured lengths of the twas minus the\n%% amount of twist experienced \n%%%%\n% i"
-      "nitial twa wire length\n%init_twa_len = [225.8;226.3;224.5]; %[mm]\n\n% rotation matrix of moving frame about z-"
-      "xis\nrot_m2w = [cos(ee_rot) -sin(ee_rot) 0; sin(ee_rot) cos(ee_rot) 0; 0 0 1];\n\np_in_w = x_des*ones(1,3) + rot"
-      "_m2w*p_in_m;\n\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n%        Macro Actuator        %\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-      "%%%%\n\nif ~use_twa\n    vertex_dist = p_in_w - b_in_w;\n    des_macro_len(1,1) = norm(vertex_dist(:,1));\n    d"
-      "es_macro_len(2,1) = norm(vertex_dist(:,2));\n    des_macro_len(3,1) = norm(vertex_dist(:,3));\nend\n\n%%%%%%%%%%"
-      "%%%%%%%%%%%%%%%%%%%%%%\n%       Micro Actuator         %\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\nif use_twa\n    % "
-      "initial flexure bend\n    beta_cmd = 0;\n    \n    % loop through each vertex\n    for i = 1:3\n        post_fle"
-      "x_angle = zeros(1,2);\n        beta = zeros(1,2);\n        \n        % vector from flexure center to moving plat"
-      "form vertex\n        rho_vec = p_in_w(:,i) - f_in_w(:,i);\n        \n        % distance between flexure and movi"
-      "ng platform verteces\n        rho = norm(rho_vec);\n        \n        % vector from flexure center to base verte"
-      "x pre flexure rotation\n        eta_vec = b_in_w(:,i) - f_in_w(:,i);\n        \n        % flexure angle at the s"
-      "tart (e.g. 5 deg preload) in world frame\n        pre_flex_angle = atan2(eta_vec(2,1),eta_vec(1,1));\n        \n"
-      "        % magnitude of flexure swing-arm radius from flexure to base vertex\n        eta = norm(eta_vec);\n     "
-      "   \n        % angle from world horizontal to the vector from the flexure\n        % center to the platform vert"
-      "ex\n        flexure_frame_rot_angle = atan2(rho_vec(2,1),rho_vec(1,1));\n        \n        % rotation matrix fro"
-      "m flexure frame to world\n        n = [0;0;1] ./ norm([0;0;1]);\n        rot_f_2_w = expm(flexure_frame_rot_angl"
-      "e*[0 -n(3) n(2);n(3) 0 -n(1);n(2) n(1) 0]);\n        \n        % condition for acos solvability\n        check ="
-      " (des_macro_len(i,1)^2-rho^2-eta^2)/(-2*rho*eta);\n        \n        if check >= -1 && check <= 1\n            %"
-      " calculate angle between mf and fb vectors, lambda, with\n            % law of cosines\n            lambda = aco"
-      "s(check);\n            \n            % calculate flexed base vertex position for both elbow up\n            % an"
-      "d down configurations in the flexure frame\n            b_prime_in_f_dwn = eta*[cos(-lambda);sin(-lambda);0];\n "
-      "           b_prime_in_f_up = eta*[cos(lambda);sin(lambda);0];\n            \n            % vector from flexure c"
-      "enter point to new base vertex location\n            % rotated to world frame\n            eta_prime_vec_dwn = r"
-      "ot_f_2_w*b_prime_in_f_dwn;\n            eta_prime_vec_up = rot_f_2_w*b_prime_in_f_up;\n            \n           "
-      " post_flex_angle(1,1) = atan2(eta_prime_vec_dwn(2,1),eta_prime_vec_dwn(1,1));\n            post_flex_angle(1,2) "
-      "= atan2(eta_prime_vec_up(2,1),eta_prime_vec_up(1,1));\n            \n            % determine if flex angle is wi"
-      "thin mechanical range\n            for j = 1:2\n                if pre_flex_angle < 0 && post_flex_angle(1,j) < "
-      "0\n                    beta(1,j) = (-1*pre_flex_angle)-(-1*post_flex_angle(1,j));\n                else\n       "
-      "             beta(1,j) = pre_flex_angle - post_flex_angle(1,j);\n                end\n                \n        "
-      "        if beta(1,j) >= -4*pi/180 && beta(1,j) <= 4*pi/180\n                    beta_cmd = beta(1,j);\n         "
-      "       end\n            end\n        end\n        \n        % initial angle prior to flexure bend\n        a = n"
-      "orm(f_in_w(:,i) - m_in_w(:,i));\n        b = norm(f_in_w(:,i) - b_in_w(:,i));\n        c = norm(m_in_w(:,i) - b_"
-      "in_w(:,i));\n        %c = init_twa_len(i,1);\n        \n        alpha =  acos((c^2 - a^2 - b^2)/(-2*a*b));\n    "
-      "    delta = alpha - beta_cmd;\n        % distance between base vertex and twa motor position after flex\n       "
-      " c_prime = sqrt(a^2 + b^2 - 2*a*b*cos(delta));\n        \n        % required twa length to facilitate flexure be"
-      "nd\n        d = norm(f_in_w(:,1) - t_in_w(:,1));\n        \n        micro_len_out(i,1) = sqrt(a^2 + d^2 - 2*a*d*"
-      "cos(delta - twa_gamma))...\n                                - twa_flange_offset;\n    end\nend"
-      editorLayout	      "100 M4x1[950 14 958 1047]"
-    }
-  }
-  junction {
-    id			    4
-    position		    [23.5747 49.5747 7]
-    chart		    2
-    linkNode		    [2 0 0]
-    subviewer		    2
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    5
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      4
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    2
-    linkNode		    [2 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    2
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    6
-    ssIdNumber		    4
-    name		    "x_des"
-    linkNode		    [2 0 7]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    7
-    ssIdNumber		    6
-    name		    "ee_rot"
-    linkNode		    [2 6 8]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    8
-    ssIdNumber		    21
-    name		    "p_in_m"
-    linkNode		    [2 7 9]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    9
-    ssIdNumber		    22
-    name		    "b_in_w"
-    linkNode		    [2 8 10]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    10
-    ssIdNumber		    23
-    name		    "m_in_w"
-    linkNode		    [2 9 11]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    11
-    ssIdNumber		    24
-    name		    "f_in_w"
-    linkNode		    [2 10 12]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    12
-    ssIdNumber		    25
-    name		    "t_in_w"
-    linkNode		    [2 11 13]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    13
-    ssIdNumber		    26
-    name		    "twa_gamma"
-    linkNode		    [2 12 14]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    14
-    ssIdNumber		    29
-    name		    "twa_flange_offset"
-    linkNode		    [2 13 15]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    15
-    ssIdNumber		    28
-    name		    "use_twa"
-    linkNode		    [2 14 16]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    16
-    ssIdNumber		    27
-    name		    "macro_len_prev"
-    linkNode		    [2 15 17]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    17
-    ssIdNumber		    19
-    name		    "des_macro_len"
-    linkNode		    [2 16 18]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    18
-    ssIdNumber		    20
-    name		    "micro_len"
-    linkNode		    [2 17 19]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    19
-    ssIdNumber		    16
-    name		    "micro_len_out"
-    linkNode		    [2 18 0]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    20
-    name		    "task_space/GetLegLen"
-    machine		    1
-    chart		    2
-  }
-  chart {
-    id			    21
-    name		    "task_space/gear_ratio/GetMicroQDes"
-    windowPosition	    [420.75 158.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 22 0 0]
-    firstTransition	    24
-    firstJunction	    23
-    viewObj		    21
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    22
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    25
-    chartFileNumber	    2
-    disableImplicitCasting  1
-    eml {
-      name		      "fcn"
-    }
-  }
-  state {
-    id			    22
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    21
-    treeNode		    [21 0 0 0]
-    superState		    SUBCHART
-    subviewer		    21
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function theta_mu = fcn(q_cur,des_micro_len,meas_twa_len,helix_rad,wire_delta)\n% This function s"
-      "olves for command signal for the twa's given a desired\n% micro leg length\n\ntheta_mu = q_cur(4:6);\ntheta_mu_r"
-      "ad = zeros(3,1);\n% qmu = zeros(3,1);\n% qmu(1,1) = meas_twa_len(1,1) - des_micro_len(1,1);\n% qmu(2,1) = meas_t"
-      "wa_len(2,1) - des_micro_len(2,1);\n% qmu(3,1) = meas_twa_len(3,1) - des_micro_len(3,1);\n\n% for i = 1:3\n%     "
-      "num = meas_twa_len(i,1)^2 * (1 + wire_delta)^2 - des_micro_len(i,1)^2;\n%     theta_mu(i,1) = sqrt(num/helix_rad"
-      "^2);\n% end\n    \ntheta_mu_rad(1,1) = sqrt((1/helix_rad^2) * ...\n        ((meas_twa_len(1,1)^2 * (1+wire_delta"
-      ")^2) - des_micro_len(1,1)^2)); %[rad]\ntheta_mu_rad(2,1) = sqrt((1/helix_rad^2) * ...\n        ((meas_twa_len(2,"
-      "1)^2 * (1+wire_delta)^2) - des_micro_len(2,1)^2)); %[rad]\ntheta_mu_rad(3,1) = sqrt((1/helix_rad^2) * ...\n     "
-      "   ((meas_twa_len(3,1)^2 * (1+wire_delta)^2) - des_micro_len(3,1)^2)); %[rad]\n\n%convert to rotations from radi"
-      "ans\ntheta_mu = theta_mu_rad / (2*pi);"
-      editorLayout	      "100 M4x1[1913 14 906 1057]"
-    }
-  }
-  junction {
-    id			    23
-    position		    [23.5747 49.5747 7]
-    chart		    21
-    linkNode		    [21 0 0]
-    subviewer		    21
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    24
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      23
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    21
-    linkNode		    [21 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    21
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    25
-    ssIdNumber		    19
-    name		    "q_cur"
-    linkNode		    [21 0 26]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    26
-    ssIdNumber		    5
-    name		    "des_micro_len"
-    linkNode		    [21 25 27]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    27
-    ssIdNumber		    16
-    name		    "theta_mu"
-    linkNode		    [21 26 28]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    28
-    ssIdNumber		    20
-    name		    "meas_twa_len"
-    linkNode		    [21 27 29]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    29
-    ssIdNumber		    21
-    name		    "helix_rad"
-    linkNode		    [21 28 30]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    30
-    ssIdNumber		    22
-    name		    "wire_delta"
-    linkNode		    [21 29 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    31
-    name		    "task_space/gear_ratio/GetMicroQDes"
-    machine		    1
-    chart		    21
-  }
-  chart {
-    id			    32
-    name		    "Homing/Homing"
-    windowPosition	    [375.75 203.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 33 0 0]
-    firstTransition	    35
-    firstJunction	    34
-    viewObj		    32
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    27
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    36
-    chartFileNumber	    3
-    disableImplicitCasting  1
-    eml {
-      name		      "fcn"
-    }
-  }
-  state {
-    id			    33
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    32
-    treeNode		    [32 0 0 0]
-    superState		    SUBCHART
-    subviewer		    32
     ssIdNumber		    1
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
@@ -7488,16 +6032,16 @@ Stateflow {
     }
   }
   junction {
-    id			    34
+    id			    4
     position		    [23.5747 49.5747 7]
-    chart		    32
-    linkNode		    [32 0 0]
-    subviewer		    32
+    chart		    2
+    linkNode		    [2 0 0]
+    subviewer		    2
     ssIdNumber		    3
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    35
+    id			    5
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.544 14.964]
     fontSize		    12
@@ -7505,23 +6049,687 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      34
+      id		      4
       intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
-    chart		    32
-    linkNode		    [32 0 0]
+    chart		    2
+    linkNode		    [2 0 0]
     dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    32
+    subviewer		    2
     drawStyle		    SMART
     executionOrder	    1
     ssIdNumber		    2
   }
   data {
-    id			    36
+    id			    6
     ssIdNumber		    6
     name		    "qcur"
-    linkNode		    [32 0 37]
+    linkNode		    [2 0 7]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    7
+    ssIdNumber		    8
+    name		    "eqeps"
+    linkNode		    [2 6 8]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    8
+    ssIdNumber		    5
+    name		    "qcmd"
+    linkNode		    [2 7 9]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    9
+    ssIdNumber		    21
+    name		    "des_leg_len"
+    linkNode		    [2 8 10]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    10
+    ssIdNumber		    7
+    name		    "kp"
+    linkNode		    [2 9 11]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    11
+    ssIdNumber		    12
+    name		    "dt"
+    linkNode		    [2 10 12]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    12
+    ssIdNumber		    23
+    name		    "p_in_m"
+    linkNode		    [2 11 13]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    13
+    ssIdNumber		    24
+    name		    "b_in_w"
+    linkNode		    [2 12 14]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    14
+    ssIdNumber		    26
+    name		    "m_in_w"
+    linkNode		    [2 13 15]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    15
+    ssIdNumber		    27
+    name		    "f_in_w"
+    linkNode		    [2 14 16]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    16
+    ssIdNumber		    25
+    name		    "measured_len"
+    linkNode		    [2 15 17]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    17
+    ssIdNumber		    19
+    name		    "velmex_pitch"
+    linkNode		    [2 16 18]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    18
+    ssIdNumber		    20
+    name		    "macro_leg_len"
+    linkNode		    [2 17 19]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    19
+    ssIdNumber		    9
+    name		    "eq"
+    linkNode		    [2 18 20]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    20
+    ssIdNumber		    10
+    name		    "eq_out"
+    linkNode		    [2 19 21]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    21
+    ssIdNumber		    13
+    name		    "twave_out"
+    linkNode		    [2 20 22]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    22
+    ssIdNumber		    14
+    name		    "rwave_out"
+    linkNode		    [2 21 23]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    23
+    ssIdNumber		    15
+    name		    "twave"
+    linkNode		    [2 22 24]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    24
+    ssIdNumber		    16
+    name		    "rwave"
+    linkNode		    [2 23 0]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  instance {
+    id			    25
+    name		    "Homing/Homing"
+    machine		    1
+    chart		    2
+  }
+  chart {
+    id			    26
+    name		    "task_space/ResolvedRates"
+    windowPosition	    [405.75 173.25 200.25 189.75]
+    viewLimits		    [0 156.75 0 153.75]
+    screen		    [1 1 1920 1080 1.333333333333333]
+    treeNode		    [0 27 0 0]
+    firstTransition	    29
+    firstJunction	    28
+    viewObj		    26
+    machine		    1
+    toolbarMode		    LIBRARY_TOOLBAR
+    subviewS {
+    }
+    ssIdHighWaterMark	    37
+    decomposition	    CLUSTER_CHART
+    type		    EML_CHART
+    firstData		    30
+    chartFileNumber	    5
+    disableImplicitCasting  1
+    eml {
+      name		      "redResRate"
+    }
+  }
+  state {
+    id			    27
+    labelString		    "eML_blk_kernel()"
+    position		    [18 64.5 118 66]
+    fontSize		    12
+    chart		    26
+    treeNode		    [26 0 0 0]
+    superState		    SUBCHART
+    subviewer		    26
+    ssIdNumber		    1
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    eml {
+      isEML		      1
+      script		      "function [deltaq,xcur,eerot] = redResRate(x_des,ee_rot_des,dt,p_in_m,...\n                       "
+      "             b_in_w,m_in_w,f_in_w,x_cur,ee_rot_cur)\n% axis for jacobian definitions\nz0 = [0 0 1]';\n\n% positi"
+      "onal error\np_del = norm(x_des - x_cur);\n\n% desired orientation angle rotation matrix and error roation matrix"
+      "\nr_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;sin(ee_rot_des) cos(ee_rot_des) 0;0 0 1];\nr_cur = [cos(ee_rot_cur"
+      ") -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot_cur) 0;0 0 1];\nr_del = r_des * r_cur';\n\n% orientational error"
+      " angle and axis\ntheta_e = acos((trace(r_del)-1)/2);\n\n% error thresholds\np_epsilon = 0.01;\nw_epsilon = 0.01;"
+      "\n\nif theta_e > w_epsilon || p_del > p_epsilon\n    % moving platform vertex locations\n    p_in_w = x_cur*ones"
+      "(1,3) + r_cur*p_in_m;\n    \n    %% instantaneous direct kinematics jacobian\n    % vector from base vertex to m"
+      "oving platform vertex\n    n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));\n    n2hat = (p_i"
+      "n_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n    n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3)"
+      " - p_in_w(:,3));\n    \n    a13 = z0'*(cross(r_cur*p_in_m(:,1),n1hat));\n    a23 = z0'*(cross(r_cur*p_in_m(:,2),"
+      "n2hat));\n    a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat));\n    \n    idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...\n"
+      "        n2hat(1,1) n2hat(2,1) a23; ...\n        n3hat(1,1) n3hat(2,1) a33];\n    \n    %% instantaneous inverse "
+      "kinematics jacobian\n    % micro actuator (TWA) lengths\n    q1_mu = norm(b_in_w(:,1) - m_in_w(:,1));\n    q2_mu"
+      " = norm(b_in_w(:,2) - m_in_w(:,2));\n    q3_mu = norm(b_in_w(:,3) - m_in_w(:,3));\n    \n    % vector from base "
+      "vertex to twa motor attachment point\n    l1_hat = (m_in_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1)"
+      ");\n    l2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ norm(m_in_w(:,2) - b_in_w(:,2));\n    l3_hat = (m_in_w(:,3) - b_"
+      "in_w(:,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n    \n    % distance from micro actuator attachmnet point (m_i) "
+      "to flexure rotation\n    %center (f_i)\n    a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n    a2 = norm(m_in_w(:,2) - f"
+      "_in_w(:,2));\n    a3 = norm(m_in_w(:,3) - f_in_w(:,3));\n    \n    % distance from flexure rotation center (f_i)"
+      " to base vertex\n    c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n    c2 = norm(b_in_w(:,2)-f_in_w(:,2));\n    c3 = norm"
+      "(b_in_w(:,3)-f_in_w(:,3));\n    \n    % term to paramterize angle between a_i and qimu, delta\n    h1 = (c1^2 - "
+      "a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n    h2 = (c2^2 - a2^2 - q2_mu^2)/(-2*a2*q2_mu);\n    h3 = (c3^2 - a3^2 - q3_mu^2"
+      ")/(-2*a3*q3_mu);\n    \n    % time derivatives\n    h1dot = (4*a1*q1_mu^2 + (c1^2 - a1^2 - q1_mu^2)*2*a1) / (4*a"
+      "1^2*q1_mu^2);\n    h2dot = (4*a2*q2_mu^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^2*q2_mu^2);\n    h3dot = (4*a3*"
+      "q3_mu^2 + (c3^2 - a3^2 - q3_mu^2)*2*a3) / (4*a3^2*q3_mu^2);\n    \n    e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1"
+      "-h1^2) * n1hat' * cross(z0,l1_hat);\n    e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_"
+      "hat);\n    e3 = n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);\n    \n    % micro motio"
+      "n instantaneous inverse kinematics jacobian\n    b_mu = [e1 0 0;...\n        0 e2 0;...\n        0 0 e3];\n    \n"
+      "    % macro motion instantaneous inverse kinematics jacobian\n    b_m = eye(3);\n    \n    % combined macro-micr"
+      "o motion IIK jacobian\n    iik_jac = [b_m,b_mu];\n    \n    % the full manipulator jacobian with redundancy reso"
+      "lution weighting\n    w_mat = diag([1,1,1,1e10,1e10,1e10]);\n    full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*i"
+      "ik_jac') * idk_jac;\n    \n    % positional error direction\n    p_ep_hat = (x_des-x_cur)/p_del;\n    \n    % or"
+      "ientational error axis\n    me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);r_del(1,3)-r_del(3,1);r_del(2,1)-r_"
+      "del(1,2)];\n    \n    % inverse kinematics based on pose error\n    vmax = 5;\n    vmin = 0.1;\n    wmin = 0.1;\n"
+      "    wmax = 5;\n    p_lambda = 1.1;\n    w_lambda = 1.1;\n    \n    if p_del/p_epsilon <= p_lambda\n        vdot "
+      "= vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));\n    else\n        vdot = vmax;\n    end\n "
+      "   \n    if theta_e/w_epsilon <= w_lambda\n        wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*("
+      "w_lambda-1)));\n    else\n        wdot = wmax;\n    end\n    \n    v = vdot * p_ep_hat;\n    w = wdot * me;\n   "
+      " \n    qdot = full_jac * [v(1:2);w(3)];\n    \n    deltaq = qdot * dt;\n    \n    xcur = x_cur + v * dt;\n    ee"
+      "rot = ee_rot_cur + w(3) * dt;\nelse\n    deltaq = 0;\n    xcur = x_cur;\n    % check this for angle or rotation "
+      "matrix\n    %eerot = ee_rot_cur;\nend\n\n\nend"
+      editorLayout	      "100 M4x1[950 14 958 1047]"
+    }
+  }
+  junction {
+    id			    28
+    position		    [23.5747 49.5747 7]
+    chart		    26
+    linkNode		    [26 0 0]
+    subviewer		    26
+    ssIdNumber		    3
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    29
+    labelString		    "{eML_blk_kernel();}"
+    labelPosition	    [32.125 19.875 102.544 14.964]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    }
+    dst {
+      id		      28
+      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
+    }
+    midPoint		    [23.5747 24.9468]
+    chart		    26
+    linkNode		    [26 0 0]
+    dataLimits		    [23.575 23.575 14.625 34.575]
+    subviewer		    26
+    drawStyle		    SMART
+    executionOrder	    1
+    ssIdNumber		    2
+  }
+  data {
+    id			    30
+    ssIdNumber		    4
+    name		    "x_des"
+    linkNode		    [26 0 31]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+      }
+      complexity	      SF_COMPLEX_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    31
+    ssIdNumber		    33
+    name		    "ee_rot_des"
+    linkNode		    [26 30 32]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    32
+    ssIdNumber		    34
+    name		    "dt"
+    linkNode		    [26 31 33]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    33
+    ssIdNumber		    31
+    name		    "p_in_m"
+    linkNode		    [26 32 34]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    34
+    ssIdNumber		    30
+    name		    "b_in_w"
+    linkNode		    [26 33 35]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    35
+    ssIdNumber		    35
+    name		    "m_in_w"
+    linkNode		    [26 34 36]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    36
+    ssIdNumber		    32
+    name		    "f_in_w"
+    linkNode		    [26 35 37]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7541,9 +6749,9 @@ Stateflow {
   }
   data {
     id			    37
-    ssIdNumber		    8
-    name		    "eqeps"
-    linkNode		    [32 36 38]
+    ssIdNumber		    21
+    name		    "x_cur"
+    linkNode		    [26 36 38]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7563,10 +6771,10 @@ Stateflow {
   }
   data {
     id			    38
-    ssIdNumber		    5
-    name		    "qcmd"
-    linkNode		    [32 37 39]
-    scope		    OUTPUT_DATA
+    ssIdNumber		    6
+    name		    "ee_rot_cur"
+    linkNode		    [26 37 39]
+    scope		    INPUT_DATA
     machine		    1
     props {
       array {
@@ -7575,17 +6783,19 @@ Stateflow {
       type {
 	method			SF_INHERITED_TYPE
 	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
+      frame		      SF_FRAME_INHERITED
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    39
-    ssIdNumber		    21
-    name		    "des_leg_len"
-    linkNode		    [32 38 40]
+    ssIdNumber		    19
+    name		    "deltaq"
+    linkNode		    [26 38 40]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7605,10 +6815,10 @@ Stateflow {
   }
   data {
     id			    40
-    ssIdNumber		    7
-    name		    "kp"
-    linkNode		    [32 39 41]
-    scope		    INPUT_DATA
+    ssIdNumber		    16
+    name		    "xcur"
+    linkNode		    [26 39 41]
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -7621,16 +6831,16 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    41
-    ssIdNumber		    12
-    name		    "dt"
-    linkNode		    [32 40 42]
-    scope		    INPUT_DATA
+    ssIdNumber		    36
+    name		    "eerot"
+    linkNode		    [26 40 0]
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -7643,805 +6853,31 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
-  data {
+  instance {
     id			    42
-    ssIdNumber		    23
-    name		    "p_in_m"
-    linkNode		    [32 41 43]
-    scope		    INPUT_DATA
+    name		    "task_space/ResolvedRates"
     machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
+    chart		    26
   }
-  data {
+  chart {
     id			    43
-    ssIdNumber		    24
-    name		    "b_in_w"
-    linkNode		    [32 42 44]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    44
-    ssIdNumber		    26
-    name		    "m_in_w"
-    linkNode		    [32 43 45]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    45
-    ssIdNumber		    27
-    name		    "f_in_w"
-    linkNode		    [32 44 46]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    46
-    ssIdNumber		    25
-    name		    "measured_len"
-    linkNode		    [32 45 47]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    47
-    ssIdNumber		    19
-    name		    "velmex_pitch"
-    linkNode		    [32 46 48]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    48
-    ssIdNumber		    20
-    name		    "macro_leg_len"
-    linkNode		    [32 47 49]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    49
-    ssIdNumber		    9
-    name		    "eq"
-    linkNode		    [32 48 50]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    50
-    ssIdNumber		    10
-    name		    "eq_out"
-    linkNode		    [32 49 51]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    51
-    ssIdNumber		    13
-    name		    "twave_out"
-    linkNode		    [32 50 52]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    52
-    ssIdNumber		    14
-    name		    "rwave_out"
-    linkNode		    [32 51 53]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    53
-    ssIdNumber		    15
-    name		    "twave"
-    linkNode		    [32 52 54]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    54
-    ssIdNumber		    16
-    name		    "rwave"
-    linkNode		    [32 53 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    55
-    name		    "Homing/Homing"
-    machine		    1
-    chart		    32
-  }
-  chart {
-    id			    56
-    name		    "task_space/gear_ratio/GetMacroQDes"
-    windowPosition	    [405.75 173.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 57 0 0]
-    firstTransition	    59
-    firstJunction	    58
-    viewObj		    56
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    19
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    60
-    chartFileNumber	    4
-    disableImplicitCasting  1
-    eml {
-      name		      "fcn"
-    }
-  }
-  state {
-    id			    57
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    56
-    treeNode		    [56 0 0 0]
-    superState		    SUBCHART
-    subviewer		    56
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function qmacro_des  = fcn(des_macro_len,meas_macro_len,velmex_pitch,q_cur)\n% This function solv"
-      "es for command signal for given desired macro leg\n% lengths\n\n% if required velmex motion is less than 0.5 mm,"
-      " do not move velmex\nconverg_rad = 0.5;\n\nqmacro_des = (q_cur(1:3,1));\n\nvelmex_limit = 30; %+-30 mm stroke fr"
-      "om starting point at the velmex pivot\n\nvelmex_stroke = zeros(3,1);\nvelmex_stroke(1,1) = des_macro_len(1,1) - "
-      "meas_macro_len(1,1);\nvelmex_stroke(2,1) = des_macro_len(2,1) - meas_macro_len(2,1);\nvelmex_stroke(3,1) = des_m"
-      "acro_len(3,1) - meas_macro_len(3,1);\n\n\nif abs(all(velmex_stroke)) < velmex_limit && abs(all(velmex_stroke)) >"
-      " converg_rad\n    qmacro_des(1,1) = velmex_stroke(1,1) / velmex_pitch;\n    qmacro_des(2,1) = velmex_stroke(2,1)"
-      " / velmex_pitch;\n    qmacro_des(3,1) = velmex_stroke(3,1) / velmex_pitch;\nend\n"
-      editorLayout	      "100 M4x1[950 14 958 1047]"
-    }
-  }
-  junction {
-    id			    58
-    position		    [23.5747 49.5747 7]
-    chart		    56
-    linkNode		    [56 0 0]
-    subviewer		    56
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    59
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      58
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    56
-    linkNode		    [56 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    56
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    60
-    ssIdNumber		    5
-    name		    "des_macro_len"
-    linkNode		    [56 0 61]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    61
-    ssIdNumber		    19
-    name		    "meas_macro_len"
-    linkNode		    [56 60 62]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    62
-    ssIdNumber		    16
-    name		    "qmacro_des"
-    linkNode		    [56 61 63]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    63
-    ssIdNumber		    17
-    name		    "velmex_pitch"
-    linkNode		    [56 62 64]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    64
-    ssIdNumber		    18
-    name		    "q_cur"
-    linkNode		    [56 63 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    65
-    name		    "task_space/gear_ratio/GetMacroQDes"
-    machine		    1
-    chart		    56
-  }
-  chart {
-    id			    66
-    name		    "task_space/ResolvedRates"
-    windowPosition	    [405.75 173.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 67 0 0]
-    firstTransition	    69
-    firstJunction	    68
-    viewObj		    66
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
-    ssIdHighWaterMark	    34
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    70
-    chartFileNumber	    5
-    disableImplicitCasting  1
-    eml {
-      name		      "fcn"
-    }
-  }
-  state {
-    id			    67
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    66
-    treeNode		    [66 0 0 0]
-    superState		    SUBCHART
-    subviewer		    66
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function [delta_q,x_out]  = fcn(x_cur,xdes,rdes,ee_rot,b_in_w,p_in_m,f_in_w,t_in_w)\n% initialize"
-      " with zero change, move legs only if needed\ndelta_q = zeros(6,1);\n\n% moving platform vertex locations\np_in_w"
-      " = x_cur*ones(1,3) + rwave*p_in_m;\n\nx_dir = \n\n\n\n\n\n\n\nend"
-      editorLayout	      "100 M4x1[950 14 958 1047]"
-    }
-  }
-  junction {
-    id			    68
-    position		    [23.5747 49.5747 7]
-    chart		    66
-    linkNode		    [66 0 0]
-    subviewer		    66
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    69
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      68
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    66
-    linkNode		    [66 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    66
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    70
-    ssIdNumber		    21
-    name		    "x_cur"
-    linkNode		    [66 0 71]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    71
-    ssIdNumber		    4
-    name		    "xdes"
-    linkNode		    [66 70 72]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    72
-    ssIdNumber		    34
-    name		    "rdes"
-    linkNode		    [66 71 73]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    73
-    ssIdNumber		    6
-    name		    "ee_rot"
-    linkNode		    [66 72 74]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    74
-    ssIdNumber		    19
-    name		    "delta_q"
-    linkNode		    [66 73 75]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    75
-    ssIdNumber		    16
-    name		    "x_out"
-    linkNode		    [66 74 76]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    76
-    ssIdNumber		    30
-    name		    "b_in_w"
-    linkNode		    [66 75 77]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    77
-    ssIdNumber		    31
-    name		    "p_in_m"
-    linkNode		    [66 76 78]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    78
-    ssIdNumber		    32
-    name		    "f_in_w"
-    linkNode		    [66 77 79]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    79
-    ssIdNumber		    33
-    name		    "t_in_w"
-    linkNode		    [66 78 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    80
-    name		    "task_space/ResolvedRates"
-    machine		    1
-    chart		    66
-  }
-  chart {
-    id			    81
     name		    "Quintic Poly/Embedded\nMATLAB Function"
     windowPosition	    [1008 -716.25 998 1455]
     viewLimits		    [0 471 0 348.75]
     screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 82 0 0]
-    firstTransition	    84
-    firstJunction	    83
-    viewObj		    81
+    treeNode		    [0 44 0 0]
+    firstTransition	    46
+    firstJunction	    45
+    viewObj		    43
     machine		    1
     ssIdHighWaterMark	    33
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
-    firstData		    85
+    firstData		    47
     chartFileNumber	    22
     disableImplicitCasting  1
     eml {
@@ -8450,14 +6886,14 @@ Stateflow {
     supportVariableSizing   0
   }
   state {
-    id			    82
+    id			    44
     labelString		    "eML_blk_kernel()"
     position		    [18 64.5 118 66]
     fontSize		    12
-    chart		    81
-    treeNode		    [81 0 0 0]
+    chart		    43
+    treeNode		    [43 0 0 0]
     superState		    SUBCHART
-    subviewer		    81
+    subviewer		    43
     ssIdNumber		    1
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
@@ -8485,16 +6921,16 @@ Stateflow {
     }
   }
   junction {
-    id			    83
+    id			    45
     position		    [23.5747 49.5747 7]
-    chart		    81
-    linkNode		    [81 0 0]
-    subviewer		    81
+    chart		    43
+    linkNode		    [43 0 0]
+    subviewer		    43
     ssIdNumber		    3
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    84
+    id			    46
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.7 14.971]
     fontSize		    12
@@ -8502,14 +6938,14 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      83
+      id		      45
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
-    chart		    81
-    linkNode		    [81 0 0]
+    chart		    43
+    linkNode		    [43 0 0]
     dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    81
+    subviewer		    43
     drawStyle		    SMART
     slide {
       sticky		      BOTH_STICK
@@ -8518,10 +6954,10 @@ Stateflow {
     ssIdNumber		    2
   }
   data {
-    id			    85
+    id			    47
     ssIdNumber		    31
     name		    "q_cmd"
-    linkNode		    [81 0 86]
+    linkNode		    [43 0 48]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8540,10 +6976,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    86
+    id			    48
     ssIdNumber		    4
     name		    "q_des"
-    linkNode		    [81 85 87]
+    linkNode		    [43 47 49]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8559,10 +6995,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    87
+    id			    49
     ssIdNumber		    27
     name		    "q_curr"
-    linkNode		    [81 86 88]
+    linkNode		    [43 48 50]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8581,10 +7017,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    88
+    id			    50
     ssIdNumber		    28
     name		    "tf"
-    linkNode		    [81 87 89]
+    linkNode		    [43 49 51]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8603,10 +7039,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    89
+    id			    51
     ssIdNumber		    13
     name		    "tc"
-    linkNode		    [81 88 90]
+    linkNode		    [43 50 52]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8625,10 +7061,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    90
+    id			    52
     ssIdNumber		    25
     name		    "q_dot"
-    linkNode		    [81 89 91]
+    linkNode		    [43 51 53]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8647,10 +7083,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    91
+    id			    53
     ssIdNumber		    32
     name		    "q_dub_dot"
-    linkNode		    [81 90 92]
+    linkNode		    [43 52 54]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8669,10 +7105,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    92
+    id			    54
     ssIdNumber		    11
     name		    "conf"
-    linkNode		    [81 91 93]
+    linkNode		    [43 53 55]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8691,10 +7127,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    93
+    id			    55
     ssIdNumber		    12
     name		    "confn"
-    linkNode		    [81 92 94]
+    linkNode		    [43 54 56]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8713,10 +7149,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    94
+    id			    56
     ssIdNumber		    18
     name		    "t0"
-    linkNode		    [81 93 95]
+    linkNode		    [43 55 57]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8735,10 +7171,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    95
+    id			    57
     ssIdNumber		    14
     name		    "t0n"
-    linkNode		    [81 94 96]
+    linkNode		    [43 56 58]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8757,10 +7193,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    96
+    id			    58
     ssIdNumber		    15
     name		    "q0n"
-    linkNode		    [81 95 97]
+    linkNode		    [43 57 59]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8779,10 +7215,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    97
+    id			    59
     ssIdNumber		    16
     name		    "q0"
-    linkNode		    [81 96 98]
+    linkNode		    [43 58 60]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8801,10 +7237,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    98
+    id			    60
     ssIdNumber		    30
     name		    "enable"
-    linkNode		    [81 97 99]
+    linkNode		    [43 59 61]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8823,10 +7259,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    99
+    id			    61
     ssIdNumber		    33
     name		    "robot_mov"
-    linkNode		    [81 98 0]
+    linkNode		    [43 60 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -8845,24 +7281,24 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   instance {
-    id			    100
+    id			    62
     name		    "Quintic Poly/Embedded\nMATLAB Function"
     machine		    1
-    chart		    81
+    chart		    43
   }
   target {
-    id			    101
+    id			    63
     name		    "sfun"
     codeFlags		    ""
     machine		    1
-    linkNode		    [1 0 102]
+    linkNode		    [1 0 64]
   }
   target {
-    id			    102
+    id			    64
     name		    "rtw"
     codeFlags		    " comments=1 statebitsets=1 databitsets=1 emitlogicalops=1 elseifdetection=1 constantfolding=1 redu"
     "ndantloadelimination=0 preservenames=0 preservenameswithparent=0 exportcharts=0"
     machine		    1
-    linkNode		    [1 101 0]
+    linkNode		    [1 63 0]
   }
 }
