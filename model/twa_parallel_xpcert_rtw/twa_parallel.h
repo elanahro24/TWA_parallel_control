@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6922
+ * Model version              : 1.6959
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Thu Aug 08 19:39:42 2024
+ * C source code generated on : Sun Aug 11 16:49:43 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -30,11 +30,9 @@
 #include "ext_work.h"
 #include "rt_zcfcn.h"
 #include "rt_nonfinite.h"
-#include "rt_defines.h"
 #include "rtGetInf.h"
 #include "rtGetNaN.h"
 #include "rt_SATURATE.h"
-#include "rt_atan2_snf.h"
 #include "rt_pow_snf.h"
 #endif                                 /* twa_parallel_COMMON_INCLUDES_ */
 
@@ -826,14 +824,14 @@ typedef struct {
   real_T Diff[6];                      /* '<S14>/Diff' */
   real_T DiscreteFIRFilter_h[6];       /* '<S21>/Discrete FIR Filter' */
   real_T Gain_n[6];                    /* '<S21>/Gain' */
-  real_T HiddenBuf_InsertedFor_Homing_at;/* '<Root>/do_homing' */
-  real_T UnitDelay1[3];                /* '<S6>/Unit Delay1' */
-  real_T UnitDelay2[3];                /* '<S6>/Unit Delay2' */
+  real_T UnitDelay1[6];                /* '<S6>/Unit Delay1' */
+  real_T UnitDelay4[3];                /* '<S6>/Unit Delay4' */
+  real_T UnitDelay3;                   /* '<S6>/Unit Delay3' */
   real_T cntrl_switch[6];              /* '<Root>/cntrl_switch' */
   real_T DigitalClock;                 /* '<S4>/Digital Clock' */
   real_T UnitDelay;                    /* '<S4>/Unit Delay' */
   real_T UnitDelay1_b;                 /* '<S4>/Unit Delay1' */
-  real_T UnitDelay2_n[6];              /* '<S4>/Unit Delay2' */
+  real_T UnitDelay2[6];                /* '<S4>/Unit Delay2' */
   real_T Switch[6];                    /* '<S20>/Switch' */
   real_T Sum[6];                       /* '<S3>/Sum' */
   real_T Kp[6];                        /* '<S3>/Kp' */
@@ -847,12 +845,15 @@ typedef struct {
   real_T Add[6];                       /* '<S3>/Add' */
   real_T Saturation[6];                /* '<S3>/Saturation' */
   real_T Switch_i[6];                  /* '<S3>/Switch' */
-  real_T TmpSignalConversionAtSFunctionI[6];/* '<S26>/GetMicroQDes' */
-  real_T theta_mu[3];                  /* '<S26>/GetMicroQDes' */
-  real_T TmpSignalConversionAtSFunctio_d[6];/* '<S26>/GetMacroQDes' */
-  real_T qmacro_des[3];                /* '<S26>/GetMacroQDes' */
-  real_T des_macro_len[3];             /* '<S6>/GetLegLen' */
-  real_T micro_len_out[3];             /* '<S6>/GetLegLen' */
+  real_T t_in_w[9];                    /* '<S6>/t_in_w' */
+  real_T twa_gamma;                    /* '<S6>/twa_gamma' */
+  real_T use_twa;                      /* '<S6>/use_twa' */
+  real_T twa_flange_offset;            /* '<S6>/twa_flange_offset' */
+  real_T HiddenBuf_InsertedFor_Homing_at;/* '<Root>/do_homing' */
+  real_T TmpSignalConversionAtSFunctionI[6];/* '<S6>/ResolvedRates' */
+  real_T qdes[6];                      /* '<S6>/ResolvedRates' */
+  real_T xcur[3];                      /* '<S6>/ResolvedRates' */
+  real_T eerot;                        /* '<S6>/ResolvedRates' */
   real_T TmpSignalConversionAtSFunctio_c[6];/* '<S4>/Embedded MATLAB Function' */
   real_T q_cmd[6];                     /* '<S4>/Embedded MATLAB Function' */
   real_T q_dot[6];                     /* '<S4>/Embedded MATLAB Function' */
@@ -862,11 +863,10 @@ typedef struct {
   real_T q0n[6];                       /* '<S4>/Embedded MATLAB Function' */
   real_T robot_mov;                    /* '<S4>/Embedded MATLAB Function' */
   real_T UnitDelay1_p[3];              /* '<S2>/Unit Delay1' */
-  real_T UnitDelay4[3];                /* '<S2>/Unit Delay4' */
-  real_T UnitDelay3[3];                /* '<S2>/Unit Delay3' */
+  real_T UnitDelay4_e[3];              /* '<S2>/Unit Delay4' */
+  real_T UnitDelay3_b[3];              /* '<S2>/Unit Delay3' */
   real_T UnitDelay2_j[9];              /* '<S2>/Unit Delay2' */
-  real_T TmpSignalConversionAtSFunctio_n[6];/* '<S2>/Homing' */
-  real_T qcmd[6];                      /* '<S2>/Homing' */
+  real_T qcmd;                         /* '<S2>/Homing' */
   real_T des_leg_len[3];               /* '<S2>/Homing' */
   real_T eq_out[3];                    /* '<S2>/Homing' */
   real_T twave_out[3];                 /* '<S2>/Homing' */
@@ -879,26 +879,27 @@ typedef struct {
   real_T DiscreteFIRFilter_states[6];  /* '<S15>/Discrete FIR Filter' */
   real_T UD_DSTATE[6];                 /* '<S14>/UD' */
   real_T DiscreteFIRFilter_states_m[6];/* '<S21>/Discrete FIR Filter' */
-  real_T UnitDelay1_DSTATE[3];         /* '<S6>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE[3];         /* '<S6>/Unit Delay2' */
+  real_T UnitDelay1_DSTATE[6];         /* '<S6>/Unit Delay1' */
+  real_T UnitDelay4_DSTATE[3];         /* '<S6>/Unit Delay4' */
+  real_T UnitDelay3_DSTATE;            /* '<S6>/Unit Delay3' */
   real_T UnitDelay_DSTATE;             /* '<S4>/Unit Delay' */
   real_T UnitDelay1_DSTATE_h;          /* '<S4>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE_k[6];       /* '<S4>/Unit Delay2' */
+  real_T UnitDelay2_DSTATE[6];         /* '<S4>/Unit Delay2' */
   real_T UD_DSTATE_o[6];               /* '<S17>/UD' */
   real_T UnitDelay1_DSTATE_f[3];       /* '<S2>/Unit Delay1' */
-  real_T UnitDelay4_DSTATE[3];         /* '<S2>/Unit Delay4' */
-  real_T UnitDelay3_DSTATE[3];         /* '<S2>/Unit Delay3' */
+  real_T UnitDelay4_DSTATE_g[3];       /* '<S2>/Unit Delay4' */
+  real_T UnitDelay3_DSTATE_e[3];       /* '<S2>/Unit Delay3' */
   real_T UnitDelay2_DSTATE_l[9];       /* '<S2>/Unit Delay2' */
   int32_T DiscreteFIRFilter_circBuf;   /* '<S15>/Discrete FIR Filter' */
   int32_T DiscreteFIRFilter_circBuf_l; /* '<S21>/Discrete FIR Filter' */
   uint32_T NSampleEnable_Counter;      /* '<S20>/N-Sample Enable' */
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK;                   /* '<S22>/S-Function' */
+  } SFunction_IWORK;                   /* '<S23>/S-Function' */
 
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK_j;                 /* '<S23>/S-Function' */
+  } SFunction_IWORK_j;                 /* '<S22>/S-Function' */
 
   struct {
     int_T AcquireOK;
@@ -910,20 +911,14 @@ typedef struct {
 
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK_a;                 /* '<S27>/S-Function' */
+  } SFunction_IWORK_a;                 /* '<S26>/S-Function' */
 
   int8_T Homing_SubsysRanBC;           /* '<Root>/Homing' */
-  uint8_T is_active_c2_twa_parallel;   /* '<S26>/GetMicroQDes' */
-  uint8_T is_active_c4_twa_parallel;   /* '<S26>/GetMacroQDes' */
-  uint8_T is_active_c1_twa_parallel;   /* '<S6>/GetLegLen' */
+  uint8_T is_active_c5_twa_parallel;   /* '<S6>/ResolvedRates' */
   uint8_T is_active_c22_twa_parallel;  /* '<S4>/Embedded MATLAB Function' */
   uint8_T is_active_c3_twa_parallel;   /* '<S2>/Homing' */
-  boolean_T isStable;                  /* '<S26>/GetMicroQDes' */
-  boolean_T doneDoubleBufferReInit;    /* '<S26>/GetMicroQDes' */
-  boolean_T isStable_m;                /* '<S26>/GetMacroQDes' */
-  boolean_T doneDoubleBufferReInit_k;  /* '<S26>/GetMacroQDes' */
-  boolean_T isStable_o;                /* '<S6>/GetLegLen' */
-  boolean_T doneDoubleBufferReInit_p;  /* '<S6>/GetLegLen' */
+  boolean_T isStable;                  /* '<S6>/ResolvedRates' */
+  boolean_T doneDoubleBufferReInit;    /* '<S6>/ResolvedRates' */
   boolean_T isStable_n;                /* '<S4>/Embedded MATLAB Function' */
   boolean_T doneDoubleBufferReInit_b;  /* '<S4>/Embedded MATLAB Function' */
   boolean_T isStable_j;                /* '<S2>/Homing' */
@@ -1099,9 +1094,6 @@ struct Parameters_twa_parallel_ {
   real_T Gain_Gain_d;                  /* Expression: 1/N_velocity
                                         * Referenced by: '<S21>/Gain'
                                         */
-  real_T do_homing_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/do_homing'
-                                        */
   real_T cntrl_mode_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/cntrl_mode'
                                         */
@@ -1111,8 +1103,11 @@ struct Parameters_twa_parallel_ {
   real_T x_des_Value[3];               /* Expression: zeros(3,1)
                                         * Referenced by: '<S6>/x_des'
                                         */
-  real_T ee_rot_Value;                 /* Expression: pi/6
-                                        * Referenced by: '<S6>/ee_rot'
+  real_T ee_rot_des_Value;             /* Expression: pi/6
+                                        * Referenced by: '<S6>/ee_rot_des'
+                                        */
+  real_T dt_Value_n;                   /* Expression: dt
+                                        * Referenced by: '<S6>/dt'
                                         */
   real_T p_in_m_Value_m[9];            /* Expression: p_in_m
                                         * Referenced by: '<S6>/p_in_m'
@@ -1126,38 +1121,14 @@ struct Parameters_twa_parallel_ {
   real_T f_in_w_Value_b[9];            /* Expression: f_in_w
                                         * Referenced by: '<S6>/f_in_w'
                                         */
-  real_T t_in_w_Value[9];              /* Expression: t_in_w
-                                        * Referenced by: '<S6>/t_in_w'
-                                        */
-  real_T twa_gamma_Value;              /* Expression: twa_gamma
-                                        * Referenced by: '<S6>/twa_gamma'
-                                        */
-  real_T twa_flange_offset_Value;      /* Expression: twa_flange_offset
-                                        * Referenced by: '<S6>/twa_flange_offset'
-                                        */
-  real_T use_twa_Value;                /* Expression: use_twa
-                                        * Referenced by: '<S6>/use_twa'
-                                        */
-  real_T UnitDelay1_X0_g[3];           /* Expression: meas_macro_len
+  real_T UnitDelay1_X0_g[6];           /* Expression: zeros(6,1)
                                         * Referenced by: '<S6>/Unit Delay1'
                                         */
-  real_T UnitDelay2_X0_p[3];           /* Expression: 223.6857*ones(3,1)
-                                        * Referenced by: '<S6>/Unit Delay2'
+  real_T UnitDelay4_X0_l[3];           /* Expression: zeros(3,1)
+                                        * Referenced by: '<S6>/Unit Delay4'
                                         */
-  real_T meas_macro_len_Value_d[3];    /* Expression: meas_macro_len
-                                        * Referenced by: '<S26>/meas_macro_len'
-                                        */
-  real_T velmex_pitch_Value_e;         /* Expression: velmex_pitch
-                                        * Referenced by: '<S26>/velmex_pitch'
-                                        */
-  real_T meas_twa_len_Value[3];        /* Expression: meas_twa_len
-                                        * Referenced by: '<S26>/meas_twa_len'
-                                        */
-  real_T helix_rad_Value;              /* Expression: helix_rad
-                                        * Referenced by: '<S26>/helix_rad'
-                                        */
-  real_T wire_delta_Value;             /* Expression: wire_delta
-                                        * Referenced by: '<S26>/wire_delta'
+  real_T UnitDelay3_X0_b;              /* Expression: pi/6
+                                        * Referenced by: '<S6>/Unit Delay3'
                                         */
   real_T tf_Value;                     /* Expression: 5
                                         * Referenced by: '<S4>/tf'
@@ -1212,6 +1183,21 @@ struct Parameters_twa_parallel_ {
                                         */
   real_T manual_current_Value[6];      /* Expression: zeros(6,1)
                                         * Referenced by: '<S3>/manual_current'
+                                        */
+  real_T t_in_w_Value[9];              /* Expression: t_in_w
+                                        * Referenced by: '<S6>/t_in_w'
+                                        */
+  real_T twa_gamma_Value;              /* Expression: twa_gamma
+                                        * Referenced by: '<S6>/twa_gamma'
+                                        */
+  real_T use_twa_Value;                /* Expression: use_twa
+                                        * Referenced by: '<S6>/use_twa'
+                                        */
+  real_T twa_flange_offset_Value;      /* Expression: twa_flange_offset
+                                        * Referenced by: '<S6>/twa_flange_offset'
+                                        */
+  real_T do_homing_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/do_homing'
                                         */
   uint32_T NSampleEnable_TARGETCNT;    /* Computed Parameter: NSampleEnable_TARGETCNT
                                         * Referenced by: '<S20>/N-Sample Enable'
@@ -1413,10 +1399,7 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  * '<S22>'  : twa_parallel/Scopes/q_cur_macro1
  * '<S23>'  : twa_parallel/Scopes/q_cur_macro2
  * '<S24>'  : twa_parallel/Scopes/q_cur_macro3
- * '<S25>'  : twa_parallel/task_space/GetLegLen
- * '<S26>'  : twa_parallel/task_space/gear_ratio
- * '<S27>'  : twa_parallel/task_space/q_cur_macro3
- * '<S28>'  : twa_parallel/task_space/gear_ratio/GetMacroQDes
- * '<S29>'  : twa_parallel/task_space/gear_ratio/GetMicroQDes
+ * '<S25>'  : twa_parallel/task_space/ResolvedRates
+ * '<S26>'  : twa_parallel/task_space/q_cur_macro3
  */
 #endif                                 /* RTW_HEADER_twa_parallel_h_ */

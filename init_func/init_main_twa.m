@@ -35,7 +35,4 @@ q_format = 'q1 [cnt] %12.4f,q2 [cnt] %12.4f,q3 [cnt] %12.4f,q4 [cnt] %12.4f,q5 [
 qdes_format = 'q1_des [cnt] %12.4f,q2_des [cnt] %12.4f,q3_des [cnt] %12.4f,q4_des [cnt] %12.4f,q5_des [cnt] %12.4f,q6_des [cnt] %12.4f';
 qd_format = 'q1d [cnt] %12.4f,q2d [cnt] %12.4f,q3d [cnt] %12.4f,q4d [cnt] %12.4f,q5d [cnt] %12.4f,q6d [cnt] %12.4f';
 qcmd_format = 'q1_cmd [cnt] %12.4f,q2_cmd [cnt] %12.4f,q3_cmd [cnt] %12.4f,q4_cmd [cnt] %12.4f,q5_cmd [cnt] %12.4f,q6_cmd [cnt] %12.4f';
-micro_len_format = 'mu1 [mm] %12.4f,mu2 [mm] %12.4f,mu3 [mm] %12.4f';
-
-
-
+deltaq_format = 'q1 delta [mm] %12.4f,q2 delta [mm] %12.4f,q3 delta [mm] %12.4f,q4 delta [mm] %12.4f,q5 delta [mm] %12.4f,q6 delta [mm] %12.4f';

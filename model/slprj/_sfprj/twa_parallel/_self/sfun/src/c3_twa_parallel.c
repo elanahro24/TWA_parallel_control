@@ -120,8 +120,8 @@ static void c3_b_info_helper(c3_ResolvedFunctionInfo c3_info[101]);
 static const mxArray *c3_i_sf_marshall(void *chartInstanceVoid, void *c3_u);
 static void c3_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct *chartInstance,
   const mxArray *c3_des_leg_len, const char_T *c3_name, real_T c3_y[3]);
-static void c3_b_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct *chartInstance,
-  const mxArray *c3_qcmd, const char_T *c3_name, real_T c3_y[6]);
+static real_T c3_b_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct
+  *chartInstance, const mxArray *c3_qcmd, const char_T *c3_name);
 static void c3_c_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct *chartInstance,
   const mxArray *c3_rwave_out, const char_T *c3_name, real_T c3_y[9]);
 static uint8_T c3_d_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct
@@ -182,35 +182,33 @@ static const mxArray *get_sim_state_c3_twa_parallel
   int32_T c3_i3;
   real_T c3_b_u[3];
   const mxArray *c3_c_y = NULL;
-  int32_T c3_i4;
-  real_T c3_c_hoistedGlobal[6];
-  int32_T c3_i5;
-  real_T c3_c_u[6];
+  real_T c3_c_hoistedGlobal;
+  real_T c3_c_u;
   const mxArray *c3_d_y = NULL;
-  int32_T c3_i6;
+  int32_T c3_i4;
   real_T c3_d_hoistedGlobal[9];
-  int32_T c3_i7;
+  int32_T c3_i5;
   real_T c3_d_u[9];
   const mxArray *c3_e_y = NULL;
-  int32_T c3_i8;
+  int32_T c3_i6;
   real_T c3_e_hoistedGlobal[3];
-  int32_T c3_i9;
+  int32_T c3_i7;
   real_T c3_e_u[3];
   const mxArray *c3_f_y = NULL;
   uint8_T c3_f_hoistedGlobal;
   uint8_T c3_f_u;
   const mxArray *c3_g_y = NULL;
+  real_T *c3_qcmd;
   uint8_T *c3_is_active_c3_twa_parallel;
   real_T (*c3_twave_out)[3];
   real_T (*c3_rwave_out)[9];
-  real_T (*c3_qcmd)[6];
   real_T (*c3_eq_out)[3];
   real_T (*c3_des_leg_len)[3];
   c3_rwave_out = (real_T (*)[9])ssGetOutputPortSignal(chartInstance->S, 5);
   c3_twave_out = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 4);
   c3_eq_out = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 3);
   c3_des_leg_len = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 2);
-  c3_qcmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
+  c3_qcmd = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c3_is_active_c3_twa_parallel = (uint8_T *)ssGetDWork(chartInstance->S, 2);
   c3_st = NULL;
   c3_y = NULL;
@@ -237,34 +235,28 @@ static const mxArray *get_sim_state_c3_twa_parallel
   c3_c_y = NULL;
   sf_mex_assign(&c3_c_y, sf_mex_create("y", &c3_b_u, 0, 0U, 1U, 0U, 1, 3));
   sf_mex_setcell(c3_y, 1, c3_c_y);
-  for (c3_i4 = 0; c3_i4 < 6; c3_i4 = c3_i4 + 1) {
-    c3_c_hoistedGlobal[c3_i4] = (*c3_qcmd)[c3_i4];
-  }
-
-  for (c3_i5 = 0; c3_i5 < 6; c3_i5 = c3_i5 + 1) {
-    c3_c_u[c3_i5] = c3_c_hoistedGlobal[c3_i5];
-  }
-
+  c3_c_hoistedGlobal = *c3_qcmd;
+  c3_c_u = c3_c_hoistedGlobal;
   c3_d_y = NULL;
-  sf_mex_assign(&c3_d_y, sf_mex_create("y", &c3_c_u, 0, 0U, 1U, 0U, 1, 6));
+  sf_mex_assign(&c3_d_y, sf_mex_create("y", &c3_c_u, 0, 0U, 0U, 0U, 0));
   sf_mex_setcell(c3_y, 2, c3_d_y);
-  for (c3_i6 = 0; c3_i6 < 9; c3_i6 = c3_i6 + 1) {
-    c3_d_hoistedGlobal[c3_i6] = (*c3_rwave_out)[c3_i6];
+  for (c3_i4 = 0; c3_i4 < 9; c3_i4 = c3_i4 + 1) {
+    c3_d_hoistedGlobal[c3_i4] = (*c3_rwave_out)[c3_i4];
   }
 
-  for (c3_i7 = 0; c3_i7 < 9; c3_i7 = c3_i7 + 1) {
-    c3_d_u[c3_i7] = c3_d_hoistedGlobal[c3_i7];
+  for (c3_i5 = 0; c3_i5 < 9; c3_i5 = c3_i5 + 1) {
+    c3_d_u[c3_i5] = c3_d_hoistedGlobal[c3_i5];
   }
 
   c3_e_y = NULL;
   sf_mex_assign(&c3_e_y, sf_mex_create("y", &c3_d_u, 0, 0U, 1U, 0U, 2, 3, 3));
   sf_mex_setcell(c3_y, 3, c3_e_y);
-  for (c3_i8 = 0; c3_i8 < 3; c3_i8 = c3_i8 + 1) {
-    c3_e_hoistedGlobal[c3_i8] = (*c3_twave_out)[c3_i8];
+  for (c3_i6 = 0; c3_i6 < 3; c3_i6 = c3_i6 + 1) {
+    c3_e_hoistedGlobal[c3_i6] = (*c3_twave_out)[c3_i6];
   }
 
-  for (c3_i9 = 0; c3_i9 < 3; c3_i9 = c3_i9 + 1) {
-    c3_e_u[c3_i9] = c3_e_hoistedGlobal[c3_i9];
+  for (c3_i7 = 0; c3_i7 < 3; c3_i7 = c3_i7 + 1) {
+    c3_e_u[c3_i7] = c3_e_hoistedGlobal[c3_i7];
   }
 
   c3_f_y = NULL;
@@ -284,59 +276,53 @@ static void set_sim_state_c3_twa_parallel(SFc3_twa_parallelInstanceStruct
 {
   const mxArray *c3_u;
   real_T c3_dv0[3];
-  int32_T c3_i10;
+  int32_T c3_i8;
   real_T c3_dv1[3];
+  int32_T c3_i9;
+  real_T c3_dv2[9];
+  int32_T c3_i10;
+  real_T c3_dv3[3];
   int32_T c3_i11;
-  real_T c3_dv2[6];
-  int32_T c3_i12;
-  real_T c3_dv3[9];
-  int32_T c3_i13;
-  real_T c3_dv4[3];
-  int32_T c3_i14;
   boolean_T *c3_doneDoubleBufferReInit;
+  real_T *c3_qcmd;
   uint8_T *c3_is_active_c3_twa_parallel;
   real_T (*c3_des_leg_len)[3];
   real_T (*c3_eq_out)[3];
-  real_T (*c3_qcmd)[6];
   real_T (*c3_rwave_out)[9];
   real_T (*c3_twave_out)[3];
   c3_rwave_out = (real_T (*)[9])ssGetOutputPortSignal(chartInstance->S, 5);
   c3_twave_out = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 4);
   c3_eq_out = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 3);
   c3_des_leg_len = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 2);
-  c3_qcmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
+  c3_qcmd = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c3_is_active_c3_twa_parallel = (uint8_T *)ssGetDWork(chartInstance->S, 2);
   c3_doneDoubleBufferReInit = (boolean_T *)ssGetDWork(chartInstance->S, 1);
   *c3_doneDoubleBufferReInit = TRUE;
   c3_u = sf_mex_dup(c3_st);
   c3_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c3_u, 0)),
                       "des_leg_len", c3_dv0);
-  for (c3_i10 = 0; c3_i10 < 3; c3_i10 = c3_i10 + 1) {
-    (*c3_des_leg_len)[c3_i10] = c3_dv0[c3_i10];
+  for (c3_i8 = 0; c3_i8 < 3; c3_i8 = c3_i8 + 1) {
+    (*c3_des_leg_len)[c3_i8] = c3_dv0[c3_i8];
   }
 
   c3_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c3_u, 1)),
                       "eq_out", c3_dv1);
-  for (c3_i11 = 0; c3_i11 < 3; c3_i11 = c3_i11 + 1) {
-    (*c3_eq_out)[c3_i11] = c3_dv1[c3_i11];
+  for (c3_i9 = 0; c3_i9 < 3; c3_i9 = c3_i9 + 1) {
+    (*c3_eq_out)[c3_i9] = c3_dv1[c3_i9];
   }
 
-  c3_b_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c3_u, 2)),
-                        "qcmd", c3_dv2);
-  for (c3_i12 = 0; c3_i12 < 6; c3_i12 = c3_i12 + 1) {
-    (*c3_qcmd)[c3_i12] = c3_dv2[c3_i12];
-  }
-
+  *c3_qcmd = c3_b_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c3_u,
+    2)), "qcmd");
   c3_c_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c3_u, 3)),
-                        "rwave_out", c3_dv3);
-  for (c3_i13 = 0; c3_i13 < 9; c3_i13 = c3_i13 + 1) {
-    (*c3_rwave_out)[c3_i13] = c3_dv3[c3_i13];
+                        "rwave_out", c3_dv2);
+  for (c3_i10 = 0; c3_i10 < 9; c3_i10 = c3_i10 + 1) {
+    (*c3_rwave_out)[c3_i10] = c3_dv2[c3_i10];
   }
 
   c3_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c3_u, 4)),
-                      "twave_out", c3_dv4);
-  for (c3_i14 = 0; c3_i14 < 3; c3_i14 = c3_i14 + 1) {
-    (*c3_twave_out)[c3_i14] = c3_dv4[c3_i14];
+                      "twave_out", c3_dv3);
+  for (c3_i11 = 0; c3_i11 < 3; c3_i11 = c3_i11 + 1) {
+    (*c3_twave_out)[c3_i11] = c3_dv3[c3_i11];
   }
 
   *c3_is_active_c3_twa_parallel = c3_d_emlrt_marshallIn(chartInstance,
@@ -354,6 +340,9 @@ static void finalize_c3_twa_parallel(SFc3_twa_parallelInstanceStruct
 
 static void sf_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 {
+  int32_T c3_i12;
+  int32_T c3_i13;
+  int32_T c3_i14;
   int32_T c3_i15;
   int32_T c3_i16;
   int32_T c3_i17;
@@ -364,13 +353,10 @@ static void sf_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   int32_T c3_i22;
   int32_T c3_i23;
   int32_T c3_i24;
-  int32_T c3_i25;
-  int32_T c3_i26;
-  int32_T c3_i27;
-  int32_T c3_i28;
-  int32_T c3_i29;
   int32_T c3_previousEvent;
+  real_T *c3_qcur;
   real_T *c3_eqeps;
+  real_T *c3_qcmd;
   real_T *c3_kp;
   real_T *c3_dt;
   real_T *c3_velmex_pitch;
@@ -387,8 +373,6 @@ static void sf_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T (*c3_b_in_w)[9];
   real_T (*c3_p_in_m)[9];
   real_T (*c3_des_leg_len)[3];
-  real_T (*c3_qcmd)[6];
-  real_T (*c3_qcur)[6];
   c3_rwave = (real_T (*)[9])ssGetInputPortSignal(chartInstance->S, 13);
   c3_twave = (real_T (*)[3])ssGetInputPortSignal(chartInstance->S, 12);
   c3_rwave_out = (real_T (*)[9])ssGetOutputPortSignal(chartInstance->S, 5);
@@ -405,73 +389,67 @@ static void sf_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   c3_dt = (real_T *)ssGetInputPortSignal(chartInstance->S, 3);
   c3_kp = (real_T *)ssGetInputPortSignal(chartInstance->S, 2);
   c3_des_leg_len = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 2);
-  c3_qcmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
+  c3_qcmd = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c3_eqeps = (real_T *)ssGetInputPortSignal(chartInstance->S, 1);
-  c3_qcur = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
+  c3_qcur = (real_T *)ssGetInputPortSignal(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,2);
-  for (c3_i15 = 0; c3_i15 < 6; c3_i15 = c3_i15 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_qcur)[c3_i15], 0U);
-  }
-
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,0);
+  _SFD_DATA_RANGE_CHECK(*c3_qcur, 0U);
   _SFD_DATA_RANGE_CHECK(*c3_eqeps, 1U);
-  for (c3_i16 = 0; c3_i16 < 6; c3_i16 = c3_i16 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_qcmd)[c3_i16], 2U);
-  }
-
-  for (c3_i17 = 0; c3_i17 < 3; c3_i17 = c3_i17 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_des_leg_len)[c3_i17], 3U);
+  _SFD_DATA_RANGE_CHECK(*c3_qcmd, 2U);
+  for (c3_i12 = 0; c3_i12 < 3; c3_i12 = c3_i12 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_des_leg_len)[c3_i12], 3U);
   }
 
   _SFD_DATA_RANGE_CHECK(*c3_kp, 4U);
   _SFD_DATA_RANGE_CHECK(*c3_dt, 5U);
-  for (c3_i18 = 0; c3_i18 < 9; c3_i18 = c3_i18 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_p_in_m)[c3_i18], 6U);
+  for (c3_i13 = 0; c3_i13 < 9; c3_i13 = c3_i13 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_p_in_m)[c3_i13], 6U);
   }
 
-  for (c3_i19 = 0; c3_i19 < 9; c3_i19 = c3_i19 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_b_in_w)[c3_i19], 7U);
+  for (c3_i14 = 0; c3_i14 < 9; c3_i14 = c3_i14 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_b_in_w)[c3_i14], 7U);
   }
 
-  for (c3_i20 = 0; c3_i20 < 9; c3_i20 = c3_i20 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_m_in_w)[c3_i20], 8U);
+  for (c3_i15 = 0; c3_i15 < 9; c3_i15 = c3_i15 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_m_in_w)[c3_i15], 8U);
   }
 
-  for (c3_i21 = 0; c3_i21 < 9; c3_i21 = c3_i21 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_f_in_w)[c3_i21], 9U);
+  for (c3_i16 = 0; c3_i16 < 9; c3_i16 = c3_i16 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_f_in_w)[c3_i16], 9U);
   }
 
-  for (c3_i22 = 0; c3_i22 < 3; c3_i22 = c3_i22 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_measured_len)[c3_i22], 10U);
+  for (c3_i17 = 0; c3_i17 < 3; c3_i17 = c3_i17 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_measured_len)[c3_i17], 10U);
   }
 
   _SFD_DATA_RANGE_CHECK(*c3_velmex_pitch, 11U);
+  for (c3_i18 = 0; c3_i18 < 3; c3_i18 = c3_i18 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_macro_leg_len)[c3_i18], 12U);
+  }
+
+  for (c3_i19 = 0; c3_i19 < 3; c3_i19 = c3_i19 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_eq)[c3_i19], 13U);
+  }
+
+  for (c3_i20 = 0; c3_i20 < 3; c3_i20 = c3_i20 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_eq_out)[c3_i20], 14U);
+  }
+
+  for (c3_i21 = 0; c3_i21 < 3; c3_i21 = c3_i21 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_twave_out)[c3_i21], 15U);
+  }
+
+  for (c3_i22 = 0; c3_i22 < 9; c3_i22 = c3_i22 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_rwave_out)[c3_i22], 16U);
+  }
+
   for (c3_i23 = 0; c3_i23 < 3; c3_i23 = c3_i23 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_macro_leg_len)[c3_i23], 12U);
+    _SFD_DATA_RANGE_CHECK((*c3_twave)[c3_i23], 17U);
   }
 
-  for (c3_i24 = 0; c3_i24 < 3; c3_i24 = c3_i24 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_eq)[c3_i24], 13U);
-  }
-
-  for (c3_i25 = 0; c3_i25 < 3; c3_i25 = c3_i25 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_eq_out)[c3_i25], 14U);
-  }
-
-  for (c3_i26 = 0; c3_i26 < 3; c3_i26 = c3_i26 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_twave_out)[c3_i26], 15U);
-  }
-
-  for (c3_i27 = 0; c3_i27 < 9; c3_i27 = c3_i27 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_rwave_out)[c3_i27], 16U);
-  }
-
-  for (c3_i28 = 0; c3_i28 < 3; c3_i28 = c3_i28 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_twave)[c3_i28], 17U);
-  }
-
-  for (c3_i29 = 0; c3_i29 < 9; c3_i29 = c3_i29 + 1) {
-    _SFD_DATA_RANGE_CHECK((*c3_rwave)[c3_i29], 18U);
+  for (c3_i24 = 0; c3_i24 < 9; c3_i24 = c3_i24 + 1) {
+    _SFD_DATA_RANGE_CHECK((*c3_rwave)[c3_i24], 18U);
   }
 
   c3_previousEvent = _sfEvent_;
@@ -484,53 +462,51 @@ static void sf_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
 static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 {
-  int32_T c3_i30;
-  real_T c3_hoistedGlobal[6];
+  real_T c3_hoistedGlobal;
   real_T c3_b_hoistedGlobal;
   real_T c3_c_hoistedGlobal;
   real_T c3_d_hoistedGlobal;
-  int32_T c3_i31;
+  int32_T c3_i25;
   real_T c3_e_hoistedGlobal[9];
-  int32_T c3_i32;
+  int32_T c3_i26;
   real_T c3_f_hoistedGlobal[9];
-  int32_T c3_i33;
+  int32_T c3_i27;
   real_T c3_g_hoistedGlobal[9];
-  int32_T c3_i34;
+  int32_T c3_i28;
   real_T c3_h_hoistedGlobal[9];
-  int32_T c3_i35;
+  int32_T c3_i29;
   real_T c3_i_hoistedGlobal[3];
   real_T c3_j_hoistedGlobal;
-  int32_T c3_i36;
+  int32_T c3_i30;
   real_T c3_k_hoistedGlobal[3];
-  int32_T c3_i37;
+  int32_T c3_i31;
   real_T c3_l_hoistedGlobal[3];
-  int32_T c3_i38;
+  int32_T c3_i32;
   real_T c3_m_hoistedGlobal[3];
-  int32_T c3_i39;
+  int32_T c3_i33;
   real_T c3_n_hoistedGlobal[9];
-  int32_T c3_i40;
-  real_T c3_qcur[6];
+  real_T c3_qcur;
   real_T c3_eqeps;
   real_T c3_kp;
   real_T c3_dt;
-  int32_T c3_i41;
+  int32_T c3_i34;
   real_T c3_p_in_m[9];
-  int32_T c3_i42;
+  int32_T c3_i35;
   real_T c3_b_in_w[9];
-  int32_T c3_i43;
+  int32_T c3_i36;
   real_T c3_m_in_w[9];
-  int32_T c3_i44;
+  int32_T c3_i37;
   real_T c3_f_in_w[9];
-  int32_T c3_i45;
+  int32_T c3_i38;
   real_T c3_measured_len[3];
   real_T c3_velmex_pitch;
-  int32_T c3_i46;
+  int32_T c3_i39;
   real_T c3_macro_leg_len[3];
-  int32_T c3_i47;
+  int32_T c3_i40;
   real_T c3_eq[3];
-  int32_T c3_i48;
+  int32_T c3_i41;
   real_T c3_twave[3];
-  int32_T c3_i49;
+  int32_T c3_i42;
   real_T c3_rwave[9];
   uint32_T c3_debug_family_var_map[62];
   static const char *c3_sv0[62] = { "z0", "p_in_w", "n1hat", "n2hat", "n3hat",
@@ -588,222 +564,221 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T c3_i;
   real_T c3_nargin = 14.0;
   real_T c3_nargout = 5.0;
-  real_T c3_qcmd[6];
+  real_T c3_qcmd;
   real_T c3_des_leg_len[3];
   real_T c3_eq_out[3];
   real_T c3_twave_out[3];
   real_T c3_rwave_out[9];
-  int32_T c3_i50;
-  int32_T c3_i51;
-  static real_T c3_dv5[3] = { 0.0, 0.0, 1.0 };
+  int32_T c3_i43;
+  static real_T c3_dv4[3] = { 0.0, 0.0, 1.0 };
 
-  int32_T c3_i52;
+  int32_T c3_i44;
   real_T c3_a[3];
-  int32_T c3_i53;
-  int32_T c3_i54;
-  int32_T c3_i55;
+  int32_T c3_i45;
+  int32_T c3_i46;
+  int32_T c3_i47;
   real_T c3_y[9];
-  int32_T c3_i56;
+  int32_T c3_i48;
   real_T c3_b_a[9];
-  int32_T c3_i57;
+  int32_T c3_i49;
   real_T c3_b[9];
-  int32_T c3_i58;
+  int32_T c3_i50;
   real_T c3_A[9];
-  int32_T c3_i59;
+  int32_T c3_i51;
   real_T c3_B[9];
-  int32_T c3_i60;
+  int32_T c3_i52;
   real_T c3_b_A[9];
-  int32_T c3_i61;
+  int32_T c3_i53;
   real_T c3_b_B[9];
-  int32_T c3_i62;
+  int32_T c3_i54;
   real_T c3_c_A[9];
-  int32_T c3_i63;
+  int32_T c3_i55;
   real_T c3_c_B[9];
-  int32_T c3_i64;
-  int32_T c3_i65;
-  int32_T c3_i66;
+  int32_T c3_i56;
+  int32_T c3_i57;
+  int32_T c3_i58;
   real_T c3_b_y[9];
-  int32_T c3_i67;
-  int32_T c3_i68;
-  int32_T c3_i69;
-  int32_T c3_i70;
+  int32_T c3_i59;
+  int32_T c3_i60;
+  int32_T c3_i61;
+  int32_T c3_i62;
   real_T c3_b_eq[3];
-  int32_T c3_i71;
+  int32_T c3_i63;
   real_T c3_x[3];
-  int32_T c3_i72;
+  int32_T c3_i64;
   real_T c3_b_b_in_w[3];
   real_T c3_c_y;
-  int32_T c3_i73;
+  int32_T c3_i65;
   real_T c3_b_x[3];
   real_T c3_d_y;
-  int32_T c3_i74;
+  int32_T c3_i66;
   real_T c3_c_x[3];
   real_T c3_e_y;
-  int32_T c3_i75;
-  int32_T c3_i76;
+  int32_T c3_i67;
+  int32_T c3_i68;
   real_T c3_d_x[3];
-  int32_T c3_i77;
+  int32_T c3_i69;
   real_T c3_c_b_in_w[3];
   real_T c3_f_y;
-  int32_T c3_i78;
+  int32_T c3_i70;
   real_T c3_e_x[3];
   real_T c3_g_y;
-  int32_T c3_i79;
+  int32_T c3_i71;
   real_T c3_f_x[3];
   real_T c3_h_y;
-  int32_T c3_i80;
-  int32_T c3_i81;
+  int32_T c3_i72;
+  int32_T c3_i73;
   real_T c3_g_x[3];
-  int32_T c3_i82;
+  int32_T c3_i74;
   real_T c3_d_b_in_w[3];
   real_T c3_i_y;
-  int32_T c3_i83;
+  int32_T c3_i75;
   real_T c3_h_x[3];
   real_T c3_j_y;
-  int32_T c3_i84;
+  int32_T c3_i76;
   real_T c3_i_x[3];
   real_T c3_k_y;
-  int32_T c3_i85;
-  int32_T c3_i86;
+  int32_T c3_i77;
+  int32_T c3_i78;
   real_T c3_c_a[9];
-  int32_T c3_i87;
+  int32_T c3_i79;
   real_T c3_b_b[3];
-  int32_T c3_i88;
+  int32_T c3_i80;
   real_T c3_d_A[9];
-  int32_T c3_i89;
+  int32_T c3_i81;
   real_T c3_d_B[3];
-  int32_T c3_i90;
+  int32_T c3_i82;
   real_T c3_e_A[9];
-  int32_T c3_i91;
+  int32_T c3_i83;
   real_T c3_e_B[3];
-  int32_T c3_i92;
+  int32_T c3_i84;
   real_T c3_f_A[9];
-  int32_T c3_i93;
+  int32_T c3_i85;
   real_T c3_f_B[3];
-  int32_T c3_i94;
+  int32_T c3_i86;
   real_T c3_l_y[3];
-  int32_T c3_i95;
-  int32_T c3_i96;
-  int32_T c3_i97;
+  int32_T c3_i87;
+  int32_T c3_i88;
+  int32_T c3_i89;
   real_T c3_m_y[3];
-  int32_T c3_i98;
+  int32_T c3_i90;
   real_T c3_b_n1hat[3];
   real_T c3_c_b[3];
-  int32_T c3_i99;
-  real_T c3_dv6[3];
-  int32_T c3_i100;
+  int32_T c3_i91;
+  real_T c3_dv5[3];
+  int32_T c3_i92;
   real_T c3_d_b[3];
-  int32_T c3_i101;
+  int32_T c3_i93;
   real_T c3_d_a[9];
-  int32_T c3_i102;
+  int32_T c3_i94;
   real_T c3_e_b[3];
-  int32_T c3_i103;
+  int32_T c3_i95;
   real_T c3_g_A[9];
-  int32_T c3_i104;
+  int32_T c3_i96;
   real_T c3_g_B[3];
-  int32_T c3_i105;
+  int32_T c3_i97;
   real_T c3_h_A[9];
-  int32_T c3_i106;
+  int32_T c3_i98;
   real_T c3_h_B[3];
-  int32_T c3_i107;
+  int32_T c3_i99;
   real_T c3_i_A[9];
-  int32_T c3_i108;
+  int32_T c3_i100;
   real_T c3_i_B[3];
-  int32_T c3_i109;
+  int32_T c3_i101;
   real_T c3_n_y[3];
-  int32_T c3_i110;
-  int32_T c3_i111;
-  int32_T c3_i112;
+  int32_T c3_i102;
+  int32_T c3_i103;
+  int32_T c3_i104;
   real_T c3_o_y[3];
-  int32_T c3_i113;
+  int32_T c3_i105;
   real_T c3_b_n2hat[3];
   real_T c3_f_b[3];
-  int32_T c3_i114;
-  real_T c3_dv7[3];
-  int32_T c3_i115;
+  int32_T c3_i106;
+  real_T c3_dv6[3];
+  int32_T c3_i107;
   real_T c3_g_b[3];
-  int32_T c3_i116;
+  int32_T c3_i108;
   real_T c3_e_a[9];
-  int32_T c3_i117;
+  int32_T c3_i109;
   real_T c3_h_b[3];
-  int32_T c3_i118;
+  int32_T c3_i110;
   real_T c3_j_A[9];
-  int32_T c3_i119;
+  int32_T c3_i111;
   real_T c3_j_B[3];
-  int32_T c3_i120;
+  int32_T c3_i112;
   real_T c3_k_A[9];
-  int32_T c3_i121;
+  int32_T c3_i113;
   real_T c3_k_B[3];
-  int32_T c3_i122;
+  int32_T c3_i114;
   real_T c3_l_A[9];
-  int32_T c3_i123;
+  int32_T c3_i115;
   real_T c3_l_B[3];
-  int32_T c3_i124;
+  int32_T c3_i116;
   real_T c3_p_y[3];
-  int32_T c3_i125;
-  int32_T c3_i126;
-  int32_T c3_i127;
+  int32_T c3_i117;
+  int32_T c3_i118;
+  int32_T c3_i119;
   real_T c3_q_y[3];
-  int32_T c3_i128;
+  int32_T c3_i120;
   real_T c3_b_n3hat[3];
   real_T c3_i_b[3];
-  int32_T c3_i129;
-  real_T c3_dv8[3];
-  int32_T c3_i130;
+  int32_T c3_i121;
+  real_T c3_dv7[3];
+  int32_T c3_i122;
   real_T c3_j_b[3];
-  int32_T c3_i131;
+  int32_T c3_i123;
   real_T c3_e_b_in_w[3];
-  int32_T c3_i132;
+  int32_T c3_i124;
   real_T c3_f_b_in_w[3];
-  int32_T c3_i133;
+  int32_T c3_i125;
   real_T c3_g_b_in_w[3];
-  int32_T c3_i134;
+  int32_T c3_i126;
   real_T c3_j_x[3];
-  int32_T c3_i135;
+  int32_T c3_i127;
   real_T c3_b_m_in_w[3];
   real_T c3_r_y;
-  int32_T c3_i136;
+  int32_T c3_i128;
   real_T c3_k_x[3];
   real_T c3_s_y;
-  int32_T c3_i137;
+  int32_T c3_i129;
   real_T c3_l_x[3];
   real_T c3_t_y;
-  int32_T c3_i138;
-  int32_T c3_i139;
+  int32_T c3_i130;
+  int32_T c3_i131;
   real_T c3_m_x[3];
-  int32_T c3_i140;
+  int32_T c3_i132;
   real_T c3_c_m_in_w[3];
   real_T c3_u_y;
-  int32_T c3_i141;
+  int32_T c3_i133;
   real_T c3_n_x[3];
   real_T c3_v_y;
-  int32_T c3_i142;
+  int32_T c3_i134;
   real_T c3_o_x[3];
   real_T c3_w_y;
-  int32_T c3_i143;
-  int32_T c3_i144;
+  int32_T c3_i135;
+  int32_T c3_i136;
   real_T c3_p_x[3];
-  int32_T c3_i145;
+  int32_T c3_i137;
   real_T c3_d_m_in_w[3];
   real_T c3_x_y;
-  int32_T c3_i146;
+  int32_T c3_i138;
   real_T c3_q_x[3];
   real_T c3_y_y;
-  int32_T c3_i147;
+  int32_T c3_i139;
   real_T c3_r_x[3];
   real_T c3_ab_y;
-  int32_T c3_i148;
-  int32_T c3_i149;
+  int32_T c3_i140;
+  int32_T c3_i141;
   real_T c3_e_m_in_w[3];
-  int32_T c3_i150;
+  int32_T c3_i142;
   real_T c3_f_m_in_w[3];
-  int32_T c3_i151;
+  int32_T c3_i143;
   real_T c3_g_m_in_w[3];
-  int32_T c3_i152;
+  int32_T c3_i144;
   real_T c3_h_b_in_w[3];
-  int32_T c3_i153;
+  int32_T c3_i145;
   real_T c3_i_b_in_w[3];
-  int32_T c3_i154;
+  int32_T c3_i146;
   real_T c3_j_b_in_w[3];
   real_T c3_k_b;
   real_T c3_bb_y;
@@ -913,13 +888,13 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T c3_qc_y;
   real_T c3_kb_x;
   real_T c3_rc_y;
-  int32_T c3_i155;
+  int32_T c3_i147;
   real_T c3_u_a[3];
-  int32_T c3_i156;
+  int32_T c3_i148;
   real_T c3_gb_b[3];
-  int32_T c3_i157;
+  int32_T c3_i149;
   real_T c3_v_a[3];
-  int32_T c3_i158;
+  int32_T c3_i150;
   real_T c3_hb_b[3];
   real_T c3_sc_y;
   real_T c3_w_a;
@@ -935,29 +910,29 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T c3_wc_y;
   real_T c3_xc_y;
   real_T c3_x_a;
-  int32_T c3_i159;
+  int32_T c3_i151;
   real_T c3_jb_b[3];
-  int32_T c3_i160;
+  int32_T c3_i152;
   real_T c3_yc_y[3];
-  int32_T c3_i161;
+  int32_T c3_i153;
   real_T c3_y_a[3];
-  int32_T c3_i162;
-  real_T c3_dv9[3];
-  int32_T c3_i163;
+  int32_T c3_i154;
+  real_T c3_dv8[3];
+  int32_T c3_i155;
   real_T c3_b_l1_hat[3];
   real_T c3_kb_b[3];
-  int32_T c3_i164;
+  int32_T c3_i156;
   real_T c3_ab_a[3];
-  int32_T c3_i165;
+  int32_T c3_i157;
   real_T c3_lb_b[3];
   real_T c3_ad_y;
-  int32_T c3_i166;
+  int32_T c3_i158;
   real_T c3_bb_a[3];
-  int32_T c3_i167;
+  int32_T c3_i159;
   real_T c3_mb_b[3];
-  int32_T c3_i168;
+  int32_T c3_i160;
   real_T c3_cb_a[3];
-  int32_T c3_i169;
+  int32_T c3_i161;
   real_T c3_nb_b[3];
   real_T c3_bd_y;
   real_T c3_db_a;
@@ -973,29 +948,29 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T c3_fd_y;
   real_T c3_gd_y;
   real_T c3_eb_a;
-  int32_T c3_i170;
+  int32_T c3_i162;
   real_T c3_pb_b[3];
-  int32_T c3_i171;
+  int32_T c3_i163;
   real_T c3_hd_y[3];
-  int32_T c3_i172;
+  int32_T c3_i164;
   real_T c3_fb_a[3];
-  int32_T c3_i173;
-  real_T c3_dv10[3];
-  int32_T c3_i174;
+  int32_T c3_i165;
+  real_T c3_dv9[3];
+  int32_T c3_i166;
   real_T c3_b_l2_hat[3];
   real_T c3_qb_b[3];
-  int32_T c3_i175;
+  int32_T c3_i167;
   real_T c3_gb_a[3];
-  int32_T c3_i176;
+  int32_T c3_i168;
   real_T c3_rb_b[3];
   real_T c3_id_y;
-  int32_T c3_i177;
+  int32_T c3_i169;
   real_T c3_hb_a[3];
-  int32_T c3_i178;
+  int32_T c3_i170;
   real_T c3_sb_b[3];
-  int32_T c3_i179;
+  int32_T c3_i171;
   real_T c3_ib_a[3];
-  int32_T c3_i180;
+  int32_T c3_i172;
   real_T c3_tb_b[3];
   real_T c3_jd_y;
   real_T c3_jb_a;
@@ -1011,145 +986,145 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T c3_nd_y;
   real_T c3_od_y;
   real_T c3_kb_a;
-  int32_T c3_i181;
+  int32_T c3_i173;
   real_T c3_vb_b[3];
-  int32_T c3_i182;
+  int32_T c3_i174;
   real_T c3_pd_y[3];
-  int32_T c3_i183;
+  int32_T c3_i175;
   real_T c3_lb_a[3];
-  int32_T c3_i184;
-  real_T c3_dv11[3];
-  int32_T c3_i185;
+  int32_T c3_i176;
+  real_T c3_dv10[3];
+  int32_T c3_i177;
   real_T c3_b_l3_hat[3];
   real_T c3_wb_b[3];
-  int32_T c3_i186;
+  int32_T c3_i178;
   real_T c3_mb_a[3];
-  int32_T c3_i187;
+  int32_T c3_i179;
   real_T c3_xb_b[3];
   real_T c3_qd_y;
-  int32_T c3_i188;
-  static real_T c3_dv12[9] = { 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 };
+  int32_T c3_i180;
+  static real_T c3_dv11[9] = { 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 };
 
-  int32_T c3_i189;
-  int32_T c3_i190;
-  int32_T c3_i191;
-  int32_T c3_i192;
-  int32_T c3_i193;
-  int32_T c3_i194;
-  int32_T c3_i195;
-  static real_T c3_dv13[36] = { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
+  int32_T c3_i181;
+  int32_T c3_i182;
+  int32_T c3_i183;
+  int32_T c3_i184;
+  int32_T c3_i185;
+  int32_T c3_i186;
+  int32_T c3_i187;
+  static real_T c3_dv12[36] = { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 1.0E+010, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E+010, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 1.0E+010 };
 
-  int32_T c3_i196;
+  int32_T c3_i188;
   real_T c3_v_A[18];
+  int32_T c3_i189;
+  real_T c3_dv13[36];
+  int32_T c3_i190;
+  int32_T c3_i191;
+  int32_T c3_i192;
+  int32_T c3_i193;
+  real_T c3_w_A[18];
+  real_T c3_dv14[18];
+  int32_T c3_i194;
+  int32_T c3_i195;
+  int32_T c3_i196;
   int32_T c3_i197;
-  real_T c3_dv14[36];
+  real_T c3_rd_y[18];
   int32_T c3_i198;
+  real_T c3_nb_a[18];
   int32_T c3_i199;
   int32_T c3_i200;
   int32_T c3_i201;
-  real_T c3_w_A[18];
-  real_T c3_dv15[18];
   int32_T c3_i202;
+  real_T c3_yb_b[18];
   int32_T c3_i203;
+  real_T c3_x_A[18];
   int32_T c3_i204;
+  real_T c3_v_B[18];
   int32_T c3_i205;
-  real_T c3_rd_y[18];
+  real_T c3_y_A[18];
   int32_T c3_i206;
-  real_T c3_nb_a[18];
+  real_T c3_w_B[18];
   int32_T c3_i207;
+  real_T c3_ab_A[18];
   int32_T c3_i208;
+  real_T c3_x_B[18];
   int32_T c3_i209;
   int32_T c3_i210;
-  real_T c3_yb_b[18];
   int32_T c3_i211;
-  real_T c3_x_A[18];
   int32_T c3_i212;
-  real_T c3_v_B[18];
+  real_T c3_sd_y[9];
   int32_T c3_i213;
-  real_T c3_y_A[18];
   int32_T c3_i214;
-  real_T c3_w_B[18];
   int32_T c3_i215;
-  real_T c3_ab_A[18];
+  real_T c3_dv15[36];
   int32_T c3_i216;
-  real_T c3_x_B[18];
   int32_T c3_i217;
   int32_T c3_i218;
   int32_T c3_i219;
-  int32_T c3_i220;
-  real_T c3_sd_y[9];
-  int32_T c3_i221;
-  int32_T c3_i222;
-  int32_T c3_i223;
-  real_T c3_dv16[36];
-  int32_T c3_i224;
-  int32_T c3_i225;
-  int32_T c3_i226;
-  int32_T c3_i227;
   real_T c3_b_iik_jac[18];
+  real_T c3_dv16[18];
+  int32_T c3_i220;
   real_T c3_dv17[18];
-  int32_T c3_i228;
-  real_T c3_dv18[18];
-  int32_T c3_i229;
+  int32_T c3_i221;
   real_T c3_td_y[9];
   real_T c3_ob_a[18];
-  int32_T c3_i230;
+  int32_T c3_i222;
   real_T c3_ac_b[9];
-  int32_T c3_i231;
+  int32_T c3_i223;
   real_T c3_bb_A[18];
-  int32_T c3_i232;
+  int32_T c3_i224;
   real_T c3_y_B[9];
+  int32_T c3_i225;
+  int32_T c3_i226;
+  real_T c3_cb_A[18];
+  int32_T c3_i227;
+  real_T c3_ab_B[9];
+  int32_T c3_i228;
+  real_T c3_db_A[18];
+  int32_T c3_i229;
+  real_T c3_bb_B[9];
+  int32_T c3_i230;
+  int32_T c3_i231;
+  int32_T c3_i232;
   int32_T c3_i233;
   int32_T c3_i234;
-  real_T c3_cb_A[18];
   int32_T c3_i235;
-  real_T c3_ab_B[9];
+  real_T c3_pb_a;
   int32_T c3_i236;
-  real_T c3_db_A[18];
+  real_T c3_bc_b[3];
   int32_T c3_i237;
-  real_T c3_bb_B[9];
   int32_T c3_i238;
+  real_T c3_qb_a[18];
   int32_T c3_i239;
+  real_T c3_cc_b[3];
   int32_T c3_i240;
+  real_T c3_eb_A[18];
   int32_T c3_i241;
+  real_T c3_cb_B[3];
   int32_T c3_i242;
   int32_T c3_i243;
-  real_T c3_pb_a;
+  real_T c3_fb_A[18];
   int32_T c3_i244;
-  real_T c3_bc_b[3];
+  real_T c3_db_B[3];
   int32_T c3_i245;
+  real_T c3_gb_A[18];
   int32_T c3_i246;
-  real_T c3_qb_a[18];
+  real_T c3_eb_B[3];
   int32_T c3_i247;
-  real_T c3_cc_b[3];
   int32_T c3_i248;
-  real_T c3_eb_A[18];
   int32_T c3_i249;
-  real_T c3_cb_B[3];
   int32_T c3_i250;
   int32_T c3_i251;
-  real_T c3_fb_A[18];
-  int32_T c3_i252;
-  real_T c3_db_B[3];
-  int32_T c3_i253;
-  real_T c3_gb_A[18];
-  int32_T c3_i254;
-  real_T c3_eb_B[3];
-  int32_T c3_i255;
-  int32_T c3_i256;
-  int32_T c3_i257;
-  int32_T c3_i258;
-  int32_T c3_i259;
   real_T c3_rb_a[2];
   real_T c3_dc_b;
-  int32_T c3_i260;
+  int32_T c3_i252;
   real_T c3_ud_y[2];
-  int32_T c3_i261;
+  int32_T c3_i253;
   real_T c3_b_twave[2];
-  int32_T c3_i262;
+  int32_T c3_i254;
   real_T c3_sb_a;
   real_T c3_ec_b;
   real_T c3_vd_y;
@@ -1174,91 +1149,91 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T c3_ec_x;
   real_T c3_fc_x;
   real_T c3_gc_x;
-  int32_T c3_i263;
-  int32_T c3_i264;
-  int32_T c3_i265;
+  int32_T c3_i255;
+  int32_T c3_i256;
+  int32_T c3_i257;
   real_T c3_wb_a[9];
-  int32_T c3_i266;
+  int32_T c3_i258;
   real_T c3_ic_b[9];
-  int32_T c3_i267;
+  int32_T c3_i259;
   real_T c3_hb_A[9];
-  int32_T c3_i268;
+  int32_T c3_i260;
   real_T c3_fb_B[9];
+  int32_T c3_i261;
+  int32_T c3_i262;
+  real_T c3_ib_A[9];
+  int32_T c3_i263;
+  real_T c3_gb_B[9];
+  int32_T c3_i264;
+  real_T c3_jb_A[9];
+  int32_T c3_i265;
+  real_T c3_hb_B[9];
+  int32_T c3_i266;
+  int32_T c3_i267;
+  int32_T c3_i268;
   int32_T c3_i269;
   int32_T c3_i270;
-  real_T c3_ib_A[9];
   int32_T c3_i271;
-  real_T c3_gb_B[9];
-  int32_T c3_i272;
-  real_T c3_jb_A[9];
-  int32_T c3_i273;
-  real_T c3_hb_B[9];
-  int32_T c3_i274;
-  int32_T c3_i275;
-  int32_T c3_i276;
-  int32_T c3_i277;
-  int32_T c3_i278;
-  int32_T c3_i279;
   real_T c3_b_i;
-  int32_T c3_i280;
+  int32_T c3_i272;
   real_T c3_xb_a[9];
   int32_T c3_c_i;
-  int32_T c3_i281;
+  int32_T c3_i273;
   real_T c3_jc_b[3];
-  int32_T c3_i282;
+  int32_T c3_i274;
   real_T c3_kb_A[9];
-  int32_T c3_i283;
+  int32_T c3_i275;
   real_T c3_ib_B[3];
-  int32_T c3_i284;
+  int32_T c3_i276;
   real_T c3_lb_A[9];
-  int32_T c3_i285;
+  int32_T c3_i277;
   real_T c3_jb_B[3];
-  int32_T c3_i286;
+  int32_T c3_i278;
   real_T c3_mb_A[9];
-  int32_T c3_i287;
+  int32_T c3_i279;
   real_T c3_kb_B[3];
-  int32_T c3_i288;
+  int32_T c3_i280;
   real_T c3_ae_y[3];
-  int32_T c3_i289;
-  int32_T c3_i290;
+  int32_T c3_i281;
+  int32_T c3_i282;
   int32_T c3_d_i;
-  int32_T c3_i291;
+  int32_T c3_i283;
   int32_T c3_e_i;
   int32_T c3_f_i;
-  int32_T c3_i292;
+  int32_T c3_i284;
   real_T c3_b_p_in_w[3];
-  int32_T c3_i293;
-  int32_T c3_i294;
+  int32_T c3_i285;
+  int32_T c3_i286;
+  int32_T c3_i287;
   real_T c3_nb_A[3];
   real_T c3_lb_B;
-  int32_T c3_i295;
+  int32_T c3_i288;
   real_T c3_hc_x[3];
   real_T c3_be_y;
-  int32_T c3_i296;
+  int32_T c3_i289;
   real_T c3_ic_x[3];
   real_T c3_ce_y;
-  int32_T c3_i297;
+  int32_T c3_i290;
   real_T c3_jc_x[3];
   real_T c3_de_y;
+  int32_T c3_i291;
+  real_T c3_dv18[3];
+  int32_T c3_i292;
+  int32_T c3_i293;
+  int32_T c3_i294;
+  int32_T c3_i295;
+  int32_T c3_i296;
+  int32_T c3_i297;
   int32_T c3_i298;
-  real_T c3_ee_y[3];
   int32_T c3_i299;
   int32_T c3_i300;
   int32_T c3_i301;
-  int32_T c3_i302;
-  int32_T c3_i303;
-  int32_T c3_i304;
-  int32_T c3_i305;
-  int32_T c3_i306;
-  int32_T c3_i307;
-  int32_T c3_i308;
-  int32_T c3_i309;
-  int32_T c3_i310;
+  real_T *c3_b_qcur;
   real_T *c3_b_eqeps;
   real_T *c3_b_kp;
   real_T *c3_b_dt;
   real_T *c3_b_velmex_pitch;
-  real_T (*c3_b_qcmd)[6];
+  real_T *c3_b_qcmd;
   real_T (*c3_b_des_leg_len)[3];
   real_T (*c3_b_eq_out)[3];
   real_T (*c3_b_twave_out)[3];
@@ -1272,7 +1247,6 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   real_T (*c3_h_m_in_w)[9];
   real_T (*c3_k_b_in_w)[9];
   real_T (*c3_b_p_in_m)[9];
-  real_T (*c3_b_qcur)[6];
   c3_b_rwave = (real_T (*)[9])ssGetInputPortSignal(chartInstance->S, 13);
   c3_c_twave = (real_T (*)[3])ssGetInputPortSignal(chartInstance->S, 12);
   c3_b_rwave_out = (real_T (*)[9])ssGetOutputPortSignal(chartInstance->S, 5);
@@ -1289,96 +1263,90 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   c3_b_dt = (real_T *)ssGetInputPortSignal(chartInstance->S, 3);
   c3_b_kp = (real_T *)ssGetInputPortSignal(chartInstance->S, 2);
   c3_b_des_leg_len = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S, 2);
-  c3_b_qcmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
+  c3_b_qcmd = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c3_b_eqeps = (real_T *)ssGetInputPortSignal(chartInstance->S, 1);
-  c3_b_qcur = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,2);
-  for (c3_i30 = 0; c3_i30 < 6; c3_i30 = c3_i30 + 1) {
-    c3_hoistedGlobal[c3_i30] = (*c3_b_qcur)[c3_i30];
-  }
-
+  c3_b_qcur = (real_T *)ssGetInputPortSignal(chartInstance->S, 0);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,0);
+  c3_hoistedGlobal = *c3_b_qcur;
   c3_b_hoistedGlobal = *c3_b_eqeps;
   c3_c_hoistedGlobal = *c3_b_kp;
   c3_d_hoistedGlobal = *c3_b_dt;
-  for (c3_i31 = 0; c3_i31 < 9; c3_i31 = c3_i31 + 1) {
-    c3_e_hoistedGlobal[c3_i31] = (*c3_b_p_in_m)[c3_i31];
+  for (c3_i25 = 0; c3_i25 < 9; c3_i25 = c3_i25 + 1) {
+    c3_e_hoistedGlobal[c3_i25] = (*c3_b_p_in_m)[c3_i25];
   }
 
-  for (c3_i32 = 0; c3_i32 < 9; c3_i32 = c3_i32 + 1) {
-    c3_f_hoistedGlobal[c3_i32] = (*c3_k_b_in_w)[c3_i32];
+  for (c3_i26 = 0; c3_i26 < 9; c3_i26 = c3_i26 + 1) {
+    c3_f_hoistedGlobal[c3_i26] = (*c3_k_b_in_w)[c3_i26];
   }
 
-  for (c3_i33 = 0; c3_i33 < 9; c3_i33 = c3_i33 + 1) {
-    c3_g_hoistedGlobal[c3_i33] = (*c3_h_m_in_w)[c3_i33];
+  for (c3_i27 = 0; c3_i27 < 9; c3_i27 = c3_i27 + 1) {
+    c3_g_hoistedGlobal[c3_i27] = (*c3_h_m_in_w)[c3_i27];
   }
 
-  for (c3_i34 = 0; c3_i34 < 9; c3_i34 = c3_i34 + 1) {
-    c3_h_hoistedGlobal[c3_i34] = (*c3_b_f_in_w)[c3_i34];
+  for (c3_i28 = 0; c3_i28 < 9; c3_i28 = c3_i28 + 1) {
+    c3_h_hoistedGlobal[c3_i28] = (*c3_b_f_in_w)[c3_i28];
   }
 
-  for (c3_i35 = 0; c3_i35 < 3; c3_i35 = c3_i35 + 1) {
-    c3_i_hoistedGlobal[c3_i35] = (*c3_b_measured_len)[c3_i35];
+  for (c3_i29 = 0; c3_i29 < 3; c3_i29 = c3_i29 + 1) {
+    c3_i_hoistedGlobal[c3_i29] = (*c3_b_measured_len)[c3_i29];
   }
 
   c3_j_hoistedGlobal = *c3_b_velmex_pitch;
-  for (c3_i36 = 0; c3_i36 < 3; c3_i36 = c3_i36 + 1) {
-    c3_k_hoistedGlobal[c3_i36] = (*c3_b_macro_leg_len)[c3_i36];
+  for (c3_i30 = 0; c3_i30 < 3; c3_i30 = c3_i30 + 1) {
+    c3_k_hoistedGlobal[c3_i30] = (*c3_b_macro_leg_len)[c3_i30];
   }
 
-  for (c3_i37 = 0; c3_i37 < 3; c3_i37 = c3_i37 + 1) {
-    c3_l_hoistedGlobal[c3_i37] = (*c3_c_eq)[c3_i37];
+  for (c3_i31 = 0; c3_i31 < 3; c3_i31 = c3_i31 + 1) {
+    c3_l_hoistedGlobal[c3_i31] = (*c3_c_eq)[c3_i31];
   }
 
-  for (c3_i38 = 0; c3_i38 < 3; c3_i38 = c3_i38 + 1) {
-    c3_m_hoistedGlobal[c3_i38] = (*c3_c_twave)[c3_i38];
+  for (c3_i32 = 0; c3_i32 < 3; c3_i32 = c3_i32 + 1) {
+    c3_m_hoistedGlobal[c3_i32] = (*c3_c_twave)[c3_i32];
   }
 
-  for (c3_i39 = 0; c3_i39 < 9; c3_i39 = c3_i39 + 1) {
-    c3_n_hoistedGlobal[c3_i39] = (*c3_b_rwave)[c3_i39];
+  for (c3_i33 = 0; c3_i33 < 9; c3_i33 = c3_i33 + 1) {
+    c3_n_hoistedGlobal[c3_i33] = (*c3_b_rwave)[c3_i33];
   }
 
-  for (c3_i40 = 0; c3_i40 < 6; c3_i40 = c3_i40 + 1) {
-    c3_qcur[c3_i40] = c3_hoistedGlobal[c3_i40];
-  }
-
+  c3_qcur = c3_hoistedGlobal;
   c3_eqeps = c3_b_hoistedGlobal;
   c3_kp = c3_c_hoistedGlobal;
   c3_dt = c3_d_hoistedGlobal;
-  for (c3_i41 = 0; c3_i41 < 9; c3_i41 = c3_i41 + 1) {
-    c3_p_in_m[c3_i41] = c3_e_hoistedGlobal[c3_i41];
+  for (c3_i34 = 0; c3_i34 < 9; c3_i34 = c3_i34 + 1) {
+    c3_p_in_m[c3_i34] = c3_e_hoistedGlobal[c3_i34];
   }
 
-  for (c3_i42 = 0; c3_i42 < 9; c3_i42 = c3_i42 + 1) {
-    c3_b_in_w[c3_i42] = c3_f_hoistedGlobal[c3_i42];
+  for (c3_i35 = 0; c3_i35 < 9; c3_i35 = c3_i35 + 1) {
+    c3_b_in_w[c3_i35] = c3_f_hoistedGlobal[c3_i35];
   }
 
-  for (c3_i43 = 0; c3_i43 < 9; c3_i43 = c3_i43 + 1) {
-    c3_m_in_w[c3_i43] = c3_g_hoistedGlobal[c3_i43];
+  for (c3_i36 = 0; c3_i36 < 9; c3_i36 = c3_i36 + 1) {
+    c3_m_in_w[c3_i36] = c3_g_hoistedGlobal[c3_i36];
   }
 
-  for (c3_i44 = 0; c3_i44 < 9; c3_i44 = c3_i44 + 1) {
-    c3_f_in_w[c3_i44] = c3_h_hoistedGlobal[c3_i44];
+  for (c3_i37 = 0; c3_i37 < 9; c3_i37 = c3_i37 + 1) {
+    c3_f_in_w[c3_i37] = c3_h_hoistedGlobal[c3_i37];
   }
 
-  for (c3_i45 = 0; c3_i45 < 3; c3_i45 = c3_i45 + 1) {
-    c3_measured_len[c3_i45] = c3_i_hoistedGlobal[c3_i45];
+  for (c3_i38 = 0; c3_i38 < 3; c3_i38 = c3_i38 + 1) {
+    c3_measured_len[c3_i38] = c3_i_hoistedGlobal[c3_i38];
   }
 
   c3_velmex_pitch = c3_j_hoistedGlobal;
-  for (c3_i46 = 0; c3_i46 < 3; c3_i46 = c3_i46 + 1) {
-    c3_macro_leg_len[c3_i46] = c3_k_hoistedGlobal[c3_i46];
+  for (c3_i39 = 0; c3_i39 < 3; c3_i39 = c3_i39 + 1) {
+    c3_macro_leg_len[c3_i39] = c3_k_hoistedGlobal[c3_i39];
   }
 
-  for (c3_i47 = 0; c3_i47 < 3; c3_i47 = c3_i47 + 1) {
-    c3_eq[c3_i47] = c3_l_hoistedGlobal[c3_i47];
+  for (c3_i40 = 0; c3_i40 < 3; c3_i40 = c3_i40 + 1) {
+    c3_eq[c3_i40] = c3_l_hoistedGlobal[c3_i40];
   }
 
-  for (c3_i48 = 0; c3_i48 < 3; c3_i48 = c3_i48 + 1) {
-    c3_twave[c3_i48] = c3_m_hoistedGlobal[c3_i48];
+  for (c3_i41 = 0; c3_i41 < 3; c3_i41 = c3_i41 + 1) {
+    c3_twave[c3_i41] = c3_m_hoistedGlobal[c3_i41];
   }
 
-  for (c3_i49 = 0; c3_i49 < 9; c3_i49 = c3_i49 + 1) {
-    c3_rwave[c3_i49] = c3_n_hoistedGlobal[c3_i49];
+  for (c3_i42 = 0; c3_i42 < 9; c3_i42 = c3_i42 + 1) {
+    c3_rwave[c3_i42] = c3_n_hoistedGlobal[c3_i42];
   }
 
   sf_debug_symbol_scope_push_eml(0U, 62U, 62U, c3_sv0, c3_debug_family_var_map);
@@ -1387,54 +1355,54 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   sf_debug_symbol_scope_add_eml(&c3_n1hat, c3_b_sf_marshall, 2U);
   sf_debug_symbol_scope_add_eml(&c3_n2hat, c3_b_sf_marshall, 3U);
   sf_debug_symbol_scope_add_eml(&c3_n3hat, c3_b_sf_marshall, 4U);
-  sf_debug_symbol_scope_add_eml(&c3_a13, c3_d_sf_marshall, 5U);
-  sf_debug_symbol_scope_add_eml(&c3_a23, c3_d_sf_marshall, 6U);
-  sf_debug_symbol_scope_add_eml(&c3_a33, c3_d_sf_marshall, 7U);
+  sf_debug_symbol_scope_add_eml(&c3_a13, c3_c_sf_marshall, 5U);
+  sf_debug_symbol_scope_add_eml(&c3_a23, c3_c_sf_marshall, 6U);
+  sf_debug_symbol_scope_add_eml(&c3_a33, c3_c_sf_marshall, 7U);
   sf_debug_symbol_scope_add_eml(&c3_idk_jac, c3_sf_marshall, 8U);
-  sf_debug_symbol_scope_add_eml(&c3_q1_mu, c3_d_sf_marshall, 9U);
-  sf_debug_symbol_scope_add_eml(&c3_q2_mu, c3_d_sf_marshall, 10U);
-  sf_debug_symbol_scope_add_eml(&c3_q3_mu, c3_d_sf_marshall, 11U);
+  sf_debug_symbol_scope_add_eml(&c3_q1_mu, c3_c_sf_marshall, 9U);
+  sf_debug_symbol_scope_add_eml(&c3_q2_mu, c3_c_sf_marshall, 10U);
+  sf_debug_symbol_scope_add_eml(&c3_q3_mu, c3_c_sf_marshall, 11U);
   sf_debug_symbol_scope_add_eml(&c3_l1_hat, c3_b_sf_marshall, 12U);
   sf_debug_symbol_scope_add_eml(&c3_l2_hat, c3_b_sf_marshall, 13U);
   sf_debug_symbol_scope_add_eml(&c3_l3_hat, c3_b_sf_marshall, 14U);
-  sf_debug_symbol_scope_add_eml(&c3_a1, c3_d_sf_marshall, 15U);
-  sf_debug_symbol_scope_add_eml(&c3_a2, c3_d_sf_marshall, 16U);
-  sf_debug_symbol_scope_add_eml(&c3_a3, c3_d_sf_marshall, 17U);
-  sf_debug_symbol_scope_add_eml(&c3_c1, c3_d_sf_marshall, 18U);
-  sf_debug_symbol_scope_add_eml(&c3_c2, c3_d_sf_marshall, 19U);
-  sf_debug_symbol_scope_add_eml(&c3_c3, c3_d_sf_marshall, 20U);
-  sf_debug_symbol_scope_add_eml(&c3_h1, c3_d_sf_marshall, 21U);
-  sf_debug_symbol_scope_add_eml(&c3_h2, c3_d_sf_marshall, 22U);
-  sf_debug_symbol_scope_add_eml(&c3_h3, c3_d_sf_marshall, 23U);
-  sf_debug_symbol_scope_add_eml(&c3_h1dot, c3_d_sf_marshall, 24U);
-  sf_debug_symbol_scope_add_eml(&c3_h2dot, c3_d_sf_marshall, 25U);
-  sf_debug_symbol_scope_add_eml(&c3_h3dot, c3_d_sf_marshall, 26U);
-  sf_debug_symbol_scope_add_eml(&c3_e1, c3_d_sf_marshall, 27U);
-  sf_debug_symbol_scope_add_eml(&c3_e2, c3_d_sf_marshall, 28U);
-  sf_debug_symbol_scope_add_eml(&c3_e3, c3_d_sf_marshall, 29U);
+  sf_debug_symbol_scope_add_eml(&c3_a1, c3_c_sf_marshall, 15U);
+  sf_debug_symbol_scope_add_eml(&c3_a2, c3_c_sf_marshall, 16U);
+  sf_debug_symbol_scope_add_eml(&c3_a3, c3_c_sf_marshall, 17U);
+  sf_debug_symbol_scope_add_eml(&c3_c1, c3_c_sf_marshall, 18U);
+  sf_debug_symbol_scope_add_eml(&c3_c2, c3_c_sf_marshall, 19U);
+  sf_debug_symbol_scope_add_eml(&c3_c3, c3_c_sf_marshall, 20U);
+  sf_debug_symbol_scope_add_eml(&c3_h1, c3_c_sf_marshall, 21U);
+  sf_debug_symbol_scope_add_eml(&c3_h2, c3_c_sf_marshall, 22U);
+  sf_debug_symbol_scope_add_eml(&c3_h3, c3_c_sf_marshall, 23U);
+  sf_debug_symbol_scope_add_eml(&c3_h1dot, c3_c_sf_marshall, 24U);
+  sf_debug_symbol_scope_add_eml(&c3_h2dot, c3_c_sf_marshall, 25U);
+  sf_debug_symbol_scope_add_eml(&c3_h3dot, c3_c_sf_marshall, 26U);
+  sf_debug_symbol_scope_add_eml(&c3_e1, c3_c_sf_marshall, 27U);
+  sf_debug_symbol_scope_add_eml(&c3_e2, c3_c_sf_marshall, 28U);
+  sf_debug_symbol_scope_add_eml(&c3_e3, c3_c_sf_marshall, 29U);
   sf_debug_symbol_scope_add_eml(&c3_b_mu, c3_sf_marshall, 30U);
   sf_debug_symbol_scope_add_eml(&c3_b_m, c3_sf_marshall, 31U);
   sf_debug_symbol_scope_add_eml(&c3_iik_jac, c3_h_sf_marshall, 32U);
   sf_debug_symbol_scope_add_eml(&c3_w_mat, c3_g_sf_marshall, 33U);
   sf_debug_symbol_scope_add_eml(&c3_full_jac, c3_f_sf_marshall, 34U);
   sf_debug_symbol_scope_add_eml(&c3_qdot, c3_b_sf_marshall, 35U);
-  sf_debug_symbol_scope_add_eml(&c3_tdot, c3_c_sf_marshall, 36U);
-  sf_debug_symbol_scope_add_eml(&c3_v, c3_e_sf_marshall, 37U);
-  sf_debug_symbol_scope_add_eml(&c3_w, c3_d_sf_marshall, 38U);
+  sf_debug_symbol_scope_add_eml(&c3_tdot, c3_e_sf_marshall, 36U);
+  sf_debug_symbol_scope_add_eml(&c3_v, c3_d_sf_marshall, 37U);
+  sf_debug_symbol_scope_add_eml(&c3_w, c3_c_sf_marshall, 38U);
   sf_debug_symbol_scope_add_eml(&c3_del_r, c3_sf_marshall, 39U);
-  sf_debug_symbol_scope_add_eml(&c3_i, c3_d_sf_marshall, 40U);
-  sf_debug_symbol_scope_add_eml(&c3_nargin, c3_d_sf_marshall, 41U);
-  sf_debug_symbol_scope_add_eml(&c3_nargout, c3_d_sf_marshall, 42U);
+  sf_debug_symbol_scope_add_eml(&c3_i, c3_c_sf_marshall, 40U);
+  sf_debug_symbol_scope_add_eml(&c3_nargin, c3_c_sf_marshall, 41U);
+  sf_debug_symbol_scope_add_eml(&c3_nargout, c3_c_sf_marshall, 42U);
   sf_debug_symbol_scope_add_eml(&c3_qcur, c3_c_sf_marshall, 43U);
-  sf_debug_symbol_scope_add_eml(&c3_eqeps, c3_d_sf_marshall, 44U);
-  sf_debug_symbol_scope_add_eml(&c3_kp, c3_d_sf_marshall, 45U);
-  sf_debug_symbol_scope_add_eml(&c3_dt, c3_d_sf_marshall, 46U);
+  sf_debug_symbol_scope_add_eml(&c3_eqeps, c3_c_sf_marshall, 44U);
+  sf_debug_symbol_scope_add_eml(&c3_kp, c3_c_sf_marshall, 45U);
+  sf_debug_symbol_scope_add_eml(&c3_dt, c3_c_sf_marshall, 46U);
   sf_debug_symbol_scope_add_eml(&c3_p_in_m, c3_sf_marshall, 47U);
   sf_debug_symbol_scope_add_eml(&c3_b_in_w, c3_sf_marshall, 48U);
   sf_debug_symbol_scope_add_eml(&c3_m_in_w, c3_sf_marshall, 49U);
   sf_debug_symbol_scope_add_eml(&c3_f_in_w, c3_sf_marshall, 50U);
   sf_debug_symbol_scope_add_eml(&c3_measured_len, c3_b_sf_marshall, 51U);
-  sf_debug_symbol_scope_add_eml(&c3_velmex_pitch, c3_d_sf_marshall, 52U);
+  sf_debug_symbol_scope_add_eml(&c3_velmex_pitch, c3_c_sf_marshall, 52U);
   sf_debug_symbol_scope_add_eml(&c3_macro_leg_len, c3_b_sf_marshall, 53U);
   sf_debug_symbol_scope_add_eml(&c3_eq, c3_b_sf_marshall, 54U);
   sf_debug_symbol_scope_add_eml(&c3_twave, c3_b_sf_marshall, 55U);
@@ -1446,355 +1414,352 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   sf_debug_symbol_scope_add_eml(&c3_rwave_out, c3_sf_marshall, 61U);
   CV_EML_FCN(0, 0);
   _SFD_EML_CALL(0,5);
-  for (c3_i50 = 0; c3_i50 < 6; c3_i50 = c3_i50 + 1) {
-    c3_qcmd[c3_i50] = c3_qcur[c3_i50];
-  }
-
+  c3_qcmd = c3_qcur;
   _SFD_EML_CALL(0,7);
-  for (c3_i51 = 0; c3_i51 < 3; c3_i51 = c3_i51 + 1) {
-    c3_z0[c3_i51] = c3_dv5[c3_i51];
+  for (c3_i43 = 0; c3_i43 < 3; c3_i43 = c3_i43 + 1) {
+    c3_z0[c3_i43] = c3_dv4[c3_i43];
   }
 
   /*  moving platform vertex locations */
   _SFD_EML_CALL(0,10);
-  for (c3_i52 = 0; c3_i52 < 3; c3_i52 = c3_i52 + 1) {
-    c3_a[c3_i52] = c3_twave[c3_i52];
+  for (c3_i44 = 0; c3_i44 < 3; c3_i44 = c3_i44 + 1) {
+    c3_a[c3_i44] = c3_twave[c3_i44];
   }
 
-  c3_i53 = 0;
-  for (c3_i54 = 0; c3_i54 < 3; c3_i54 = c3_i54 + 1) {
-    for (c3_i55 = 0; c3_i55 < 3; c3_i55 = c3_i55 + 1) {
-      c3_y[c3_i55 + c3_i53] = c3_a[c3_i55];
+  c3_i45 = 0;
+  for (c3_i46 = 0; c3_i46 < 3; c3_i46 = c3_i46 + 1) {
+    for (c3_i47 = 0; c3_i47 < 3; c3_i47 = c3_i47 + 1) {
+      c3_y[c3_i47 + c3_i45] = c3_a[c3_i47];
     }
 
-    c3_i53 = c3_i53 + 3;
+    c3_i45 = c3_i45 + 3;
   }
 
-  for (c3_i56 = 0; c3_i56 < 9; c3_i56 = c3_i56 + 1) {
-    c3_b_a[c3_i56] = c3_rwave[c3_i56];
+  for (c3_i48 = 0; c3_i48 < 9; c3_i48 = c3_i48 + 1) {
+    c3_b_a[c3_i48] = c3_rwave[c3_i48];
   }
 
-  for (c3_i57 = 0; c3_i57 < 9; c3_i57 = c3_i57 + 1) {
-    c3_b[c3_i57] = c3_p_in_m[c3_i57];
+  for (c3_i49 = 0; c3_i49 < 9; c3_i49 = c3_i49 + 1) {
+    c3_b[c3_i49] = c3_p_in_m[c3_i49];
   }
 
   c3_eml_scalar_eg(chartInstance);
   c3_eml_scalar_eg(chartInstance);
-  for (c3_i58 = 0; c3_i58 < 9; c3_i58 = c3_i58 + 1) {
-    c3_A[c3_i58] = c3_b_a[c3_i58];
+  for (c3_i50 = 0; c3_i50 < 9; c3_i50 = c3_i50 + 1) {
+    c3_A[c3_i50] = c3_b_a[c3_i50];
   }
 
-  for (c3_i59 = 0; c3_i59 < 9; c3_i59 = c3_i59 + 1) {
-    c3_B[c3_i59] = c3_b[c3_i59];
+  for (c3_i51 = 0; c3_i51 < 9; c3_i51 = c3_i51 + 1) {
+    c3_B[c3_i51] = c3_b[c3_i51];
   }
 
-  for (c3_i60 = 0; c3_i60 < 9; c3_i60 = c3_i60 + 1) {
-    c3_b_A[c3_i60] = c3_A[c3_i60];
+  for (c3_i52 = 0; c3_i52 < 9; c3_i52 = c3_i52 + 1) {
+    c3_b_A[c3_i52] = c3_A[c3_i52];
+  }
+
+  for (c3_i53 = 0; c3_i53 < 9; c3_i53 = c3_i53 + 1) {
+    c3_b_B[c3_i53] = c3_B[c3_i53];
+  }
+
+  for (c3_i54 = 0; c3_i54 < 9; c3_i54 = c3_i54 + 1) {
+    c3_c_A[c3_i54] = c3_b_A[c3_i54];
+  }
+
+  for (c3_i55 = 0; c3_i55 < 9; c3_i55 = c3_i55 + 1) {
+    c3_c_B[c3_i55] = c3_b_B[c3_i55];
+  }
+
+  for (c3_i56 = 0; c3_i56 < 3; c3_i56 = c3_i56 + 1) {
+    c3_i57 = 0;
+    for (c3_i58 = 0; c3_i58 < 3; c3_i58 = c3_i58 + 1) {
+      c3_b_y[c3_i57 + c3_i56] = 0.0;
+      c3_i59 = 0;
+      for (c3_i60 = 0; c3_i60 < 3; c3_i60 = c3_i60 + 1) {
+        c3_b_y[c3_i57 + c3_i56] = c3_b_y[c3_i57 + c3_i56] + c3_c_A[c3_i59 +
+          c3_i56] * c3_c_B[c3_i60 + c3_i57];
+        c3_i59 = c3_i59 + 3;
+      }
+
+      c3_i57 = c3_i57 + 3;
+    }
   }
 
   for (c3_i61 = 0; c3_i61 < 9; c3_i61 = c3_i61 + 1) {
-    c3_b_B[c3_i61] = c3_B[c3_i61];
-  }
-
-  for (c3_i62 = 0; c3_i62 < 9; c3_i62 = c3_i62 + 1) {
-    c3_c_A[c3_i62] = c3_b_A[c3_i62];
-  }
-
-  for (c3_i63 = 0; c3_i63 < 9; c3_i63 = c3_i63 + 1) {
-    c3_c_B[c3_i63] = c3_b_B[c3_i63];
-  }
-
-  for (c3_i64 = 0; c3_i64 < 3; c3_i64 = c3_i64 + 1) {
-    c3_i65 = 0;
-    for (c3_i66 = 0; c3_i66 < 3; c3_i66 = c3_i66 + 1) {
-      c3_b_y[c3_i65 + c3_i64] = 0.0;
-      c3_i67 = 0;
-      for (c3_i68 = 0; c3_i68 < 3; c3_i68 = c3_i68 + 1) {
-        c3_b_y[c3_i65 + c3_i64] = c3_b_y[c3_i65 + c3_i64] + c3_c_A[c3_i67 +
-          c3_i64] * c3_c_B[c3_i68 + c3_i65];
-        c3_i67 = c3_i67 + 3;
-      }
-
-      c3_i65 = c3_i65 + 3;
-    }
-  }
-
-  for (c3_i69 = 0; c3_i69 < 9; c3_i69 = c3_i69 + 1) {
-    c3_p_in_w[c3_i69] = c3_y[c3_i69] + c3_b_y[c3_i69];
+    c3_p_in_w[c3_i61] = c3_y[c3_i61] + c3_b_y[c3_i61];
   }
 
   _SFD_EML_CALL(0,12);
-  for (c3_i70 = 0; c3_i70 < 3; c3_i70 = c3_i70 + 1) {
-    c3_b_eq[c3_i70] = c3_eq[c3_i70];
+  for (c3_i62 = 0; c3_i62 < 3; c3_i62 = c3_i62 + 1) {
+    c3_b_eq[c3_i62] = c3_eq[c3_i62];
   }
 
   if (CV_EML_IF(0, 0, c3_norm(chartInstance, c3_b_eq) > c3_eqeps)) {
     /*     %% instantaneous direct kinematics jacobian */
     /*  vector from base vertex to moving platform vertex */
     _SFD_EML_CALL(0,15);
-    for (c3_i71 = 0; c3_i71 < 3; c3_i71 = c3_i71 + 1) {
-      c3_x[c3_i71] = c3_p_in_w[c3_i71] - c3_b_in_w[c3_i71];
+    for (c3_i63 = 0; c3_i63 < 3; c3_i63 = c3_i63 + 1) {
+      c3_x[c3_i63] = c3_p_in_w[c3_i63] - c3_b_in_w[c3_i63];
     }
 
-    for (c3_i72 = 0; c3_i72 < 3; c3_i72 = c3_i72 + 1) {
-      c3_b_b_in_w[c3_i72] = c3_b_in_w[c3_i72] - c3_p_in_w[c3_i72];
+    for (c3_i64 = 0; c3_i64 < 3; c3_i64 = c3_i64 + 1) {
+      c3_b_b_in_w[c3_i64] = c3_b_in_w[c3_i64] - c3_p_in_w[c3_i64];
     }
 
     c3_c_y = c3_norm(chartInstance, c3_b_b_in_w);
-    for (c3_i73 = 0; c3_i73 < 3; c3_i73 = c3_i73 + 1) {
-      c3_b_x[c3_i73] = c3_x[c3_i73];
+    for (c3_i65 = 0; c3_i65 < 3; c3_i65 = c3_i65 + 1) {
+      c3_b_x[c3_i65] = c3_x[c3_i65];
     }
 
     c3_d_y = c3_c_y;
-    for (c3_i74 = 0; c3_i74 < 3; c3_i74 = c3_i74 + 1) {
-      c3_c_x[c3_i74] = c3_b_x[c3_i74];
+    for (c3_i66 = 0; c3_i66 < 3; c3_i66 = c3_i66 + 1) {
+      c3_c_x[c3_i66] = c3_b_x[c3_i66];
     }
 
     c3_e_y = c3_d_y;
-    for (c3_i75 = 0; c3_i75 < 3; c3_i75 = c3_i75 + 1) {
-      c3_n1hat[c3_i75] = c3_c_x[c3_i75] / c3_e_y;
+    for (c3_i67 = 0; c3_i67 < 3; c3_i67 = c3_i67 + 1) {
+      c3_n1hat[c3_i67] = c3_c_x[c3_i67] / c3_e_y;
     }
 
     _SFD_EML_CALL(0,16);
-    for (c3_i76 = 0; c3_i76 < 3; c3_i76 = c3_i76 + 1) {
-      c3_d_x[c3_i76] = c3_p_in_w[c3_i76 + 3] - c3_b_in_w[c3_i76 + 3];
+    for (c3_i68 = 0; c3_i68 < 3; c3_i68 = c3_i68 + 1) {
+      c3_d_x[c3_i68] = c3_p_in_w[c3_i68 + 3] - c3_b_in_w[c3_i68 + 3];
     }
 
-    for (c3_i77 = 0; c3_i77 < 3; c3_i77 = c3_i77 + 1) {
-      c3_c_b_in_w[c3_i77] = c3_b_in_w[c3_i77 + 3] - c3_p_in_w[c3_i77 + 3];
+    for (c3_i69 = 0; c3_i69 < 3; c3_i69 = c3_i69 + 1) {
+      c3_c_b_in_w[c3_i69] = c3_b_in_w[c3_i69 + 3] - c3_p_in_w[c3_i69 + 3];
     }
 
     c3_f_y = c3_norm(chartInstance, c3_c_b_in_w);
-    for (c3_i78 = 0; c3_i78 < 3; c3_i78 = c3_i78 + 1) {
-      c3_e_x[c3_i78] = c3_d_x[c3_i78];
+    for (c3_i70 = 0; c3_i70 < 3; c3_i70 = c3_i70 + 1) {
+      c3_e_x[c3_i70] = c3_d_x[c3_i70];
     }
 
     c3_g_y = c3_f_y;
-    for (c3_i79 = 0; c3_i79 < 3; c3_i79 = c3_i79 + 1) {
-      c3_f_x[c3_i79] = c3_e_x[c3_i79];
+    for (c3_i71 = 0; c3_i71 < 3; c3_i71 = c3_i71 + 1) {
+      c3_f_x[c3_i71] = c3_e_x[c3_i71];
     }
 
     c3_h_y = c3_g_y;
-    for (c3_i80 = 0; c3_i80 < 3; c3_i80 = c3_i80 + 1) {
-      c3_n2hat[c3_i80] = c3_f_x[c3_i80] / c3_h_y;
+    for (c3_i72 = 0; c3_i72 < 3; c3_i72 = c3_i72 + 1) {
+      c3_n2hat[c3_i72] = c3_f_x[c3_i72] / c3_h_y;
     }
 
     _SFD_EML_CALL(0,17);
-    for (c3_i81 = 0; c3_i81 < 3; c3_i81 = c3_i81 + 1) {
-      c3_g_x[c3_i81] = c3_p_in_w[c3_i81 + 6] - c3_b_in_w[c3_i81 + 6];
+    for (c3_i73 = 0; c3_i73 < 3; c3_i73 = c3_i73 + 1) {
+      c3_g_x[c3_i73] = c3_p_in_w[c3_i73 + 6] - c3_b_in_w[c3_i73 + 6];
     }
 
-    for (c3_i82 = 0; c3_i82 < 3; c3_i82 = c3_i82 + 1) {
-      c3_d_b_in_w[c3_i82] = c3_b_in_w[c3_i82 + 6] - c3_p_in_w[c3_i82 + 6];
+    for (c3_i74 = 0; c3_i74 < 3; c3_i74 = c3_i74 + 1) {
+      c3_d_b_in_w[c3_i74] = c3_b_in_w[c3_i74 + 6] - c3_p_in_w[c3_i74 + 6];
     }
 
     c3_i_y = c3_norm(chartInstance, c3_d_b_in_w);
-    for (c3_i83 = 0; c3_i83 < 3; c3_i83 = c3_i83 + 1) {
-      c3_h_x[c3_i83] = c3_g_x[c3_i83];
+    for (c3_i75 = 0; c3_i75 < 3; c3_i75 = c3_i75 + 1) {
+      c3_h_x[c3_i75] = c3_g_x[c3_i75];
     }
 
     c3_j_y = c3_i_y;
-    for (c3_i84 = 0; c3_i84 < 3; c3_i84 = c3_i84 + 1) {
-      c3_i_x[c3_i84] = c3_h_x[c3_i84];
+    for (c3_i76 = 0; c3_i76 < 3; c3_i76 = c3_i76 + 1) {
+      c3_i_x[c3_i76] = c3_h_x[c3_i76];
     }
 
     c3_k_y = c3_j_y;
-    for (c3_i85 = 0; c3_i85 < 3; c3_i85 = c3_i85 + 1) {
-      c3_n3hat[c3_i85] = c3_i_x[c3_i85] / c3_k_y;
+    for (c3_i77 = 0; c3_i77 < 3; c3_i77 = c3_i77 + 1) {
+      c3_n3hat[c3_i77] = c3_i_x[c3_i77] / c3_k_y;
     }
 
     _SFD_EML_CALL(0,19);
-    for (c3_i86 = 0; c3_i86 < 9; c3_i86 = c3_i86 + 1) {
-      c3_c_a[c3_i86] = c3_rwave[c3_i86];
+    for (c3_i78 = 0; c3_i78 < 9; c3_i78 = c3_i78 + 1) {
+      c3_c_a[c3_i78] = c3_rwave[c3_i78];
     }
 
-    for (c3_i87 = 0; c3_i87 < 3; c3_i87 = c3_i87 + 1) {
-      c3_b_b[c3_i87] = c3_p_in_m[c3_i87];
+    for (c3_i79 = 0; c3_i79 < 3; c3_i79 = c3_i79 + 1) {
+      c3_b_b[c3_i79] = c3_p_in_m[c3_i79];
     }
 
     c3_c_eml_scalar_eg(chartInstance);
     c3_c_eml_scalar_eg(chartInstance);
-    for (c3_i88 = 0; c3_i88 < 9; c3_i88 = c3_i88 + 1) {
-      c3_d_A[c3_i88] = c3_c_a[c3_i88];
+    for (c3_i80 = 0; c3_i80 < 9; c3_i80 = c3_i80 + 1) {
+      c3_d_A[c3_i80] = c3_c_a[c3_i80];
     }
 
-    for (c3_i89 = 0; c3_i89 < 3; c3_i89 = c3_i89 + 1) {
-      c3_d_B[c3_i89] = c3_b_b[c3_i89];
+    for (c3_i81 = 0; c3_i81 < 3; c3_i81 = c3_i81 + 1) {
+      c3_d_B[c3_i81] = c3_b_b[c3_i81];
     }
 
-    for (c3_i90 = 0; c3_i90 < 9; c3_i90 = c3_i90 + 1) {
-      c3_e_A[c3_i90] = c3_d_A[c3_i90];
+    for (c3_i82 = 0; c3_i82 < 9; c3_i82 = c3_i82 + 1) {
+      c3_e_A[c3_i82] = c3_d_A[c3_i82];
     }
 
-    for (c3_i91 = 0; c3_i91 < 3; c3_i91 = c3_i91 + 1) {
-      c3_e_B[c3_i91] = c3_d_B[c3_i91];
+    for (c3_i83 = 0; c3_i83 < 3; c3_i83 = c3_i83 + 1) {
+      c3_e_B[c3_i83] = c3_d_B[c3_i83];
     }
 
-    for (c3_i92 = 0; c3_i92 < 9; c3_i92 = c3_i92 + 1) {
-      c3_f_A[c3_i92] = c3_e_A[c3_i92];
+    for (c3_i84 = 0; c3_i84 < 9; c3_i84 = c3_i84 + 1) {
+      c3_f_A[c3_i84] = c3_e_A[c3_i84];
     }
 
-    for (c3_i93 = 0; c3_i93 < 3; c3_i93 = c3_i93 + 1) {
-      c3_f_B[c3_i93] = c3_e_B[c3_i93];
+    for (c3_i85 = 0; c3_i85 < 3; c3_i85 = c3_i85 + 1) {
+      c3_f_B[c3_i85] = c3_e_B[c3_i85];
     }
 
-    for (c3_i94 = 0; c3_i94 < 3; c3_i94 = c3_i94 + 1) {
-      c3_l_y[c3_i94] = 0.0;
-      c3_i95 = 0;
-      for (c3_i96 = 0; c3_i96 < 3; c3_i96 = c3_i96 + 1) {
-        c3_l_y[c3_i94] = c3_l_y[c3_i94] + c3_f_A[c3_i95 + c3_i94] *
-          c3_f_B[c3_i96];
-        c3_i95 = c3_i95 + 3;
+    for (c3_i86 = 0; c3_i86 < 3; c3_i86 = c3_i86 + 1) {
+      c3_l_y[c3_i86] = 0.0;
+      c3_i87 = 0;
+      for (c3_i88 = 0; c3_i88 < 3; c3_i88 = c3_i88 + 1) {
+        c3_l_y[c3_i86] = c3_l_y[c3_i86] + c3_f_A[c3_i87 + c3_i86] *
+          c3_f_B[c3_i88];
+        c3_i87 = c3_i87 + 3;
       }
     }
 
-    for (c3_i97 = 0; c3_i97 < 3; c3_i97 = c3_i97 + 1) {
-      c3_m_y[c3_i97] = c3_l_y[c3_i97];
+    for (c3_i89 = 0; c3_i89 < 3; c3_i89 = c3_i89 + 1) {
+      c3_m_y[c3_i89] = c3_l_y[c3_i89];
     }
 
-    for (c3_i98 = 0; c3_i98 < 3; c3_i98 = c3_i98 + 1) {
-      c3_b_n1hat[c3_i98] = c3_n1hat[c3_i98];
+    for (c3_i90 = 0; c3_i90 < 3; c3_i90 = c3_i90 + 1) {
+      c3_b_n1hat[c3_i90] = c3_n1hat[c3_i90];
     }
 
     c3_cross(chartInstance, c3_m_y, c3_b_n1hat, c3_c_b);
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i99 = 0; c3_i99 < 3; c3_i99 = c3_i99 + 1) {
-      c3_dv6[c3_i99] = c3_dv5[c3_i99];
+    for (c3_i91 = 0; c3_i91 < 3; c3_i91 = c3_i91 + 1) {
+      c3_dv5[c3_i91] = c3_dv4[c3_i91];
+    }
+
+    for (c3_i92 = 0; c3_i92 < 3; c3_i92 = c3_i92 + 1) {
+      c3_d_b[c3_i92] = c3_c_b[c3_i92];
+    }
+
+    c3_a13 = c3_eml_xdotu(chartInstance, c3_dv5, c3_d_b);
+    _SFD_EML_CALL(0,20);
+    for (c3_i93 = 0; c3_i93 < 9; c3_i93 = c3_i93 + 1) {
+      c3_d_a[c3_i93] = c3_rwave[c3_i93];
+    }
+
+    for (c3_i94 = 0; c3_i94 < 3; c3_i94 = c3_i94 + 1) {
+      c3_e_b[c3_i94] = c3_p_in_m[c3_i94 + 3];
+    }
+
+    c3_c_eml_scalar_eg(chartInstance);
+    c3_c_eml_scalar_eg(chartInstance);
+    for (c3_i95 = 0; c3_i95 < 9; c3_i95 = c3_i95 + 1) {
+      c3_g_A[c3_i95] = c3_d_a[c3_i95];
+    }
+
+    for (c3_i96 = 0; c3_i96 < 3; c3_i96 = c3_i96 + 1) {
+      c3_g_B[c3_i96] = c3_e_b[c3_i96];
+    }
+
+    for (c3_i97 = 0; c3_i97 < 9; c3_i97 = c3_i97 + 1) {
+      c3_h_A[c3_i97] = c3_g_A[c3_i97];
+    }
+
+    for (c3_i98 = 0; c3_i98 < 3; c3_i98 = c3_i98 + 1) {
+      c3_h_B[c3_i98] = c3_g_B[c3_i98];
+    }
+
+    for (c3_i99 = 0; c3_i99 < 9; c3_i99 = c3_i99 + 1) {
+      c3_i_A[c3_i99] = c3_h_A[c3_i99];
     }
 
     for (c3_i100 = 0; c3_i100 < 3; c3_i100 = c3_i100 + 1) {
-      c3_d_b[c3_i100] = c3_c_b[c3_i100];
+      c3_i_B[c3_i100] = c3_h_B[c3_i100];
     }
 
-    c3_a13 = c3_eml_xdotu(chartInstance, c3_dv6, c3_d_b);
-    _SFD_EML_CALL(0,20);
-    for (c3_i101 = 0; c3_i101 < 9; c3_i101 = c3_i101 + 1) {
-      c3_d_a[c3_i101] = c3_rwave[c3_i101];
-    }
-
-    for (c3_i102 = 0; c3_i102 < 3; c3_i102 = c3_i102 + 1) {
-      c3_e_b[c3_i102] = c3_p_in_m[c3_i102 + 3];
-    }
-
-    c3_c_eml_scalar_eg(chartInstance);
-    c3_c_eml_scalar_eg(chartInstance);
-    for (c3_i103 = 0; c3_i103 < 9; c3_i103 = c3_i103 + 1) {
-      c3_g_A[c3_i103] = c3_d_a[c3_i103];
-    }
-
-    for (c3_i104 = 0; c3_i104 < 3; c3_i104 = c3_i104 + 1) {
-      c3_g_B[c3_i104] = c3_e_b[c3_i104];
-    }
-
-    for (c3_i105 = 0; c3_i105 < 9; c3_i105 = c3_i105 + 1) {
-      c3_h_A[c3_i105] = c3_g_A[c3_i105];
-    }
-
-    for (c3_i106 = 0; c3_i106 < 3; c3_i106 = c3_i106 + 1) {
-      c3_h_B[c3_i106] = c3_g_B[c3_i106];
-    }
-
-    for (c3_i107 = 0; c3_i107 < 9; c3_i107 = c3_i107 + 1) {
-      c3_i_A[c3_i107] = c3_h_A[c3_i107];
-    }
-
-    for (c3_i108 = 0; c3_i108 < 3; c3_i108 = c3_i108 + 1) {
-      c3_i_B[c3_i108] = c3_h_B[c3_i108];
-    }
-
-    for (c3_i109 = 0; c3_i109 < 3; c3_i109 = c3_i109 + 1) {
-      c3_n_y[c3_i109] = 0.0;
-      c3_i110 = 0;
-      for (c3_i111 = 0; c3_i111 < 3; c3_i111 = c3_i111 + 1) {
-        c3_n_y[c3_i109] = c3_n_y[c3_i109] + c3_i_A[c3_i110 + c3_i109] *
-          c3_i_B[c3_i111];
-        c3_i110 = c3_i110 + 3;
+    for (c3_i101 = 0; c3_i101 < 3; c3_i101 = c3_i101 + 1) {
+      c3_n_y[c3_i101] = 0.0;
+      c3_i102 = 0;
+      for (c3_i103 = 0; c3_i103 < 3; c3_i103 = c3_i103 + 1) {
+        c3_n_y[c3_i101] = c3_n_y[c3_i101] + c3_i_A[c3_i102 + c3_i101] *
+          c3_i_B[c3_i103];
+        c3_i102 = c3_i102 + 3;
       }
     }
 
-    for (c3_i112 = 0; c3_i112 < 3; c3_i112 = c3_i112 + 1) {
-      c3_o_y[c3_i112] = c3_n_y[c3_i112];
+    for (c3_i104 = 0; c3_i104 < 3; c3_i104 = c3_i104 + 1) {
+      c3_o_y[c3_i104] = c3_n_y[c3_i104];
     }
 
-    for (c3_i113 = 0; c3_i113 < 3; c3_i113 = c3_i113 + 1) {
-      c3_b_n2hat[c3_i113] = c3_n2hat[c3_i113];
+    for (c3_i105 = 0; c3_i105 < 3; c3_i105 = c3_i105 + 1) {
+      c3_b_n2hat[c3_i105] = c3_n2hat[c3_i105];
     }
 
     c3_cross(chartInstance, c3_o_y, c3_b_n2hat, c3_f_b);
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i114 = 0; c3_i114 < 3; c3_i114 = c3_i114 + 1) {
-      c3_dv7[c3_i114] = c3_dv5[c3_i114];
+    for (c3_i106 = 0; c3_i106 < 3; c3_i106 = c3_i106 + 1) {
+      c3_dv6[c3_i106] = c3_dv4[c3_i106];
+    }
+
+    for (c3_i107 = 0; c3_i107 < 3; c3_i107 = c3_i107 + 1) {
+      c3_g_b[c3_i107] = c3_f_b[c3_i107];
+    }
+
+    c3_a23 = c3_eml_xdotu(chartInstance, c3_dv6, c3_g_b);
+    _SFD_EML_CALL(0,21);
+    for (c3_i108 = 0; c3_i108 < 9; c3_i108 = c3_i108 + 1) {
+      c3_e_a[c3_i108] = c3_rwave[c3_i108];
+    }
+
+    for (c3_i109 = 0; c3_i109 < 3; c3_i109 = c3_i109 + 1) {
+      c3_h_b[c3_i109] = c3_p_in_m[c3_i109 + 6];
+    }
+
+    c3_c_eml_scalar_eg(chartInstance);
+    c3_c_eml_scalar_eg(chartInstance);
+    for (c3_i110 = 0; c3_i110 < 9; c3_i110 = c3_i110 + 1) {
+      c3_j_A[c3_i110] = c3_e_a[c3_i110];
+    }
+
+    for (c3_i111 = 0; c3_i111 < 3; c3_i111 = c3_i111 + 1) {
+      c3_j_B[c3_i111] = c3_h_b[c3_i111];
+    }
+
+    for (c3_i112 = 0; c3_i112 < 9; c3_i112 = c3_i112 + 1) {
+      c3_k_A[c3_i112] = c3_j_A[c3_i112];
+    }
+
+    for (c3_i113 = 0; c3_i113 < 3; c3_i113 = c3_i113 + 1) {
+      c3_k_B[c3_i113] = c3_j_B[c3_i113];
+    }
+
+    for (c3_i114 = 0; c3_i114 < 9; c3_i114 = c3_i114 + 1) {
+      c3_l_A[c3_i114] = c3_k_A[c3_i114];
     }
 
     for (c3_i115 = 0; c3_i115 < 3; c3_i115 = c3_i115 + 1) {
-      c3_g_b[c3_i115] = c3_f_b[c3_i115];
+      c3_l_B[c3_i115] = c3_k_B[c3_i115];
     }
 
-    c3_a23 = c3_eml_xdotu(chartInstance, c3_dv7, c3_g_b);
-    _SFD_EML_CALL(0,21);
-    for (c3_i116 = 0; c3_i116 < 9; c3_i116 = c3_i116 + 1) {
-      c3_e_a[c3_i116] = c3_rwave[c3_i116];
-    }
-
-    for (c3_i117 = 0; c3_i117 < 3; c3_i117 = c3_i117 + 1) {
-      c3_h_b[c3_i117] = c3_p_in_m[c3_i117 + 6];
-    }
-
-    c3_c_eml_scalar_eg(chartInstance);
-    c3_c_eml_scalar_eg(chartInstance);
-    for (c3_i118 = 0; c3_i118 < 9; c3_i118 = c3_i118 + 1) {
-      c3_j_A[c3_i118] = c3_e_a[c3_i118];
-    }
-
-    for (c3_i119 = 0; c3_i119 < 3; c3_i119 = c3_i119 + 1) {
-      c3_j_B[c3_i119] = c3_h_b[c3_i119];
-    }
-
-    for (c3_i120 = 0; c3_i120 < 9; c3_i120 = c3_i120 + 1) {
-      c3_k_A[c3_i120] = c3_j_A[c3_i120];
-    }
-
-    for (c3_i121 = 0; c3_i121 < 3; c3_i121 = c3_i121 + 1) {
-      c3_k_B[c3_i121] = c3_j_B[c3_i121];
-    }
-
-    for (c3_i122 = 0; c3_i122 < 9; c3_i122 = c3_i122 + 1) {
-      c3_l_A[c3_i122] = c3_k_A[c3_i122];
-    }
-
-    for (c3_i123 = 0; c3_i123 < 3; c3_i123 = c3_i123 + 1) {
-      c3_l_B[c3_i123] = c3_k_B[c3_i123];
-    }
-
-    for (c3_i124 = 0; c3_i124 < 3; c3_i124 = c3_i124 + 1) {
-      c3_p_y[c3_i124] = 0.0;
-      c3_i125 = 0;
-      for (c3_i126 = 0; c3_i126 < 3; c3_i126 = c3_i126 + 1) {
-        c3_p_y[c3_i124] = c3_p_y[c3_i124] + c3_l_A[c3_i125 + c3_i124] *
-          c3_l_B[c3_i126];
-        c3_i125 = c3_i125 + 3;
+    for (c3_i116 = 0; c3_i116 < 3; c3_i116 = c3_i116 + 1) {
+      c3_p_y[c3_i116] = 0.0;
+      c3_i117 = 0;
+      for (c3_i118 = 0; c3_i118 < 3; c3_i118 = c3_i118 + 1) {
+        c3_p_y[c3_i116] = c3_p_y[c3_i116] + c3_l_A[c3_i117 + c3_i116] *
+          c3_l_B[c3_i118];
+        c3_i117 = c3_i117 + 3;
       }
     }
 
-    for (c3_i127 = 0; c3_i127 < 3; c3_i127 = c3_i127 + 1) {
-      c3_q_y[c3_i127] = c3_p_y[c3_i127];
+    for (c3_i119 = 0; c3_i119 < 3; c3_i119 = c3_i119 + 1) {
+      c3_q_y[c3_i119] = c3_p_y[c3_i119];
     }
 
-    for (c3_i128 = 0; c3_i128 < 3; c3_i128 = c3_i128 + 1) {
-      c3_b_n3hat[c3_i128] = c3_n3hat[c3_i128];
+    for (c3_i120 = 0; c3_i120 < 3; c3_i120 = c3_i120 + 1) {
+      c3_b_n3hat[c3_i120] = c3_n3hat[c3_i120];
     }
 
     c3_cross(chartInstance, c3_q_y, c3_b_n3hat, c3_i_b);
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i129 = 0; c3_i129 < 3; c3_i129 = c3_i129 + 1) {
-      c3_dv8[c3_i129] = c3_dv5[c3_i129];
+    for (c3_i121 = 0; c3_i121 < 3; c3_i121 = c3_i121 + 1) {
+      c3_dv7[c3_i121] = c3_dv4[c3_i121];
     }
 
-    for (c3_i130 = 0; c3_i130 < 3; c3_i130 = c3_i130 + 1) {
-      c3_j_b[c3_i130] = c3_i_b[c3_i130];
+    for (c3_i122 = 0; c3_i122 < 3; c3_i122 = c3_i122 + 1) {
+      c3_j_b[c3_i122] = c3_i_b[c3_i122];
     }
 
-    c3_a33 = c3_eml_xdotu(chartInstance, c3_dv8, c3_j_b);
+    c3_a33 = c3_eml_xdotu(chartInstance, c3_dv7, c3_j_b);
     _SFD_EML_CALL(0,23);
     c3_idk_jac[0] = c3_n1hat[0];
     c3_idk_jac[3] = c3_n1hat[1];
@@ -1809,134 +1774,134 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     /*     %% instantaneous inverse kinematics jacobian */
     /*  micro actuator (TWA) lengths */
     _SFD_EML_CALL(0,29);
-    for (c3_i131 = 0; c3_i131 < 3; c3_i131 = c3_i131 + 1) {
-      c3_e_b_in_w[c3_i131] = c3_b_in_w[c3_i131] - c3_m_in_w[c3_i131];
+    for (c3_i123 = 0; c3_i123 < 3; c3_i123 = c3_i123 + 1) {
+      c3_e_b_in_w[c3_i123] = c3_b_in_w[c3_i123] - c3_m_in_w[c3_i123];
     }
 
     c3_q1_mu = c3_norm(chartInstance, c3_e_b_in_w);
     _SFD_EML_CALL(0,30);
-    for (c3_i132 = 0; c3_i132 < 3; c3_i132 = c3_i132 + 1) {
-      c3_f_b_in_w[c3_i132] = c3_b_in_w[c3_i132 + 3] - c3_m_in_w[c3_i132 + 3];
+    for (c3_i124 = 0; c3_i124 < 3; c3_i124 = c3_i124 + 1) {
+      c3_f_b_in_w[c3_i124] = c3_b_in_w[c3_i124 + 3] - c3_m_in_w[c3_i124 + 3];
     }
 
     c3_q2_mu = c3_norm(chartInstance, c3_f_b_in_w);
     _SFD_EML_CALL(0,31);
-    for (c3_i133 = 0; c3_i133 < 3; c3_i133 = c3_i133 + 1) {
-      c3_g_b_in_w[c3_i133] = c3_b_in_w[c3_i133 + 6] - c3_m_in_w[c3_i133 + 6];
+    for (c3_i125 = 0; c3_i125 < 3; c3_i125 = c3_i125 + 1) {
+      c3_g_b_in_w[c3_i125] = c3_b_in_w[c3_i125 + 6] - c3_m_in_w[c3_i125 + 6];
     }
 
     c3_q3_mu = c3_norm(chartInstance, c3_g_b_in_w);
 
     /*  vector from base vertex to twa motor attachment point */
     _SFD_EML_CALL(0,34);
-    for (c3_i134 = 0; c3_i134 < 3; c3_i134 = c3_i134 + 1) {
-      c3_j_x[c3_i134] = c3_m_in_w[c3_i134] - c3_b_in_w[c3_i134];
+    for (c3_i126 = 0; c3_i126 < 3; c3_i126 = c3_i126 + 1) {
+      c3_j_x[c3_i126] = c3_m_in_w[c3_i126] - c3_b_in_w[c3_i126];
     }
 
-    for (c3_i135 = 0; c3_i135 < 3; c3_i135 = c3_i135 + 1) {
-      c3_b_m_in_w[c3_i135] = c3_m_in_w[c3_i135] - c3_b_in_w[c3_i135];
+    for (c3_i127 = 0; c3_i127 < 3; c3_i127 = c3_i127 + 1) {
+      c3_b_m_in_w[c3_i127] = c3_m_in_w[c3_i127] - c3_b_in_w[c3_i127];
     }
 
     c3_r_y = c3_norm(chartInstance, c3_b_m_in_w);
-    for (c3_i136 = 0; c3_i136 < 3; c3_i136 = c3_i136 + 1) {
-      c3_k_x[c3_i136] = c3_j_x[c3_i136];
+    for (c3_i128 = 0; c3_i128 < 3; c3_i128 = c3_i128 + 1) {
+      c3_k_x[c3_i128] = c3_j_x[c3_i128];
     }
 
     c3_s_y = c3_r_y;
-    for (c3_i137 = 0; c3_i137 < 3; c3_i137 = c3_i137 + 1) {
-      c3_l_x[c3_i137] = c3_k_x[c3_i137];
+    for (c3_i129 = 0; c3_i129 < 3; c3_i129 = c3_i129 + 1) {
+      c3_l_x[c3_i129] = c3_k_x[c3_i129];
     }
 
     c3_t_y = c3_s_y;
-    for (c3_i138 = 0; c3_i138 < 3; c3_i138 = c3_i138 + 1) {
-      c3_l1_hat[c3_i138] = c3_l_x[c3_i138] / c3_t_y;
+    for (c3_i130 = 0; c3_i130 < 3; c3_i130 = c3_i130 + 1) {
+      c3_l1_hat[c3_i130] = c3_l_x[c3_i130] / c3_t_y;
     }
 
     _SFD_EML_CALL(0,35);
-    for (c3_i139 = 0; c3_i139 < 3; c3_i139 = c3_i139 + 1) {
-      c3_m_x[c3_i139] = c3_m_in_w[c3_i139 + 3] - c3_b_in_w[c3_i139 + 3];
+    for (c3_i131 = 0; c3_i131 < 3; c3_i131 = c3_i131 + 1) {
+      c3_m_x[c3_i131] = c3_m_in_w[c3_i131 + 3] - c3_b_in_w[c3_i131 + 3];
     }
 
-    for (c3_i140 = 0; c3_i140 < 3; c3_i140 = c3_i140 + 1) {
-      c3_c_m_in_w[c3_i140] = c3_m_in_w[c3_i140 + 3] - c3_b_in_w[c3_i140 + 3];
+    for (c3_i132 = 0; c3_i132 < 3; c3_i132 = c3_i132 + 1) {
+      c3_c_m_in_w[c3_i132] = c3_m_in_w[c3_i132 + 3] - c3_b_in_w[c3_i132 + 3];
     }
 
     c3_u_y = c3_norm(chartInstance, c3_c_m_in_w);
-    for (c3_i141 = 0; c3_i141 < 3; c3_i141 = c3_i141 + 1) {
-      c3_n_x[c3_i141] = c3_m_x[c3_i141];
+    for (c3_i133 = 0; c3_i133 < 3; c3_i133 = c3_i133 + 1) {
+      c3_n_x[c3_i133] = c3_m_x[c3_i133];
     }
 
     c3_v_y = c3_u_y;
-    for (c3_i142 = 0; c3_i142 < 3; c3_i142 = c3_i142 + 1) {
-      c3_o_x[c3_i142] = c3_n_x[c3_i142];
+    for (c3_i134 = 0; c3_i134 < 3; c3_i134 = c3_i134 + 1) {
+      c3_o_x[c3_i134] = c3_n_x[c3_i134];
     }
 
     c3_w_y = c3_v_y;
-    for (c3_i143 = 0; c3_i143 < 3; c3_i143 = c3_i143 + 1) {
-      c3_l2_hat[c3_i143] = c3_o_x[c3_i143] / c3_w_y;
+    for (c3_i135 = 0; c3_i135 < 3; c3_i135 = c3_i135 + 1) {
+      c3_l2_hat[c3_i135] = c3_o_x[c3_i135] / c3_w_y;
     }
 
     _SFD_EML_CALL(0,36);
-    for (c3_i144 = 0; c3_i144 < 3; c3_i144 = c3_i144 + 1) {
-      c3_p_x[c3_i144] = c3_m_in_w[c3_i144 + 6] - c3_b_in_w[c3_i144 + 6];
+    for (c3_i136 = 0; c3_i136 < 3; c3_i136 = c3_i136 + 1) {
+      c3_p_x[c3_i136] = c3_m_in_w[c3_i136 + 6] - c3_b_in_w[c3_i136 + 6];
     }
 
-    for (c3_i145 = 0; c3_i145 < 3; c3_i145 = c3_i145 + 1) {
-      c3_d_m_in_w[c3_i145] = c3_m_in_w[c3_i145 + 6] - c3_b_in_w[c3_i145 + 6];
+    for (c3_i137 = 0; c3_i137 < 3; c3_i137 = c3_i137 + 1) {
+      c3_d_m_in_w[c3_i137] = c3_m_in_w[c3_i137 + 6] - c3_b_in_w[c3_i137 + 6];
     }
 
     c3_x_y = c3_norm(chartInstance, c3_d_m_in_w);
-    for (c3_i146 = 0; c3_i146 < 3; c3_i146 = c3_i146 + 1) {
-      c3_q_x[c3_i146] = c3_p_x[c3_i146];
+    for (c3_i138 = 0; c3_i138 < 3; c3_i138 = c3_i138 + 1) {
+      c3_q_x[c3_i138] = c3_p_x[c3_i138];
     }
 
     c3_y_y = c3_x_y;
-    for (c3_i147 = 0; c3_i147 < 3; c3_i147 = c3_i147 + 1) {
-      c3_r_x[c3_i147] = c3_q_x[c3_i147];
+    for (c3_i139 = 0; c3_i139 < 3; c3_i139 = c3_i139 + 1) {
+      c3_r_x[c3_i139] = c3_q_x[c3_i139];
     }
 
     c3_ab_y = c3_y_y;
-    for (c3_i148 = 0; c3_i148 < 3; c3_i148 = c3_i148 + 1) {
-      c3_l3_hat[c3_i148] = c3_r_x[c3_i148] / c3_ab_y;
+    for (c3_i140 = 0; c3_i140 < 3; c3_i140 = c3_i140 + 1) {
+      c3_l3_hat[c3_i140] = c3_r_x[c3_i140] / c3_ab_y;
     }
 
     /*  distance from micro actuator attachmnet point (m_i) to flexure rotation */
     /* center (f_i) */
     _SFD_EML_CALL(0,40);
-    for (c3_i149 = 0; c3_i149 < 3; c3_i149 = c3_i149 + 1) {
-      c3_e_m_in_w[c3_i149] = c3_m_in_w[c3_i149] - c3_f_in_w[c3_i149];
+    for (c3_i141 = 0; c3_i141 < 3; c3_i141 = c3_i141 + 1) {
+      c3_e_m_in_w[c3_i141] = c3_m_in_w[c3_i141] - c3_f_in_w[c3_i141];
     }
 
     c3_a1 = c3_norm(chartInstance, c3_e_m_in_w);
     _SFD_EML_CALL(0,41);
-    for (c3_i150 = 0; c3_i150 < 3; c3_i150 = c3_i150 + 1) {
-      c3_f_m_in_w[c3_i150] = c3_m_in_w[c3_i150 + 3] - c3_f_in_w[c3_i150 + 3];
+    for (c3_i142 = 0; c3_i142 < 3; c3_i142 = c3_i142 + 1) {
+      c3_f_m_in_w[c3_i142] = c3_m_in_w[c3_i142 + 3] - c3_f_in_w[c3_i142 + 3];
     }
 
     c3_a2 = c3_norm(chartInstance, c3_f_m_in_w);
     _SFD_EML_CALL(0,42);
-    for (c3_i151 = 0; c3_i151 < 3; c3_i151 = c3_i151 + 1) {
-      c3_g_m_in_w[c3_i151] = c3_m_in_w[c3_i151 + 6] - c3_f_in_w[c3_i151 + 6];
+    for (c3_i143 = 0; c3_i143 < 3; c3_i143 = c3_i143 + 1) {
+      c3_g_m_in_w[c3_i143] = c3_m_in_w[c3_i143 + 6] - c3_f_in_w[c3_i143 + 6];
     }
 
     c3_a3 = c3_norm(chartInstance, c3_g_m_in_w);
 
     /*  distance from flexure rotation center (f_i) to base vertex */
     _SFD_EML_CALL(0,45);
-    for (c3_i152 = 0; c3_i152 < 3; c3_i152 = c3_i152 + 1) {
-      c3_h_b_in_w[c3_i152] = c3_b_in_w[c3_i152] - c3_f_in_w[c3_i152];
+    for (c3_i144 = 0; c3_i144 < 3; c3_i144 = c3_i144 + 1) {
+      c3_h_b_in_w[c3_i144] = c3_b_in_w[c3_i144] - c3_f_in_w[c3_i144];
     }
 
     c3_c1 = c3_norm(chartInstance, c3_h_b_in_w);
     _SFD_EML_CALL(0,46);
-    for (c3_i153 = 0; c3_i153 < 3; c3_i153 = c3_i153 + 1) {
-      c3_i_b_in_w[c3_i153] = c3_b_in_w[c3_i153 + 3] - c3_f_in_w[c3_i153 + 3];
+    for (c3_i145 = 0; c3_i145 < 3; c3_i145 = c3_i145 + 1) {
+      c3_i_b_in_w[c3_i145] = c3_b_in_w[c3_i145 + 3] - c3_f_in_w[c3_i145 + 3];
     }
 
     c3_c2 = c3_norm(chartInstance, c3_i_b_in_w);
     _SFD_EML_CALL(0,47);
-    for (c3_i154 = 0; c3_i154 < 3; c3_i154 = c3_i154 + 1) {
-      c3_j_b_in_w[c3_i154] = c3_b_in_w[c3_i154 + 6] - c3_f_in_w[c3_i154 + 6];
+    for (c3_i146 = 0; c3_i146 < 3; c3_i146 = c3_i146 + 1) {
+      c3_j_b_in_w[c3_i146] = c3_b_in_w[c3_i146 + 6] - c3_f_in_w[c3_i146 + 6];
     }
 
     c3_c3 = c3_norm(chartInstance, c3_j_b_in_w);
@@ -2071,21 +2036,21 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_rc_y = c3_qc_y;
     c3_h3dot = c3_kb_x / c3_rc_y;
     _SFD_EML_CALL(0,59);
-    for (c3_i155 = 0; c3_i155 < 3; c3_i155 = c3_i155 + 1) {
-      c3_u_a[c3_i155] = c3_n1hat[c3_i155];
+    for (c3_i147 = 0; c3_i147 < 3; c3_i147 = c3_i147 + 1) {
+      c3_u_a[c3_i147] = c3_n1hat[c3_i147];
     }
 
-    for (c3_i156 = 0; c3_i156 < 3; c3_i156 = c3_i156 + 1) {
-      c3_gb_b[c3_i156] = c3_l1_hat[c3_i156];
+    for (c3_i148 = 0; c3_i148 < 3; c3_i148 = c3_i148 + 1) {
+      c3_gb_b[c3_i148] = c3_l1_hat[c3_i148];
     }
 
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i157 = 0; c3_i157 < 3; c3_i157 = c3_i157 + 1) {
-      c3_v_a[c3_i157] = c3_u_a[c3_i157];
+    for (c3_i149 = 0; c3_i149 < 3; c3_i149 = c3_i149 + 1) {
+      c3_v_a[c3_i149] = c3_u_a[c3_i149];
     }
 
-    for (c3_i158 = 0; c3_i158 < 3; c3_i158 = c3_i158 + 1) {
-      c3_hb_b[c3_i158] = c3_gb_b[c3_i158];
+    for (c3_i150 = 0; c3_i150 < 3; c3_i150 = c3_i150 + 1) {
+      c3_hb_b[c3_i150] = c3_gb_b[c3_i150];
     }
 
     c3_sc_y = c3_eml_xdotu(chartInstance, c3_v_a, c3_hb_b);
@@ -2102,54 +2067,54 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_wc_y = c3_vc_y;
     c3_xc_y = c3_nb_x / c3_wc_y;
     c3_x_a = c3_xc_y;
-    for (c3_i159 = 0; c3_i159 < 3; c3_i159 = c3_i159 + 1) {
-      c3_jb_b[c3_i159] = c3_n1hat[c3_i159];
+    for (c3_i151 = 0; c3_i151 < 3; c3_i151 = c3_i151 + 1) {
+      c3_jb_b[c3_i151] = c3_n1hat[c3_i151];
     }
 
-    for (c3_i160 = 0; c3_i160 < 3; c3_i160 = c3_i160 + 1) {
-      c3_yc_y[c3_i160] = c3_x_a * c3_jb_b[c3_i160];
+    for (c3_i152 = 0; c3_i152 < 3; c3_i152 = c3_i152 + 1) {
+      c3_yc_y[c3_i152] = c3_x_a * c3_jb_b[c3_i152];
     }
 
-    for (c3_i161 = 0; c3_i161 < 3; c3_i161 = c3_i161 + 1) {
-      c3_y_a[c3_i161] = c3_yc_y[c3_i161];
+    for (c3_i153 = 0; c3_i153 < 3; c3_i153 = c3_i153 + 1) {
+      c3_y_a[c3_i153] = c3_yc_y[c3_i153];
     }
 
-    for (c3_i162 = 0; c3_i162 < 3; c3_i162 = c3_i162 + 1) {
-      c3_dv9[c3_i162] = c3_dv5[c3_i162];
+    for (c3_i154 = 0; c3_i154 < 3; c3_i154 = c3_i154 + 1) {
+      c3_dv8[c3_i154] = c3_dv4[c3_i154];
     }
 
-    for (c3_i163 = 0; c3_i163 < 3; c3_i163 = c3_i163 + 1) {
-      c3_b_l1_hat[c3_i163] = c3_l1_hat[c3_i163];
+    for (c3_i155 = 0; c3_i155 < 3; c3_i155 = c3_i155 + 1) {
+      c3_b_l1_hat[c3_i155] = c3_l1_hat[c3_i155];
     }
 
-    c3_cross(chartInstance, c3_dv9, c3_b_l1_hat, c3_kb_b);
+    c3_cross(chartInstance, c3_dv8, c3_b_l1_hat, c3_kb_b);
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i164 = 0; c3_i164 < 3; c3_i164 = c3_i164 + 1) {
-      c3_ab_a[c3_i164] = c3_y_a[c3_i164];
+    for (c3_i156 = 0; c3_i156 < 3; c3_i156 = c3_i156 + 1) {
+      c3_ab_a[c3_i156] = c3_y_a[c3_i156];
     }
 
-    for (c3_i165 = 0; c3_i165 < 3; c3_i165 = c3_i165 + 1) {
-      c3_lb_b[c3_i165] = c3_kb_b[c3_i165];
+    for (c3_i157 = 0; c3_i157 < 3; c3_i157 = c3_i157 + 1) {
+      c3_lb_b[c3_i157] = c3_kb_b[c3_i157];
     }
 
     c3_ad_y = c3_eml_xdotu(chartInstance, c3_ab_a, c3_lb_b);
     c3_e1 = c3_sc_y + c3_ad_y;
     _SFD_EML_CALL(0,60);
-    for (c3_i166 = 0; c3_i166 < 3; c3_i166 = c3_i166 + 1) {
-      c3_bb_a[c3_i166] = c3_n2hat[c3_i166];
+    for (c3_i158 = 0; c3_i158 < 3; c3_i158 = c3_i158 + 1) {
+      c3_bb_a[c3_i158] = c3_n2hat[c3_i158];
     }
 
-    for (c3_i167 = 0; c3_i167 < 3; c3_i167 = c3_i167 + 1) {
-      c3_mb_b[c3_i167] = c3_l2_hat[c3_i167];
+    for (c3_i159 = 0; c3_i159 < 3; c3_i159 = c3_i159 + 1) {
+      c3_mb_b[c3_i159] = c3_l2_hat[c3_i159];
     }
 
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i168 = 0; c3_i168 < 3; c3_i168 = c3_i168 + 1) {
-      c3_cb_a[c3_i168] = c3_bb_a[c3_i168];
+    for (c3_i160 = 0; c3_i160 < 3; c3_i160 = c3_i160 + 1) {
+      c3_cb_a[c3_i160] = c3_bb_a[c3_i160];
     }
 
-    for (c3_i169 = 0; c3_i169 < 3; c3_i169 = c3_i169 + 1) {
-      c3_nb_b[c3_i169] = c3_mb_b[c3_i169];
+    for (c3_i161 = 0; c3_i161 < 3; c3_i161 = c3_i161 + 1) {
+      c3_nb_b[c3_i161] = c3_mb_b[c3_i161];
     }
 
     c3_bd_y = c3_eml_xdotu(chartInstance, c3_cb_a, c3_nb_b);
@@ -2166,54 +2131,54 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_fd_y = c3_ed_y;
     c3_gd_y = c3_qb_x / c3_fd_y;
     c3_eb_a = c3_gd_y;
-    for (c3_i170 = 0; c3_i170 < 3; c3_i170 = c3_i170 + 1) {
-      c3_pb_b[c3_i170] = c3_n2hat[c3_i170];
+    for (c3_i162 = 0; c3_i162 < 3; c3_i162 = c3_i162 + 1) {
+      c3_pb_b[c3_i162] = c3_n2hat[c3_i162];
     }
 
-    for (c3_i171 = 0; c3_i171 < 3; c3_i171 = c3_i171 + 1) {
-      c3_hd_y[c3_i171] = c3_eb_a * c3_pb_b[c3_i171];
+    for (c3_i163 = 0; c3_i163 < 3; c3_i163 = c3_i163 + 1) {
+      c3_hd_y[c3_i163] = c3_eb_a * c3_pb_b[c3_i163];
     }
 
-    for (c3_i172 = 0; c3_i172 < 3; c3_i172 = c3_i172 + 1) {
-      c3_fb_a[c3_i172] = c3_hd_y[c3_i172];
+    for (c3_i164 = 0; c3_i164 < 3; c3_i164 = c3_i164 + 1) {
+      c3_fb_a[c3_i164] = c3_hd_y[c3_i164];
     }
 
-    for (c3_i173 = 0; c3_i173 < 3; c3_i173 = c3_i173 + 1) {
-      c3_dv10[c3_i173] = c3_dv5[c3_i173];
+    for (c3_i165 = 0; c3_i165 < 3; c3_i165 = c3_i165 + 1) {
+      c3_dv9[c3_i165] = c3_dv4[c3_i165];
     }
 
-    for (c3_i174 = 0; c3_i174 < 3; c3_i174 = c3_i174 + 1) {
-      c3_b_l2_hat[c3_i174] = c3_l2_hat[c3_i174];
+    for (c3_i166 = 0; c3_i166 < 3; c3_i166 = c3_i166 + 1) {
+      c3_b_l2_hat[c3_i166] = c3_l2_hat[c3_i166];
     }
 
-    c3_cross(chartInstance, c3_dv10, c3_b_l2_hat, c3_qb_b);
+    c3_cross(chartInstance, c3_dv9, c3_b_l2_hat, c3_qb_b);
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i175 = 0; c3_i175 < 3; c3_i175 = c3_i175 + 1) {
-      c3_gb_a[c3_i175] = c3_fb_a[c3_i175];
+    for (c3_i167 = 0; c3_i167 < 3; c3_i167 = c3_i167 + 1) {
+      c3_gb_a[c3_i167] = c3_fb_a[c3_i167];
     }
 
-    for (c3_i176 = 0; c3_i176 < 3; c3_i176 = c3_i176 + 1) {
-      c3_rb_b[c3_i176] = c3_qb_b[c3_i176];
+    for (c3_i168 = 0; c3_i168 < 3; c3_i168 = c3_i168 + 1) {
+      c3_rb_b[c3_i168] = c3_qb_b[c3_i168];
     }
 
     c3_id_y = c3_eml_xdotu(chartInstance, c3_gb_a, c3_rb_b);
     c3_e2 = c3_bd_y + c3_id_y;
     _SFD_EML_CALL(0,61);
-    for (c3_i177 = 0; c3_i177 < 3; c3_i177 = c3_i177 + 1) {
-      c3_hb_a[c3_i177] = c3_n3hat[c3_i177];
+    for (c3_i169 = 0; c3_i169 < 3; c3_i169 = c3_i169 + 1) {
+      c3_hb_a[c3_i169] = c3_n3hat[c3_i169];
     }
 
-    for (c3_i178 = 0; c3_i178 < 3; c3_i178 = c3_i178 + 1) {
-      c3_sb_b[c3_i178] = c3_l3_hat[c3_i178];
+    for (c3_i170 = 0; c3_i170 < 3; c3_i170 = c3_i170 + 1) {
+      c3_sb_b[c3_i170] = c3_l3_hat[c3_i170];
     }
 
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i179 = 0; c3_i179 < 3; c3_i179 = c3_i179 + 1) {
-      c3_ib_a[c3_i179] = c3_hb_a[c3_i179];
+    for (c3_i171 = 0; c3_i171 < 3; c3_i171 = c3_i171 + 1) {
+      c3_ib_a[c3_i171] = c3_hb_a[c3_i171];
     }
 
-    for (c3_i180 = 0; c3_i180 < 3; c3_i180 = c3_i180 + 1) {
-      c3_tb_b[c3_i180] = c3_sb_b[c3_i180];
+    for (c3_i172 = 0; c3_i172 < 3; c3_i172 = c3_i172 + 1) {
+      c3_tb_b[c3_i172] = c3_sb_b[c3_i172];
     }
 
     c3_jd_y = c3_eml_xdotu(chartInstance, c3_ib_a, c3_tb_b);
@@ -2230,34 +2195,34 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_nd_y = c3_md_y;
     c3_od_y = c3_tb_x / c3_nd_y;
     c3_kb_a = c3_od_y;
-    for (c3_i181 = 0; c3_i181 < 3; c3_i181 = c3_i181 + 1) {
-      c3_vb_b[c3_i181] = c3_n3hat[c3_i181];
+    for (c3_i173 = 0; c3_i173 < 3; c3_i173 = c3_i173 + 1) {
+      c3_vb_b[c3_i173] = c3_n3hat[c3_i173];
     }
 
-    for (c3_i182 = 0; c3_i182 < 3; c3_i182 = c3_i182 + 1) {
-      c3_pd_y[c3_i182] = c3_kb_a * c3_vb_b[c3_i182];
+    for (c3_i174 = 0; c3_i174 < 3; c3_i174 = c3_i174 + 1) {
+      c3_pd_y[c3_i174] = c3_kb_a * c3_vb_b[c3_i174];
     }
 
-    for (c3_i183 = 0; c3_i183 < 3; c3_i183 = c3_i183 + 1) {
-      c3_lb_a[c3_i183] = c3_pd_y[c3_i183];
+    for (c3_i175 = 0; c3_i175 < 3; c3_i175 = c3_i175 + 1) {
+      c3_lb_a[c3_i175] = c3_pd_y[c3_i175];
     }
 
-    for (c3_i184 = 0; c3_i184 < 3; c3_i184 = c3_i184 + 1) {
-      c3_dv11[c3_i184] = c3_dv5[c3_i184];
+    for (c3_i176 = 0; c3_i176 < 3; c3_i176 = c3_i176 + 1) {
+      c3_dv10[c3_i176] = c3_dv4[c3_i176];
     }
 
-    for (c3_i185 = 0; c3_i185 < 3; c3_i185 = c3_i185 + 1) {
-      c3_b_l3_hat[c3_i185] = c3_l3_hat[c3_i185];
+    for (c3_i177 = 0; c3_i177 < 3; c3_i177 = c3_i177 + 1) {
+      c3_b_l3_hat[c3_i177] = c3_l3_hat[c3_i177];
     }
 
-    c3_cross(chartInstance, c3_dv11, c3_b_l3_hat, c3_wb_b);
+    c3_cross(chartInstance, c3_dv10, c3_b_l3_hat, c3_wb_b);
     c3_d_eml_scalar_eg(chartInstance);
-    for (c3_i186 = 0; c3_i186 < 3; c3_i186 = c3_i186 + 1) {
-      c3_mb_a[c3_i186] = c3_lb_a[c3_i186];
+    for (c3_i178 = 0; c3_i178 < 3; c3_i178 = c3_i178 + 1) {
+      c3_mb_a[c3_i178] = c3_lb_a[c3_i178];
     }
 
-    for (c3_i187 = 0; c3_i187 < 3; c3_i187 = c3_i187 + 1) {
-      c3_xb_b[c3_i187] = c3_wb_b[c3_i187];
+    for (c3_i179 = 0; c3_i179 < 3; c3_i179 = c3_i179 + 1) {
+      c3_xb_b[c3_i179] = c3_wb_b[c3_i179];
     }
 
     c3_qd_y = c3_eml_xdotu(chartInstance, c3_mb_a, c3_xb_b);
@@ -2277,199 +2242,199 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     /*  macro motion instantaneous inverse kinematics jacobian */
     _SFD_EML_CALL(0,69);
-    for (c3_i188 = 0; c3_i188 < 9; c3_i188 = c3_i188 + 1) {
-      c3_b_m[c3_i188] = c3_dv12[c3_i188];
+    for (c3_i180 = 0; c3_i180 < 9; c3_i180 = c3_i180 + 1) {
+      c3_b_m[c3_i180] = c3_dv11[c3_i180];
     }
 
     /*  combined macro-micro motion IIK jacobian */
     _SFD_EML_CALL(0,72);
-    c3_i189 = 0;
-    for (c3_i190 = 0; c3_i190 < 3; c3_i190 = c3_i190 + 1) {
-      for (c3_i191 = 0; c3_i191 < 3; c3_i191 = c3_i191 + 1) {
-        c3_iik_jac[c3_i191 + c3_i189] = c3_b_m[c3_i191 + c3_i189];
+    c3_i181 = 0;
+    for (c3_i182 = 0; c3_i182 < 3; c3_i182 = c3_i182 + 1) {
+      for (c3_i183 = 0; c3_i183 < 3; c3_i183 = c3_i183 + 1) {
+        c3_iik_jac[c3_i183 + c3_i181] = c3_b_m[c3_i183 + c3_i181];
       }
 
-      c3_i189 = c3_i189 + 3;
+      c3_i181 = c3_i181 + 3;
     }
 
-    c3_i192 = 0;
-    for (c3_i193 = 0; c3_i193 < 3; c3_i193 = c3_i193 + 1) {
-      for (c3_i194 = 0; c3_i194 < 3; c3_i194 = c3_i194 + 1) {
-        c3_iik_jac[(c3_i194 + c3_i192) + 9] = c3_b_mu[c3_i194 + c3_i192];
+    c3_i184 = 0;
+    for (c3_i185 = 0; c3_i185 < 3; c3_i185 = c3_i185 + 1) {
+      for (c3_i186 = 0; c3_i186 < 3; c3_i186 = c3_i186 + 1) {
+        c3_iik_jac[(c3_i186 + c3_i184) + 9] = c3_b_mu[c3_i186 + c3_i184];
       }
 
-      c3_i192 = c3_i192 + 3;
+      c3_i184 = c3_i184 + 3;
     }
 
     /*  the full manipulator jacobian with redundancy resolution weighting */
     _SFD_EML_CALL(0,75);
-    for (c3_i195 = 0; c3_i195 < 36; c3_i195 = c3_i195 + 1) {
-      c3_w_mat[c3_i195] = c3_dv13[c3_i195];
+    for (c3_i187 = 0; c3_i187 < 36; c3_i187 = c3_i187 + 1) {
+      c3_w_mat[c3_i187] = c3_dv12[c3_i187];
     }
 
     _SFD_EML_CALL(0,76);
-    for (c3_i196 = 0; c3_i196 < 18; c3_i196 = c3_i196 + 1) {
-      c3_v_A[c3_i196] = c3_iik_jac[c3_i196];
+    for (c3_i188 = 0; c3_i188 < 18; c3_i188 = c3_i188 + 1) {
+      c3_v_A[c3_i188] = c3_iik_jac[c3_i188];
     }
 
-    for (c3_i197 = 0; c3_i197 < 36; c3_i197 = c3_i197 + 1) {
-      c3_dv14[c3_i197] = c3_dv13[c3_i197];
+    for (c3_i189 = 0; c3_i189 < 36; c3_i189 = c3_i189 + 1) {
+      c3_dv13[c3_i189] = c3_dv12[c3_i189];
     }
 
-    c3_i198 = 0;
-    for (c3_i199 = 0; c3_i199 < 3; c3_i199 = c3_i199 + 1) {
-      c3_i200 = 0;
-      for (c3_i201 = 0; c3_i201 < 6; c3_i201 = c3_i201 + 1) {
-        c3_w_A[c3_i201 + c3_i198] = c3_v_A[c3_i200 + c3_i199];
-        c3_i200 = c3_i200 + 3;
+    c3_i190 = 0;
+    for (c3_i191 = 0; c3_i191 < 3; c3_i191 = c3_i191 + 1) {
+      c3_i192 = 0;
+      for (c3_i193 = 0; c3_i193 < 6; c3_i193 = c3_i193 + 1) {
+        c3_w_A[c3_i193 + c3_i190] = c3_v_A[c3_i192 + c3_i191];
+        c3_i192 = c3_i192 + 3;
       }
 
-      c3_i198 = c3_i198 + 6;
+      c3_i190 = c3_i190 + 6;
     }
 
-    c3_mldivide(chartInstance, c3_dv14, c3_w_A, c3_dv15);
-    c3_i202 = 0;
-    for (c3_i203 = 0; c3_i203 < 6; c3_i203 = c3_i203 + 1) {
-      c3_i204 = 0;
-      for (c3_i205 = 0; c3_i205 < 3; c3_i205 = c3_i205 + 1) {
-        c3_rd_y[c3_i205 + c3_i202] = c3_dv15[c3_i204 + c3_i203];
-        c3_i204 = c3_i204 + 6;
+    c3_mldivide(chartInstance, c3_dv13, c3_w_A, c3_dv14);
+    c3_i194 = 0;
+    for (c3_i195 = 0; c3_i195 < 6; c3_i195 = c3_i195 + 1) {
+      c3_i196 = 0;
+      for (c3_i197 = 0; c3_i197 < 3; c3_i197 = c3_i197 + 1) {
+        c3_rd_y[c3_i197 + c3_i194] = c3_dv14[c3_i196 + c3_i195];
+        c3_i196 = c3_i196 + 6;
       }
 
-      c3_i202 = c3_i202 + 3;
+      c3_i194 = c3_i194 + 3;
+    }
+
+    for (c3_i198 = 0; c3_i198 < 18; c3_i198 = c3_i198 + 1) {
+      c3_nb_a[c3_i198] = c3_rd_y[c3_i198];
+    }
+
+    c3_i199 = 0;
+    for (c3_i200 = 0; c3_i200 < 3; c3_i200 = c3_i200 + 1) {
+      c3_i201 = 0;
+      for (c3_i202 = 0; c3_i202 < 6; c3_i202 = c3_i202 + 1) {
+        c3_yb_b[c3_i202 + c3_i199] = c3_iik_jac[c3_i201 + c3_i200];
+        c3_i201 = c3_i201 + 3;
+      }
+
+      c3_i199 = c3_i199 + 6;
+    }
+
+    c3_e_eml_scalar_eg(chartInstance);
+    c3_e_eml_scalar_eg(chartInstance);
+    for (c3_i203 = 0; c3_i203 < 18; c3_i203 = c3_i203 + 1) {
+      c3_x_A[c3_i203] = c3_nb_a[c3_i203];
+    }
+
+    for (c3_i204 = 0; c3_i204 < 18; c3_i204 = c3_i204 + 1) {
+      c3_v_B[c3_i204] = c3_yb_b[c3_i204];
+    }
+
+    for (c3_i205 = 0; c3_i205 < 18; c3_i205 = c3_i205 + 1) {
+      c3_y_A[c3_i205] = c3_x_A[c3_i205];
     }
 
     for (c3_i206 = 0; c3_i206 < 18; c3_i206 = c3_i206 + 1) {
-      c3_nb_a[c3_i206] = c3_rd_y[c3_i206];
+      c3_w_B[c3_i206] = c3_v_B[c3_i206];
     }
 
-    c3_i207 = 0;
-    for (c3_i208 = 0; c3_i208 < 3; c3_i208 = c3_i208 + 1) {
-      c3_i209 = 0;
-      for (c3_i210 = 0; c3_i210 < 6; c3_i210 = c3_i210 + 1) {
-        c3_yb_b[c3_i210 + c3_i207] = c3_iik_jac[c3_i209 + c3_i208];
-        c3_i209 = c3_i209 + 3;
-      }
-
-      c3_i207 = c3_i207 + 6;
+    for (c3_i207 = 0; c3_i207 < 18; c3_i207 = c3_i207 + 1) {
+      c3_ab_A[c3_i207] = c3_y_A[c3_i207];
     }
 
-    c3_e_eml_scalar_eg(chartInstance);
-    c3_e_eml_scalar_eg(chartInstance);
-    for (c3_i211 = 0; c3_i211 < 18; c3_i211 = c3_i211 + 1) {
-      c3_x_A[c3_i211] = c3_nb_a[c3_i211];
+    for (c3_i208 = 0; c3_i208 < 18; c3_i208 = c3_i208 + 1) {
+      c3_x_B[c3_i208] = c3_w_B[c3_i208];
     }
 
-    for (c3_i212 = 0; c3_i212 < 18; c3_i212 = c3_i212 + 1) {
-      c3_v_B[c3_i212] = c3_yb_b[c3_i212];
-    }
-
-    for (c3_i213 = 0; c3_i213 < 18; c3_i213 = c3_i213 + 1) {
-      c3_y_A[c3_i213] = c3_x_A[c3_i213];
-    }
-
-    for (c3_i214 = 0; c3_i214 < 18; c3_i214 = c3_i214 + 1) {
-      c3_w_B[c3_i214] = c3_v_B[c3_i214];
-    }
-
-    for (c3_i215 = 0; c3_i215 < 18; c3_i215 = c3_i215 + 1) {
-      c3_ab_A[c3_i215] = c3_y_A[c3_i215];
-    }
-
-    for (c3_i216 = 0; c3_i216 < 18; c3_i216 = c3_i216 + 1) {
-      c3_x_B[c3_i216] = c3_w_B[c3_i216];
-    }
-
-    for (c3_i217 = 0; c3_i217 < 3; c3_i217 = c3_i217 + 1) {
-      c3_i218 = 0;
-      c3_i219 = 0;
-      for (c3_i220 = 0; c3_i220 < 3; c3_i220 = c3_i220 + 1) {
-        c3_sd_y[c3_i218 + c3_i217] = 0.0;
-        c3_i221 = 0;
-        for (c3_i222 = 0; c3_i222 < 6; c3_i222 = c3_i222 + 1) {
-          c3_sd_y[c3_i218 + c3_i217] = c3_sd_y[c3_i218 + c3_i217] +
-            c3_ab_A[c3_i221 + c3_i217] * c3_x_B[c3_i222 + c3_i219];
-          c3_i221 = c3_i221 + 3;
+    for (c3_i209 = 0; c3_i209 < 3; c3_i209 = c3_i209 + 1) {
+      c3_i210 = 0;
+      c3_i211 = 0;
+      for (c3_i212 = 0; c3_i212 < 3; c3_i212 = c3_i212 + 1) {
+        c3_sd_y[c3_i210 + c3_i209] = 0.0;
+        c3_i213 = 0;
+        for (c3_i214 = 0; c3_i214 < 6; c3_i214 = c3_i214 + 1) {
+          c3_sd_y[c3_i210 + c3_i209] = c3_sd_y[c3_i210 + c3_i209] +
+            c3_ab_A[c3_i213 + c3_i209] * c3_x_B[c3_i214 + c3_i211];
+          c3_i213 = c3_i213 + 3;
         }
 
+        c3_i210 = c3_i210 + 3;
+        c3_i211 = c3_i211 + 6;
+      }
+    }
+
+    for (c3_i215 = 0; c3_i215 < 36; c3_i215 = c3_i215 + 1) {
+      c3_dv15[c3_i215] = c3_dv12[c3_i215];
+    }
+
+    c3_i216 = 0;
+    for (c3_i217 = 0; c3_i217 < 3; c3_i217 = c3_i217 + 1) {
+      c3_i218 = 0;
+      for (c3_i219 = 0; c3_i219 < 6; c3_i219 = c3_i219 + 1) {
+        c3_b_iik_jac[c3_i219 + c3_i216] = c3_iik_jac[c3_i218 + c3_i217];
         c3_i218 = c3_i218 + 3;
-        c3_i219 = c3_i219 + 6;
-      }
-    }
-
-    for (c3_i223 = 0; c3_i223 < 36; c3_i223 = c3_i223 + 1) {
-      c3_dv16[c3_i223] = c3_dv13[c3_i223];
-    }
-
-    c3_i224 = 0;
-    for (c3_i225 = 0; c3_i225 < 3; c3_i225 = c3_i225 + 1) {
-      c3_i226 = 0;
-      for (c3_i227 = 0; c3_i227 < 6; c3_i227 = c3_i227 + 1) {
-        c3_b_iik_jac[c3_i227 + c3_i224] = c3_iik_jac[c3_i226 + c3_i225];
-        c3_i226 = c3_i226 + 3;
       }
 
-      c3_i224 = c3_i224 + 6;
+      c3_i216 = c3_i216 + 6;
     }
 
-    c3_mldivide(chartInstance, c3_dv16, c3_b_iik_jac, c3_dv17);
+    c3_mldivide(chartInstance, c3_dv15, c3_b_iik_jac, c3_dv16);
+    for (c3_i220 = 0; c3_i220 < 18; c3_i220 = c3_i220 + 1) {
+      c3_dv17[c3_i220] = c3_dv16[c3_i220];
+    }
+
+    for (c3_i221 = 0; c3_i221 < 9; c3_i221 = c3_i221 + 1) {
+      c3_td_y[c3_i221] = c3_sd_y[c3_i221];
+    }
+
+    c3_mrdivide(chartInstance, c3_dv17, c3_td_y, c3_ob_a);
+    for (c3_i222 = 0; c3_i222 < 9; c3_i222 = c3_i222 + 1) {
+      c3_ac_b[c3_i222] = c3_idk_jac[c3_i222];
+    }
+
+    c3_f_eml_scalar_eg(chartInstance);
+    c3_f_eml_scalar_eg(chartInstance);
+    for (c3_i223 = 0; c3_i223 < 18; c3_i223 = c3_i223 + 1) {
+      c3_bb_A[c3_i223] = c3_ob_a[c3_i223];
+    }
+
+    for (c3_i224 = 0; c3_i224 < 9; c3_i224 = c3_i224 + 1) {
+      c3_y_B[c3_i224] = c3_ac_b[c3_i224];
+    }
+
+    for (c3_i225 = 0; c3_i225 < 18; c3_i225 = c3_i225 + 1) {
+      c3_full_jac[c3_i225] = 0.0;
+    }
+
+    for (c3_i226 = 0; c3_i226 < 18; c3_i226 = c3_i226 + 1) {
+      c3_cb_A[c3_i226] = c3_bb_A[c3_i226];
+    }
+
+    for (c3_i227 = 0; c3_i227 < 9; c3_i227 = c3_i227 + 1) {
+      c3_ab_B[c3_i227] = c3_y_B[c3_i227];
+    }
+
     for (c3_i228 = 0; c3_i228 < 18; c3_i228 = c3_i228 + 1) {
-      c3_dv18[c3_i228] = c3_dv17[c3_i228];
+      c3_db_A[c3_i228] = c3_cb_A[c3_i228];
     }
 
     for (c3_i229 = 0; c3_i229 < 9; c3_i229 = c3_i229 + 1) {
-      c3_td_y[c3_i229] = c3_sd_y[c3_i229];
+      c3_bb_B[c3_i229] = c3_ab_B[c3_i229];
     }
 
-    c3_mrdivide(chartInstance, c3_dv18, c3_td_y, c3_ob_a);
-    for (c3_i230 = 0; c3_i230 < 9; c3_i230 = c3_i230 + 1) {
-      c3_ac_b[c3_i230] = c3_idk_jac[c3_i230];
-    }
-
-    c3_f_eml_scalar_eg(chartInstance);
-    c3_f_eml_scalar_eg(chartInstance);
-    for (c3_i231 = 0; c3_i231 < 18; c3_i231 = c3_i231 + 1) {
-      c3_bb_A[c3_i231] = c3_ob_a[c3_i231];
-    }
-
-    for (c3_i232 = 0; c3_i232 < 9; c3_i232 = c3_i232 + 1) {
-      c3_y_B[c3_i232] = c3_ac_b[c3_i232];
-    }
-
-    for (c3_i233 = 0; c3_i233 < 18; c3_i233 = c3_i233 + 1) {
-      c3_full_jac[c3_i233] = 0.0;
-    }
-
-    for (c3_i234 = 0; c3_i234 < 18; c3_i234 = c3_i234 + 1) {
-      c3_cb_A[c3_i234] = c3_bb_A[c3_i234];
-    }
-
-    for (c3_i235 = 0; c3_i235 < 9; c3_i235 = c3_i235 + 1) {
-      c3_ab_B[c3_i235] = c3_y_B[c3_i235];
-    }
-
-    for (c3_i236 = 0; c3_i236 < 18; c3_i236 = c3_i236 + 1) {
-      c3_db_A[c3_i236] = c3_cb_A[c3_i236];
-    }
-
-    for (c3_i237 = 0; c3_i237 < 9; c3_i237 = c3_i237 + 1) {
-      c3_bb_B[c3_i237] = c3_ab_B[c3_i237];
-    }
-
-    for (c3_i238 = 0; c3_i238 < 6; c3_i238 = c3_i238 + 1) {
-      c3_i239 = 0;
-      c3_i240 = 0;
-      for (c3_i241 = 0; c3_i241 < 3; c3_i241 = c3_i241 + 1) {
-        c3_full_jac[c3_i239 + c3_i238] = 0.0;
-        c3_i242 = 0;
-        for (c3_i243 = 0; c3_i243 < 3; c3_i243 = c3_i243 + 1) {
-          c3_full_jac[c3_i239 + c3_i238] = c3_full_jac[c3_i239 + c3_i238] +
-            c3_db_A[c3_i242 + c3_i238] * c3_bb_B[c3_i243 + c3_i240];
-          c3_i242 = c3_i242 + 6;
+    for (c3_i230 = 0; c3_i230 < 6; c3_i230 = c3_i230 + 1) {
+      c3_i231 = 0;
+      c3_i232 = 0;
+      for (c3_i233 = 0; c3_i233 < 3; c3_i233 = c3_i233 + 1) {
+        c3_full_jac[c3_i231 + c3_i230] = 0.0;
+        c3_i234 = 0;
+        for (c3_i235 = 0; c3_i235 < 3; c3_i235 = c3_i235 + 1) {
+          c3_full_jac[c3_i231 + c3_i230] = c3_full_jac[c3_i231 + c3_i230] +
+            c3_db_A[c3_i234 + c3_i230] * c3_bb_B[c3_i235 + c3_i232];
+          c3_i234 = c3_i234 + 6;
         }
 
-        c3_i239 = c3_i239 + 6;
-        c3_i240 = c3_i240 + 3;
+        c3_i231 = c3_i231 + 6;
+        c3_i232 = c3_i232 + 3;
       }
     }
 
@@ -2477,67 +2442,67 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     /*  joint velocities and ee velocity proportional to joint error */
     _SFD_EML_CALL(0,80);
     c3_pb_a = c3_kp;
-    for (c3_i244 = 0; c3_i244 < 3; c3_i244 = c3_i244 + 1) {
-      c3_bc_b[c3_i244] = c3_eq[c3_i244];
+    for (c3_i236 = 0; c3_i236 < 3; c3_i236 = c3_i236 + 1) {
+      c3_bc_b[c3_i236] = c3_eq[c3_i236];
     }
 
-    for (c3_i245 = 0; c3_i245 < 3; c3_i245 = c3_i245 + 1) {
-      c3_qdot[c3_i245] = c3_pb_a * c3_bc_b[c3_i245];
+    for (c3_i237 = 0; c3_i237 < 3; c3_i237 = c3_i237 + 1) {
+      c3_qdot[c3_i237] = c3_pb_a * c3_bc_b[c3_i237];
     }
 
     _SFD_EML_CALL(0,81);
-    for (c3_i246 = 0; c3_i246 < 18; c3_i246 = c3_i246 + 1) {
-      c3_qb_a[c3_i246] = c3_full_jac[c3_i246];
+    for (c3_i238 = 0; c3_i238 < 18; c3_i238 = c3_i238 + 1) {
+      c3_qb_a[c3_i238] = c3_full_jac[c3_i238];
     }
 
-    for (c3_i247 = 0; c3_i247 < 3; c3_i247 = c3_i247 + 1) {
-      c3_cc_b[c3_i247] = c3_qdot[c3_i247];
+    for (c3_i239 = 0; c3_i239 < 3; c3_i239 = c3_i239 + 1) {
+      c3_cc_b[c3_i239] = c3_qdot[c3_i239];
     }
 
     c3_g_eml_scalar_eg(chartInstance);
     c3_g_eml_scalar_eg(chartInstance);
-    for (c3_i248 = 0; c3_i248 < 18; c3_i248 = c3_i248 + 1) {
-      c3_eb_A[c3_i248] = c3_qb_a[c3_i248];
+    for (c3_i240 = 0; c3_i240 < 18; c3_i240 = c3_i240 + 1) {
+      c3_eb_A[c3_i240] = c3_qb_a[c3_i240];
     }
 
-    for (c3_i249 = 0; c3_i249 < 3; c3_i249 = c3_i249 + 1) {
-      c3_cb_B[c3_i249] = c3_cc_b[c3_i249];
+    for (c3_i241 = 0; c3_i241 < 3; c3_i241 = c3_i241 + 1) {
+      c3_cb_B[c3_i241] = c3_cc_b[c3_i241];
     }
 
-    for (c3_i250 = 0; c3_i250 < 6; c3_i250 = c3_i250 + 1) {
-      c3_tdot[c3_i250] = 0.0;
+    for (c3_i242 = 0; c3_i242 < 6; c3_i242 = c3_i242 + 1) {
+      c3_tdot[c3_i242] = 0.0;
     }
 
-    for (c3_i251 = 0; c3_i251 < 18; c3_i251 = c3_i251 + 1) {
-      c3_fb_A[c3_i251] = c3_eb_A[c3_i251];
+    for (c3_i243 = 0; c3_i243 < 18; c3_i243 = c3_i243 + 1) {
+      c3_fb_A[c3_i243] = c3_eb_A[c3_i243];
     }
 
-    for (c3_i252 = 0; c3_i252 < 3; c3_i252 = c3_i252 + 1) {
-      c3_db_B[c3_i252] = c3_cb_B[c3_i252];
+    for (c3_i244 = 0; c3_i244 < 3; c3_i244 = c3_i244 + 1) {
+      c3_db_B[c3_i244] = c3_cb_B[c3_i244];
     }
 
-    for (c3_i253 = 0; c3_i253 < 18; c3_i253 = c3_i253 + 1) {
-      c3_gb_A[c3_i253] = c3_fb_A[c3_i253];
+    for (c3_i245 = 0; c3_i245 < 18; c3_i245 = c3_i245 + 1) {
+      c3_gb_A[c3_i245] = c3_fb_A[c3_i245];
     }
 
-    for (c3_i254 = 0; c3_i254 < 3; c3_i254 = c3_i254 + 1) {
-      c3_eb_B[c3_i254] = c3_db_B[c3_i254];
+    for (c3_i246 = 0; c3_i246 < 3; c3_i246 = c3_i246 + 1) {
+      c3_eb_B[c3_i246] = c3_db_B[c3_i246];
     }
 
-    for (c3_i255 = 0; c3_i255 < 6; c3_i255 = c3_i255 + 1) {
-      c3_tdot[c3_i255] = 0.0;
-      c3_i256 = 0;
-      for (c3_i257 = 0; c3_i257 < 3; c3_i257 = c3_i257 + 1) {
-        c3_tdot[c3_i255] = c3_tdot[c3_i255] + c3_gb_A[c3_i256 + c3_i255] *
-          c3_eb_B[c3_i257];
-        c3_i256 = c3_i256 + 6;
+    for (c3_i247 = 0; c3_i247 < 6; c3_i247 = c3_i247 + 1) {
+      c3_tdot[c3_i247] = 0.0;
+      c3_i248 = 0;
+      for (c3_i249 = 0; c3_i249 < 3; c3_i249 = c3_i249 + 1) {
+        c3_tdot[c3_i247] = c3_tdot[c3_i247] + c3_gb_A[c3_i248 + c3_i247] *
+          c3_eb_B[c3_i249];
+        c3_i248 = c3_i248 + 6;
       }
     }
 
     /*  separate translational and rotational components of twist */
     _SFD_EML_CALL(0,84);
-    for (c3_i258 = 0; c3_i258 < 2; c3_i258 = c3_i258 + 1) {
-      c3_v[c3_i258] = c3_tdot[c3_i258];
+    for (c3_i250 = 0; c3_i250 < 2; c3_i250 = c3_i250 + 1) {
+      c3_v[c3_i250] = c3_tdot[c3_i250];
     }
 
     _SFD_EML_CALL(0,85);
@@ -2545,21 +2510,21 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     /*  new end effector position */
     _SFD_EML_CALL(0,88);
-    for (c3_i259 = 0; c3_i259 < 2; c3_i259 = c3_i259 + 1) {
-      c3_rb_a[c3_i259] = c3_v[c3_i259];
+    for (c3_i251 = 0; c3_i251 < 2; c3_i251 = c3_i251 + 1) {
+      c3_rb_a[c3_i251] = c3_v[c3_i251];
     }
 
     c3_dc_b = c3_dt;
-    for (c3_i260 = 0; c3_i260 < 2; c3_i260 = c3_i260 + 1) {
-      c3_ud_y[c3_i260] = c3_rb_a[c3_i260] * c3_dc_b;
+    for (c3_i252 = 0; c3_i252 < 2; c3_i252 = c3_i252 + 1) {
+      c3_ud_y[c3_i252] = c3_rb_a[c3_i252] * c3_dc_b;
     }
 
-    for (c3_i261 = 0; c3_i261 < 2; c3_i261 = c3_i261 + 1) {
-      c3_b_twave[c3_i261] = c3_twave[c3_i261] + c3_ud_y[c3_i261];
+    for (c3_i253 = 0; c3_i253 < 2; c3_i253 = c3_i253 + 1) {
+      c3_b_twave[c3_i253] = c3_twave[c3_i253] + c3_ud_y[c3_i253];
     }
 
-    for (c3_i262 = 0; c3_i262 < 2; c3_i262 = c3_i262 + 1) {
-      c3_twave[c3_i262] = c3_b_twave[c3_i262];
+    for (c3_i254 = 0; c3_i254 < 2; c3_i254 = c3_i254 + 1) {
+      c3_twave[c3_i254] = c3_b_twave[c3_i254];
     }
 
     /*  change in end effector orientation */
@@ -2602,70 +2567,70 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     c3_del_r[1] = c3_cc_x;
     c3_del_r[4] = c3_fc_x;
     c3_del_r[7] = 0.0;
-    c3_i263 = 0;
-    for (c3_i264 = 0; c3_i264 < 3; c3_i264 = c3_i264 + 1) {
-      c3_del_r[c3_i263 + 2] = c3_dv5[c3_i264];
-      c3_i263 = c3_i263 + 3;
+    c3_i255 = 0;
+    for (c3_i256 = 0; c3_i256 < 3; c3_i256 = c3_i256 + 1) {
+      c3_del_r[c3_i255 + 2] = c3_dv4[c3_i256];
+      c3_i255 = c3_i255 + 3;
     }
 
     /*  new end effector orientation */
     _SFD_EML_CALL(0,94);
+    for (c3_i257 = 0; c3_i257 < 9; c3_i257 = c3_i257 + 1) {
+      c3_wb_a[c3_i257] = c3_del_r[c3_i257];
+    }
+
+    for (c3_i258 = 0; c3_i258 < 9; c3_i258 = c3_i258 + 1) {
+      c3_ic_b[c3_i258] = c3_rwave[c3_i258];
+    }
+
+    c3_eml_scalar_eg(chartInstance);
+    c3_eml_scalar_eg(chartInstance);
+    for (c3_i259 = 0; c3_i259 < 9; c3_i259 = c3_i259 + 1) {
+      c3_hb_A[c3_i259] = c3_wb_a[c3_i259];
+    }
+
+    for (c3_i260 = 0; c3_i260 < 9; c3_i260 = c3_i260 + 1) {
+      c3_fb_B[c3_i260] = c3_ic_b[c3_i260];
+    }
+
+    for (c3_i261 = 0; c3_i261 < 9; c3_i261 = c3_i261 + 1) {
+      c3_rwave[c3_i261] = 0.0;
+    }
+
+    for (c3_i262 = 0; c3_i262 < 9; c3_i262 = c3_i262 + 1) {
+      c3_ib_A[c3_i262] = c3_hb_A[c3_i262];
+    }
+
+    for (c3_i263 = 0; c3_i263 < 9; c3_i263 = c3_i263 + 1) {
+      c3_gb_B[c3_i263] = c3_fb_B[c3_i263];
+    }
+
+    for (c3_i264 = 0; c3_i264 < 9; c3_i264 = c3_i264 + 1) {
+      c3_jb_A[c3_i264] = c3_ib_A[c3_i264];
+    }
+
     for (c3_i265 = 0; c3_i265 < 9; c3_i265 = c3_i265 + 1) {
-      c3_wb_a[c3_i265] = c3_del_r[c3_i265];
+      c3_hb_B[c3_i265] = c3_gb_B[c3_i265];
     }
 
-    for (c3_i266 = 0; c3_i266 < 9; c3_i266 = c3_i266 + 1) {
-      c3_ic_b[c3_i266] = c3_rwave[c3_i266];
-    }
-
-    c3_eml_scalar_eg(chartInstance);
-    c3_eml_scalar_eg(chartInstance);
-    for (c3_i267 = 0; c3_i267 < 9; c3_i267 = c3_i267 + 1) {
-      c3_hb_A[c3_i267] = c3_wb_a[c3_i267];
-    }
-
-    for (c3_i268 = 0; c3_i268 < 9; c3_i268 = c3_i268 + 1) {
-      c3_fb_B[c3_i268] = c3_ic_b[c3_i268];
-    }
-
-    for (c3_i269 = 0; c3_i269 < 9; c3_i269 = c3_i269 + 1) {
-      c3_rwave[c3_i269] = 0.0;
-    }
-
-    for (c3_i270 = 0; c3_i270 < 9; c3_i270 = c3_i270 + 1) {
-      c3_ib_A[c3_i270] = c3_hb_A[c3_i270];
-    }
-
-    for (c3_i271 = 0; c3_i271 < 9; c3_i271 = c3_i271 + 1) {
-      c3_gb_B[c3_i271] = c3_fb_B[c3_i271];
-    }
-
-    for (c3_i272 = 0; c3_i272 < 9; c3_i272 = c3_i272 + 1) {
-      c3_jb_A[c3_i272] = c3_ib_A[c3_i272];
-    }
-
-    for (c3_i273 = 0; c3_i273 < 9; c3_i273 = c3_i273 + 1) {
-      c3_hb_B[c3_i273] = c3_gb_B[c3_i273];
-    }
-
-    for (c3_i274 = 0; c3_i274 < 3; c3_i274 = c3_i274 + 1) {
-      c3_i275 = 0;
-      for (c3_i276 = 0; c3_i276 < 3; c3_i276 = c3_i276 + 1) {
-        c3_rwave[c3_i275 + c3_i274] = 0.0;
-        c3_i277 = 0;
-        for (c3_i278 = 0; c3_i278 < 3; c3_i278 = c3_i278 + 1) {
-          c3_rwave[c3_i275 + c3_i274] = c3_rwave[c3_i275 + c3_i274] +
-            c3_jb_A[c3_i277 + c3_i274] * c3_hb_B[c3_i278 + c3_i275];
-          c3_i277 = c3_i277 + 3;
+    for (c3_i266 = 0; c3_i266 < 3; c3_i266 = c3_i266 + 1) {
+      c3_i267 = 0;
+      for (c3_i268 = 0; c3_i268 < 3; c3_i268 = c3_i268 + 1) {
+        c3_rwave[c3_i267 + c3_i266] = 0.0;
+        c3_i269 = 0;
+        for (c3_i270 = 0; c3_i270 < 3; c3_i270 = c3_i270 + 1) {
+          c3_rwave[c3_i267 + c3_i266] = c3_rwave[c3_i267 + c3_i266] +
+            c3_jb_A[c3_i269 + c3_i266] * c3_hb_B[c3_i270 + c3_i267];
+          c3_i269 = c3_i269 + 3;
         }
 
-        c3_i275 = c3_i275 + 3;
+        c3_i267 = c3_i267 + 3;
       }
     }
 
     _SFD_EML_CALL(0,96);
-    for (c3_i279 = 0; c3_i279 < 3; c3_i279 = c3_i279 + 1) {
-      c3_des_leg_len[c3_i279] = 0.0;
+    for (c3_i271 = 0; c3_i271 < 3; c3_i271 = c3_i271 + 1) {
+      c3_des_leg_len[c3_i271] = 0.0;
     }
 
     c3_i = 1.0;
@@ -2674,56 +2639,56 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
       c3_i = c3_b_i;
       CV_EML_FOR(0, 0, 1);
       _SFD_EML_CALL(0,98);
-      for (c3_i280 = 0; c3_i280 < 9; c3_i280 = c3_i280 + 1) {
-        c3_xb_a[c3_i280] = c3_rwave[c3_i280];
+      for (c3_i272 = 0; c3_i272 < 9; c3_i272 = c3_i272 + 1) {
+        c3_xb_a[c3_i272] = c3_rwave[c3_i272];
       }
 
       c3_c_i = _SFD_EML_ARRAY_BOUNDS_CHECK("p_in_m", (int32_T)_SFD_INTEGER_CHECK
         ("i", c3_i), 1, 3, 2, 0) - 1;
-      for (c3_i281 = 0; c3_i281 < 3; c3_i281 = c3_i281 + 1) {
-        c3_jc_b[c3_i281] = c3_p_in_m[c3_i281 + 3 * c3_c_i];
+      for (c3_i273 = 0; c3_i273 < 3; c3_i273 = c3_i273 + 1) {
+        c3_jc_b[c3_i273] = c3_p_in_m[c3_i273 + 3 * c3_c_i];
       }
 
       c3_c_eml_scalar_eg(chartInstance);
       c3_c_eml_scalar_eg(chartInstance);
-      for (c3_i282 = 0; c3_i282 < 9; c3_i282 = c3_i282 + 1) {
-        c3_kb_A[c3_i282] = c3_xb_a[c3_i282];
+      for (c3_i274 = 0; c3_i274 < 9; c3_i274 = c3_i274 + 1) {
+        c3_kb_A[c3_i274] = c3_xb_a[c3_i274];
       }
 
-      for (c3_i283 = 0; c3_i283 < 3; c3_i283 = c3_i283 + 1) {
-        c3_ib_B[c3_i283] = c3_jc_b[c3_i283];
+      for (c3_i275 = 0; c3_i275 < 3; c3_i275 = c3_i275 + 1) {
+        c3_ib_B[c3_i275] = c3_jc_b[c3_i275];
       }
 
-      for (c3_i284 = 0; c3_i284 < 9; c3_i284 = c3_i284 + 1) {
-        c3_lb_A[c3_i284] = c3_kb_A[c3_i284];
+      for (c3_i276 = 0; c3_i276 < 9; c3_i276 = c3_i276 + 1) {
+        c3_lb_A[c3_i276] = c3_kb_A[c3_i276];
       }
 
-      for (c3_i285 = 0; c3_i285 < 3; c3_i285 = c3_i285 + 1) {
-        c3_jb_B[c3_i285] = c3_ib_B[c3_i285];
+      for (c3_i277 = 0; c3_i277 < 3; c3_i277 = c3_i277 + 1) {
+        c3_jb_B[c3_i277] = c3_ib_B[c3_i277];
       }
 
-      for (c3_i286 = 0; c3_i286 < 9; c3_i286 = c3_i286 + 1) {
-        c3_mb_A[c3_i286] = c3_lb_A[c3_i286];
+      for (c3_i278 = 0; c3_i278 < 9; c3_i278 = c3_i278 + 1) {
+        c3_mb_A[c3_i278] = c3_lb_A[c3_i278];
       }
 
-      for (c3_i287 = 0; c3_i287 < 3; c3_i287 = c3_i287 + 1) {
-        c3_kb_B[c3_i287] = c3_jb_B[c3_i287];
+      for (c3_i279 = 0; c3_i279 < 3; c3_i279 = c3_i279 + 1) {
+        c3_kb_B[c3_i279] = c3_jb_B[c3_i279];
       }
 
-      for (c3_i288 = 0; c3_i288 < 3; c3_i288 = c3_i288 + 1) {
-        c3_ae_y[c3_i288] = 0.0;
-        c3_i289 = 0;
-        for (c3_i290 = 0; c3_i290 < 3; c3_i290 = c3_i290 + 1) {
-          c3_ae_y[c3_i288] = c3_ae_y[c3_i288] + c3_mb_A[c3_i289 + c3_i288] *
-            c3_kb_B[c3_i290];
-          c3_i289 = c3_i289 + 3;
+      for (c3_i280 = 0; c3_i280 < 3; c3_i280 = c3_i280 + 1) {
+        c3_ae_y[c3_i280] = 0.0;
+        c3_i281 = 0;
+        for (c3_i282 = 0; c3_i282 < 3; c3_i282 = c3_i282 + 1) {
+          c3_ae_y[c3_i280] = c3_ae_y[c3_i280] + c3_mb_A[c3_i281 + c3_i280] *
+            c3_kb_B[c3_i282];
+          c3_i281 = c3_i281 + 3;
         }
       }
 
       c3_d_i = _SFD_EML_ARRAY_BOUNDS_CHECK("p_in_w", (int32_T)_SFD_INTEGER_CHECK
         ("i", c3_i), 1, 3, 2, 0) - 1;
-      for (c3_i291 = 0; c3_i291 < 3; c3_i291 = c3_i291 + 1) {
-        c3_p_in_w[c3_i291 + 3 * c3_d_i] = c3_twave[c3_i291] + c3_ae_y[c3_i291];
+      for (c3_i283 = 0; c3_i283 < 3; c3_i283 = c3_i283 + 1) {
+        c3_p_in_w[c3_i283 + 3 * c3_d_i] = c3_twave[c3_i283] + c3_ae_y[c3_i283];
       }
 
       _SFD_EML_CALL(0,99);
@@ -2731,9 +2696,9 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
         ("i", c3_i), 1, 3, 2, 0) - 1;
       c3_f_i = _SFD_EML_ARRAY_BOUNDS_CHECK("b_in_w", (int32_T)_SFD_INTEGER_CHECK
         ("i", c3_i), 1, 3, 2, 0) - 1;
-      for (c3_i292 = 0; c3_i292 < 3; c3_i292 = c3_i292 + 1) {
-        c3_b_p_in_w[c3_i292] = c3_p_in_w[c3_i292 + 3 * c3_e_i] -
-          c3_b_in_w[c3_i292 + 3 * c3_f_i];
+      for (c3_i284 = 0; c3_i284 < 3; c3_i284 = c3_i284 + 1) {
+        c3_b_p_in_w[c3_i284] = c3_p_in_w[c3_i284 + 3 * c3_e_i] -
+          c3_b_in_w[c3_i284 + 3 * c3_f_i];
       }
 
       c3_des_leg_len[_SFD_EML_ARRAY_BOUNDS_CHECK("des_leg_len", (int32_T)
@@ -2745,96 +2710,95 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
 
     CV_EML_FOR(0, 0, 0);
     _SFD_EML_CALL(0,102);
-    for (c3_i293 = 0; c3_i293 < 3; c3_i293 = c3_i293 + 1) {
-      c3_eq_out[c3_i293] = c3_macro_leg_len[c3_i293] - c3_des_leg_len[c3_i293];
+    for (c3_i285 = 0; c3_i285 < 3; c3_i285 = c3_i285 + 1) {
+      c3_eq_out[c3_i285] = c3_macro_leg_len[c3_i285] - c3_des_leg_len[c3_i285];
     }
 
     /*  the amount each velmex slides need to move is the difference between */
     /*  the last leg length and the new leg length */
     /*      qcmd(1:3,1) = (measured_len - des_leg_len)/velmex_pitch */
     _SFD_EML_CALL(0,107);
-    for (c3_i294 = 0; c3_i294 < 3; c3_i294 = c3_i294 + 1) {
-      c3_nb_A[c3_i294] = c3_des_leg_len[c3_i294] - c3_measured_len[c3_i294];
+    for (c3_i286 = 0; c3_i286 < 3; c3_i286 = c3_i286 + 1) {
+      (real_T)_SFD_EML_ARRAY_BOUNDS_CHECK("qcmd", (int32_T)(1.0 + (real_T)
+        c3_i286), 1, 1, 1, 0);
+    }
+
+    for (c3_i287 = 0; c3_i287 < 3; c3_i287 = c3_i287 + 1) {
+      c3_nb_A[c3_i287] = c3_des_leg_len[c3_i287] - c3_measured_len[c3_i287];
     }
 
     c3_lb_B = c3_velmex_pitch;
-    for (c3_i295 = 0; c3_i295 < 3; c3_i295 = c3_i295 + 1) {
-      c3_hc_x[c3_i295] = c3_nb_A[c3_i295];
+    for (c3_i288 = 0; c3_i288 < 3; c3_i288 = c3_i288 + 1) {
+      c3_hc_x[c3_i288] = c3_nb_A[c3_i288];
     }
 
     c3_be_y = c3_lb_B;
-    for (c3_i296 = 0; c3_i296 < 3; c3_i296 = c3_i296 + 1) {
-      c3_ic_x[c3_i296] = c3_hc_x[c3_i296];
+    for (c3_i289 = 0; c3_i289 < 3; c3_i289 = c3_i289 + 1) {
+      c3_ic_x[c3_i289] = c3_hc_x[c3_i289];
     }
 
     c3_ce_y = c3_be_y;
-    for (c3_i297 = 0; c3_i297 < 3; c3_i297 = c3_i297 + 1) {
-      c3_jc_x[c3_i297] = c3_ic_x[c3_i297];
+    for (c3_i290 = 0; c3_i290 < 3; c3_i290 = c3_i290 + 1) {
+      c3_jc_x[c3_i290] = c3_ic_x[c3_i290];
     }
 
     c3_de_y = c3_ce_y;
-    for (c3_i298 = 0; c3_i298 < 3; c3_i298 = c3_i298 + 1) {
-      c3_ee_y[c3_i298] = c3_jc_x[c3_i298] / c3_de_y;
+    for (c3_i291 = 0; c3_i291 < 3; c3_i291 = c3_i291 + 1) {
+      c3_dv18[c3_i291] = c3_jc_x[c3_i291] / c3_de_y;
     }
 
-    for (c3_i299 = 0; c3_i299 < 3; c3_i299 = c3_i299 + 1) {
-      c3_qcmd[c3_i299] = c3_ee_y[c3_i299];
-    }
-
+    c3_qcmd = c3_dv18[2];
     _SFD_EML_CALL(0,109);
-    for (c3_i300 = 0; c3_i300 < 3; c3_i300 = c3_i300 + 1) {
-      c3_twave_out[c3_i300] = c3_twave[c3_i300];
+    for (c3_i292 = 0; c3_i292 < 3; c3_i292 = c3_i292 + 1) {
+      c3_twave_out[c3_i292] = c3_twave[c3_i292];
     }
 
     _SFD_EML_CALL(0,110);
-    for (c3_i301 = 0; c3_i301 < 9; c3_i301 = c3_i301 + 1) {
-      c3_rwave_out[c3_i301] = c3_rwave[c3_i301];
+    for (c3_i293 = 0; c3_i293 < 9; c3_i293 = c3_i293 + 1) {
+      c3_rwave_out[c3_i293] = c3_rwave[c3_i293];
     }
   } else {
     _SFD_EML_CALL(0,112);
-    for (c3_i302 = 0; c3_i302 < 3; c3_i302 = c3_i302 + 1) {
-      c3_des_leg_len[c3_i302] = c3_macro_leg_len[c3_i302];
+    for (c3_i294 = 0; c3_i294 < 3; c3_i294 = c3_i294 + 1) {
+      c3_des_leg_len[c3_i294] = c3_macro_leg_len[c3_i294];
     }
 
     _SFD_EML_CALL(0,113);
-    for (c3_i303 = 0; c3_i303 < 3; c3_i303 = c3_i303 + 1) {
-      c3_eq_out[c3_i303] = c3_eq[c3_i303];
+    for (c3_i295 = 0; c3_i295 < 3; c3_i295 = c3_i295 + 1) {
+      c3_eq_out[c3_i295] = c3_eq[c3_i295];
     }
 
     _SFD_EML_CALL(0,114);
-    for (c3_i304 = 0; c3_i304 < 3; c3_i304 = c3_i304 + 1) {
-      c3_twave_out[c3_i304] = c3_twave[c3_i304];
+    for (c3_i296 = 0; c3_i296 < 3; c3_i296 = c3_i296 + 1) {
+      c3_twave_out[c3_i296] = c3_twave[c3_i296];
     }
 
     _SFD_EML_CALL(0,115);
-    for (c3_i305 = 0; c3_i305 < 9; c3_i305 = c3_i305 + 1) {
-      c3_rwave_out[c3_i305] = c3_rwave[c3_i305];
+    for (c3_i297 = 0; c3_i297 < 9; c3_i297 = c3_i297 + 1) {
+      c3_rwave_out[c3_i297] = c3_rwave[c3_i297];
     }
   }
 
   _SFD_EML_CALL(0,-115);
   sf_debug_symbol_scope_pop();
-  for (c3_i306 = 0; c3_i306 < 6; c3_i306 = c3_i306 + 1) {
-    (*c3_b_qcmd)[c3_i306] = c3_qcmd[c3_i306];
+  *c3_b_qcmd = c3_qcmd;
+  for (c3_i298 = 0; c3_i298 < 3; c3_i298 = c3_i298 + 1) {
+    (*c3_b_des_leg_len)[c3_i298] = c3_des_leg_len[c3_i298];
   }
 
-  for (c3_i307 = 0; c3_i307 < 3; c3_i307 = c3_i307 + 1) {
-    (*c3_b_des_leg_len)[c3_i307] = c3_des_leg_len[c3_i307];
+  for (c3_i299 = 0; c3_i299 < 3; c3_i299 = c3_i299 + 1) {
+    (*c3_b_eq_out)[c3_i299] = c3_eq_out[c3_i299];
   }
 
-  for (c3_i308 = 0; c3_i308 < 3; c3_i308 = c3_i308 + 1) {
-    (*c3_b_eq_out)[c3_i308] = c3_eq_out[c3_i308];
+  for (c3_i300 = 0; c3_i300 < 3; c3_i300 = c3_i300 + 1) {
+    (*c3_b_twave_out)[c3_i300] = c3_twave_out[c3_i300];
   }
 
-  for (c3_i309 = 0; c3_i309 < 3; c3_i309 = c3_i309 + 1) {
-    (*c3_b_twave_out)[c3_i309] = c3_twave_out[c3_i309];
+  for (c3_i301 = 0; c3_i301 < 9; c3_i301 = c3_i301 + 1) {
+    (*c3_b_rwave_out)[c3_i301] = c3_rwave_out[c3_i301];
   }
 
-  for (c3_i310 = 0; c3_i310 < 9; c3_i310 = c3_i310 + 1) {
-    (*c3_b_rwave_out)[c3_i310] = c3_rwave_out[c3_i310];
-  }
-
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,2);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,0);
 }
 
 static void init_script_number_translation(uint32_T c3_machineNumber, uint32_T
@@ -2853,28 +2817,28 @@ static void c3_b_eml_scalar_eg(SFc3_twa_parallelInstanceStruct *chartInstance)
 static real_T c3_norm(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
                       c3_x[3])
 {
-  int32_T c3_i311;
+  int32_T c3_i302;
   real_T c3_b_x[3];
-  int32_T c3_i312;
+  int32_T c3_i303;
   real_T c3_c_x[3];
-  int32_T c3_i313;
+  int32_T c3_i304;
   real_T c3_d_x[3];
-  int32_T c3_i314;
+  int32_T c3_i305;
   real_T c3_e_x[3];
-  for (c3_i311 = 0; c3_i311 < 3; c3_i311 = c3_i311 + 1) {
-    c3_b_x[c3_i311] = c3_x[c3_i311];
+  for (c3_i302 = 0; c3_i302 < 3; c3_i302 = c3_i302 + 1) {
+    c3_b_x[c3_i302] = c3_x[c3_i302];
   }
 
-  for (c3_i312 = 0; c3_i312 < 3; c3_i312 = c3_i312 + 1) {
-    c3_c_x[c3_i312] = c3_b_x[c3_i312];
+  for (c3_i303 = 0; c3_i303 < 3; c3_i303 = c3_i303 + 1) {
+    c3_c_x[c3_i303] = c3_b_x[c3_i303];
   }
 
-  for (c3_i313 = 0; c3_i313 < 3; c3_i313 = c3_i313 + 1) {
-    c3_d_x[c3_i313] = c3_c_x[c3_i313];
+  for (c3_i304 = 0; c3_i304 < 3; c3_i304 = c3_i304 + 1) {
+    c3_d_x[c3_i304] = c3_c_x[c3_i304];
   }
 
-  for (c3_i314 = 0; c3_i314 < 3; c3_i314 = c3_i314 + 1) {
-    c3_e_x[c3_i314] = c3_d_x[c3_i314];
+  for (c3_i305 = 0; c3_i305 < 3; c3_i305 = c3_i305 + 1) {
+    c3_e_x[c3_i305] = c3_d_x[c3_i305];
   }
 
   return c3_ceval_xnrm2(chartInstance, 3, c3_e_x, 1, 1);
@@ -2950,40 +2914,40 @@ static void c3_d_eml_scalar_eg(SFc3_twa_parallelInstanceStruct *chartInstance)
 static real_T c3_eml_xdotu(SFc3_twa_parallelInstanceStruct *chartInstance,
   real_T c3_x[3], real_T c3_y[3])
 {
-  int32_T c3_i315;
+  int32_T c3_i306;
   real_T c3_b_x[3];
-  int32_T c3_i316;
+  int32_T c3_i307;
   real_T c3_b_y[3];
-  int32_T c3_i317;
+  int32_T c3_i308;
   real_T c3_c_x[3];
-  int32_T c3_i318;
+  int32_T c3_i309;
   real_T c3_c_y[3];
-  int32_T c3_i319;
+  int32_T c3_i310;
   real_T c3_d_x[3];
-  int32_T c3_i320;
+  int32_T c3_i311;
   real_T c3_d_y[3];
-  for (c3_i315 = 0; c3_i315 < 3; c3_i315 = c3_i315 + 1) {
-    c3_b_x[c3_i315] = c3_x[c3_i315];
+  for (c3_i306 = 0; c3_i306 < 3; c3_i306 = c3_i306 + 1) {
+    c3_b_x[c3_i306] = c3_x[c3_i306];
   }
 
-  for (c3_i316 = 0; c3_i316 < 3; c3_i316 = c3_i316 + 1) {
-    c3_b_y[c3_i316] = c3_y[c3_i316];
+  for (c3_i307 = 0; c3_i307 < 3; c3_i307 = c3_i307 + 1) {
+    c3_b_y[c3_i307] = c3_y[c3_i307];
   }
 
-  for (c3_i317 = 0; c3_i317 < 3; c3_i317 = c3_i317 + 1) {
-    c3_c_x[c3_i317] = c3_b_x[c3_i317];
+  for (c3_i308 = 0; c3_i308 < 3; c3_i308 = c3_i308 + 1) {
+    c3_c_x[c3_i308] = c3_b_x[c3_i308];
   }
 
-  for (c3_i318 = 0; c3_i318 < 3; c3_i318 = c3_i318 + 1) {
-    c3_c_y[c3_i318] = c3_b_y[c3_i318];
+  for (c3_i309 = 0; c3_i309 < 3; c3_i309 = c3_i309 + 1) {
+    c3_c_y[c3_i309] = c3_b_y[c3_i309];
   }
 
-  for (c3_i319 = 0; c3_i319 < 3; c3_i319 = c3_i319 + 1) {
-    c3_d_x[c3_i319] = c3_c_x[c3_i319];
+  for (c3_i310 = 0; c3_i310 < 3; c3_i310 = c3_i310 + 1) {
+    c3_d_x[c3_i310] = c3_c_x[c3_i310];
   }
 
-  for (c3_i320 = 0; c3_i320 < 3; c3_i320 = c3_i320 + 1) {
-    c3_d_y[c3_i320] = c3_c_y[c3_i320];
+  for (c3_i311 = 0; c3_i311 < 3; c3_i311 = c3_i311 + 1) {
+    c3_d_y[c3_i311] = c3_c_y[c3_i311];
   }
 
   return c3_ceval_xdot(chartInstance, 3, c3_d_x, 1, 1, c3_d_y, 1, 1);
@@ -3038,14 +3002,14 @@ static real_T c3_power(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
 
 static void c3_eml_error(SFc3_twa_parallelInstanceStruct *chartInstance)
 {
-  int32_T c3_i321;
+  int32_T c3_i312;
   static char_T c3_cv0[32] = { 'E', 'm', 'b', 'e', 'd', 'd', 'e', 'd', 'M', 'A',
     'T', 'L', 'A', 'B', ':', 'p', 'o', 'w', 'e', 'r', ':'
     , 'd', 'o', 'm', 'a', 'i', 'n', 'E', 'r', 'r', 'o', 'r' };
 
   char_T c3_u[32];
   const mxArray *c3_y = NULL;
-  int32_T c3_i322;
+  int32_T c3_i313;
   static char_T c3_cv1[102] = { 'D', 'o', 'm', 'a', 'i', 'n', ' ', 'e', 'r', 'r',
     'o', 'r', '.', ' ', 'T', 'o', ' ', 'c', 'o', 'm',
     'p', 'u', 't', 'e', ' ', 'c', 'o', 'm', 'p', 'l', 'e', 'x', ' ', 'r', 'e',
@@ -3060,14 +3024,14 @@ static void c3_eml_error(SFc3_twa_parallelInstanceStruct *chartInstance)
 
   char_T c3_b_u[102];
   const mxArray *c3_b_y = NULL;
-  for (c3_i321 = 0; c3_i321 < 32; c3_i321 = c3_i321 + 1) {
-    c3_u[c3_i321] = c3_cv0[c3_i321];
+  for (c3_i312 = 0; c3_i312 < 32; c3_i312 = c3_i312 + 1) {
+    c3_u[c3_i312] = c3_cv0[c3_i312];
   }
 
   c3_y = NULL;
   sf_mex_assign(&c3_y, sf_mex_create("y", &c3_u, 10, 0U, 1U, 0U, 2, 1, 32));
-  for (c3_i322 = 0; c3_i322 < 102; c3_i322 = c3_i322 + 1) {
-    c3_b_u[c3_i322] = c3_cv1[c3_i322];
+  for (c3_i313 = 0; c3_i313 < 102; c3_i313 = c3_i313 + 1) {
+    c3_b_u[c3_i313] = c3_cv1[c3_i313];
   }
 
   c3_b_y = NULL;
@@ -3092,14 +3056,14 @@ static real_T c3_sqrt(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
 
 static void c3_b_eml_error(SFc3_twa_parallelInstanceStruct *chartInstance)
 {
-  int32_T c3_i323;
+  int32_T c3_i314;
   static char_T c3_cv2[31] = { 'E', 'm', 'b', 'e', 'd', 'd', 'e', 'd', 'M', 'A',
     'T', 'L', 'A', 'B', ':', 's', 'q', 'r', 't', ':', 'd'
     , 'o', 'm', 'a', 'i', 'n', 'E', 'r', 'r', 'o', 'r' };
 
   char_T c3_u[31];
   const mxArray *c3_y = NULL;
-  int32_T c3_i324;
+  int32_T c3_i315;
   static char_T c3_cv3[77] = { 'D', 'o', 'm', 'a', 'i', 'n', ' ', 'e', 'r', 'r',
     'o', 'r', '.', ' ', 'T', 'o', ' ', 'c', 'o', 'm', 'p'
     , 'u', 't', 'e', ' ', 'c', 'o', 'm', 'p', 'l', 'e', 'x', ' ', 'r', 'e', 's',
@@ -3111,14 +3075,14 @@ static void c3_b_eml_error(SFc3_twa_parallelInstanceStruct *chartInstance)
 
   char_T c3_b_u[77];
   const mxArray *c3_b_y = NULL;
-  for (c3_i323 = 0; c3_i323 < 31; c3_i323 = c3_i323 + 1) {
-    c3_u[c3_i323] = c3_cv2[c3_i323];
+  for (c3_i314 = 0; c3_i314 < 31; c3_i314 = c3_i314 + 1) {
+    c3_u[c3_i314] = c3_cv2[c3_i314];
   }
 
   c3_y = NULL;
   sf_mex_assign(&c3_y, sf_mex_create("y", &c3_u, 10, 0U, 1U, 0U, 2, 1, 31));
-  for (c3_i324 = 0; c3_i324 < 77; c3_i324 = c3_i324 + 1) {
-    c3_b_u[c3_i324] = c3_cv3[c3_i324];
+  for (c3_i315 = 0; c3_i315 < 77; c3_i315 = c3_i315 + 1) {
+    c3_b_u[c3_i315] = c3_cv3[c3_i315];
   }
 
   c3_b_y = NULL;
@@ -3129,75 +3093,75 @@ static void c3_b_eml_error(SFc3_twa_parallelInstanceStruct *chartInstance)
 static void c3_mldivide(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   c3_A[36], real_T c3_B[18], real_T c3_Y[18])
 {
-  int32_T c3_i325;
+  int32_T c3_i316;
   real_T c3_b_A[36];
-  int32_T c3_i326;
+  int32_T c3_i317;
   real_T c3_b_B[18];
-  int32_T c3_i327;
+  int32_T c3_i318;
   real_T c3_c_A[36];
-  int32_T c3_i328;
+  int32_T c3_i319;
   real_T c3_c_B[18];
-  int32_T c3_i329;
+  int32_T c3_i320;
   real_T c3_d_A[36];
   int32_T c3_info;
   int32_T c3_ipiv[6];
   real_T c3_e_A[36];
-  int32_T c3_i330;
-  int32_T c3_i331;
+  int32_T c3_i321;
+  int32_T c3_i322;
   int32_T c3_b_ipiv[6];
   int32_T c3_b_info;
-  int32_T c3_i332;
+  int32_T c3_i323;
   int32_T c3_i;
   int32_T c3_b_i;
   int32_T c3_ip;
   int32_T c3_j;
   int32_T c3_b_j;
   real_T c3_temp;
-  int32_T c3_i333;
+  int32_T c3_i324;
   real_T c3_f_A[36];
-  int32_T c3_i334;
+  int32_T c3_i325;
   real_T c3_d_B[18];
-  int32_T c3_i335;
-  int32_T c3_i336;
+  int32_T c3_i326;
+  int32_T c3_i327;
   real_T c3_g_A[36];
-  int32_T c3_i337;
+  int32_T c3_i328;
   real_T c3_b_Y[18];
-  int32_T c3_i338;
+  int32_T c3_i329;
   real_T c3_h_A[36];
-  int32_T c3_i339;
+  int32_T c3_i330;
   real_T c3_e_B[18];
-  int32_T c3_i340;
-  int32_T c3_i341;
+  int32_T c3_i331;
+  int32_T c3_i332;
   real_T c3_i_A[36];
-  int32_T c3_i342;
+  int32_T c3_i333;
   real_T c3_c_Y[18];
-  for (c3_i325 = 0; c3_i325 < 36; c3_i325 = c3_i325 + 1) {
-    c3_b_A[c3_i325] = c3_A[c3_i325];
+  for (c3_i316 = 0; c3_i316 < 36; c3_i316 = c3_i316 + 1) {
+    c3_b_A[c3_i316] = c3_A[c3_i316];
   }
 
-  for (c3_i326 = 0; c3_i326 < 18; c3_i326 = c3_i326 + 1) {
-    c3_b_B[c3_i326] = c3_B[c3_i326];
+  for (c3_i317 = 0; c3_i317 < 18; c3_i317 = c3_i317 + 1) {
+    c3_b_B[c3_i317] = c3_B[c3_i317];
   }
 
-  for (c3_i327 = 0; c3_i327 < 36; c3_i327 = c3_i327 + 1) {
-    c3_c_A[c3_i327] = c3_b_A[c3_i327];
+  for (c3_i318 = 0; c3_i318 < 36; c3_i318 = c3_i318 + 1) {
+    c3_c_A[c3_i318] = c3_b_A[c3_i318];
   }
 
-  for (c3_i328 = 0; c3_i328 < 18; c3_i328 = c3_i328 + 1) {
-    c3_c_B[c3_i328] = c3_b_B[c3_i328];
+  for (c3_i319 = 0; c3_i319 < 18; c3_i319 = c3_i319 + 1) {
+    c3_c_B[c3_i319] = c3_b_B[c3_i319];
   }
 
-  for (c3_i329 = 0; c3_i329 < 36; c3_i329 = c3_i329 + 1) {
-    c3_d_A[c3_i329] = c3_c_A[c3_i329];
+  for (c3_i320 = 0; c3_i320 < 36; c3_i320 = c3_i320 + 1) {
+    c3_d_A[c3_i320] = c3_c_A[c3_i320];
   }
 
   c3_eml_xgetrf(chartInstance, c3_d_A, c3_e_A, c3_ipiv, &c3_info);
-  for (c3_i330 = 0; c3_i330 < 36; c3_i330 = c3_i330 + 1) {
-    c3_c_A[c3_i330] = c3_e_A[c3_i330];
+  for (c3_i321 = 0; c3_i321 < 36; c3_i321 = c3_i321 + 1) {
+    c3_c_A[c3_i321] = c3_e_A[c3_i321];
   }
 
-  for (c3_i331 = 0; c3_i331 < 6; c3_i331 = c3_i331 + 1) {
-    c3_b_ipiv[c3_i331] = c3_ipiv[c3_i331];
+  for (c3_i322 = 0; c3_i322 < 6; c3_i322 = c3_i322 + 1) {
+    c3_b_ipiv[c3_i322] = c3_ipiv[c3_i322];
   }
 
   c3_b_info = c3_info;
@@ -3205,8 +3169,8 @@ static void c3_mldivide(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
     c3_eml_warning(chartInstance);
   }
 
-  for (c3_i332 = 0; c3_i332 < 18; c3_i332 = c3_i332 + 1) {
-    c3_Y[c3_i332] = c3_c_B[c3_i332];
+  for (c3_i323 = 0; c3_i323 < 18; c3_i323 = c3_i323 + 1) {
+    c3_Y[c3_i323] = c3_c_B[c3_i323];
   }
 
   for (c3_i = 1; c3_i < 7; c3_i = c3_i + 1) {
@@ -3236,45 +3200,45 @@ static void c3_mldivide(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
     }
   }
 
-  for (c3_i333 = 0; c3_i333 < 36; c3_i333 = c3_i333 + 1) {
-    c3_f_A[c3_i333] = c3_c_A[c3_i333];
+  for (c3_i324 = 0; c3_i324 < 36; c3_i324 = c3_i324 + 1) {
+    c3_f_A[c3_i324] = c3_c_A[c3_i324];
   }
 
-  for (c3_i334 = 0; c3_i334 < 18; c3_i334 = c3_i334 + 1) {
-    c3_d_B[c3_i334] = c3_Y[c3_i334];
+  for (c3_i325 = 0; c3_i325 < 18; c3_i325 = c3_i325 + 1) {
+    c3_d_B[c3_i325] = c3_Y[c3_i325];
   }
 
-  for (c3_i335 = 0; c3_i335 < 18; c3_i335 = c3_i335 + 1) {
-    c3_Y[c3_i335] = c3_d_B[c3_i335];
+  for (c3_i326 = 0; c3_i326 < 18; c3_i326 = c3_i326 + 1) {
+    c3_Y[c3_i326] = c3_d_B[c3_i326];
   }
 
-  for (c3_i336 = 0; c3_i336 < 36; c3_i336 = c3_i336 + 1) {
-    c3_g_A[c3_i336] = c3_f_A[c3_i336];
+  for (c3_i327 = 0; c3_i327 < 36; c3_i327 = c3_i327 + 1) {
+    c3_g_A[c3_i327] = c3_f_A[c3_i327];
   }
 
-  for (c3_i337 = 0; c3_i337 < 18; c3_i337 = c3_i337 + 1) {
-    c3_b_Y[c3_i337] = c3_Y[c3_i337];
+  for (c3_i328 = 0; c3_i328 < 18; c3_i328 = c3_i328 + 1) {
+    c3_b_Y[c3_i328] = c3_Y[c3_i328];
   }
 
   c3_eml_blas_xtrsm(chartInstance, 6, 3, 1.0, c3_g_A, 1, 6, c3_b_Y, 1, 6, c3_Y);
-  for (c3_i338 = 0; c3_i338 < 36; c3_i338 = c3_i338 + 1) {
-    c3_h_A[c3_i338] = c3_c_A[c3_i338];
+  for (c3_i329 = 0; c3_i329 < 36; c3_i329 = c3_i329 + 1) {
+    c3_h_A[c3_i329] = c3_c_A[c3_i329];
   }
 
-  for (c3_i339 = 0; c3_i339 < 18; c3_i339 = c3_i339 + 1) {
-    c3_e_B[c3_i339] = c3_Y[c3_i339];
+  for (c3_i330 = 0; c3_i330 < 18; c3_i330 = c3_i330 + 1) {
+    c3_e_B[c3_i330] = c3_Y[c3_i330];
   }
 
-  for (c3_i340 = 0; c3_i340 < 18; c3_i340 = c3_i340 + 1) {
-    c3_Y[c3_i340] = c3_e_B[c3_i340];
+  for (c3_i331 = 0; c3_i331 < 18; c3_i331 = c3_i331 + 1) {
+    c3_Y[c3_i331] = c3_e_B[c3_i331];
   }
 
-  for (c3_i341 = 0; c3_i341 < 36; c3_i341 = c3_i341 + 1) {
-    c3_i_A[c3_i341] = c3_h_A[c3_i341];
+  for (c3_i332 = 0; c3_i332 < 36; c3_i332 = c3_i332 + 1) {
+    c3_i_A[c3_i332] = c3_h_A[c3_i332];
   }
 
-  for (c3_i342 = 0; c3_i342 < 18; c3_i342 = c3_i342 + 1) {
-    c3_c_Y[c3_i342] = c3_Y[c3_i342];
+  for (c3_i333 = 0; c3_i333 < 18; c3_i333 = c3_i333 + 1) {
+    c3_c_Y[c3_i333] = c3_Y[c3_i333];
   }
 
   c3_b_eml_blas_xtrsm(chartInstance, 6, 3, 1.0, c3_i_A, 1, 6, c3_c_Y, 1, 6, c3_Y);
@@ -3284,8 +3248,8 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   c3_A[36], real_T c3_b_A[36], int32_T c3_ipiv[6],
   int32_T *c3_info)
 {
-  int32_T c3_i343;
-  int32_T c3_i344;
+  int32_T c3_i334;
+  int32_T c3_i335;
   int32_T c3_j;
   int32_T c3_b_j;
   int32_T c3_a;
@@ -3300,7 +3264,7 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   int32_T c3_jp1j;
   int32_T c3_d_a;
   int32_T c3_b_c;
-  int32_T c3_i345;
+  int32_T c3_i336;
   real_T c3_c_A[36];
   int32_T c3_e_a;
   int32_T c3_jpiv_offset;
@@ -3315,22 +3279,22 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   int32_T c3_h_a;
   int32_T c3_f_b;
   int32_T c3_jprow;
-  int32_T c3_i346;
+  int32_T c3_i337;
   real_T c3_x[36];
   int32_T c3_ix0;
   int32_T c3_iy0;
-  int32_T c3_i347;
-  int32_T c3_i348;
+  int32_T c3_i338;
+  int32_T c3_i339;
   real_T c3_b_x[36];
   int32_T c3_b_ix0;
   int32_T c3_b_iy0;
-  int32_T c3_i349;
+  int32_T c3_i340;
   real_T c3_c_x[36];
-  int32_T c3_i350;
+  int32_T c3_i341;
   real_T c3_d_x[36];
   real_T c3_e_x[36];
-  int32_T c3_i351;
-  int32_T c3_i352;
+  int32_T c3_i342;
+  int32_T c3_i343;
   int32_T c3_b_jp1j;
   int32_T c3_i_a;
   int32_T c3_d_c;
@@ -3354,34 +3318,34 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   int32_T c3_n;
   int32_T c3_c_ix0;
   int32_T c3_c_iy0;
-  int32_T c3_i353;
+  int32_T c3_i344;
   real_T c3_d_A[36];
   int32_T c3_ia0;
-  int32_T c3_i354;
+  int32_T c3_i345;
   int32_T c3_b_m;
   int32_T c3_b_n;
   int32_T c3_d_ix0;
   int32_T c3_d_iy0;
-  int32_T c3_i355;
+  int32_T c3_i346;
   real_T c3_e_A[36];
   int32_T c3_b_ia0;
-  int32_T c3_i356;
+  int32_T c3_i347;
   int32_T c3_c_m;
   int32_T c3_c_n;
   int32_T c3_e_ix0;
   int32_T c3_e_iy0;
-  int32_T c3_i357;
+  int32_T c3_i348;
   real_T c3_f_A[36];
   int32_T c3_c_ia0;
-  int32_T c3_i358;
-  int32_T c3_i359;
+  int32_T c3_i349;
+  int32_T c3_i350;
   real_T c3_g_A[36];
-  for (c3_i343 = 0; c3_i343 < 36; c3_i343 = c3_i343 + 1) {
-    c3_b_A[c3_i343] = c3_A[c3_i343];
+  for (c3_i334 = 0; c3_i334 < 36; c3_i334 = c3_i334 + 1) {
+    c3_b_A[c3_i334] = c3_A[c3_i334];
   }
 
-  for (c3_i344 = 0; c3_i344 < 6; c3_i344 = c3_i344 + 1) {
-    c3_ipiv[c3_i344] = 1 + c3_i344;
+  for (c3_i335 = 0; c3_i335 < 6; c3_i335 = c3_i335 + 1) {
+    c3_ipiv[c3_i335] = 1 + c3_i335;
   }
 
   *c3_info = 0;
@@ -3399,8 +3363,8 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
     c3_jp1j = c3_c_a + 1;
     c3_d_a = c3_mmj;
     c3_b_c = c3_d_a + 1;
-    for (c3_i345 = 0; c3_i345 < 36; c3_i345 = c3_i345 + 1) {
-      c3_c_A[c3_i345] = c3_b_A[c3_i345];
+    for (c3_i336 = 0; c3_i336 < 36; c3_i336 = c3_i336 + 1) {
+      c3_c_A[c3_i336] = c3_b_A[c3_i336];
     }
 
     c3_e_a = c3_eml_ixamax(chartInstance, c3_b_c, c3_c_A, c3_jj);
@@ -3421,38 +3385,38 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
         c3_h_a = c3_jrow;
         c3_f_b = c3_jpiv_offset;
         c3_jprow = c3_h_a + c3_f_b;
-        for (c3_i346 = 0; c3_i346 < 36; c3_i346 = c3_i346 + 1) {
-          c3_x[c3_i346] = c3_b_A[c3_i346];
+        for (c3_i337 = 0; c3_i337 < 36; c3_i337 = c3_i337 + 1) {
+          c3_x[c3_i337] = c3_b_A[c3_i337];
         }
 
         c3_ix0 = c3_jrow;
         c3_iy0 = c3_jprow;
-        for (c3_i347 = 0; c3_i347 < 36; c3_i347 = c3_i347 + 1) {
-          c3_b_A[c3_i347] = c3_x[c3_i347];
+        for (c3_i338 = 0; c3_i338 < 36; c3_i338 = c3_i338 + 1) {
+          c3_b_A[c3_i338] = c3_x[c3_i338];
         }
 
-        for (c3_i348 = 0; c3_i348 < 36; c3_i348 = c3_i348 + 1) {
-          c3_b_x[c3_i348] = c3_b_A[c3_i348];
+        for (c3_i339 = 0; c3_i339 < 36; c3_i339 = c3_i339 + 1) {
+          c3_b_x[c3_i339] = c3_b_A[c3_i339];
         }
 
         c3_b_ix0 = c3_ix0;
         c3_b_iy0 = c3_iy0;
-        for (c3_i349 = 0; c3_i349 < 36; c3_i349 = c3_i349 + 1) {
-          c3_c_x[c3_i349] = c3_b_x[c3_i349];
+        for (c3_i340 = 0; c3_i340 < 36; c3_i340 = c3_i340 + 1) {
+          c3_c_x[c3_i340] = c3_b_x[c3_i340];
         }
 
-        for (c3_i350 = 0; c3_i350 < 36; c3_i350 = c3_i350 + 1) {
-          c3_d_x[c3_i350] = c3_c_x[c3_i350];
+        for (c3_i341 = 0; c3_i341 < 36; c3_i341 = c3_i341 + 1) {
+          c3_d_x[c3_i341] = c3_c_x[c3_i341];
         }
 
         c3_ceval_xswap(chartInstance, 6, c3_d_x, c3_b_ix0, 6, c3_b_iy0, 6,
                        c3_e_x);
-        for (c3_i351 = 0; c3_i351 < 36; c3_i351 = c3_i351 + 1) {
-          c3_c_x[c3_i351] = c3_e_x[c3_i351];
+        for (c3_i342 = 0; c3_i342 < 36; c3_i342 = c3_i342 + 1) {
+          c3_c_x[c3_i342] = c3_e_x[c3_i342];
         }
 
-        for (c3_i352 = 0; c3_i352 < 36; c3_i352 = c3_i352 + 1) {
-          c3_b_A[c3_i352] = c3_c_x[c3_i352];
+        for (c3_i343 = 0; c3_i343 < 36; c3_i343 = c3_i343 + 1) {
+          c3_b_A[c3_i343] = c3_c_x[c3_i343];
         }
       }
 
@@ -3488,46 +3452,46 @@ static void c3_eml_xgetrf(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
     c3_n = c3_e_c;
     c3_c_ix0 = c3_jp1j;
     c3_c_iy0 = c3_f_c;
-    for (c3_i353 = 0; c3_i353 < 36; c3_i353 = c3_i353 + 1) {
-      c3_d_A[c3_i353] = c3_b_A[c3_i353];
+    for (c3_i344 = 0; c3_i344 < 36; c3_i344 = c3_i344 + 1) {
+      c3_d_A[c3_i344] = c3_b_A[c3_i344];
     }
 
     c3_ia0 = c3_g_c;
-    for (c3_i354 = 0; c3_i354 < 36; c3_i354 = c3_i354 + 1) {
-      c3_b_A[c3_i354] = c3_d_A[c3_i354];
+    for (c3_i345 = 0; c3_i345 < 36; c3_i345 = c3_i345 + 1) {
+      c3_b_A[c3_i345] = c3_d_A[c3_i345];
     }
 
     c3_b_m = c3_m;
     c3_b_n = c3_n;
     c3_d_ix0 = c3_c_ix0;
     c3_d_iy0 = c3_c_iy0;
-    for (c3_i355 = 0; c3_i355 < 36; c3_i355 = c3_i355 + 1) {
-      c3_e_A[c3_i355] = c3_b_A[c3_i355];
+    for (c3_i346 = 0; c3_i346 < 36; c3_i346 = c3_i346 + 1) {
+      c3_e_A[c3_i346] = c3_b_A[c3_i346];
     }
 
     c3_b_ia0 = c3_ia0;
-    for (c3_i356 = 0; c3_i356 < 36; c3_i356 = c3_i356 + 1) {
-      c3_b_A[c3_i356] = c3_e_A[c3_i356];
+    for (c3_i347 = 0; c3_i347 < 36; c3_i347 = c3_i347 + 1) {
+      c3_b_A[c3_i347] = c3_e_A[c3_i347];
     }
 
     c3_c_m = c3_b_m;
     c3_c_n = c3_b_n;
     c3_e_ix0 = c3_d_ix0;
     c3_e_iy0 = c3_d_iy0;
-    for (c3_i357 = 0; c3_i357 < 36; c3_i357 = c3_i357 + 1) {
-      c3_f_A[c3_i357] = c3_b_A[c3_i357];
+    for (c3_i348 = 0; c3_i348 < 36; c3_i348 = c3_i348 + 1) {
+      c3_f_A[c3_i348] = c3_b_A[c3_i348];
     }
 
     c3_c_ia0 = c3_b_ia0;
-    for (c3_i358 = 0; c3_i358 < 36; c3_i358 = c3_i358 + 1) {
-      c3_b_A[c3_i358] = c3_f_A[c3_i358];
+    for (c3_i349 = 0; c3_i349 < 36; c3_i349 = c3_i349 + 1) {
+      c3_b_A[c3_i349] = c3_f_A[c3_i349];
     }
 
     if ((real_T)c3_c_m < 1.0) {
     } else if ((real_T)c3_c_n < 1.0) {
     } else {
-      for (c3_i359 = 0; c3_i359 < 36; c3_i359 = c3_i359 + 1) {
-        c3_g_A[c3_i359] = c3_b_A[c3_i359];
+      for (c3_i350 = 0; c3_i350 < 36; c3_i350 = c3_i350 + 1) {
+        c3_g_A[c3_i350] = c3_b_A[c3_i350];
       }
 
       c3_ceval_xger(chartInstance, c3_c_m, c3_c_n, -1.0, c3_e_ix0, 1, c3_e_iy0,
@@ -3551,19 +3515,19 @@ static int32_T c3_eml_ixamax(SFc3_twa_parallelInstanceStruct *chartInstance,
   int32_T c3_n, real_T c3_x[36], int32_T c3_ix0)
 {
   int32_T c3_b_n;
-  int32_T c3_i360;
+  int32_T c3_i351;
   real_T c3_b_x[36];
   int32_T c3_b_ix0;
-  int32_T c3_i361;
+  int32_T c3_i352;
   real_T c3_c_x[36];
   c3_b_n = c3_n;
-  for (c3_i360 = 0; c3_i360 < 36; c3_i360 = c3_i360 + 1) {
-    c3_b_x[c3_i360] = c3_x[c3_i360];
+  for (c3_i351 = 0; c3_i351 < 36; c3_i351 = c3_i351 + 1) {
+    c3_b_x[c3_i351] = c3_x[c3_i351];
   }
 
   c3_b_ix0 = c3_ix0;
-  for (c3_i361 = 0; c3_i361 < 36; c3_i361 = c3_i361 + 1) {
-    c3_c_x[c3_i361] = c3_b_x[c3_i361];
+  for (c3_i352 = 0; c3_i352 < 36; c3_i352 = c3_i352 + 1) {
+    c3_c_x[c3_i352] = c3_b_x[c3_i352];
   }
 
   return c3_ceval_ixamax(chartInstance, c3_b_n, c3_c_x, c3_b_ix0, 1);
@@ -3582,11 +3546,11 @@ static void c3_ceval_xswap(SFc3_twa_parallelInstanceStruct *chartInstance,
   int32_T c3_n, real_T c3_x[36], int32_T c3_ix0, int32_T
   c3_incx, int32_T c3_iy0, int32_T c3_incy, real_T c3_b_x[36])
 {
-  int32_T c3_i362;
+  int32_T c3_i353;
 
   /* Empty Loop. */
-  for (c3_i362 = 0; c3_i362 < 36; c3_i362 = c3_i362 + 1) {
-    c3_b_x[c3_i362] = c3_x[c3_i362];
+  for (c3_i353 = 0; c3_i353 < 36; c3_i353 = c3_i353 + 1) {
+    c3_b_x[c3_i353] = c3_x[c3_i353];
   }
 
   dswap32(&c3_n, &c3_b_x[_SFD_EML_ARRAY_BOUNDS_CHECK("", (int32_T)
@@ -3600,9 +3564,9 @@ static void c3_ceval_xger(SFc3_twa_parallelInstanceStruct *chartInstance,
   c3_ix0, int32_T c3_incx, int32_T c3_iy0, int32_T c3_incy, real_T c3_A[36],
   int32_T c3_ia0, int32_T c3_lda, real_T c3_b_A[36])
 {
-  int32_T c3_i363;
-  for (c3_i363 = 0; c3_i363 < 36; c3_i363 = c3_i363 + 1) {
-    c3_b_A[c3_i363] = c3_A[c3_i363];
+  int32_T c3_i354;
+  for (c3_i354 = 0; c3_i354 < 36; c3_i354 = c3_i354 + 1) {
+    c3_b_A[c3_i354] = c3_A[c3_i354];
   }
 
   dger32(&c3_m, &c3_n, &c3_alpha1, &c3_b_A[_SFD_EML_ARRAY_BOUNDS_CHECK("",
@@ -3615,14 +3579,14 @@ static void c3_ceval_xger(SFc3_twa_parallelInstanceStruct *chartInstance,
 
 static void c3_eml_warning(SFc3_twa_parallelInstanceStruct *chartInstance)
 {
-  int32_T c3_i364;
+  int32_T c3_i355;
   static char_T c3_cv4[21] = { 'M', 'A', 'T', 'L', 'A', 'B', ':', 's', 'i', 'n',
     'g', 'u', 'l', 'a', 'r', 'M', 'a', 't', 'r', 'i', 'x'
   };
 
   char_T c3_u[21];
   const mxArray *c3_y = NULL;
-  int32_T c3_i365;
+  int32_T c3_i356;
   static char_T c3_cv5[40] = { 'M', 'a', 't', 'r', 'i', 'x', ' ', 'i', 's', ' ',
     's', 'i', 'n', 'g', 'u', 'l', 'a', 'r', ' ', 't', 'o'
     , ' ', 'w', 'o', 'r', 'k', 'i', 'n', 'g', ' ', 'p', 'r', 'e', 'c', 'i', 's',
@@ -3630,14 +3594,14 @@ static void c3_eml_warning(SFc3_twa_parallelInstanceStruct *chartInstance)
 
   char_T c3_b_u[40];
   const mxArray *c3_b_y = NULL;
-  for (c3_i364 = 0; c3_i364 < 21; c3_i364 = c3_i364 + 1) {
-    c3_u[c3_i364] = c3_cv4[c3_i364];
+  for (c3_i355 = 0; c3_i355 < 21; c3_i355 = c3_i355 + 1) {
+    c3_u[c3_i355] = c3_cv4[c3_i355];
   }
 
   c3_y = NULL;
   sf_mex_assign(&c3_y, sf_mex_create("y", &c3_u, 10, 0U, 1U, 0U, 2, 1, 21));
-  for (c3_i365 = 0; c3_i365 < 40; c3_i365 = c3_i365 + 1) {
-    c3_b_u[c3_i365] = c3_cv5[c3_i365];
+  for (c3_i356 = 0; c3_i356 < 40; c3_i356 = c3_i356 + 1) {
+    c3_b_u[c3_i356] = c3_cv5[c3_i356];
   }
 
   c3_b_y = NULL;
@@ -3650,21 +3614,21 @@ static void c3_eml_blas_xtrsm(SFc3_twa_parallelInstanceStruct *chartInstance,
   c3_A[36], int32_T c3_ia0, int32_T c3_lda, real_T c3_B[18], int32_T c3_ib0,
   int32_T c3_ldb, real_T c3_b_B[18])
 {
-  int32_T c3_i366;
-  int32_T c3_i367;
+  int32_T c3_i357;
+  int32_T c3_i358;
   real_T c3_b_A[36];
-  int32_T c3_i368;
+  int32_T c3_i359;
   real_T c3_c_B[18];
-  for (c3_i366 = 0; c3_i366 < 18; c3_i366 = c3_i366 + 1) {
-    c3_b_B[c3_i366] = c3_B[c3_i366];
+  for (c3_i357 = 0; c3_i357 < 18; c3_i357 = c3_i357 + 1) {
+    c3_b_B[c3_i357] = c3_B[c3_i357];
   }
 
-  for (c3_i367 = 0; c3_i367 < 36; c3_i367 = c3_i367 + 1) {
-    c3_b_A[c3_i367] = c3_A[c3_i367];
+  for (c3_i358 = 0; c3_i358 < 36; c3_i358 = c3_i358 + 1) {
+    c3_b_A[c3_i358] = c3_A[c3_i358];
   }
 
-  for (c3_i368 = 0; c3_i368 < 18; c3_i368 = c3_i368 + 1) {
-    c3_c_B[c3_i368] = c3_b_B[c3_i368];
+  for (c3_i359 = 0; c3_i359 < 18; c3_i359 = c3_i359 + 1) {
+    c3_c_B[c3_i359] = c3_b_B[c3_i359];
   }
 
   c3_ceval_xtrsm(chartInstance, c3_m, c3_n, c3_alpha1, c3_b_A, c3_ia0, c3_lda,
@@ -3680,13 +3644,13 @@ static void c3_ceval_xtrsm(SFc3_twa_parallelInstanceStruct *chartInstance,
   char_T c3_UPLO;
   char_T c3_TRANSA;
   char_T c3_DIAGA;
-  int32_T c3_i369;
+  int32_T c3_i360;
   c3_SIDE = 'L';
   c3_UPLO = 'L';
   c3_TRANSA = 'N';
   c3_DIAGA = 'U';
-  for (c3_i369 = 0; c3_i369 < 18; c3_i369 = c3_i369 + 1) {
-    c3_b_B[c3_i369] = c3_B[c3_i369];
+  for (c3_i360 = 0; c3_i360 < 18; c3_i360 = c3_i360 + 1) {
+    c3_b_B[c3_i360] = c3_B[c3_i360];
   }
 
   dtrsm32(&c3_SIDE, &c3_UPLO, &c3_TRANSA, &c3_DIAGA, &c3_m, &c3_n, &c3_alpha1,
@@ -3701,21 +3665,21 @@ static void c3_b_eml_blas_xtrsm(SFc3_twa_parallelInstanceStruct *chartInstance,
   c3_A[36], int32_T c3_ia0, int32_T c3_lda, real_T c3_B[18], int32_T c3_ib0,
   int32_T c3_ldb, real_T c3_b_B[18])
 {
-  int32_T c3_i370;
-  int32_T c3_i371;
+  int32_T c3_i361;
+  int32_T c3_i362;
   real_T c3_b_A[36];
-  int32_T c3_i372;
+  int32_T c3_i363;
   real_T c3_c_B[18];
-  for (c3_i370 = 0; c3_i370 < 18; c3_i370 = c3_i370 + 1) {
-    c3_b_B[c3_i370] = c3_B[c3_i370];
+  for (c3_i361 = 0; c3_i361 < 18; c3_i361 = c3_i361 + 1) {
+    c3_b_B[c3_i361] = c3_B[c3_i361];
   }
 
-  for (c3_i371 = 0; c3_i371 < 36; c3_i371 = c3_i371 + 1) {
-    c3_b_A[c3_i371] = c3_A[c3_i371];
+  for (c3_i362 = 0; c3_i362 < 36; c3_i362 = c3_i362 + 1) {
+    c3_b_A[c3_i362] = c3_A[c3_i362];
   }
 
-  for (c3_i372 = 0; c3_i372 < 18; c3_i372 = c3_i372 + 1) {
-    c3_c_B[c3_i372] = c3_b_B[c3_i372];
+  for (c3_i363 = 0; c3_i363 < 18; c3_i363 = c3_i363 + 1) {
+    c3_c_B[c3_i363] = c3_b_B[c3_i363];
   }
 
   c3_b_ceval_xtrsm(chartInstance, c3_m, c3_n, c3_alpha1, c3_b_A, c3_ia0, c3_lda,
@@ -3731,13 +3695,13 @@ static void c3_b_ceval_xtrsm(SFc3_twa_parallelInstanceStruct *chartInstance,
   char_T c3_UPLO;
   char_T c3_TRANSA;
   char_T c3_DIAGA;
-  int32_T c3_i373;
+  int32_T c3_i364;
   c3_SIDE = 'L';
   c3_UPLO = 'U';
   c3_TRANSA = 'N';
   c3_DIAGA = 'N';
-  for (c3_i373 = 0; c3_i373 < 18; c3_i373 = c3_i373 + 1) {
-    c3_b_B[c3_i373] = c3_B[c3_i373];
+  for (c3_i364 = 0; c3_i364 < 18; c3_i364 = c3_i364 + 1) {
+    c3_b_B[c3_i364] = c3_B[c3_i364];
   }
 
   dtrsm32(&c3_SIDE, &c3_UPLO, &c3_TRANSA, &c3_DIAGA, &c3_m, &c3_n, &c3_alpha1,
@@ -3754,23 +3718,23 @@ static void c3_e_eml_scalar_eg(SFc3_twa_parallelInstanceStruct *chartInstance)
 static void c3_mrdivide(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   c3_A[18], real_T c3_B[9], real_T c3_y[18])
 {
-  int32_T c3_i374;
-  int32_T c3_i375;
-  int32_T c3_i376;
-  int32_T c3_i377;
+  int32_T c3_i365;
+  int32_T c3_i366;
+  int32_T c3_i367;
+  int32_T c3_i368;
   real_T c3_b_A[9];
-  int32_T c3_i378;
-  int32_T c3_i379;
-  int32_T c3_i380;
-  int32_T c3_i381;
+  int32_T c3_i369;
+  int32_T c3_i370;
+  int32_T c3_i371;
+  int32_T c3_i372;
   real_T c3_b_B[18];
-  int32_T c3_i382;
+  int32_T c3_i373;
   real_T c3_c_A[9];
-  int32_T c3_i383;
+  int32_T c3_i374;
   real_T c3_c_B[18];
-  int32_T c3_i384;
+  int32_T c3_i375;
   real_T c3_d_A[9];
-  int32_T c3_i385;
+  int32_T c3_i376;
   real_T c3_d_B[18];
   int32_T c3_r1;
   int32_T c3_r2;
@@ -3882,46 +3846,46 @@ static void c3_mrdivide(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
   real_T c3_lb_x;
   real_T c3_ib_y;
   real_T c3_f_z;
-  int32_T c3_i386;
-  int32_T c3_i387;
-  int32_T c3_i388;
-  int32_T c3_i389;
-  c3_i374 = 0;
-  for (c3_i375 = 0; c3_i375 < 3; c3_i375 = c3_i375 + 1) {
-    c3_i376 = 0;
-    for (c3_i377 = 0; c3_i377 < 3; c3_i377 = c3_i377 + 1) {
-      c3_b_A[c3_i377 + c3_i374] = c3_B[c3_i376 + c3_i375];
-      c3_i376 = c3_i376 + 3;
+  int32_T c3_i377;
+  int32_T c3_i378;
+  int32_T c3_i379;
+  int32_T c3_i380;
+  c3_i365 = 0;
+  for (c3_i366 = 0; c3_i366 < 3; c3_i366 = c3_i366 + 1) {
+    c3_i367 = 0;
+    for (c3_i368 = 0; c3_i368 < 3; c3_i368 = c3_i368 + 1) {
+      c3_b_A[c3_i368 + c3_i365] = c3_B[c3_i367 + c3_i366];
+      c3_i367 = c3_i367 + 3;
     }
 
-    c3_i374 = c3_i374 + 3;
+    c3_i365 = c3_i365 + 3;
   }
 
-  c3_i378 = 0;
-  for (c3_i379 = 0; c3_i379 < 6; c3_i379 = c3_i379 + 1) {
-    c3_i380 = 0;
-    for (c3_i381 = 0; c3_i381 < 3; c3_i381 = c3_i381 + 1) {
-      c3_b_B[c3_i381 + c3_i378] = c3_A[c3_i380 + c3_i379];
-      c3_i380 = c3_i380 + 6;
+  c3_i369 = 0;
+  for (c3_i370 = 0; c3_i370 < 6; c3_i370 = c3_i370 + 1) {
+    c3_i371 = 0;
+    for (c3_i372 = 0; c3_i372 < 3; c3_i372 = c3_i372 + 1) {
+      c3_b_B[c3_i372 + c3_i369] = c3_A[c3_i371 + c3_i370];
+      c3_i371 = c3_i371 + 6;
     }
 
-    c3_i378 = c3_i378 + 3;
+    c3_i369 = c3_i369 + 3;
   }
 
-  for (c3_i382 = 0; c3_i382 < 9; c3_i382 = c3_i382 + 1) {
-    c3_c_A[c3_i382] = c3_b_A[c3_i382];
+  for (c3_i373 = 0; c3_i373 < 9; c3_i373 = c3_i373 + 1) {
+    c3_c_A[c3_i373] = c3_b_A[c3_i373];
   }
 
-  for (c3_i383 = 0; c3_i383 < 18; c3_i383 = c3_i383 + 1) {
-    c3_c_B[c3_i383] = c3_b_B[c3_i383];
+  for (c3_i374 = 0; c3_i374 < 18; c3_i374 = c3_i374 + 1) {
+    c3_c_B[c3_i374] = c3_b_B[c3_i374];
   }
 
-  for (c3_i384 = 0; c3_i384 < 9; c3_i384 = c3_i384 + 1) {
-    c3_d_A[c3_i384] = c3_c_A[c3_i384];
+  for (c3_i375 = 0; c3_i375 < 9; c3_i375 = c3_i375 + 1) {
+    c3_d_A[c3_i375] = c3_c_A[c3_i375];
   }
 
-  for (c3_i385 = 0; c3_i385 < 18; c3_i385 = c3_i385 + 1) {
-    c3_d_B[c3_i385] = c3_c_B[c3_i385];
+  for (c3_i376 = 0; c3_i376 < 18; c3_i376 = c3_i376 + 1) {
+    c3_d_B[c3_i376] = c3_c_B[c3_i376];
   }
 
   c3_r1 = 1;
@@ -4165,15 +4129,15 @@ static void c3_mrdivide(SFc3_twa_parallelInstanceStruct *chartInstance, real_T
                 (real_T)c3_b_k), 1, 6, 2, 0) - 1)] = c3_f_z;
   }
 
-  c3_i386 = 0;
-  for (c3_i387 = 0; c3_i387 < 3; c3_i387 = c3_i387 + 1) {
-    c3_i388 = 0;
-    for (c3_i389 = 0; c3_i389 < 6; c3_i389 = c3_i389 + 1) {
-      c3_y[c3_i389 + c3_i386] = c3_Y[c3_i388 + c3_i387];
-      c3_i388 = c3_i388 + 3;
+  c3_i377 = 0;
+  for (c3_i378 = 0; c3_i378 < 3; c3_i378 = c3_i378 + 1) {
+    c3_i379 = 0;
+    for (c3_i380 = 0; c3_i380 < 6; c3_i380 = c3_i380 + 1) {
+      c3_y[c3_i380 + c3_i377] = c3_Y[c3_i379 + c3_i378];
+      c3_i379 = c3_i379 + 3;
     }
 
-    c3_i386 = c3_i386 + 6;
+    c3_i377 = c3_i377 + 6;
   }
 }
 
@@ -4188,21 +4152,21 @@ static void c3_g_eml_scalar_eg(SFc3_twa_parallelInstanceStruct *chartInstance)
 static const mxArray *c3_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
-  int32_T c3_i390;
-  int32_T c3_i391;
-  int32_T c3_i392;
+  int32_T c3_i381;
+  int32_T c3_i382;
+  int32_T c3_i383;
   real_T c3_b_u[9];
   const mxArray *c3_b_y = NULL;
   SFc3_twa_parallelInstanceStruct *chartInstance;
   chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
   c3_y = NULL;
-  c3_i390 = 0;
-  for (c3_i391 = 0; c3_i391 < 3; c3_i391 = c3_i391 + 1) {
-    for (c3_i392 = 0; c3_i392 < 3; c3_i392 = c3_i392 + 1) {
-      c3_b_u[c3_i392 + c3_i390] = (*((real_T (*)[9])c3_u))[c3_i392 + c3_i390];
+  c3_i381 = 0;
+  for (c3_i382 = 0; c3_i382 < 3; c3_i382 = c3_i382 + 1) {
+    for (c3_i383 = 0; c3_i383 < 3; c3_i383 = c3_i383 + 1) {
+      c3_b_u[c3_i383 + c3_i381] = (*((real_T (*)[9])c3_u))[c3_i383 + c3_i381];
     }
 
-    c3_i390 = c3_i390 + 3;
+    c3_i381 = c3_i381 + 3;
   }
 
   c3_b_y = NULL;
@@ -4214,14 +4178,14 @@ static const mxArray *c3_sf_marshall(void *chartInstanceVoid, void *c3_u)
 static const mxArray *c3_b_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
-  int32_T c3_i393;
+  int32_T c3_i384;
   real_T c3_b_u[3];
   const mxArray *c3_b_y = NULL;
   SFc3_twa_parallelInstanceStruct *chartInstance;
   chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
   c3_y = NULL;
-  for (c3_i393 = 0; c3_i393 < 3; c3_i393 = c3_i393 + 1) {
-    c3_b_u[c3_i393] = (*((real_T (*)[3])c3_u))[c3_i393];
+  for (c3_i384 = 0; c3_i384 < 3; c3_i384 = c3_i384 + 1) {
+    c3_b_u[c3_i384] = (*((real_T (*)[3])c3_u))[c3_i384];
   }
 
   c3_b_y = NULL;
@@ -4231,25 +4195,6 @@ static const mxArray *c3_b_sf_marshall(void *chartInstanceVoid, void *c3_u)
 }
 
 static const mxArray *c3_c_sf_marshall(void *chartInstanceVoid, void *c3_u)
-{
-  const mxArray *c3_y = NULL;
-  int32_T c3_i394;
-  real_T c3_b_u[6];
-  const mxArray *c3_b_y = NULL;
-  SFc3_twa_parallelInstanceStruct *chartInstance;
-  chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
-  c3_y = NULL;
-  for (c3_i394 = 0; c3_i394 < 6; c3_i394 = c3_i394 + 1) {
-    c3_b_u[c3_i394] = (*((real_T (*)[6])c3_u))[c3_i394];
-  }
-
-  c3_b_y = NULL;
-  sf_mex_assign(&c3_b_y, sf_mex_create("y", &c3_b_u, 0, 0U, 1U, 0U, 1, 6));
-  sf_mex_assign(&c3_y, c3_b_y);
-  return c3_y;
-}
-
-static const mxArray *c3_d_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
   real_T c3_b_u;
@@ -4264,17 +4209,17 @@ static const mxArray *c3_d_sf_marshall(void *chartInstanceVoid, void *c3_u)
   return c3_y;
 }
 
-static const mxArray *c3_e_sf_marshall(void *chartInstanceVoid, void *c3_u)
+static const mxArray *c3_d_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
-  int32_T c3_i395;
+  int32_T c3_i385;
   real_T c3_b_u[2];
   const mxArray *c3_b_y = NULL;
   SFc3_twa_parallelInstanceStruct *chartInstance;
   chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
   c3_y = NULL;
-  for (c3_i395 = 0; c3_i395 < 2; c3_i395 = c3_i395 + 1) {
-    c3_b_u[c3_i395] = (*((real_T (*)[2])c3_u))[c3_i395];
+  for (c3_i385 = 0; c3_i385 < 2; c3_i385 = c3_i385 + 1) {
+    c3_b_u[c3_i385] = (*((real_T (*)[2])c3_u))[c3_i385];
   }
 
   c3_b_y = NULL;
@@ -4283,24 +4228,43 @@ static const mxArray *c3_e_sf_marshall(void *chartInstanceVoid, void *c3_u)
   return c3_y;
 }
 
+static const mxArray *c3_e_sf_marshall(void *chartInstanceVoid, void *c3_u)
+{
+  const mxArray *c3_y = NULL;
+  int32_T c3_i386;
+  real_T c3_b_u[6];
+  const mxArray *c3_b_y = NULL;
+  SFc3_twa_parallelInstanceStruct *chartInstance;
+  chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
+  c3_y = NULL;
+  for (c3_i386 = 0; c3_i386 < 6; c3_i386 = c3_i386 + 1) {
+    c3_b_u[c3_i386] = (*((real_T (*)[6])c3_u))[c3_i386];
+  }
+
+  c3_b_y = NULL;
+  sf_mex_assign(&c3_b_y, sf_mex_create("y", &c3_b_u, 0, 0U, 1U, 0U, 1, 6));
+  sf_mex_assign(&c3_y, c3_b_y);
+  return c3_y;
+}
+
 static const mxArray *c3_f_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
-  int32_T c3_i396;
-  int32_T c3_i397;
-  int32_T c3_i398;
+  int32_T c3_i387;
+  int32_T c3_i388;
+  int32_T c3_i389;
   real_T c3_b_u[18];
   const mxArray *c3_b_y = NULL;
   SFc3_twa_parallelInstanceStruct *chartInstance;
   chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
   c3_y = NULL;
-  c3_i396 = 0;
-  for (c3_i397 = 0; c3_i397 < 3; c3_i397 = c3_i397 + 1) {
-    for (c3_i398 = 0; c3_i398 < 6; c3_i398 = c3_i398 + 1) {
-      c3_b_u[c3_i398 + c3_i396] = (*((real_T (*)[18])c3_u))[c3_i398 + c3_i396];
+  c3_i387 = 0;
+  for (c3_i388 = 0; c3_i388 < 3; c3_i388 = c3_i388 + 1) {
+    for (c3_i389 = 0; c3_i389 < 6; c3_i389 = c3_i389 + 1) {
+      c3_b_u[c3_i389 + c3_i387] = (*((real_T (*)[18])c3_u))[c3_i389 + c3_i387];
     }
 
-    c3_i396 = c3_i396 + 6;
+    c3_i387 = c3_i387 + 6;
   }
 
   c3_b_y = NULL;
@@ -4312,21 +4276,21 @@ static const mxArray *c3_f_sf_marshall(void *chartInstanceVoid, void *c3_u)
 static const mxArray *c3_g_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
-  int32_T c3_i399;
-  int32_T c3_i400;
-  int32_T c3_i401;
+  int32_T c3_i390;
+  int32_T c3_i391;
+  int32_T c3_i392;
   real_T c3_b_u[36];
   const mxArray *c3_b_y = NULL;
   SFc3_twa_parallelInstanceStruct *chartInstance;
   chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
   c3_y = NULL;
-  c3_i399 = 0;
-  for (c3_i400 = 0; c3_i400 < 6; c3_i400 = c3_i400 + 1) {
-    for (c3_i401 = 0; c3_i401 < 6; c3_i401 = c3_i401 + 1) {
-      c3_b_u[c3_i401 + c3_i399] = (*((real_T (*)[36])c3_u))[c3_i401 + c3_i399];
+  c3_i390 = 0;
+  for (c3_i391 = 0; c3_i391 < 6; c3_i391 = c3_i391 + 1) {
+    for (c3_i392 = 0; c3_i392 < 6; c3_i392 = c3_i392 + 1) {
+      c3_b_u[c3_i392 + c3_i390] = (*((real_T (*)[36])c3_u))[c3_i392 + c3_i390];
     }
 
-    c3_i399 = c3_i399 + 6;
+    c3_i390 = c3_i390 + 6;
   }
 
   c3_b_y = NULL;
@@ -4338,21 +4302,21 @@ static const mxArray *c3_g_sf_marshall(void *chartInstanceVoid, void *c3_u)
 static const mxArray *c3_h_sf_marshall(void *chartInstanceVoid, void *c3_u)
 {
   const mxArray *c3_y = NULL;
-  int32_T c3_i402;
-  int32_T c3_i403;
-  int32_T c3_i404;
+  int32_T c3_i393;
+  int32_T c3_i394;
+  int32_T c3_i395;
   real_T c3_b_u[18];
   const mxArray *c3_b_y = NULL;
   SFc3_twa_parallelInstanceStruct *chartInstance;
   chartInstance = (SFc3_twa_parallelInstanceStruct *)chartInstanceVoid;
   c3_y = NULL;
-  c3_i402 = 0;
-  for (c3_i403 = 0; c3_i403 < 6; c3_i403 = c3_i403 + 1) {
-    for (c3_i404 = 0; c3_i404 < 3; c3_i404 = c3_i404 + 1) {
-      c3_b_u[c3_i404 + c3_i402] = (*((real_T (*)[18])c3_u))[c3_i404 + c3_i402];
+  c3_i393 = 0;
+  for (c3_i394 = 0; c3_i394 < 6; c3_i394 = c3_i394 + 1) {
+    for (c3_i395 = 0; c3_i395 < 3; c3_i395 = c3_i395 + 1) {
+      c3_b_u[c3_i395 + c3_i393] = (*((real_T (*)[18])c3_u))[c3_i395 + c3_i393];
     }
 
-    c3_i402 = c3_i402 + 3;
+    c3_i393 = c3_i393 + 3;
   }
 
   c3_b_y = NULL;
@@ -4366,35 +4330,35 @@ const mxArray *sf_c3_twa_parallel_get_eml_resolved_functions_info(void)
   const mxArray *c3_nameCaptureInfo = NULL;
   c3_ResolvedFunctionInfo c3_info[101];
   const mxArray *c3_m0 = NULL;
-  int32_T c3_i405;
+  int32_T c3_i396;
   c3_ResolvedFunctionInfo *c3_r0;
   c3_nameCaptureInfo = NULL;
   c3_info_helper(c3_info);
   c3_b_info_helper(c3_info);
   sf_mex_assign(&c3_m0, sf_mex_createstruct("nameCaptureInfo", 1, 101));
-  for (c3_i405 = 0; c3_i405 < 101; c3_i405 = c3_i405 + 1) {
-    c3_r0 = &c3_info[c3_i405];
+  for (c3_i396 = 0; c3_i396 < 101; c3_i396 = c3_i396 + 1) {
+    c3_r0 = &c3_info[c3_i396];
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", c3_r0->context, 15,
       0U, 0U, 0U, 2, 1, strlen(c3_r0->context)), "context",
-                    "nameCaptureInfo", c3_i405);
+                    "nameCaptureInfo", c3_i396);
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", c3_r0->name, 15, 0U,
       0U, 0U, 2, 1, strlen(c3_r0->name)), "name",
-                    "nameCaptureInfo", c3_i405);
+                    "nameCaptureInfo", c3_i396);
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", c3_r0->dominantType,
       15, 0U, 0U, 0U, 2, 1, strlen(c3_r0->dominantType)),
-                    "dominantType", "nameCaptureInfo", c3_i405);
+                    "dominantType", "nameCaptureInfo", c3_i396);
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", c3_r0->resolved, 15,
       0U, 0U, 0U, 2, 1, strlen(c3_r0->resolved)), "resolved"
-                    , "nameCaptureInfo", c3_i405);
+                    , "nameCaptureInfo", c3_i396);
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", &c3_r0->fileLength,
       7, 0U, 0U, 0U, 0), "fileLength", "nameCaptureInfo",
-                    c3_i405);
+                    c3_i396);
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", &c3_r0->fileTime1, 7,
       0U, 0U, 0U, 0), "fileTime1", "nameCaptureInfo",
-                    c3_i405);
+                    c3_i396);
     sf_mex_addfield(c3_m0, sf_mex_create("nameCaptureInfo", &c3_r0->fileTime2, 7,
       0U, 0U, 0U, 0), "fileTime2", "nameCaptureInfo",
-                    c3_i405);
+                    c3_i396);
   }
 
   sf_mex_assign(&c3_nameCaptureInfo, c3_m0);
@@ -5244,40 +5208,37 @@ static void c3_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct *chartInstance,
   , real_T c3_y[3])
 {
   real_T c3_dv19[3];
-  int32_T c3_i406;
+  int32_T c3_i397;
   sf_mex_import(c3_name, sf_mex_dup(c3_des_leg_len), &c3_dv19, 1, 0, 0U, 1, 0U,
                 1, 3);
-  for (c3_i406 = 0; c3_i406 < 3; c3_i406 = c3_i406 + 1) {
-    c3_y[c3_i406] = c3_dv19[c3_i406];
+  for (c3_i397 = 0; c3_i397 < 3; c3_i397 = c3_i397 + 1) {
+    c3_y[c3_i397] = c3_dv19[c3_i397];
   }
 
   sf_mex_destroy(&c3_des_leg_len);
 }
 
-static void c3_b_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct *chartInstance,
-  const mxArray *c3_qcmd, const char_T *c3_name,
-  real_T c3_y[6])
+static real_T c3_b_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct
+  *chartInstance, const mxArray *c3_qcmd, const char_T *c3_name)
 {
-  real_T c3_dv20[6];
-  int32_T c3_i407;
-  sf_mex_import(c3_name, sf_mex_dup(c3_qcmd), &c3_dv20, 1, 0, 0U, 1, 0U, 1, 6);
-  for (c3_i407 = 0; c3_i407 < 6; c3_i407 = c3_i407 + 1) {
-    c3_y[c3_i407] = c3_dv20[c3_i407];
-  }
-
+  real_T c3_y;
+  real_T c3_d0;
+  sf_mex_import(c3_name, sf_mex_dup(c3_qcmd), &c3_d0, 1, 0, 0U, 0, 0U, 0);
+  c3_y = c3_d0;
   sf_mex_destroy(&c3_qcmd);
+  return c3_y;
 }
 
 static void c3_c_emlrt_marshallIn(SFc3_twa_parallelInstanceStruct *chartInstance,
   const mxArray *c3_rwave_out, const char_T *c3_name
   , real_T c3_y[9])
 {
-  real_T c3_dv21[9];
-  int32_T c3_i408;
-  sf_mex_import(c3_name, sf_mex_dup(c3_rwave_out), &c3_dv21, 1, 0, 0U, 1, 0U, 2,
+  real_T c3_dv20[9];
+  int32_T c3_i398;
+  sf_mex_import(c3_name, sf_mex_dup(c3_rwave_out), &c3_dv20, 1, 0, 0U, 1, 0U, 2,
                 3, 3);
-  for (c3_i408 = 0; c3_i408 < 9; c3_i408 = c3_i408 + 1) {
-    c3_y[c3_i408] = c3_dv21[c3_i408];
+  for (c3_i398 = 0; c3_i398 < 9; c3_i398 = c3_i398 + 1) {
+    c3_y[c3_i398] = c3_dv20[c3_i398];
   }
 
   sf_mex_destroy(&c3_rwave_out);
@@ -5303,10 +5264,10 @@ static void init_dsm_address_info(SFc3_twa_parallelInstanceStruct *chartInstance
 /* SFunction Glue Code */
 void sf_c3_twa_parallel_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1188491320U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(493678417U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2273060043U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2921331843U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2551774168U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1601900758U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(355990366U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2327780709U);
 }
 
 mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
@@ -5320,10 +5281,10 @@ mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
   {
     mxArray *mxChecksum = mxCreateDoubleMatrix(4,1,mxREAL);
     double *pr = mxGetPr(mxChecksum);
-    pr[0] = (double)(3983684211U);
-    pr[1] = (double)(4129540354U);
-    pr[2] = (double)(2398921583U);
-    pr[3] = (double)(4053905425U);
+    pr[0] = (double)(445681945U);
+    pr[1] = (double)(1832869552U);
+    pr[2] = (double)(4165786992U);
+    pr[3] = (double)(3328688559U);
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -5335,7 +5296,7 @@ mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
     {
       mxArray *mxSize = mxCreateDoubleMatrix(1,2,mxREAL);
       double *pr = mxGetPr(mxSize);
-      pr[0] = (double)(6);
+      pr[0] = (double)(1);
       pr[1] = (double)(1);
       mxSetField(mxData,0,"size",mxSize);
     }
@@ -5613,7 +5574,7 @@ mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void)
     {
       mxArray *mxSize = mxCreateDoubleMatrix(1,2,mxREAL);
       double *pr = mxGetPr(mxSize);
-      pr[0] = (double)(6);
+      pr[0] = (double)(1);
       pr[1] = (double)(1);
       mxSetField(mxData,0,"size",mxSize);
     }
@@ -5764,23 +5725,12 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
             0,
             0,
             0);
-
-          {
-            unsigned int dimVector[1];
-            dimVector[0]= 6;
-            _SFD_SET_DATA_PROPS(0,1,1,0,SF_DOUBLE,1,&(dimVector[0]),0,0,0,0.0,
-                                1.0,0,"qcur",0,(MexFcnForType)c3_c_sf_marshall);
-          }
-
+          _SFD_SET_DATA_PROPS(0,1,1,0,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,"qcur",0,
+                              (MexFcnForType)c3_c_sf_marshall);
           _SFD_SET_DATA_PROPS(1,1,1,0,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,"eqeps",0,
-                              (MexFcnForType)c3_d_sf_marshall);
-
-          {
-            unsigned int dimVector[1];
-            dimVector[0]= 6;
-            _SFD_SET_DATA_PROPS(2,2,0,1,SF_DOUBLE,1,&(dimVector[0]),0,0,0,0.0,
-                                1.0,0,"qcmd",0,(MexFcnForType)c3_c_sf_marshall);
-          }
+                              (MexFcnForType)c3_c_sf_marshall);
+          _SFD_SET_DATA_PROPS(2,2,0,1,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,"qcmd",0,
+                              (MexFcnForType)c3_c_sf_marshall);
 
           {
             unsigned int dimVector[1];
@@ -5791,9 +5741,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           }
 
           _SFD_SET_DATA_PROPS(4,1,1,0,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,"kp",0,
-                              (MexFcnForType)c3_d_sf_marshall);
+                              (MexFcnForType)c3_c_sf_marshall);
           _SFD_SET_DATA_PROPS(5,1,1,0,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,"dt",0,
-                              (MexFcnForType)c3_d_sf_marshall);
+                              (MexFcnForType)c3_c_sf_marshall);
 
           {
             unsigned int dimVector[2];
@@ -5836,7 +5786,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           }
 
           _SFD_SET_DATA_PROPS(11,1,1,0,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,
-                              "velmex_pitch",0,(MexFcnForType)c3_d_sf_marshall);
+                              "velmex_pitch",0,(MexFcnForType)c3_c_sf_marshall);
 
           {
             unsigned int dimVector[1];
@@ -5920,9 +5870,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         }
 
         {
-          real_T (*c3_qcur)[6];
+          real_T *c3_qcur;
           real_T *c3_eqeps;
-          real_T (*c3_qcmd)[6];
+          real_T *c3_qcmd;
           real_T (*c3_des_leg_len)[3];
           real_T *c3_kp;
           real_T *c3_dt;
@@ -5960,9 +5910,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           c3_kp = (real_T *)ssGetInputPortSignal(chartInstance->S, 2);
           c3_des_leg_len = (real_T (*)[3])ssGetOutputPortSignal(chartInstance->S,
             2);
-          c3_qcmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
+          c3_qcmd = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
           c3_eqeps = (real_T *)ssGetInputPortSignal(chartInstance->S, 1);
-          c3_qcur = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
+          c3_qcur = (real_T *)ssGetInputPortSignal(chartInstance->S, 0);
           _SFD_SET_DATA_VALUE_PTR(0U, c3_qcur);
           _SFD_SET_DATA_VALUE_PTR(1U, c3_eqeps);
           _SFD_SET_DATA_VALUE_PTR(2U, c3_qcmd);
@@ -6158,10 +6108,10 @@ static void mdlSetWorkWidths_c3_twa_parallel(SimStruct *S)
     sf_set_sfun_dwork_info(S);
   }
 
-  ssSetChecksum0(S,(4234006789U));
-  ssSetChecksum1(S,(2809604288U));
-  ssSetChecksum2(S,(3869888707U));
-  ssSetChecksum3(S,(1685442956U));
+  ssSetChecksum0(S,(3214029653U));
+  ssSetChecksum1(S,(1507988468U));
+  ssSetChecksum2(S,(3118741254U));
+  ssSetChecksum3(S,(3462738242U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
 }

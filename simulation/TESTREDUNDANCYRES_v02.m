@@ -41,9 +41,9 @@ qnom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
 eq = measured_len - qnom;
 
 x_cur = [0;0;0];
-x_des = [5;3;0];
+x_des = [0;0;0];
 
-ee_rot_des = pi/3;
+ee_rot_des = pi/2;
 
 disp(['Current Pose: x:',num2str(x_cur(1)),' y:',num2str(x_cur(3)),...
     ' gamma:',num2str(ee_rot)]);
@@ -64,4 +64,10 @@ disp(['Current Pose: x:',num2str(x_cur(1)),' y:',num2str(x_cur(2)),...
 loops = loops + 1;
 disp(['Number of loops: ',num2str(loops)]);
 
+r_cur = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
+p_in_w = x_cur*ones(1,3) + r_cur*p_in_m; 
+draw_robot(b_in_w,p_in_w,deltaq)
+
+pause(0.001)
+cla
 end

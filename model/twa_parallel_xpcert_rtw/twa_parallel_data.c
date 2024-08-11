@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6922
+ * Model version                        : 1.6959
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Thu Aug 08 19:39:42 2024
+ * Real-Time Workshop file generated on : Sun Aug 11 16:49:42 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Thu Aug 08 19:39:42 2024
+ * C/C++ source code generated on       : Sun Aug 11 16:49:43 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -178,9 +178,6 @@ Parameters_twa_parallel twa_parallel_P = {
   0.5,                                 /* Expression: 1/N_velocity
                                         * Referenced by: '<S21>/Gain'
                                         */
-  0.0,                                 /* Expression: 0
-                                        * Referenced by: '<Root>/do_homing'
-                                        */
   1.0,                                 /* Expression: 1
                                         * Referenced by: '<Root>/cntrl_mode'
                                         */
@@ -195,7 +192,10 @@ Parameters_twa_parallel twa_parallel_P = {
    */
   { 0.0, 0.0, 0.0 },
   5.2359877559829882E-001,             /* Expression: pi/6
-                                        * Referenced by: '<S6>/ee_rot'
+                                        * Referenced by: '<S6>/ee_rot_des'
+                                        */
+  0.002,                               /* Expression: dt
+                                        * Referenced by: '<S6>/dt'
                                         */
 
   /*  Expression: p_in_m
@@ -226,49 +226,17 @@ Parameters_twa_parallel twa_parallel_P = {
     2.0705523608201659E+001, 7.7274066103125463E+001, 0.0,
     -7.6900935675065512E+001, -2.2050988465359922E+001, 0.0 },
 
-  /*  Expression: t_in_w
-   * Referenced by: '<S6>/t_in_w'
-   */
-  { 1.4243556993353818E+002, -9.2235651485464956E+001, 0.0,
-    8.6606323542513639E+000, 1.6947064770769154E+002, 0.0,
-    -1.5109620228778959E+002, -7.7234996222226684E+001, 0.0 },
-  2.0261003687626575E-001,             /* Expression: twa_gamma
-                                        * Referenced by: '<S6>/twa_gamma'
-                                        */
-  16.7,                                /* Expression: twa_flange_offset
-                                        * Referenced by: '<S6>/twa_flange_offset'
-                                        */
-  0.0,                                 /* Expression: use_twa
-                                        * Referenced by: '<S6>/use_twa'
-                                        */
-
-  /*  Expression: meas_macro_len
+  /*  Expression: zeros(6,1)
    * Referenced by: '<S6>/Unit Delay1'
    */
-  { 1.2479E+002, 125.42, 125.23 },
+  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
 
-  /*  Expression: 223.6857*ones(3,1)
-   * Referenced by: '<S6>/Unit Delay2'
+  /*  Expression: zeros(3,1)
+   * Referenced by: '<S6>/Unit Delay4'
    */
-  { 223.6857, 223.6857, 223.6857 },
-
-  /*  Expression: meas_macro_len
-   * Referenced by: '<S26>/meas_macro_len'
-   */
-  { 1.2479E+002, 125.42, 125.23 },
-  1.27,                                /* Expression: velmex_pitch
-                                        * Referenced by: '<S26>/velmex_pitch'
-                                        */
-
-  /*  Expression: meas_twa_len
-   * Referenced by: '<S26>/meas_twa_len'
-   */
-  { 229.37, 2.2833E+002, 2.2727E+002 },
-  0.2794,                              /* Expression: helix_rad
-                                        * Referenced by: '<S26>/helix_rad'
-                                        */
-  5.4367086539669017E-009,             /* Expression: wire_delta
-                                        * Referenced by: '<S26>/wire_delta'
+  { 0.0, 0.0, 0.0 },
+  5.2359877559829882E-001,             /* Expression: pi/6
+                                        * Referenced by: '<S6>/Unit Delay3'
                                         */
   5.0,                                 /* Expression: 5
                                         * Referenced by: '<S4>/tf'
@@ -342,6 +310,25 @@ Parameters_twa_parallel twa_parallel_P = {
    * Referenced by: '<S3>/manual_current'
    */
   { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
+
+  /*  Expression: t_in_w
+   * Referenced by: '<S6>/t_in_w'
+   */
+  { 1.4243556993353818E+002, -9.2235651485464956E+001, 0.0,
+    8.6606323542513639E+000, 1.6947064770769154E+002, 0.0,
+    -1.5109620228778959E+002, -7.7234996222226684E+001, 0.0 },
+  2.0261003687626575E-001,             /* Expression: twa_gamma
+                                        * Referenced by: '<S6>/twa_gamma'
+                                        */
+  0.0,                                 /* Expression: use_twa
+                                        * Referenced by: '<S6>/use_twa'
+                                        */
+  16.7,                                /* Expression: twa_flange_offset
+                                        * Referenced by: '<S6>/twa_flange_offset'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<Root>/do_homing'
+                                        */
   1U,                                  /* Computed Parameter: NSampleEnable_TARGETCNT
                                         * Referenced by: '<S20>/N-Sample Enable'
                                         */

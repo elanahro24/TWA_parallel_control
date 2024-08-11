@@ -12,6 +12,6 @@ const xpc_SigMappingInfo xpcMMI[] =
       "",
       "twa_parallel",
       0,
-      240,
+      249,
     },
   };

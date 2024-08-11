@@ -77,46 +77,68 @@ full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
 
 % positional error and direction
 p_del = norm(x_des - x_cur);
-p_ep_hat = (x_des-x_cur)/p_del;
+
+if p_del ~=0
+    p_ep_hat = (x_des-x_cur)/p_del;
+else
+    p_ep_hat = zeros(3,1);
+end
 
 % desired orientation angle rotation matrix and error roation matrix
 r_del = r_des * r_cur';
 
 % orientational error angle and axis
 theta_e = acos((trace(r_del)-1)/2);
-me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);r_del(1,3)-r_del(3,1);r_del(2,1)-r_del(1,2)];
+if theta_e ~= 0
+    me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);r_del(1,3)-r_del(3,1);r_del(2,1)-r_del(1,2)];
+else
+    me = z0;
+end
 
 % inverse kinematics based on pose error
 vmax = 5;
-vmin = 0.1;
-wmin = 0.1;
-wmax = 5;
+vmin = 0.001;
+wmin = 0.01;
+wmax = 0.5;
 p_epsilon = 0.01;
-w_epsilon = 0.01;
-p_lambda = 1.1;
-w_lambda = 1.1;
-
+w_epsilon = 0.001;
+p_lambda = 10;
+w_lambda = 2;
+vdot = 0;
+wdot = 0;
 if theta_e > w_epsilon || p_del > p_epsilon
-    if p_del/p_epsilon <= p_lambda
-        vdot = vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));
-    else
-        vdot = vmax;
+
+    if p_del~=0
+        if p_del/p_epsilon <= p_lambda && p_del ~= 0
+            vdot = vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));
+        else
+            vdot = vmax;
+        end
     end
-    
-    if theta_e/w_epsilon <= w_lambda
-        wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));
-    else
-        wdot = wmax;
+
+    if theta_e ~= 0
+        if theta_e/w_epsilon <= w_lambda
+            wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));
+        else
+            wdot = wmax;
+        end
     end
+
+    v = vdot * p_ep_hat;
+    w = wdot * me;
+
+    qdot = full_jac * [v(1:2);w(3)];
+    xcur = x_cur + v * dt;
+    eerot = ee_rot_cur + w(3) * dt;
+
+else
+    qdot = zeros(6,1);
+    xcur = x_cur;
+    eerot = ee_rot_cur;
 end
 
-v = vdot * p_ep_hat;
-w = wdot * me;
-
-qdot = full_jac * [v(1:2);w(3)];
-
 deltaq = qdot * dt;
-disp(['Delta q : ',num2str(deltaq(1)),num2str(deltaq(2)),num2str(deltaq(3))]);
 
-xcur = x_cur + v * dt;
-eerot = ee_rot_cur + w(3) * dt;
+disp(['Delq1 : ',num2str(deltaq(1)),' Delq2 : ',num2str(deltaq(2)),' Delq3 : ',num2str(deltaq(3))]);
+disp(['Delq4 : ',num2str(deltaq(4)),' Delq5 : ',num2str(deltaq(5)),' Delq6 : ',num2str(deltaq(6))]);
+
