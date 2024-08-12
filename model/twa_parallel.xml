@@ -4,42 +4,6 @@
 		<Name>Encoders</Name>
 		<xPCName>twa_parallel/Encoders</xPCName>
 		<SubSystem>
-			<Name>Counts To Turns</Name>
-			<xPCName>twa_parallel/Encoders/Counts To Turns</xPCName>
-			<block>
-				<blkName>enc_res</blkName>
-				<xpcblkName>Encoders/Counts To Turns/enc_res</xpcblkName>
-				<SLblockPath>twa_parallel/Encoders/Counts To Turns/enc_res</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<block>
-				<blkName>gear_ratio</blkName>
-				<xpcblkName>Encoders/Counts To Turns/gear_ratio</xpcblkName>
-				<SLblockPath>twa_parallel/Encoders/Counts To Turns/gear_ratio</SLblockPath>
-				<isSrc>[0 1 1]</isSrc>
-				<parameter>
-					<paramName>Gain</paramName>
-					<dim>[1, 1]</dim>
-				</parameter>
-			</block>
-			<signal>
-				<sigName>enc_res</sigName>
-				<xpcsigName>Encoders/Counts To Turns/enc_res</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>gear_ratio</sigName>
-				<xpcsigName>Encoders/Counts To Turns/gear_ratio</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-		</SubSystem>
-		<SubSystem>
 			<Name>Counts To Turns1</Name>
 			<xPCName>twa_parallel/Encoders/Counts To Turns1</xPCName>
 			<block>
@@ -215,6 +179,42 @@
 			<signal>
 				<sigName>gear_ratio</sigName>
 				<xpcsigName>Encoders/Counts To Turns5/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Counts To Turns6</Name>
+			<xPCName>twa_parallel/Encoders/Counts To Turns6</xPCName>
+			<block>
+				<blkName>enc_res</blkName>
+				<xpcblkName>Encoders/Counts To Turns6/enc_res</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns6/enc_res</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>gear_ratio</blkName>
+				<xpcblkName>Encoders/Counts To Turns6/gear_ratio</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns6/gear_ratio</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>enc_res</sigName>
+				<xpcsigName>Encoders/Counts To Turns6/enc_res</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>gear_ratio</sigName>
+				<xpcsigName>Encoders/Counts To Turns6/gear_ratio</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
@@ -609,10 +609,6 @@
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 		</SubSystem>
-		<SubSystem>
-			<Name>q_cur_macro3</Name>
-			<xPCName>twa_parallel/PID Controller/q_cur_macro3</xPCName>
-		</SubSystem>
 		<block>
 			<blkName>manual_current</blkName>
 			<xpcblkName>PID Controller/manual_current</xpcblkName>
@@ -981,6 +977,22 @@ MATLAB Function/p7</sigName>
 			</signal>
 		</SubSystem>
 		<SubSystem>
+			<Name>norm</Name>
+			<xPCName>twa_parallel/Scopes/norm</xPCName>
+			<SubSystem>
+				<Name>Embedded
+MATLAB Function</Name>
+				<xPCName>twa_parallel/Scopes/norm/Embedded MATLAB Function</xPCName>
+			</SubSystem>
+			<signal>
+				<sigName>Embedded
+MATLAB Function</sigName>
+				<xpcsigName>Scopes/norm/Embedded MATLAB Function</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
 			<Name>q_cur_macro1</Name>
 			<xPCName>twa_parallel/Scopes/q_cur_macro1</xPCName>
 		</SubSystem>
@@ -992,14 +1004,14 @@ MATLAB Function/p7</sigName>
 			<Name>q_cur_macro3</Name>
 			<xPCName>twa_parallel/Scopes/q_cur_macro3</xPCName>
 		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro4</Name>
+			<xPCName>twa_parallel/Scopes/q_cur_macro4</xPCName>
+		</SubSystem>
 	</SubSystem>
 	<SubSystem>
 		<Name>task_space</Name>
 		<xPCName>twa_parallel/task_space</xPCName>
-		<SubSystem>
-			<Name>q_cur_macro3</Name>
-			<xPCName>twa_parallel/task_space/q_cur_macro3</xPCName>
-		</SubSystem>
 		<SubSystem>
 			<Name>ResolvedRates</Name>
 			<xPCName>twa_parallel/task_space/ResolvedRates</xPCName>

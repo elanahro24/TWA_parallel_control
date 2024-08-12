@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6959
+ * Model version              : 1.6972
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Sun Aug 11 16:49:43 2024
+ * C source code generated on : Mon Aug 12 09:35:33 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -806,24 +806,24 @@ typedef struct {
   real_T EncoderInput_o6;              /* '<S1>/Encoder Input' */
   real_T enc_res;                      /* '<S7>/enc_res' */
   real_T gear_ratio;                   /* '<S7>/gear_ratio' */
-  real_T enc_res_l;                    /* '<S8>/enc_res' */
-  real_T gear_ratio_p;                 /* '<S8>/gear_ratio' */
-  real_T enc_res_f;                    /* '<S9>/enc_res' */
-  real_T gear_ratio_c;                 /* '<S9>/gear_ratio' */
-  real_T enc_res_c;                    /* '<S10>/enc_res' */
-  real_T gear_ratio_l;                 /* '<S10>/gear_ratio' */
-  real_T enc_res_fa;                   /* '<S11>/enc_res' */
-  real_T gear_ratio_j;                 /* '<S11>/gear_ratio' */
-  real_T enc_res_b;                    /* '<S12>/enc_res' */
-  real_T gear_ratio_n;                 /* '<S12>/gear_ratio' */
+  real_T enc_res_f;                    /* '<S8>/enc_res' */
+  real_T gear_ratio_c;                 /* '<S8>/gear_ratio' */
+  real_T enc_res_c;                    /* '<S9>/enc_res' */
+  real_T gear_ratio_l;                 /* '<S9>/gear_ratio' */
+  real_T enc_res_fa;                   /* '<S10>/enc_res' */
+  real_T gear_ratio_j;                 /* '<S10>/gear_ratio' */
+  real_T enc_res_b;                    /* '<S11>/enc_res' */
+  real_T gear_ratio_n;                 /* '<S11>/gear_ratio' */
+  real_T enc_res_e;                    /* '<S12>/enc_res' */
+  real_T gear_ratio_f;                 /* '<S12>/gear_ratio' */
   real_T TmpSignalConversionAtDiscreteFI[6];
   real_T DiscreteFIRFilter[6];         /* '<S15>/Discrete FIR Filter' */
   real_T Gain[6];                      /* '<S15>/Gain' */
   real_T TSamp[6];                     /* '<S14>/TSamp' */
   real_T Uk1[6];                       /* '<S14>/UD' */
   real_T Diff[6];                      /* '<S14>/Diff' */
-  real_T DiscreteFIRFilter_h[6];       /* '<S21>/Discrete FIR Filter' */
-  real_T Gain_n[6];                    /* '<S21>/Gain' */
+  real_T DiscreteFIRFilter_h[6];       /* '<S20>/Discrete FIR Filter' */
+  real_T Gain_n[6];                    /* '<S20>/Gain' */
   real_T UnitDelay1[6];                /* '<S6>/Unit Delay1' */
   real_T UnitDelay4[3];                /* '<S6>/Unit Delay4' */
   real_T UnitDelay3;                   /* '<S6>/Unit Delay3' */
@@ -832,7 +832,7 @@ typedef struct {
   real_T UnitDelay;                    /* '<S4>/Unit Delay' */
   real_T UnitDelay1_b;                 /* '<S4>/Unit Delay1' */
   real_T UnitDelay2[6];                /* '<S4>/Unit Delay2' */
-  real_T Switch[6];                    /* '<S20>/Switch' */
+  real_T Switch[6];                    /* '<S19>/Switch' */
   real_T Sum[6];                       /* '<S3>/Sum' */
   real_T Kp[6];                        /* '<S3>/Kp' */
   real_T Integrator[6];                /* '<S3>/Integrator' */
@@ -854,6 +854,7 @@ typedef struct {
   real_T qdes[6];                      /* '<S6>/ResolvedRates' */
   real_T xcur[3];                      /* '<S6>/ResolvedRates' */
   real_T eerot;                        /* '<S6>/ResolvedRates' */
+  real_T y;                            /* '<S21>/Embedded MATLAB Function' */
   real_T TmpSignalConversionAtSFunctio_c[6];/* '<S4>/Embedded MATLAB Function' */
   real_T q_cmd[6];                     /* '<S4>/Embedded MATLAB Function' */
   real_T q_dot[6];                     /* '<S4>/Embedded MATLAB Function' */
@@ -871,14 +872,14 @@ typedef struct {
   real_T eq_out[3];                    /* '<S2>/Homing' */
   real_T twave_out[3];                 /* '<S2>/Homing' */
   real_T rwave_out[9];                 /* '<S2>/Homing' */
-  boolean_T NSampleEnable;             /* '<S20>/N-Sample Enable' */
+  boolean_T NSampleEnable;             /* '<S19>/N-Sample Enable' */
 } BlockIO_twa_parallel;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
   real_T DiscreteFIRFilter_states[6];  /* '<S15>/Discrete FIR Filter' */
   real_T UD_DSTATE[6];                 /* '<S14>/UD' */
-  real_T DiscreteFIRFilter_states_m[6];/* '<S21>/Discrete FIR Filter' */
+  real_T DiscreteFIRFilter_states_m[6];/* '<S20>/Discrete FIR Filter' */
   real_T UnitDelay1_DSTATE[6];         /* '<S6>/Unit Delay1' */
   real_T UnitDelay4_DSTATE[3];         /* '<S6>/Unit Delay4' */
   real_T UnitDelay3_DSTATE;            /* '<S6>/Unit Delay3' */
@@ -891,8 +892,8 @@ typedef struct {
   real_T UnitDelay3_DSTATE_e[3];       /* '<S2>/Unit Delay3' */
   real_T UnitDelay2_DSTATE_l[9];       /* '<S2>/Unit Delay2' */
   int32_T DiscreteFIRFilter_circBuf;   /* '<S15>/Discrete FIR Filter' */
-  int32_T DiscreteFIRFilter_circBuf_l; /* '<S21>/Discrete FIR Filter' */
-  uint32_T NSampleEnable_Counter;      /* '<S20>/N-Sample Enable' */
+  int32_T DiscreteFIRFilter_circBuf_l; /* '<S20>/Discrete FIR Filter' */
+  uint32_T NSampleEnable_Counter;      /* '<S19>/N-Sample Enable' */
   struct {
     int_T AcquireOK;
   } SFunction_IWORK;                   /* '<S23>/S-Function' */
@@ -907,19 +908,18 @@ typedef struct {
 
   struct {
     int_T AcquireOK;
-  } SFunction_IWORK_m;                 /* '<S18>/S-Function' */
-
-  struct {
-    int_T AcquireOK;
-  } SFunction_IWORK_a;                 /* '<S26>/S-Function' */
+  } SFunction_IWORK_ih;                /* '<S25>/S-Function' */
 
   int8_T Homing_SubsysRanBC;           /* '<Root>/Homing' */
   uint8_T is_active_c5_twa_parallel;   /* '<S6>/ResolvedRates' */
+  uint8_T is_active_c2_twa_parallel;   /* '<S21>/Embedded MATLAB Function' */
   uint8_T is_active_c22_twa_parallel;  /* '<S4>/Embedded MATLAB Function' */
   uint8_T is_active_c3_twa_parallel;   /* '<S2>/Homing' */
   boolean_T isStable;                  /* '<S6>/ResolvedRates' */
   boolean_T doneDoubleBufferReInit;    /* '<S6>/ResolvedRates' */
-  boolean_T isStable_n;                /* '<S4>/Embedded MATLAB Function' */
+  boolean_T isStable_n;                /* '<S21>/Embedded MATLAB Function' */
+  boolean_T doneDoubleBufferReInit_p;  /* '<S21>/Embedded MATLAB Function' */
+  boolean_T isStable_nv;               /* '<S4>/Embedded MATLAB Function' */
   boolean_T doneDoubleBufferReInit_b;  /* '<S4>/Embedded MATLAB Function' */
   boolean_T isStable_j;                /* '<S2>/Homing' */
   boolean_T doneDoubleBufferReInit_h;  /* '<S2>/Homing' */
@@ -1040,31 +1040,31 @@ struct Parameters_twa_parallel_ {
   real_T enc_res_Gain_j;               /* Expression: 1/enc_res
                                         * Referenced by: '<S8>/enc_res'
                                         */
-  real_T gear_ratio_Gain_i;            /* Expression: 1/gear_rat
+  real_T gear_ratio_Gain_d;            /* Expression: 1/gear_rat
                                         * Referenced by: '<S8>/gear_ratio'
                                         */
-  real_T enc_res_Gain_jz;              /* Expression: 1/enc_res
+  real_T enc_res_Gain_i;               /* Expression: 1/enc_res
                                         * Referenced by: '<S9>/enc_res'
                                         */
-  real_T gear_ratio_Gain_d;            /* Expression: 1/gear_rat
+  real_T gear_ratio_Gain_a;            /* Expression: 1/gear_rat
                                         * Referenced by: '<S9>/gear_ratio'
                                         */
-  real_T enc_res_Gain_i;               /* Expression: 1/twa_enc_res
+  real_T enc_res_Gain_g;               /* Expression: 1/twa_enc_res
                                         * Referenced by: '<S10>/enc_res'
                                         */
-  real_T gear_ratio_Gain_a;            /* Expression: 1/twa_gear_rat
+  real_T gear_ratio_Gain_o;            /* Expression: 1/twa_gear_rat
                                         * Referenced by: '<S10>/gear_ratio'
                                         */
-  real_T enc_res_Gain_g;               /* Expression: 1/twa_enc_res
+  real_T enc_res_Gain_ij;              /* Expression: 1/twa_enc_res
                                         * Referenced by: '<S11>/enc_res'
                                         */
-  real_T gear_ratio_Gain_o;            /* Expression: 1/twa_gear_rat
+  real_T gear_ratio_Gain_da;           /* Expression: 1/twa_gear_rat
                                         * Referenced by: '<S11>/gear_ratio'
                                         */
-  real_T enc_res_Gain_ij;              /* Expression: 1/twa_enc_res
+  real_T enc_res_Gain_m;               /* Expression: 1/twa_enc_res
                                         * Referenced by: '<S12>/enc_res'
                                         */
-  real_T gear_ratio_Gain_da;           /* Expression: 1/twa_gear_rat
+  real_T gear_ratio_Gain_c;            /* Expression: 1/twa_gear_rat
                                         * Referenced by: '<S12>/gear_ratio'
                                         */
   real_T vel_filter_coeffs_Value[2];   /* Expression: vel_filter_coeffs
@@ -1086,13 +1086,13 @@ struct Parameters_twa_parallel_ {
                                         * Referenced by: '<S1>/enc_reset'
                                         */
   real_T vel_filter_coeffs_Value_m[2]; /* Expression: vel_filter_coeffs
-                                        * Referenced by: '<S21>/vel_filter_coeffs'
+                                        * Referenced by: '<S20>/vel_filter_coeffs'
                                         */
   real_T DiscreteFIRFilter_IC_b;       /* Expression: 0
-                                        * Referenced by: '<S21>/Discrete FIR Filter'
+                                        * Referenced by: '<S20>/Discrete FIR Filter'
                                         */
   real_T Gain_Gain_d;                  /* Expression: 1/N_velocity
-                                        * Referenced by: '<S21>/Gain'
+                                        * Referenced by: '<S20>/Gain'
                                         */
   real_T cntrl_mode_Value;             /* Expression: 1
                                         * Referenced by: '<Root>/cntrl_mode'
@@ -1200,10 +1200,10 @@ struct Parameters_twa_parallel_ {
                                         * Referenced by: '<Root>/do_homing'
                                         */
   uint32_T NSampleEnable_TARGETCNT;    /* Computed Parameter: NSampleEnable_TARGETCNT
-                                        * Referenced by: '<S20>/N-Sample Enable'
+                                        * Referenced by: '<S19>/N-Sample Enable'
                                         */
   uint32_T NSampleEnable_ACTLEVEL;     /* Computed Parameter: NSampleEnable_ACTLEVEL
-                                        * Referenced by: '<S20>/N-Sample Enable'
+                                        * Referenced by: '<S19>/N-Sample Enable'
                                         */
 };
 
@@ -1381,25 +1381,26 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  * '<S4>'   : twa_parallel/Quintic Poly
  * '<S5>'   : twa_parallel/Scopes
  * '<S6>'   : twa_parallel/task_space
- * '<S7>'   : twa_parallel/Encoders/Counts To Turns
- * '<S8>'   : twa_parallel/Encoders/Counts To Turns1
- * '<S9>'   : twa_parallel/Encoders/Counts To Turns2
- * '<S10>'  : twa_parallel/Encoders/Counts To Turns3
- * '<S11>'  : twa_parallel/Encoders/Counts To Turns4
- * '<S12>'  : twa_parallel/Encoders/Counts To Turns5
+ * '<S7>'   : twa_parallel/Encoders/Counts To Turns1
+ * '<S8>'   : twa_parallel/Encoders/Counts To Turns2
+ * '<S9>'   : twa_parallel/Encoders/Counts To Turns3
+ * '<S10>'  : twa_parallel/Encoders/Counts To Turns4
+ * '<S11>'  : twa_parallel/Encoders/Counts To Turns5
+ * '<S12>'  : twa_parallel/Encoders/Counts To Turns6
  * '<S13>'  : twa_parallel/Encoders/Derivative
  * '<S14>'  : twa_parallel/Encoders/Derivative/Discrete Derivative
  * '<S15>'  : twa_parallel/Encoders/Derivative/Fir Filter
  * '<S16>'  : twa_parallel/Homing/Homing
  * '<S17>'  : twa_parallel/PID Controller/Discrete Derivative
- * '<S18>'  : twa_parallel/PID Controller/q_cur_macro3
- * '<S19>'  : twa_parallel/Quintic Poly/Embedded MATLAB Function
- * '<S20>'  : twa_parallel/Quintic Poly/N-Sample Switch
- * '<S21>'  : twa_parallel/Scopes/Fir Filter
+ * '<S18>'  : twa_parallel/Quintic Poly/Embedded MATLAB Function
+ * '<S19>'  : twa_parallel/Quintic Poly/N-Sample Switch
+ * '<S20>'  : twa_parallel/Scopes/Fir Filter
+ * '<S21>'  : twa_parallel/Scopes/norm
  * '<S22>'  : twa_parallel/Scopes/q_cur_macro1
  * '<S23>'  : twa_parallel/Scopes/q_cur_macro2
  * '<S24>'  : twa_parallel/Scopes/q_cur_macro3
- * '<S25>'  : twa_parallel/task_space/ResolvedRates
- * '<S26>'  : twa_parallel/task_space/q_cur_macro3
+ * '<S25>'  : twa_parallel/Scopes/q_cur_macro4
+ * '<S26>'  : twa_parallel/Scopes/norm/Embedded MATLAB Function
+ * '<S27>'  : twa_parallel/task_space/ResolvedRates
  */
 #endif                                 /* RTW_HEADER_twa_parallel_h_ */

@@ -8,6 +8,7 @@ LIBFLAGS =
 OBJECTS = \
 	"twa_parallel_sfun.obj"\
 	"twa_parallel_sfun_registry.obj"\
+	"c2_twa_parallel.obj"\
 	"c3_twa_parallel.obj"\
 	"c5_twa_parallel.obj"\
 	"c22_twa_parallel.obj"\
@@ -32,6 +33,8 @@ twa_parallel_sfun.obj :	"twa_parallel_sfun.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "twa_parallel_sfun.c"
 twa_parallel_sfun_registry.obj :	"twa_parallel_sfun_registry.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "twa_parallel_sfun_registry.c"
+c2_twa_parallel.obj :	"c2_twa_parallel.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_twa_parallel.c"
 c3_twa_parallel.obj :	"c3_twa_parallel.c"
 	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_twa_parallel.c"
 c5_twa_parallel.obj :	"c5_twa_parallel.c"

@@ -487,7 +487,7 @@ pt(54).subsource = 'SS_DOUBLE';
 pt(54).ndims     = '2';
 pt(54).size      = '[]';
 
-pt(55).blockname = 'Encoders/Counts To Turns/enc_res';
+pt(55).blockname = 'Encoders/Counts To Turns1/enc_res';
 pt(55).paramname = 'Gain';
 pt(55).class     = 'scalar';
 pt(55).nrows     = 1;
@@ -496,7 +496,7 @@ pt(55).subsource = 'SS_DOUBLE';
 pt(55).ndims     = '2';
 pt(55).size      = '[]';
 
-pt(56).blockname = 'Encoders/Counts To Turns/gear_ratio';
+pt(56).blockname = 'Encoders/Counts To Turns1/gear_ratio';
 pt(56).paramname = 'Gain';
 pt(56).class     = 'scalar';
 pt(56).nrows     = 1;
@@ -505,7 +505,7 @@ pt(56).subsource = 'SS_DOUBLE';
 pt(56).ndims     = '2';
 pt(56).size      = '[]';
 
-pt(57).blockname = 'Encoders/Counts To Turns1/enc_res';
+pt(57).blockname = 'Encoders/Counts To Turns2/enc_res';
 pt(57).paramname = 'Gain';
 pt(57).class     = 'scalar';
 pt(57).nrows     = 1;
@@ -514,7 +514,7 @@ pt(57).subsource = 'SS_DOUBLE';
 pt(57).ndims     = '2';
 pt(57).size      = '[]';
 
-pt(58).blockname = 'Encoders/Counts To Turns1/gear_ratio';
+pt(58).blockname = 'Encoders/Counts To Turns2/gear_ratio';
 pt(58).paramname = 'Gain';
 pt(58).class     = 'scalar';
 pt(58).nrows     = 1;
@@ -523,7 +523,7 @@ pt(58).subsource = 'SS_DOUBLE';
 pt(58).ndims     = '2';
 pt(58).size      = '[]';
 
-pt(59).blockname = 'Encoders/Counts To Turns2/enc_res';
+pt(59).blockname = 'Encoders/Counts To Turns3/enc_res';
 pt(59).paramname = 'Gain';
 pt(59).class     = 'scalar';
 pt(59).nrows     = 1;
@@ -532,7 +532,7 @@ pt(59).subsource = 'SS_DOUBLE';
 pt(59).ndims     = '2';
 pt(59).size      = '[]';
 
-pt(60).blockname = 'Encoders/Counts To Turns2/gear_ratio';
+pt(60).blockname = 'Encoders/Counts To Turns3/gear_ratio';
 pt(60).paramname = 'Gain';
 pt(60).class     = 'scalar';
 pt(60).nrows     = 1;
@@ -541,7 +541,7 @@ pt(60).subsource = 'SS_DOUBLE';
 pt(60).ndims     = '2';
 pt(60).size      = '[]';
 
-pt(61).blockname = 'Encoders/Counts To Turns3/enc_res';
+pt(61).blockname = 'Encoders/Counts To Turns4/enc_res';
 pt(61).paramname = 'Gain';
 pt(61).class     = 'scalar';
 pt(61).nrows     = 1;
@@ -550,7 +550,7 @@ pt(61).subsource = 'SS_DOUBLE';
 pt(61).ndims     = '2';
 pt(61).size      = '[]';
 
-pt(62).blockname = 'Encoders/Counts To Turns3/gear_ratio';
+pt(62).blockname = 'Encoders/Counts To Turns4/gear_ratio';
 pt(62).paramname = 'Gain';
 pt(62).class     = 'scalar';
 pt(62).nrows     = 1;
@@ -559,7 +559,7 @@ pt(62).subsource = 'SS_DOUBLE';
 pt(62).ndims     = '2';
 pt(62).size      = '[]';
 
-pt(63).blockname = 'Encoders/Counts To Turns4/enc_res';
+pt(63).blockname = 'Encoders/Counts To Turns5/enc_res';
 pt(63).paramname = 'Gain';
 pt(63).class     = 'scalar';
 pt(63).nrows     = 1;
@@ -568,7 +568,7 @@ pt(63).subsource = 'SS_DOUBLE';
 pt(63).ndims     = '2';
 pt(63).size      = '[]';
 
-pt(64).blockname = 'Encoders/Counts To Turns4/gear_ratio';
+pt(64).blockname = 'Encoders/Counts To Turns5/gear_ratio';
 pt(64).paramname = 'Gain';
 pt(64).class     = 'scalar';
 pt(64).nrows     = 1;
@@ -577,7 +577,7 @@ pt(64).subsource = 'SS_DOUBLE';
 pt(64).ndims     = '2';
 pt(64).size      = '[]';
 
-pt(65).blockname = 'Encoders/Counts To Turns5/enc_res';
+pt(65).blockname = 'Encoders/Counts To Turns6/enc_res';
 pt(65).paramname = 'Gain';
 pt(65).class     = 'scalar';
 pt(65).nrows     = 1;
@@ -586,7 +586,7 @@ pt(65).subsource = 'SS_DOUBLE';
 pt(65).ndims     = '2';
 pt(65).size      = '[]';
 
-pt(66).blockname = 'Encoders/Counts To Turns5/gear_ratio';
+pt(66).blockname = 'Encoders/Counts To Turns6/gear_ratio';
 pt(66).paramname = 'Gain';
 pt(66).class     = 'scalar';
 pt(66).nrows     = 1;

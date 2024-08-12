@@ -461,7 +461,7 @@ bio(46).ndims=2;
 bio(46).size=[];
 
 
-bio(47).blkName='Encoders/Counts To Turns/enc_res';
+bio(47).blkName='Encoders/Counts To Turns1/enc_res';
 bio(47).sigName='';
 bio(47).portIdx=0;
 bio(47).dim=[1,1];
@@ -471,7 +471,7 @@ bio(47).ndims=2;
 bio(47).size=[];
 
 
-bio(48).blkName='Encoders/Counts To Turns/gear_ratio';
+bio(48).blkName='Encoders/Counts To Turns1/gear_ratio';
 bio(48).sigName='';
 bio(48).portIdx=0;
 bio(48).dim=[1,1];
@@ -481,102 +481,102 @@ bio(48).ndims=2;
 bio(48).size=[];
 
 
-bio(49).blkName='Encoders/Counts To Turns1/enc_res';
+bio(49).blkName='Encoders/Counts To Turns2/enc_res';
 bio(49).sigName='';
 bio(49).portIdx=0;
 bio(49).dim=[1,1];
 bio(49).sigWidth=1;
-bio(49).sigAddress='&twa_parallel_B.enc_res_l';
+bio(49).sigAddress='&twa_parallel_B.enc_res_f';
 bio(49).ndims=2;
 bio(49).size=[];
 
 
-bio(50).blkName='Encoders/Counts To Turns1/gear_ratio';
+bio(50).blkName='Encoders/Counts To Turns2/gear_ratio';
 bio(50).sigName='';
 bio(50).portIdx=0;
 bio(50).dim=[1,1];
 bio(50).sigWidth=1;
-bio(50).sigAddress='&twa_parallel_B.gear_ratio_p';
+bio(50).sigAddress='&twa_parallel_B.gear_ratio_c';
 bio(50).ndims=2;
 bio(50).size=[];
 
 
-bio(51).blkName='Encoders/Counts To Turns2/enc_res';
+bio(51).blkName='Encoders/Counts To Turns3/enc_res';
 bio(51).sigName='';
 bio(51).portIdx=0;
 bio(51).dim=[1,1];
 bio(51).sigWidth=1;
-bio(51).sigAddress='&twa_parallel_B.enc_res_f';
+bio(51).sigAddress='&twa_parallel_B.enc_res_c';
 bio(51).ndims=2;
 bio(51).size=[];
 
 
-bio(52).blkName='Encoders/Counts To Turns2/gear_ratio';
+bio(52).blkName='Encoders/Counts To Turns3/gear_ratio';
 bio(52).sigName='';
 bio(52).portIdx=0;
 bio(52).dim=[1,1];
 bio(52).sigWidth=1;
-bio(52).sigAddress='&twa_parallel_B.gear_ratio_c';
+bio(52).sigAddress='&twa_parallel_B.gear_ratio_l';
 bio(52).ndims=2;
 bio(52).size=[];
 
 
-bio(53).blkName='Encoders/Counts To Turns3/enc_res';
+bio(53).blkName='Encoders/Counts To Turns4/enc_res';
 bio(53).sigName='';
 bio(53).portIdx=0;
 bio(53).dim=[1,1];
 bio(53).sigWidth=1;
-bio(53).sigAddress='&twa_parallel_B.enc_res_c';
+bio(53).sigAddress='&twa_parallel_B.enc_res_fa';
 bio(53).ndims=2;
 bio(53).size=[];
 
 
-bio(54).blkName='Encoders/Counts To Turns3/gear_ratio';
+bio(54).blkName='Encoders/Counts To Turns4/gear_ratio';
 bio(54).sigName='';
 bio(54).portIdx=0;
 bio(54).dim=[1,1];
 bio(54).sigWidth=1;
-bio(54).sigAddress='&twa_parallel_B.gear_ratio_l';
+bio(54).sigAddress='&twa_parallel_B.gear_ratio_j';
 bio(54).ndims=2;
 bio(54).size=[];
 
 
-bio(55).blkName='Encoders/Counts To Turns4/enc_res';
+bio(55).blkName='Encoders/Counts To Turns5/enc_res';
 bio(55).sigName='';
 bio(55).portIdx=0;
 bio(55).dim=[1,1];
 bio(55).sigWidth=1;
-bio(55).sigAddress='&twa_parallel_B.enc_res_fa';
+bio(55).sigAddress='&twa_parallel_B.enc_res_b';
 bio(55).ndims=2;
 bio(55).size=[];
 
 
-bio(56).blkName='Encoders/Counts To Turns4/gear_ratio';
+bio(56).blkName='Encoders/Counts To Turns5/gear_ratio';
 bio(56).sigName='';
 bio(56).portIdx=0;
 bio(56).dim=[1,1];
 bio(56).sigWidth=1;
-bio(56).sigAddress='&twa_parallel_B.gear_ratio_j';
+bio(56).sigAddress='&twa_parallel_B.gear_ratio_n';
 bio(56).ndims=2;
 bio(56).size=[];
 
 
-bio(57).blkName='Encoders/Counts To Turns5/enc_res';
+bio(57).blkName='Encoders/Counts To Turns6/enc_res';
 bio(57).sigName='';
 bio(57).portIdx=0;
 bio(57).dim=[1,1];
 bio(57).sigWidth=1;
-bio(57).sigAddress='&twa_parallel_B.enc_res_b';
+bio(57).sigAddress='&twa_parallel_B.enc_res_e';
 bio(57).ndims=2;
 bio(57).size=[];
 
 
-bio(58).blkName='Encoders/Counts To Turns5/gear_ratio';
+bio(58).blkName='Encoders/Counts To Turns6/gear_ratio';
 bio(58).sigName='';
 bio(58).portIdx=0;
 bio(58).dim=[1,1];
 bio(58).sigWidth=1;
-bio(58).sigAddress='&twa_parallel_B.gear_ratio_n';
+bio(58).sigAddress='&twa_parallel_B.gear_ratio_f';
 bio(58).ndims=2;
 bio(58).size=[];
 
@@ -651,56 +651,66 @@ bio(65).ndims=2;
 bio(65).size=[];
 
 
-bio(66).blkName='Encoders/Derivative/Discrete Derivative/Diff';
-bio(66).sigName='';
+bio(66).blkName='Scopes/norm/Embedded MATLAB Function';
+bio(66).sigName='y';
 bio(66).portIdx=0;
-bio(66).dim=[6,1];
-bio(66).sigWidth=6;
-bio(66).sigAddress='&twa_parallel_B.Diff[0]';
+bio(66).dim=[1,1];
+bio(66).sigWidth=1;
+bio(66).sigAddress='&twa_parallel_B.y';
 bio(66).ndims=2;
 bio(66).size=[];
 
 
-bio(67).blkName='Encoders/Derivative/Discrete Derivative/UD';
-bio(67).sigName='U(k-1)';
+bio(67).blkName='Encoders/Derivative/Discrete Derivative/Diff';
+bio(67).sigName='';
 bio(67).portIdx=0;
 bio(67).dim=[6,1];
 bio(67).sigWidth=6;
-bio(67).sigAddress='&twa_parallel_B.Uk1[0]';
+bio(67).sigAddress='&twa_parallel_B.Diff[0]';
 bio(67).ndims=2;
 bio(67).size=[];
 
 
-bio(68).blkName='Encoders/Derivative/Discrete Derivative/TSamp';
-bio(68).sigName='';
+bio(68).blkName='Encoders/Derivative/Discrete Derivative/UD';
+bio(68).sigName='U(k-1)';
 bio(68).portIdx=0;
 bio(68).dim=[6,1];
 bio(68).sigWidth=6;
-bio(68).sigAddress='&twa_parallel_B.TSamp[0]';
+bio(68).sigAddress='&twa_parallel_B.Uk1[0]';
 bio(68).ndims=2;
 bio(68).size=[];
 
 
-bio(69).blkName='Encoders/Derivative/Fir Filter/Gain';
+bio(69).blkName='Encoders/Derivative/Discrete Derivative/TSamp';
 bio(69).sigName='';
 bio(69).portIdx=0;
 bio(69).dim=[6,1];
 bio(69).sigWidth=6;
-bio(69).sigAddress='&twa_parallel_B.Gain[0]';
+bio(69).sigAddress='&twa_parallel_B.TSamp[0]';
 bio(69).ndims=2;
 bio(69).size=[];
 
 
-bio(70).blkName='Encoders/Derivative/Fir Filter/Discrete FIR Filter';
+bio(70).blkName='Encoders/Derivative/Fir Filter/Gain';
 bio(70).sigName='';
 bio(70).portIdx=0;
 bio(70).dim=[6,1];
 bio(70).sigWidth=6;
-bio(70).sigAddress='&twa_parallel_B.DiscreteFIRFilter[0]';
+bio(70).sigAddress='&twa_parallel_B.Gain[0]';
 bio(70).ndims=2;
 bio(70).size=[];
 
 
+bio(71).blkName='Encoders/Derivative/Fir Filter/Discrete FIR Filter';
+bio(71).sigName='';
+bio(71).portIdx=0;
+bio(71).dim=[6,1];
+bio(71).sigWidth=6;
+bio(71).sigAddress='&twa_parallel_B.DiscreteFIRFilter[0]';
+bio(71).ndims=2;
+bio(71).size=[];
+
+
 function len = getlenBIO
-len = 70;
+len = 71;
 

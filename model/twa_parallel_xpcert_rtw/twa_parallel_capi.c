@@ -115,13 +115,13 @@ static const rtwCAPI_Signals rtBlockSignals[] = {
   { 35, 0, "Quintic Poly/Unit Delay2",
     "", 0, 0, 0, 0, 0 },
 
-  { 36, 4, "task_space/ResolvedRates/p1",
+  { 36, 5, "task_space/ResolvedRates/p1",
     "qdes", 0, 0, 0, 0, 0 },
 
-  { 37, 4, "task_space/ResolvedRates/p2",
+  { 37, 5, "task_space/ResolvedRates/p2",
     "xcur", 1, 0, 2, 0, 0 },
 
-  { 38, 4, "task_space/ResolvedRates/p3",
+  { 38, 5, "task_space/ResolvedRates/p3",
     "eerot", 2, 0, 1, 0, 0 },
 
   { 39, 0, "task_space/t_in_w",
@@ -145,40 +145,40 @@ static const rtwCAPI_Signals rtBlockSignals[] = {
   { 45, 0, "task_space/Unit Delay4",
     "", 0, 0, 2, 0, 0 },
 
-  { 46, 0, "Encoders/Counts To Turns/enc_res",
+  { 46, 0, "Encoders/Counts To Turns1/enc_res",
     "", 0, 0, 1, 0, 0 },
 
-  { 47, 0, "Encoders/Counts To Turns/gear_ratio",
+  { 47, 0, "Encoders/Counts To Turns1/gear_ratio",
     "", 0, 0, 1, 0, 0 },
 
-  { 48, 0, "Encoders/Counts To Turns1/enc_res",
+  { 48, 0, "Encoders/Counts To Turns2/enc_res",
     "", 0, 0, 1, 0, 0 },
 
-  { 49, 0, "Encoders/Counts To Turns1/gear_ratio",
+  { 49, 0, "Encoders/Counts To Turns2/gear_ratio",
     "", 0, 0, 1, 0, 0 },
 
-  { 50, 0, "Encoders/Counts To Turns2/enc_res",
+  { 50, 0, "Encoders/Counts To Turns3/enc_res",
     "", 0, 0, 1, 0, 0 },
 
-  { 51, 0, "Encoders/Counts To Turns2/gear_ratio",
+  { 51, 0, "Encoders/Counts To Turns3/gear_ratio",
     "", 0, 0, 1, 0, 0 },
 
-  { 52, 0, "Encoders/Counts To Turns3/enc_res",
+  { 52, 0, "Encoders/Counts To Turns4/enc_res",
     "", 0, 0, 1, 0, 0 },
 
-  { 53, 0, "Encoders/Counts To Turns3/gear_ratio",
+  { 53, 0, "Encoders/Counts To Turns4/gear_ratio",
     "", 0, 0, 1, 0, 0 },
 
-  { 54, 0, "Encoders/Counts To Turns4/enc_res",
+  { 54, 0, "Encoders/Counts To Turns5/enc_res",
     "", 0, 0, 1, 0, 0 },
 
-  { 55, 0, "Encoders/Counts To Turns4/gear_ratio",
+  { 55, 0, "Encoders/Counts To Turns5/gear_ratio",
     "", 0, 0, 1, 0, 0 },
 
-  { 56, 0, "Encoders/Counts To Turns5/enc_res",
+  { 56, 0, "Encoders/Counts To Turns6/enc_res",
     "", 0, 0, 1, 0, 0 },
 
-  { 57, 0, "Encoders/Counts To Turns5/gear_ratio",
+  { 57, 0, "Encoders/Counts To Turns6/gear_ratio",
     "", 0, 0, 1, 0, 0 },
 
   { 58, 0, "PID Controller/Discrete Derivative/Diff",
@@ -202,19 +202,22 @@ static const rtwCAPI_Signals rtBlockSignals[] = {
   { 64, 0, "Scopes/Fir Filter/Discrete FIR Filter",
     "", 0, 0, 0, 0, 0 },
 
-  { 65, 0, "Encoders/Derivative/Discrete Derivative/Diff",
+  { 65, 4, "Scopes/norm/Embedded MATLAB Function",
+    "y", 0, 0, 1, 0, 0 },
+
+  { 66, 0, "Encoders/Derivative/Discrete Derivative/Diff",
     "", 0, 0, 0, 0, 0 },
 
-  { 66, 0, "Encoders/Derivative/Discrete Derivative/UD",
+  { 67, 0, "Encoders/Derivative/Discrete Derivative/UD",
     "U(k-1)", 0, 0, 0, 0, 0 },
 
-  { 67, 0, "Encoders/Derivative/Discrete Derivative/TSamp",
+  { 68, 0, "Encoders/Derivative/Discrete Derivative/TSamp",
     "", 0, 0, 0, 0, 0 },
 
-  { 68, 0, "Encoders/Derivative/Fir Filter/Gain",
+  { 69, 0, "Encoders/Derivative/Fir Filter/Gain",
     "", 0, 0, 0, 0, 0 },
 
-  { 69, 0, "Encoders/Derivative/Fir Filter/Discrete FIR Filter",
+  { 70, 0, "Encoders/Derivative/Fir Filter/Discrete FIR Filter",
     "", 0, 0, 0, 0, 0 },
 
   {
@@ -227,238 +230,238 @@ static const rtwCAPI_BlockParameters rtBlockParameters[] = {
   /* addrMapIndex, blockPath,
    * paramName, dataTypeIndex, dimIndex, fixPtIdx
    */
-  { 70, "cntrl_mode",
+  { 71, "cntrl_mode",
     "Value", 0, 1, 0 },
 
-  { 71, "do_homing",
+  { 72, "do_homing",
     "Value", 0, 1, 0 },
 
-  { 72, "q_des",
+  { 73, "q_des",
     "Value", 0, 0, 0 },
 
-  { 73, "Analog Output",
+  { 74, "Analog Output",
     "P1", 0, 4, 0 },
-
-  { 74, "Init",
-    "P1", 0, 1, 0 },
 
   { 75, "Init",
-    "P2", 0, 1, 0 },
+    "P1", 0, 1, 0 },
 
   { 76, "Init",
-    "P3", 0, 1, 0 },
-
-  { 77, "Init",
-    "P4", 0, 1, 0 },
-
-  { 78, "Encoders/enc_reset",
-    "Value", 0, 1, 0 },
-
-  { 79, "Encoders/Encoder Input",
-    "P1", 0, 4, 0 },
-
-  { 80, "Encoders/Encoder Input",
     "P2", 0, 1, 0 },
 
-  { 81, "Homing/b_in_w",
-    "Value", 0, 3, 0 },
+  { 77, "Init",
+    "P3", 0, 1, 0 },
 
-  { 82, "Homing/dt",
+  { 78, "Init",
+    "P4", 0, 1, 0 },
+
+  { 79, "Encoders/enc_reset",
     "Value", 0, 1, 0 },
 
-  { 83, "Homing/eq_eps",
-    "Value", 0, 1, 0 },
+  { 80, "Encoders/Encoder Input",
+    "P1", 0, 4, 0 },
 
-  { 84, "Homing/f_in_w",
+  { 81, "Encoders/Encoder Input",
+    "P2", 0, 1, 0 },
+
+  { 82, "Homing/b_in_w",
     "Value", 0, 3, 0 },
 
-  { 85, "Homing/kp",
+  { 83, "Homing/dt",
     "Value", 0, 1, 0 },
 
-  { 86, "Homing/m_in_w",
+  { 84, "Homing/eq_eps",
+    "Value", 0, 1, 0 },
+
+  { 85, "Homing/f_in_w",
     "Value", 0, 3, 0 },
 
-  { 87, "Homing/meas_macro_len",
+  { 86, "Homing/kp",
+    "Value", 0, 1, 0 },
+
+  { 87, "Homing/m_in_w",
+    "Value", 0, 3, 0 },
+
+  { 88, "Homing/meas_macro_len",
     "Value", 0, 2, 0 },
 
-  { 88, "Homing/p_in_m",
+  { 89, "Homing/p_in_m",
     "Value", 0, 3, 0 },
 
-  { 89, "Homing/velmex_pitch",
+  { 90, "Homing/velmex_pitch",
     "Value", 0, 1, 0 },
 
-  { 90, "Homing/Unit Delay1",
+  { 91, "Homing/Unit Delay1",
     "X0", 0, 2, 0 },
 
-  { 91, "Homing/Unit Delay2",
+  { 92, "Homing/Unit Delay2",
     "X0", 0, 3, 0 },
 
-  { 92, "Homing/Unit Delay3",
+  { 93, "Homing/Unit Delay3",
     "X0", 0, 2, 0 },
 
-  { 93, "Homing/Unit Delay4",
+  { 94, "Homing/Unit Delay4",
     "X0", 0, 2, 0 },
 
-  { 94, "PID Controller/manual_current",
+  { 95, "PID Controller/manual_current",
     "Value", 0, 0, 0 },
 
-  { 95, "PID Controller/pid_mode",
+  { 96, "PID Controller/pid_mode",
     "Value", 0, 1, 0 },
 
-  { 96, "PID Controller/reset_integrator",
+  { 97, "PID Controller/reset_integrator",
     "Value", 0, 1, 0 },
 
-  { 97, "PID Controller/Kd",
+  { 98, "PID Controller/Kd",
     "Gain", 0, 0, 0 },
 
-  { 98, "PID Controller/Ki",
+  { 99, "PID Controller/Ki",
     "Gain", 0, 0, 0 },
 
-  { 99, "PID Controller/Kp",
+  { 100, "PID Controller/Kp",
     "Gain", 0, 0, 0 },
 
-  { 100, "PID Controller/Integrator",
+  { 101, "PID Controller/Integrator",
     "InitialCondition", 0, 1, 0 },
 
-  { 101, "PID Controller/Saturation",
-    "UpperLimit", 0, 4, 0 },
-
   { 102, "PID Controller/Saturation",
-    "LowerLimit", 0, 4, 0 },
-
-  { 103, "PID Controller/saturate_int",
     "UpperLimit", 0, 4, 0 },
+
+  { 103, "PID Controller/Saturation",
+    "LowerLimit", 0, 4, 0 },
 
   { 104, "PID Controller/saturate_int",
+    "UpperLimit", 0, 4, 0 },
+
+  { 105, "PID Controller/saturate_int",
     "LowerLimit", 0, 4, 0 },
 
-  { 105, "Quintic Poly/quintic_enable",
+  { 106, "Quintic Poly/quintic_enable",
     "Value", 0, 1, 0 },
 
-  { 106, "Quintic Poly/tf",
+  { 107, "Quintic Poly/tf",
     "Value", 0, 1, 0 },
 
-  { 107, "Quintic Poly/Unit Delay",
+  { 108, "Quintic Poly/Unit Delay",
     "X0", 0, 1, 0 },
 
-  { 108, "Quintic Poly/Unit Delay1",
+  { 109, "Quintic Poly/Unit Delay1",
     "X0", 0, 1, 0 },
 
-  { 109, "Quintic Poly/Unit Delay2",
+  { 110, "Quintic Poly/Unit Delay2",
     "X0", 0, 0, 0 },
 
-  { 110, "task_space/b_in_w",
+  { 111, "task_space/b_in_w",
     "Value", 0, 3, 0 },
 
-  { 111, "task_space/dt",
+  { 112, "task_space/dt",
     "Value", 0, 1, 0 },
 
-  { 112, "task_space/ee_rot_des",
+  { 113, "task_space/ee_rot_des",
     "Value", 0, 1, 0 },
 
-  { 113, "task_space/f_in_w",
+  { 114, "task_space/f_in_w",
     "Value", 0, 3, 0 },
 
-  { 114, "task_space/m_in_w",
+  { 115, "task_space/m_in_w",
     "Value", 0, 3, 0 },
 
-  { 115, "task_space/p_in_m",
+  { 116, "task_space/p_in_m",
     "Value", 0, 3, 0 },
 
-  { 116, "task_space/t_in_w",
+  { 117, "task_space/t_in_w",
     "Value", 0, 3, 0 },
 
-  { 117, "task_space/twa_flange_offset",
+  { 118, "task_space/twa_flange_offset",
     "Value", 0, 1, 0 },
 
-  { 118, "task_space/twa_gamma",
+  { 119, "task_space/twa_gamma",
     "Value", 0, 1, 0 },
 
-  { 119, "task_space/use_twa",
+  { 120, "task_space/use_twa",
     "Value", 0, 1, 0 },
 
-  { 120, "task_space/x_des",
+  { 121, "task_space/x_des",
     "Value", 0, 2, 0 },
 
-  { 121, "task_space/Unit Delay1",
+  { 122, "task_space/Unit Delay1",
     "X0", 0, 0, 0 },
 
-  { 122, "task_space/Unit Delay3",
+  { 123, "task_space/Unit Delay3",
     "X0", 0, 1, 0 },
 
-  { 123, "task_space/Unit Delay4",
+  { 124, "task_space/Unit Delay4",
     "X0", 0, 2, 0 },
 
-  { 124, "Encoders/Counts To Turns/enc_res",
+  { 125, "Encoders/Counts To Turns1/enc_res",
     "Gain", 0, 1, 0 },
 
-  { 125, "Encoders/Counts To Turns/gear_ratio",
+  { 126, "Encoders/Counts To Turns1/gear_ratio",
     "Gain", 0, 1, 0 },
 
-  { 126, "Encoders/Counts To Turns1/enc_res",
+  { 127, "Encoders/Counts To Turns2/enc_res",
     "Gain", 0, 1, 0 },
 
-  { 127, "Encoders/Counts To Turns1/gear_ratio",
+  { 128, "Encoders/Counts To Turns2/gear_ratio",
     "Gain", 0, 1, 0 },
 
-  { 128, "Encoders/Counts To Turns2/enc_res",
+  { 129, "Encoders/Counts To Turns3/enc_res",
     "Gain", 0, 1, 0 },
 
-  { 129, "Encoders/Counts To Turns2/gear_ratio",
+  { 130, "Encoders/Counts To Turns3/gear_ratio",
     "Gain", 0, 1, 0 },
 
-  { 130, "Encoders/Counts To Turns3/enc_res",
+  { 131, "Encoders/Counts To Turns4/enc_res",
     "Gain", 0, 1, 0 },
 
-  { 131, "Encoders/Counts To Turns3/gear_ratio",
+  { 132, "Encoders/Counts To Turns4/gear_ratio",
     "Gain", 0, 1, 0 },
 
-  { 132, "Encoders/Counts To Turns4/enc_res",
+  { 133, "Encoders/Counts To Turns5/enc_res",
     "Gain", 0, 1, 0 },
 
-  { 133, "Encoders/Counts To Turns4/gear_ratio",
+  { 134, "Encoders/Counts To Turns5/gear_ratio",
     "Gain", 0, 1, 0 },
 
-  { 134, "Encoders/Counts To Turns5/enc_res",
+  { 135, "Encoders/Counts To Turns6/enc_res",
     "Gain", 0, 1, 0 },
 
-  { 135, "Encoders/Counts To Turns5/gear_ratio",
+  { 136, "Encoders/Counts To Turns6/gear_ratio",
     "Gain", 0, 1, 0 },
 
-  { 136, "PID Controller/Discrete Derivative/UD",
+  { 137, "PID Controller/Discrete Derivative/UD",
     "X0", 0, 1, 0 },
 
-  { 137, "PID Controller/Discrete Derivative/TSamp",
+  { 138, "PID Controller/Discrete Derivative/TSamp",
     "WtEt", 0, 1, 0 },
-
-  { 138, "Quintic Poly/N-Sample Switch/N-Sample Enable",
-    "TARGETCNT", 2, 1, 0 },
 
   { 139, "Quintic Poly/N-Sample Switch/N-Sample Enable",
+    "TARGETCNT", 2, 1, 0 },
+
+  { 140, "Quintic Poly/N-Sample Switch/N-Sample Enable",
     "ACTLEVEL", 2, 1, 0 },
 
-  { 140, "Scopes/Fir Filter/vel_filter_coeffs",
+  { 141, "Scopes/Fir Filter/vel_filter_coeffs",
     "Value", 0, 5, 0 },
 
-  { 141, "Scopes/Fir Filter/Gain",
+  { 142, "Scopes/Fir Filter/Gain",
     "Gain", 0, 1, 0 },
 
-  { 142, "Scopes/Fir Filter/Discrete FIR Filter",
+  { 143, "Scopes/Fir Filter/Discrete FIR Filter",
     "IC", 0, 1, 0 },
 
-  { 143, "Encoders/Derivative/Discrete Derivative/UD",
+  { 144, "Encoders/Derivative/Discrete Derivative/UD",
     "X0", 0, 1, 0 },
 
-  { 144, "Encoders/Derivative/Discrete Derivative/TSamp",
+  { 145, "Encoders/Derivative/Discrete Derivative/TSamp",
     "WtEt", 0, 1, 0 },
 
-  { 145, "Encoders/Derivative/Fir Filter/vel_filter_coeffs",
+  { 146, "Encoders/Derivative/Fir Filter/vel_filter_coeffs",
     "Value", 0, 5, 0 },
 
-  { 146, "Encoders/Derivative/Fir Filter/Gain",
+  { 147, "Encoders/Derivative/Fir Filter/Gain",
     "Gain", 0, 1, 0 },
 
-  { 147, "Encoders/Derivative/Fir Filter/Discrete FIR Filter",
+  { 148, "Encoders/Derivative/Fir Filter/Discrete FIR Filter",
     "IC", 0, 1, 0 },
 
   {
@@ -522,16 +525,16 @@ static void* rtDataAddrMap[] = {
   &twa_parallel_B.UnitDelay4[0],       /* 45: Signal */
   &twa_parallel_B.enc_res,             /* 46: Signal */
   &twa_parallel_B.gear_ratio,          /* 47: Signal */
-  &twa_parallel_B.enc_res_l,           /* 48: Signal */
-  &twa_parallel_B.gear_ratio_p,        /* 49: Signal */
-  &twa_parallel_B.enc_res_f,           /* 50: Signal */
-  &twa_parallel_B.gear_ratio_c,        /* 51: Signal */
-  &twa_parallel_B.enc_res_c,           /* 52: Signal */
-  &twa_parallel_B.gear_ratio_l,        /* 53: Signal */
-  &twa_parallel_B.enc_res_fa,          /* 54: Signal */
-  &twa_parallel_B.gear_ratio_j,        /* 55: Signal */
-  &twa_parallel_B.enc_res_b,           /* 56: Signal */
-  &twa_parallel_B.gear_ratio_n,        /* 57: Signal */
+  &twa_parallel_B.enc_res_f,           /* 48: Signal */
+  &twa_parallel_B.gear_ratio_c,        /* 49: Signal */
+  &twa_parallel_B.enc_res_c,           /* 50: Signal */
+  &twa_parallel_B.gear_ratio_l,        /* 51: Signal */
+  &twa_parallel_B.enc_res_fa,          /* 52: Signal */
+  &twa_parallel_B.gear_ratio_j,        /* 53: Signal */
+  &twa_parallel_B.enc_res_b,           /* 54: Signal */
+  &twa_parallel_B.gear_ratio_n,        /* 55: Signal */
+  &twa_parallel_B.enc_res_e,           /* 56: Signal */
+  &twa_parallel_B.gear_ratio_f,        /* 57: Signal */
   &twa_parallel_B.Diff_d[0],           /* 58: Signal */
   &twa_parallel_B.Uk1_j[0],            /* 59: Signal */
   &twa_parallel_B.TSamp_h[0],          /* 60: Signal */
@@ -539,89 +542,90 @@ static void* rtDataAddrMap[] = {
   &twa_parallel_B.Switch[0],           /* 62: Signal */
   &twa_parallel_B.Gain_n[0],           /* 63: Signal */
   &twa_parallel_B.DiscreteFIRFilter_h[0],/* 64: Signal */
-  &twa_parallel_B.Diff[0],             /* 65: Signal */
-  &twa_parallel_B.Uk1[0],              /* 66: Signal */
-  &twa_parallel_B.TSamp[0],            /* 67: Signal */
-  &twa_parallel_B.Gain[0],             /* 68: Signal */
-  &twa_parallel_B.DiscreteFIRFilter[0],/* 69: Signal */
-  &twa_parallel_P.cntrl_mode_Value,    /* 70: Block Parameter */
-  &twa_parallel_P.do_homing_Value,     /* 71: Block Parameter */
-  &twa_parallel_P.q_des_Value[0],      /* 72: Block Parameter */
-  &twa_parallel_P.AnalogOutput_P1[0],  /* 73: Block Parameter */
-  &twa_parallel_P.Init_P1,             /* 74: Block Parameter */
-  &twa_parallel_P.Init_P2,             /* 75: Block Parameter */
-  &twa_parallel_P.Init_P3,             /* 76: Block Parameter */
-  &twa_parallel_P.Init_P4,             /* 77: Block Parameter */
-  &twa_parallel_P.enc_reset_Value,     /* 78: Block Parameter */
-  &twa_parallel_P.EncoderInput_P1[0],  /* 79: Block Parameter */
-  &twa_parallel_P.EncoderInput_P2,     /* 80: Block Parameter */
-  &twa_parallel_P.b_in_w_Value[0],     /* 81: Block Parameter */
-  &twa_parallel_P.dt_Value,            /* 82: Block Parameter */
-  &twa_parallel_P.eq_eps_Value,        /* 83: Block Parameter */
-  &twa_parallel_P.f_in_w_Value[0],     /* 84: Block Parameter */
-  &twa_parallel_P.kp_Value,            /* 85: Block Parameter */
-  &twa_parallel_P.m_in_w_Value[0],     /* 86: Block Parameter */
-  &twa_parallel_P.meas_macro_len_Value[0],/* 87: Block Parameter */
-  &twa_parallel_P.p_in_m_Value[0],     /* 88: Block Parameter */
-  &twa_parallel_P.velmex_pitch_Value,  /* 89: Block Parameter */
-  &twa_parallel_P.UnitDelay1_X0[0],    /* 90: Block Parameter */
-  &twa_parallel_P.UnitDelay2_X0[0],    /* 91: Block Parameter */
-  &twa_parallel_P.UnitDelay3_X0[0],    /* 92: Block Parameter */
-  &twa_parallel_P.UnitDelay4_X0[0],    /* 93: Block Parameter */
-  &twa_parallel_P.manual_current_Value[0],/* 94: Block Parameter */
-  &twa_parallel_P.pid_mode_Value,      /* 95: Block Parameter */
-  &twa_parallel_P.reset_integrator_Value,/* 96: Block Parameter */
-  &twa_parallel_P.Kd_Gain[0],          /* 97: Block Parameter */
-  &twa_parallel_P.Ki_Gain[0],          /* 98: Block Parameter */
-  &twa_parallel_P.Kp_Gain[0],          /* 99: Block Parameter */
-  &twa_parallel_P.Integrator_IC,       /* 100: Block Parameter */
-  &twa_parallel_P.Saturation_UpperSat[0],/* 101: Block Parameter */
-  &twa_parallel_P.Saturation_LowerSat[0],/* 102: Block Parameter */
-  &twa_parallel_P.saturate_int_UpperSat[0],/* 103: Block Parameter */
-  &twa_parallel_P.saturate_int_LowerSat[0],/* 104: Block Parameter */
-  &twa_parallel_P.quintic_enable_Value,/* 105: Block Parameter */
-  &twa_parallel_P.tf_Value,            /* 106: Block Parameter */
-  &twa_parallel_P.UnitDelay_X0,        /* 107: Block Parameter */
-  &twa_parallel_P.UnitDelay1_X0_h,     /* 108: Block Parameter */
-  &twa_parallel_P.UnitDelay2_X0_d[0],  /* 109: Block Parameter */
-  &twa_parallel_P.b_in_w_Value_i[0],   /* 110: Block Parameter */
-  &twa_parallel_P.dt_Value_n,          /* 111: Block Parameter */
-  &twa_parallel_P.ee_rot_des_Value,    /* 112: Block Parameter */
-  &twa_parallel_P.f_in_w_Value_b[0],   /* 113: Block Parameter */
-  &twa_parallel_P.m_in_w_Value_n[0],   /* 114: Block Parameter */
-  &twa_parallel_P.p_in_m_Value_m[0],   /* 115: Block Parameter */
-  &twa_parallel_P.t_in_w_Value[0],     /* 116: Block Parameter */
-  &twa_parallel_P.twa_flange_offset_Value,/* 117: Block Parameter */
-  &twa_parallel_P.twa_gamma_Value,     /* 118: Block Parameter */
-  &twa_parallel_P.use_twa_Value,       /* 119: Block Parameter */
-  &twa_parallel_P.x_des_Value[0],      /* 120: Block Parameter */
-  &twa_parallel_P.UnitDelay1_X0_g[0],  /* 121: Block Parameter */
-  &twa_parallel_P.UnitDelay3_X0_b,     /* 122: Block Parameter */
-  &twa_parallel_P.UnitDelay4_X0_l[0],  /* 123: Block Parameter */
-  &twa_parallel_P.enc_res_Gain,        /* 124: Block Parameter */
-  &twa_parallel_P.gear_ratio_Gain,     /* 125: Block Parameter */
-  &twa_parallel_P.enc_res_Gain_j,      /* 126: Block Parameter */
-  &twa_parallel_P.gear_ratio_Gain_i,   /* 127: Block Parameter */
-  &twa_parallel_P.enc_res_Gain_jz,     /* 128: Block Parameter */
-  &twa_parallel_P.gear_ratio_Gain_d,   /* 129: Block Parameter */
-  &twa_parallel_P.enc_res_Gain_i,      /* 130: Block Parameter */
-  &twa_parallel_P.gear_ratio_Gain_a,   /* 131: Block Parameter */
-  &twa_parallel_P.enc_res_Gain_g,      /* 132: Block Parameter */
-  &twa_parallel_P.gear_ratio_Gain_o,   /* 133: Block Parameter */
-  &twa_parallel_P.enc_res_Gain_ij,     /* 134: Block Parameter */
-  &twa_parallel_P.gear_ratio_Gain_da,  /* 135: Block Parameter */
-  &twa_parallel_P.UD_X0_f,             /* 136: Block Parameter */
-  &twa_parallel_P.TSamp_WtEt_p,        /* 137: Block Parameter */
-  &twa_parallel_P.NSampleEnable_TARGETCNT,/* 138: Block Parameter */
-  &twa_parallel_P.NSampleEnable_ACTLEVEL,/* 139: Block Parameter */
-  &twa_parallel_P.vel_filter_coeffs_Value_m[0],/* 140: Block Parameter */
-  &twa_parallel_P.Gain_Gain_d,         /* 141: Block Parameter */
-  &twa_parallel_P.DiscreteFIRFilter_IC_b,/* 142: Block Parameter */
-  &twa_parallel_P.UD_X0,               /* 143: Block Parameter */
-  &twa_parallel_P.TSamp_WtEt,          /* 144: Block Parameter */
-  &twa_parallel_P.vel_filter_coeffs_Value[0],/* 145: Block Parameter */
-  &twa_parallel_P.Gain_Gain,           /* 146: Block Parameter */
-  &twa_parallel_P.DiscreteFIRFilter_IC /* 147: Block Parameter */
+  &twa_parallel_B.y,                   /* 65: Signal */
+  &twa_parallel_B.Diff[0],             /* 66: Signal */
+  &twa_parallel_B.Uk1[0],              /* 67: Signal */
+  &twa_parallel_B.TSamp[0],            /* 68: Signal */
+  &twa_parallel_B.Gain[0],             /* 69: Signal */
+  &twa_parallel_B.DiscreteFIRFilter[0],/* 70: Signal */
+  &twa_parallel_P.cntrl_mode_Value,    /* 71: Block Parameter */
+  &twa_parallel_P.do_homing_Value,     /* 72: Block Parameter */
+  &twa_parallel_P.q_des_Value[0],      /* 73: Block Parameter */
+  &twa_parallel_P.AnalogOutput_P1[0],  /* 74: Block Parameter */
+  &twa_parallel_P.Init_P1,             /* 75: Block Parameter */
+  &twa_parallel_P.Init_P2,             /* 76: Block Parameter */
+  &twa_parallel_P.Init_P3,             /* 77: Block Parameter */
+  &twa_parallel_P.Init_P4,             /* 78: Block Parameter */
+  &twa_parallel_P.enc_reset_Value,     /* 79: Block Parameter */
+  &twa_parallel_P.EncoderInput_P1[0],  /* 80: Block Parameter */
+  &twa_parallel_P.EncoderInput_P2,     /* 81: Block Parameter */
+  &twa_parallel_P.b_in_w_Value[0],     /* 82: Block Parameter */
+  &twa_parallel_P.dt_Value,            /* 83: Block Parameter */
+  &twa_parallel_P.eq_eps_Value,        /* 84: Block Parameter */
+  &twa_parallel_P.f_in_w_Value[0],     /* 85: Block Parameter */
+  &twa_parallel_P.kp_Value,            /* 86: Block Parameter */
+  &twa_parallel_P.m_in_w_Value[0],     /* 87: Block Parameter */
+  &twa_parallel_P.meas_macro_len_Value[0],/* 88: Block Parameter */
+  &twa_parallel_P.p_in_m_Value[0],     /* 89: Block Parameter */
+  &twa_parallel_P.velmex_pitch_Value,  /* 90: Block Parameter */
+  &twa_parallel_P.UnitDelay1_X0[0],    /* 91: Block Parameter */
+  &twa_parallel_P.UnitDelay2_X0[0],    /* 92: Block Parameter */
+  &twa_parallel_P.UnitDelay3_X0[0],    /* 93: Block Parameter */
+  &twa_parallel_P.UnitDelay4_X0[0],    /* 94: Block Parameter */
+  &twa_parallel_P.manual_current_Value[0],/* 95: Block Parameter */
+  &twa_parallel_P.pid_mode_Value,      /* 96: Block Parameter */
+  &twa_parallel_P.reset_integrator_Value,/* 97: Block Parameter */
+  &twa_parallel_P.Kd_Gain[0],          /* 98: Block Parameter */
+  &twa_parallel_P.Ki_Gain[0],          /* 99: Block Parameter */
+  &twa_parallel_P.Kp_Gain[0],          /* 100: Block Parameter */
+  &twa_parallel_P.Integrator_IC,       /* 101: Block Parameter */
+  &twa_parallel_P.Saturation_UpperSat[0],/* 102: Block Parameter */
+  &twa_parallel_P.Saturation_LowerSat[0],/* 103: Block Parameter */
+  &twa_parallel_P.saturate_int_UpperSat[0],/* 104: Block Parameter */
+  &twa_parallel_P.saturate_int_LowerSat[0],/* 105: Block Parameter */
+  &twa_parallel_P.quintic_enable_Value,/* 106: Block Parameter */
+  &twa_parallel_P.tf_Value,            /* 107: Block Parameter */
+  &twa_parallel_P.UnitDelay_X0,        /* 108: Block Parameter */
+  &twa_parallel_P.UnitDelay1_X0_h,     /* 109: Block Parameter */
+  &twa_parallel_P.UnitDelay2_X0_d[0],  /* 110: Block Parameter */
+  &twa_parallel_P.b_in_w_Value_i[0],   /* 111: Block Parameter */
+  &twa_parallel_P.dt_Value_n,          /* 112: Block Parameter */
+  &twa_parallel_P.ee_rot_des_Value,    /* 113: Block Parameter */
+  &twa_parallel_P.f_in_w_Value_b[0],   /* 114: Block Parameter */
+  &twa_parallel_P.m_in_w_Value_n[0],   /* 115: Block Parameter */
+  &twa_parallel_P.p_in_m_Value_m[0],   /* 116: Block Parameter */
+  &twa_parallel_P.t_in_w_Value[0],     /* 117: Block Parameter */
+  &twa_parallel_P.twa_flange_offset_Value,/* 118: Block Parameter */
+  &twa_parallel_P.twa_gamma_Value,     /* 119: Block Parameter */
+  &twa_parallel_P.use_twa_Value,       /* 120: Block Parameter */
+  &twa_parallel_P.x_des_Value[0],      /* 121: Block Parameter */
+  &twa_parallel_P.UnitDelay1_X0_g[0],  /* 122: Block Parameter */
+  &twa_parallel_P.UnitDelay3_X0_b,     /* 123: Block Parameter */
+  &twa_parallel_P.UnitDelay4_X0_l[0],  /* 124: Block Parameter */
+  &twa_parallel_P.enc_res_Gain,        /* 125: Block Parameter */
+  &twa_parallel_P.gear_ratio_Gain,     /* 126: Block Parameter */
+  &twa_parallel_P.enc_res_Gain_j,      /* 127: Block Parameter */
+  &twa_parallel_P.gear_ratio_Gain_d,   /* 128: Block Parameter */
+  &twa_parallel_P.enc_res_Gain_i,      /* 129: Block Parameter */
+  &twa_parallel_P.gear_ratio_Gain_a,   /* 130: Block Parameter */
+  &twa_parallel_P.enc_res_Gain_g,      /* 131: Block Parameter */
+  &twa_parallel_P.gear_ratio_Gain_o,   /* 132: Block Parameter */
+  &twa_parallel_P.enc_res_Gain_ij,     /* 133: Block Parameter */
+  &twa_parallel_P.gear_ratio_Gain_da,  /* 134: Block Parameter */
+  &twa_parallel_P.enc_res_Gain_m,      /* 135: Block Parameter */
+  &twa_parallel_P.gear_ratio_Gain_c,   /* 136: Block Parameter */
+  &twa_parallel_P.UD_X0_f,             /* 137: Block Parameter */
+  &twa_parallel_P.TSamp_WtEt_p,        /* 138: Block Parameter */
+  &twa_parallel_P.NSampleEnable_TARGETCNT,/* 139: Block Parameter */
+  &twa_parallel_P.NSampleEnable_ACTLEVEL,/* 140: Block Parameter */
+  &twa_parallel_P.vel_filter_coeffs_Value_m[0],/* 141: Block Parameter */
+  &twa_parallel_P.Gain_Gain_d,         /* 142: Block Parameter */
+  &twa_parallel_P.DiscreteFIRFilter_IC_b,/* 143: Block Parameter */
+  &twa_parallel_P.UD_X0,               /* 144: Block Parameter */
+  &twa_parallel_P.TSamp_WtEt,          /* 145: Block Parameter */
+  &twa_parallel_P.vel_filter_coeffs_Value[0],/* 146: Block Parameter */
+  &twa_parallel_P.Gain_Gain,           /* 147: Block Parameter */
+  &twa_parallel_P.DiscreteFIRFilter_IC /* 148: Block Parameter */
 };
 
 /* Declare Data Run-Time Dimension Buffer Addresses statically */
@@ -714,7 +718,7 @@ static rtwCAPI_ModelMappingStaticInfo mmiStatic = {
    *          elementMap, sampleTimeMap, dimensionArray},
    * TargetType: targetType
    */
-  { rtBlockSignals, 70 },
+  { rtBlockSignals, 71 },
 
   { rtBlockParameters, 78,
     rtModelParameters, 0 },

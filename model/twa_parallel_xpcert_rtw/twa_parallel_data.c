@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6959
+ * Model version                        : 1.6972
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Sun Aug 11 16:49:42 2024
+ * Real-Time Workshop file generated on : Mon Aug 12 09:35:33 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Sun Aug 11 16:49:43 2024
+ * C/C++ source code generated on       : Mon Aug 12 09:35:33 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -169,14 +169,14 @@ Parameters_twa_parallel twa_parallel_P = {
                                         */
 
   /*  Expression: vel_filter_coeffs
-   * Referenced by: '<S21>/vel_filter_coeffs'
+   * Referenced by: '<S20>/vel_filter_coeffs'
    */
   { 1.0, 1.0 },
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S21>/Discrete FIR Filter'
+                                        * Referenced by: '<S20>/Discrete FIR Filter'
                                         */
   0.5,                                 /* Expression: 1/N_velocity
-                                        * Referenced by: '<S21>/Gain'
+                                        * Referenced by: '<S20>/Gain'
                                         */
   1.0,                                 /* Expression: 1
                                         * Referenced by: '<Root>/cntrl_mode'
@@ -330,10 +330,10 @@ Parameters_twa_parallel twa_parallel_P = {
                                         * Referenced by: '<Root>/do_homing'
                                         */
   1U,                                  /* Computed Parameter: NSampleEnable_TARGETCNT
-                                        * Referenced by: '<S20>/N-Sample Enable'
+                                        * Referenced by: '<S19>/N-Sample Enable'
                                         */
   2U                                   /* Computed Parameter: NSampleEnable_ACTLEVEL
-                                        * Referenced by: '<S20>/N-Sample Enable'
+                                        * Referenced by: '<S19>/N-Sample Enable'
                                         */
 };
 
