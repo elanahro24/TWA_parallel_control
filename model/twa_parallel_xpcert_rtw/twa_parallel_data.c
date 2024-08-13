@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.6972
+ * Model version                        : 1.7005
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Mon Aug 12 09:35:33 2024
+ * Real-Time Workshop file generated on : Mon Aug 12 18:41:06 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Mon Aug 12 09:35:33 2024
+ * C/C++ source code generated on       : Mon Aug 12 18:41:06 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -117,17 +117,26 @@ Parameters_twa_parallel twa_parallel_P = {
   2.2807017543859648E-001,             /* Expression: 1/gear_rat
                                         * Referenced by: '<S7>/gear_ratio'
                                         */
+  1.27,                                /* Expression: velmex_pitch
+                                        * Referenced by: '<S7>/velmex_pitch'
+                                        */
   0.0009765625,                        /* Expression: 1/enc_res
                                         * Referenced by: '<S8>/enc_res'
                                         */
   2.2807017543859648E-001,             /* Expression: 1/gear_rat
                                         * Referenced by: '<S8>/gear_ratio'
                                         */
+  1.27,                                /* Expression: velmex_pitch
+                                        * Referenced by: '<S8>/velmex_pitch'
+                                        */
   0.0009765625,                        /* Expression: 1/enc_res
                                         * Referenced by: '<S9>/enc_res'
                                         */
   2.2807017543859648E-001,             /* Expression: 1/gear_rat
                                         * Referenced by: '<S9>/gear_ratio'
+                                        */
+  1.27,                                /* Expression: velmex_pitch
+                                        * Referenced by: '<S9>/velmex_pitch'
                                         */
   0.0009765625,                        /* Expression: 1/twa_enc_res
                                         * Referenced by: '<S10>/enc_res'
@@ -165,7 +174,22 @@ Parameters_twa_parallel twa_parallel_P = {
                                         * Referenced by: '<S14>/UD'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S1>/enc_reset'
+                                        * Referenced by: '<S1>/enc_reset1'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset2'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset3'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset4'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset5'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset6'
                                         */
 
   /*  Expression: vel_filter_coeffs
@@ -259,7 +283,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_p
    * Referenced by: '<S3>/Kp'
    */
-  { 225.0, 200.0, 250.0, 1.0, 1.0, 1.0 },
+  { 350.0, 350.0, 350.0, 2.0, 2.0, 2.0 },
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S3>/reset_integrator'
                                         */
@@ -291,7 +315,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_d
    * Referenced by: '<S3>/Kd'
    */
-  { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 },
+  { 0.2, 0.2, 0.2, 0.2, 0.2, 0.2 },
 
   /*  Expression: [10,10,10,2,2,2]
    * Referenced by: '<S3>/Saturation'
@@ -302,7 +326,7 @@ Parameters_twa_parallel twa_parallel_P = {
    * Referenced by: '<S3>/Saturation'
    */
   { -10.0, -10.0, -10.0, -2.0, -2.0, -2.0 },
-  0.0,                                 /* Expression: 0
+  1.0,                                 /* Expression: 1
                                         * Referenced by: '<S3>/pid_mode'
                                         */
 

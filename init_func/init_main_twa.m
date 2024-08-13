@@ -12,9 +12,10 @@ N_pos = 1;
 pos_filter_coeffs = ones(N_pos,1);
 
 % PID Gains
-K_p = [225 200 250 1 1 1]';
+
+K_p = [50 50 50 1 1 1]';
 K_i = [18 18 18 0.25 0.25 0.25]';
-K_d = ones(6,1);
+K_d = 0.1*ones(6,1);
 
 % Macro Actuation Unit parameters
 enc_res = 256*4; %[cnt/trn] * quadrature
@@ -31,8 +32,9 @@ velmex_pitch = 1.27; % [mm/turn]
 use_twa = 0;
 
 % scope formatting
-q_format = 'q1 [cnt] %12.4f,q2 [cnt] %12.4f,q3 [cnt] %12.4f,q4 [cnt] %12.4f,q5 [cnt] %12.4f,q6 [cnt] %12.4f';
+q_format = 'q1 [mm] %12.4f,q2 [mm] %12.4f,q3 [mm] %12.4f,q4 [cnt] %12.4f,q5 [cnt] %12.4f,q6 [cnt] %12.4f';
 qdes_format = 'q1_des [cnt] %12.4f,q2_des [cnt] %12.4f,q3_des [cnt] %12.4f,q4_des [cnt] %12.4f,q5_des [cnt] %12.4f,q6_des [cnt] %12.4f';
-qd_format = 'q1d [cnt] %12.4f,q2d [cnt] %12.4f,q3d [cnt] %12.4f,q4d [cnt] %12.4f,q5d [cnt] %12.4f,q6d [cnt] %12.4f, qdnorm %12.4f';
+qd_format = 'q1d [mm/s] %8.6f,q2d [mm/s] %8.6f,q3d [mm/s] %8.6f,q4d [cnt] %8.6f,q5d [cnt] %8.6f,q6d [cnt] %8.6f, qdnorm %5i';
 qcmd_format = 'q1_cmd [A] %12.4f,q2_cmd [A] %12.4f,q3_cmd [A] %12.4f,q4_cmd [A] %12.4f,q5_cmd [A] %12.4f,q6_cmd [A] %12.4f';
 deltaq_format = 'q1 delta [mm] %12.4f,q2 delta [mm] %12.4f,q3 delta [mm] %12.4f,q4 delta [mm] %12.4f,q5 delta [mm] %12.4f,q6 delta [mm] %12.4f';
+xcur_format = 'xcur [mm] %12.4f,Ycur [mm] %12.4f,Zcur [mm] %12.4f';

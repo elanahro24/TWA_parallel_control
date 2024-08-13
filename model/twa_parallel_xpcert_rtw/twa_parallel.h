@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6972
+ * Model version              : 1.7005
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Mon Aug 12 09:35:33 2024
+ * C source code generated on : Mon Aug 12 18:41:06 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -806,10 +806,13 @@ typedef struct {
   real_T EncoderInput_o6;              /* '<S1>/Encoder Input' */
   real_T enc_res;                      /* '<S7>/enc_res' */
   real_T gear_ratio;                   /* '<S7>/gear_ratio' */
+  real_T velmex_pitch;                 /* '<S7>/velmex_pitch' */
   real_T enc_res_f;                    /* '<S8>/enc_res' */
   real_T gear_ratio_c;                 /* '<S8>/gear_ratio' */
+  real_T velmex_pitch_e;               /* '<S8>/velmex_pitch' */
   real_T enc_res_c;                    /* '<S9>/enc_res' */
   real_T gear_ratio_l;                 /* '<S9>/gear_ratio' */
+  real_T velmex_pitch_k;               /* '<S9>/velmex_pitch' */
   real_T enc_res_fa;                   /* '<S10>/enc_res' */
   real_T gear_ratio_j;                 /* '<S10>/gear_ratio' */
   real_T enc_res_b;                    /* '<S11>/enc_res' */
@@ -854,7 +857,6 @@ typedef struct {
   real_T qdes[6];                      /* '<S6>/ResolvedRates' */
   real_T xcur[3];                      /* '<S6>/ResolvedRates' */
   real_T eerot;                        /* '<S6>/ResolvedRates' */
-  real_T y;                            /* '<S21>/Embedded MATLAB Function' */
   real_T TmpSignalConversionAtSFunctio_c[6];/* '<S4>/Embedded MATLAB Function' */
   real_T q_cmd[6];                     /* '<S4>/Embedded MATLAB Function' */
   real_T q_dot[6];                     /* '<S4>/Embedded MATLAB Function' */
@@ -873,6 +875,7 @@ typedef struct {
   real_T twave_out[3];                 /* '<S2>/Homing' */
   real_T rwave_out[9];                 /* '<S2>/Homing' */
   boolean_T NSampleEnable;             /* '<S19>/N-Sample Enable' */
+  boolean_T y;                         /* '<S21>/Embedded MATLAB Function' */
 } BlockIO_twa_parallel;
 
 /* Block states (auto storage) for system '<Root>' */
@@ -904,11 +907,19 @@ typedef struct {
 
   struct {
     int_T AcquireOK;
+  } SFunction_IWORK_o;                 /* '<S27>/S-Function' */
+
+  struct {
+    int_T AcquireOK;
   } SFunction_IWORK_i;                 /* '<S24>/S-Function' */
 
   struct {
     int_T AcquireOK;
   } SFunction_IWORK_ih;                /* '<S25>/S-Function' */
+
+  struct {
+    int_T AcquireOK;
+  } SFunction_IWORK_m;                 /* '<S26>/S-Function' */
 
   int8_T Homing_SubsysRanBC;           /* '<Root>/Homing' */
   uint8_T is_active_c5_twa_parallel;   /* '<S6>/ResolvedRates' */
@@ -1037,17 +1048,26 @@ struct Parameters_twa_parallel_ {
   real_T gear_ratio_Gain;              /* Expression: 1/gear_rat
                                         * Referenced by: '<S7>/gear_ratio'
                                         */
+  real_T velmex_pitch_Gain;            /* Expression: velmex_pitch
+                                        * Referenced by: '<S7>/velmex_pitch'
+                                        */
   real_T enc_res_Gain_j;               /* Expression: 1/enc_res
                                         * Referenced by: '<S8>/enc_res'
                                         */
   real_T gear_ratio_Gain_d;            /* Expression: 1/gear_rat
                                         * Referenced by: '<S8>/gear_ratio'
                                         */
+  real_T velmex_pitch_Gain_j;          /* Expression: velmex_pitch
+                                        * Referenced by: '<S8>/velmex_pitch'
+                                        */
   real_T enc_res_Gain_i;               /* Expression: 1/enc_res
                                         * Referenced by: '<S9>/enc_res'
                                         */
   real_T gear_ratio_Gain_a;            /* Expression: 1/gear_rat
                                         * Referenced by: '<S9>/gear_ratio'
+                                        */
+  real_T velmex_pitch_Gain_je;         /* Expression: velmex_pitch
+                                        * Referenced by: '<S9>/velmex_pitch'
                                         */
   real_T enc_res_Gain_g;               /* Expression: 1/twa_enc_res
                                         * Referenced by: '<S10>/enc_res'
@@ -1082,8 +1102,23 @@ struct Parameters_twa_parallel_ {
   real_T UD_X0;                        /* Expression: ICPrevScaledInput
                                         * Referenced by: '<S14>/UD'
                                         */
-  real_T enc_reset_Value;              /* Expression: 0
-                                        * Referenced by: '<S1>/enc_reset'
+  real_T enc_reset1_Value;             /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset1'
+                                        */
+  real_T enc_reset2_Value;             /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset2'
+                                        */
+  real_T enc_reset3_Value;             /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset3'
+                                        */
+  real_T enc_reset4_Value;             /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset4'
+                                        */
+  real_T enc_reset5_Value;             /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset5'
+                                        */
+  real_T enc_reset6_Value;             /* Expression: 0
+                                        * Referenced by: '<S1>/enc_reset6'
                                         */
   real_T vel_filter_coeffs_Value_m[2]; /* Expression: vel_filter_coeffs
                                         * Referenced by: '<S20>/vel_filter_coeffs'
@@ -1178,7 +1213,7 @@ struct Parameters_twa_parallel_ {
   real_T Saturation_LowerSat[6];       /* Expression: -1*[10,10,10,2,2,2]
                                         * Referenced by: '<S3>/Saturation'
                                         */
-  real_T pid_mode_Value;               /* Expression: 0
+  real_T pid_mode_Value;               /* Expression: 1
                                         * Referenced by: '<S3>/pid_mode'
                                         */
   real_T manual_current_Value[6];      /* Expression: zeros(6,1)
@@ -1400,7 +1435,9 @@ extern struct rtModel_twa_parallel *twa_parallel_rtM;
  * '<S23>'  : twa_parallel/Scopes/q_cur_macro2
  * '<S24>'  : twa_parallel/Scopes/q_cur_macro3
  * '<S25>'  : twa_parallel/Scopes/q_cur_macro4
- * '<S26>'  : twa_parallel/Scopes/norm/Embedded MATLAB Function
- * '<S27>'  : twa_parallel/task_space/ResolvedRates
+ * '<S26>'  : twa_parallel/Scopes/q_cur_macro5
+ * '<S27>'  : twa_parallel/Scopes/q_cur_macro6
+ * '<S28>'  : twa_parallel/Scopes/norm/Embedded MATLAB Function
+ * '<S29>'  : twa_parallel/task_space/ResolvedRates
  */
 #endif                                 /* RTW_HEADER_twa_parallel_h_ */

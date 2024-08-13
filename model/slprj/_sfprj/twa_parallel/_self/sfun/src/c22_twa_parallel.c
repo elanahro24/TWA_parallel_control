@@ -342,7 +342,7 @@ static void sf_c22_twa_parallel(SFc22_twa_parallelInstanceStruct *chartInstance)
   c22_q_des = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
   c22_q_cmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,2);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,3);
   for (c22_i12 = 0; c22_i12 < 6; c22_i12 = c22_i12 + 1) {
     _SFD_DATA_RANGE_CHECK((*c22_q_cmd)[c22_i12], 0U);
   }
@@ -710,7 +710,7 @@ static void c22_c22_twa_parallel(SFc22_twa_parallelInstanceStruct *chartInstance
   c22_b_q_curr = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 1);
   c22_b_q_des = (real_T (*)[6])ssGetInputPortSignal(chartInstance->S, 0);
   c22_b_q_cmd = (real_T (*)[6])ssGetOutputPortSignal(chartInstance->S, 1);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,2);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,3);
   for (c22_i19 = 0; c22_i19 < 6; c22_i19 = c22_i19 + 1) {
     c22_hoistedGlobal[c22_i19] = (*c22_b_q_des)[c22_i19];
   }
@@ -1337,7 +1337,7 @@ static void c22_c22_twa_parallel(SFc22_twa_parallelInstanceStruct *chartInstance
   }
 
   *c22_b_robot_mov = c22_robot_mov;
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,2);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,3);
 }
 
 static void init_script_number_translation(uint32_T c22_machineNumber, uint32_T

@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.6972"
+    ComputedModelVersion    "1.7005"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 12 09:07:35 2024"
-  RTWModifiedTimeStamp	  645354450
-  ModelVersionFormat	  "1.%<AutoIncrement:6972>"
+  LastModifiedDate	  "Mon Aug 12 19:07:54 2024"
+  RTWModifiedTimeStamp	  645388856
+  ModelVersionFormat	  "1.%<AutoIncrement:7005>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1787,7 +1787,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [2, 75, 1918, 1029]
+    Location		    [1922, 75, 3838, 1029]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -1801,7 +1801,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "211"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3336
+    SIDHighWatermark	    3354
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -1848,7 +1848,7 @@ Model {
       }
       System {
 	Name			"Encoders"
-	Location		[103, 149, 1817, 931]
+	Location		[118, 159, 1702, 914]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1860,10 +1860,10 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"275"
+	ZoomFactor		"282"
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Counts To Turns"
+	  Name			  "Counts To Turns1"
 	  SID			  3030
 	  Ports			  [1, 1]
 	  Position		  [280, 29, 355, 51]
@@ -1875,9 +1875,9 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Counts To Turns"
-	    Location		    [292, 492, 1220, 745]
-	    Open		    off
+	    Name		    "Counts To Turns1"
+	    Location		    [272, 492, 1325, 836]
+	    Open		    on
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -1888,7 +1888,7 @@ Model {
 	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
-	    ZoomFactor		    "238"
+	    ZoomFactor		    "152"
 	    Block {
 	      BlockType		      Inport
 	      Name		      "enc_cnts"
@@ -1914,7 +1914,7 @@ Model {
 	      BlockType		      Gain
 	      Name		      "gear_ratio"
 	      SID		      3029
-	      Position		      [200, 29, 300, 71]
+	      Position		      [195, 29, 295, 71]
 	      Gain		      "1/gear_rat"
 	      Multiplication	      "Matrix(K*u)"
 	      ParameterDataTypeMode   "Inherit via internal rule"
@@ -1925,10 +1925,23 @@ Model {
 	      SampleTime	      "dt"
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "velmex_pitch"
+	      SID		      3348
+	      Position		      [315, 34, 420, 66]
+	      Gain		      "velmex_pitch"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      SampleTime	      "dt"
+	    }
+	    Block {
 	      BlockType		      Outport
-	      Name		      "turns"
+	      Name		      "mm"
 	      SID		      3032
-	      Position		      [320, 43, 350, 57]
+	      Position		      [445, 43, 475, 57]
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -1946,14 +1959,20 @@ Model {
 	    Line {
 	      SrcBlock		      "gear_ratio"
 	      SrcPort		      1
-	      DstBlock		      "turns"
+	      DstBlock		      "velmex_pitch"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "velmex_pitch"
+	      SrcPort		      1
+	      DstBlock		      "mm"
 	      DstPort		      1
 	    }
 	  }
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Counts To Turns1"
+	  Name			  "Counts To Turns2"
 	  SID			  3041
 	  Ports			  [1, 1]
 	  Position		  [280, 64, 355, 86]
@@ -1965,8 +1984,8 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Counts To Turns1"
-	    Location		    [675, 498, 1523, 720]
+	    Name		    "Counts To Turns2"
+	    Location		    [675, 498, 1508, 909]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -2015,16 +2034,29 @@ Model {
 	      SampleTime	      "dt"
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "velmex_pitch"
+	      SID		      3350
+	      Position		      [325, 33, 440, 67]
+	      Gain		      "velmex_pitch"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      SampleTime	      "dt"
+	    }
+	    Block {
 	      BlockType		      Outport
-	      Name		      "turns"
+	      Name		      "mm"
 	      SID		      3045
-	      Position		      [320, 43, 350, 57]
+	      Position		      [460, 43, 490, 57]
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
 	      SrcBlock		      "gear_ratio"
 	      SrcPort		      1
-	      DstBlock		      "turns"
+	      DstBlock		      "velmex_pitch"
 	      DstPort		      1
 	    }
 	    Line {
@@ -2039,11 +2071,17 @@ Model {
 	      DstBlock		      "gear_ratio"
 	      DstPort		      1
 	    }
+	    Line {
+	      SrcBlock		      "velmex_pitch"
+	      SrcPort		      1
+	      DstBlock		      "mm"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Counts To Turns2"
+	  Name			  "Counts To Turns3"
 	  SID			  3046
 	  Ports			  [1, 1]
 	  Position		  [280, 99, 355, 121]
@@ -2055,8 +2093,8 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Counts To Turns2"
-	    Location		    [2030, 586, 2878, 808]
+	    Name		    "Counts To Turns3"
+	    Location		    [536, 429, 1384, 651]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -2105,10 +2143,23 @@ Model {
 	      SampleTime	      "dt"
 	    }
 	    Block {
+	      BlockType		      Gain
+	      Name		      "velmex_pitch"
+	      SID		      3351
+	      Position		      [320, 33, 435, 67]
+	      Gain		      "velmex_pitch"
+	      ParameterDataTypeMode   "Inherit via internal rule"
+	      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+	      OutDataTypeMode	      "Inherit via internal rule"
+	      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+	      SaturateOnIntegerOverflow	off
+	      SampleTime	      "dt"
+	    }
+	    Block {
 	      BlockType		      Outport
-	      Name		      "turns"
+	      Name		      "mm"
 	      SID		      3050
-	      Position		      [320, 43, 350, 57]
+	      Position		      [455, 43, 485, 57]
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -2126,14 +2177,20 @@ Model {
 	    Line {
 	      SrcBlock		      "gear_ratio"
 	      SrcPort		      1
-	      DstBlock		      "turns"
+	      DstBlock		      "velmex_pitch"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "velmex_pitch"
+	      SrcPort		      1
+	      DstBlock		      "mm"
 	      DstPort		      1
 	    }
 	  }
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Counts To Turns3"
+	  Name			  "Counts To Turns4"
 	  SID			  3066
 	  Ports			  [1, 1]
 	  Position		  [280, 134, 355, 156]
@@ -2145,7 +2202,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Counts To Turns3"
+	    Name		    "Counts To Turns4"
 	    Location		    [1149, 501, 1997, 839]
 	    Open		    off
 	    ModelBrowserVisibility  off
@@ -2223,7 +2280,7 @@ Model {
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Counts To Turns4"
+	  Name			  "Counts To Turns5"
 	  SID			  3071
 	  Ports			  [1, 1]
 	  Position		  [280, 169, 355, 191]
@@ -2235,7 +2292,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Counts To Turns4"
+	    Name		    "Counts To Turns5"
 	    Location		    [914, 521, 1762, 859]
 	    Open		    off
 	    ModelBrowserVisibility  off
@@ -2313,7 +2370,7 @@ Model {
 	}
 	Block {
 	  BlockType		  SubSystem
-	  Name			  "Counts To Turns5"
+	  Name			  "Counts To Turns6"
 	  SID			  3076
 	  Ports			  [1, 1]
 	  Position		  [280, 204, 355, 226]
@@ -2325,7 +2382,7 @@ Model {
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  System {
-	    Name		    "Counts To Turns5"
+	    Name		    "Counts To Turns6"
 	    Location		    [1149, 501, 1997, 839]
 	    Open		    off
 	    ModelBrowserVisibility  off
@@ -2406,7 +2463,7 @@ Model {
 	  Name			  "Derivative"
 	  SID			  2994
 	  Ports			  [1, 1]
-	  Position		  [425, 118, 470, 142]
+	  Position		  [440, 118, 485, 142]
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
 	  RTWSystemCode		  "Auto"
@@ -2617,7 +2674,7 @@ Model {
 	  Name			  "Mux"
 	  SID			  3005
 	  Ports			  [6, 1]
-	  Position		  [375, 25, 380, 230]
+	  Position		  [395, 25, 400, 230]
 	  ShowName		  off
 	  Inputs		  "6"
 	  DisplayOption		  "bar"
@@ -2631,9 +2688,49 @@ Model {
 	}
 	Block {
 	  BlockType		  Constant
-	  Name			  "enc_reset"
+	  Name			  "enc_reset1"
 	  SID			  2993
-	  Position		  [20, 108, 70, 142]
+	  Position		  [75, 30, 100, 50]
+	  Value			  "0"
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enc_reset2"
+	  SID			  3337
+	  Position		  [75, 65, 100, 85]
+	  Value			  "0"
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enc_reset3"
+	  SID			  3338
+	  Position		  [75, 100, 100, 120]
+	  Value			  "0"
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enc_reset4"
+	  SID			  3339
+	  Position		  [75, 135, 100, 155]
+	  Value			  "0"
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enc_reset5"
+	  SID			  3340
+	  Position		  [75, 170, 100, 190]
+	  Value			  "0"
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "enc_reset6"
+	  SID			  3341
+	  Position		  [75, 205, 100, 225]
 	  Value			  "0"
 	  SampleTime		  "dt"
 	}
@@ -2641,45 +2738,45 @@ Model {
 	  BlockType		  Outport
 	  Name			  "q_cur"
 	  SID			  3014
-	  Position		  [510, 88, 540, 102]
+	  Position		  [525, 88, 555, 102]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "q_dot"
 	  SID			  3153
-	  Position		  [510, 123, 540, 137]
+	  Position		  [525, 123, 555, 137]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Line {
 	  SrcBlock		  "Encoder Input"
 	  SrcPort		  6
-	  DstBlock		  "Counts To Turns5"
+	  DstBlock		  "Counts To Turns6"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Encoder Input"
 	  SrcPort		  5
-	  DstBlock		  "Counts To Turns4"
+	  DstBlock		  "Counts To Turns5"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Encoder Input"
 	  SrcPort		  4
-	  DstBlock		  "Counts To Turns3"
+	  DstBlock		  "Counts To Turns4"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Encoder Input"
 	  SrcPort		  3
-	  DstBlock		  "Counts To Turns2"
+	  DstBlock		  "Counts To Turns3"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Encoder Input"
 	  SrcPort		  2
-	  DstBlock		  "Counts To Turns1"
+	  DstBlock		  "Counts To Turns2"
 	  DstPort		  1
 	}
 	Line {
@@ -2687,7 +2784,7 @@ Model {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Mux"
 	  SrcPort		  1
-	  Points		  [20, 0]
+	  Points		  [15, 0]
 	  Branch {
 	    DstBlock		    "Derivative"
 	    DstPort		    1
@@ -2709,87 +2806,79 @@ Model {
 	Line {
 	  SrcBlock		  "Encoder Input"
 	  SrcPort		  1
-	  DstBlock		  "Counts To Turns"
+	  DstBlock		  "Counts To Turns1"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Counts To Turns"
-	  SrcPort		  1
-	  DstBlock		  "Mux"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "enc_reset"
-	  SrcPort		  1
-	  Points		  [20, 0; 0, -5]
-	  Branch {
-	    Points		    [0, -10]
-	    Branch {
-	      Points		      [0, -35]
-	      Branch {
-		Points			[0, -35]
-		DstBlock		"Encoder Input"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"Encoder Input"
-		DstPort			2
-	      }
-	    }
-	    Branch {
-	      DstBlock		      "Encoder Input"
-	      DstPort		      3
-	    }
-	  }
-	  Branch {
-	    Points		    [0, 20]
-	    Branch {
-	      Points		      [0, 5]
-	      DstBlock		      "Encoder Input"
-	      DstPort		      4
-	    }
-	    Branch {
-	      Points		      [0, 40]
-	      Branch {
-		Points			[0, 35]
-		DstBlock		"Encoder Input"
-		DstPort			6
-	      }
-	      Branch {
-		DstBlock		"Encoder Input"
-		DstPort			5
-	      }
-	    }
-	  }
 	}
 	Line {
 	  SrcBlock		  "Counts To Turns1"
 	  SrcPort		  1
 	  DstBlock		  "Mux"
-	  DstPort		  2
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "enc_reset1"
+	  SrcPort		  1
+	  DstBlock		  "Encoder Input"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "Counts To Turns2"
 	  SrcPort		  1
 	  DstBlock		  "Mux"
-	  DstPort		  3
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "Counts To Turns3"
 	  SrcPort		  1
 	  DstBlock		  "Mux"
-	  DstPort		  4
+	  DstPort		  3
 	}
 	Line {
 	  SrcBlock		  "Counts To Turns4"
 	  SrcPort		  1
 	  DstBlock		  "Mux"
-	  DstPort		  5
+	  DstPort		  4
 	}
 	Line {
 	  SrcBlock		  "Counts To Turns5"
 	  SrcPort		  1
 	  DstBlock		  "Mux"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "Counts To Turns6"
+	  SrcPort		  1
+	  DstBlock		  "Mux"
+	  DstPort		  6
+	}
+	Line {
+	  SrcBlock		  "enc_reset2"
+	  SrcPort		  1
+	  DstBlock		  "Encoder Input"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "enc_reset3"
+	  SrcPort		  1
+	  DstBlock		  "Encoder Input"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "enc_reset4"
+	  SrcPort		  1
+	  DstBlock		  "Encoder Input"
+	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "enc_reset5"
+	  SrcPort		  1
+	  DstBlock		  "Encoder Input"
+	  DstPort		  5
+	}
+	Line {
+	  SrcBlock		  "enc_reset6"
+	  SrcPort		  1
+	  DstBlock		  "Encoder Input"
 	  DstPort		  6
 	}
 	Annotation {
@@ -2801,7 +2890,7 @@ Model {
       BlockType		      From
       Name		      "From"
       SID		      3318
-      Position		      [285, 164, 315, 176]
+      Position		      [285, 154, 315, 166]
       ShowName		      off
       GotoTag		      "C1"
     }
@@ -2809,7 +2898,7 @@ Model {
       BlockType		      From
       Name		      "From1"
       SID		      3320
-      Position		      [285, 134, 315, 146]
+      Position		      [285, 124, 315, 136]
       ShowName		      off
       GotoTag		      "A1"
     }
@@ -2817,7 +2906,7 @@ Model {
       BlockType		      From
       Name		      "From2"
       SID		      3321
-      Position		      [285, 149, 315, 161]
+      Position		      [285, 139, 315, 151]
       ShowName		      off
       GotoTag		      "B1"
     }
@@ -2825,9 +2914,17 @@ Model {
       BlockType		      From
       Name		      "From3"
       SID		      3326
-      Position		      [285, 179, 315, 191]
+      Position		      [285, 169, 315, 181]
       ShowName		      off
       GotoTag		      "D1"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From4"
+      SID		      3346
+      Position		      [285, 184, 315, 196]
+      ShowName		      off
+      GotoTag		      "E1"
     }
     Block {
       BlockType		      Goto
@@ -2851,7 +2948,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto3"
       SID		      3327
-      Position		      [600, 311, 630, 329]
+      Position		      [675, 321, 705, 339]
       ShowName		      off
       GotoTag		      "D1"
       TagVisibility	      "local"
@@ -2863,6 +2960,15 @@ Model {
       Position		      [390, 321, 420, 339]
       ShowName		      off
       GotoTag		      "C1"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto5"
+      SID		      3343
+      Position		      [275, 336, 305, 354]
+      ShowName		      off
+      GotoTag		      "E1"
       TagVisibility	      "local"
     }
     Block {
@@ -3707,8 +3813,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"PID Controller"
-	Location		[217, 83, 1702, 1018]
-	Open			off
+	Location		[215, 51, 1704, 1039]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -3883,7 +3989,6 @@ Model {
 	  Name			  "pid_mode"
 	  SID			  3132
 	  Position		  [585, 136, 605, 154]
-	  Value			  "0"
 	  SampleTime		  "dt"
 	}
 	Block {
@@ -4666,8 +4771,8 @@ Model {
       BlockType		      SubSystem
       Name		      "Scopes"
       SID		      3009
-      Ports		      [4]
-      Position		      [340, 136, 390, 189]
+      Ports		      [5]
+      Position		      [340, 138, 390, 192]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -4677,7 +4782,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Scopes"
-	Location		[1980, 352, 2493, 815]
+	Location		[703, 308, 1302, 939]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4689,12 +4794,12 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"164"
+	ZoomFactor		"138"
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_cur"
 	  SID			  3010
-	  Position		  [80, 63, 110, 77]
+	  Position		  [70, 63, 100, 77]
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -4722,11 +4827,19 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
+	  BlockType		  Inport
+	  Name			  "control_out1"
+	  SID			  3345
+	  Position		  [80, 308, 110, 322]
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
 	  BlockType		  SubSystem
 	  Name			  "Fir Filter"
 	  SID			  3087
 	  Ports			  [1, 1]
-	  Position		  [135, 56, 175, 84]
+	  Position		  [130, 56, 170, 84]
 	  BackgroundColor	  "[1.000000, 0.501961, 0.501961]"
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
@@ -4822,16 +4935,6 @@ Model {
 	  }
 	}
 	Block {
-	  BlockType		  Mux
-	  Name			  "Mux"
-	  SID			  3329
-	  Ports			  [2, 1]
-	  Position		  [185, 119, 190, 141]
-	  ShowName		  off
-	  Inputs		  "2"
-	  DisplayOption		  "bar"
-	}
-	Block {
 	  BlockType		  SubSystem
 	  Name			  "norm"
 	  SID			  3330
@@ -4864,7 +4967,7 @@ Model {
 	      BlockType		      Inport
 	      Name		      "in"
 	      SID		      3331
-	      Position		      [290, 63, 320, 77]
+	      Position		      [360, 63, 390, 77]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
@@ -5171,6 +5274,88 @@ Model {
 	  dynamicfilemode	  off
 	  maxwritefilesize	  "512*1024^2"
 	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "q_cur_macro5"
+	  SID			  3344
+	  Ports			  [1]
+	  Position		  [205, 290, 280, 340]
+	  ShowName		  off
+	  LibraryVersion	  "1.1656"
+	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
+	  SourceType		  "xpcscopeblock"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  scopeno		  "5"
+	  scopetype		  "Target"
+	  autostart		  on
+	  viewmode		  "Numerical"
+	  formatstr		  "xcur_format"
+	  grid			  on
+	  ylimits		  "[0,0]"
+	  nosamples		  "25"
+	  noprepostsamples	  "0"
+	  interleave		  "1"
+	  triggermode		  "FreeRun"
+	  triggersignal		  "1"
+	  triggerlevel		  "0.0"
+	  triggerslope		  "Either"
+	  triggerscope		  "1"
+	  triggersample		  "0"
+	  filename		  "data.dat"
+	  mode			  "Lazy"
+	  writesize		  "512"
+	  autorestart		  off
+	  dynamicfilemode	  off
+	  maxwritefilesize	  "512*1024^2"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "q_cur_macro6"
+	  SID			  3354
+	  Ports			  [1]
+	  Position		  [320, 115, 395, 165]
+	  ShowName		  off
+	  LibraryVersion	  "1.1656"
+	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
+	  SourceType		  "xpcscopeblock"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  scopeno		  "6"
+	  scopetype		  "Target"
+	  autostart		  on
+	  viewmode		  "Numerical"
+	  formatstr		  "'qdot any %8i'"
+	  grid			  on
+	  ylimits		  "[0,0]"
+	  nosamples		  "25"
+	  noprepostsamples	  "0"
+	  interleave		  "1"
+	  triggermode		  "FreeRun"
+	  triggersignal		  "1"
+	  triggerlevel		  "0.0"
+	  triggerslope		  "Either"
+	  triggerscope		  "1"
+	  triggersample		  "0"
+	  filename		  "data.dat"
+	  mode			  "Lazy"
+	  writesize		  "512"
+	  autorestart		  off
+	  dynamicfilemode	  off
+	  maxwritefilesize	  "512*1024^2"
+	}
 	Line {
 	  SrcBlock		  "Fir Filter"
 	  SrcPort		  1
@@ -5196,37 +5381,40 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Mux"
+	  SrcBlock		  "control_out1"
 	  SrcPort		  1
-	  DstBlock		  "q_cur_macro1"
+	  DstBlock		  "q_cur_macro5"
 	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "q_dot"
 	  SrcPort		  1
-	  Points		  [5, 0]
+	  Points		  [0, 0]
 	  Branch {
-	    Points		    [40, 0; 0, 15]
-	    DstBlock		    "Mux"
+	    Points		    [0, 0]
+	    DstBlock		    "norm"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, 40]
-	    DstBlock		    "norm"
+	    Points		    [50, 0; 0, 20]
+	    DstBlock		    "q_cur_macro1"
 	    DstPort		    1
 	  }
 	}
 	Line {
 	  SrcBlock		  "norm"
 	  SrcPort		  1
-	  Points		  [0, -15]
-	  DstBlock		  "Mux"
-	  DstPort		  2
+	  Points		  [0, -15; 25, 0; 0, 5]
+	  DstBlock		  "q_cur_macro6"
+	  DstPort		  1
 	}
 	Annotation {
 	  Name			  "FIR filter needed for unknown reason.\n Without it, scope displays no signals"
 	  Position		  [178, 24]
 	  BackgroundColor	  "[1.000000, 0.501961, 0.501961]"
+	}
+	Annotation {
+	  Position		  [221, 354]
 	}
       }
     }
@@ -5234,7 +5422,7 @@ Model {
       BlockType		      Constant
       Name		      "cntrl_mode"
       SID		      3113
-      Position		      [275, 231, 295, 249]
+      Position		      [255, 236, 275, 254]
       NamePlacement	      "alternate"
       SampleTime	      "dt"
     }
@@ -5275,8 +5463,8 @@ Model {
       BlockType		      SubSystem
       Name		      "task_space"
       SID		      3178
-      Ports		      [2, 1]
-      Position		      [160, 286, 230, 324]
+      Ports		      [2, 2]
+      Position		      [165, 296, 235, 334]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -5286,8 +5474,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"task_space"
-	Location		[483, 83, 1420, 1028]
-	Open			on
+	Location		[442, 83, 1338, 986]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5298,7 +5486,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"162"
+	ZoomFactor		"153"
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_cur"
@@ -5350,7 +5538,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto"
 	  SID			  3268
-	  Position		  [180, 17, 205, 33]
+	  Position		  [140, 57, 165, 73]
 	  ShowName		  off
 	  GotoTag		  "A"
 	  TagVisibility		  "local"
@@ -5359,7 +5547,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto1"
 	  SID			  3269
-	  Position		  [305, 16, 330, 34]
+	  Position		  [265, 56, 290, 74]
 	  ShowName		  off
 	  GotoTag		  "B"
 	  TagVisibility		  "local"
@@ -5368,7 +5556,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto2"
 	  SID			  3270
-	  Position		  [425, 16, 450, 34]
+	  Position		  [385, 56, 410, 74]
 	  ShowName		  off
 	  GotoTag		  "C"
 	  TagVisibility		  "local"
@@ -5377,7 +5565,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto3"
 	  SID			  3271
-	  Position		  [545, 16, 570, 34]
+	  Position		  [505, 56, 530, 74]
 	  ShowName		  off
 	  GotoTag		  "D"
 	  TagVisibility		  "local"
@@ -5386,7 +5574,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto4"
 	  SID			  3285
-	  Position		  [185, 51, 210, 69]
+	  Position		  [145, 91, 170, 109]
 	  ShowName		  off
 	  GotoTag		  "E"
 	  TagVisibility		  "local"
@@ -5395,7 +5583,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto5"
 	  SID			  3287
-	  Position		  [310, 51, 335, 69]
+	  Position		  [270, 91, 295, 109]
 	  ShowName		  off
 	  GotoTag		  "F"
 	  TagVisibility		  "local"
@@ -5404,7 +5592,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto6"
 	  SID			  3300
-	  Position		  [545, 51, 570, 69]
+	  Position		  [505, 91, 530, 109]
 	  ShowName		  off
 	  GotoTag		  "H"
 	  TagVisibility		  "local"
@@ -5413,7 +5601,7 @@ Model {
 	  BlockType		  Goto
 	  Name			  "Goto7"
 	  SID			  3305
-	  Position		  [445, 51, 470, 69]
+	  Position		  [405, 91, 430, 109]
 	  ShowName		  off
 	  GotoTag		  "G"
 	  TagVisibility		  "local"
@@ -5749,7 +5937,6 @@ Model {
 	  SID			  3309
 	  Position		  [265, 463, 290, 497]
 	  BlockMirror		  on
-	  ShowName		  off
 	  X0			  "pi/6"
 	  SampleTime		  "dt"
 	}
@@ -5759,7 +5946,6 @@ Model {
 	  SID			  3310
 	  Position		  [265, 503, 290, 537]
 	  BlockMirror		  on
-	  ShowName		  off
 	  X0			  "zeros(3,1)"
 	  SampleTime		  "dt"
 	}
@@ -5767,7 +5953,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "b_in_w"
 	  SID			  3273
-	  Position		  [215, 16, 285, 34]
+	  Position		  [175, 56, 245, 74]
 	  Value			  "b_in_w"
 	  SampleTime		  "dt"
 	}
@@ -5775,7 +5961,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "dt"
 	  SID			  3311
-	  Position		  [125, 271, 150, 289]
+	  Position		  [85, 271, 110, 289]
 	  ShowName		  off
 	  Value			  "dt"
 	  SampleTime		  "dt"
@@ -5792,7 +5978,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "f_in_w"
 	  SID			  3274
-	  Position		  [455, 16, 525, 34]
+	  Position		  [415, 56, 485, 74]
 	  Value			  "f_in_w"
 	  SampleTime		  "dt"
 	}
@@ -5800,7 +5986,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "m_in_w"
 	  SID			  3275
-	  Position		  [335, 16, 405, 34]
+	  Position		  [295, 56, 365, 74]
 	  Value			  "m_in_w"
 	  SampleTime		  "dt"
 	}
@@ -5808,7 +5994,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "p_in_m"
 	  SID			  3277
-	  Position		  [95, 16, 165, 34]
+	  Position		  [55, 56, 125, 74]
 	  Value			  "p_in_m"
 	  SampleTime		  "dt"
 	}
@@ -5816,7 +6002,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "t_in_w"
 	  SID			  3286
-	  Position		  [95, 51, 165, 69]
+	  Position		  [55, 91, 125, 109]
 	  Value			  "t_in_w"
 	  SampleTime		  "dt"
 	}
@@ -5824,7 +6010,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "twa_flange_offset"
 	  SID			  3298
-	  Position		  [340, 51, 430, 69]
+	  Position		  [300, 91, 390, 109]
 	  Value			  "twa_flange_offset"
 	  SampleTime		  "dt"
 	}
@@ -5832,7 +6018,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "twa_gamma"
 	  SID			  3288
-	  Position		  [220, 51, 290, 69]
+	  Position		  [180, 91, 250, 109]
 	  Value			  "twa_gamma"
 	  SampleTime		  "dt"
 	}
@@ -5840,7 +6026,7 @@ Model {
 	  BlockType		  Constant
 	  Name			  "use_twa"
 	  SID			  3293
-	  Position		  [480, 51, 530, 69]
+	  Position		  [440, 91, 490, 109]
 	  Value			  "use_twa"
 	  SampleTime		  "dt"
 	}
@@ -5856,7 +6042,15 @@ Model {
 	  BlockType		  Outport
 	  Name			  "q_des"
 	  SID			  3180
-	  Position		  [420, 148, 450, 162]
+	  Position		  [440, 213, 470, 227]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "xcur"
+	  SID			  3342
+	  Position		  [440, 303, 470, 317]
+	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Line {
@@ -5924,9 +6118,16 @@ Model {
 	Line {
 	  SrcBlock		  "ResolvedRates"
 	  SrcPort		  2
-	  Points		  [20, 0; 0, 210]
-	  DstBlock		  "Unit Delay4"
-	  DstPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    Points		    [0, 210]
+	    DstBlock		    "Unit Delay4"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "xcur"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "Unit Delay4"
@@ -5981,15 +6182,14 @@ Model {
 	Line {
 	  SrcBlock		  "ResolvedRates"
 	  SrcPort		  1
-	  Points		  [5, 0]
+	  Points		  [30, 0]
 	  Branch {
-	    Points		    [0, -65]
-	    DstBlock		    "q_des"
+	    Points		    [0, 340]
+	    DstBlock		    "Unit Delay1"
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [25, 0; 0, 340]
-	    DstBlock		    "Unit Delay1"
+	    DstBlock		    "q_des"
 	    DstPort		    1
 	  }
 	}
@@ -6024,7 +6224,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, 70]
+	Points			[0, 80]
 	DstBlock		"Goto3"
 	DstPort			1
       }
@@ -6071,7 +6271,7 @@ Model {
       SrcPort		      1
       Points		      [30, 0]
       Branch {
-	Points			[0, 0]
+	Points			[0, 25]
 	DstBlock		"task_space"
 	DstPort			1
       }
@@ -6099,13 +6299,13 @@ Model {
     Line {
       SrcBlock		      "Encoders"
       SrcPort		      2
-      Points		      [0, 20]
+      Points		      [0, 30]
       Branch {
 	DstBlock		"task_space"
 	DstPort			2
       }
       Branch {
-	Points			[0, 30]
+	Points			[0, 20]
 	DstBlock		"Goto2"
 	DstPort			1
       }
@@ -6119,7 +6319,7 @@ Model {
     Line {
       SrcBlock		      "cntrl_mode"
       SrcPort		      1
-      Points		      [5, 0]
+      Points		      [25, 0]
       DstBlock		      "cntrl_switch"
       DstPort		      1
     }
@@ -6158,18 +6358,21 @@ Model {
     Line {
       SrcBlock		      "From"
       SrcPort		      1
+      Points		      [0, 5]
       DstBlock		      "Scopes"
       DstPort		      3
     }
     Line {
       SrcBlock		      "From1"
       SrcPort		      1
+      Points		      [5, 0]
       DstBlock		      "Scopes"
       DstPort		      1
     }
     Line {
       SrcBlock		      "From2"
       SrcPort		      1
+      Points		      [0, 10]
       DstBlock		      "Scopes"
       DstPort		      2
     }
@@ -6178,6 +6381,20 @@ Model {
       SrcPort		      1
       DstBlock		      "Scopes"
       DstPort		      4
+    }
+    Line {
+      SrcBlock		      "task_space"
+      SrcPort		      2
+      Points		      [15, 0; 0, 20]
+      DstBlock		      "Goto5"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "From4"
+      SrcPort		      1
+      Points		      [0, -5]
+      DstBlock		      "Scopes"
+      DstPort		      5
     }
     Annotation {
       Name		      "TWA Parallel Manipulator Control - © 2023 Elan Z. Ahronovich"
@@ -6249,8 +6466,8 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function y = fcn(u)\n%#eml\n\ny = norm(u);"
-      editorLayout	      "100 M4x1[856 261 1080 733]"
+      script		      "function y = fcn(u)\n%#eml\n\ny = ~any(u);"
+      editorLayout	      "100 M4x1[2014 1 990 1057]"
     }
   }
   junction {
@@ -6902,50 +7119,51 @@ Stateflow {
       "tation matrix and error roation matrix\nr_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;sin(ee_rot_des) cos(ee_rot_d"
       "es) 0;0 0 1];\nr_cur = [cos(ee_rot_cur) -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot_cur) 0;0 0 1];\nr_del = r_"
       "des * r_cur';\n\n% orientational error angle and axis\ntheta_e = acos((trace(r_del)-1)/2);\n\n% error thresholds"
-      "\np_epsilon = 0.01;\nw_epsilon = 0.001;\n\n\nif norm(qdot) < 0.001\n    if theta_e > w_epsilon || p_del > p_epsi"
-      "lon\n        % moving platform vertex locations\n        p_in_w = x_cur*ones(1,3) + r_cur*p_in_m;\n        \n   "
-      "     %% instantaneous direct kinematics jacobian\n        % vector from base vertex to moving platform vertex\n "
-      "       n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));\n        n2hat = (p_in_w(:,2)-b_in_w("
-      ":,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,"
-      "3));\n        \n        a13 = z0'*(cross(r_cur*p_in_m(:,1),n1hat));\n        a23 = z0'*(cross(r_cur*p_in_m(:,2),"
-      "n2hat));\n        a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat));\n        \n        idk_jac = [n1hat(1,1) n1hat(2,1"
-      ") a13; ...\n            n2hat(1,1) n2hat(2,1) a23; ...\n            n3hat(1,1) n3hat(2,1) a33];\n        \n     "
-      "   %% instantaneous inverse kinematics jacobian\n        % micro actuator (TWA) lengths\n        q1_mu = norm(b_"
-      "in_w(:,1) - m_in_w(:,1));\n        q2_mu = norm(b_in_w(:,2) - m_in_w(:,2));\n        q3_mu = norm(b_in_w(:,3) - "
-      "m_in_w(:,3));\n        \n        % vector from base vertex to twa motor attachment point\n        l1_hat = (m_in"
-      "_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1));\n        l2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ norm"
-      "(m_in_w(:,2) - b_in_w(:,2));\n        l3_hat = (m_in_w(:,3) - b_in_w(:,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n"
-      "        \n        % distance from micro actuator attachmnet point (m_i) to flexure rotation\n        %center (f_"
-      "i)\n        a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n        a2 = norm(m_in_w(:,2) - f_in_w(:,2));\n        a3 = n"
-      "orm(m_in_w(:,3) - f_in_w(:,3));\n        \n        % distance from flexure rotation center (f_i) to base vertex\n"
-      "        c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n        c2 = norm(b_in_w(:,2)-f_in_w(:,2));\n        c3 = norm(b_in"
-      "_w(:,3)-f_in_w(:,3));\n        \n        % term to paramterize angle between a_i and qimu, delta\n        h1 = ("
-      "c1^2 - a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n        h2 = (c2^2 - a2^2 - q2_mu^2)/(-2*a2*q2_mu);\n        h3 = (c3^2 -"
-      " a3^2 - q3_mu^2)/(-2*a3*q3_mu);\n        \n        % time derivatives\n        h1dot = (4*a1*q1_mu^2 + (c1^2 - a"
-      "1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n        h2dot = (4*a2*q2_mu^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^"
-      "2*q2_mu^2);\n        h3dot = (4*a3*q3_mu^2 + (c3^2 - a3^2 - q3_mu^2)*2*a3) / (4*a3^2*q3_mu^2);\n        \n      "
-      "  e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) * n1hat' * cross(z0,l1_hat);\n        e2 = n2hat' * l2_hat + q"
-      "2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);\n        e3 = n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * "
-      "n3hat' * cross(z0,l3_hat);\n        \n        % micro motion instantaneous inverse kinematics jacobian\n        "
-      "b_mu = [e1 0 0;...\n            0 e2 0;...\n            0 0 e3];\n        \n        % macro motion instantaneous"
-      " inverse kinematics jacobian\n        b_m = eye(3);\n        \n        % combined macro-micro motion IIK jacobia"
-      "n\n        iik_jac = [b_m,b_mu];\n        \n        % the full manipulator jacobian with redundancy resolution w"
-      "eighting\n        w_mat = diag([1,1,1,1e10,1e10,1e10]);\n        full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*i"
-      "ik_jac') * idk_jac;\n        \n        % positional error direction\n        p_ep_hat = (x_des-x_cur)/p_del;\n  "
-      "      \n        % orientational error axis\n        if theta_e ~= 0\n            me = (1/(2*sin(theta_e)))*[r_de"
-      "l(3,2)-r_del(2,3);...\n                r_del(1,3)-r_del(3,1);...\n                r_del(2,1)-r_del(1,2)];\n     "
-      "   else\n            me = z0;\n        end\n        \n        % inverse kinematics based on pose error\n        "
-      "vmax = 5;\n        vmin = 0.1;\n        wmin = 0.01;\n        wmax = 0.5;\n        p_lambda = 5;\n        w_lamb"
-      "da = 2;\n        vdot = 0;\n        wdot = 0;\n        \n        if p_del ~=0\n            if p_del/p_epsilon <="
-      " p_lambda\n                vdot = vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));\n          "
-      "  else\n                vdot = vmax;\n            end\n        end\n        \n        if theta_e ~= 0\n         "
-      "   if theta_e/w_epsilon <= w_lambda && theta_e ~= 0\n                wdot = wmin + (((wmax-wmin)*(theta_e-w_epsi"
-      "lon))/(w_epsilon*(w_lambda-1)));\n            else\n                wdot = wmax;\n            end\n        end\n"
-      "        \n        v = vdot * p_ep_hat;\n        w = wdot * me;\n        \n        qdot = full_jac * [v(1:2);w(3)"
-      "];\n        deltaq = qdot * dt;\n        qdes = q_cur + deltaq;\n       \n        xcur = x_cur + v * dt;\n      "
-      "  eerot = ee_rot_cur + w(3) * dt;\n    else\n        qdes = q_cur;\n        xcur = x_cur;\n        % check this "
-      "for angle or rotation matrix\n        eerot = ee_rot_cur;\n    end\nend\n\nend"
-      editorLayout	      "100 M4x1[1913 14 990 1057]"
+      "\np_epsilon = 0.01;\nw_epsilon = 0.001;\n\n% only look when all of the actuators are not moving\nif ~any(qdot)\n"
+      "    if theta_e > w_epsilon || p_del > p_epsilon\n        % moving platform vertex locations\n        p_in_w = x_"
+      "cur*ones(1,3) + r_cur*p_in_m;\n        \n        %% instantaneous direct kinematics jacobian\n        % vector f"
+      "rom base vertex to moving platform vertex\n        n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w("
+      ":,1));\n        n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3hat = (p_in_w(:,3"
+      ")-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));\n        \n        a13 = z0'*(cross(r_cur*p_in_m(:,1),n1hat));\n"
+      "        a23 = z0'*(cross(r_cur*p_in_m(:,2),n2hat));\n        a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat));\n      "
+      "  \n        idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...\n            n2hat(1,1) n2hat(2,1) a23; ...\n            n"
+      "3hat(1,1) n3hat(2,1) a33];\n        \n        %% instantaneous inverse kinematics jacobian\n        % micro actu"
+      "ator (TWA) lengths\n        q1_mu = norm(b_in_w(:,1) - m_in_w(:,1));\n        q2_mu = norm(b_in_w(:,2) - m_in_w("
+      ":,2));\n        q3_mu = norm(b_in_w(:,3) - m_in_w(:,3));\n        \n        % vector from base vertex to twa mot"
+      "or attachment point\n        l1_hat = (m_in_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1));\n        l"
+      "2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ norm(m_in_w(:,2) - b_in_w(:,2));\n        l3_hat = (m_in_w(:,3) - b_in_w("
+      ":,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n        \n        % distance from micro actuator attachmnet point (m_"
+      "i) to flexure rotation\n        %center (f_i)\n        a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n        a2 = norm("
+      "m_in_w(:,2) - f_in_w(:,2));\n        a3 = norm(m_in_w(:,3) - f_in_w(:,3));\n        \n        % distance from fl"
+      "exure rotation center (f_i) to base vertex\n        c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n        c2 = norm(b_in_"
+      "w(:,2)-f_in_w(:,2));\n        c3 = norm(b_in_w(:,3)-f_in_w(:,3));\n        \n        % term to paramterize angle"
+      " between a_i and qimu, delta\n        h1 = (c1^2 - a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n        h2 = (c2^2 - a2^2 - q"
+      "2_mu^2)/(-2*a2*q2_mu);\n        h3 = (c3^2 - a3^2 - q3_mu^2)/(-2*a3*q3_mu);\n        \n        % time derivative"
+      "s\n        h1dot = (4*a1*q1_mu^2 + (c1^2 - a1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n        h2dot = (4*a2*q2_m"
+      "u^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^2*q2_mu^2);\n        h3dot = (4*a3*q3_mu^2 + (c3^2 - a3^2 - q3_mu^2)"
+      "*2*a3) / (4*a3^2*q3_mu^2);\n        \n        e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) * n1hat' * cross(z"
+      "0,l1_hat);\n        e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);\n        e3 = n"
+      "3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);\n        \n        % micro motion instant"
+      "aneous inverse kinematics jacobian\n        b_mu = [e1 0 0;...\n            0 e2 0;...\n            0 0 e3];\n  "
+      "      \n        % macro motion instantaneous inverse kinematics jacobian\n        b_m = eye(3);\n        \n     "
+      "   % combined macro-micro motion IIK jacobian\n        iik_jac = [b_m,b_mu];\n        \n        % the full manip"
+      "ulator jacobian with redundancy resolution weighting\n        w_mat = diag([1,1,1,1e10,1e10,1e10]);\n        ful"
+      "l_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n        \n        % positional error direction\n"
+      "        p_ep_hat = (x_des-x_cur)/p_del;\n        \n        % orientational error axis\n        if theta_e ~= 0\n"
+      "            me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);...\n                r_del(1,3)-r_del(3,1);...\n   "
+      "             r_del(2,1)-r_del(1,2)];\n        else\n            me = z0;\n        end\n        \n        % inver"
+      "se kinematics based on pose error\n        vmax = 1; %[mm/s]\n        vmin = 0.02;\n        wmin = 0.001;\n     "
+      "   wmax = 0.05;\n        p_lambda = 3;\n        w_lambda = 3;\n        vdot = 0;\n        wdot = 0;\n        \n "
+      "       if p_del ~=0\n            if p_del/p_epsilon <= p_lambda\n                vdot = vmin + (((vmax-vmin)*(p_"
+      "del-p_epsilon))/(p_epsilon*(p_lambda-1)));\n            else\n                vdot = vmax;\n            end\n   "
+      "     end\n        \n        if theta_e ~= 0\n            if theta_e/w_epsilon <= w_lambda && theta_e ~= 0\n     "
+      "           wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));\n            else\n      "
+      "          wdot = wmax;\n            end\n        end\n        \n        v = vdot * p_ep_hat;\n        w = wdot *"
+      " me;\n        \n        qdot = full_jac * [v(1:2);w(3)];\n        deltaq = qdot * dt;\n        qdes = q_cur + de"
+      "ltaq;\n       \n        xcur = x_cur + v * dt;\n        eerot = ee_rot_cur + w(3) * dt;\n    else\n        qdes "
+      "= q_cur;\n        xcur = x_cur;\n        % check this for angle or rotation matrix\n        eerot = ee_rot_cur;\n"
+      "    end\nend\n\nend"
+      editorLayout	      "100 M4x1[2014 1 990 1057]"
     }
   }
   junction {

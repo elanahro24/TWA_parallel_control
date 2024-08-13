@@ -393,7 +393,7 @@ static void sf_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   c3_eqeps = (real_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c3_qcur = (real_T *)ssGetInputPortSignal(chartInstance->S, 0);
   _sfTime_ = (real_T)ssGetT(chartInstance->S);
-  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,0);
+  _SFD_CC_CALL(CHART_ENTER_SFUNCTION_TAG,1);
   _SFD_DATA_RANGE_CHECK(*c3_qcur, 0U);
   _SFD_DATA_RANGE_CHECK(*c3_eqeps, 1U);
   _SFD_DATA_RANGE_CHECK(*c3_qcmd, 2U);
@@ -1266,7 +1266,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
   c3_b_qcmd = (real_T *)ssGetOutputPortSignal(chartInstance->S, 1);
   c3_b_eqeps = (real_T *)ssGetInputPortSignal(chartInstance->S, 1);
   c3_b_qcur = (real_T *)ssGetInputPortSignal(chartInstance->S, 0);
-  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,0);
+  _SFD_CC_CALL(CHART_ENTER_DURING_FUNCTION_TAG,1);
   c3_hoistedGlobal = *c3_b_qcur;
   c3_b_hoistedGlobal = *c3_b_eqeps;
   c3_c_hoistedGlobal = *c3_b_kp;
@@ -2798,7 +2798,7 @@ static void c3_c3_twa_parallel(SFc3_twa_parallelInstanceStruct *chartInstance)
     (*c3_b_rwave_out)[c3_i301] = c3_rwave_out[c3_i301];
   }
 
-  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,0);
+  _SFD_CC_CALL(EXIT_OUT_OF_FUNCTION_TAG,1);
 }
 
 static void init_script_number_translation(uint32_T c3_machineNumber, uint32_T

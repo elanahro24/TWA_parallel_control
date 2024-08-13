@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6972
+ * Model version              : 1.7005
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Mon Aug 12 09:35:33 2024
+ * C source code generated on : Mon Aug 12 18:41:06 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible

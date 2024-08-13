@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.6972
+ * Model version              : 1.7005
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Mon Aug 12 09:35:33 2024
+ * C source code generated on : Mon Aug 12 18:41:06 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -53,9 +53,9 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&twa_parallel_B.EncoderInput_o1), 0, 0, 269 },
+  { (char_T *)(&twa_parallel_B.EncoderInput_o1), 0, 0, 271 },
 
-  { (char_T *)(&twa_parallel_B.NSampleEnable), 8, 0, 1 }
+  { (char_T *)(&twa_parallel_B.NSampleEnable), 8, 0, 2 }
   ,
 
   { (char_T *)(&twa_parallel_DWork.DiscreteFIRFilter_states[0]), 0, 0, 60 },
@@ -64,7 +64,7 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&twa_parallel_DWork.NSampleEnable_Counter), 7, 0, 1 },
 
-  { (char_T *)(&twa_parallel_DWork.SFunction_IWORK.AcquireOK), 10, 0, 4 },
+  { (char_T *)(&twa_parallel_DWork.SFunction_IWORK.AcquireOK), 10, 0, 6 },
 
   { (char_T *)(&twa_parallel_DWork.Homing_SubsysRanBC), 2, 0, 1 },
 
@@ -81,7 +81,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&twa_parallel_P.eq_eps_Value), 0, 0, 235 },
+  { (char_T *)(&twa_parallel_P.eq_eps_Value), 0, 0, 243 },
 
   { (char_T *)(&twa_parallel_P.NSampleEnable_TARGETCNT), 7, 0, 2 }
 };

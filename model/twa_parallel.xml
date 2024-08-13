@@ -26,6 +26,16 @@
 					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
+			<block>
+				<blkName>velmex_pitch</blkName>
+				<xpcblkName>Encoders/Counts To Turns1/velmex_pitch</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns1/velmex_pitch</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<signal>
 				<sigName>enc_res</sigName>
 				<xpcsigName>Encoders/Counts To Turns1/enc_res</xpcsigName>
@@ -35,6 +45,12 @@
 			<signal>
 				<sigName>gear_ratio</sigName>
 				<xpcsigName>Encoders/Counts To Turns1/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>velmex_pitch</sigName>
+				<xpcsigName>Encoders/Counts To Turns1/velmex_pitch</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
@@ -62,6 +78,16 @@
 					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
+			<block>
+				<blkName>velmex_pitch</blkName>
+				<xpcblkName>Encoders/Counts To Turns2/velmex_pitch</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns2/velmex_pitch</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<signal>
 				<sigName>enc_res</sigName>
 				<xpcsigName>Encoders/Counts To Turns2/enc_res</xpcsigName>
@@ -71,6 +97,12 @@
 			<signal>
 				<sigName>gear_ratio</sigName>
 				<xpcsigName>Encoders/Counts To Turns2/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>velmex_pitch</sigName>
+				<xpcsigName>Encoders/Counts To Turns2/velmex_pitch</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
@@ -98,6 +130,16 @@
 					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
+			<block>
+				<blkName>velmex_pitch</blkName>
+				<xpcblkName>Encoders/Counts To Turns3/velmex_pitch</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns3/velmex_pitch</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>Gain</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<signal>
 				<sigName>enc_res</sigName>
 				<xpcsigName>Encoders/Counts To Turns3/enc_res</xpcsigName>
@@ -107,6 +149,12 @@
 			<signal>
 				<sigName>gear_ratio</sigName>
 				<xpcsigName>Encoders/Counts To Turns3/gear_ratio</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>velmex_pitch</sigName>
+				<xpcsigName>Encoders/Counts To Turns3/velmex_pitch</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
@@ -312,9 +360,59 @@
 			</SubSystem>
 		</SubSystem>
 		<block>
-			<blkName>enc_reset</blkName>
-			<xpcblkName>Encoders/enc_reset</xpcblkName>
-			<SLblockPath>twa_parallel/Encoders/enc_reset</SLblockPath>
+			<blkName>enc_reset1</blkName>
+			<xpcblkName>Encoders/enc_reset1</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset1</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>enc_reset2</blkName>
+			<xpcblkName>Encoders/enc_reset2</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset2</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>enc_reset3</blkName>
+			<xpcblkName>Encoders/enc_reset3</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset3</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>enc_reset4</blkName>
+			<xpcblkName>Encoders/enc_reset4</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset4</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>enc_reset5</blkName>
+			<xpcblkName>Encoders/enc_reset5</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset5</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>enc_reset6</blkName>
+			<xpcblkName>Encoders/enc_reset6</xpcblkName>
+			<SLblockPath>twa_parallel/Encoders/enc_reset6</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -1007,6 +1105,14 @@ MATLAB Function</sigName>
 		<SubSystem>
 			<Name>q_cur_macro4</Name>
 			<xPCName>twa_parallel/Scopes/q_cur_macro4</xPCName>
+		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro5</Name>
+			<xPCName>twa_parallel/Scopes/q_cur_macro5</xPCName>
+		</SubSystem>
+		<SubSystem>
+			<Name>q_cur_macro6</Name>
+			<xPCName>twa_parallel/Scopes/q_cur_macro6</xPCName>
 		</SubSystem>
 	</SubSystem>
 	<SubSystem>
