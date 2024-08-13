@@ -471,198 +471,6 @@
 		</signal>
 	</SubSystem>
 	<SubSystem>
-		<Name>Homing</Name>
-		<xPCName>twa_parallel/Homing</xPCName>
-		<SubSystem>
-			<Name>Homing</Name>
-			<xPCName>twa_parallel/Homing/Homing</xPCName>
-		</SubSystem>
-		<block>
-			<blkName>b_in_w</blkName>
-			<xpcblkName>Homing/b_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/b_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>dt</blkName>
-			<xpcblkName>Homing/dt</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/dt</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>eq_eps</blkName>
-			<xpcblkName>Homing/eq_eps</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/eq_eps</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>f_in_w</blkName>
-			<xpcblkName>Homing/f_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/f_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>kp</blkName>
-			<xpcblkName>Homing/kp</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/kp</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>m_in_w</blkName>
-			<xpcblkName>Homing/m_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/m_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>meas_macro_len</blkName>
-			<xpcblkName>Homing/meas_macro_len</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/meas_macro_len</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>p_in_m</blkName>
-			<xpcblkName>Homing/p_in_m</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/p_in_m</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>velmex_pitch</blkName>
-			<xpcblkName>Homing/velmex_pitch</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/velmex_pitch</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>Unit Delay1</blkName>
-			<xpcblkName>Homing/Unit Delay1</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/Unit Delay1</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[3, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>Unit Delay2</blkName>
-			<xpcblkName>Homing/Unit Delay2</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/Unit Delay2</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>Unit Delay3</blkName>
-			<xpcblkName>Homing/Unit Delay3</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/Unit Delay3</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[3, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>Unit Delay4</blkName>
-			<xpcblkName>Homing/Unit Delay4</xpcblkName>
-			<SLblockPath>twa_parallel/Homing/Unit Delay4</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[3, 1]</dim>
-			</parameter>
-		</block>
-		<signal>
-			<sigName>Homing/p1</sigName>
-			<xpcsigName>Homing/Homing/p1</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Homing/p2</sigName>
-			<xpcsigName>Homing/Homing/p2</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Homing/p3</sigName>
-			<xpcsigName>Homing/Homing/p3</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Homing/p4</sigName>
-			<xpcsigName>Homing/Homing/p4</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Homing/p5</sigName>
-			<xpcsigName>Homing/Homing/p5</xpcsigName>
-			<sigWidth>9</sigWidth>
-			<sigDim>[3, 3]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay1</sigName>
-			<xpcsigName>Homing/Unit Delay1</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay2</sigName>
-			<xpcsigName>Homing/Unit Delay2</xpcsigName>
-			<sigWidth>9</sigWidth>
-			<sigDim>[3, 3]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay3</sigName>
-			<xpcsigName>Homing/Unit Delay3</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay4</sigName>
-			<xpcsigName>Homing/Unit Delay4</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-	</SubSystem>
-	<SubSystem>
 		<Name>PID Controller</Name>
 		<xPCName>twa_parallel/PID Controller</xPCName>
 		<SubSystem>
@@ -1075,22 +883,6 @@ MATLAB Function/p7</sigName>
 			</signal>
 		</SubSystem>
 		<SubSystem>
-			<Name>norm</Name>
-			<xPCName>twa_parallel/Scopes/norm</xPCName>
-			<SubSystem>
-				<Name>Embedded
-MATLAB Function</Name>
-				<xPCName>twa_parallel/Scopes/norm/Embedded MATLAB Function</xPCName>
-			</SubSystem>
-			<signal>
-				<sigName>Embedded
-MATLAB Function</sigName>
-				<xpcsigName>Scopes/norm/Embedded MATLAB Function</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-		</SubSystem>
-		<SubSystem>
 			<Name>q_cur_macro1</Name>
 			<xPCName>twa_parallel/Scopes/q_cur_macro1</xPCName>
 		</SubSystem>
@@ -1110,14 +902,14 @@ MATLAB Function</sigName>
 			<Name>q_cur_macro5</Name>
 			<xPCName>twa_parallel/Scopes/q_cur_macro5</xPCName>
 		</SubSystem>
-		<SubSystem>
-			<Name>q_cur_macro6</Name>
-			<xPCName>twa_parallel/Scopes/q_cur_macro6</xPCName>
-		</SubSystem>
 	</SubSystem>
 	<SubSystem>
 		<Name>task_space</Name>
 		<xPCName>twa_parallel/task_space</xPCName>
+		<SubSystem>
+			<Name>q_cur_macro6</Name>
+			<xPCName>twa_parallel/task_space/q_cur_macro6</xPCName>
+		</SubSystem>
 		<SubSystem>
 			<Name>ResolvedRates</Name>
 			<xPCName>twa_parallel/task_space/ResolvedRates</xPCName>
@@ -1271,12 +1063,18 @@ MATLAB Function</sigName>
 		<signal>
 			<sigName>ResolvedRates/p2</sigName>
 			<xpcsigName>task_space/ResolvedRates/p2</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>ResolvedRates/p3</sigName>
 			<xpcsigName>task_space/ResolvedRates/p3</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>ResolvedRates/p4</sigName>
+			<xpcsigName>task_space/ResolvedRates/p4</xpcsigName>
 			<sigWidth>1</sigWidth>
 			<sigDim>[1, 1]</sigDim>
 		</signal>
@@ -1327,16 +1125,6 @@ MATLAB Function</sigName>
 		<blkName>cntrl_mode</blkName>
 		<xpcblkName>cntrl_mode</xpcblkName>
 		<SLblockPath>twa_parallel/cntrl_mode</SLblockPath>
-		<isSrc>[1 0 1]</isSrc>
-		<parameter>
-			<paramName>Value</paramName>
-			<dim>[1, 1]</dim>
-		</parameter>
-	</block>
-	<block>
-		<blkName>do_homing</blkName>
-		<xpcblkName>do_homing</xpcblkName>
-		<SLblockPath>twa_parallel/do_homing</SLblockPath>
 		<isSrc>[1 0 1]</isSrc>
 		<parameter>
 			<paramName>Value</paramName>

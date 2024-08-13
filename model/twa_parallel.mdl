@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7005"
+    ComputedModelVersion    "1.7020"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 12 19:07:54 2024"
-  RTWModifiedTimeStamp	  645388856
-  ModelVersionFormat	  "1.%<AutoIncrement:7005>"
+  LastModifiedDate	  "Mon Aug 12 20:20:03 2024"
+  RTWModifiedTimeStamp	  645394801
+  ModelVersionFormat	  "1.%<AutoIncrement:7020>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1573,13 +1573,6 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
-      BlockType		      EnablePort
-      StatesWhenEnabling      "held"
-      PropagateVarSize	      "Only when enabling"
-      ShowOutputPort	      off
-      ZeroCross		      on
-    }
-    Block {
       BlockType		      From
       IconDisplay	      "Tag"
       TagVisibility	      "local"
@@ -1801,7 +1794,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "211"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3354
+    SIDHighWatermark	    3355
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -1877,7 +1870,7 @@ Model {
 	  System {
 	    Name		    "Counts To Turns1"
 	    Location		    [272, 492, 1325, 836]
-	    Open		    on
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -2948,7 +2941,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto3"
       SID		      3327
-      Position		      [675, 321, 705, 339]
+      Position		      [600, 321, 630, 339]
       ShowName		      off
       GotoTag		      "D1"
       TagVisibility	      "local"
@@ -2970,813 +2963,6 @@ Model {
       ShowName		      off
       GotoTag		      "E1"
       TagVisibility	      "local"
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "Homing"
-      SID		      3216
-      Ports		      [1, 2, 1]
-      Position		      [655, 104, 725, 151]
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      System {
-	Name			"Homing"
-	Location		[568, 107, 1352, 973]
-	Open			off
-	ModelBrowserVisibility	off
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"112"
-	Block {
-	  BlockType		  Inport
-	  Name			  "q_cur"
-	  SID			  3217
-	  Position		  [136, 105, 154, 120]
-	  BlockRotation		  270
-	  BlockMirror		  on
-	  NamePlacement		  "alternate"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  EnablePort
-	  Name			  "Enable"
-	  SID			  3238
-	  Ports			  []
-	  Position		  [200, 15, 220, 35]
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From1"
-	  SID			  3254
-	  Position		  [75, 230, 100, 250]
-	  ShowName		  off
-	  GotoTag		  "A"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From2"
-	  SID			  3266
-	  Position		  [100, 290, 125, 310]
-	  ShowName		  off
-	  GotoTag		  "D"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From3"
-	  SID			  3267
-	  Position		  [30, 310, 55, 330]
-	  ShowName		  off
-	  GotoTag		  "E"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From4"
-	  SID			  3255
-	  Position		  [100, 250, 125, 270]
-	  ShowName		  off
-	  GotoTag		  "B"
-	}
-	Block {
-	  BlockType		  From
-	  Name			  "From5"
-	  SID			  3256
-	  Position		  [65, 270, 90, 290]
-	  ShowName		  off
-	  GotoTag		  "C"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto"
-	  SID			  3246
-	  Position		  [115, 72, 140, 88]
-	  ShowName		  off
-	  GotoTag		  "A"
-	  TagVisibility		  "local"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto1"
-	  SID			  3249
-	  Position		  [240, 71, 265, 89]
-	  ShowName		  off
-	  GotoTag		  "B"
-	  TagVisibility		  "local"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto2"
-	  SID			  3250
-	  Position		  [360, 71, 385, 89]
-	  ShowName		  off
-	  GotoTag		  "C"
-	  TagVisibility		  "local"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto3"
-	  SID			  3263
-	  Position		  [480, 71, 505, 89]
-	  ShowName		  off
-	  GotoTag		  "D"
-	  TagVisibility		  "local"
-	}
-	Block {
-	  BlockType		  Goto
-	  Name			  "Goto4"
-	  SID			  3265
-	  Position		  [620, 71, 645, 89]
-	  ShowName		  off
-	  GotoTag		  "E"
-	  TagVisibility		  "local"
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "Homing"
-	  SID			  3205
-	  Ports			  [14, 5]
-	  Position		  [160, 146, 265, 434]
-	  LibraryVersion	  "1.31"
-	  PermitHierarchicalResolution "ExplicitOnly"
-	  TreatAsAtomicUnit	  on
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  MaskType		  "Stateflow"
-	  MaskDescription	  "Embedded MATLAB block"
-	  MaskDisplay		  "disp('fcn');"
-	  MaskSelfModifiable	  on
-	  MaskIconFrame		  on
-	  MaskIconOpaque	  off
-	  MaskIconRotate	  "none"
-	  MaskPortRotate	  "default"
-	  MaskIconUnits		  "autoscale"
-	  System {
-	    Name		    "Homing"
-	    Location		    [257, 457, 812, 717]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "100"
-	    SIDHighWatermark	    39
-	    SIDPrevWatermark	    24
-	    Block {
-	      BlockType		      Inport
-	      Name		      "qcur"
-	      SID		      18
-	      Position		      [20, 101, 40, 119]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "eqeps"
-	      SID		      20
-	      Position		      [20, 136, 40, 154]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "kp"
-	      SID		      19
-	      Position		      [20, 171, 40, 189]
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "dt"
-	      SID		      24
-	      Position		      [20, 206, 40, 224]
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "p_in_m"
-	      SID		      35
-	      Position		      [20, 246, 40, 264]
-	      Port		      "5"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "b_in_w"
-	      SID		      36
-	      Position		      [20, 281, 40, 299]
-	      Port		      "6"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "m_in_w"
-	      SID		      38
-	      Position		      [20, 316, 40, 334]
-	      Port		      "7"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "f_in_w"
-	      SID		      39
-	      Position		      [20, 351, 40, 369]
-	      Port		      "8"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "measured_len"
-	      SID		      37
-	      Position		      [20, 386, 40, 404]
-	      Port		      "9"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "velmex_pitch"
-	      SID		      31
-	      Position		      [20, 426, 40, 444]
-	      Port		      "10"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "macro_leg_len"
-	      SID		      32
-	      Position		      [20, 461, 40, 479]
-	      Port		      "11"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "eq"
-	      SID		      21
-	      Position		      [20, 496, 40, 514]
-	      Port		      "12"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "twave"
-	      SID		      27
-	      Position		      [20, 531, 40, 549]
-	      Port		      "13"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Inport
-	      Name		      "rwave"
-	      SID		      28
-	      Position		      [20, 566, 40, 584]
-	      Port		      "14"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Demux
-	      Name		      " Demux "
-	      SID		      15
-	      Ports		      [1, 1]
-	      Position		      [270, 430, 320, 470]
-	      Outputs		      "1"
-	    }
-	    Block {
-	      BlockType		      "S-Function"
-	      Name		      " SFunction "
-	      SID		      14
-	      Tag		      "Stateflow S-Function twa_parallel 3"
-	      Ports		      [14, 6]
-	      Position		      [180, 130, 230, 430]
-	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[14 6]"
-	      EnableBusSupport	      on
-	      Port {
-		PortNumber		2
-		Name			"qcmd"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		3
-		Name			"des_leg_len"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		4
-		Name			"eq_out"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		5
-		Name			"twave_out"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	      Port {
-		PortNumber		6
-		Name			"rwave_out"
-		RTWStorageClass		"Auto"
-		DataLoggingNameMode	"SignalName"
-	      }
-	    }
-	    Block {
-	      BlockType		      Terminator
-	      Name		      " Terminator "
-	      SID		      17
-	      Position		      [460, 441, 480, 459]
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "qcmd"
-	      SID		      5
-	      Position		      [460, 101, 480, 119]
-	      IconDisplay	      "Port number"
-	      OutDataType	      "sfix(16)"
-	      OutScaling	      "2^0"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "des_leg_len"
-	      SID		      33
-	      Position		      [460, 136, 480, 154]
-	      Port		      "2"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "eq_out"
-	      SID		      22
-	      Position		      [460, 171, 480, 189]
-	      Port		      "3"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "twave_out"
-	      SID		      25
-	      Position		      [460, 206, 480, 224]
-	      Port		      "4"
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "rwave_out"
-	      SID		      26
-	      Position		      [460, 246, 480, 264]
-	      Port		      "5"
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      " SFunction "
-	      SrcPort		      1
-	      DstBlock		      " Demux "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "qcur"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "eqeps"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      2
-	    }
-	    Line {
-	      SrcBlock		      "kp"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      3
-	    }
-	    Line {
-	      SrcBlock		      "dt"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      4
-	    }
-	    Line {
-	      SrcBlock		      "p_in_m"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      5
-	    }
-	    Line {
-	      SrcBlock		      "b_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      6
-	    }
-	    Line {
-	      SrcBlock		      "m_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      7
-	    }
-	    Line {
-	      SrcBlock		      "f_in_w"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      8
-	    }
-	    Line {
-	      SrcBlock		      "measured_len"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      9
-	    }
-	    Line {
-	      SrcBlock		      "velmex_pitch"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      10
-	    }
-	    Line {
-	      SrcBlock		      "macro_leg_len"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      11
-	    }
-	    Line {
-	      SrcBlock		      "eq"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      12
-	    }
-	    Line {
-	      SrcBlock		      "twave"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      13
-	    }
-	    Line {
-	      SrcBlock		      "rwave"
-	      SrcPort		      1
-	      DstBlock		      " SFunction "
-	      DstPort		      14
-	    }
-	    Line {
-	      Name		      "qcmd"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      2
-	      DstBlock		      "qcmd"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "des_leg_len"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      3
-	      DstBlock		      "des_leg_len"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "eq_out"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      4
-	      DstBlock		      "eq_out"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "twave_out"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      5
-	      DstBlock		      "twave_out"
-	      DstPort		      1
-	    }
-	    Line {
-	      Name		      "rwave_out"
-	      Labels		      [0, 0]
-	      SrcBlock		      " SFunction "
-	      SrcPort		      6
-	      DstBlock		      "rwave_out"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      " Demux "
-	      SrcPort		      1
-	      DstBlock		      " Terminator "
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay1"
-	  SID			  3231
-	  Position		  [200, 573, 225, 607]
-	  BlockMirror		  on
-	  X0			  "meas_macro_len"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay2"
-	  SID			  3258
-	  Position		  [200, 453, 225, 487]
-	  BlockMirror		  on
-	  ShowName		  off
-	  X0			  "rm2w_homing"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay3"
-	  SID			  3220
-	  Position		  [200, 493, 225, 527]
-	  BlockMirror		  on
-	  ShowName		  off
-	  X0			  "zeros(3,1)"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  UnitDelay
-	  Name			  "Unit Delay4"
-	  SID			  3259
-	  Position		  [200, 533, 225, 567]
-	  BlockMirror		  on
-	  ShowName		  off
-	  X0			  "eq_homing"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "b_in_w"
-	  SID			  3236
-	  Position		  [150, 71, 220, 89]
-	  Value			  "b_in_w"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "dt"
-	  SID			  3211
-	  Position		  [90, 191, 110, 209]
-	  Value			  "dt"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "eq_eps"
-	  SID			  3207
-	  Position		  [90, 121, 110, 139]
-	  Value			  "0.1"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "f_in_w"
-	  SID			  3264
-	  Position		  [390, 71, 460, 89]
-	  Value			  "f_in_w"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "kp"
-	  SID			  3208
-	  Position		  [85, 155, 115, 175]
-	  Value			  "0.25"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "m_in_w"
-	  SID			  3262
-	  Position		  [270, 71, 340, 89]
-	  Value			  "m_in_w"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "meas_macro_len"
-	  SID			  3237
-	  Position		  [515, 70, 600, 90]
-	  Value			  "meas_macro_len"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "p_in_m"
-	  SID			  3235
-	  Position		  [30, 71, 100, 89]
-	  Value			  "p_in_m"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Constant
-	  Name			  "velmex_pitch"
-	  SID			  3223
-	  Position		  [65, 331, 135, 349]
-	  Value			  "velmex_pitch"
-	  SampleTime		  "dt"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "qcmd"
-	  SID			  3218
-	  Position		  [290, 173, 320, 187]
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "macro_leg_len"
-	  SID			  3307
-	  Position		  [360, 228, 390, 242]
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Line {
-	  SrcBlock		  "kp"
-	  SrcPort		  1
-	  Points		  [0, 35]
-	  DstBlock		  "Homing"
-	  DstPort		  3
-	}
-	Line {
-	  SrcBlock		  "dt"
-	  SrcPort		  1
-	  Points		  [0, 20]
-	  DstBlock		  "Homing"
-	  DstPort		  4
-	}
-	Line {
-	  SrcBlock		  "Homing"
-	  SrcPort		  1
-	  DstBlock		  "qcmd"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Homing"
-	  SrcPort		  3
-	  Points		  [55, 0; 0, 260]
-	  DstBlock		  "Unit Delay4"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Homing"
-	  SrcPort		  4
-	  Points		  [40, 0; 0, 165]
-	  DstBlock		  "Unit Delay3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Unit Delay3"
-	  SrcPort		  1
-	  Points		  [-80, 0; 0, -110]
-	  DstBlock		  "Homing"
-	  DstPort		  13
-	}
-	Line {
-	  SrcBlock		  "Unit Delay4"
-	  SrcPort		  1
-	  Points		  [-90, 0; 0, -170]
-	  DstBlock		  "Homing"
-	  DstPort		  12
-	}
-	Line {
-	  SrcBlock		  "velmex_pitch"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  10
-	}
-	Line {
-	  SrcBlock		  "Homing"
-	  SrcPort		  2
-	  Points		  [65, 0]
-	  Branch {
-	    Points		    [0, 355]
-	    DstBlock		    "Unit Delay1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "macro_leg_len"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "Unit Delay1"
-	  SrcPort		  1
-	  Points		  [-100, 0; 0, -230]
-	  DstBlock		  "Homing"
-	  DstPort		  11
-	}
-	Line {
-	  SrcBlock		  "Homing"
-	  SrcPort		  5
-	  Points		  [10, 0; 0, 70]
-	  DstBlock		  "Unit Delay2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Unit Delay2"
-	  SrcPort		  1
-	  Points		  [-60, 0; 0, -50]
-	  DstBlock		  "Homing"
-	  DstPort		  14
-	}
-	Line {
-	  SrcBlock		  "p_in_m"
-	  SrcPort		  1
-	  DstBlock		  "Goto"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "b_in_w"
-	  SrcPort		  1
-	  DstBlock		  "Goto1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From1"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  5
-	}
-	Line {
-	  SrcBlock		  "From4"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  6
-	}
-	Line {
-	  SrcBlock		  "q_cur"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "eq_eps"
-	  SrcPort		  1
-	  Points		  [15, 0; 0, 50]
-	  DstBlock		  "Homing"
-	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "From5"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  7
-	}
-	Line {
-	  SrcBlock		  "m_in_w"
-	  SrcPort		  1
-	  DstBlock		  "Goto2"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "f_in_w"
-	  SrcPort		  1
-	  DstBlock		  "Goto3"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "meas_macro_len"
-	  SrcPort		  1
-	  DstBlock		  "Goto4"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "From2"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  8
-	}
-	Line {
-	  SrcBlock		  "From3"
-	  SrcPort		  1
-	  DstBlock		  "Homing"
-	  DstPort		  9
-	}
-      }
     }
     Block {
       BlockType		      Reference
@@ -3813,8 +2999,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"PID Controller"
-	Location		[215, 51, 1704, 1039]
-	Open			on
+	Location		[217, 83, 1702, 1018]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -4806,7 +3992,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "q_dot"
 	  SID			  3154
-	  Position		  [60, 103, 90, 117]
+	  Position		  [80, 123, 110, 137]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -4930,182 +4116,6 @@ Model {
 	      SrcBlock		      "Discrete FIR Filter"
 	      SrcPort		      1
 	      DstBlock		      "Gain"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Block {
-	  BlockType		  SubSystem
-	  Name			  "norm"
-	  SID			  3330
-	  Ports			  [1, 1]
-	  Position		  [110, 136, 150, 164]
-	  BackgroundColor	  "[1.000000, 0.501961, 0.501961]"
-	  MinAlgLoopOccurrences	  off
-	  PropExecContextOutsideSubsystem off
-	  RTWSystemCode		  "Auto"
-	  FunctionWithSeparateData off
-	  Opaque		  off
-	  RequestExecContextInheritance	off
-	  MaskHideContents	  off
-	  System {
-	    Name		    "norm"
-	    Location		    [79, 323, 1078, 895]
-	    Open		    off
-	    ModelBrowserVisibility  off
-	    ModelBrowserWidth	    200
-	    ScreenColor		    "white"
-	    PaperOrientation	    "landscape"
-	    PaperPositionMode	    "auto"
-	    PaperType		    "usletter"
-	    PaperUnits		    "inches"
-	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
-	    TiledPageScale	    1
-	    ShowPageBoundaries	    off
-	    ZoomFactor		    "135"
-	    Block {
-	      BlockType		      Inport
-	      Name		      "in"
-	      SID		      3331
-	      Position		      [360, 63, 390, 77]
-	      IconDisplay	      "Port number"
-	    }
-	    Block {
-	      BlockType		      SubSystem
-	      Name		      "Embedded\nMATLAB Function"
-	      SID		      3336
-	      Ports		      [1, 1]
-	      Position		      [430, 47, 500, 93]
-	      LibraryVersion	      "1.31"
-	      PermitHierarchicalResolution "ExplicitOnly"
-	      TreatAsAtomicUnit	      on
-	      MinAlgLoopOccurrences   off
-	      PropExecContextOutsideSubsystem off
-	      RTWSystemCode	      "Auto"
-	      FunctionWithSeparateData off
-	      Opaque		      off
-	      RequestExecContextInheritance off
-	      MaskHideContents	      off
-	      MaskType		      "Stateflow"
-	      MaskDescription	      "Embedded MATLAB block"
-	      MaskDisplay	      "disp('fcn');"
-	      MaskSelfModifiable      on
-	      MaskIconFrame	      on
-	      MaskIconOpaque	      off
-	      MaskIconRotate	      "none"
-	      MaskPortRotate	      "default"
-	      MaskIconUnits	      "autoscale"
-	      System {
-		Name			"Embedded\nMATLAB Function"
-		Location		[257, 457, 812, 717]
-		Open			off
-		ModelBrowserVisibility	off
-		ModelBrowserWidth	200
-		ScreenColor		"white"
-		PaperOrientation	"landscape"
-		PaperPositionMode	"auto"
-		PaperType		"usletter"
-		PaperUnits		"inches"
-		TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-		TiledPageScale		1
-		ShowPageBoundaries	off
-		ZoomFactor		"100"
-		SIDHighWatermark	17
-		SIDPrevWatermark	13
-		Block {
-		  BlockType		  Inport
-		  Name			  "u"
-		  SID			  1
-		  Position		  [20, 101, 40, 119]
-		  IconDisplay		  "Port number"
-		  OutDataType		  "sfix(16)"
-		  OutScaling		  "2^0"
-		}
-		Block {
-		  BlockType		  Demux
-		  Name			  " Demux "
-		  SID			  15
-		  Ports			  [1, 1]
-		  Position		  [270, 160, 320, 200]
-		  Outputs		  "1"
-		}
-		Block {
-		  BlockType		  "S-Function"
-		  Name			  " SFunction "
-		  SID			  14
-		  Tag			  "Stateflow S-Function twa_parallel 2"
-		  Ports			  [1, 2]
-		  Position		  [180, 100, 230, 160]
-		  FunctionName		  "sf_sfun"
-		  PortCounts		  "[1 2]"
-		  EnableBusSupport	  on
-		  Port {
-		    PortNumber		    2
-		    Name		    "y"
-		    RTWStorageClass	    "Auto"
-		    DataLoggingNameMode	    "SignalName"
-		  }
-		}
-		Block {
-		  BlockType		  Terminator
-		  Name			  " Terminator "
-		  SID			  17
-		  Position		  [460, 171, 480, 189]
-		}
-		Block {
-		  BlockType		  Outport
-		  Name			  "y"
-		  SID			  5
-		  Position		  [460, 101, 480, 119]
-		  IconDisplay		  "Port number"
-		  OutDataType		  "sfix(16)"
-		  OutScaling		  "2^0"
-		}
-		Line {
-		  SrcBlock		  " SFunction "
-		  SrcPort		  1
-		  DstBlock		  " Demux "
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  "u"
-		  SrcPort		  1
-		  DstBlock		  " SFunction "
-		  DstPort		  1
-		}
-		Line {
-		  Name			  "y"
-		  Labels		  [0, 0]
-		  SrcBlock		  " SFunction "
-		  SrcPort		  2
-		  DstBlock		  "y"
-		  DstPort		  1
-		}
-		Line {
-		  SrcBlock		  " Demux "
-		  SrcPort		  1
-		  DstBlock		  " Terminator "
-		  DstPort		  1
-		}
-	      }
-	    }
-	    Block {
-	      BlockType		      Outport
-	      Name		      "out"
-	      SID		      3335
-	      Position		      [565, 63, 595, 77]
-	      IconDisplay	      "Port number"
-	    }
-	    Line {
-	      SrcBlock		      "Embedded\nMATLAB Function"
-	      SrcPort		      1
-	      DstBlock		      "out"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "in"
-	      SrcPort		      1
-	      DstBlock		      "Embedded\nMATLAB Function"
 	      DstPort		      1
 	    }
 	  }
@@ -5315,47 +4325,6 @@ Model {
 	  dynamicfilemode	  off
 	  maxwritefilesize	  "512*1024^2"
 	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "q_cur_macro6"
-	  SID			  3354
-	  Ports			  [1]
-	  Position		  [320, 115, 395, 165]
-	  ShowName		  off
-	  LibraryVersion	  "1.1656"
-	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
-	  SourceType		  "xpcscopeblock"
-	  ShowPortLabels	  "FromPortIcon"
-	  SystemSampleTime	  "-1"
-	  FunctionWithSeparateData off
-	  RTWMemSecFuncInitTerm	  "Inherit from model"
-	  RTWMemSecFuncExecute	  "Inherit from model"
-	  RTWMemSecDataConstants  "Inherit from model"
-	  RTWMemSecDataInternal	  "Inherit from model"
-	  RTWMemSecDataParameters "Inherit from model"
-	  scopeno		  "6"
-	  scopetype		  "Target"
-	  autostart		  on
-	  viewmode		  "Numerical"
-	  formatstr		  "'qdot any %8i'"
-	  grid			  on
-	  ylimits		  "[0,0]"
-	  nosamples		  "25"
-	  noprepostsamples	  "0"
-	  interleave		  "1"
-	  triggermode		  "FreeRun"
-	  triggersignal		  "1"
-	  triggerlevel		  "0.0"
-	  triggerslope		  "Either"
-	  triggerscope		  "1"
-	  triggersample		  "0"
-	  filename		  "data.dat"
-	  mode			  "Lazy"
-	  writesize		  "512"
-	  autorestart		  off
-	  dynamicfilemode	  off
-	  maxwritefilesize	  "512*1024^2"
-	}
 	Line {
 	  SrcBlock		  "Fir Filter"
 	  SrcPort		  1
@@ -5389,23 +4358,7 @@ Model {
 	Line {
 	  SrcBlock		  "q_dot"
 	  SrcPort		  1
-	  Points		  [0, 0]
-	  Branch {
-	    Points		    [0, 0]
-	    DstBlock		    "norm"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [50, 0; 0, 20]
-	    DstBlock		    "q_cur_macro1"
-	    DstPort		    1
-	  }
-	}
-	Line {
-	  SrcBlock		  "norm"
-	  SrcPort		  1
-	  Points		  [0, -15; 25, 0; 0, 5]
-	  DstBlock		  "q_cur_macro6"
+	  DstBlock		  "q_cur_macro1"
 	  DstPort		  1
 	}
 	Annotation {
@@ -5442,17 +4395,6 @@ Model {
     }
     Block {
       BlockType		      Constant
-      Name		      "do_homing"
-      SID		      3239
-      Position		      [681, 65, 699, 85]
-      BlockRotation	      270
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      Value		      "0"
-      SampleTime	      "dt"
-    }
-    Block {
-      BlockType		      Constant
       Name		      "q_des"
       SID		      2928
       Position		      [240, 268, 290, 292]
@@ -5474,8 +4416,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"task_space"
-	Location		[442, 83, 1338, 986]
-	Open			off
+	Location		[442, 83, 1464, 986]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5610,7 +4552,7 @@ Model {
 	  BlockType		  SubSystem
 	  Name			  "ResolvedRates"
 	  SID			  3308
-	  Ports			  [12, 3]
+	  Ports			  [12, 4]
 	  Position		  [180, 173, 370, 447]
 	  LibraryVersion	  "1.31"
 	  PermitHierarchicalResolution "ExplicitOnly"
@@ -5646,7 +4588,7 @@ Model {
 	    TiledPageScale	    1
 	    ShowPageBoundaries	    off
 	    ZoomFactor		    "100"
-	    SIDHighWatermark	    53
+	    SIDHighWatermark	    55
 	    SIDPrevWatermark	    42
 	    Block {
 	      BlockType		      Inport
@@ -5758,25 +4700,31 @@ Model {
 	      Name		      " SFunction "
 	      SID		      14
 	      Tag		      "Stateflow S-Function twa_parallel 5"
-	      Ports		      [12, 4]
+	      Ports		      [12, 5]
 	      Position		      [180, 168, 230, 442]
 	      FunctionName	      "sf_sfun"
-	      PortCounts	      "[12 4]"
+	      PortCounts	      "[12 5]"
 	      EnableBusSupport	      on
 	      Port {
 		PortNumber		2
-		Name			"qdes"
+		Name			"qeps"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
 	      Port {
 		PortNumber		3
-		Name			"xcur"
+		Name			"qdes"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
 	      }
 	      Port {
 		PortNumber		4
+		Name			"xcur"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		5
 		Name			"eerot"
 		RTWStorageClass		"Auto"
 		DataLoggingNameMode	"SignalName"
@@ -5790,25 +4738,33 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "qdes"
-	      SID		      33
+	      Name		      "qeps"
+	      SID		      55
 	      Position		      [460, 101, 480, 119]
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "xcur"
-	      SID		      28
+	      Name		      "qdes"
+	      SID		      33
 	      Position		      [460, 136, 480, 154]
 	      Port		      "2"
 	      IconDisplay	      "Port number"
 	    }
 	    Block {
 	      BlockType		      Outport
-	      Name		      "eerot"
-	      SID		      49
+	      Name		      "xcur"
+	      SID		      28
 	      Position		      [460, 171, 480, 189]
 	      Port		      "3"
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "eerot"
+	      SID		      49
+	      Position		      [460, 206, 480, 224]
+	      Port		      "4"
 	      IconDisplay	      "Port number"
 	    }
 	    Line {
@@ -5890,10 +4846,18 @@ Model {
 	      DstPort		      12
 	    }
 	    Line {
-	      Name		      "qdes"
+	      Name		      "qeps"
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
 	      SrcPort		      2
+	      DstBlock		      "qeps"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "qdes"
+	      Labels		      [0, 0]
+	      SrcBlock		      " SFunction "
+	      SrcPort		      3
 	      DstBlock		      "qdes"
 	      DstPort		      1
 	    }
@@ -5901,7 +4865,7 @@ Model {
 	      Name		      "xcur"
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
-	      SrcPort		      3
+	      SrcPort		      4
 	      DstBlock		      "xcur"
 	      DstPort		      1
 	    }
@@ -5909,7 +4873,7 @@ Model {
 	      Name		      "eerot"
 	      Labels		      [0, 0]
 	      SrcBlock		      " SFunction "
-	      SrcPort		      4
+	      SrcPort		      5
 	      DstBlock		      "eerot"
 	      DstPort		      1
 	    }
@@ -5999,6 +4963,47 @@ Model {
 	  SampleTime		  "dt"
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "q_cur_macro6"
+	  SID			  3355
+	  Ports			  [1]
+	  Position		  [430, 150, 505, 200]
+	  ShowName		  off
+	  LibraryVersion	  "1.1656"
+	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
+	  SourceType		  "xpcscopeblock"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  scopeno		  "7"
+	  scopetype		  "Target"
+	  autostart		  on
+	  viewmode		  "Numerical"
+	  formatstr		  "'qeps1 %10.6f,qeps2 %10.6f,qeps3 %10.6f,qeps4 %10.6f,qeps5 %10.6f,qeps6 %10.6f,'"
+	  grid			  on
+	  ylimits		  "[0,0]"
+	  nosamples		  "25"
+	  noprepostsamples	  "0"
+	  interleave		  "1"
+	  triggermode		  "FreeRun"
+	  triggersignal		  "1"
+	  triggerlevel		  "0.0"
+	  triggerslope		  "Either"
+	  triggerscope		  "1"
+	  triggersample		  "0"
+	  filename		  "data.dat"
+	  mode			  "Lazy"
+	  writesize		  "512"
+	  autorestart		  off
+	  dynamicfilemode	  off
+	  maxwritefilesize	  "512*1024^2"
+	}
+	Block {
 	  BlockType		  Constant
 	  Name			  "t_in_w"
 	  SID			  3286
@@ -6040,16 +5045,16 @@ Model {
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "q_des"
+	  Name			  "qdes"
 	  SID			  3180
-	  Position		  [440, 213, 470, 227]
+	  Position		  [525, 213, 555, 227]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "xcur"
 	  SID			  3342
-	  Position		  [440, 303, 470, 317]
+	  Position		  [425, 338, 455, 352]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -6103,8 +5108,8 @@ Model {
 	}
 	Line {
 	  SrcBlock		  "ResolvedRates"
-	  SrcPort		  3
-	  Points		  [10, 0; 0, 80]
+	  SrcPort		  4
+	  Points		  [10, 0; 0, 65]
 	  DstBlock		  "Unit Delay3"
 	  DstPort		  1
 	}
@@ -6117,10 +5122,10 @@ Model {
 	}
 	Line {
 	  SrcBlock		  "ResolvedRates"
-	  SrcPort		  2
+	  SrcPort		  3
 	  Points		  [20, 0]
 	  Branch {
-	    Points		    [0, 210]
+	    Points		    [0, 175]
 	    DstBlock		    "Unit Delay4"
 	    DstPort		    1
 	  }
@@ -6180,20 +5185,6 @@ Model {
 	  DstPort		  5
 	}
 	Line {
-	  SrcBlock		  "ResolvedRates"
-	  SrcPort		  1
-	  Points		  [30, 0]
-	  Branch {
-	    Points		    [0, 340]
-	    DstBlock		    "Unit Delay1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    DstBlock		    "q_des"
-	    DstPort		    1
-	  }
-	}
-	Line {
 	  SrcBlock		  "q_dot"
 	  SrcPort		  1
 	  DstBlock		  "ResolvedRates"
@@ -6212,6 +5203,27 @@ Model {
 	  Points		  [15, 0; 0, 20]
 	  DstBlock		  "ResolvedRates"
 	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "ResolvedRates"
+	  SrcPort		  2
+	  Points		  [0, -55; 85, 0]
+	  Branch {
+	    Points		    [5, 0; 0, 340]
+	    DstBlock		    "Unit Delay1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "qdes"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "ResolvedRates"
+	  SrcPort		  1
+	  Points		  [20, 0; 0, -30]
+	  DstBlock		  "q_cur_macro6"
+	  DstPort		  1
 	}
       }
     }
@@ -6344,12 +5356,6 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "do_homing"
-      SrcPort		      1
-      DstBlock		      "Homing"
-      DstPort		      enable
-    }
-    Line {
       SrcBlock		      "task_space"
       SrcPort		      1
       DstBlock		      "cntrl_switch"
@@ -6425,13 +5431,13 @@ Stateflow {
     name		    "twa_parallel"
     created		    "16-Jul-2009 15:54:41"
     isLibrary		    0
-    firstTarget		    73
+    firstTarget		    43
     sfVersion		    75014000
   }
   chart {
     id			    2
-    name		    "Scopes/norm/Embedded\nMATLAB Function"
-    windowPosition	    [375.75 203.25 200.25 189.75]
+    name		    "task_space/ResolvedRates"
+    windowPosition	    [405.75 173.25 200.25 189.75]
     viewLimits		    [0 156.75 0 153.75]
     screen		    [1 1 1920 1080 1.333333333333333]
     treeNode		    [0 3 0 0]
@@ -6442,14 +5448,14 @@ Stateflow {
     toolbarMode		    LIBRARY_TOOLBAR
     subviewS {
     }
-    ssIdHighWaterMark	    5
+    ssIdHighWaterMark	    42
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     firstData		    6
-    chartFileNumber	    2
+    chartFileNumber	    5
     disableImplicitCasting  1
     eml {
-      name		      "fcn"
+      name		      "redResRate"
     }
   }
   state {
@@ -6466,7 +5472,57 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function y = fcn(u)\n%#eml\n\ny = ~any(u);"
+      script		      "function [qeps,qdes,xcur,eerot] = redResRate(x_des,q_cur,qdot,ee_rot_des,dt,p_in_m,...\n    b_in_"
+      "w,m_in_w,f_in_w,q_des,x_cur,ee_rot_cur)\n\nqdes = q_des;\nxcur = x_cur;\neerot = ee_rot_cur;\n\n% axis for jacob"
+      "ian definitions\nz0 = [0 0 1]';\n\n% positional error\np_del = norm(x_des - x_cur);\n\n% desired orientation ang"
+      "le rotation matrix and error roation matrix\nr_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;sin(ee_rot_des) cos(ee_"
+      "rot_des) 0;0 0 1];\nr_cur = [cos(ee_rot_cur) -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot_cur) 0;0 0 1];\nr_del"
+      " = r_des * r_cur';\n\n% orientational error angle and axis\ntheta_e = acos((trace(r_del)-1)/2);\n\n% error thres"
+      "holds\np_epsilon = 0.01;\nw_epsilon = 0.001;\n\n\n% measure joint error, proceed with looping resolved rates if "
+      "the norm of\n% each joint error is less than 10 microns \nqeps = zeros(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) ="
+      " (norm(q_des(jnum,1) - q_cur(jnum,1)));\nend\n\nif all(qeps < 0.005)\n    if theta_e > w_epsilon || p_del > p_ep"
+      "silon\n        % moving platform vertex locations\n        p_in_w = x_cur*ones(1,3) + r_cur*p_in_m;\n        \n "
+      "       %% instantaneous direct kinematics jacobian\n        % vector from base vertex to moving platform vertex\n"
+      "        n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));\n        n2hat = (p_in_w(:,2)-b_in_w"
+      "(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:"
+      ",3));\n        \n        a13 = z0'*(cross(r_cur*p_in_m(:,1),n1hat));\n        a23 = z0'*(cross(r_cur*p_in_m(:,2)"
+      ",n2hat));\n        a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat));\n        \n        idk_jac = [n1hat(1,1) n1hat(2,"
+      "1) a13; ...\n            n2hat(1,1) n2hat(2,1) a23; ...\n            n3hat(1,1) n3hat(2,1) a33];\n        \n    "
+      "    %% instantaneous inverse kinematics jacobian\n        % micro actuator (TWA) lengths\n        q1_mu = norm(b"
+      "_in_w(:,1) - m_in_w(:,1));\n        q2_mu = norm(b_in_w(:,2) - m_in_w(:,2));\n        q3_mu = norm(b_in_w(:,3) -"
+      " m_in_w(:,3));\n        \n        % vector from base vertex to twa motor attachment point\n        l1_hat = (m_i"
+      "n_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1));\n        l2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ nor"
+      "m(m_in_w(:,2) - b_in_w(:,2));\n        l3_hat = (m_in_w(:,3) - b_in_w(:,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n"
+      "        \n        % distance from micro actuator attachmnet point (m_i) to flexure rotation\n        %center (f_"
+      "i)\n        a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n        a2 = norm(m_in_w(:,2) - f_in_w(:,2));\n        a3 = n"
+      "orm(m_in_w(:,3) - f_in_w(:,3));\n        \n        % distance from flexure rotation center (f_i) to base vertex\n"
+      "        c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n        c2 = norm(b_in_w(:,2)-f_in_w(:,2));\n        c3 = norm(b_in"
+      "_w(:,3)-f_in_w(:,3));\n        \n        % term to paramterize angle between a_i and qimu, delta\n        h1 = ("
+      "c1^2 - a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n        h2 = (c2^2 - a2^2 - q2_mu^2)/(-2*a2*q2_mu);\n        h3 = (c3^2 -"
+      " a3^2 - q3_mu^2)/(-2*a3*q3_mu);\n        \n        % time derivatives\n        h1dot = (4*a1*q1_mu^2 + (c1^2 - a"
+      "1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n        h2dot = (4*a2*q2_mu^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^"
+      "2*q2_mu^2);\n        h3dot = (4*a3*q3_mu^2 + (c3^2 - a3^2 - q3_mu^2)*2*a3) / (4*a3^2*q3_mu^2);\n        \n      "
+      "  e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) * n1hat' * cross(z0,l1_hat);\n        e2 = n2hat' * l2_hat + q"
+      "2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);\n        e3 = n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * "
+      "n3hat' * cross(z0,l3_hat);\n        \n        % micro motion instantaneous inverse kinematics jacobian\n        "
+      "b_mu = [e1 0 0;...\n            0 e2 0;...\n            0 0 e3];\n        \n        % macro motion instantaneous"
+      " inverse kinematics jacobian\n        b_m = eye(3);\n        \n        % combined macro-micro motion IIK jacobia"
+      "n\n        iik_jac = [b_m,b_mu];\n        \n        % the full manipulator jacobian with redundancy resolution w"
+      "eighting\n        w_mat = diag([1,1,1,1e10,1e10,1e10]);\n        full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*i"
+      "ik_jac') * idk_jac;\n        \n        % positional error direction\n        p_ep_hat = (x_des-x_cur)/p_del;\n  "
+      "      \n        % orientational error axis\n        if theta_e ~= 0\n            me = (1/(2*sin(theta_e)))*[r_de"
+      "l(3,2)-r_del(2,3);...\n                r_del(1,3)-r_del(3,1);...\n                r_del(2,1)-r_del(1,2)];\n     "
+      "   else\n            me = z0;\n        end\n        \n        % inverse kinematics based on pose error\n        "
+      "vmax = 100; %[mm/s]\n        vmin = 0.02;\n        wmin = 0.001;\n        wmax = 0.05;\n        p_lambda = 3;\n "
+      "       w_lambda = 3;\n        vdot = 0;\n        wdot = 0;\n        \n        if p_del ~=0\n            if p_del"
+      "/p_epsilon <= p_lambda\n                vdot = vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)))"
+      ";\n            else\n                vdot = vmax;\n            end\n        end\n        \n        if theta_e ~="
+      " 0\n            if theta_e/w_epsilon <= w_lambda && theta_e ~= 0\n                wdot = wmin + (((wmax-wmin)*(t"
+      "heta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));\n            else\n                wdot = wmax;\n            end\n"
+      "        end\n        \n        v = vdot * p_ep_hat;\n        w = wdot * me;\n        \n        qdot = full_jac *"
+      " [v(1:2);w(3)];\n        deltaq = qdot * dt;\n        qdes = q_cur + deltaq;\n       \n        xcur = x_cur + v "
+      "* dt;\n        eerot = ee_rot_cur + w(3) * dt;\n    else\n        qdes = q_cur;\n        xcur = x_cur;\n        "
+      "% check this for angle or rotation matrix\n        eerot = ee_rot_cur;\n    end\nend\n\nend"
       editorLayout	      "100 M4x1[2014 1 990 1057]"
     }
   }
@@ -6502,9 +5558,31 @@ Stateflow {
   }
   data {
     id			    6
-    ssIdNumber		    4
-    name		    "u"
+    ssIdNumber		    42
+    name		    "qeps"
     linkNode		    [2 0 7]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_NO
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    7
+    ssIdNumber		    4
+    name		    "x_des"
+    linkNode		    [2 6 8]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -6520,11 +5598,11 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    7
-    ssIdNumber		    5
-    name		    "y"
-    linkNode		    [2 6 0]
-    scope		    OUTPUT_DATA
+    id			    8
+    ssIdNumber		    40
+    name		    "q_cur"
+    linkNode		    [2 7 9]
+    scope		    INPUT_DATA
     machine		    1
     props {
       array {
@@ -6533,131 +5611,107 @@ Stateflow {
       type {
 	method			SF_INHERITED_TYPE
 	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
+      frame		      SF_FRAME_INHERITED
     }
     dataType		    "Inherit: Same as Simulink"
   }
-  instance {
-    id			    8
-    name		    "Scopes/norm/Embedded\nMATLAB Function"
-    machine		    1
-    chart		    2
-  }
-  chart {
+  data {
     id			    9
-    name		    "Homing/Homing"
-    windowPosition	    [375.75 203.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 10 0 0]
-    firstTransition	    12
-    firstJunction	    11
-    viewObj		    9
+    ssIdNumber		    38
+    name		    "qdot"
+    linkNode		    [2 8 10]
+    scope		    INPUT_DATA
     machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    ssIdHighWaterMark	    27
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    13
-    chartFileNumber	    3
-    disableImplicitCasting  1
-    eml {
-      name		      "fcn"
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
     }
+    dataType		    "Inherit: Same as Simulink"
   }
-  state {
+  data {
     id			    10
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    9
-    treeNode		    [9 0 0 0]
-    superState		    SUBCHART
-    subviewer		    9
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function [qcmd,des_leg_len,eq_out,twave_out,rwave_out] = fcn(qcur,eqeps,kp,...\n    dt,p_in_m,b_i"
-      "n_w,m_in_w,f_in_w,measured_len,velmex_pitch,macro_leg_len,...\n    eq,twave,rwave)\n%#eml\nqcmd = qcur;\n\nz0 = "
-      "[0 0 1]';\n\n% moving platform vertex locations\np_in_w = twave*ones(1,3) + rwave*p_in_m;\n\nif norm(eq) > eqeps"
-      "\n    %% instantaneous direct kinematics jacobian\n    % vector from base vertex to moving platform vertex\n    "
-      "n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w(:,1));\n    n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm"
-      "(b_in_w(:,2) - p_in_w(:,2));\n    n3hat = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));\n    \n   "
-      " a13 = z0'*(cross(rwave*p_in_m(:,1),n1hat));\n    a23 = z0'*(cross(rwave*p_in_m(:,2),n2hat));\n    a33 = z0'*(cr"
-      "oss(rwave*p_in_m(:,3),n3hat));\n    \n    idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...\n               n2hat(1,1) n"
-      "2hat(2,1) a23; ...\n               n3hat(1,1) n3hat(2,1) a33];\n    \n    %% instantaneous inverse kinematics ja"
-      "cobian\n    % micro actuator (TWA) lengths\n    q1_mu = norm(b_in_w(:,1) - m_in_w(:,1));\n    q2_mu = norm(b_in_"
-      "w(:,2) - m_in_w(:,2));\n    q3_mu = norm(b_in_w(:,3) - m_in_w(:,3));\n    \n    % vector from base vertex to twa"
-      " motor attachment point\n    l1_hat = (m_in_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1));\n    l2_ha"
-      "t = (m_in_w(:,2) - b_in_w(:,2)) ./ norm(m_in_w(:,2) - b_in_w(:,2));\n    l3_hat = (m_in_w(:,3) - b_in_w(:,3)) ./"
-      " norm(m_in_w(:,3) - b_in_w(:,3));\n    \n    % distance from micro actuator attachmnet point (m_i) to flexure ro"
-      "tation\n    %center (f_i)\n    a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n    a2 = norm(m_in_w(:,2) - f_in_w(:,2));\n"
-      "    a3 = norm(m_in_w(:,3) - f_in_w(:,3));\n    \n    % distance from flexure rotation center (f_i) to base verte"
-      "x\n    c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n    c2 = norm(b_in_w(:,2)-f_in_w(:,2));\n    c3 = norm(b_in_w(:,3)-f"
-      "_in_w(:,3));\n    \n    % term to paramterize angle between a_i and qimu, delta\n    h1 = (c1^2 - a1^2 - q1_mu^2"
-      ")/(-2*a1*q1_mu);\n    h2 = (c2^2 - a2^2 - q2_mu^2)/(-2*a2*q2_mu);\n    h3 = (c3^2 - a3^2 - q3_mu^2)/(-2*a3*q3_mu"
-      ");\n    \n    % time derivatives\n    h1dot = (4*a1*q1_mu^2 + (c1^2 - a1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n"
-      "    h2dot = (4*a2*q2_mu^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^2*q2_mu^2);\n    h3dot = (4*a3*q3_mu^2 + (c3^2"
-      " - a3^2 - q3_mu^2)*2*a3) / (4*a3^2*q3_mu^2);\n    \n    e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) * n1hat'"
-      " * cross(z0,l1_hat);\n    e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);\n    e3 ="
-      " n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);\n    \n    % micro motion instantaneous"
-      " inverse kinematics jacobian\n    b_mu = [e1 0 0;...\n            0 e2 0;...\n            0 0 e3];\n    \n    % "
-      "macro motion instantaneous inverse kinematics jacobian\n    b_m = eye(3);\n\n    % combined macro-micro motion I"
-      "IK jacobian\n    iik_jac = [b_m,b_mu];\n    \n    % the full manipulator jacobian with redundancy resolution wei"
-      "ghting\n    w_mat = diag([1,1,1,1e10,1e10,1e10]);\n    full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') *"
-      " idk_jac;\n\n    %%\n    % joint velocities and ee velocity proportional to joint error\n    qdot = kp * eq;\n  "
-      "  tdot = full_jac*qdot;\n    \n    % separate translational and rotational components of twist\n    v = tdot(1:2"
-      ",1);\n    w = tdot(3,1);\n    \n    % new end effector position\n    twave(1:2,1) = twave(1:2,1) + v*dt;\n    \n"
-      "    % change in end effector orientation\n    del_r = [cos(w*dt) -sin(w*dt) 0;sin(w*dt) cos(w*dt) 0;0 0 1];\n   "
-      " \n    % new end effector orientation\n    rwave = del_r*rwave;\n    \n    des_leg_len = zeros(3,1);\n    for i "
-      "= 1:3\n        p_in_w(:,i) = twave + rwave*p_in_m(:,i);\n        des_leg_len(i,1) = norm(p_in_w(:,i) - b_in_w(:,"
-      "i));\n    end\n    \n    eq_out = macro_leg_len - des_leg_len;\n    \n    % the amount each velmex slides need t"
-      "o move is the difference between\n    % the last leg length and the new leg length\n    %     qcmd(1:3,1) = (mea"
-      "sured_len - des_leg_len)/velmex_pitch\n    qcmd(1:3,1) = (des_leg_len - measured_len)/velmex_pitch;\n    \n    t"
-      "wave_out = twave;\n    rwave_out = rwave;\nelse\n    des_leg_len = macro_leg_len;\n    eq_out = eq;\n    twave_o"
-      "ut = twave;\n    rwave_out = rwave;\nend"
-      editorLayout	      "100 M4x1[1913 14 974 1057]"
+    ssIdNumber		    33
+    name		    "ee_rot_des"
+    linkNode		    [2 9 11]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
     }
+    dataType		    "Inherit: Same as Simulink"
   }
-  junction {
+  data {
     id			    11
-    position		    [23.5747 49.5747 7]
-    chart		    9
-    linkNode		    [9 0 0]
-    subviewer		    9
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
+    ssIdNumber		    34
+    name		    "dt"
+    linkNode		    [2 10 12]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
   }
-  transition {
+  data {
     id			    12
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
+    ssIdNumber		    31
+    name		    "p_in_m"
+    linkNode		    [2 11 13]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
     }
-    dst {
-      id		      11
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    9
-    linkNode		    [9 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    9
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
+    dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    13
-    ssIdNumber		    6
-    name		    "qcur"
-    linkNode		    [9 0 14]
+    ssIdNumber		    30
+    name		    "b_in_w"
+    linkNode		    [2 12 14]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -6677,9 +5731,9 @@ Stateflow {
   }
   data {
     id			    14
-    ssIdNumber		    8
-    name		    "eqeps"
-    linkNode		    [9 13 15]
+    ssIdNumber		    35
+    name		    "m_in_w"
+    linkNode		    [2 13 15]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -6699,30 +5753,10 @@ Stateflow {
   }
   data {
     id			    15
-    ssIdNumber		    5
-    name		    "qcmd"
-    linkNode		    [9 14 16]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    16
-    ssIdNumber		    21
-    name		    "des_leg_len"
-    linkNode		    [9 15 17]
-    scope		    OUTPUT_DATA
+    ssIdNumber		    32
+    name		    "f_in_w"
+    linkNode		    [2 14 16]
+    scope		    INPUT_DATA
     machine		    1
     props {
       array {
@@ -6735,15 +5769,37 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
+      frame		      SF_FRAME_INHERITED
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    16
+    ssIdNumber		    39
+    name		    "q_des"
+    linkNode		    [2 15 17]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      complexity	      SF_COMPLEX_INHERITED
+      frame		      SF_FRAME_INHERITED
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    17
-    ssIdNumber		    7
-    name		    "kp"
-    linkNode		    [9 16 18]
+    ssIdNumber		    21
+    name		    "x_cur"
+    linkNode		    [2 16 18]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -6763,9 +5819,9 @@ Stateflow {
   }
   data {
     id			    18
-    ssIdNumber		    12
-    name		    "dt"
-    linkNode		    [9 17 19]
+    ssIdNumber		    6
+    name		    "ee_rot_cur"
+    linkNode		    [2 17 19]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -6785,10 +5841,10 @@ Stateflow {
   }
   data {
     id			    19
-    ssIdNumber		    23
-    name		    "p_in_m"
-    linkNode		    [9 18 20]
-    scope		    INPUT_DATA
+    ssIdNumber		    19
+    name		    "qdes"
+    linkNode		    [2 18 20]
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -6801,16 +5857,16 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    20
-    ssIdNumber		    24
-    name		    "b_in_w"
-    linkNode		    [9 19 21]
-    scope		    INPUT_DATA
+    ssIdNumber		    16
+    name		    "xcur"
+    linkNode		    [2 19 21]
+    scope		    OUTPUT_DATA
     machine		    1
     props {
       array {
@@ -6823,689 +5879,15 @@ Stateflow {
 	wordLength		"16"
       }
       complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
+      frame		      SF_FRAME_NO
     }
     dataType		    "Inherit: Same as Simulink"
   }
   data {
     id			    21
-    ssIdNumber		    26
-    name		    "m_in_w"
-    linkNode		    [9 20 22]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    22
-    ssIdNumber		    27
-    name		    "f_in_w"
-    linkNode		    [9 21 23]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    23
-    ssIdNumber		    25
-    name		    "measured_len"
-    linkNode		    [9 22 24]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    24
-    ssIdNumber		    19
-    name		    "velmex_pitch"
-    linkNode		    [9 23 25]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    25
-    ssIdNumber		    20
-    name		    "macro_leg_len"
-    linkNode		    [9 24 26]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    26
-    ssIdNumber		    9
-    name		    "eq"
-    linkNode		    [9 25 27]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    27
-    ssIdNumber		    10
-    name		    "eq_out"
-    linkNode		    [9 26 28]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    28
-    ssIdNumber		    13
-    name		    "twave_out"
-    linkNode		    [9 27 29]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    29
-    ssIdNumber		    14
-    name		    "rwave_out"
-    linkNode		    [9 28 30]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    30
-    ssIdNumber		    15
-    name		    "twave"
-    linkNode		    [9 29 31]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    31
-    ssIdNumber		    16
-    name		    "rwave"
-    linkNode		    [9 30 0]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  instance {
-    id			    32
-    name		    "Homing/Homing"
-    machine		    1
-    chart		    9
-  }
-  chart {
-    id			    33
-    name		    "task_space/ResolvedRates"
-    windowPosition	    [405.75 173.25 200.25 189.75]
-    viewLimits		    [0 156.75 0 153.75]
-    screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 34 0 0]
-    firstTransition	    36
-    firstJunction	    35
-    viewObj		    33
-    machine		    1
-    toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
-    ssIdHighWaterMark	    40
-    decomposition	    CLUSTER_CHART
-    type		    EML_CHART
-    firstData		    37
-    chartFileNumber	    5
-    disableImplicitCasting  1
-    eml {
-      name		      "redResRate"
-    }
-  }
-  state {
-    id			    34
-    labelString		    "eML_blk_kernel()"
-    position		    [18 64.5 118 66]
-    fontSize		    12
-    chart		    33
-    treeNode		    [33 0 0 0]
-    superState		    SUBCHART
-    subviewer		    33
-    ssIdNumber		    1
-    type		    FUNC_STATE
-    decomposition	    CLUSTER_STATE
-    eml {
-      isEML		      1
-      script		      "function [qdes,xcur,eerot] = redResRate(x_des,q_cur,qdot,ee_rot_des,dt,p_in_m,...\n    b_in_w,m_i"
-      "n_w,f_in_w,q_des,x_cur,ee_rot_cur)\n\nqdes = q_des;\nxcur = x_cur;\neerot = ee_rot_cur;\n\n% axis for jacobian d"
-      "efinitions\nz0 = [0 0 1]';\n\n% positional error\np_del = norm(x_des - x_cur);\n\n% desired orientation angle ro"
-      "tation matrix and error roation matrix\nr_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;sin(ee_rot_des) cos(ee_rot_d"
-      "es) 0;0 0 1];\nr_cur = [cos(ee_rot_cur) -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot_cur) 0;0 0 1];\nr_del = r_"
-      "des * r_cur';\n\n% orientational error angle and axis\ntheta_e = acos((trace(r_del)-1)/2);\n\n% error thresholds"
-      "\np_epsilon = 0.01;\nw_epsilon = 0.001;\n\n% only look when all of the actuators are not moving\nif ~any(qdot)\n"
-      "    if theta_e > w_epsilon || p_del > p_epsilon\n        % moving platform vertex locations\n        p_in_w = x_"
-      "cur*ones(1,3) + r_cur*p_in_m;\n        \n        %% instantaneous direct kinematics jacobian\n        % vector f"
-      "rom base vertex to moving platform vertex\n        n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1) - p_in_w("
-      ":,1));\n        n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3hat = (p_in_w(:,3"
-      ")-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));\n        \n        a13 = z0'*(cross(r_cur*p_in_m(:,1),n1hat));\n"
-      "        a23 = z0'*(cross(r_cur*p_in_m(:,2),n2hat));\n        a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat));\n      "
-      "  \n        idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...\n            n2hat(1,1) n2hat(2,1) a23; ...\n            n"
-      "3hat(1,1) n3hat(2,1) a33];\n        \n        %% instantaneous inverse kinematics jacobian\n        % micro actu"
-      "ator (TWA) lengths\n        q1_mu = norm(b_in_w(:,1) - m_in_w(:,1));\n        q2_mu = norm(b_in_w(:,2) - m_in_w("
-      ":,2));\n        q3_mu = norm(b_in_w(:,3) - m_in_w(:,3));\n        \n        % vector from base vertex to twa mot"
-      "or attachment point\n        l1_hat = (m_in_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1));\n        l"
-      "2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ norm(m_in_w(:,2) - b_in_w(:,2));\n        l3_hat = (m_in_w(:,3) - b_in_w("
-      ":,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n        \n        % distance from micro actuator attachmnet point (m_"
-      "i) to flexure rotation\n        %center (f_i)\n        a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n        a2 = norm("
-      "m_in_w(:,2) - f_in_w(:,2));\n        a3 = norm(m_in_w(:,3) - f_in_w(:,3));\n        \n        % distance from fl"
-      "exure rotation center (f_i) to base vertex\n        c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n        c2 = norm(b_in_"
-      "w(:,2)-f_in_w(:,2));\n        c3 = norm(b_in_w(:,3)-f_in_w(:,3));\n        \n        % term to paramterize angle"
-      " between a_i and qimu, delta\n        h1 = (c1^2 - a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n        h2 = (c2^2 - a2^2 - q"
-      "2_mu^2)/(-2*a2*q2_mu);\n        h3 = (c3^2 - a3^2 - q3_mu^2)/(-2*a3*q3_mu);\n        \n        % time derivative"
-      "s\n        h1dot = (4*a1*q1_mu^2 + (c1^2 - a1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n        h2dot = (4*a2*q2_m"
-      "u^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^2*q2_mu^2);\n        h3dot = (4*a3*q3_mu^2 + (c3^2 - a3^2 - q3_mu^2)"
-      "*2*a3) / (4*a3^2*q3_mu^2);\n        \n        e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) * n1hat' * cross(z"
-      "0,l1_hat);\n        e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);\n        e3 = n"
-      "3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);\n        \n        % micro motion instant"
-      "aneous inverse kinematics jacobian\n        b_mu = [e1 0 0;...\n            0 e2 0;...\n            0 0 e3];\n  "
-      "      \n        % macro motion instantaneous inverse kinematics jacobian\n        b_m = eye(3);\n        \n     "
-      "   % combined macro-micro motion IIK jacobian\n        iik_jac = [b_m,b_mu];\n        \n        % the full manip"
-      "ulator jacobian with redundancy resolution weighting\n        w_mat = diag([1,1,1,1e10,1e10,1e10]);\n        ful"
-      "l_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n        \n        % positional error direction\n"
-      "        p_ep_hat = (x_des-x_cur)/p_del;\n        \n        % orientational error axis\n        if theta_e ~= 0\n"
-      "            me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);...\n                r_del(1,3)-r_del(3,1);...\n   "
-      "             r_del(2,1)-r_del(1,2)];\n        else\n            me = z0;\n        end\n        \n        % inver"
-      "se kinematics based on pose error\n        vmax = 1; %[mm/s]\n        vmin = 0.02;\n        wmin = 0.001;\n     "
-      "   wmax = 0.05;\n        p_lambda = 3;\n        w_lambda = 3;\n        vdot = 0;\n        wdot = 0;\n        \n "
-      "       if p_del ~=0\n            if p_del/p_epsilon <= p_lambda\n                vdot = vmin + (((vmax-vmin)*(p_"
-      "del-p_epsilon))/(p_epsilon*(p_lambda-1)));\n            else\n                vdot = vmax;\n            end\n   "
-      "     end\n        \n        if theta_e ~= 0\n            if theta_e/w_epsilon <= w_lambda && theta_e ~= 0\n     "
-      "           wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));\n            else\n      "
-      "          wdot = wmax;\n            end\n        end\n        \n        v = vdot * p_ep_hat;\n        w = wdot *"
-      " me;\n        \n        qdot = full_jac * [v(1:2);w(3)];\n        deltaq = qdot * dt;\n        qdes = q_cur + de"
-      "ltaq;\n       \n        xcur = x_cur + v * dt;\n        eerot = ee_rot_cur + w(3) * dt;\n    else\n        qdes "
-      "= q_cur;\n        xcur = x_cur;\n        % check this for angle or rotation matrix\n        eerot = ee_rot_cur;\n"
-      "    end\nend\n\nend"
-      editorLayout	      "100 M4x1[2014 1 990 1057]"
-    }
-  }
-  junction {
-    id			    35
-    position		    [23.5747 49.5747 7]
-    chart		    33
-    linkNode		    [33 0 0]
-    subviewer		    33
-    ssIdNumber		    3
-    type		    CONNECTIVE_JUNCTION
-  }
-  transition {
-    id			    36
-    labelString		    "{eML_blk_kernel();}"
-    labelPosition	    [32.125 19.875 102.544 14.964]
-    fontSize		    12
-    src {
-      intersection	      [0 0 1 0 23.5747 14.625 0 0]
-    }
-    dst {
-      id		      35
-      intersection	      [7 0 -1 -1 23.5747 42.5747 0 0]
-    }
-    midPoint		    [23.5747 24.9468]
-    chart		    33
-    linkNode		    [33 0 0]
-    dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    33
-    drawStyle		    SMART
-    executionOrder	    1
-    ssIdNumber		    2
-  }
-  data {
-    id			    37
-    ssIdNumber		    4
-    name		    "x_des"
-    linkNode		    [33 0 38]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-      }
-      complexity	      SF_COMPLEX_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    38
-    ssIdNumber		    40
-    name		    "q_cur"
-    linkNode		    [33 37 39]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    39
-    ssIdNumber		    38
-    name		    "qdot"
-    linkNode		    [33 38 40]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    40
-    ssIdNumber		    33
-    name		    "ee_rot_des"
-    linkNode		    [33 39 41]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    41
-    ssIdNumber		    34
-    name		    "dt"
-    linkNode		    [33 40 42]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    42
-    ssIdNumber		    31
-    name		    "p_in_m"
-    linkNode		    [33 41 43]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    43
-    ssIdNumber		    30
-    name		    "b_in_w"
-    linkNode		    [33 42 44]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    44
-    ssIdNumber		    35
-    name		    "m_in_w"
-    linkNode		    [33 43 45]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    45
-    ssIdNumber		    32
-    name		    "f_in_w"
-    linkNode		    [33 44 46]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    46
-    ssIdNumber		    39
-    name		    "q_des"
-    linkNode		    [33 45 47]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    47
-    ssIdNumber		    21
-    name		    "x_cur"
-    linkNode		    [33 46 48]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    48
-    ssIdNumber		    6
-    name		    "ee_rot_cur"
-    linkNode		    [33 47 49]
-    scope		    INPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_INHERITED
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    49
-    ssIdNumber		    19
-    name		    "qdes"
-    linkNode		    [33 48 50]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    50
-    ssIdNumber		    16
-    name		    "xcur"
-    linkNode		    [33 49 51]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      array {
-	size			"-1"
-      }
-      type {
-	method			SF_INHERITED_TYPE
-	primitive		SF_DOUBLE_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      complexity	      SF_COMPLEX_INHERITED
-      frame		      SF_FRAME_NO
-    }
-    dataType		    "Inherit: Same as Simulink"
-  }
-  data {
-    id			    51
     ssIdNumber		    36
     name		    "eerot"
-    linkNode		    [33 50 0]
+    linkNode		    [2 20 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7524,26 +5906,26 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   instance {
-    id			    52
+    id			    22
     name		    "task_space/ResolvedRates"
     machine		    1
-    chart		    33
+    chart		    2
   }
   chart {
-    id			    53
+    id			    23
     name		    "Quintic Poly/Embedded\nMATLAB Function"
     windowPosition	    [1008 -716.25 998 1455]
     viewLimits		    [0 471 0 348.75]
     screen		    [1 1 1920 1080 1.333333333333333]
-    treeNode		    [0 54 0 0]
-    firstTransition	    56
-    firstJunction	    55
-    viewObj		    53
+    treeNode		    [0 24 0 0]
+    firstTransition	    26
+    firstJunction	    25
+    viewObj		    23
     machine		    1
     ssIdHighWaterMark	    33
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
-    firstData		    57
+    firstData		    27
     chartFileNumber	    22
     disableImplicitCasting  1
     eml {
@@ -7552,14 +5934,14 @@ Stateflow {
     supportVariableSizing   0
   }
   state {
-    id			    54
+    id			    24
     labelString		    "eML_blk_kernel()"
     position		    [18 64.5 118 66]
     fontSize		    12
-    chart		    53
-    treeNode		    [53 0 0 0]
+    chart		    23
+    treeNode		    [23 0 0 0]
     superState		    SUBCHART
-    subviewer		    53
+    subviewer		    23
     ssIdNumber		    1
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
@@ -7587,16 +5969,16 @@ Stateflow {
     }
   }
   junction {
-    id			    55
+    id			    25
     position		    [23.5747 49.5747 7]
-    chart		    53
-    linkNode		    [53 0 0]
-    subviewer		    53
+    chart		    23
+    linkNode		    [23 0 0]
+    subviewer		    23
     ssIdNumber		    3
     type		    CONNECTIVE_JUNCTION
   }
   transition {
-    id			    56
+    id			    26
     labelString		    "{eML_blk_kernel();}"
     labelPosition	    [32.125 19.875 102.7 14.971]
     fontSize		    12
@@ -7604,14 +5986,14 @@ Stateflow {
       intersection	      [0 0 1 0 23.5747 14.625 0 0]
     }
     dst {
-      id		      55
+      id		      25
       intersection	      [1 0 -1 0 23.5747 42.5747 0 0]
     }
     midPoint		    [23.5747 24.9468]
-    chart		    53
-    linkNode		    [53 0 0]
+    chart		    23
+    linkNode		    [23 0 0]
     dataLimits		    [23.575 23.575 14.625 34.575]
-    subviewer		    53
+    subviewer		    23
     drawStyle		    SMART
     slide {
       sticky		      BOTH_STICK
@@ -7620,10 +6002,10 @@ Stateflow {
     ssIdNumber		    2
   }
   data {
-    id			    57
+    id			    27
     ssIdNumber		    31
     name		    "q_cmd"
-    linkNode		    [53 0 58]
+    linkNode		    [23 0 28]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7642,10 +6024,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    58
+    id			    28
     ssIdNumber		    4
     name		    "q_des"
-    linkNode		    [53 57 59]
+    linkNode		    [23 27 29]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7661,10 +6043,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    59
+    id			    29
     ssIdNumber		    27
     name		    "q_curr"
-    linkNode		    [53 58 60]
+    linkNode		    [23 28 30]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7683,10 +6065,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    60
+    id			    30
     ssIdNumber		    28
     name		    "tf"
-    linkNode		    [53 59 61]
+    linkNode		    [23 29 31]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7705,10 +6087,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    61
+    id			    31
     ssIdNumber		    13
     name		    "tc"
-    linkNode		    [53 60 62]
+    linkNode		    [23 30 32]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7727,10 +6109,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    62
+    id			    32
     ssIdNumber		    25
     name		    "q_dot"
-    linkNode		    [53 61 63]
+    linkNode		    [23 31 33]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7749,10 +6131,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    63
+    id			    33
     ssIdNumber		    32
     name		    "q_dub_dot"
-    linkNode		    [53 62 64]
+    linkNode		    [23 32 34]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7771,10 +6153,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    64
+    id			    34
     ssIdNumber		    11
     name		    "conf"
-    linkNode		    [53 63 65]
+    linkNode		    [23 33 35]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7793,10 +6175,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    65
+    id			    35
     ssIdNumber		    12
     name		    "confn"
-    linkNode		    [53 64 66]
+    linkNode		    [23 34 36]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7815,10 +6197,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    66
+    id			    36
     ssIdNumber		    18
     name		    "t0"
-    linkNode		    [53 65 67]
+    linkNode		    [23 35 37]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7837,10 +6219,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    67
+    id			    37
     ssIdNumber		    14
     name		    "t0n"
-    linkNode		    [53 66 68]
+    linkNode		    [23 36 38]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7859,10 +6241,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    68
+    id			    38
     ssIdNumber		    15
     name		    "q0n"
-    linkNode		    [53 67 69]
+    linkNode		    [23 37 39]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7881,10 +6263,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    69
+    id			    39
     ssIdNumber		    16
     name		    "q0"
-    linkNode		    [53 68 70]
+    linkNode		    [23 38 40]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7903,10 +6285,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    70
+    id			    40
     ssIdNumber		    30
     name		    "enable"
-    linkNode		    [53 69 71]
+    linkNode		    [23 39 41]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -7925,10 +6307,10 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   data {
-    id			    71
+    id			    41
     ssIdNumber		    33
     name		    "robot_mov"
-    linkNode		    [53 70 0]
+    linkNode		    [23 40 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -7947,24 +6329,24 @@ Stateflow {
     dataType		    "Inherit: Same as Simulink"
   }
   instance {
-    id			    72
+    id			    42
     name		    "Quintic Poly/Embedded\nMATLAB Function"
     machine		    1
-    chart		    53
+    chart		    23
   }
   target {
-    id			    73
+    id			    43
     name		    "sfun"
     codeFlags		    ""
     machine		    1
-    linkNode		    [1 0 74]
+    linkNode		    [1 0 44]
   }
   target {
-    id			    74
+    id			    44
     name		    "rtw"
     codeFlags		    " comments=1 statebitsets=1 databitsets=1 emitlogicalops=1 elseifdetection=1 constantfolding=1 redu"
     "ndantloadelimination=0 preservenames=0 preservenameswithparent=0 exportcharts=0"
     machine		    1
-    linkNode		    [1 73 0]
+    linkNode		    [1 43 0]
   }
 }

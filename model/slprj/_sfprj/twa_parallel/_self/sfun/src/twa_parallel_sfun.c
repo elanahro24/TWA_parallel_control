@@ -1,8 +1,6 @@
 /* Include files */
 
 #include "twa_parallel_sfun.h"
-#include "c2_twa_parallel.h"
-#include "c3_twa_parallel.h"
 #include "c5_twa_parallel.h"
 #include "c22_twa_parallel.h"
 
@@ -33,16 +31,6 @@ void twa_parallel_terminator(void)
 unsigned int sf_twa_parallel_method_dispatcher(SimStruct *simstructPtr, unsigned
   int chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
-  if (chartFileNumber==2) {
-    c2_twa_parallel_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
-  if (chartFileNumber==3) {
-    c3_twa_parallel_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
   if (chartFileNumber==5) {
     c5_twa_parallel_method_dispatcher(simstructPtr, method, data);
     return 1;
@@ -86,28 +74,14 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1623178157U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(331841295U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2928875585U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(778192432U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3746993662U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1243141828U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(360922113U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2615001553U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
       switch (chartFileNumber) {
-       case 2:
-        {
-          extern void sf_c2_twa_parallel_get_check_sum(mxArray *plhs[]);
-          sf_c2_twa_parallel_get_check_sum(plhs);
-          break;
-        }
-
-       case 3:
-        {
-          extern void sf_c3_twa_parallel_get_check_sum(mxArray *plhs[]);
-          sf_c3_twa_parallel_get_check_sum(plhs);
-          break;
-        }
-
        case 5:
         {
           extern void sf_c5_twa_parallel_get_check_sum(mxArray *plhs[]);
@@ -137,10 +111,10 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2234996913U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3449887360U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1354836264U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4266781832U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(107429241U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(419399533U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(907048438U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2204357490U);
   }
 
   return 1;
@@ -173,20 +147,6 @@ unsigned int sf_twa_parallel_autoinheritance_info( int nlhs, mxArray * plhs[],
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 2:
-      {
-        extern mxArray *sf_c2_twa_parallel_get_autoinheritance_info(void);
-        plhs[0] = sf_c2_twa_parallel_get_autoinheritance_info();
-        break;
-      }
-
-     case 3:
-      {
-        extern mxArray *sf_c3_twa_parallel_get_autoinheritance_info(void);
-        plhs[0] = sf_c3_twa_parallel_get_autoinheritance_info();
-        break;
-      }
-
      case 5:
       {
         extern mxArray *sf_c5_twa_parallel_get_autoinheritance_info(void);
@@ -236,28 +196,6 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
-     case 2:
-      {
-        extern const mxArray *sf_c2_twa_parallel_get_eml_resolved_functions_info
-          (void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c2_twa_parallel_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
-     case 3:
-      {
-        extern const mxArray *sf_c3_twa_parallel_get_eml_resolved_functions_info
-          (void);
-        mxArray *persistentMxArray = (mxArray *)
-          sf_c3_twa_parallel_get_eml_resolved_functions_info();
-        plhs[0] = mxDuplicateArray(persistentMxArray);
-        mxDestroyArray(persistentMxArray);
-        break;
-      }
-
      case 5:
       {
         extern const mxArray *sf_c5_twa_parallel_get_eml_resolved_functions_info
@@ -298,7 +236,7 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
 void twa_parallel_debug_initialize(void)
 {
   _twa_parallelMachineNumber_ = sf_debug_initialize_machine("twa_parallel",
-    "sfun",0,4,0,0,0);
+    "sfun",0,2,0,0,0);
   sf_debug_set_machine_event_thresholds(_twa_parallelMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_twa_parallelMachineNumber_,0);
 }
