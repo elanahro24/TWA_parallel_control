@@ -14,8 +14,17 @@ for i = 1:length(enc_vec)
     enc_id = tg.getparamid(str,'Value');
     tg.setparam(enc_id,1);
 end
+
+% get current q, set desired joint value to zero 
+id = tg.getparamid('q_des','Value');
+q_des = tg.getparam(id);
+
+for i = 1:length(enc_vec)
+   q_des(enc_vec(i),1) = 0; 
+end
+
 % reset q_des to zeros
-setqdes(tg,zeros(6,1));
+setqdes(tg,q_des);
 
 % integrator reset is necessary to eliminate effect of steady state error 
 reset_s_id = tg.getparamid('PID Controller/reset_integrator','Value');

@@ -12,7 +12,6 @@ N_pos = 1;
 pos_filter_coeffs = ones(N_pos,1);
 
 % PID Gains
-
 K_p = [30 30 30 1 1 1]';
 K_i = [18 18 18 0.25 0.25 0.25]';
 K_d = 0.3*ones(6,1);
@@ -26,6 +25,12 @@ twa_gear_rat  = 3249/196;
 
 % velmex pitch, screw is 20 turns/inch => 0.05 inch/turn => 1.27 mm/turn
 velmex_pitch = 1.27; % [mm/turn]
+
+% resolved rates parameters struct
+% elements = v, w, epsilon, lambda v: 
+% [p_epsilon; w_epsilon; vmax; vmin; wmax; wmin; p_lambda; w_lambda]
+res_rate_param = [1, 0.001, 500, 1, 0.001, 0.05, 3, 3]';
+
 
 % switch for using twa in task space when manually choosing macro/micro
 % motion. 0 = no; 1 = yes

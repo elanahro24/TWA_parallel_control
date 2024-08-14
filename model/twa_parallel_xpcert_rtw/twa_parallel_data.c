@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.7020
+ * Model version                        : 1.7037
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Mon Aug 12 20:20:22 2024
+ * Real-Time Workshop file generated on : Wed Aug 14 17:58:48 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Mon Aug 12 20:20:22 2024
+ * C/C++ source code generated on       : Wed Aug 14 17:58:49 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -184,6 +184,11 @@ Parameters_twa_parallel twa_parallel_P = {
     2.0705523608201659E+001, 7.7274066103125463E+001, 0.0,
     -7.6900935675065512E+001, -2.2050988465359922E+001, 0.0 },
 
+  /*  Expression: res_rate_param
+   * Referenced by: '<S5>/res_rate_param'
+   */
+  { 1.0, 0.001, 500.0, 1.0, 0.001, 0.05, 3.0, 3.0 },
+
   /*  Expression: zeros(6,1)
    * Referenced by: '<S5>/Unit Delay1'
    */
@@ -196,7 +201,7 @@ Parameters_twa_parallel twa_parallel_P = {
   5.2359877559829882E-001,             /* Expression: pi/6
                                         * Referenced by: '<S5>/Unit Delay3'
                                         */
-  5.0,                                 /* Expression: 5
+  1.0,                                 /* Expression: 1
                                         * Referenced by: '<S3>/tf'
                                         */
   0.0,                                 /* Expression: 0
@@ -217,7 +222,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_p
    * Referenced by: '<S2>/Kp'
    */
-  { 50.0, 50.0, 50.0, 1.0, 1.0, 1.0 },
+  { 30.0, 30.0, 30.0, 1.0, 1.0, 1.0 },
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S2>/reset_integrator'
                                         */
@@ -249,7 +254,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: K_d
    * Referenced by: '<S2>/Kd'
    */
-  { 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 },
+  { 0.3, 0.3, 0.3, 0.3, 0.3, 0.3 },
 
   /*  Expression: [10,10,10,2,2,2]
    * Referenced by: '<S2>/Saturation'
@@ -268,13 +273,6 @@ Parameters_twa_parallel twa_parallel_P = {
    * Referenced by: '<S2>/manual_current'
    */
   { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
-
-  /*  Expression: t_in_w
-   * Referenced by: '<S5>/t_in_w'
-   */
-  { 1.4243556993353818E+002, -9.2235651485464956E+001, 0.0,
-    8.6606323542513639E+000, 1.6947064770769154E+002, 0.0,
-    -1.5109620228778959E+002, -7.7234996222226684E+001, 0.0 },
   2.0261003687626575E-001,             /* Expression: twa_gamma
                                         * Referenced by: '<S5>/twa_gamma'
                                         */
@@ -284,6 +282,13 @@ Parameters_twa_parallel twa_parallel_P = {
   16.7,                                /* Expression: twa_flange_offset
                                         * Referenced by: '<S5>/twa_flange_offset'
                                         */
+
+  /*  Expression: t_in_w
+   * Referenced by: '<S5>/t_in_w'
+   */
+  { 1.4243556993353818E+002, -9.2235651485464956E+001, 0.0,
+    8.6606323542513639E+000, 1.6947064770769154E+002, 0.0,
+    -1.5109620228778959E+002, -7.7234996222226684E+001, 0.0 },
   1U,                                  /* Computed Parameter: NSampleEnable_TARGETCNT
                                         * Referenced by: '<S17>/N-Sample Enable'
                                         */

@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.7020
+ * Model version              : 1.7037
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Mon Aug 12 20:20:22 2024
+ * C source code generated on : Wed Aug 14 17:58:49 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -848,10 +848,10 @@ typedef struct {
   real_T Add[6];                       /* '<S2>/Add' */
   real_T Saturation[6];                /* '<S2>/Saturation' */
   real_T Switch_i[6];                  /* '<S2>/Switch' */
-  real_T t_in_w[9];                    /* '<S5>/t_in_w' */
   real_T twa_gamma;                    /* '<S5>/twa_gamma' */
   real_T use_twa;                      /* '<S5>/use_twa' */
   real_T twa_flange_offset;            /* '<S5>/twa_flange_offset' */
+  real_T t_in_w[9];                    /* '<S5>/t_in_w' */
   real_T TmpSignalConversionAtSFunctionI[6];/* '<S5>/ResolvedRates' */
   real_T qeps[6];                      /* '<S5>/ResolvedRates' */
   real_T qdes[6];                      /* '<S5>/ResolvedRates' */
@@ -1096,6 +1096,9 @@ struct Parameters_twa_parallel_ {
   real_T f_in_w_Value[9];              /* Expression: f_in_w
                                         * Referenced by: '<S5>/f_in_w'
                                         */
+  real_T res_rate_param_Value[8];      /* Expression: res_rate_param
+                                        * Referenced by: '<S5>/res_rate_param'
+                                        */
   real_T UnitDelay1_X0[6];             /* Expression: zeros(6,1)
                                         * Referenced by: '<S5>/Unit Delay1'
                                         */
@@ -1105,7 +1108,7 @@ struct Parameters_twa_parallel_ {
   real_T UnitDelay3_X0;                /* Expression: pi/6
                                         * Referenced by: '<S5>/Unit Delay3'
                                         */
-  real_T tf_Value;                     /* Expression: 5
+  real_T tf_Value;                     /* Expression: 1
                                         * Referenced by: '<S3>/tf'
                                         */
   real_T UnitDelay_X0;                 /* Expression: 0
@@ -1159,9 +1162,6 @@ struct Parameters_twa_parallel_ {
   real_T manual_current_Value[6];      /* Expression: zeros(6,1)
                                         * Referenced by: '<S2>/manual_current'
                                         */
-  real_T t_in_w_Value[9];              /* Expression: t_in_w
-                                        * Referenced by: '<S5>/t_in_w'
-                                        */
   real_T twa_gamma_Value;              /* Expression: twa_gamma
                                         * Referenced by: '<S5>/twa_gamma'
                                         */
@@ -1170,6 +1170,9 @@ struct Parameters_twa_parallel_ {
                                         */
   real_T twa_flange_offset_Value;      /* Expression: twa_flange_offset
                                         * Referenced by: '<S5>/twa_flange_offset'
+                                        */
+  real_T t_in_w_Value[9];              /* Expression: t_in_w
+                                        * Referenced by: '<S5>/t_in_w'
                                         */
   uint32_T NSampleEnable_TARGETCNT;    /* Computed Parameter: NSampleEnable_TARGETCNT
                                         * Referenced by: '<S17>/N-Sample Enable'

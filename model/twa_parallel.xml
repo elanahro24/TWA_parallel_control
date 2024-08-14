@@ -975,6 +975,16 @@ MATLAB Function/p7</sigName>
 			</parameter>
 		</block>
 		<block>
+			<blkName>res_rate_param</blkName>
+			<xpcblkName>task_space/res_rate_param</xpcblkName>
+			<SLblockPath>twa_parallel/task_space/res_rate_param</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[8, 1]</dim>
+			</parameter>
+		</block>
+		<block>
 			<blkName>t_in_w</blkName>
 			<xpcblkName>task_space/t_in_w</xpcblkName>
 			<SLblockPath>twa_parallel/task_space/t_in_w</SLblockPath>

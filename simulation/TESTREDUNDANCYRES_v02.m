@@ -1,5 +1,5 @@
 qcur = zeros(6,1);
-epeps = 0.01;%sqrt(3*0.01^2); %10 microns per actuator
+epeps = 1; %sqrt(3*0.01^2); %10 microns per actuator
 kp = 0.5;
 dt = 0.002;
 velmex_pitch = 1.27;
@@ -41,9 +41,9 @@ qnom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
 eq = measured_len - qnom;
 
 x_cur = [0;0;0];
-x_des = [0;0;0];
+x_des = [10;0;0];
 
-ee_rot_des = pi/2;
+ee_rot_des = pi/6;
 
 disp(['Current Pose: x:',num2str(x_cur(1)),' y:',num2str(x_cur(3)),...
     ' gamma:',num2str(ee_rot)]);
@@ -66,8 +66,10 @@ disp(['Number of loops: ',num2str(loops)]);
 
 r_cur = [cos(ee_rot) -sin(ee_rot) 0;sin(ee_rot) cos(ee_rot) 0;0 0 1];
 p_in_w = x_cur*ones(1,3) + r_cur*p_in_m; 
+
+cla
 draw_robot(b_in_w,p_in_w,deltaq)
 
-pause(0.001)
-cla
+pause(0.01)
+
 end

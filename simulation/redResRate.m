@@ -96,14 +96,16 @@ else
 end
 
 % inverse kinematics based on pose error
-vmax = 5;
-vmin = 0.001;
+% vmax = 5;
+vmax = 2000;
+vmin = 1;
 wmin = 0.01;
 wmax = 0.5;
-p_epsilon = 0.01;
+p_epsilon = 1;
 w_epsilon = 0.001;
 p_lambda = 10;
 w_lambda = 2;
+
 vdot = 0;
 wdot = 0;
 if theta_e > w_epsilon || p_del > p_epsilon
