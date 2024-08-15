@@ -904,6 +904,45 @@ MATLAB Function/p7</sigName>
 		</SubSystem>
 	</SubSystem>
 	<SubSystem>
+		<Name>detect change</Name>
+		<xPCName>twa_parallel/detect change</xPCName>
+		<SubSystem>
+			<Name>Detect
+Change</Name>
+			<xPCName>twa_parallel/detect change/Detect Change</xPCName>
+			<block>
+				<blkName>Delay Input1</blkName>
+				<xpcblkName>detect change/Detect Change/Delay Input1</xpcblkName>
+				<SLblockPath>twa_parallel/detect change/Detect Change/Delay Input1</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>FixPt
+Relational
+Operator</sigName>
+				<xpcsigName>detect change/Detect Change/FixPt Relational Operator</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Delay Input1</sigName>
+				<xpcsigName>detect change/Detect Change/Delay Input1</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<signal>
+			<sigName>Switch</sigName>
+			<xpcsigName>detect change/Switch</xpcsigName>
+			<sigWidth>6</sigWidth>
+			<sigDim>[6, 1]</sigDim>
+		</signal>
+	</SubSystem>
+	<SubSystem>
 		<Name>task_space</Name>
 		<xPCName>twa_parallel/task_space</xPCName>
 		<SubSystem>
@@ -1183,9 +1222,25 @@ MATLAB Function/p7</sigName>
 			<dim>[1, 1]</dim>
 		</parameter>
 	</block>
+	<block>
+		<blkName>Unit Delay1</blkName>
+		<xpcblkName>Unit Delay1</xpcblkName>
+		<SLblockPath>twa_parallel/Unit Delay1</SLblockPath>
+		<isSrc>[0 1 1]</isSrc>
+		<parameter>
+			<paramName>X0</paramName>
+			<dim>[6, 1]</dim>
+		</parameter>
+	</block>
 	<signal>
 		<sigName>cntrl_switch</sigName>
 		<xpcsigName>cntrl_switch</xpcsigName>
+		<sigWidth>6</sigWidth>
+		<sigDim>[6, 1]</sigDim>
+	</signal>
+	<signal>
+		<sigName>Unit Delay1</sigName>
+		<xpcsigName>Unit Delay1</xpcsigName>
 		<sigWidth>6</sigWidth>
 		<sigDim>[6, 1]</sigDim>
 	</signal>

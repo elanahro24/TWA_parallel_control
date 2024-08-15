@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7037"
+    ComputedModelVersion    "1.7049"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 14 17:58:28 2024"
-  RTWModifiedTimeStamp	  645559091
-  ModelVersionFormat	  "1.%<AutoIncrement:7037>"
+  LastModifiedDate	  "Thu Aug 15 16:21:58 2024"
+  RTWModifiedTimeStamp	  645639716
+  ModelVersionFormat	  "1.%<AutoIncrement:7049>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1792,9 +1792,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "211"
+    ZoomFactor		    "195"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3357
+    SIDHighWatermark	    3370
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -1823,7 +1823,7 @@ Model {
       Name		      "Encoders"
       SID		      3013
       Ports		      [0, 2]
-      Position		      [65, 270, 110, 305]
+      Position		      [45, 270, 90, 305]
       BackgroundColor	      "magenta"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2920,10 +2920,26 @@ Model {
       GotoTag		      "E1"
     }
     Block {
+      BlockType		      From
+      Name		      "From5"
+      SID		      3365
+      Position		      [190, 284, 220, 296]
+      ShowName		      off
+      GotoTag		      "C1"
+    }
+    Block {
+      BlockType		      From
+      Name		      "From6"
+      SID		      3366
+      Position		      [135, 334, 165, 346]
+      ShowName		      off
+      GotoTag		      "C1"
+    }
+    Block {
       BlockType		      Goto
       Name		      "Goto1"
       SID		      3319
-      Position		      [170, 256, 200, 274]
+      Position		      [165, 176, 195, 194]
       ShowName		      off
       GotoTag		      "A1"
       TagVisibility	      "local"
@@ -2932,7 +2948,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto2"
       SID		      3322
-      Position		      [135, 336, 165, 354]
+      Position		      [105, 286, 135, 304]
       ShowName		      off
       GotoTag		      "B1"
       TagVisibility	      "local"
@@ -2950,7 +2966,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto4"
       SID		      3316
-      Position		      [390, 321, 420, 339]
+      Position		      [440, 331, 470, 349]
       ShowName		      off
       GotoTag		      "C1"
       TagVisibility	      "local"
@@ -2959,7 +2975,7 @@ Model {
       BlockType		      Goto
       Name		      "Goto5"
       SID		      3343
-      Position		      [275, 336, 305, 354]
+      Position		      [275, 351, 305, 369]
       ShowName		      off
       GotoTag		      "E1"
       TagVisibility	      "local"
@@ -3387,6 +3403,11 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    0
+	    PropName		    "AvailSigsLoadSave"
+	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -4371,10 +4392,20 @@ Model {
       }
     }
     Block {
+      BlockType		      UnitDelay
+      Name		      "Unit Delay1"
+      SID		      3369
+      Position		      [390, 323, 415, 357]
+      NamePlacement	      "alternate"
+      ShowName		      off
+      X0		      "zeros(6,1)"
+      SampleTime	      "dt"
+    }
+    Block {
       BlockType		      Constant
       Name		      "cntrl_mode"
       SID		      3113
-      Position		      [255, 236, 275, 254]
+      Position		      [275, 241, 295, 259]
       NamePlacement	      "alternate"
       SampleTime	      "dt"
     }
@@ -4393,10 +4424,131 @@ Model {
       SampleTime	      "dt"
     }
     Block {
+      BlockType		      SubSystem
+      Name		      "detect change"
+      SID		      3360
+      Ports		      [2, 1]
+      Position		      [235, 262, 295, 298]
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"detect change"
+	Location		[754, 289, 1549, 900]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"156"
+	Block {
+	  BlockType		  Inport
+	  Name			  "q_des_usr"
+	  SID			  3362
+	  Position		  [60, 98, 90, 112]
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "q_des_cur"
+	  SID			  3361
+	  Position		  [140, 148, 170, 162]
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Detect\nChange"
+	  SID			  3358
+	  Ports			  [1, 1]
+	  Position		  [130, 90, 185, 120]
+	  LibraryVersion	  "1.216"
+	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect\nChange"
+	  SourceType		  "Detect Change"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  vinit			  "1"
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "Switch"
+	  SID			  3359
+	  Position		  [210, 90, 240, 120]
+	  Criteria		  "u2 ~= 0"
+	  InputSameDT		  off
+	  OutDataType		  "fixdt(1, 16)"
+	  OutScaling		  "2^0"
+	  SaturateOnIntegerOverflow off
+	  SampleTime		  "dt"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Out1"
+	  SID			  3363
+	  Position		  [265, 98, 295, 112]
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  SrcBlock		  "Detect\nChange"
+	  SrcPort		  1
+	  DstBlock		  "Switch"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "q_des_usr"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  Branch {
+	    Points		    [-15, 0; 0, -25; 95, 0]
+	    DstBlock		    "Switch"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Detect\nChange"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "Switch"
+	  SrcPort		  1
+	  DstBlock		  "Out1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "q_des_cur"
+	  SrcPort		  1
+	  Points		  [20, 0]
+	  DstBlock		  "Switch"
+	  DstPort		  3
+	}
+	Annotation {
+	  Name			  "When q_des_usr changes, change is detected and 1 is output. \nThe switch flips to output q_des_usr as q_d"
+	  "es. When no change is detected, the output\nq_des was the previous steps q_des"
+	  Position		  [196, 28]
+	}
+      }
+    }
+    Block {
       BlockType		      Constant
       Name		      "q_des"
       SID		      2928
-      Position		      [240, 268, 290, 292]
+      Position		      [155, 238, 205, 262]
       Value		      "zeros(6,1)"
       SampleTime	      "dt"
     }
@@ -4405,7 +4557,7 @@ Model {
       Name		      "task_space"
       SID		      3178
       Ports		      [2, 2]
-      Position		      [165, 296, 235, 334]
+      Position		      [185, 311, 255, 349]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -4415,7 +4567,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"task_space"
-	Location		[2014, 125, 3036, 1028]
+	Location		[2475, 89, 3497, 992]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4437,9 +4589,9 @@ Model {
 	}
 	Block {
 	  BlockType		  Inport
-	  Name			  "q_dot"
+	  Name			  "qdes_cur"
 	  SID			  3314
-	  Position		  [95, 205, 115, 225]
+	  Position		  [75, 205, 95, 225]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -4569,6 +4721,11 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    0
+	    PropName		    "AvailSigsLoadSave"
+	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -4616,7 +4773,7 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Inport
-	      Name		      "qdot"
+	      Name		      "qdes_cur"
 	      SID		      51
 	      Position		      [20, 171, 40, 189]
 	      Port		      "3"
@@ -4801,7 +4958,7 @@ Model {
 	      DstPort		      2
 	    }
 	    Line {
-	      SrcBlock		      "qdot"
+	      SrcBlock		      "qdes_cur"
 	      SrcPort		      1
 	      DstBlock		      " SFunction "
 	      DstPort		      3
@@ -5208,9 +5365,9 @@ Model {
 	  DstPort		  5
 	}
 	Line {
-	  SrcBlock		  "q_dot"
+	  SrcBlock		  "qdes_cur"
 	  SrcPort		  1
-	  Points		  [0, 15]
+	  Points		  [15, 0; 0, 15]
 	  DstBlock		  "ResolvedRates"
 	  DstPort		  3
 	}
@@ -5316,16 +5473,16 @@ Model {
       Labels		      [0, 1]
       SrcBlock		      "Encoders"
       SrcPort		      1
-      Points		      [30, 0]
+      Points		      [50, 0]
       Branch {
-	Points			[0, 25]
+	Points			[0, 40]
 	DstBlock		"task_space"
 	DstPort			1
       }
       Branch {
-	Points			[0, 0; 0, -15]
+	Points			[0, -70]
 	Branch {
-	  Points		  [0, -55; 225, 0]
+	  Points		  [0, 0; 225, 0]
 	  Branch {
 	    Points		    [105, 0; 0, 25]
 	    DstBlock		    "PID Controller"
@@ -5338,6 +5495,8 @@ Model {
 	  }
 	}
 	Branch {
+	  Labels		  [1, 0]
+	  Points		  [0, -25]
 	  DstBlock		  "Goto1"
 	  DstPort		  1
 	}
@@ -5346,27 +5505,12 @@ Model {
     Line {
       SrcBlock		      "Encoders"
       SrcPort		      2
-      Points		      [0, 30]
-      Branch {
-	DstBlock		"task_space"
-	DstPort			2
-      }
-      Branch {
-	Points			[0, 20]
-	DstBlock		"Goto2"
-	DstPort			1
-      }
-    }
-    Line {
-      SrcBlock		      "q_des"
-      SrcPort		      1
-      DstBlock		      "cntrl_switch"
-      DstPort		      2
+      DstBlock		      "Goto2"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "cntrl_mode"
       SrcPort		      1
-      Points		      [25, 0]
       DstBlock		      "cntrl_switch"
       DstPort		      1
     }
@@ -5385,14 +5529,15 @@ Model {
 	DstPort			2
       }
       Branch {
-	Points			[0, 50]
-	DstBlock		"Goto4"
+	Points			[0, 60]
+	DstBlock		"Unit Delay1"
 	DstPort			1
       }
     }
     Line {
       SrcBlock		      "task_space"
       SrcPort		      1
+      Points		      [35, 0; 0, -10]
       DstBlock		      "cntrl_switch"
       DstPort		      3
     }
@@ -5426,7 +5571,6 @@ Model {
     Line {
       SrcBlock		      "task_space"
       SrcPort		      2
-      Points		      [15, 0; 0, 20]
       DstBlock		      "Goto5"
       DstPort		      1
     }
@@ -5436,6 +5580,37 @@ Model {
       Points		      [0, -5]
       DstBlock		      "Scopes"
       DstPort		      5
+    }
+    Line {
+      SrcBlock		      "From5"
+      SrcPort		      1
+      DstBlock		      "detect change"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "From6"
+      SrcPort		      1
+      DstBlock		      "task_space"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Unit Delay1"
+      SrcPort		      1
+      DstBlock		      "Goto4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "detect change"
+      SrcPort		      1
+      DstBlock		      "cntrl_switch"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "q_des"
+      SrcPort		      1
+      Points		      [5, 0; 0, 20]
+      DstBlock		      "detect change"
+      DstPort		      1
     }
     Annotation {
       Name		      "TWA Parallel Manipulator Control - © 2023 Elan Z. Ahronovich"
@@ -5481,8 +5656,6 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    43
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
@@ -5507,16 +5680,16 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     eml {
       isEML		      1
-      script		      "function [qeps,qdes,xcur,eerot] = redResRate(x_des,q_cur,qdot,ee_rot_des,...\n    dt,p_in_m,b_in_"
-      "w,m_in_w,f_in_w,res_rate_param,q_des,x_cur,ee_rot_cur)\n\nqdes = q_cur;\nxcur = x_cur;\neerot = ee_rot_cur;\n\n%"
-      " axis for jacobian definitions\nz0 = [0 0 1]';\n\n% positional error\np_del = norm(x_des - x_cur);\n\n% desired "
-      "orientation angle rotation matrix and error roation matrix\nr_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;sin(ee_r"
-      "ot_des) cos(ee_rot_des) 0;0 0 1];\nr_cur = [cos(ee_rot_cur) -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot_cur) 0"
-      ";0 0 1];\nr_del = r_des * r_cur';\n\n% orientational error angle and axis\ntheta_e = acos((trace(r_del)-1)/2);\n"
-      "\n% error thresholds\np_epsilon = res_rate_param(1,1);\nw_epsilon = res_rate_param(2,1);\n\n% measure joint erro"
-      "r, proceed with looping resolved rates if the norm of\n% each joint error is less than 10 microns \nqeps = zeros"
-      "(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) = (norm(q_des(jnum,1) - q_cur(jnum,1)));\nend\ndo = 0;\n% if all(qeps <"
-      " 0.001)\nif do\n    if theta_e > w_epsilon || p_del > p_epsilon\n        % moving platform vertex locations\n   "
+      script		      "function [qeps,qdes,xcur,eerot] = redResRate(x_des,q_cur,qdes_cur,ee_rot_des,...\n    dt,p_in_m,b"
+      "_in_w,m_in_w,f_in_w,res_rate_param,q_des,x_cur,ee_rot_cur)\n\nqdes = qdes_cur;\nxcur = x_cur;\neerot = ee_rot_cu"
+      "r;\n\n% axis for jacobian definitions\nz0 = [0 0 1]';\n\n% positional error\np_del = norm(x_des - x_cur);\n\n% d"
+      "esired orientation angle rotation matrix and error roation matrix\nr_des = [cos(ee_rot_des) -sin(ee_rot_des) 0;s"
+      "in(ee_rot_des) cos(ee_rot_des) 0;0 0 1];\nr_cur = [cos(ee_rot_cur) -sin(ee_rot_cur) 0;sin(ee_rot_cur) cos(ee_rot"
+      "_cur) 0;0 0 1];\nr_del = r_des * r_cur';\n\n% orientational error angle and axis\ntheta_e = acos((trace(r_del)-1"
+      ")/2);\n\n% error thresholds\np_epsilon = res_rate_param(1,1);\nw_epsilon = res_rate_param(2,1);\n\n% measure joi"
+      "nt error, proceed with looping resolved rates if the norm of\n% each joint error is less than 10 microns \nqeps "
+      "= zeros(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) = (norm(q_des(jnum,1) - q_cur(jnum,1)));\nend\ndo = 0;\n\nif all"
+      "(qeps < 0.001)\n    if theta_e > w_epsilon || p_del > p_epsilon\n        % moving platform vertex locations\n   "
       "     p_in_w = x_cur*ones(1,3) + r_cur*p_in_m;\n        \n        %% instantaneous direct kinematics jacobian\n  "
       "      % vector from base vertex to moving platform vertex\n        n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_"
       "w(:,1) - p_in_w(:,1));\n        n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3h"
@@ -5559,8 +5732,8 @@ Stateflow {
       ")));\n            else\n                wdot = wmax;\n            end\n        end\n        \n        v = vdot *"
       " p_ep_hat;\n        w = wdot * me;\n        \n        qdot = full_jac * [v(1:2);w(3)];\n        deltaq = qdot * "
       "dt;\n        qdes = q_cur + deltaq;\n       \n        xcur = x_cur + v * dt;\n        eerot = ee_rot_cur + w(3) "
-      "* dt;\n    else\n        qdes = q_cur;\n        xcur = x_cur;\n        % check this for angle or rotation matrix"
-      "\n        eerot = ee_rot_cur;\n    end\nend\n\nend"
+      "* dt;\n    else\n        %qdes = q_cur;\n        qdes = q_des;\n        xcur = x_cur;\n        % check this for "
+      "angle or rotation matrix\n        eerot = ee_rot_cur;\n    end\nend\n\nend"
       editorLayout	      "100 M4x1[2014 1 990 1057]"
     }
   }
@@ -5660,7 +5833,7 @@ Stateflow {
   data {
     id			    9
     ssIdNumber		    38
-    name		    "qdot"
+    name		    "qdes_cur"
     linkNode		    [2 8 10]
     scope		    INPUT_DATA
     machine		    1
