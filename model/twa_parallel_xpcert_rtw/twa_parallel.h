@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.7049
+ * Model version              : 1.7056
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Thu Aug 15 16:22:01 2024
+ * C source code generated on : Thu Aug 15 17:32:27 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -1081,7 +1081,7 @@ struct Parameters_twa_parallel_ {
   real_T q_des_Value[6];               /* Expression: zeros(6,1)
                                         * Referenced by: '<Root>/q_des'
                                         */
-  real_T DelayInput1_X0;               /* Expression: vinit
+  real_T DelayInput1_X0[6];            /* Expression: vinit
                                         * Referenced by: '<S25>/Delay Input1'
                                         */
   real_T UnitDelay1_X0[6];             /* Expression: zeros(6,1)

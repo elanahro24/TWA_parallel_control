@@ -624,8 +624,8 @@ pt(69).size      = '[]';
 
 pt(70).blockname = 'detect change/Detect Change/Delay Input1';
 pt(70).paramname = 'X0';
-pt(70).class     = 'scalar';
-pt(70).nrows     = 1;
+pt(70).class     = 'vector';
+pt(70).nrows     = 6;
 pt(70).ncols     = 1;
 pt(70).subsource = 'SS_DOUBLE';
 pt(70).ndims     = '2';

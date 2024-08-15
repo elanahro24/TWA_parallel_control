@@ -917,7 +917,7 @@ Change</Name>
 				<isSrc>[0 1 1]</isSrc>
 				<parameter>
 					<paramName>X0</paramName>
-					<dim>[1, 1]</dim>
+					<dim>[6, 1]</dim>
 				</parameter>
 			</block>
 			<signal>

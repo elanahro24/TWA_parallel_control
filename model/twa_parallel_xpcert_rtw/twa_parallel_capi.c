@@ -432,7 +432,7 @@ static const rtwCAPI_BlockParameters rtBlockParameters[] = {
     "IC", 0, 1, 0 },
 
   { 138, "detect change/Detect Change/Delay Input1",
-    "X0", 0, 1, 0 },
+    "X0", 0, 0, 0 },
 
   { 139, "Encoders/Derivative/Discrete Derivative/UD",
     "X0", 0, 1, 0 },
@@ -600,7 +600,7 @@ static void* rtDataAddrMap[] = {
   &twa_parallel_P.vel_filter_coeffs_Value_m[0],/* 135: Block Parameter */
   &twa_parallel_P.Gain_Gain_d,         /* 136: Block Parameter */
   &twa_parallel_P.DiscreteFIRFilter_IC_b,/* 137: Block Parameter */
-  &twa_parallel_P.DelayInput1_X0,      /* 138: Block Parameter */
+  &twa_parallel_P.DelayInput1_X0[0],   /* 138: Block Parameter */
   &twa_parallel_P.UD_X0,               /* 139: Block Parameter */
   &twa_parallel_P.TSamp_WtEt,          /* 140: Block Parameter */
   &twa_parallel_P.vel_filter_coeffs_Value[0],/* 141: Block Parameter */

@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7049"
+    ComputedModelVersion    "1.7056"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 15 16:21:58 2024"
-  RTWModifiedTimeStamp	  645639716
-  ModelVersionFormat	  "1.%<AutoIncrement:7049>"
+  LastModifiedDate	  "Thu Aug 15 17:32:11 2024"
+  RTWModifiedTimeStamp	  645643865
+  ModelVersionFormat	  "1.%<AutoIncrement:7056>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1780,7 +1780,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [1922, 75, 3838, 1029]
+    Location		    [2, 75, 1918, 1029]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -3403,11 +3403,6 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    0
-	    PropName		    "AvailSigsLoadSave"
-	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -4455,7 +4450,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "q_des_usr"
 	  SID			  3362
-	  Position		  [60, 98, 90, 112]
+	  Position		  [50, 98, 80, 112]
 	  IconDisplay		  "Port number"
 	}
 	Block {
@@ -4471,7 +4466,7 @@ Model {
 	  Name			  "Detect\nChange"
 	  SID			  3358
 	  Ports			  [1, 1]
-	  Position		  [130, 90, 185, 120]
+	  Position		  [120, 90, 175, 120]
 	  LibraryVersion	  "1.216"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Detect\nChange"
 	  SourceType		  "Detect Change"
@@ -4483,7 +4478,7 @@ Model {
 	  RTWMemSecDataConstants  "Inherit from model"
 	  RTWMemSecDataInternal	  "Inherit from model"
 	  RTWMemSecDataParameters "Inherit from model"
-	  vinit			  "1"
+	  vinit			  "zeros(6,1)"
 	}
 	Block {
 	  BlockType		  Switch
@@ -4513,9 +4508,9 @@ Model {
 	Line {
 	  SrcBlock		  "q_des_usr"
 	  SrcPort		  1
-	  Points		  [20, 0]
+	  Points		  [5, 0]
 	  Branch {
-	    Points		    [-15, 0; 0, -25; 95, 0]
+	    Points		    [0, 0; 0, -25; 105, 0]
 	    DstBlock		    "Switch"
 	    DstPort		    1
 	  }
@@ -4567,7 +4562,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"task_space"
-	Location		[2475, 89, 3497, 992]
+	Location		[449, 88, 1471, 991]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4721,11 +4716,6 @@ Model {
 	  RTWSystemCode		  "Auto"
 	  FunctionWithSeparateData off
 	  Opaque		  off
-	  Array {
-	    Type		    "Handle"
-	    Dimension		    0
-	    PropName		    "AvailSigsLoadSave"
-	  }
 	  RequestExecContextInheritance	off
 	  MaskHideContents	  off
 	  MaskType		  "Stateflow"
@@ -5688,52 +5678,53 @@ Stateflow {
       "_cur) 0;0 0 1];\nr_del = r_des * r_cur';\n\n% orientational error angle and axis\ntheta_e = acos((trace(r_del)-1"
       ")/2);\n\n% error thresholds\np_epsilon = res_rate_param(1,1);\nw_epsilon = res_rate_param(2,1);\n\n% measure joi"
       "nt error, proceed with looping resolved rates if the norm of\n% each joint error is less than 10 microns \nqeps "
-      "= zeros(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) = (norm(q_des(jnum,1) - q_cur(jnum,1)));\nend\ndo = 0;\n\nif all"
-      "(qeps < 0.001)\n    if theta_e > w_epsilon || p_del > p_epsilon\n        % moving platform vertex locations\n   "
-      "     p_in_w = x_cur*ones(1,3) + r_cur*p_in_m;\n        \n        %% instantaneous direct kinematics jacobian\n  "
-      "      % vector from base vertex to moving platform vertex\n        n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_"
-      "w(:,1) - p_in_w(:,1));\n        n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3h"
-      "at = (p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));\n        \n        a13 = z0'*(cross(r_cur*p_in_"
-      "m(:,1),n1hat));\n        a23 = z0'*(cross(r_cur*p_in_m(:,2),n2hat));\n        a33 = z0'*(cross(r_cur*p_in_m(:,3)"
-      ",n3hat));\n        \n        idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...\n            n2hat(1,1) n2hat(2,1) a23; ."
-      "..\n            n3hat(1,1) n3hat(2,1) a33];\n        \n        %% instantaneous inverse kinematics jacobian\n   "
-      "     % micro actuator (TWA) lengths\n        q1_mu = norm(b_in_w(:,1) - m_in_w(:,1));\n        q2_mu = norm(b_in"
-      "_w(:,2) - m_in_w(:,2));\n        q3_mu = norm(b_in_w(:,3) - m_in_w(:,3));\n        \n        % vector from base "
-      "vertex to twa motor attachment point\n        l1_hat = (m_in_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w("
-      ":,1));\n        l2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ norm(m_in_w(:,2) - b_in_w(:,2));\n        l3_hat = (m_in"
-      "_w(:,3) - b_in_w(:,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n        \n        % distance from micro actuator att"
-      "achmnet point (m_i) to flexure rotation\n        %center (f_i)\n        a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n "
-      "       a2 = norm(m_in_w(:,2) - f_in_w(:,2));\n        a3 = norm(m_in_w(:,3) - f_in_w(:,3));\n        \n        %"
-      " distance from flexure rotation center (f_i) to base vertex\n        c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n      "
-      "  c2 = norm(b_in_w(:,2)-f_in_w(:,2));\n        c3 = norm(b_in_w(:,3)-f_in_w(:,3));\n        \n        % term to "
-      "paramterize angle between a_i and qimu, delta\n        h1 = (c1^2 - a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n        h2 ="
-      " (c2^2 - a2^2 - q2_mu^2)/(-2*a2*q2_mu);\n        h3 = (c3^2 - a3^2 - q3_mu^2)/(-2*a3*q3_mu);\n        \n        "
-      "% time derivatives\n        h1dot = (4*a1*q1_mu^2 + (c1^2 - a1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n        h"
-      "2dot = (4*a2*q2_mu^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^2*q2_mu^2);\n        h3dot = (4*a3*q3_mu^2 + (c3^2 "
-      "- a3^2 - q3_mu^2)*2*a3) / (4*a3^2*q3_mu^2);\n        \n        e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) *"
-      " n1hat' * cross(z0,l1_hat);\n        e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat)"
-      ";\n        e3 = n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);\n        \n        % mic"
-      "ro motion instantaneous inverse kinematics jacobian\n        b_mu = [e1 0 0;...\n                0 e2 0;...\n   "
-      "             0 0 e3];\n        \n        % macro motion instantaneous inverse kinematics jacobian\n        b_m ="
-      " eye(3);\n        \n        % combined macro-micro motion IIK jacobian\n        iik_jac = [b_m,b_mu];\n        \n"
-      "        % the full manipulator jacobian with redundancy resolution weighting\n        w_mat = diag([1,1,1,1e10,1"
-      "e10,1e10]);\n        full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n        \n        % pos"
-      "itional error direction\n        p_ep_hat = (x_des-x_cur)/p_del;\n        \n        % orientational error axis\n"
-      "        if theta_e ~= 0\n            me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);...\n                     "
-      "                  r_del(1,3)-r_del(3,1);...\n                                       r_del(2,1)-r_del(1,2)];\n   "
-      "     else\n            me = z0;\n        end\n        \n%         vmax = 100; %[mm/s]\n%         vmin = 0.02;\n%"
-      "         wmin = 0.001;\n%         wmax = 0.05;\n        \n        vmax = res_rate_param(3,1);\n        vmin = re"
-      "s_rate_param(4,1);\n        \n        wmax = res_rate_param(5,1);\n        wmin = res_rate_param(6,1);\n        "
-      "\n        p_lambda = res_rate_param(7,1);\n        w_lambda = res_rate_param(8,1);\n        \n        vdot = 0;\n"
-      "        wdot = 0;\n        \n        if p_del ~=0\n            if p_del/p_epsilon <= p_lambda\n                v"
-      "dot = vmin + (((vmax-vmin)*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));\n            else\n                vdot"
-      " = vmax;\n            end\n        end\n        \n        if theta_e ~= 0\n            if theta_e/w_epsilon <= w"
-      "_lambda && theta_e ~= 0\n                wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1"
-      ")));\n            else\n                wdot = wmax;\n            end\n        end\n        \n        v = vdot *"
-      " p_ep_hat;\n        w = wdot * me;\n        \n        qdot = full_jac * [v(1:2);w(3)];\n        deltaq = qdot * "
-      "dt;\n        qdes = q_cur + deltaq;\n       \n        xcur = x_cur + v * dt;\n        eerot = ee_rot_cur + w(3) "
-      "* dt;\n    else\n        %qdes = q_cur;\n        qdes = q_des;\n        xcur = x_cur;\n        % check this for "
-      "angle or rotation matrix\n        eerot = ee_rot_cur;\n    end\nend\n\nend"
+      "= zeros(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) = (norm(q_des(jnum,1) - q_cur(jnum,1)));\nend\n\nif all(qeps(1:3"
+      ") < 0.1)\n    if theta_e > w_epsilon || p_del > p_epsilon\n        % moving platform vertex locations\n        p"
+      "_in_w = x_cur*ones(1,3) + r_cur*p_in_m;\n        \n        %% instantaneous direct kinematics jacobian\n        "
+      "% vector from base vertex to moving platform vertex\n        n1hat = (p_in_w(:,1)-b_in_w(:,1))./norm(b_in_w(:,1)"
+      " - p_in_w(:,1));\n        n2hat = (p_in_w(:,2)-b_in_w(:,2))./norm(b_in_w(:,2) - p_in_w(:,2));\n        n3hat = ("
+      "p_in_w(:,3)-b_in_w(:,3))./norm(b_in_w(:,3) - p_in_w(:,3));\n        \n        a13 = z0'*(cross(r_cur*p_in_m(:,1)"
+      ",n1hat));\n        a23 = z0'*(cross(r_cur*p_in_m(:,2),n2hat));\n        a33 = z0'*(cross(r_cur*p_in_m(:,3),n3hat"
+      "));\n        \n        idk_jac = [n1hat(1,1) n1hat(2,1) a13; ...\n            n2hat(1,1) n2hat(2,1) a23; ...\n  "
+      "          n3hat(1,1) n3hat(2,1) a33];\n        \n        %% instantaneous inverse kinematics jacobian\n        %"
+      " micro actuator (TWA) lengths\n        q1_mu = norm(b_in_w(:,1) - m_in_w(:,1));\n        q2_mu = norm(b_in_w(:,2"
+      ") - m_in_w(:,2));\n        q3_mu = norm(b_in_w(:,3) - m_in_w(:,3));\n        \n        % vector from base vertex"
+      " to twa motor attachment point\n        l1_hat = (m_in_w(:,1) - b_in_w(:,1)) ./ norm(m_in_w(:,1) - b_in_w(:,1));"
+      "\n        l2_hat = (m_in_w(:,2) - b_in_w(:,2)) ./ norm(m_in_w(:,2) - b_in_w(:,2));\n        l3_hat = (m_in_w(:,3"
+      ") - b_in_w(:,3)) ./ norm(m_in_w(:,3) - b_in_w(:,3));\n        \n        % distance from micro actuator attachmne"
+      "t point (m_i) to flexure rotation\n        %center (f_i)\n        a1 = norm(m_in_w(:,1) - f_in_w(:,1));\n       "
+      " a2 = norm(m_in_w(:,2) - f_in_w(:,2));\n        a3 = norm(m_in_w(:,3) - f_in_w(:,3));\n        \n        % dista"
+      "nce from flexure rotation center (f_i) to base vertex\n        c1 = norm(b_in_w(:,1)-f_in_w(:,1));\n        c2 ="
+      " norm(b_in_w(:,2)-f_in_w(:,2));\n        c3 = norm(b_in_w(:,3)-f_in_w(:,3));\n        \n        % term to paramt"
+      "erize angle between a_i and qimu, delta\n        h1 = (c1^2 - a1^2 - q1_mu^2)/(-2*a1*q1_mu);\n        h2 = (c2^2"
+      " - a2^2 - q2_mu^2)/(-2*a2*q2_mu);\n        h3 = (c3^2 - a3^2 - q3_mu^2)/(-2*a3*q3_mu);\n        \n        % time"
+      " derivatives\n        h1dot = (4*a1*q1_mu^2 + (c1^2 - a1^2 - q1_mu^2)*2*a1) / (4*a1^2*q1_mu^2);\n        h2dot ="
+      " (4*a2*q2_mu^2 + (c2^2 - a2^2 - q2_mu^2)*2*a2) / (4*a2^2*q2_mu^2);\n        h3dot = (4*a3*q3_mu^2 + (c3^2 - a3^2"
+      " - q3_mu^2)*2*a3) / (4*a3^2*q3_mu^2);\n        \n        e1 = n1hat' * l1_hat + q1_mu*h1dot/sqrt(1-h1^2) * n1hat"
+      "' * cross(z0,l1_hat);\n        e2 = n2hat' * l2_hat + q2_mu*h2dot/sqrt(1-h2^2) * n2hat' * cross(z0,l2_hat);\n   "
+      "     e3 = n3hat' * l3_hat + q3_mu*h3dot/sqrt(1-h3^2) * n3hat' * cross(z0,l3_hat);\n        \n        % micro mot"
+      "ion instantaneous inverse kinematics jacobian\n        b_mu = [e1 0 0;...\n                0 e2 0;...\n         "
+      "       0 0 e3];\n        \n        % macro motion instantaneous inverse kinematics jacobian\n        b_m = eye(3"
+      ");\n        \n        % combined macro-micro motion IIK jacobian\n        iik_jac = [b_m,b_mu];\n        \n     "
+      "   % the full manipulator jacobian with redundancy resolution weighting\n        w_mat = diag([1,1,1,1e10,1e10,1"
+      "e10]);\n        full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n        \n        % position"
+      "al error direction\n        if p_del ~= 0 \n            p_ep_hat = (x_des-x_cur)/p_del;\n        else\n         "
+      "   p_ep_hat = zeros(3,1);\n        end\n        \n        % orientational error axis\n        if theta_e ~= 0\n "
+      "           me = (1/(2*sin(theta_e)))*[r_del(3,2)-r_del(2,3);...\n                                       r_del(1,"
+      "3)-r_del(3,1);...\n                                       r_del(2,1)-r_del(1,2)];\n        else\n            me "
+      "= z0;\n        end\n        \n%         vmax = 100; %[mm/s]\n%         vmin = 0.02;\n%         wmin = 0.001;\n% "
+      "        wmax = 0.05;\n        \n        vmax = res_rate_param(3,1);\n        vmin = res_rate_param(4,1);\n      "
+      "  \n        wmax = res_rate_param(5,1);\n        wmin = res_rate_param(6,1);\n        \n        p_lambda = res_r"
+      "ate_param(7,1);\n        w_lambda = res_rate_param(8,1);\n        \n        vdot = 0;\n        wdot = 0;\n      "
+      "  \n        if p_del ~=0\n            if p_del/p_epsilon <= p_lambda\n                vdot = vmin + (((vmax-vmin"
+      ")*(p_del-p_epsilon))/(p_epsilon*(p_lambda-1)));\n            else\n                vdot = vmax;\n            end"
+      "\n        end\n        \n        if theta_e ~= 0\n            if theta_e/w_epsilon <= w_lambda && theta_e ~= 0\n"
+      "                wdot = wmin + (((wmax-wmin)*(theta_e-w_epsilon))/(w_epsilon*(w_lambda-1)));\n            else\n "
+      "               wdot = wmax;\n            end\n        end\n        \n        v = vdot * p_ep_hat;\n        w = w"
+      "dot * me;\n        \n        qdot = full_jac * [v(1:2);w(3)];\n        deltaq = qdot * dt;\n        qdes = q_cur"
+      " + deltaq;\n       \n        xcur = x_cur + v * dt;\n        eerot = ee_rot_cur + w(3) * dt;\n    else\n        "
+      "%qdes = q_cur;\n        qdes = qdes_cur;\n        xcur = x_cur;\n        % check this for angle or rotation matr"
+      "ix\n        eerot = ee_rot_cur;\n    end\nend\n\nend"
       editorLayout	      "100 M4x1[2014 1 990 1057]"
     }
   }
