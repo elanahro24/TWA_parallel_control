@@ -1,6 +1,7 @@
 /* Include files */
 
 #include "twa_parallel_sfun.h"
+#include "c1_twa_parallel.h"
 #include "c5_twa_parallel.h"
 #include "c22_twa_parallel.h"
 
@@ -31,6 +32,11 @@ void twa_parallel_terminator(void)
 unsigned int sf_twa_parallel_method_dispatcher(SimStruct *simstructPtr, unsigned
   int chartFileNumber, const char* specsCksum, int_T method, void *data)
 {
+  if (chartFileNumber==1) {
+    c1_twa_parallel_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
   if (chartFileNumber==5) {
     c5_twa_parallel_method_dispatcher(simstructPtr, method, data);
     return 1;
@@ -74,14 +80,21 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(0U);
       ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0U);
     } else if (!strcmp(commandName,"makefile")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3746993662U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1243141828U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(360922113U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2615001553U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2456311289U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3875777926U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4241352086U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3876668290U);
     } else if (nrhs==3 && !strcmp(commandName,"chart")) {
       unsigned int chartFileNumber;
       chartFileNumber = (unsigned int)mxGetScalar(prhs[2]);
       switch (chartFileNumber) {
+       case 1:
+        {
+          extern void sf_c1_twa_parallel_get_check_sum(mxArray *plhs[]);
+          sf_c1_twa_parallel_get_check_sum(plhs);
+          break;
+        }
+
        case 5:
         {
           extern void sf_c5_twa_parallel_get_check_sum(mxArray *plhs[]);
@@ -111,10 +124,10 @@ unsigned int sf_twa_parallel_process_check_sum_call( int nlhs, mxArray * plhs[],
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2082075850U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1799260559U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3066529195U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3629728478U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(915802903U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4121467734U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4070707081U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3330475949U);
   }
 
   return 1;
@@ -147,6 +160,13 @@ unsigned int sf_twa_parallel_autoinheritance_info( int nlhs, mxArray * plhs[],
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
+     case 1:
+      {
+        extern mxArray *sf_c1_twa_parallel_get_autoinheritance_info(void);
+        plhs[0] = sf_c1_twa_parallel_get_autoinheritance_info();
+        break;
+      }
+
      case 5:
       {
         extern mxArray *sf_c5_twa_parallel_get_autoinheritance_info(void);
@@ -196,6 +216,17 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
     unsigned int chartFileNumber;
     chartFileNumber = (unsigned int)mxGetScalar(prhs[1]);
     switch (chartFileNumber) {
+     case 1:
+      {
+        extern const mxArray *sf_c1_twa_parallel_get_eml_resolved_functions_info
+          (void);
+        mxArray *persistentMxArray = (mxArray *)
+          sf_c1_twa_parallel_get_eml_resolved_functions_info();
+        plhs[0] = mxDuplicateArray(persistentMxArray);
+        mxDestroyArray(persistentMxArray);
+        break;
+      }
+
      case 5:
       {
         extern const mxArray *sf_c5_twa_parallel_get_eml_resolved_functions_info
@@ -236,7 +267,7 @@ unsigned int sf_twa_parallel_get_eml_resolved_functions_info( int nlhs, mxArray 
 void twa_parallel_debug_initialize(void)
 {
   _twa_parallelMachineNumber_ = sf_debug_initialize_machine("twa_parallel",
-    "sfun",0,2,0,0,0);
+    "sfun",0,3,0,0,0);
   sf_debug_set_machine_event_thresholds(_twa_parallelMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(_twa_parallelMachineNumber_,0);
 }

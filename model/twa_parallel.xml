@@ -904,69 +904,301 @@ MATLAB Function/p7</sigName>
 		</SubSystem>
 	</SubSystem>
 	<SubSystem>
-		<Name>detect change</Name>
-		<xPCName>twa_parallel/detect change</xPCName>
+		<Name>control_mode</Name>
+		<xPCName>twa_parallel/control_mode</xPCName>
 		<SubSystem>
-			<Name>Detect
+			<Name>detect change</Name>
+			<xPCName>twa_parallel/control_mode/detect change</xPCName>
+			<SubSystem>
+				<Name>Detect
 Change</Name>
-			<xPCName>twa_parallel/detect change/Detect Change</xPCName>
+				<xPCName>twa_parallel/control_mode/detect change/Detect Change</xPCName>
+				<block>
+					<blkName>Delay Input1</blkName>
+					<xpcblkName>control_mode/detect change/Detect Change/Delay Input1</xpcblkName>
+					<SLblockPath>twa_parallel/control_mode/detect change/Detect Change/Delay Input1</SLblockPath>
+					<isSrc>[0 1 1]</isSrc>
+					<parameter>
+						<paramName>X0</paramName>
+						<dim>[6, 1]</dim>
+					</parameter>
+				</block>
+				<signal>
+					<sigName>FixPt
+Relational
+Operator</sigName>
+					<xpcsigName>control_mode/detect change/Detect Change/FixPt Relational Operator</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+				<signal>
+					<sigName>Delay Input1</sigName>
+					<xpcsigName>control_mode/detect change/Detect Change/Delay Input1</xpcsigName>
+					<sigWidth>6</sigWidth>
+					<sigDim>[6, 1]</sigDim>
+				</signal>
+			</SubSystem>
+			<signal>
+				<sigName>Switch</sigName>
+				<xpcsigName>control_mode/detect change/Switch</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>task_space</Name>
+			<xPCName>twa_parallel/control_mode/task_space</xPCName>
+			<SubSystem>
+				<Name>q_cur_macro6</Name>
+				<xPCName>twa_parallel/control_mode/task_space/q_cur_macro6</xPCName>
+			</SubSystem>
+			<SubSystem>
+				<Name>ResolvedRates</Name>
+				<xPCName>twa_parallel/control_mode/task_space/ResolvedRates</xPCName>
+			</SubSystem>
+			<SubSystem>
+				<Name>get_jacobian</Name>
+				<xPCName>twa_parallel/control_mode/task_space/get_jacobian</xPCName>
+			</SubSystem>
 			<block>
-				<blkName>Delay Input1</blkName>
-				<xpcblkName>detect change/Detect Change/Delay Input1</xpcblkName>
-				<SLblockPath>twa_parallel/detect change/Detect Change/Delay Input1</SLblockPath>
+				<blkName>b_in_w</blkName>
+				<xpcblkName>control_mode/task_space/b_in_w</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/b_in_w</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>dt</blkName>
+				<xpcblkName>control_mode/task_space/dt</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/dt</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>ee_rot_des</blkName>
+				<xpcblkName>control_mode/task_space/ee_rot_des</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/ee_rot_des</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>f_in_w</blkName>
+				<xpcblkName>control_mode/task_space/f_in_w</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/f_in_w</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>m_in_w</blkName>
+				<xpcblkName>control_mode/task_space/m_in_w</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/m_in_w</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>p_in_m</blkName>
+				<xpcblkName>control_mode/task_space/p_in_m</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/p_in_m</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>res_rate_param</blkName>
+				<xpcblkName>control_mode/task_space/res_rate_param</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/res_rate_param</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[8, 2]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>t_in_w</blkName>
+				<xpcblkName>control_mode/task_space/t_in_w</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/t_in_w</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>twa_flange_offset</blkName>
+				<xpcblkName>control_mode/task_space/twa_flange_offset</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/twa_flange_offset</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>twa_gamma</blkName>
+				<xpcblkName>control_mode/task_space/twa_gamma</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/twa_gamma</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>use_twa</blkName>
+				<xpcblkName>control_mode/task_space/use_twa</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/use_twa</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>x_des</blkName>
+				<xpcblkName>control_mode/task_space/x_des</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/x_des</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay1</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay1</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay1</SLblockPath>
 				<isSrc>[0 1 1]</isSrc>
 				<parameter>
 					<paramName>X0</paramName>
 					<dim>[6, 1]</dim>
 				</parameter>
 			</block>
+			<block>
+				<blkName>Unit Delay3</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay3</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay3</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay6</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay6</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay6</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
 			<signal>
-				<sigName>FixPt
-Relational
-Operator</sigName>
-				<xpcsigName>detect change/Detect Change/FixPt Relational Operator</xpcsigName>
+				<sigName>ResolvedRates/p1</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p1</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>Delay Input1</sigName>
-				<xpcsigName>detect change/Detect Change/Delay Input1</xpcsigName>
+				<sigName>ResolvedRates/p2</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p2</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>ResolvedRates/p3</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p3</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>ResolvedRates/p4</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p4</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
+			<signal>
+				<sigName>get_jacobian/p1</sigName>
+				<xpcsigName>control_mode/task_space/get_jacobian/p1</xpcsigName>
+				<sigWidth>18</sigWidth>
+				<sigDim>[6, 3]</sigDim>
+			</signal>
+			<signal>
+				<sigName>get_jacobian/p2</sigName>
+				<xpcsigName>control_mode/task_space/get_jacobian/p2</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>get_jacobian/p3</sigName>
+				<xpcsigName>control_mode/task_space/get_jacobian/p3</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>t_in_w</sigName>
+				<xpcsigName>control_mode/task_space/t_in_w</xpcsigName>
+				<sigWidth>9</sigWidth>
+				<sigDim>[3, 3]</sigDim>
+			</signal>
+			<signal>
+				<sigName>twa_flange_offset</sigName>
+				<xpcsigName>control_mode/task_space/twa_flange_offset</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>twa_gamma</sigName>
+				<xpcsigName>control_mode/task_space/twa_gamma</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>use_twa</sigName>
+				<xpcsigName>control_mode/task_space/use_twa</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay1</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay1</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay3</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay3</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay6</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay6</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
 		</SubSystem>
-		<signal>
-			<sigName>Switch</sigName>
-			<xpcsigName>detect change/Switch</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
-		</signal>
-	</SubSystem>
-	<SubSystem>
-		<Name>task_space</Name>
-		<xPCName>twa_parallel/task_space</xPCName>
-		<SubSystem>
-			<Name>q_cur_macro6</Name>
-			<xPCName>twa_parallel/task_space/q_cur_macro6</xPCName>
-		</SubSystem>
-		<SubSystem>
-			<Name>ResolvedRates</Name>
-			<xPCName>twa_parallel/task_space/ResolvedRates</xPCName>
-		</SubSystem>
 		<block>
-			<blkName>b_in_w</blkName>
-			<xpcblkName>task_space/b_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/b_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>dt</blkName>
-			<xpcblkName>task_space/dt</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/dt</SLblockPath>
+			<blkName>cntrl_mode</blkName>
+			<xpcblkName>control_mode/cntrl_mode</xpcblkName>
+			<SLblockPath>twa_parallel/control_mode/cntrl_mode</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -974,222 +1206,38 @@ Operator</sigName>
 			</parameter>
 		</block>
 		<block>
-			<blkName>ee_rot_des</blkName>
-			<xpcblkName>task_space/ee_rot_des</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/ee_rot_des</SLblockPath>
+			<blkName>q_des_usr</blkName>
+			<xpcblkName>control_mode/q_des_usr</xpcblkName>
+			<SLblockPath>twa_parallel/control_mode/q_des_usr</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>f_in_w</blkName>
-			<xpcblkName>task_space/f_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/f_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>m_in_w</blkName>
-			<xpcblkName>task_space/m_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/m_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>p_in_m</blkName>
-			<xpcblkName>task_space/p_in_m</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/p_in_m</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>res_rate_param</blkName>
-			<xpcblkName>task_space/res_rate_param</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/res_rate_param</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[8, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>t_in_w</blkName>
-			<xpcblkName>task_space/t_in_w</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/t_in_w</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 3]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>twa_flange_offset</blkName>
-			<xpcblkName>task_space/twa_flange_offset</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/twa_flange_offset</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>twa_gamma</blkName>
-			<xpcblkName>task_space/twa_gamma</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/twa_gamma</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>use_twa</blkName>
-			<xpcblkName>task_space/use_twa</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/use_twa</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>x_des</blkName>
-			<xpcblkName>task_space/x_des</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/x_des</SLblockPath>
-			<isSrc>[1 0 1]</isSrc>
-			<parameter>
-				<paramName>Value</paramName>
-				<dim>[3, 1]</dim>
+				<dim>[6, 1]</dim>
 			</parameter>
 		</block>
 		<block>
 			<blkName>Unit Delay1</blkName>
-			<xpcblkName>task_space/Unit Delay1</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/Unit Delay1</SLblockPath>
+			<xpcblkName>control_mode/Unit Delay1</xpcblkName>
+			<SLblockPath>twa_parallel/control_mode/Unit Delay1</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>X0</paramName>
 				<dim>[6, 1]</dim>
 			</parameter>
 		</block>
-		<block>
-			<blkName>Unit Delay3</blkName>
-			<xpcblkName>task_space/Unit Delay3</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/Unit Delay3</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[1, 1]</dim>
-			</parameter>
-		</block>
-		<block>
-			<blkName>Unit Delay4</blkName>
-			<xpcblkName>task_space/Unit Delay4</xpcblkName>
-			<SLblockPath>twa_parallel/task_space/Unit Delay4</SLblockPath>
-			<isSrc>[0 1 1]</isSrc>
-			<parameter>
-				<paramName>X0</paramName>
-				<dim>[3, 1]</dim>
-			</parameter>
-		</block>
 		<signal>
-			<sigName>ResolvedRates/p1</sigName>
-			<xpcsigName>task_space/ResolvedRates/p1</xpcsigName>
+			<sigName>cntrl_switch</sigName>
+			<xpcsigName>control_mode/cntrl_switch</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>ResolvedRates/p2</sigName>
-			<xpcsigName>task_space/ResolvedRates/p2</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>ResolvedRates/p3</sigName>
-			<xpcsigName>task_space/ResolvedRates/p3</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>ResolvedRates/p4</sigName>
-			<xpcsigName>task_space/ResolvedRates/p4</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>t_in_w</sigName>
-			<xpcsigName>task_space/t_in_w</xpcsigName>
-			<sigWidth>9</sigWidth>
-			<sigDim>[3, 3]</sigDim>
-		</signal>
-		<signal>
-			<sigName>twa_flange_offset</sigName>
-			<xpcsigName>task_space/twa_flange_offset</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>twa_gamma</sigName>
-			<xpcsigName>task_space/twa_gamma</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>use_twa</sigName>
-			<xpcsigName>task_space/use_twa</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Unit Delay1</sigName>
-			<xpcsigName>task_space/Unit Delay1</xpcsigName>
+			<xpcsigName>control_mode/Unit Delay1</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>
-		<signal>
-			<sigName>Unit Delay3</sigName>
-			<xpcsigName>task_space/Unit Delay3</xpcsigName>
-			<sigWidth>1</sigWidth>
-			<sigDim>[1, 1]</sigDim>
-		</signal>
-		<signal>
-			<sigName>Unit Delay4</sigName>
-			<xpcsigName>task_space/Unit Delay4</xpcsigName>
-			<sigWidth>3</sigWidth>
-			<sigDim>[3, 1]</sigDim>
-		</signal>
 	</SubSystem>
-	<block>
-		<blkName>cntrl_mode</blkName>
-		<xpcblkName>cntrl_mode</xpcblkName>
-		<SLblockPath>twa_parallel/cntrl_mode</SLblockPath>
-		<isSrc>[1 0 1]</isSrc>
-		<parameter>
-			<paramName>Value</paramName>
-			<dim>[1, 1]</dim>
-		</parameter>
-	</block>
-	<block>
-		<blkName>q_des</blkName>
-		<xpcblkName>q_des</xpcblkName>
-		<SLblockPath>twa_parallel/q_des</SLblockPath>
-		<isSrc>[1 0 1]</isSrc>
-		<parameter>
-			<paramName>Value</paramName>
-			<dim>[6, 1]</dim>
-		</parameter>
-	</block>
 	<block>
 		<blkName>Analog Output</blkName>
 		<xpcblkName>Analog Output</xpcblkName>
@@ -1222,26 +1270,4 @@ Operator</sigName>
 			<dim>[1, 1]</dim>
 		</parameter>
 	</block>
-	<block>
-		<blkName>Unit Delay1</blkName>
-		<xpcblkName>Unit Delay1</xpcblkName>
-		<SLblockPath>twa_parallel/Unit Delay1</SLblockPath>
-		<isSrc>[0 1 1]</isSrc>
-		<parameter>
-			<paramName>X0</paramName>
-			<dim>[6, 1]</dim>
-		</parameter>
-	</block>
-	<signal>
-		<sigName>cntrl_switch</sigName>
-		<xpcsigName>cntrl_switch</xpcsigName>
-		<sigWidth>6</sigWidth>
-		<sigDim>[6, 1]</sigDim>
-	</signal>
-	<signal>
-		<sigName>Unit Delay1</sigName>
-		<xpcsigName>Unit Delay1</xpcsigName>
-		<sigWidth>6</sigWidth>
-		<sigDim>[6, 1]</sigDim>
-	</signal>
 </Root>

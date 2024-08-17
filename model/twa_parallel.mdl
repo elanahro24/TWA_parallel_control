@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7083"
+    ComputedModelVersion    "1.7084"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 16 13:43:09 2024"
-  RTWModifiedTimeStamp	  645716586
-  ModelVersionFormat	  "1.%<AutoIncrement:7083>"
+  LastModifiedDate	  "Fri Aug 16 19:57:19 2024"
+  RTWModifiedTimeStamp	  645739038
+  ModelVersionFormat	  "1.%<AutoIncrement:7084>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1780,7 +1780,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [2, 75, 1918, 1029]
+    Location		    [2, 83, 1902, 1037]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -1794,7 +1794,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "195"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    3393
+    SIDHighWatermark	    3396
     Block {
       BlockType		      Reference
       Name		      "Analog Output"
@@ -2944,6 +2944,15 @@ Model {
       Position		      [610, 321, 640, 339]
       ShowName		      off
       GotoTag		      "D1"
+      TagVisibility	      "local"
+    }
+    Block {
+      BlockType		      Goto
+      Name		      "Goto4"
+      SID		      3394
+      Position		      [330, 246, 360, 264]
+      ShowName		      off
+      GotoTag		      "C1"
       TagVisibility	      "local"
     }
     Block {
@@ -4388,7 +4397,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"235"
+	ZoomFactor		"188"
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_cur"
@@ -4398,11 +4407,28 @@ Model {
 	}
 	Block {
 	  BlockType		  From
+	  Name			  "From1"
+	  SID			  3396
+	  Position		  [60, 209, 90, 221]
+	  ShowName		  off
+	  GotoTag		  "C1"
+	}
+	Block {
+	  BlockType		  From
 	  Name			  "From5"
 	  SID			  3365
 	  Position		  [65, 119, 95, 131]
 	  ShowName		  off
 	  GotoTag		  "C1"
+	}
+	Block {
+	  BlockType		  Goto
+	  Name			  "Goto2"
+	  SID			  3395
+	  Position		  [365, 136, 390, 154]
+	  ShowName		  off
+	  GotoTag		  "C1"
+	  TagVisibility		  "local"
 	}
 	Block {
 	  BlockType		  UnitDelay
@@ -4581,7 +4607,7 @@ Model {
 	  System {
 	    Name		    "task_space"
 	    Location		    [16, 86, 1674, 989]
-	    Open		    on
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -5681,13 +5707,6 @@ Model {
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "Unit Delay1"
-	  SrcPort		  1
-	  Points		  [15, 0; 0, 85; -275, 0; 0, -25]
-	  DstBlock		  "task_space"
-	  DstPort		  2
-	}
-	Line {
 	  SrcBlock		  "detect change"
 	  SrcPort		  1
 	  DstBlock		  "cntrl_switch"
@@ -5711,6 +5730,18 @@ Model {
 	  SrcPort		  2
 	  DstBlock		  "xcur"
 	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Unit Delay1"
+	  SrcPort		  1
+	  DstBlock		  "Goto2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "From1"
+	  SrcPort		  1
+	  DstBlock		  "task_space"
+	  DstPort		  2
 	}
       }
     }
@@ -5845,8 +5876,16 @@ Model {
     Line {
       SrcBlock		      "control_mode"
       SrcPort		      1
-      DstBlock		      "Quintic Poly"
-      DstPort		      2
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Quintic Poly"
+	DstPort			2
+      }
+      Branch {
+	Points			[0, -30]
+	DstBlock		"Goto4"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "control_mode"
@@ -5899,8 +5938,6 @@ Stateflow {
     viewObj		    2
     machine		    1
     toolbarMode		    LIBRARY_TOOLBAR
-    subviewS {
-    }
     ssIdHighWaterMark	    46
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
