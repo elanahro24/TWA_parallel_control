@@ -1,12 +1,11 @@
-% set the amount to move the velmex slide in mm
-
+% set the amount to move the velmex slide 
+% input is in mm relative to current position
+% elan ahronovich 07/2024
 function setmacrostroke(tg,macro_stroke)
+q_des_usr = tg.getqdesusr;
 
-id = tg.getparamid('q_des','Value');
-qdes_cur = tg.getparam(id);
+q_des = q_des_usr + [macro_stroke;zeros(3,1)];
 
-q_des = [macro_stroke;qdes_cur(4:6)];
-
-tg.setparam(id,q_des);
+tg.setqdes(q_des);
 
 end

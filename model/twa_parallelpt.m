@@ -262,7 +262,7 @@ pt(29).subsource = 'SS_DOUBLE';
 pt(29).ndims     = '2';
 pt(29).size      = '[]';
 
-pt(30).blockname = 'control_mode/cntrl_mode';
+pt(30).blockname = 'control_mode/mode';
 pt(30).paramname = 'Value';
 pt(30).class     = 'scalar';
 pt(30).nrows     = 1;

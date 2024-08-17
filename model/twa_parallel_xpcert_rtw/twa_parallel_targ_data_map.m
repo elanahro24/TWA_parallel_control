@@ -175,7 +175,7 @@
 	  section.data(36).logicalSrcIdx = 35;
 	  section.data(36).dtTransOffset = 47;
 	
-	  ;% twa_parallel_P.cntrl_mode_Value
+	  ;% twa_parallel_P.mode_Value
 	  section.data(37).logicalSrcIdx = 36;
 	  section.data(37).dtTransOffset = 48;
 	
@@ -526,7 +526,7 @@
 	  section.data(35).logicalSrcIdx = 34;
 	  section.data(35).dtTransOffset = 91;
 	
-	  ;% twa_parallel_B.cntrl_switch
+	  ;% twa_parallel_B.control_switch
 	  section.data(36).logicalSrcIdx = 35;
 	  section.data(36).dtTransOffset = 97;
 	
@@ -933,8 +933,8 @@
   ;%
 
 
-  targMap.checksum0 = 651560163;
-  targMap.checksum1 = 91343873;
-  targMap.checksum2 = 1462715790;
-  targMap.checksum3 = 26570083;
+  targMap.checksum0 = 1400131167;
+  targMap.checksum1 = 301452552;
+  targMap.checksum2 = 1790542355;
+  targMap.checksum3 = 2062943604;
 

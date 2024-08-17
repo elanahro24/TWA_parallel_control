@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.7084
+ * Model version              : 1.7086
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Fri Aug 16 19:57:38 2024
+ * C source code generated on : Sat Aug 17 14:29:34 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -833,7 +833,7 @@ typedef struct {
   real_T UnitDelay6[3];                /* '<S25>/Unit Delay6' */
   real_T UnitDelay3;                   /* '<S25>/Unit Delay3' */
   real_T UnitDelay1_a[6];              /* '<S25>/Unit Delay1' */
-  real_T cntrl_switch[6];              /* '<S5>/cntrl_switch' */
+  real_T control_switch[6];            /* '<S5>/control_switch' */
   real_T DigitalClock;                 /* '<S3>/Digital Clock' */
   real_T UnitDelay;                    /* '<S3>/Unit Delay' */
   real_T UnitDelay1_b;                 /* '<S3>/Unit Delay1' */
@@ -1081,8 +1081,8 @@ struct Parameters_twa_parallel_ {
   real_T Gain_Gain_d;                  /* Expression: 1/N_velocity
                                         * Referenced by: '<S18>/Gain'
                                         */
-  real_T cntrl_mode_Value;             /* Expression: 1
-                                        * Referenced by: '<S5>/cntrl_mode'
+  real_T mode_Value;                   /* Expression: 1
+                                        * Referenced by: '<S5>/mode'
                                         */
   real_T q_des_usr_Value[6];           /* Expression: zeros(6,1)
                                         * Referenced by: '<S5>/q_des_usr'
@@ -1138,7 +1138,7 @@ struct Parameters_twa_parallel_ {
   real_T UnitDelay2_X0[6];             /* Expression: zeros(6,1)
                                         * Referenced by: '<S3>/Unit Delay2'
                                         */
-  real_T quintic_enable_Value;         /* Expression: 1
+  real_T quintic_enable_Value;         /* Expression: 0
                                         * Referenced by: '<S3>/quintic_enable'
                                         */
   real_T Kp_Gain[6];                   /* Expression: K_p

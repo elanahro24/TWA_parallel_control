@@ -3,11 +3,11 @@
  *
  * Real-Time Workshop code generated for Simulink model twa_parallel.
  *
- * Model version                        : 1.7084
+ * Model version                        : 1.7086
  * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010
- * Real-Time Workshop file generated on : Fri Aug 16 19:57:37 2024
+ * Real-Time Workshop file generated on : Sat Aug 17 14:29:34 2024
  * TLC version                          : 7.5 (Jan 19 2010)
- * C/C++ source code generated on       : Fri Aug 16 19:57:38 2024
+ * C/C++ source code generated on       : Sat Aug 17 14:29:34 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -137,7 +137,7 @@ Parameters_twa_parallel twa_parallel_P = {
                                         * Referenced by: '<S18>/Gain'
                                         */
   1.0,                                 /* Expression: 1
-                                        * Referenced by: '<S5>/cntrl_mode'
+                                        * Referenced by: '<S5>/mode'
                                         */
 
   /*  Expression: zeros(6,1)
@@ -169,7 +169,7 @@ Parameters_twa_parallel twa_parallel_P = {
   /*  Expression: res_rate_param
    * Referenced by: '<S25>/res_rate_param'
    */
-  { 1.0, 0.001, 500.0, 1.0, 2.0, 0.05, 3.0, 3.0, 0.005, 0.0001, 0.5, 0.01, 0.01,
+  { 0.5, 0.001, 1000.0, 1.0, 2.0, 0.05, 3.0, 3.0, 0.005, 0.0001, 0.5, 0.01, 0.01,
     0.001, 1.5, 1.5 },
 
   /*  Expression: p_in_m
@@ -226,7 +226,7 @@ Parameters_twa_parallel twa_parallel_P = {
    * Referenced by: '<S3>/Unit Delay2'
    */
   { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
-  1.0,                                 /* Expression: 1
+  0.0,                                 /* Expression: 0
                                         * Referenced by: '<S3>/quintic_enable'
                                         */
 

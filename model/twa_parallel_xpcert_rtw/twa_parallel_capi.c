@@ -85,7 +85,7 @@ static const rtwCAPI_Signals rtBlockSignals[] = {
   { 25, 0, "Quintic Poly/Unit Delay2",
     "", 0, 0, 1, 0, 1 },
 
-  { 26, 0, "control_mode/cntrl_switch",
+  { 26, 0, "control_mode/control_switch",
     "", 0, 0, 1, 0, 1 },
 
   { 27, 0, "control_mode/Unit Delay1",
@@ -320,7 +320,7 @@ static const rtwCAPI_BlockParameters rtBlockParameters[] = {
   { 100, "Quintic Poly/Unit Delay2",
     "X0", 0, 1, 0 },
 
-  { 101, "control_mode/cntrl_mode",
+  { 101, "control_mode/mode",
     "Value", 0, 0, 0 },
 
   { 102, "control_mode/q_des_usr",
@@ -497,7 +497,7 @@ static void* rtDataAddrMap[] = {
   &twa_parallel_B.UnitDelay,           /* 23: Signal */
   &twa_parallel_B.UnitDelay1_b,        /* 24: Signal */
   &twa_parallel_B.UnitDelay2[0],       /* 25: Signal */
-  &twa_parallel_B.cntrl_switch[0],     /* 26: Signal */
+  &twa_parallel_B.control_switch[0],   /* 26: Signal */
   &twa_parallel_B.UnitDelay1[0],       /* 27: Signal */
   &twa_parallel_B.enc_res,             /* 28: Signal */
   &twa_parallel_B.gear_ratio,          /* 29: Signal */
@@ -572,7 +572,7 @@ static void* rtDataAddrMap[] = {
   &twa_parallel_P.UnitDelay_X0,        /* 98: Block Parameter */
   &twa_parallel_P.UnitDelay1_X0_h,     /* 99: Block Parameter */
   &twa_parallel_P.UnitDelay2_X0[0],    /* 100: Block Parameter */
-  &twa_parallel_P.cntrl_mode_Value,    /* 101: Block Parameter */
+  &twa_parallel_P.mode_Value,          /* 101: Block Parameter */
   &twa_parallel_P.q_des_usr_Value[0],  /* 102: Block Parameter */
   &twa_parallel_P.UnitDelay1_X0[0],    /* 103: Block Parameter */
   &twa_parallel_P.enc_res_Gain,        /* 104: Block Parameter */

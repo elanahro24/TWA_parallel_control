@@ -25,9 +25,9 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="3">    3   </A><SPAN CLASS="CT"> *</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="4">    4   </A><SPAN CLASS="CT"> * Real-Time Workshop code generation for Simulink model &quot;twa_parallel.mdl&quot;.</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="5">    5   </A><SPAN CLASS="CT"> *</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version              : 1.7084</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version              : 1.7086</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="7">    7   </A><SPAN CLASS="CT"> * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * C source code generated on : Fri Aug 16 19:57:38 2024</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * C source code generated on : Sat Aug 17 14:29:34 2024</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="9">    9   </A><SPAN CLASS="CT"> *</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="10">   10   </A><SPAN CLASS="CT"> * Target selection: xpctargetert.tlc</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="11">   11   </A><SPAN CLASS="CT"> * Embedded hardware selection: Generic-&gt;32-bit x86 compatible</SPAN>
@@ -855,7 +855,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="833">  833   </A>  real_T UnitDelay6[3];                <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3382')"><FONT color="#117755"><I>&lt;S25&gt;/Unit Delay6</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="834">  834   </A>  real_T UnitDelay3;                   <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3309')"><FONT color="#117755"><I>&lt;S25&gt;/Unit Delay3</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="835">  835   </A>  real_T UnitDelay1_a[6];              <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3315')"><FONT color="#117755"><I>&lt;S25&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="836">  836   </A>  real_T cntrl_switch[6];              <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3181')"><FONT color="#117755"><I>&lt;S5&gt;/cntrl_switch</I></FONT></A>' */</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="836">  836   </A>  real_T control_switch[6];            <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3181')"><FONT color="#117755"><I>&lt;S5&gt;/control_switch</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="837">  837   </A>  real_T DigitalClock;                 <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2901')"><FONT color="#117755"><I>&lt;S3&gt;/Digital Clock</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="838">  838   </A>  real_T UnitDelay;                    <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2908')"><FONT color="#117755"><I>&lt;S3&gt;/Unit Delay</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="839">  839   </A>  real_T UnitDelay1_b;                 <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2909')"><FONT color="#117755"><I>&lt;S3&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
@@ -1103,8 +1103,8 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1081"> 1081   </A>  real_T Gain_Gain_d;                  <SPAN CLASS="CT">/* Expression: 1/N_velocity</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1082"> 1082   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3090')"><FONT color="#117755"><I>&lt;S18&gt;/Gain</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1083"> 1083   </A><SPAN CLASS="CT">                                        */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="1084"> 1084   </A>  real_T cntrl_mode_Value;             <SPAN CLASS="CT">/* Expression: 1</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="1085"> 1085   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;S5&gt;/cntrl_mode</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1084"> 1084   </A>  real_T mode_Value;                   <SPAN CLASS="CT">/* Expression: 1</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1085"> 1085   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;S5&gt;/mode</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1086"> 1086   </A><SPAN CLASS="CT">                                        */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1087"> 1087   </A>  real_T q_des_usr_Value[6];           <SPAN CLASS="CT">/* Expression: zeros(6,1)</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1088"> 1088   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:2928')"><FONT color="#117755"><I>&lt;S5&gt;/q_des_usr</I></FONT></A>'</SPAN>
@@ -1160,7 +1160,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1138"> 1138   </A>  real_T UnitDelay2_X0[6];             <SPAN CLASS="CT">/* Expression: zeros(6,1)</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1139"> 1139   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:2910')"><FONT color="#117755"><I>&lt;S3&gt;/Unit Delay2</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1140"> 1140   </A><SPAN CLASS="CT">                                        */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="1141"> 1141   </A>  real_T quintic_enable_Value;         <SPAN CLASS="CT">/* Expression: 1</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1141"> 1141   </A>  real_T quintic_enable_Value;         <SPAN CLASS="CT">/* Expression: 0</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1142"> 1142   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:2914')"><FONT color="#117755"><I>&lt;S3&gt;/quintic_enable</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1143"> 1143   </A><SPAN CLASS="CT">                                        */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1144"> 1144   </A>  real_T Kp_Gain[6];                   <SPAN CLASS="CT">/* Expression: K_p</SPAN>

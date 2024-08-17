@@ -16,10 +16,9 @@ dir = eye(3);
 helix_rad = wire_rad * 2;
 
 % get current set point
-id = tg.getparamid('control_mode/q_des_usr','Value');
-q_cur = tg.getparam(id);
+q_des_usr = getqdesusr(tg);
 
-qmudes = q_cur(4:6,1);
+qmudes = q_des_usr(4:6,1);
 for i=1:3
 %     if micro_stroke(i,1) < 0; dir(i,i) = -1; end
 %     rho = init_len(i,1) - (dir(i,i)*micro_stroke(i,1));

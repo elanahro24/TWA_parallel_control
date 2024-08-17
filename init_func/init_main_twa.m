@@ -29,7 +29,7 @@ velmex_pitch = 1.27; % [mm/turn]
 % resolved rates parameters struct
 % elements = v, w, epsilon, lambda v: 
 % [p_epsilon; w_epsilon; vmax; vmin; wmax; wmin; p_lambda; w_lambda]
-res_rate_param = [1, 0.001, 500, 1, 2, 0.05, 3, 3]';
+res_rate_param = [0.5, 0.001, 1000, 1, 2, 0.05, 3, 3]';
 
 % a second column for micro actuator resolved rates
 res_rate_param = [res_rate_param, [0.005, 0.0001, 0.5, 0.01, 0.01, 0.001, 1.5, 1.5]'];

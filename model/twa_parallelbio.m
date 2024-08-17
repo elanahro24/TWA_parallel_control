@@ -261,12 +261,12 @@ bio(26).ndims=2;
 bio(26).size=[];
 
 
-bio(27).blkName='control_mode/cntrl_switch';
+bio(27).blkName='control_mode/control_switch';
 bio(27).sigName='';
 bio(27).portIdx=0;
 bio(27).dim=[6,1];
 bio(27).sigWidth=6;
-bio(27).sigAddress='&twa_parallel_B.cntrl_switch[0]';
+bio(27).sigAddress='&twa_parallel_B.control_switch[0]';
 bio(27).ndims=2;
 bio(27).size=[];
 

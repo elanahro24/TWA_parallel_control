@@ -1196,9 +1196,9 @@ Operator</sigName>
 			</signal>
 		</SubSystem>
 		<block>
-			<blkName>cntrl_mode</blkName>
-			<xpcblkName>control_mode/cntrl_mode</xpcblkName>
-			<SLblockPath>twa_parallel/control_mode/cntrl_mode</SLblockPath>
+			<blkName>mode</blkName>
+			<xpcblkName>control_mode/mode</xpcblkName>
+			<SLblockPath>twa_parallel/control_mode/mode</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -1226,8 +1226,8 @@ Operator</sigName>
 			</parameter>
 		</block>
 		<signal>
-			<sigName>cntrl_switch</sigName>
-			<xpcsigName>control_mode/cntrl_switch</xpcsigName>
+			<sigName>control_switch</sigName>
+			<xpcsigName>control_mode/control_switch</xpcsigName>
 			<sigWidth>6</sigWidth>
 			<sigDim>[6, 1]</sigDim>
 		</signal>

@@ -25,9 +25,9 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="3">    3   </A><SPAN CLASS="CT"> *</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="4">    4   </A><SPAN CLASS="CT"> * Real-Time Workshop code generation for Simulink model &quot;twa_parallel.mdl&quot;.</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="5">    5   </A><SPAN CLASS="CT"> *</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version              : 1.7084</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version              : 1.7086</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="7">    7   </A><SPAN CLASS="CT"> * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * C source code generated on : Fri Aug 16 19:57:38 2024</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * C source code generated on : Sat Aug 17 14:29:34 2024</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="9">    9   </A><SPAN CLASS="CT"> *</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="10">   10   </A><SPAN CLASS="CT"> * Target selection: xpctargetert.tlc</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="11">   11   </A><SPAN CLASS="CT"> * Embedded hardware selection: Generic-&gt;32-bit x86 compatible</SPAN>
@@ -1581,16 +1581,16 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1559"> 1559   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:3308:1:107')"><FONT color="#117755"><I>&lt;S27&gt;:1:107</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1560"> 1560   </A>    <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1561"> 1561   </A>
-</SPAN><SPAN><A CLASS="LN" NAME="1562"> 1562   </A>    <SPAN CLASS="CT">/* MultiPortSwitch: '<A href="javascript:rtwHilite('twa_parallel:3181')"><FONT color="#117755"><I>&lt;S5&gt;/cntrl_switch</I></FONT></A>' incorporates:</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="1563"> 1563   </A><SPAN CLASS="CT">     *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;S5&gt;/cntrl_mode</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1562"> 1562   </A>    <SPAN CLASS="CT">/* MultiPortSwitch: '<A href="javascript:rtwHilite('twa_parallel:3181')"><FONT color="#117755"><I>&lt;S5&gt;/control_switch</I></FONT></A>' incorporates:</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="1563"> 1563   </A><SPAN CLASS="CT">     *  Constant: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;S5&gt;/mode</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1564"> 1564   </A><SPAN CLASS="CT">     */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="1565"> 1565   </A>    <SPAN CLASS="KW">if</SPAN> ((int32_T)<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.cntrl_mode_Value == 1) <B>{</B>
+</SPAN><SPAN><A CLASS="LN" NAME="1565"> 1565   </A>    <SPAN CLASS="KW">if</SPAN> ((int32_T)<A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.mode_Value == 1) <B>{</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1566"> 1566   </A>      <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="1567"> 1567   </A>        twa_parallel_B.cntrl_switch[uIdx] = twa_parallel_B.Switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="1567"> 1567   </A>        twa_parallel_B.control_switch[uIdx] = twa_parallel_B.Switch[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1568"> 1568   </A>      <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1569"> 1569   </A>    <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1570"> 1570   </A>      <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="1571"> 1571   </A>        twa_parallel_B.cntrl_switch[uIdx] = twa_parallel_B.qdes[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="1571"> 1571   </A>        twa_parallel_B.control_switch[uIdx] = twa_parallel_B.qdes[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1572"> 1572   </A>      <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1573"> 1573   </A>    <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1574"> 1574   </A>
@@ -1655,7 +1655,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1633"> 1633   </A>        twa_parallel_B.Switch_f[uIdx] = twa_parallel_B.UnitDelay2[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1634"> 1634   </A>      <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1635"> 1635   </A>
-</SPAN><SPAN><A CLASS="LN" NAME="1636"> 1636   </A>      eml_eta[uIdx] = twa_parallel_B.cntrl_switch[uIdx] -
+</SPAN><SPAN><A CLASS="LN" NAME="1636"> 1636   </A>      eml_eta[uIdx] = twa_parallel_B.control_switch[uIdx] -
 </SPAN><SPAN><A CLASS="LN" NAME="1637"> 1637   </A>        twa_parallel_B.Switch_f[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1638"> 1638   </A>    <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1639"> 1639   </A>
@@ -1769,10 +1769,10 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1747"> 1747   </A>            <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:41')"><FONT color="#117755"><I>&lt;S16&gt;:1:41</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1748"> 1748   </A>            <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:42')"><FONT color="#117755"><I>&lt;S16&gt;:1:42</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1749"> 1749   </A>            <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="1750"> 1750   </A>              twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="1750"> 1750   </A>              twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.control_switch[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1751"> 1751   </A>              twa_parallel_B.q_dot[uIdx] = 0.0;
 </SPAN><SPAN><A CLASS="LN" NAME="1752"> 1752   </A>              twa_parallel_B.q_dub_dot[uIdx] = 0.0;
-</SPAN><SPAN><A CLASS="LN" NAME="1753"> 1753   </A>              twa_parallel_B.q0n[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="1753"> 1753   </A>              twa_parallel_B.q0n[uIdx] = twa_parallel_B.control_switch[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1754"> 1754   </A>            <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1755"> 1755   </A>          <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="1756"> 1756   </A>        <B>}</B>
@@ -1785,7 +1785,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1763"> 1763   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="1764"> 1764   </A>        <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:50')"><FONT color="#117755"><I>&lt;S16&gt;:1:50</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1765"> 1765   </A>        <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="1766"> 1766   </A>          twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="1766"> 1766   </A>          twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.control_switch[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1767"> 1767   </A>          twa_parallel_B.q_dot[uIdx] = 0.0;
 </SPAN><SPAN><A CLASS="LN" NAME="1768"> 1768   </A>          twa_parallel_B.q_dub_dot[uIdx] = 0.0;
 </SPAN><SPAN><A CLASS="LN" NAME="1769"> 1769   </A>          twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch_f[uIdx];
@@ -1810,7 +1810,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1788"> 1788   </A>      <SPAN CLASS="CT">/*  as the enable becomes 1. */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1789"> 1789   </A>      <SPAN CLASS="CT">/* '<A href="javascript:rtwHilite('twa_parallel:2902:1:60')"><FONT color="#117755"><I>&lt;S16&gt;:1:60</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1790"> 1790   </A>      <SPAN CLASS="KW">for</SPAN> (uIdx = 0; uIdx &lt; 6; uIdx++) <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="1791"> 1791   </A>        twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+</SPAN><SPAN><A CLASS="LN" NAME="1791"> 1791   </A>        twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.control_switch[uIdx];
 </SPAN><SPAN><A CLASS="LN" NAME="1792"> 1792   </A>        twa_parallel_B.q_dot[uIdx] = 0.0;
 </SPAN><SPAN><A CLASS="LN" NAME="1793"> 1793   </A>        twa_parallel_B.q_dub_dot[uIdx] = 0.0;
 </SPAN><SPAN><A CLASS="LN" NAME="1794"> 1794   </A>        twa_parallel_B.q0n[uIdx] =
@@ -1987,7 +1987,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="1965"> 1965   </A>        <A HREF="twa_parallel_data_c.html#var_twa_parallel_P" ONCLICK="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_twa_parallel_P');" TARGET="rtwreport_document_frame"><FONT COLOR="#1122aa">twa_parallel_P</FONT></A>.q_des_usr_Value[k];
 </SPAN><SPAN><A CLASS="LN" NAME="1966"> 1966   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="1967"> 1967   </A>      <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:3369')"><FONT color="#117755"><I>&lt;S5&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="1968"> 1968   </A>      twa_parallel_DWork.UnitDelay1_DSTATE[k] = twa_parallel_B.cntrl_switch[k];
+</SPAN><SPAN><A CLASS="LN" NAME="1968"> 1968   </A>      twa_parallel_DWork.UnitDelay1_DSTATE[k] = twa_parallel_B.control_switch[k];
 </SPAN><SPAN><A CLASS="LN" NAME="1969"> 1969   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="1970"> 1970   </A>      <SPAN CLASS="CT">/* Update for UnitDelay: '<A href="javascript:rtwHilite('twa_parallel:3315')"><FONT color="#117755"><I>&lt;S25&gt;/Unit Delay1</I></FONT></A>' */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="1971"> 1971   </A>      twa_parallel_DWork.UnitDelay1_DSTATE_b[k] = twa_parallel_B.qdes[k];
@@ -2178,10 +2178,10 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="2156"> 2156   </A>  <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="2157"> 2157   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="2158"> 2158   </A>  <SPAN CLASS="CT">/* external mode info */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="2159"> 2159   </A>  twa_parallel_rtM-&gt;Sizes.checksums[0] = (651560163U);
-</SPAN><SPAN><A CLASS="LN" NAME="2160"> 2160   </A>  twa_parallel_rtM-&gt;Sizes.checksums[1] = (91343873U);
-</SPAN><SPAN><A CLASS="LN" NAME="2161"> 2161   </A>  twa_parallel_rtM-&gt;Sizes.checksums[2] = (1462715790U);
-</SPAN><SPAN><A CLASS="LN" NAME="2162"> 2162   </A>  twa_parallel_rtM-&gt;Sizes.checksums[3] = (26570083U);
+</SPAN><SPAN><A CLASS="LN" NAME="2159"> 2159   </A>  twa_parallel_rtM-&gt;Sizes.checksums[0] = (1400131167U);
+</SPAN><SPAN><A CLASS="LN" NAME="2160"> 2160   </A>  twa_parallel_rtM-&gt;Sizes.checksums[1] = (301452552U);
+</SPAN><SPAN><A CLASS="LN" NAME="2161"> 2161   </A>  twa_parallel_rtM-&gt;Sizes.checksums[2] = (1790542355U);
+</SPAN><SPAN><A CLASS="LN" NAME="2162"> 2162   </A>  twa_parallel_rtM-&gt;Sizes.checksums[3] = (2062943604U);
 </SPAN><SPAN><A CLASS="LN" NAME="2163"> 2163   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="2164"> 2164   </A>  <B>{</B>
 </SPAN><SPAN><A CLASS="LN" NAME="2165"> 2165   </A>    <SPAN CLASS="DT">static</SPAN> <SPAN CLASS="DT">const</SPAN> sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -2261,7 +2261,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="2239"> 2239   </A>    <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="2240"> 2240   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="2241"> 2241   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="2242"> 2242   </A>      twa_parallel_B.cntrl_switch[i] = 0.0;
+</SPAN><SPAN><A CLASS="LN" NAME="2242"> 2242   </A>      twa_parallel_B.control_switch[i] = 0.0;
 </SPAN><SPAN><A CLASS="LN" NAME="2243"> 2243   </A>    <B>}</B>
 </SPAN><SPAN><A CLASS="LN" NAME="2244"> 2244   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="2245"> 2245   </A>    <SPAN CLASS="KW">for</SPAN> (i = 0; i &lt; 6; i++) <B>{</B>
@@ -2795,29 +2795,29 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="2773"> 2773   </A>      <SPAN CLASS="KW">if</SPAN> ((i = rl32eDefScope(3,2)) != 0) <B>{</B>
 </SPAN><SPAN><A CLASS="LN" NAME="2774"> 2774   </A>        printf(<FONT COLOR="#1122ff">&quot;Error creating scope 3\n&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2775"> 2775   </A>      <B>}</B> <SPAN CLASS="KW">else</SPAN> <B>{</B>
-</SPAN><SPAN><A CLASS="LN" NAME="2776"> 2776   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s1&quot;</FONT>));
-</SPAN><SPAN><A CLASS="LN" NAME="2777"> 2777   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s2&quot;</FONT>));
-</SPAN><SPAN><A CLASS="LN" NAME="2778"> 2778   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s3&quot;</FONT>));
-</SPAN><SPAN><A CLASS="LN" NAME="2779"> 2779   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s4&quot;</FONT>));
-</SPAN><SPAN><A CLASS="LN" NAME="2780"> 2780   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s5&quot;</FONT>));
-</SPAN><SPAN><A CLASS="LN" NAME="2781"> 2781   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s6&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2776"> 2776   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2777"> 2777   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s2&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2778"> 2778   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s3&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2779"> 2779   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s4&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2780"> 2780   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s5&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2781"> 2781   </A>        rl32eAddSignal(3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s6&quot;</FONT>));
 </SPAN><SPAN><A CLASS="LN" NAME="2782"> 2782   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-</SPAN><SPAN><A CLASS="LN" NAME="2783"> 2783   </A>          <FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s1&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q1_des [cnt] %8.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="2783"> 2783   </A>          <FONT COLOR="#1122ff">&quot;control_mode/control_switch/s1&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q1_des [cnt] %8.4f&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2784"> 2784   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-</SPAN><SPAN><A CLASS="LN" NAME="2785"> 2785   </A>          <FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s2&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q2_des [cnt] %8.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="2785"> 2785   </A>          <FONT COLOR="#1122ff">&quot;control_mode/control_switch/s2&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q2_des [cnt] %8.4f&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2786"> 2786   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-</SPAN><SPAN><A CLASS="LN" NAME="2787"> 2787   </A>          <FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s3&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q3_des [cnt] %8.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="2787"> 2787   </A>          <FONT COLOR="#1122ff">&quot;control_mode/control_switch/s3&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q3_des [cnt] %8.4f&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2788"> 2788   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-</SPAN><SPAN><A CLASS="LN" NAME="2789"> 2789   </A>          <FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s4&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q4_des [cnt] %8.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="2789"> 2789   </A>          <FONT COLOR="#1122ff">&quot;control_mode/control_switch/s4&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q4_des [cnt] %8.4f&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2790"> 2790   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-</SPAN><SPAN><A CLASS="LN" NAME="2791"> 2791   </A>          <FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s5&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q5_des [cnt] %8.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="2791"> 2791   </A>          <FONT COLOR="#1122ff">&quot;control_mode/control_switch/s5&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q5_des [cnt] %8.4f&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2792"> 2792   </A>        rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-</SPAN><SPAN><A CLASS="LN" NAME="2793"> 2793   </A>          <FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s6&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q6_des [cnt] %8.4f&quot;</FONT>);
+</SPAN><SPAN><A CLASS="LN" NAME="2793"> 2793   </A>          <FONT COLOR="#1122ff">&quot;control_mode/control_switch/s6&quot;</FONT>),<FONT COLOR="#1122ff">&quot;q6_des [cnt] %8.4f&quot;</FONT>);
 </SPAN><SPAN><A CLASS="LN" NAME="2794"> 2794   </A>        rl32eSetScope(3, 4, 25);
 </SPAN><SPAN><A CLASS="LN" NAME="2795"> 2795   </A>        rl32eSetScope(3, 40, 0);
 </SPAN><SPAN><A CLASS="LN" NAME="2796"> 2796   </A>        rl32eSetScope(3, 7, 1);
 </SPAN><SPAN><A CLASS="LN" NAME="2797"> 2797   </A>        rl32eSetScope(3, 0, 0);
-</SPAN><SPAN><A CLASS="LN" NAME="2798"> 2798   </A>        rl32eSetScope(3, 3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/cntrl_switch/s1&quot;</FONT>));
+</SPAN><SPAN><A CLASS="LN" NAME="2798"> 2798   </A>        rl32eSetScope(3, 3, rl32eGetSignalNo(<FONT COLOR="#1122ff">&quot;control_mode/control_switch/s1&quot;</FONT>));
 </SPAN><SPAN><A CLASS="LN" NAME="2799"> 2799   </A>        rl32eSetScope(3, 1, 0.0);
 </SPAN><SPAN><A CLASS="LN" NAME="2800"> 2800   </A>        rl32eSetScope(3, 2, 0);
 </SPAN><SPAN><A CLASS="LN" NAME="2801"> 2801   </A>        rl32eSetScope(3, 10, 0);

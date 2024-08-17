@@ -17,7 +17,7 @@ for i = 1:length(enc_vec)
 end
 
 % get current q_des
-id = tg.getparamid('q_des','Value');
+id = tg.getparamid('control_mode/q_des_usr','Value');
 q_des = tg.getparam(id);
 
 % set the specified joint values to zero 

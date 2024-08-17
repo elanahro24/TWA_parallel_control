@@ -4,7 +4,7 @@
 % For joint space control set to 1, for task space set to 2.
 % default is joint space control i.e. = 1
 function getcontrolmode(tg)
-    id = tg.getparamid('cntrl_mode','Value');
+    id = tg.getparamid('control_mode/mode','Value');
     mode = tg.getparam(id);
     
     switch mode

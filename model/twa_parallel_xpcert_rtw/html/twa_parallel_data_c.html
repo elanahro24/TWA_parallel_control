@@ -25,11 +25,11 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="3">    3   </A><SPAN CLASS="CT"> *</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="4">    4   </A><SPAN CLASS="CT"> * Real-Time Workshop code generated for Simulink model twa_parallel.</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="5">    5   </A><SPAN CLASS="CT"> *</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version                        : 1.7084</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="6">    6   </A><SPAN CLASS="CT"> * Model version                        : 1.7086</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="7">    7   </A><SPAN CLASS="CT"> * Real-Time Workshop file version      : 7.5  (R2010a)  25-Jan-2010</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * Real-Time Workshop file generated on : Fri Aug 16 19:57:37 2024</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="8">    8   </A><SPAN CLASS="CT"> * Real-Time Workshop file generated on : Sat Aug 17 14:29:34 2024</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="9">    9   </A><SPAN CLASS="CT"> * TLC version                          : 7.5 (Jan 19 2010)</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="10">   10   </A><SPAN CLASS="CT"> * C/C++ source code generated on       : Fri Aug 16 19:57:38 2024</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="10">   10   </A><SPAN CLASS="CT"> * C/C++ source code generated on       : Sat Aug 17 14:29:34 2024</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="11">   11   </A><SPAN CLASS="CT"> *</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="12">   12   </A><SPAN CLASS="CT"> * Target selection: xpctargetert.tlc</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="13">   13   </A><SPAN CLASS="CT"> * Embedded hardware selection: Generic-&gt;32-bit x86 compatible</SPAN>
@@ -159,7 +159,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="137">  137   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3090')"><FONT color="#117755"><I>&lt;S18&gt;/Gain</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="138">  138   </A><SPAN CLASS="CT">                                        */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="139">  139   </A>  1.0,                                 <SPAN CLASS="CT">/* Expression: 1</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="140">  140   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;S5&gt;/cntrl_mode</I></FONT></A>'</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="140">  140   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3113')"><FONT color="#117755"><I>&lt;S5&gt;/mode</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="141">  141   </A><SPAN CLASS="CT">                                        */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="142">  142   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="143">  143   </A>  <SPAN CLASS="CT">/*  Expression: zeros(6,1)</SPAN>
@@ -191,7 +191,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="169">  169   </A>  <SPAN CLASS="CT">/*  Expression: res_rate_param</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="170">  170   </A><SPAN CLASS="CT">   * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:3356')"><FONT color="#117755"><I>&lt;S25&gt;/res_rate_param</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="171">  171   </A><SPAN CLASS="CT">   */</SPAN>
-</SPAN><SPAN><A CLASS="LN" NAME="172">  172   </A>  <B>{</B> 1.0, 0.001, 500.0, 1.0, 2.0, 0.05, 3.0, 3.0, 0.005, 0.0001, 0.5, 0.01, 0.01,
+</SPAN><SPAN><A CLASS="LN" NAME="172">  172   </A>  <B>{</B> 0.5, 0.001, 1000.0, 1.0, 2.0, 0.05, 3.0, 3.0, 0.005, 0.0001, 0.5, 0.01, 0.01,
 </SPAN><SPAN><A CLASS="LN" NAME="173">  173   </A>    0.001, 1.5, 1.5 <B>}</B>,
 </SPAN><SPAN><A CLASS="LN" NAME="174">  174   </A>
 </SPAN><SPAN><A CLASS="LN" NAME="175">  175   </A>  <SPAN CLASS="CT">/*  Expression: p_in_m</SPAN>
@@ -248,7 +248,7 @@ function rtwHilite(aBlock,aSsid) {
 </SPAN><SPAN><A CLASS="LN" NAME="226">  226   </A><SPAN CLASS="CT">   * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:2910')"><FONT color="#117755"><I>&lt;S3&gt;/Unit Delay2</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="227">  227   </A><SPAN CLASS="CT">   */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="228">  228   </A>  <B>{</B> 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 <B>}</B>,
-</SPAN><SPAN><A CLASS="LN" NAME="229">  229   </A>  1.0,                                 <SPAN CLASS="CT">/* Expression: 1</SPAN>
+</SPAN><SPAN><A CLASS="LN" NAME="229">  229   </A>  0.0,                                 <SPAN CLASS="CT">/* Expression: 0</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="230">  230   </A><SPAN CLASS="CT">                                        * Referenced by: '<A href="javascript:rtwHilite('twa_parallel:2914')"><FONT color="#117755"><I>&lt;S3&gt;/quintic_enable</I></FONT></A>'</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="231">  231   </A><SPAN CLASS="CT">                                        */</SPAN>
 </SPAN><SPAN><A CLASS="LN" NAME="232">  232   </A>

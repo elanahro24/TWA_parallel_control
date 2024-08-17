@@ -3,9 +3,9 @@
  *
  * Real-Time Workshop code generation for Simulink model "twa_parallel.mdl".
  *
- * Model version              : 1.7084
+ * Model version              : 1.7086
  * Real-Time Workshop version : 7.5  (R2010a)  25-Jan-2010
- * C source code generated on : Fri Aug 16 19:57:38 2024
+ * C source code generated on : Sat Aug 17 14:29:34 2024
  *
  * Target selection: xpctargetert.tlc
  * Embedded hardware selection: Generic->32-bit x86 compatible
@@ -1559,16 +1559,16 @@ void twa_parallel_output(int_T tid)
       /* '<S27>:1:107' */
     }
 
-    /* MultiPortSwitch: '<S5>/cntrl_switch' incorporates:
-     *  Constant: '<S5>/cntrl_mode'
+    /* MultiPortSwitch: '<S5>/control_switch' incorporates:
+     *  Constant: '<S5>/mode'
      */
-    if ((int32_T)twa_parallel_P.cntrl_mode_Value == 1) {
+    if ((int32_T)twa_parallel_P.mode_Value == 1) {
       for (uIdx = 0; uIdx < 6; uIdx++) {
-        twa_parallel_B.cntrl_switch[uIdx] = twa_parallel_B.Switch[uIdx];
+        twa_parallel_B.control_switch[uIdx] = twa_parallel_B.Switch[uIdx];
       }
     } else {
       for (uIdx = 0; uIdx < 6; uIdx++) {
-        twa_parallel_B.cntrl_switch[uIdx] = twa_parallel_B.qdes[uIdx];
+        twa_parallel_B.control_switch[uIdx] = twa_parallel_B.qdes[uIdx];
       }
     }
 
@@ -1633,7 +1633,7 @@ void twa_parallel_output(int_T tid)
         twa_parallel_B.Switch_f[uIdx] = twa_parallel_B.UnitDelay2[uIdx];
       }
 
-      eml_eta[uIdx] = twa_parallel_B.cntrl_switch[uIdx] -
+      eml_eta[uIdx] = twa_parallel_B.control_switch[uIdx] -
         twa_parallel_B.Switch_f[uIdx];
     }
 
@@ -1747,10 +1747,10 @@ void twa_parallel_output(int_T tid)
             /* '<S16>:1:41' */
             /* '<S16>:1:42' */
             for (uIdx = 0; uIdx < 6; uIdx++) {
-              twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+              twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.control_switch[uIdx];
               twa_parallel_B.q_dot[uIdx] = 0.0;
               twa_parallel_B.q_dub_dot[uIdx] = 0.0;
-              twa_parallel_B.q0n[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+              twa_parallel_B.q0n[uIdx] = twa_parallel_B.control_switch[uIdx];
             }
           }
         }
@@ -1763,7 +1763,7 @@ void twa_parallel_output(int_T tid)
 
         /* '<S16>:1:50' */
         for (uIdx = 0; uIdx < 6; uIdx++) {
-          twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+          twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.control_switch[uIdx];
           twa_parallel_B.q_dot[uIdx] = 0.0;
           twa_parallel_B.q_dub_dot[uIdx] = 0.0;
           twa_parallel_B.q0n[uIdx] = twa_parallel_B.Switch_f[uIdx];
@@ -1788,7 +1788,7 @@ void twa_parallel_output(int_T tid)
       /*  as the enable becomes 1. */
       /* '<S16>:1:60' */
       for (uIdx = 0; uIdx < 6; uIdx++) {
-        twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.cntrl_switch[uIdx];
+        twa_parallel_B.q_cmd[uIdx] = twa_parallel_B.control_switch[uIdx];
         twa_parallel_B.q_dot[uIdx] = 0.0;
         twa_parallel_B.q_dub_dot[uIdx] = 0.0;
         twa_parallel_B.q0n[uIdx] =
@@ -1965,7 +1965,7 @@ void twa_parallel_update(int_T tid)
         twa_parallel_P.q_des_usr_Value[k];
 
       /* Update for UnitDelay: '<S5>/Unit Delay1' */
-      twa_parallel_DWork.UnitDelay1_DSTATE[k] = twa_parallel_B.cntrl_switch[k];
+      twa_parallel_DWork.UnitDelay1_DSTATE[k] = twa_parallel_B.control_switch[k];
 
       /* Update for UnitDelay: '<S25>/Unit Delay1' */
       twa_parallel_DWork.UnitDelay1_DSTATE_b[k] = twa_parallel_B.qdes[k];
@@ -2156,10 +2156,10 @@ void twa_parallel_initialize(boolean_T firstTime)
   }
 
   /* external mode info */
-  twa_parallel_rtM->Sizes.checksums[0] = (651560163U);
-  twa_parallel_rtM->Sizes.checksums[1] = (91343873U);
-  twa_parallel_rtM->Sizes.checksums[2] = (1462715790U);
-  twa_parallel_rtM->Sizes.checksums[3] = (26570083U);
+  twa_parallel_rtM->Sizes.checksums[0] = (1400131167U);
+  twa_parallel_rtM->Sizes.checksums[1] = (301452552U);
+  twa_parallel_rtM->Sizes.checksums[2] = (1790542355U);
+  twa_parallel_rtM->Sizes.checksums[3] = (2062943604U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -2239,7 +2239,7 @@ void twa_parallel_initialize(boolean_T firstTime)
     }
 
     for (i = 0; i < 6; i++) {
-      twa_parallel_B.cntrl_switch[i] = 0.0;
+      twa_parallel_B.control_switch[i] = 0.0;
     }
 
     for (i = 0; i < 6; i++) {
@@ -2773,29 +2773,29 @@ void MdlStart(void)
       if ((i = rl32eDefScope(3,2)) != 0) {
         printf("Error creating scope 3\n");
       } else {
-        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/cntrl_switch/s1"));
-        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/cntrl_switch/s2"));
-        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/cntrl_switch/s3"));
-        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/cntrl_switch/s4"));
-        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/cntrl_switch/s5"));
-        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/cntrl_switch/s6"));
+        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/control_switch/s1"));
+        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/control_switch/s2"));
+        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/control_switch/s3"));
+        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/control_switch/s4"));
+        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/control_switch/s5"));
+        rl32eAddSignal(3, rl32eGetSignalNo("control_mode/control_switch/s6"));
         rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-          "control_mode/cntrl_switch/s1"),"q1_des [cnt] %8.4f");
+          "control_mode/control_switch/s1"),"q1_des [cnt] %8.4f");
         rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-          "control_mode/cntrl_switch/s2"),"q2_des [cnt] %8.4f");
+          "control_mode/control_switch/s2"),"q2_des [cnt] %8.4f");
         rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-          "control_mode/cntrl_switch/s3"),"q3_des [cnt] %8.4f");
+          "control_mode/control_switch/s3"),"q3_des [cnt] %8.4f");
         rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-          "control_mode/cntrl_switch/s4"),"q4_des [cnt] %8.4f");
+          "control_mode/control_switch/s4"),"q4_des [cnt] %8.4f");
         rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-          "control_mode/cntrl_switch/s5"),"q5_des [cnt] %8.4f");
+          "control_mode/control_switch/s5"),"q5_des [cnt] %8.4f");
         rl32eSetTargetScopeSigFt(3,rl32eGetSignalNo(
-          "control_mode/cntrl_switch/s6"),"q6_des [cnt] %8.4f");
+          "control_mode/control_switch/s6"),"q6_des [cnt] %8.4f");
         rl32eSetScope(3, 4, 25);
         rl32eSetScope(3, 40, 0);
         rl32eSetScope(3, 7, 1);
         rl32eSetScope(3, 0, 0);
-        rl32eSetScope(3, 3, rl32eGetSignalNo("control_mode/cntrl_switch/s1"));
+        rl32eSetScope(3, 3, rl32eGetSignalNo("control_mode/control_switch/s1"));
         rl32eSetScope(3, 1, 0.0);
         rl32eSetScope(3, 2, 0);
         rl32eSetScope(3, 10, 0);
