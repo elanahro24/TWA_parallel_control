@@ -16,7 +16,7 @@ dir = eye(3);
 helix_rad = wire_rad * 2;
 
 % get current set point
-id = tg.getparamid('q_des','Value');
+id = tg.getparamid('control_mode/q_des_usr','Value');
 q_cur = tg.getparam(id);
 
 qmudes = q_cur(4:6,1);

@@ -31,6 +31,9 @@ velmex_pitch = 1.27; % [mm/turn]
 % [p_epsilon; w_epsilon; vmax; vmin; wmax; wmin; p_lambda; w_lambda]
 res_rate_param = [1, 0.001, 500, 1, 2, 0.05, 3, 3]';
 
+% a second column for micro actuator resolved rates
+res_rate_param = [res_rate_param, [0.005, 0.0001, 0.5, 0.01, 0.01, 0.001, 1.5, 1.5]'];
+
 
 % switch for using twa in task space when manually choosing macro/micro
 % motion. 0 = no; 1 = yes
