@@ -1,2 +1,4 @@
 *.asv
 *.autosave
+model/slprj/*
+model/twa_parallel_xpcert_rtw/*
