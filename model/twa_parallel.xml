@@ -1137,18 +1137,24 @@ Operator</sigName>
 			<signal>
 				<sigName>get_jacobian/p1</sigName>
 				<xpcsigName>control_mode/task_space/get_jacobian/p1</xpcsigName>
-				<sigWidth>18</sigWidth>
-				<sigDim>[6, 3]</sigDim>
+				<sigWidth>9</sigWidth>
+				<sigDim>[3, 3]</sigDim>
 			</signal>
 			<signal>
 				<sigName>get_jacobian/p2</sigName>
 				<xpcsigName>control_mode/task_space/get_jacobian/p2</xpcsigName>
-				<sigWidth>3</sigWidth>
-				<sigDim>[3, 1]</sigDim>
+				<sigWidth>18</sigWidth>
+				<sigDim>[3, 6]</sigDim>
 			</signal>
 			<signal>
 				<sigName>get_jacobian/p3</sigName>
 				<xpcsigName>control_mode/task_space/get_jacobian/p3</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>get_jacobian/p4</sigName>
+				<xpcsigName>control_mode/task_space/get_jacobian/p4</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
@@ -1167,12 +1173,6 @@ Operator</sigName>
 			<signal>
 				<sigName>twa_gamma</sigName>
 				<xpcsigName>control_mode/task_space/twa_gamma</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>use_twa</sigName>
-				<xpcsigName>control_mode/task_space/use_twa</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>

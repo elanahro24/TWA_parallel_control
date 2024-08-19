@@ -29,10 +29,13 @@ velmex_pitch = 1.27; % [mm/turn]
 % resolved rates parameters struct
 % elements = v, w, epsilon, lambda v: 
 % [p_epsilon; w_epsilon; vmax; vmin; wmax; wmin; p_lambda; w_lambda]
-res_rate_param = [1, 0.001, 1000, 1, 2, 0.05, 3, 3]';
+
+% 1/3 rule for macro motion with w_eps = 0.035 (~2 deg) give wmax = 11.667
+res_rate_param = [1, 0.035, 1000, 1, 2, 0.05, 3, 3]';
 
 % a second column for micro actuator resolved rates
-res_rate_param = [res_rate_param, [0.005, 0.0001, 0.5, 0.01, 0.01, 0.001, 1.5, 1.5]'];
+res_rate_param = [res_rate_param,...
+                       [0.005, 0.0087, 1, 0.01, 1.45, 0.001, 1.5, 1.5]'];
 
 
 % switch for using twa in task space when manually choosing macro/micro

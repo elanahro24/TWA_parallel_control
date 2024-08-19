@@ -552,71 +552,71 @@ bio(55).size=[];
 
 
 bio(56).blkName='control_mode/task_space/get_jacobian/p1';
-bio(56).sigName='full_jac';
+bio(56).sigName='idk_jac';
 bio(56).portIdx=0;
-bio(56).dim=[6,3];
-bio(56).sigWidth=18;
-bio(56).sigAddress='&twa_parallel_B.full_jac[0]';
+bio(56).dim=[3,3];
+bio(56).sigWidth=9;
+bio(56).sigAddress='&twa_parallel_B.idk_jac[0]';
 bio(56).ndims=2;
 bio(56).size=[];
 
 
 bio(57).blkName='control_mode/task_space/get_jacobian/p2';
-bio(57).sigName='xcur';
+bio(57).sigName='iik_jac';
 bio(57).portIdx=1;
-bio(57).dim=[3,1];
-bio(57).sigWidth=3;
-bio(57).sigAddress='&twa_parallel_B.xcur[0]';
+bio(57).dim=[3,6];
+bio(57).sigWidth=18;
+bio(57).sigAddress='&twa_parallel_B.iik_jac[0]';
 bio(57).ndims=2;
 bio(57).size=[];
 
 
 bio(58).blkName='control_mode/task_space/get_jacobian/p3';
-bio(58).sigName='eerotcur';
+bio(58).sigName='xcur';
 bio(58).portIdx=2;
-bio(58).dim=[1,1];
-bio(58).sigWidth=1;
-bio(58).sigAddress='&twa_parallel_B.eerotcur';
+bio(58).dim=[3,1];
+bio(58).sigWidth=3;
+bio(58).sigAddress='&twa_parallel_B.xcur[0]';
 bio(58).ndims=2;
 bio(58).size=[];
 
 
-bio(59).blkName='control_mode/task_space/t_in_w';
-bio(59).sigName='';
-bio(59).portIdx=0;
-bio(59).dim=[3,3];
-bio(59).sigWidth=9;
-bio(59).sigAddress='&twa_parallel_B.t_in_w[0]';
+bio(59).blkName='control_mode/task_space/get_jacobian/p4';
+bio(59).sigName='eerotcur';
+bio(59).portIdx=3;
+bio(59).dim=[1,1];
+bio(59).sigWidth=1;
+bio(59).sigAddress='&twa_parallel_B.eerotcur';
 bio(59).ndims=2;
 bio(59).size=[];
 
 
-bio(60).blkName='control_mode/task_space/twa_flange_offset';
+bio(60).blkName='control_mode/task_space/t_in_w';
 bio(60).sigName='';
 bio(60).portIdx=0;
-bio(60).dim=[1,1];
-bio(60).sigWidth=1;
-bio(60).sigAddress='&twa_parallel_B.twa_flange_offset';
+bio(60).dim=[3,3];
+bio(60).sigWidth=9;
+bio(60).sigAddress='&twa_parallel_B.t_in_w[0]';
 bio(60).ndims=2;
 bio(60).size=[];
 
 
-bio(61).blkName='control_mode/task_space/twa_gamma';
+bio(61).blkName='control_mode/task_space/twa_flange_offset';
 bio(61).sigName='';
 bio(61).portIdx=0;
 bio(61).dim=[1,1];
 bio(61).sigWidth=1;
-bio(61).sigAddress='&twa_parallel_B.twa_gamma';
+bio(61).sigAddress='&twa_parallel_B.twa_flange_offset';
 bio(61).ndims=2;
 bio(61).size=[];
 
 
-bio(62).blkName='control_mode/task_space/use_twa';
+bio(62).blkName='control_mode/task_space/twa_gamma';
 bio(62).sigName='';
 bio(62).portIdx=0;
 bio(62).dim=[1,1];
 bio(62).sigWidth=1;
-bio(62).sigAddress='&twa_parallel_B.use_twa';
+bio(62).sigAddress='&twa_parallel_B.twa_gamma';
 bio(62).ndims=2;
 bio(62).size=[];
 
