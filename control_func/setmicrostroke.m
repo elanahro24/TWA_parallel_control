@@ -29,5 +29,5 @@ for i=1:3
 end
 
 q_cur(4:6) = (dir*qmudes)/(2*pi);
-tg.setparam(id,q_cur);
+tg.setqdes(q_cur);
 end

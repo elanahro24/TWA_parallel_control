@@ -162,6 +162,40 @@
 		<SubSystem>
 			<Name>Counts To Turns4</Name>
 			<xPCName>twa_parallel/Encoders/Counts To Turns4</xPCName>
+			<SubSystem>
+				<Name>gettwalen</Name>
+				<xPCName>twa_parallel/Encoders/Counts To Turns4/gettwalen</xPCName>
+			</SubSystem>
+			<block>
+				<blkName>helix_rad</blkName>
+				<xpcblkName>Encoders/Counts To Turns4/helix_rad</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns4/helix_rad</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>twa_len</blkName>
+				<xpcblkName>Encoders/Counts To Turns4/twa_len</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns4/twa_len</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>wire_delta</blkName>
+				<xpcblkName>Encoders/Counts To Turns4/wire_delta</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns4/wire_delta</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<block>
 				<blkName>enc_res</blkName>
 				<xpcblkName>Encoders/Counts To Turns4/enc_res</xpcblkName>
@@ -183,6 +217,12 @@
 				</parameter>
 			</block>
 			<signal>
+				<sigName>gettwalen</sigName>
+				<xpcsigName>Encoders/Counts To Turns4/gettwalen</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
 				<sigName>enc_res</sigName>
 				<xpcsigName>Encoders/Counts To Turns4/enc_res</xpcsigName>
 				<sigWidth>1</sigWidth>
@@ -198,6 +238,40 @@
 		<SubSystem>
 			<Name>Counts To Turns5</Name>
 			<xPCName>twa_parallel/Encoders/Counts To Turns5</xPCName>
+			<SubSystem>
+				<Name>gettwalen</Name>
+				<xPCName>twa_parallel/Encoders/Counts To Turns5/gettwalen</xPCName>
+			</SubSystem>
+			<block>
+				<blkName>helix_rad</blkName>
+				<xpcblkName>Encoders/Counts To Turns5/helix_rad</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns5/helix_rad</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>twa_len</blkName>
+				<xpcblkName>Encoders/Counts To Turns5/twa_len</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns5/twa_len</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>wire_delta</blkName>
+				<xpcblkName>Encoders/Counts To Turns5/wire_delta</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns5/wire_delta</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<block>
 				<blkName>enc_res</blkName>
 				<xpcblkName>Encoders/Counts To Turns5/enc_res</xpcblkName>
@@ -219,6 +293,12 @@
 				</parameter>
 			</block>
 			<signal>
+				<sigName>gettwalen</sigName>
+				<xpcsigName>Encoders/Counts To Turns5/gettwalen</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
 				<sigName>enc_res</sigName>
 				<xpcsigName>Encoders/Counts To Turns5/enc_res</xpcsigName>
 				<sigWidth>1</sigWidth>
@@ -234,6 +314,40 @@
 		<SubSystem>
 			<Name>Counts To Turns6</Name>
 			<xPCName>twa_parallel/Encoders/Counts To Turns6</xPCName>
+			<SubSystem>
+				<Name>gettwalen</Name>
+				<xPCName>twa_parallel/Encoders/Counts To Turns6/gettwalen</xPCName>
+			</SubSystem>
+			<block>
+				<blkName>helix_rad</blkName>
+				<xpcblkName>Encoders/Counts To Turns6/helix_rad</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns6/helix_rad</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>twa_len</blkName>
+				<xpcblkName>Encoders/Counts To Turns6/twa_len</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns6/twa_len</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>wire_delta</blkName>
+				<xpcblkName>Encoders/Counts To Turns6/wire_delta</xpcblkName>
+				<SLblockPath>twa_parallel/Encoders/Counts To Turns6/wire_delta</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
 			<block>
 				<blkName>enc_res</blkName>
 				<xpcblkName>Encoders/Counts To Turns6/enc_res</xpcblkName>
@@ -254,6 +368,12 @@
 					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
+			<signal>
+				<sigName>gettwalen</sigName>
+				<xpcsigName>Encoders/Counts To Turns6/gettwalen</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
 			<signal>
 				<sigName>enc_res</sigName>
 				<xpcsigName>Encoders/Counts To Turns6/enc_res</xpcsigName>
@@ -499,20 +619,62 @@
 			<signal>
 				<sigName>Diff</sigName>
 				<xpcsigName>PID Controller/Discrete Derivative/Diff</xpcsigName>
-				<sigWidth>6</sigWidth>
-				<sigDim>[6, 1]</sigDim>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>UD</sigName>
 				<xpcsigName>PID Controller/Discrete Derivative/UD</xpcsigName>
-				<sigWidth>6</sigWidth>
-				<sigDim>[6, 1]</sigDim>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>TSamp</sigName>
 				<xpcsigName>PID Controller/Discrete Derivative/TSamp</xpcsigName>
-				<sigWidth>6</sigWidth>
-				<sigDim>[6, 1]</sigDim>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+		</SubSystem>
+		<SubSystem>
+			<Name>Discrete Derivative1</Name>
+			<xPCName>twa_parallel/PID Controller/Discrete Derivative1</xPCName>
+			<block>
+				<blkName>UD</blkName>
+				<xpcblkName>PID Controller/Discrete Derivative1/UD</xpcblkName>
+				<SLblockPath>twa_parallel/PID Controller/Discrete Derivative1/UD</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>TSamp</blkName>
+				<xpcblkName>PID Controller/Discrete Derivative1/TSamp</xpcblkName>
+				<SLblockPath>twa_parallel/PID Controller/Discrete Derivative1/TSamp</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>WtEt</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<signal>
+				<sigName>Diff</sigName>
+				<xpcsigName>PID Controller/Discrete Derivative1/Diff</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>UD</sigName>
+				<xpcsigName>PID Controller/Discrete Derivative1/UD</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>TSamp</sigName>
+				<xpcsigName>PID Controller/Discrete Derivative1/TSamp</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
 			</signal>
 		</SubSystem>
 		<block>
@@ -522,7 +684,17 @@
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
-				<dim>[6, 1]</dim>
+				<dim>[3, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>manual_current_mu</blkName>
+			<xpcblkName>PID Controller/manual_current_mu</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/manual_current_mu</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
 		<block>
@@ -536,9 +708,19 @@
 			</parameter>
 		</block>
 		<block>
-			<blkName>reset_integrator</blkName>
-			<xpcblkName>PID Controller/reset_integrator</xpcblkName>
-			<SLblockPath>twa_parallel/PID Controller/reset_integrator</SLblockPath>
+			<blkName>reset_integ</blkName>
+			<xpcblkName>PID Controller/reset_integ</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/reset_integ</SLblockPath>
+			<isSrc>[1 0 1]</isSrc>
+			<parameter>
+				<paramName>Value</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>reset_mu_integ</blkName>
+			<xpcblkName>PID Controller/reset_mu_integ</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/reset_mu_integ</SLblockPath>
 			<isSrc>[1 0 1]</isSrc>
 			<parameter>
 				<paramName>Value</paramName>
@@ -552,7 +734,17 @@
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>Gain</paramName>
-				<dim>[6, 1]</dim>
+				<dim>[3, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Kd_mu</blkName>
+			<xpcblkName>PID Controller/Kd_mu</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Kd_mu</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
 		<block>
@@ -562,7 +754,17 @@
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>Gain</paramName>
-				<dim>[6, 1]</dim>
+				<dim>[3, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Ki_mu</blkName>
+			<xpcblkName>PID Controller/Ki_mu</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Ki_mu</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
 		<block>
@@ -572,7 +774,17 @@
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>Gain</paramName>
-				<dim>[6, 1]</dim>
+				<dim>[3, 1]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Kp_mu</blkName>
+			<xpcblkName>PID Controller/Kp_mu</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Kp_mu</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>Gain</paramName>
+				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
 		<block>
@@ -586,17 +798,41 @@
 			</parameter>
 		</block>
 		<block>
+			<blkName>Integrator1</blkName>
+			<xpcblkName>PID Controller/Integrator1</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Integrator1</SLblockPath>
+			<isSrc>[0 2 1]</isSrc>
+			<parameter>
+				<paramName>InitialCondition</paramName>
+				<dim>[1, 1]</dim>
+			</parameter>
+		</block>
+		<block>
 			<blkName>Saturation</blkName>
 			<xpcblkName>PID Controller/Saturation</xpcblkName>
 			<SLblockPath>twa_parallel/PID Controller/Saturation</SLblockPath>
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>UpperLimit</paramName>
-				<dim>[1, 6]</dim>
+				<dim>[1, 3]</dim>
 			</parameter>
 			<parameter>
 				<paramName>LowerLimit</paramName>
-				<dim>[1, 6]</dim>
+				<dim>[1, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>Saturation1</blkName>
+			<xpcblkName>PID Controller/Saturation1</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/Saturation1</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>UpperLimit</paramName>
+				<dim>[1, 3]</dim>
+			</parameter>
+			<parameter>
+				<paramName>LowerLimit</paramName>
+				<dim>[1, 3]</dim>
 			</parameter>
 		</block>
 		<block>
@@ -606,66 +842,134 @@
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>UpperLimit</paramName>
-				<dim>[1, 6]</dim>
+				<dim>[1, 3]</dim>
 			</parameter>
 			<parameter>
 				<paramName>LowerLimit</paramName>
-				<dim>[1, 6]</dim>
+				<dim>[1, 3]</dim>
+			</parameter>
+		</block>
+		<block>
+			<blkName>saturate_int1</blkName>
+			<xpcblkName>PID Controller/saturate_int1</xpcblkName>
+			<SLblockPath>twa_parallel/PID Controller/saturate_int1</SLblockPath>
+			<isSrc>[0 1 1]</isSrc>
+			<parameter>
+				<paramName>UpperLimit</paramName>
+				<dim>[1, 3]</dim>
+			</parameter>
+			<parameter>
+				<paramName>LowerLimit</paramName>
+				<dim>[1, 3]</dim>
 			</parameter>
 		</block>
 		<signal>
 			<sigName>Kd</sigName>
 			<xpcsigName>PID Controller/Kd</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Kd_mu</sigName>
+			<xpcsigName>PID Controller/Kd_mu</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Ki</sigName>
 			<xpcsigName>PID Controller/Ki</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Ki_mu</sigName>
+			<xpcsigName>PID Controller/Ki_mu</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Kp</sigName>
 			<xpcsigName>PID Controller/Kp</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Kp_mu</sigName>
+			<xpcsigName>PID Controller/Kp_mu</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Integrator</sigName>
 			<xpcsigName>PID Controller/Integrator</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Integrator1</sigName>
+			<xpcsigName>PID Controller/Integrator1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Saturation</sigName>
 			<xpcsigName>PID Controller/Saturation</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Saturation1</sigName>
+			<xpcsigName>PID Controller/Saturation1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>saturate_int</sigName>
 			<xpcsigName>PID Controller/saturate_int</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>saturate_int1</sigName>
+			<xpcsigName>PID Controller/saturate_int1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Add</sigName>
 			<xpcsigName>PID Controller/Add</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Add1</sigName>
+			<xpcsigName>PID Controller/Add1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Sum</sigName>
 			<xpcsigName>PID Controller/Sum</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Sum1</sigName>
+			<xpcsigName>PID Controller/Sum1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 		<signal>
 			<sigName>Switch</sigName>
 			<xpcsigName>PID Controller/Switch</xpcsigName>
-			<sigWidth>6</sigWidth>
-			<sigDim>[6, 1]</sigDim>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
+		</signal>
+		<signal>
+			<sigName>Switch1</sigName>
+			<xpcsigName>PID Controller/Switch1</xpcsigName>
+			<sigWidth>3</sigWidth>
+			<sigDim>[3, 1]</sigDim>
 		</signal>
 	</SubSystem>
 	<SubSystem>
