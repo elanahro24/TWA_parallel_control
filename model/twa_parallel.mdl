@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7153"
+    ComputedModelVersion    "1.7157"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 19 15:00:18 2024"
-  RTWModifiedTimeStamp	  645980415
-  ModelVersionFormat	  "1.%<AutoIncrement:7153>"
+  LastModifiedDate	  "Mon Aug 19 17:43:46 2024"
+  RTWModifiedTimeStamp	  645990225
+  ModelVersionFormat	  "1.%<AutoIncrement:7157>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -3630,8 +3630,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"PID Controller"
-	Location		[217, 83, 1702, 1018]
-	Open			on
+	Location		[246, 103, 1731, 1038]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5461,8 +5461,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"control_mode"
-	Location		[208, 83, 1351, 769]
-	Open			off
+	Location		[129, 186, 1272, 872]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5683,7 +5683,7 @@ Model {
 	  System {
 	    Name		    "task_space"
 	    Location		    [230, 108, 1888, 1011]
-	    Open		    off
+	    Open		    on
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -7447,7 +7447,7 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function twa_len  = gettwalen(init_len, wire_delta,helix_rad,turns)\n\ntheta_mu = turns*2*pi; %[r"
-      "adians]\n\ntwa_len = sqrt(init_len(1,1)^2*(1+wire_delta)^2 - (theta_mu^2*helix_rad^2));\n\nend"
+      "adians]\n\ntwa_len = init_len(1,1)-sqrt(init_len(1,1)^2*(1+wire_delta)^2 - (theta_mu^2*helix_rad^2));\n\nend"
       editorLayout	      "100 M4x1[876 10 990 1056]"
     }
   }
@@ -7634,7 +7634,7 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function twa_len  = gettwalen(init_len,wire_delta,helix_rad,turns)\n\ntheta_mu = turns*2*pi; %[ra"
-      "dians]\n\ntwa_len = sqrt(init_len(2,1)^2*(1+wire_delta)^2 - (theta_mu^2*helix_rad^2));\n\nend"
+      "dians]\n\ntwa_len = init_len(2,1)-sqrt(init_len(2,1)^2*(1+wire_delta)^2 - (theta_mu^2*helix_rad^2));\n\nend"
       editorLayout	      "100 M4x1[725 4 990 1056]"
     }
   }
@@ -7821,7 +7821,7 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function twa_len  = gettwalen(init_len, wire_delta,helix_rad,turns)\n\ntheta_mu = turns*2*pi; %[r"
-      "adians]\n\ntwa_len = sqrt(init_len(3,1)^2*(1+wire_delta)^2 - (theta_mu^2*helix_rad^2));\n\nend"
+      "adians]\n\ntwa_len = init_len(3,1)-sqrt(init_len(3,1)^2*(1+wire_delta)^2 - (theta_mu^2*helix_rad^2));\n\nend"
       editorLayout	      "100 M4x1[725 4 990 1056]"
     }
   }
@@ -8026,7 +8026,7 @@ Stateflow {
       "or, proceed with looping resolved rates if the norm of\n% each joint error is less than some threshold.\n% i.e. "
       "the actuators have arrived at their last desired location\nqeps = zeros(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) "
       "= (norm(q_des(jnum,1) - q_cur(jnum,1)));\nend\nmacro_converged = all(qeps(1:3) < 0.1);\nmicro_converged = all(qe"
-      "ps(4:6) < 0.01);\n\n% start resolved rates loop if macro actuators have arrived at their last\n% desired positio"
+      "ps(4:6) < 0.05);\n\n% start resolved rates loop if macro actuators have arrived at their last\n% desired positio"
       "n. Only proceed to micro actuators once the macro motion\n% has converged\nif macro_converged\n    if theta_e > "
       "w_eps || p_del > p_eps\n        % linear velocity multiplier\n        if p_del ~=0\n            if p_del/p_eps <"
       "= p_lambda\n                vdot = vmin + (((vmax-vmin)*(p_del-p_eps))/(p_eps*(p_lambda-1)));\n            else\n"

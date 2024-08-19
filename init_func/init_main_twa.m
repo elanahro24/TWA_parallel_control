@@ -13,11 +13,11 @@ pos_filter_coeffs = ones(N_pos,1);
 
 % PID Gains
 Kp = [30; 30; 30];
-Kp_mu = [1; 1; 1];
+Kp_mu = [100; 100; 100];
 Ki = [18; 18; 18];
-Ki_mu = [0.25;0.25;0.25];
+Ki_mu = [0.5;0.5;0.5];
 Kd = [0.3;0.3;0.3];
-Kd_mu = [0.3;0.3;0.3];
+Kd_mu = [5;5;5];
 
 % Macro Actuation Unit parameters
 enc_res = 256*4; %[cnt/trn] * quadrature
