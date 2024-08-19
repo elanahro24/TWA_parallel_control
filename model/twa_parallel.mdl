@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7149"
+    ComputedModelVersion    "1.7153"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 19 14:32:34 2024"
-  RTWModifiedTimeStamp	  645978752
-  ModelVersionFormat	  "1.%<AutoIncrement:7149>"
+  LastModifiedDate	  "Mon Aug 19 15:00:18 2024"
+  RTWModifiedTimeStamp	  645980415
+  ModelVersionFormat	  "1.%<AutoIncrement:7153>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -3753,7 +3753,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From1"
 	  SID			  3444
-	  Position		  [60, 121, 90, 139]
+	  Position		  [65, 166, 95, 184]
 	  ShowName		  off
 	  GotoTag		  "A1"
 	}
@@ -3761,7 +3761,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From2"
 	  SID			  3448
-	  Position		  [60, 166, 90, 184]
+	  Position		  [65, 121, 95, 139]
 	  ShowName		  off
 	  GotoTag		  "B1"
 	}
@@ -3769,7 +3769,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From3"
 	  SID			  3457
-	  Position		  [70, 316, 100, 334]
+	  Position		  [65, 361, 95, 379]
 	  ShowName		  off
 	  GotoTag		  "A1"
 	}
@@ -3777,7 +3777,7 @@ Model {
 	  BlockType		  From
 	  Name			  "From4"
 	  SID			  3458
-	  Position		  [70, 361, 100, 379]
+	  Position		  [65, 316, 95, 334]
 	  ShowName		  off
 	  GotoTag		  "B1"
 	}
@@ -3957,7 +3957,7 @@ Model {
 	  Name			  "Selector"
 	  SID			  3449
 	  Ports			  [1, 1]
-	  Position		  [110, 118, 140, 142]
+	  Position		  [115, 163, 145, 187]
 	  InputPortWidth	  "6"
 	  SampleTime		  "dt"
 	  IndexOptions		  "Index vector (dialog)"
@@ -3969,7 +3969,7 @@ Model {
 	  Name			  "Selector1"
 	  SID			  3456
 	  Ports			  [1, 1]
-	  Position		  [110, 163, 140, 187]
+	  Position		  [115, 118, 145, 142]
 	  InputPortWidth	  "6"
 	  SampleTime		  "dt"
 	  IndexOptions		  "Index vector (dialog)"
@@ -3981,7 +3981,7 @@ Model {
 	  Name			  "Selector2"
 	  SID			  3459
 	  Ports			  [1, 1]
-	  Position		  [120, 313, 150, 337]
+	  Position		  [115, 358, 145, 382]
 	  InputPortWidth	  "6"
 	  SampleTime		  "dt"
 	  IndexOptions		  "Index vector (dialog)"
@@ -3993,7 +3993,7 @@ Model {
 	  Name			  "Selector3"
 	  SID			  3460
 	  Ports			  [1, 1]
-	  Position		  [120, 358, 150, 382]
+	  Position		  [115, 313, 145, 337]
 	  InputPortWidth	  "6"
 	  SampleTime		  "dt"
 	  IndexOptions		  "Index vector (dialog)"
@@ -4023,7 +4023,7 @@ Model {
 	  Position		  [170, 315, 190, 335]
 	  ShowName		  off
 	  IconShape		  "round"
-	  Inputs		  "|-+"
+	  Inputs		  "|+-"
 	  InputSameDT		  off
 	  OutDataTypeMode	  "Inherit via internal rule"
 	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
@@ -4306,23 +4306,10 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "Selector"
-	  SrcPort		  1
-	  DstBlock		  "Sum"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "From2"
 	  SrcPort		  1
 	  DstBlock		  "Selector1"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Selector1"
-	  SrcPort		  1
-	  Points		  [35, 0]
-	  DstBlock		  "Sum"
-	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "From3"
@@ -4335,19 +4322,6 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Selector3"
 	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Selector2"
-	  SrcPort		  1
-	  DstBlock		  "Sum1"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Selector3"
-	  SrcPort		  1
-	  Points		  [25, 0]
-	  DstBlock		  "Sum1"
-	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "pid_mode"
@@ -4385,6 +4359,32 @@ Model {
 	  SrcPort		  1
 	  Points		  [5, 0; 0, -70]
 	  DstBlock		  "Mux"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Selector1"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Selector"
+	  SrcPort		  1
+	  Points		  [30, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Selector3"
+	  SrcPort		  1
+	  DstBlock		  "Sum1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Selector2"
+	  SrcPort		  1
+	  Points		  [30, 0]
+	  DstBlock		  "Sum1"
 	  DstPort		  2
 	}
 	Annotation {
@@ -5461,7 +5461,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"control_mode"
-	Location		[586, 242, 1729, 928]
+	Location		[208, 83, 1351, 769]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
