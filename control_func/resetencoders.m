@@ -3,8 +3,11 @@
 % encoders. Set q_des to zeros and reenable PID controller.
 % elan ahronovich 07/2024
 function resetencoders(tg,enc_vec)
-% disable quintic polynomial
-tg.enablequintic(0);
+% get quintic polynomial state, turn off if on
+quintic_id = tg.getparamid('Quintic Poly/quintic_enable','Value');
+quintic_enable = tg.getparam(quintic_id);
+
+if quintic_enable; tg.setparam(quintic_id, 0); end
 
 % turn off PID controller    
 setpidmode(tg,0);
@@ -29,7 +32,7 @@ end
 setqdes(tg,q_des);
 
 % integrator reset is necessary to eliminate effect of steady state error 
-reset_s_id = tg.getparamid('PID Controller/reset_integrator','Value');
+reset_s_id = tg.getparamid('PID Controller/reset_integ','Value');
 tg.setparam(reset_s_id,1);
 
 % turn off the encoder reset bit
@@ -44,5 +47,5 @@ tg.setparam(reset_s_id,0);
 
 % turn PID Controller and quintic polynomial back on
 setpidmode(tg,1);
-tg.enablequintic(1);
+if quintic_enable; tg.setparam(quintic_id, 1); end
 end
