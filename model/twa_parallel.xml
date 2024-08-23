@@ -1251,8 +1251,8 @@ Operator</sigName>
 				<xPCName>twa_parallel/control_mode/task_space/ResolvedRates</xPCName>
 			</SubSystem>
 			<SubSystem>
-				<Name>get_jacobian</Name>
-				<xPCName>twa_parallel/control_mode/task_space/get_jacobian</xPCName>
+				<Name>inv_kin</Name>
+				<xPCName>twa_parallel/control_mode/task_space/inv_kin</xPCName>
 			</SubSystem>
 			<block>
 				<blkName>b_in_w</blkName>
@@ -1305,6 +1305,16 @@ Operator</sigName>
 				</parameter>
 			</block>
 			<block>
+				<blkName>mode</blkName>
+				<xpcblkName>control_mode/task_space/mode</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/mode</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>p_in_m</blkName>
 				<xpcblkName>control_mode/task_space/p_in_m</xpcblkName>
 				<SLblockPath>twa_parallel/control_mode/task_space/p_in_m</SLblockPath>
@@ -1312,6 +1322,16 @@ Operator</sigName>
 				<parameter>
 					<paramName>Value</paramName>
 					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>qmacro_nom</blkName>
+				<xpcblkName>control_mode/task_space/qmacro_nom</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/qmacro_nom</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 1]</dim>
 				</parameter>
 			</block>
 			<block>
@@ -1405,13 +1425,33 @@ Operator</sigName>
 				</parameter>
 			</block>
 			<block>
-				<blkName>Unit Delay6</blkName>
-				<xpcblkName>control_mode/task_space/Unit Delay6</xpcblkName>
-				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay6</SLblockPath>
+				<blkName>Unit Delay4</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay4</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay4</SLblockPath>
 				<isSrc>[0 1 1]</isSrc>
 				<parameter>
 					<paramName>X0</paramName>
 					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay5</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay5</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay5</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay7</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay7</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay7</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[6, 1]</dim>
 				</parameter>
 			</block>
 			<signal>
@@ -1445,46 +1485,22 @@ Operator</sigName>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>get_jacobian/p1</sigName>
-				<xpcsigName>control_mode/task_space/get_jacobian/p1</xpcsigName>
-				<sigWidth>9</sigWidth>
-				<sigDim>[3, 3]</sigDim>
+				<sigName>inv_kin/p1</sigName>
+				<xpcsigName>control_mode/task_space/inv_kin/p1</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>get_jacobian/p2</sigName>
-				<xpcsigName>control_mode/task_space/get_jacobian/p2</xpcsigName>
-				<sigWidth>18</sigWidth>
-				<sigDim>[3, 6]</sigDim>
-			</signal>
-			<signal>
-				<sigName>get_jacobian/p3</sigName>
-				<xpcsigName>control_mode/task_space/get_jacobian/p3</xpcsigName>
+				<sigName>inv_kin/p2</sigName>
+				<xpcsigName>control_mode/task_space/inv_kin/p2</xpcsigName>
 				<sigWidth>3</sigWidth>
 				<sigDim>[3, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>get_jacobian/p4</sigName>
-				<xpcsigName>control_mode/task_space/get_jacobian/p4</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>t_in_w</sigName>
-				<xpcsigName>control_mode/task_space/t_in_w</xpcsigName>
-				<sigWidth>9</sigWidth>
-				<sigDim>[3, 3]</sigDim>
-			</signal>
-			<signal>
-				<sigName>twa_flange_offset</sigName>
-				<xpcsigName>control_mode/task_space/twa_flange_offset</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>twa_gamma</sigName>
-				<xpcsigName>control_mode/task_space/twa_gamma</xpcsigName>
-				<sigWidth>1</sigWidth>
-				<sigDim>[1, 1]</sigDim>
+				<sigName>control_switch</sigName>
+				<xpcsigName>control_mode/task_space/control_switch</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>Unit Delay1</sigName>
@@ -1505,10 +1521,22 @@ Operator</sigName>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>Unit Delay6</sigName>
-				<xpcsigName>control_mode/task_space/Unit Delay6</xpcsigName>
+				<sigName>Unit Delay4</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay4</xpcsigName>
 				<sigWidth>3</sigWidth>
 				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay5</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay5</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay7</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay7</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
 			</signal>
 		</SubSystem>
 		<block>
