@@ -44,7 +44,7 @@ res_rate_param = [res_rate_param,...
 
 % switch for using twa in task space when manually choosing macro/micro
 % motion. 0 = no; 1 = yes
-use_twa = 0;
+use_twa = 1;
 
 % scope formatting
 q_format = 'q1 [mm] %12.6f,q2 [mm] %12.6f,q3 [mm] %12.6f,q4 [cnt] %12.6f,q5 [cnt] %12.6f,q6 [cnt] %12.6f';
