@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7296"
+    ComputedModelVersion    "1.7298"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 23 20:38:40 2024"
-  RTWModifiedTimeStamp	  646344909
-  ModelVersionFormat	  "1.%<AutoIncrement:7296>"
+  LastModifiedDate	  "Sat Aug 24 14:13:20 2024"
+  RTWModifiedTimeStamp	  646409592
+  ModelVersionFormat	  "1.%<AutoIncrement:7298>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1799,7 +1799,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "195"
+    ZoomFactor		    "262"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    3584
     Block {
@@ -4448,8 +4448,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Quintic Poly"
-	Location		[482, 83, 1542, 985]
-	Open			off
+	Location		[2170, 107, 3230, 1009]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5086,8 +5086,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Scopes"
-	Location		[703, 308, 1302, 922]
-	Open			on
+	Location		[703, 215, 1420, 939]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5103,14 +5103,14 @@ Model {
 	  BlockType		  Inport
 	  Name			  "q_cur"
 	  SID			  3010
-	  Position		  [70, 63, 100, 77]
+	  Position		  [70, 83, 100, 97]
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "q_dot"
 	  SID			  3154
-	  Position		  [80, 123, 110, 137]
+	  Position		  [80, 163, 110, 177]
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
@@ -5118,7 +5118,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "q_des"
 	  SID			  3134
-	  Position		  [80, 183, 110, 197]
+	  Position		  [80, 223, 110, 237]
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
@@ -5126,7 +5126,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "control_out"
 	  SID			  3325
-	  Position		  [80, 243, 110, 257]
+	  Position		  [80, 283, 110, 297]
 	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
@@ -5134,7 +5134,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "x_cur"
 	  SID			  3345
-	  Position		  [80, 308, 110, 322]
+	  Position		  [80, 348, 110, 362]
 	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
@@ -5143,7 +5143,7 @@ Model {
 	  Name			  "Fir Filter"
 	  SID			  3087
 	  Ports			  [1, 1]
-	  Position		  [130, 56, 170, 84]
+	  Position		  [130, 76, 170, 104]
 	  BackgroundColor	  "[1.000000, 0.501961, 0.501961]"
 	  MinAlgLoopOccurrences	  off
 	  PropExecContextOutsideSubsystem off
@@ -5154,7 +5154,7 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "Fir Filter"
-	    Location		    [79, 323, 1078, 895]
+	    Location		    [112, 321, 981, 638]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -5243,7 +5243,7 @@ Model {
 	  Name			  "Scope (xPC) 1"
 	  SID			  3583
 	  Ports			  [1]
-	  Position		  [340, 15, 430, 75]
+	  Position		  [340, 32, 410, 78]
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
 	  SourceType		  "xpcscopeblock"
@@ -5283,7 +5283,7 @@ Model {
 	  Name			  "q_cur_macro1"
 	  SID			  3006
 	  Ports			  [1]
-	  Position		  [205, 105, 280, 155]
+	  Position		  [205, 145, 280, 195]
 	  ShowName		  off
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
@@ -5324,7 +5324,7 @@ Model {
 	  Name			  "q_cur_macro2"
 	  SID			  3008
 	  Ports			  [1]
-	  Position		  [260, 45, 335, 95]
+	  Position		  [260, 65, 335, 115]
 	  ShowName		  off
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
@@ -5365,7 +5365,7 @@ Model {
 	  Name			  "q_cur_macro3"
 	  SID			  3133
 	  Ports			  [1]
-	  Position		  [205, 165, 280, 215]
+	  Position		  [205, 205, 280, 255]
 	  ShowName		  off
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
@@ -5406,7 +5406,7 @@ Model {
 	  Name			  "q_cur_macro4"
 	  SID			  3323
 	  Ports			  [1]
-	  Position		  [205, 225, 280, 275]
+	  Position		  [205, 265, 280, 315]
 	  ShowName		  off
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
@@ -5447,7 +5447,7 @@ Model {
 	  Name			  "q_cur_macro5"
 	  SID			  3344
 	  Ports			  [1]
-	  Position		  [205, 290, 280, 340]
+	  Position		  [205, 330, 280, 380]
 	  ShowName		  off
 	  LibraryVersion	  "1.1656"
 	  SourceBlock		  "xpclib/Misc./Scope (xPC) "
@@ -5492,7 +5492,7 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -25]
+	    Points		    [0, -35]
 	    DstBlock		    "Scope (xPC) 1"
 	    DstPort		    1
 	  }
@@ -5533,7 +5533,7 @@ Model {
 	  BackgroundColor	  "[1.000000, 0.501961, 0.501961]"
 	}
 	Annotation {
-	  Position		  [221, 354]
+	  Position		  [221, 394]
 	}
       }
     }
@@ -5553,7 +5553,7 @@ Model {
       System {
 	Name			"control_mode"
 	Location		[21, 97, 1089, 912]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5774,7 +5774,7 @@ Model {
 	  System {
 	    Name		    "task_space"
 	    Location		    [21, 97, 1679, 1000]
-	    Open		    off
+	    Open		    on
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -5805,7 +5805,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From"
 	      SID		      3520
-	      Position		      [215, 481, 240, 499]
+	      Position		      [215, 461, 240, 479]
 	      ShowName		      off
 	      GotoTag		      "A"
 	    }
@@ -5821,7 +5821,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From10"
 	      SID		      3522
-	      Position		      [215, 521, 240, 539]
+	      Position		      [215, 501, 240, 519]
 	      ShowName		      off
 	      GotoTag		      "C"
 	    }
@@ -5829,7 +5829,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From11"
 	      SID		      3523
-	      Position		      [190, 541, 215, 559]
+	      Position		      [190, 521, 215, 539]
 	      ShowName		      off
 	      GotoTag		      "D"
 	    }
@@ -5837,7 +5837,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From12"
 	      SID		      3568
-	      Position		      [210, 621, 235, 639]
+	      Position		      [210, 601, 235, 619]
 	      ShowName		      off
 	      GotoTag		      "F"
 	    }
@@ -5877,7 +5877,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From20"
 	      SID		      3562
-	      Position		      [210, 441, 235, 459]
+	      Position		      [210, 421, 235, 439]
 	      ShowName		      off
 	      GotoTag		      "I"
 	    }
@@ -5885,7 +5885,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From21"
 	      SID		      3563
-	      Position		      [190, 461, 215, 479]
+	      Position		      [190, 441, 215, 459]
 	      ShowName		      off
 	      GotoTag		      "J"
 	    }
@@ -5941,7 +5941,7 @@ Model {
 	      BlockType		      From
 	      Name		      "From9"
 	      SID		      3521
-	      Position		      [190, 501, 215, 519]
+	      Position		      [190, 481, 215, 499]
 	      ShowName		      off
 	      GotoTag		      "B"
 	    }
@@ -6654,7 +6654,7 @@ Model {
 	      Name		      "inv_kin"
 	      SID		      3528
 	      Ports		      [14, 2]
-	      Position		      [255, 440, 445, 700]
+	      Position		      [255, 421, 445, 699]
 	      LibraryVersion	      "1.31"
 	      PermitHierarchicalResolution "ExplicitOnly"
 	      TreatAsAtomicUnit	      on
@@ -7045,7 +7045,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "qmacro_nom"
 	      SID		      3572
-	      Position		      [55, 641, 145, 659]
+	      Position		      [55, 621, 145, 639]
 	      Value		      "qmacro_nom"
 	      SampleTime	      "dt"
 	    }
@@ -7053,7 +7053,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "qmacro_nom1"
 	      SID		      3576
-	      Position		      [125, 661, 215, 679]
+	      Position		      [125, 641, 215, 659]
 	      Value		      "meas_twa_len"
 	      SampleTime	      "dt"
 	    }
@@ -7069,7 +7069,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "t_in_w"
 	      SID		      3555
-	      Position		      [70, 561, 140, 579]
+	      Position		      [70, 541, 140, 559]
 	      Value		      "t_in_w"
 	      SampleTime	      "dt"
 	    }
@@ -7077,7 +7077,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "twa_flange_offset"
 	      SID		      3556
-	      Position		      [50, 601, 140, 619]
+	      Position		      [50, 581, 140, 599]
 	      Value		      "twa_flange_offset"
 	      SampleTime	      "dt"
 	    }
@@ -7085,7 +7085,7 @@ Model {
 	      BlockType		      Constant
 	      Name		      "twa_gamma"
 	      SID		      3557
-	      Position		      [145, 581, 215, 599]
+	      Position		      [145, 561, 215, 579]
 	      Value		      "twa_gamma"
 	      SampleTime	      "dt"
 	    }
@@ -7267,28 +7267,24 @@ Model {
 	    Line {
 	      SrcBlock		      "From"
 	      SrcPort		      1
-	      Points		      [-5, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      3
 	    }
 	    Line {
 	      SrcBlock		      "From9"
 	      SrcPort		      1
-	      Points		      [20, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      4
 	    }
 	    Line {
 	      SrcBlock		      "From10"
 	      SrcPort		      1
-	      Points		      [-5, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      5
 	    }
 	    Line {
 	      SrcBlock		      "From11"
 	      SrcPort		      1
-	      Points		      [20, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      6
 	    }
@@ -7352,28 +7348,24 @@ Model {
 	    Line {
 	      SrcBlock		      "From21"
 	      SrcPort		      1
-	      Points		      [20, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      2
 	    }
 	    Line {
 	      SrcBlock		      "twa_gamma"
 	      SrcPort		      1
-	      Points		      [20, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      8
 	    }
 	    Line {
 	      SrcBlock		      "twa_flange_offset"
 	      SrcPort		      1
-	      Points		      [95, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      9
 	    }
 	    Line {
 	      SrcBlock		      "t_in_w"
 	      SrcPort		      1
-	      Points		      [95, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      7
 	    }
@@ -7394,7 +7386,7 @@ Model {
 	      Labels		      [1, 0]
 	      SrcBlock		      "inv_kin"
 	      SrcPort		      1
-	      Points		      [20, 0; 0, 125]
+	      Points		      [20, 0; 0, 140]
 	      Branch {
 		Points			[0, 155]
 		DstBlock		"Unit Delay7"
@@ -7408,14 +7400,13 @@ Model {
 	    Line {
 	      SrcBlock		      "Unit Delay7"
 	      SrcPort		      1
-	      Points		      [-100, 0; 0, -105]
+	      Points		      [-100, 0; 0, -115]
 	      DstBlock		      "inv_kin"
 	      DstPort		      13
 	    }
 	    Line {
 	      SrcBlock		      "qmacro_nom"
 	      SrcPort		      1
-	      Points		      [90, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      11
 	    }
@@ -7464,14 +7455,13 @@ Model {
 	    Line {
 	      SrcBlock		      "qmacro_nom1"
 	      SrcPort		      1
-	      Points		      [20, 0]
 	      DstBlock		      "inv_kin"
 	      DstPort		      12
 	    }
 	    Line {
 	      SrcBlock		      "inv_kin"
 	      SrcPort		      2
-	      Points		      [0, 105]
+	      Points		      [0, 110]
 	      DstBlock		      "Unit Delay5"
 	      DstPort		      1
 	    }
