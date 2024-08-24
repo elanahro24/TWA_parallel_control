@@ -38,8 +38,7 @@ twa_gamma = 11.6087 * pi/180;
 % moving platform starts at the origin with 30 degree rotation
 p_in_w = zeros(3,3) + rm2w_homing*p_in_m;
 
-qmacro_nom = zeros(3,1);
-qmacro_nom(1,1) = norm(p_in_w(:,1) - b_in_w(:,1));  
-qmacro_nom(2,1) = norm(p_in_w(:,2) - b_in_w(:,2));
-qmacro_nom(3,1) = norm(p_in_w(:,3) - b_in_w(:,3));
-eq_homing = meas_macro_len - qmacro_nom;
+qmacro_nom = zeros(3,3);
+qmacro_nom(:,1) = (p_in_w(:,1) - b_in_w(:,1));  
+qmacro_nom(:,2) = (p_in_w(:,2) - b_in_w(:,2));
+qmacro_nom(:,3) = (p_in_w(:,3) - b_in_w(:,3));

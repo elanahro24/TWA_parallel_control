@@ -722,11 +722,11 @@ bio(72).size=[];
 
 
 bio(73).blkName='control_mode/task_space/inv_kin/p2';
-bio(73).sigName='des_micro_len';
+bio(73).sigName='vertex_dist';
 bio(73).portIdx=1;
-bio(73).dim=[3,1];
-bio(73).sigWidth=3;
-bio(73).sigAddress='&twa_parallel_B.des_micro_len[0]';
+bio(73).dim=[3,3];
+bio(73).sigWidth=9;
+bio(73).sigAddress='&twa_parallel_B.vertex_dist[0]';
 bio(73).ndims=2;
 bio(73).size=[];
 
@@ -784,8 +784,8 @@ bio(78).size=[];
 bio(79).blkName='control_mode/task_space/Unit Delay5';
 bio(79).sigName='';
 bio(79).portIdx=0;
-bio(79).dim=[3,1];
-bio(79).sigWidth=3;
+bio(79).dim=[3,3];
+bio(79).sigWidth=9;
 bio(79).sigAddress='&twa_parallel_B.UnitDelay5[0]';
 bio(79).ndims=2;
 bio(79).size=[];

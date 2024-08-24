@@ -1177,6 +1177,10 @@ MATLAB Function/p7</sigName>
 			</signal>
 		</SubSystem>
 		<SubSystem>
+			<Name>Scope (xPC) 1</Name>
+			<xPCName>twa_parallel/Scopes/Scope (xPC) 1</xPCName>
+		</SubSystem>
+		<SubSystem>
 			<Name>q_cur_macro1</Name>
 			<xPCName>twa_parallel/Scopes/q_cur_macro1</xPCName>
 		</SubSystem>
@@ -1242,6 +1246,14 @@ Operator</sigName>
 		<SubSystem>
 			<Name>task_space</Name>
 			<xPCName>twa_parallel/control_mode/task_space</xPCName>
+			<SubSystem>
+				<Name>Scope (xPC) 1</Name>
+				<xPCName>twa_parallel/control_mode/task_space/Scope (xPC) 1</xPCName>
+			</SubSystem>
+			<SubSystem>
+				<Name>Scope (xPC) 2</Name>
+				<xPCName>twa_parallel/control_mode/task_space/Scope (xPC) 2</xPCName>
+			</SubSystem>
 			<SubSystem>
 				<Name>q_cur_macro6</Name>
 				<xPCName>twa_parallel/control_mode/task_space/q_cur_macro6</xPCName>
@@ -1328,6 +1340,16 @@ Operator</sigName>
 				<blkName>qmacro_nom</blkName>
 				<xpcblkName>control_mode/task_space/qmacro_nom</xpcblkName>
 				<SLblockPath>twa_parallel/control_mode/task_space/qmacro_nom</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[3, 3]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>qmacro_nom1</blkName>
+				<xpcblkName>control_mode/task_space/qmacro_nom1</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/qmacro_nom1</SLblockPath>
 				<isSrc>[1 0 1]</isSrc>
 				<parameter>
 					<paramName>Value</paramName>
@@ -1441,7 +1463,7 @@ Operator</sigName>
 				<isSrc>[0 1 1]</isSrc>
 				<parameter>
 					<paramName>X0</paramName>
-					<dim>[3, 1]</dim>
+					<dim>[3, 3]</dim>
 				</parameter>
 			</block>
 			<block>
@@ -1493,8 +1515,8 @@ Operator</sigName>
 			<signal>
 				<sigName>inv_kin/p2</sigName>
 				<xpcsigName>control_mode/task_space/inv_kin/p2</xpcsigName>
-				<sigWidth>3</sigWidth>
-				<sigDim>[3, 1]</sigDim>
+				<sigWidth>9</sigWidth>
+				<sigDim>[3, 3]</sigDim>
 			</signal>
 			<signal>
 				<sigName>control_switch</sigName>
@@ -1529,8 +1551,8 @@ Operator</sigName>
 			<signal>
 				<sigName>Unit Delay5</sigName>
 				<xpcsigName>control_mode/task_space/Unit Delay5</xpcsigName>
-				<sigWidth>3</sigWidth>
-				<sigDim>[3, 1]</sigDim>
+				<sigWidth>9</sigWidth>
+				<sigDim>[3, 3]</sigDim>
 			</signal>
 			<signal>
 				<sigName>Unit Delay7</sigName>
