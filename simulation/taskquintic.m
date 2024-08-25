@@ -101,24 +101,34 @@ if do_quintic && norm(p_del) > 0
             
             % redundancy weight matrix favoring velmex up to 50 microns
             % from destination
-%             if p_del > 0.050
-            w_mat = diag([ones(1,3),1e10*ones(1,3)]);
-%             else
-%                 w_mat = diag([ones(1,3),1e10*ones(1,3)]);
-%             end
+            if norm(x_cur - x_des) > 0.050
+                w_mat = diag([ones(1,3),1e10*ones(1,3)]);
+                macro_motion = 1;
+            else
+                w_mat = diag([1e10*ones(1,3),ones(1,3)]);
+                macro_motion = 0;
+            end
             
             % construct jacobian
             full_jac = (w_mat\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;
             
             % deltaq ~ J * deltax
             deltaq = full_jac * deltax;
-            
-            % new desired q values
-            qdes = deltaq;
+            switch macro_motion
+                case 1
+                    % new desired q values
+                    qdes(1:3,1) = deltaq(1:3,1);
+                    qdes(4:6,1) = q_cur(4:6,1);
+                case 0
+                    qdes(4:6,1) = deltaq(4:6,1);
+                    qdes(1:3,1) = q_cur(1:3,1);
+            end
+                    
         else
             robotmoving = 0;
         end
     else
+        qdes = q_cur;
         tinit = tc;
         xinit = x_cur;
         robotmoving = 1;

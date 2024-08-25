@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7342"
+    ComputedModelVersion    "1.7343"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Aug 25 16:25:14 2024"
-  RTWModifiedTimeStamp	  646503909
-  ModelVersionFormat	  "1.%<AutoIncrement:7342>"
+  LastModifiedDate	  "Sun Aug 25 17:06:51 2024"
+  RTWModifiedTimeStamp	  646504617
+  ModelVersionFormat	  "1.%<AutoIncrement:7343>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -8456,12 +8456,16 @@ Stateflow {
       "       if t < tf\n            eta = t/tf;\n            a3 = 10*eta^3;\n            a4 = -15*eta^4;\n            "
       "a5 = 6*eta^5;\n            \n            % apply quintic polynomial on task space\n            deltax = x_init +"
       " p_del*(a3+a4+a5);\n            \n            % redundancy weight matrix favoring velmex up to 50 microns\n     "
-      "       % from destination\n%             if p_del > 0.050\n            w_mat = diag([ones(1,3),1e10*ones(1,3)]);"
-      "\n%             else\n%                 w_mat = diag([ones(1,3),1e10*ones(1,3)]);\n%             end\n          "
-      "  \n            % construct jacobian\n            full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_"
-      "jac;\n            \n            % deltaq ~ J * deltax\n            deltaq = full_jac * deltax;\n            \n  "
-      "          % new desired q values\n            qdes = deltaq;\n        else\n            robotmoving = 0;\n      "
-      "  end\n    else\n        tinit = tc;\n        xinit = x_cur;\n        robotmoving = 1;\n    end\nend\n\nend"
+      "       % from destination\n            if p_del > 0.050\n                w_mat = diag([ones(1,3),1e10*ones(1,3)]"
+      ");\n                macro_motion = 1;\n            else\n                w_mat = diag([ones(1,3),1e10*ones(1,3)]"
+      ");\n                macro_motion = 0;\n            end\n            \n            % construct jacobian\n        "
+      "    full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n            \n            % deltaq ~ J *"
+      " deltax\n            deltaq = full_jac * deltax;\n            \n            % new desired q values\n            "
+      "switch macro_motion\n                case 1\n                    % new desired q values\n                    qde"
+      "s(1:3,1) = deltaq(1:3,1);\n                    qdes(4:6,1) = q_cur(4:6,1);\n                case 0\n            "
+      "        qdes(4:6,1) = deltaq(4:6,1);\n                    qdes(1:3,1) = q_cur(1:3,1);\n            end\n        "
+      "    \n        else\n            robotmoving = 0;\n        end\n    else\n        qdes = q_cur;\n        tinit = "
+      "tc;\n        xinit = x_cur;\n        robotmoving = 1;\n    end\nend\n\nend"
       editorLayout	      "100 M4x1[1995 34 1173 1087]"
       breakpoints	      "100 M[205]"
     }
