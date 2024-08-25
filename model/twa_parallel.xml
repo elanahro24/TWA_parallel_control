@@ -1266,6 +1266,10 @@ Operator</sigName>
 				<Name>inv_kin</Name>
 				<xPCName>twa_parallel/control_mode/task_space/inv_kin</xPCName>
 			</SubSystem>
+			<SubSystem>
+				<Name>quintic</Name>
+				<xPCName>twa_parallel/control_mode/task_space/quintic</xPCName>
+			</SubSystem>
 			<block>
 				<blkName>b_in_w</blkName>
 				<xpcblkName>control_mode/task_space/b_in_w</xpcblkName>
@@ -1377,6 +1381,16 @@ Operator</sigName>
 				</parameter>
 			</block>
 			<block>
+				<blkName>tf</blkName>
+				<xpcblkName>control_mode/task_space/tf</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/tf</SLblockPath>
+				<isSrc>[1 0 1]</isSrc>
+				<parameter>
+					<paramName>Value</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>twa_flange_offset</blkName>
 				<xpcblkName>control_mode/task_space/twa_flange_offset</xpcblkName>
 				<SLblockPath>twa_parallel/control_mode/task_space/twa_flange_offset</SLblockPath>
@@ -1427,6 +1441,26 @@ Operator</sigName>
 				</parameter>
 			</block>
 			<block>
+				<blkName>Unit Delay10</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay10</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay10</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[1, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay11</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay11</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay11</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>Unit Delay2</blkName>
 				<xpcblkName>control_mode/task_space/Unit Delay2</xpcblkName>
 				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay2</SLblockPath>
@@ -1467,6 +1501,16 @@ Operator</sigName>
 				</parameter>
 			</block>
 			<block>
+				<blkName>Unit Delay6</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay6</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay6</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[3, 1]</dim>
+				</parameter>
+			</block>
+			<block>
 				<blkName>Unit Delay7</blkName>
 				<xpcblkName>control_mode/task_space/Unit Delay7</xpcblkName>
 				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay7</SLblockPath>
@@ -1474,6 +1518,26 @@ Operator</sigName>
 				<parameter>
 					<paramName>X0</paramName>
 					<dim>[6, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay8</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay8</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay8</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[6, 1]</dim>
+				</parameter>
+			</block>
+			<block>
+				<blkName>Unit Delay9</blkName>
+				<xpcblkName>control_mode/task_space/Unit Delay9</xpcblkName>
+				<SLblockPath>twa_parallel/control_mode/task_space/Unit Delay9</SLblockPath>
+				<isSrc>[0 1 1]</isSrc>
+				<parameter>
+					<paramName>X0</paramName>
+					<dim>[1, 1]</dim>
 				</parameter>
 			</block>
 			<signal>
@@ -1519,8 +1583,45 @@ Operator</sigName>
 				<sigDim>[3, 3]</sigDim>
 			</signal>
 			<signal>
-				<sigName>control_switch</sigName>
-				<xpcsigName>control_mode/task_space/control_switch</xpcsigName>
+				<sigName>quintic/p1</sigName>
+				<xpcsigName>control_mode/task_space/quintic/p1</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>quintic/p2</sigName>
+				<xpcsigName>control_mode/task_space/quintic/p2</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>quintic/p3</sigName>
+				<xpcsigName>control_mode/task_space/quintic/p3</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>quintic/p4</sigName>
+				<xpcsigName>control_mode/task_space/quintic/p4</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>quintic/p5</sigName>
+				<xpcsigName>control_mode/task_space/quintic/p5</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Digital Clock</sigName>
+				<xpcsigName>control_mode/task_space/Digital Clock</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Multiport
+Switch</sigName>
+				<xpcsigName>control_mode/task_space/Multiport Switch</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
@@ -1529,6 +1630,18 @@ Operator</sigName>
 				<xpcsigName>control_mode/task_space/Unit Delay1</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay10</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay10</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay11</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay11</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
 			</signal>
 			<signal>
 				<sigName>Unit Delay2</sigName>
@@ -1555,10 +1668,28 @@ Operator</sigName>
 				<sigDim>[3, 3]</sigDim>
 			</signal>
 			<signal>
+				<sigName>Unit Delay6</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay6</xpcsigName>
+				<sigWidth>3</sigWidth>
+				<sigDim>[3, 1]</sigDim>
+			</signal>
+			<signal>
 				<sigName>Unit Delay7</sigName>
 				<xpcsigName>control_mode/task_space/Unit Delay7</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay8</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay8</xpcsigName>
+				<sigWidth>6</sigWidth>
+				<sigDim>[6, 1]</sigDim>
+			</signal>
+			<signal>
+				<sigName>Unit Delay9</sigName>
+				<xpcsigName>control_mode/task_space/Unit Delay9</xpcsigName>
+				<sigWidth>1</sigWidth>
+				<sigDim>[1, 1]</sigDim>
 			</signal>
 		</SubSystem>
 		<block>

@@ -766,7 +766,7 @@ pt(85).subsource = 'SS_DOUBLE';
 pt(85).ndims     = '2';
 pt(85).size      = '[]';
 
-pt(86).blockname = 'control_mode/task_space/twa_flange_offset';
+pt(86).blockname = 'control_mode/task_space/tf';
 pt(86).paramname = 'Value';
 pt(86).class     = 'scalar';
 pt(86).nrows     = 1;
@@ -775,7 +775,7 @@ pt(86).subsource = 'SS_DOUBLE';
 pt(86).ndims     = '2';
 pt(86).size      = '[]';
 
-pt(87).blockname = 'control_mode/task_space/twa_gamma';
+pt(87).blockname = 'control_mode/task_space/twa_flange_offset';
 pt(87).paramname = 'Value';
 pt(87).class     = 'scalar';
 pt(87).nrows     = 1;
@@ -784,7 +784,7 @@ pt(87).subsource = 'SS_DOUBLE';
 pt(87).ndims     = '2';
 pt(87).size      = '[]';
 
-pt(88).blockname = 'control_mode/task_space/use_twa';
+pt(88).blockname = 'control_mode/task_space/twa_gamma';
 pt(88).paramname = 'Value';
 pt(88).class     = 'scalar';
 pt(88).nrows     = 1;
@@ -793,25 +793,25 @@ pt(88).subsource = 'SS_DOUBLE';
 pt(88).ndims     = '2';
 pt(88).size      = '[]';
 
-pt(89).blockname = 'control_mode/task_space/x_des';
+pt(89).blockname = 'control_mode/task_space/use_twa';
 pt(89).paramname = 'Value';
-pt(89).class     = 'vector';
-pt(89).nrows     = 3;
+pt(89).class     = 'scalar';
+pt(89).nrows     = 1;
 pt(89).ncols     = 1;
 pt(89).subsource = 'SS_DOUBLE';
 pt(89).ndims     = '2';
 pt(89).size      = '[]';
 
-pt(90).blockname = 'control_mode/task_space/Unit Delay1';
-pt(90).paramname = 'X0';
+pt(90).blockname = 'control_mode/task_space/x_des';
+pt(90).paramname = 'Value';
 pt(90).class     = 'vector';
-pt(90).nrows     = 6;
+pt(90).nrows     = 3;
 pt(90).ncols     = 1;
 pt(90).subsource = 'SS_DOUBLE';
 pt(90).ndims     = '2';
 pt(90).size      = '[]';
 
-pt(91).blockname = 'control_mode/task_space/Unit Delay2';
+pt(91).blockname = 'control_mode/task_space/Unit Delay1';
 pt(91).paramname = 'X0';
 pt(91).class     = 'vector';
 pt(91).nrows     = 6;
@@ -820,7 +820,7 @@ pt(91).subsource = 'SS_DOUBLE';
 pt(91).ndims     = '2';
 pt(91).size      = '[]';
 
-pt(92).blockname = 'control_mode/task_space/Unit Delay3';
+pt(92).blockname = 'control_mode/task_space/Unit Delay10';
 pt(92).paramname = 'X0';
 pt(92).class     = 'scalar';
 pt(92).nrows     = 1;
@@ -829,7 +829,7 @@ pt(92).subsource = 'SS_DOUBLE';
 pt(92).ndims     = '2';
 pt(92).size      = '[]';
 
-pt(93).blockname = 'control_mode/task_space/Unit Delay4';
+pt(93).blockname = 'control_mode/task_space/Unit Delay11';
 pt(93).paramname = 'X0';
 pt(93).class     = 'vector';
 pt(93).nrows     = 3;
@@ -838,78 +838,132 @@ pt(93).subsource = 'SS_DOUBLE';
 pt(93).ndims     = '2';
 pt(93).size      = '[]';
 
-pt(94).blockname = 'control_mode/task_space/Unit Delay5';
+pt(94).blockname = 'control_mode/task_space/Unit Delay2';
 pt(94).paramname = 'X0';
-pt(94).class     = 'col-mat';
-pt(94).nrows     = 3;
-pt(94).ncols     = 3;
+pt(94).class     = 'vector';
+pt(94).nrows     = 6;
+pt(94).ncols     = 1;
 pt(94).subsource = 'SS_DOUBLE';
 pt(94).ndims     = '2';
 pt(94).size      = '[]';
 
-pt(95).blockname = 'control_mode/task_space/Unit Delay7';
+pt(95).blockname = 'control_mode/task_space/Unit Delay3';
 pt(95).paramname = 'X0';
-pt(95).class     = 'vector';
-pt(95).nrows     = 6;
+pt(95).class     = 'scalar';
+pt(95).nrows     = 1;
 pt(95).ncols     = 1;
 pt(95).subsource = 'SS_DOUBLE';
 pt(95).ndims     = '2';
 pt(95).size      = '[]';
 
-pt(96).blockname = 'Encoders/Derivative/Discrete Derivative/UD';
+pt(96).blockname = 'control_mode/task_space/Unit Delay4';
 pt(96).paramname = 'X0';
-pt(96).class     = 'scalar';
-pt(96).nrows     = 1;
+pt(96).class     = 'vector';
+pt(96).nrows     = 3;
 pt(96).ncols     = 1;
 pt(96).subsource = 'SS_DOUBLE';
 pt(96).ndims     = '2';
 pt(96).size      = '[]';
 
-pt(97).blockname = 'Encoders/Derivative/Discrete Derivative/TSamp';
-pt(97).paramname = 'WtEt';
-pt(97).class     = 'scalar';
-pt(97).nrows     = 1;
-pt(97).ncols     = 1;
+pt(97).blockname = 'control_mode/task_space/Unit Delay5';
+pt(97).paramname = 'X0';
+pt(97).class     = 'col-mat';
+pt(97).nrows     = 3;
+pt(97).ncols     = 3;
 pt(97).subsource = 'SS_DOUBLE';
 pt(97).ndims     = '2';
 pt(97).size      = '[]';
 
-pt(98).blockname = 'Encoders/Derivative/Fir Filter/vel_filter_coeffs';
-pt(98).paramname = 'Value';
+pt(98).blockname = 'control_mode/task_space/Unit Delay6';
+pt(98).paramname = 'X0';
 pt(98).class     = 'vector';
-pt(98).nrows     = 2;
+pt(98).nrows     = 3;
 pt(98).ncols     = 1;
 pt(98).subsource = 'SS_DOUBLE';
 pt(98).ndims     = '2';
 pt(98).size      = '[]';
 
-pt(99).blockname = 'Encoders/Derivative/Fir Filter/Gain';
-pt(99).paramname = 'Gain';
-pt(99).class     = 'scalar';
-pt(99).nrows     = 1;
+pt(99).blockname = 'control_mode/task_space/Unit Delay7';
+pt(99).paramname = 'X0';
+pt(99).class     = 'vector';
+pt(99).nrows     = 6;
 pt(99).ncols     = 1;
 pt(99).subsource = 'SS_DOUBLE';
 pt(99).ndims     = '2';
 pt(99).size      = '[]';
 
-pt(100).blockname = 'Encoders/Derivative/Fir Filter/Discrete FIR Filter';
-pt(100).paramname = 'IC';
-pt(100).class     = 'scalar';
-pt(100).nrows     = 1;
+pt(100).blockname = 'control_mode/task_space/Unit Delay8';
+pt(100).paramname = 'X0';
+pt(100).class     = 'vector';
+pt(100).nrows     = 6;
 pt(100).ncols     = 1;
 pt(100).subsource = 'SS_DOUBLE';
 pt(100).ndims     = '2';
 pt(100).size      = '[]';
 
-pt(101).blockname = 'control_mode/detect change/Detect Change/Delay Input1';
+pt(101).blockname = 'control_mode/task_space/Unit Delay9';
 pt(101).paramname = 'X0';
-pt(101).class     = 'vector';
-pt(101).nrows     = 6;
+pt(101).class     = 'scalar';
+pt(101).nrows     = 1;
 pt(101).ncols     = 1;
 pt(101).subsource = 'SS_DOUBLE';
 pt(101).ndims     = '2';
 pt(101).size      = '[]';
 
+pt(102).blockname = 'Encoders/Derivative/Discrete Derivative/UD';
+pt(102).paramname = 'X0';
+pt(102).class     = 'scalar';
+pt(102).nrows     = 1;
+pt(102).ncols     = 1;
+pt(102).subsource = 'SS_DOUBLE';
+pt(102).ndims     = '2';
+pt(102).size      = '[]';
+
+pt(103).blockname = 'Encoders/Derivative/Discrete Derivative/TSamp';
+pt(103).paramname = 'WtEt';
+pt(103).class     = 'scalar';
+pt(103).nrows     = 1;
+pt(103).ncols     = 1;
+pt(103).subsource = 'SS_DOUBLE';
+pt(103).ndims     = '2';
+pt(103).size      = '[]';
+
+pt(104).blockname = 'Encoders/Derivative/Fir Filter/vel_filter_coeffs';
+pt(104).paramname = 'Value';
+pt(104).class     = 'vector';
+pt(104).nrows     = 2;
+pt(104).ncols     = 1;
+pt(104).subsource = 'SS_DOUBLE';
+pt(104).ndims     = '2';
+pt(104).size      = '[]';
+
+pt(105).blockname = 'Encoders/Derivative/Fir Filter/Gain';
+pt(105).paramname = 'Gain';
+pt(105).class     = 'scalar';
+pt(105).nrows     = 1;
+pt(105).ncols     = 1;
+pt(105).subsource = 'SS_DOUBLE';
+pt(105).ndims     = '2';
+pt(105).size      = '[]';
+
+pt(106).blockname = 'Encoders/Derivative/Fir Filter/Discrete FIR Filter';
+pt(106).paramname = 'IC';
+pt(106).class     = 'scalar';
+pt(106).nrows     = 1;
+pt(106).ncols     = 1;
+pt(106).subsource = 'SS_DOUBLE';
+pt(106).ndims     = '2';
+pt(106).size      = '[]';
+
+pt(107).blockname = 'control_mode/detect change/Detect Change/Delay Input1';
+pt(107).paramname = 'X0';
+pt(107).class     = 'vector';
+pt(107).nrows     = 6;
+pt(107).ncols     = 1;
+pt(107).subsource = 'SS_DOUBLE';
+pt(107).ndims     = '2';
+pt(107).size      = '[]';
+
 function len = getlenPT
-len = 101;
+len = 107;
 

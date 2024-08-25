@@ -52,4 +52,4 @@ qdes_format = 'q1_des [cnt] %8.4f,q2_des [cnt] %8.4f,q3_des [cnt] %8.4f,q4_des [
 qd_format = 'q1d [mm/s] %8.6f,q2d [mm/s] %8.6f,q3d [mm/s] %8.6f,q4d [cnt] %8.6f,q5d [cnt] %8.6f,q6d [cnt] %8.6f, qdnorm %5i';
 qcmd_format = 'q1_cmd [A] %12.4f,q2_cmd [A] %12.4f,q3_cmd [A] %12.4f,q4_cmd [A] %12.4f,q5_cmd [A] %12.4f,q6_cmd [A] %12.4f';
 deltaq_format = 'q1 delta [mm] %12.4f,q2 delta [mm] %12.4f,q3 delta [mm] %12.4f,q4 delta [mm] %12.4f,q5 delta [mm] %12.4f,q6 delta [mm] %12.4f';
-xcur_format = 'xcur [mm] %12.4f,Ycur [mm] %12.4f,Zcur [mm] %12.4f';
+xcur_format = 'x [mm] %12.4f,y [mm] %12.4f,omega [rad] %12.4f';
