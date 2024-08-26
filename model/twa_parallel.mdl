@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7354"
+    ComputedModelVersion    "1.7360"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 26 15:26:20 2024"
-  RTWModifiedTimeStamp	  646586778
-  ModelVersionFormat	  "1.%<AutoIncrement:7354>"
+  LastModifiedDate	  "Mon Aug 26 17:23:21 2024"
+  RTWModifiedTimeStamp	  646593800
+  ModelVersionFormat	  "1.%<AutoIncrement:7360>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1787,7 +1787,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [3, 90, 1915, 1041]
+    Location		    [2, 75, 1918, 1059]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -4449,7 +4449,7 @@ Model {
       System {
 	Name			"Quintic Poly"
 	Location		[503, 114, 1416, 965]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -4935,7 +4935,6 @@ Model {
 	  Name			  "quintic_enable"
 	  SID			  2914
 	  Position		  [150, 271, 175, 289]
-	  Value			  "0"
 	  SampleTime		  "dt"
 	}
 	Block {
@@ -4943,6 +4942,7 @@ Model {
 	  Name			  "tf"
 	  SID			  2911
 	  Position		  [45, 115, 75, 145]
+	  Value			  "3"
 	  SampleTime		  "dt"
 	}
 	Block {
@@ -5553,7 +5553,7 @@ Model {
       System {
 	Name			"control_mode"
 	Location		[21, 97, 1089, 912]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5773,8 +5773,8 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "task_space"
-	    Location		    [139, 83, 1801, 1039]
-	    Open		    on
+	    Location		    [87, 88, 1749, 1044]
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -6578,7 +6578,7 @@ Model {
 	      Name		      "Scope (xPC) 2"
 	      SID		      3580
 	      Ports		      [1]
-	      Position		      [950, 785, 1040, 845]
+	      Position		      [935, 285, 1025, 345]
 	      LibraryVersion	      "1.1656"
 	      SourceBlock	      "xpclib/Misc./Scope (xPC) "
 	      SourceType	      "xpcscopeblock"
@@ -7722,8 +7722,16 @@ Model {
 		DstPort			1
 	      }
 	      Branch {
-		DstBlock		"xcur"
-		DstPort			1
+		Points			[20, 0]
+		Branch {
+		  DstBlock		  "xcur"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, 35]
+		  DstBlock		  "Scope (xPC) 2"
+		  DstPort		  1
+		}
 	      }
 	    }
 	    Line {
@@ -8062,17 +8070,9 @@ Model {
 	    Line {
 	      SrcBlock		      "quintic"
 	      SrcPort		      2
-	      Points		      [35, 0; 0, 30]
-	      Branch {
-		Points			[0, 315]
-		DstBlock		"Unit Delay11"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 5]
-		DstBlock		"Scope (xPC) 2"
-		DstPort			1
-	      }
+	      Points		      [35, 0; 0, 345]
+	      DstBlock		      "Unit Delay11"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "Unit Delay11"
@@ -8108,12 +8108,6 @@ Model {
 	      SrcPort		      1
 	      DstBlock		      "quintic"
 	      DstPort		      2
-	    }
-	    Annotation {
-	      Name		      "Need to change Resolved Rates and inv kin internal definition of x_des\nx_des(3,1) is now rotation"
-	      " to simplify input/output notation. Just set to 0 \ninternally"
-	      Position		      [309, 215]
-	      BackgroundColor	      "red"
 	    }
 	  }
 	}
@@ -9563,46 +9557,40 @@ Stateflow {
       "ates if the norm of\n% each joint error is less than some threshold.\n% i.e. the actuators have arrived at their"
       " last desired location\nqeps = zeros(6,1);\nfor jnum = 1:6\n    qeps(jnum,1) = (abs(q_des(jnum,1) - q_cur(jnum,1"
       ")));\nend\n\nqeps_macro = res_rate_param(9,1);\nqeps_micro = res_rate_param(9,2);\n\nmacro_converged = all(qeps("
-      "1:3) < qeps_macro);\nmicro_converged = all(qeps(4:6) < qeps_micro);\n\n% start resolved rates loop if macro actu"
-      "ators have arrived at their last\n% desired position. Only proceed to micro actuators once the macro motion\n% h"
-      "as converged\n% if macro_converged && mode == 1 \n    if theta_e > w_eps || p_del > p_eps\n        % linear velo"
-      "city multiplier\n        if p_del ~=0\n            if p_del/p_eps <= p_lambda\n                vdot = vmin + ((("
-      "vmax-vmin)*(p_del-p_eps))/(p_eps*(p_lambda-1)));\n            else\n                vdot = vmax;\n            en"
-      "d\n        else\n            vdot = 0;\n        end\n        \n        % angular velocity multiplier\n        if"
-      " theta_e ~= 0\n            if theta_e/w_eps <= w_lambda && theta_e ~= 0\n                wdot = wmin + (((wmax-w"
-      "min)*(theta_e-w_eps))/(w_eps*(w_lambda-1)));\n            else\n                wdot = wmax;\n            end\n "
-      "       else\n            wdot = 0;\n        end\n        \n        % xdot_des components\n        v = vdot * p_e"
-      "p_hat;\n        w = wdot * me;\n        \n        % jacobian weight matrix for macro actuator preference\n      "
-      "  w_mat = diag([ones(1,3),1e10*ones(1,3)]);\n        \n        % construct jacobian\n        full_jac = (w_mat\\"
-      "iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n        \n        % qdot des using inverse kinematics with redu"
-      "ndancy\n        qdot = full_jac * [v(1:2);w(3)];\n        \n        % new desired q values\n        deltaq = qdo"
-      "t * dt;\n%         qdes = q_cur + deltaq;\n        \n        % try iterating on the last desired joint position "
-      "instead\n        % the current encoder value, this may alleviate the\n        % necessity to resolve individual "
-      "joint error\n        qdes = q_des + deltaq;\n        \n        % integrate current position\n        xcur = x_cu"
-      "r + v * dt;\n        eerot = ee_rot_cur + w(3) * dt;\n%     % now that the macro motion has converged we can use"
-      " micro actuators    \n%     else\n%         %         qdes = qdes_cur;\n%         %         xcur = x_cur;\n%    "
-      "     %         eerot = ee_rot_cur;\n%         % same as macro, only iterate twa length if they have arrived at\n"
-      "%         % last desired location\n%         if micro_converged && use_twa\n%             if theta_e > w_eps_mu "
-      "|| p_del > p_eps_mu\n%                 % linear velocity multiplier\n%                 if p_del ~=0\n%          "
-      "           if p_del/p_eps_mu <= p_lambda_mu\n%                         vdot = vmin_mu + (((vmax_mu-vmin_mu)*...\n"
-      "%                             (p_del-p_eps_mu))/(p_eps_mu*(p_lambda_mu-1)));\n%                     else\n%     "
-      "                    vdot = vmax_mu;\n%                     end\n%                 else\n%                     vd"
-      "ot = 0;\n%                 end\n%                 \n%                 % angular velocity multiplier\n%          "
-      "       if theta_e ~= 0\n%                     if theta_e/w_eps_mu <= w_lambda_mu && theta_e ~= 0\n%             "
-      "            wdot = wmin_mu + (((wmax_mu - wmin_mu)*...\n%                             (theta_e - w_eps_mu))/(w_e"
-      "ps_mu*(w_lambda_mu-1)));\n%                     else\n%                         wdot = wmax_mu;\n%              "
-      "       end\n%                 else\n%                     wdot = 0;\n%                 end\n%                 \n"
-      "%                 % xdot_des components\n%                 v = vdot * p_ep_hat;\n%                 w = wdot * me"
-      ";\n%                 \n%                 % jacobian weight matrix for micro actuator preference\n%              "
-      "   w_mat = diag([1e10*ones(1,3),ones(1,3)]);\n%                 \n%                 % construct jacobian\n%     "
-      "            full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n%                 \n%           "
-      "      % qdot des using inverse kinematics with redundancy\n%                 qdot = full_jac * [v(1:2,1);w(3,1)]"
-      ";\n%                 \n%                 % new desired q values\n%                 deltaq = qdot * dt;\n%       "
-      "          qdes = q_cur + deltaq;\n%                 \n%                 % integrate current position\n%         "
-      "        xcur = x_cur + (dt*v);\n%                 eerot = ee_rot_cur + w(3) * dt;\n%             end\n%         "
-      "end\n    end\n% end\n\nend"
+      "1:3) < qeps_macro);\nmicro_converged = all(qeps(4:6) < qeps_micro);\n\nif mode == 1\n    if theta_e > w_eps || p"
+      "_del > p_eps\n        % linear velocity multiplier\n        if p_del ~=0\n            if p_del/p_eps <= p_lambda"
+      "\n                vdot = vmin + (((vmax-vmin)*(p_del-p_eps))/(p_eps*(p_lambda-1)));\n            else\n         "
+      "       vdot = vmax;\n            end\n        else\n            vdot = 0;\n        end\n        \n        % angu"
+      "lar velocity multiplier\n        if theta_e ~= 0\n            if theta_e/w_eps <= w_lambda && theta_e ~= 0\n    "
+      "            wdot = wmin + (((wmax-wmin)*(theta_e-w_eps))/(w_eps*(w_lambda-1)));\n            else\n             "
+      "   wdot = wmax;\n            end\n        else\n            wdot = 0;\n        end\n        \n        % xdot_des"
+      " components\n        v = vdot * p_ep_hat;\n        w = wdot * me;\n        \n        % jacobian weight matrix fo"
+      "r macro actuator preference\n        w_mat = diag([ones(1,3),1e10*ones(1,3)]);\n        \n        % construct ja"
+      "cobian\n        full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n        \n        % qdot des"
+      " using inverse kinematics with redundancy\n        qdot = full_jac * [v(1:2);w(3)];\n        \n        % new des"
+      "ired q values\n        deltaq = qdot * dt;\n        %         qdes = q_cur + deltaq;\n        \n        % try it"
+      "erating on the last desired joint position instead\n        % the current encoder value, this may alleviate the\n"
+      "        % necessity to resolve individual joint error\n        qdes = q_des + deltaq;\n        \n        % integ"
+      "rate current position\n        xcur = x_cur + v * dt;\n        eerot = ee_rot_cur + w(3) * dt;\n        % now th"
+      "at the macro motion has converged we can use micro actuators\n    elseif theta_e > w_eps_mu || p_del > p_eps_mu\n"
+      "        if use_twa\n            %         qdes = qdes_cur;\n            %         xcur = x_cur;\n            %  "
+      "       eerot = ee_rot_cur;\n            % same as macro, only iterate twa length if they have arrived at\n      "
+      "      % last desired location\n            % linear velocity multiplier\n            if p_del ~=0\n             "
+      "   if p_del/p_eps_mu <= p_lambda_mu\n                    vdot = vmin_mu + (((vmax_mu-vmin_mu)*...\n             "
+      "           (p_del-p_eps_mu))/(p_eps_mu*(p_lambda_mu-1)));\n                else\n                    vdot = vmax"
+      "_mu;\n                end\n            else\n                vdot = 0;\n            end\n            \n         "
+      "   % angular velocity multiplier\n            if theta_e ~= 0\n                if theta_e/w_eps_mu <= w_lambda_m"
+      "u && theta_e ~= 0\n                    wdot = wmin_mu + (((wmax_mu - wmin_mu)*...\n                        (thet"
+      "a_e - w_eps_mu))/(w_eps_mu*(w_lambda_mu-1)));\n                else\n                    wdot = wmax_mu;\n      "
+      "          end\n            else\n                wdot = 0;\n            end\n            \n            % xdot_de"
+      "s components\n            v = vdot * p_ep_hat;\n            w = wdot * me;\n            \n            % jacobian"
+      " weight matrix for micro actuator preference\n            w_mat = diag([1e10*ones(1,3),ones(1,3)]);\n           "
+      " \n            % construct jacobian\n            full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_j"
+      "ac;\n            \n            % qdot des using inverse kinematics with redundancy\n            qdot = full_jac "
+      "* [v(1:2,1);w(3,1)];\n            \n            % new desired q values\n            deltaq = qdot * dt;\n       "
+      "     qdes = q_des + deltaq;\n            \n            % integrate current position\n            xcur = x_cur + "
+      "(dt*v);\n            eerot = ee_rot_cur + w(3) * dt;\n        end\n    end\nend\n\nend"
       editorLayout	      "100 M4x1[535 14 1173 1087]"
-      breakpoints	      "100 M[205]"
     }
   }
   junction {
