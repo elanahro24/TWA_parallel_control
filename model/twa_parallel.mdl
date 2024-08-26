@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7343"
+    ComputedModelVersion    "1.7348"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Aug 25 17:06:51 2024"
-  RTWModifiedTimeStamp	  646504617
-  ModelVersionFormat	  "1.%<AutoIncrement:7343>"
+  LastModifiedDate	  "Mon Aug 26 11:54:43 2024"
+  RTWModifiedTimeStamp	  646574030
+  ModelVersionFormat	  "1.%<AutoIncrement:7348>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1787,7 +1787,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [2, 83, 1918, 1067]
+    Location		    [4, 84, 1916, 1035]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -3645,8 +3645,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"PID Controller"
-	Location		[259, 127, 1744, 1060]
-	Open			off
+	Location		[252, 112, 1737, 985]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -3987,8 +3987,8 @@ Model {
 	  SID			  3436
 	  Ports			  [1, 1]
 	  Position		  [525, 310, 555, 340]
-	  UpperLimit		  "[2,2,2]"
-	  LowerLimit		  "-1*[2,2,2]"
+	  UpperLimit		  "5*ones(3,1)"
+	  LowerLimit		  "-5*ones(3,1)"
 	  LinearizeAsGain	  off
 	  SampleTime		  "dt"
 	}
@@ -4142,8 +4142,8 @@ Model {
 	  SID			  3442
 	  Ports			  [1, 1]
 	  Position		  [400, 310, 430, 340]
-	  UpperLimit		  "0.5*ones(3,1)"
-	  LowerLimit		  "-0.5*ones(3,1)"
+	  UpperLimit		  "2.5*ones(3,1)"
+	  LowerLimit		  "-2.5*ones(3,1)"
 	  LinearizeAsGain	  off
 	  SampleTime		  "dt"
 	}
@@ -4151,7 +4151,7 @@ Model {
 	  BlockType		  Outport
 	  Name			  "Control"
 	  SID			  2964
-	  Position		  [740, 243, 770, 257]
+	  Position		  [740, 248, 770, 262]
 	  IconDisplay		  "Port number"
 	}
 	Line {
@@ -4449,7 +4449,7 @@ Model {
       System {
 	Name			"Quintic Poly"
 	Location		[503, 114, 1416, 965]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5553,7 +5553,7 @@ Model {
       System {
 	Name			"control_mode"
 	Location		[21, 97, 1089, 912]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5773,8 +5773,8 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "task_space"
-	    Location		    [141, 83, 1782, 986]
-	    Open		    on
+	    Location		    [139, 51, 1801, 1007]
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -8456,17 +8456,17 @@ Stateflow {
       "       if t < tf\n            eta = t/tf;\n            a3 = 10*eta^3;\n            a4 = -15*eta^4;\n            "
       "a5 = 6*eta^5;\n            \n            % apply quintic polynomial on task space\n            deltax = x_init +"
       " p_del*(a3+a4+a5);\n            \n            % redundancy weight matrix favoring velmex up to 50 microns\n     "
-      "       % from destination\n            if p_del > 0.050\n                w_mat = diag([ones(1,3),1e10*ones(1,3)]"
-      ");\n                macro_motion = 1;\n            else\n                w_mat = diag([ones(1,3),1e10*ones(1,3)]"
-      ");\n                macro_motion = 0;\n            end\n            \n            % construct jacobian\n        "
-      "    full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n            \n            % deltaq ~ J *"
-      " deltax\n            deltaq = full_jac * deltax;\n            \n            % new desired q values\n            "
-      "switch macro_motion\n                case 1\n                    % new desired q values\n                    qde"
-      "s(1:3,1) = deltaq(1:3,1);\n                    qdes(4:6,1) = q_cur(4:6,1);\n                case 0\n            "
-      "        qdes(4:6,1) = deltaq(4:6,1);\n                    qdes(1:3,1) = q_cur(1:3,1);\n            end\n        "
-      "    \n        else\n            robotmoving = 0;\n        end\n    else\n        qdes = q_cur;\n        tinit = "
-      "tc;\n        xinit = x_cur;\n        robotmoving = 1;\n    end\nend\n\nend"
-      editorLayout	      "100 M4x1[1995 34 1173 1087]"
+      "       % from destination\n            if norm(p_del) > 0.050\n                w_mat = diag([ones(1,3),1e10*ones"
+      "(1,3)]);\n               macro_motion = 1;\n            else\n                w_mat = diag([ones(1,3),1e10*ones("
+      "1,3)]);\n                macro_motion = 0;\n            end\n            \n            % construct jacobian\n   "
+      "         full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n            \n            % deltaq "
+      "~ J * deltax\n            deltaq = full_jac * deltax;\n            \n            % new desired q values\n       "
+      "     if macro_motion\n                % new desired q values\n                qdes(1:3,1) = deltaq(1:3,1);\n    "
+      "            qdes(4:6,1) = q_cur(4:6,1);\n            else\n                qdes(4:6,1) = deltaq(4:6,1);\n       "
+      "         qdes(1:3,1) = q_cur(1:3,1);\n            end\n        else\n            robotmoving = 0;\n        end\n"
+      "    else\n        qdes = q_cur;\n        tinit = tc;\n        xinit = x_cur;\n        robotmoving = 1;\n    end\n"
+      "end\n\nend"
+      editorLayout	      "100 M4x1[535 34 1173 1087]"
       breakpoints	      "100 M[205]"
     }
   }
@@ -10618,7 +10618,7 @@ Stateflow {
       "zeros(n,1);       % However we do want to record the current\n    confn = 0;                  % position in orde"
       "r to be ready as soon\n    t0n = tc;                   % as the enable becomes 1.\n    q0n = q_curr;\nend\n%----"
       "--------------------------------------------------------------------"
-      editorLayout	      "100 M4x1[1995 34 1173 1087]"
+      editorLayout	      "100 M4x1[535 34 1173 1087]"
     }
   }
   junction {

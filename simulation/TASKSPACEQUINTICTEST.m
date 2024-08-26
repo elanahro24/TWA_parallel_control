@@ -57,7 +57,7 @@ while robotmoving
     p_in_m,b_in_w,m_in_w,f_in_w,x_des,...
     tc,tf,q_des,x_cur,t_init,x_init,robot_moving);
 q_des = qdes;
-q_cur = qdes;
+q_cur = qdes;   
 x_cur = deltax;
 t_init = tinit;
 x_init = xinit;
@@ -72,5 +72,5 @@ for i = 1:6
         xplt(i).XData = [xplt(i).XData, xplt(i).XData(end)+1];
     end
 end
-pause(0.001)
+% pause(0.001)
 end

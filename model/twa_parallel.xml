@@ -818,11 +818,11 @@
 			<isSrc>[0 1 1]</isSrc>
 			<parameter>
 				<paramName>UpperLimit</paramName>
-				<dim>[1, 3]</dim>
+				<dim>[3, 1]</dim>
 			</parameter>
 			<parameter>
 				<paramName>LowerLimit</paramName>
-				<dim>[1, 3]</dim>
+				<dim>[3, 1]</dim>
 			</parameter>
 		</block>
 		<block>
