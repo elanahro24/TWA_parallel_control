@@ -12,9 +12,9 @@ N_pos = 1;
 pos_filter_coeffs = ones(N_pos,1);
 
 % PID Gains
-Kp = 50*ones(3,1);
-Ki = 18*ones(3,1);
-Kd = 0.3*ones(3,1);
+Kp = 25*ones(3,1);
+Ki = 9*ones(3,1);
+Kd = 0.15*ones(3,1);
 
 Kp_mu = 150*ones(3,1);
 Ki_mu = [50;50;50]; %[100;100;100]
@@ -44,7 +44,7 @@ res_rate_param = [res_rate_param,...
 
 % switch for using twa in task space when manually choosing macro/micro
 % motion. 0 = no; 1 = yes
-use_twa = 1;
+use_twa = 0;
 
 % scope formatting
 q_format = 'q1 [mm] %12.6f,q2 [mm] %12.6f,q3 [mm] %12.6f,q4 [cnt] %12.6f,q5 [cnt] %12.6f,q6 [cnt] %12.6f';

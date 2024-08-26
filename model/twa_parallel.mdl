@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7348"
+    ComputedModelVersion    "1.7350"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "ahronoez"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Aug 26 11:54:43 2024"
-  RTWModifiedTimeStamp	  646574030
-  ModelVersionFormat	  "1.%<AutoIncrement:7348>"
+  LastModifiedDate	  "Mon Aug 26 13:51:28 2024"
+  RTWModifiedTimeStamp	  646580928
+  ModelVersionFormat	  "1.%<AutoIncrement:7350>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1787,7 +1787,7 @@ Model {
   }
   System {
     Name		    "twa_parallel"
-    Location		    [4, 84, 1916, 1035]
+    Location		    [3, 90, 1915, 1041]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    282
@@ -3646,7 +3646,7 @@ Model {
       System {
 	Name			"PID Controller"
 	Location		[252, 112, 1737, 985]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5553,7 +5553,7 @@ Model {
       System {
 	Name			"control_mode"
 	Location		[21, 97, 1089, 912]
-	Open			off
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -5773,8 +5773,8 @@ Model {
 	  MaskHideContents	  off
 	  System {
 	    Name		    "task_space"
-	    Location		    [139, 51, 1801, 1007]
-	    Open		    off
+	    Location		    [139, 83, 1801, 1039]
+	    Open		    on
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -8466,7 +8466,7 @@ Stateflow {
       "         qdes(1:3,1) = q_cur(1:3,1);\n            end\n        else\n            robotmoving = 0;\n        end\n"
       "    else\n        qdes = q_cur;\n        tinit = tc;\n        xinit = x_cur;\n        robotmoving = 1;\n    end\n"
       "end\n\nend"
-      editorLayout	      "100 M4x1[535 34 1173 1087]"
+      editorLayout	      "100 M4x1[950 14 958 1047]"
       breakpoints	      "100 M[205]"
     }
   }
@@ -9596,9 +9596,11 @@ Stateflow {
       "struct jacobian\n                full_jac = (w_mat\\iik_jac') / (iik_jac/w_mat*iik_jac') * idk_jac;\n           "
       "     \n                % qdot des using inverse kinematics with redundancy\n                qdot = full_jac * [v"
       "(1:2,1);w(3,1)];\n                \n                % new desired q values\n                deltaq = qdot * dt;\n"
-      "                qdes = q_cur + deltaq;\n                \n                % integrate current position\n        "
-      "        xcur = x_cur + (dt*v);\n                eerot = ee_rot_cur + w(3) * dt;\n            end\n        end\n "
-      "   end\nend\n\nend"
+      "%                 qdes = q_cur + deltaq;\n\n                % try iterating on the last desired joint position i"
+      "nstead\n                % the current encoder value, this may alleviate the\n                % necessity to reso"
+      "lve individual joint error\n                qdes = q_des + deltaq;\n                \n                % integrat"
+      "e current position\n                xcur = x_cur + (dt*v);\n                eerot = ee_rot_cur + w(3) * dt;\n   "
+      "         end\n        end\n    end\nend\n\nend"
       editorLayout	      "100 M4x1[950 14 958 1047]"
       breakpoints	      "100 M[205]"
     }
