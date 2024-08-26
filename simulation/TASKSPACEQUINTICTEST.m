@@ -41,7 +41,7 @@ init_twa_homing();
 x_des = [5;0;0];
 dt = 0.002;
 tc = 0;
-tf = 2;
+tf = 5;
 q_des = zeros(6,1);
 x_cur = zeros(3,1);
 t_init = 0;
@@ -64,13 +64,30 @@ x_init = xinit;
 robot_moving = robotmoving;
 tc = tc + dt;
 
-for i = 1:6
-    qplt(i).YData = [qplt(i).YData, q_des(i,1)];
-    qplt(i).XData = [qplt(i).XData, qplt(i).XData(end)+1];
-    if i < 3
-        xplt(i).YData = [xplt(i).YData, x_cur(i,1)];
-        xplt(i).XData = [xplt(i).XData, xplt(i).XData(end)+1];
-    end
-end
-% pause(0.001)
+qplt(1).YData = [qplt(1).YData, q_des(1,1)];
+qplt(1).XData = [qplt(1).XData, qplt(1).XData(end)+1];
+
+qplt(2).YData = [qplt(2).YData, q_des(2,1)];
+qplt(2).XData = [qplt(2).XData, qplt(2).XData(end)+1];
+
+qplt(3).YData = [qplt(3).YData, q_des(3,1)];
+qplt(3).XData = [qplt(3).XData, qplt(3).XData(end)+1];
+
+qplt(4).YData = [qplt(4).YData, q_des(4,1)];
+qplt(4).XData = [qplt(4).XData, qplt(4).XData(end)+1];
+
+qplt(5).YData = [qplt(5).YData, q_des(5,1)];
+qplt(5).XData = [qplt(5).XData, qplt(5).XData(end)+1];
+
+qplt(6).YData = [qplt(6).YData, q_des(6,1)];
+qplt(6).XData = [qplt(6).XData, qplt(6).XData(end)+1];
+
+xplt(1).YData = [xplt(1).YData, x_cur(1,1)];
+xplt(1).XData = [xplt(1).XData, xplt(1).XData(end)+1];
+
+xplt(2).YData = [xplt(2).YData, x_cur(2,1)];
+xplt(2).XData = [xplt(2).XData, xplt(2).XData(end)+1];
+
+
+pause(0.001)
 end

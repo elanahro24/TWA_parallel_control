@@ -1,6 +1,5 @@
 function [qdes,deltax,tinit,xinit,robotmoving] = taskquintic(mode,q_cur,...
-    p_in_m,b_in_w,m_in_w,f_in_w,x_des,...
-    tc,tf,q_des,x_cur,t_init,x_init,robot_moving)
+    p_in_m,b_in_w,m_in_w,f_in_w,x_des,tc,tf,q_des,x_cur,t_init,x_init,robot_moving)
 
 % initialize
 qdes = q_des;
@@ -114,16 +113,14 @@ if do_quintic && norm(p_del) > 0
             
             % deltaq ~ J * deltax
             deltaq = full_jac * deltax;
-            switch macro_motion
-                case 1
-                    % new desired q values
-                    qdes(1:3,1) = deltaq(1:3,1);
-                    qdes(4:6,1) = q_cur(4:6,1);
-                case 0
-                    qdes(4:6,1) = deltaq(4:6,1);
-                    qdes(1:3,1) = q_cur(1:3,1);
-            end
-                    
+            if macro_motion
+                % new desired q values
+                qdes(1:3,1) = deltaq(1:3,1);
+                qdes(4:6,1) = q_cur(4:6,1);
+            else
+                qdes(4:6,1) = deltaq(4:6,1);
+                qdes(1:3,1) = q_cur(1:3,1);
+            end        
         else
             robotmoving = 0;
         end
