@@ -1543,30 +1543,24 @@ Operator</sigName>
 			<signal>
 				<sigName>ResolvedRates/p1</sigName>
 				<xpcsigName>control_mode/task_space/ResolvedRates/p1</xpcsigName>
-				<sigWidth>6</sigWidth>
-				<sigDim>[6, 1]</sigDim>
-			</signal>
-			<signal>
-				<sigName>ResolvedRates/p2</sigName>
-				<xpcsigName>control_mode/task_space/ResolvedRates/p2</xpcsigName>
 				<sigWidth>3</sigWidth>
 				<sigDim>[3, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>ResolvedRates/p3</sigName>
-				<xpcsigName>control_mode/task_space/ResolvedRates/p3</xpcsigName>
+				<sigName>ResolvedRates/p2</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p2</xpcsigName>
 				<sigWidth>1</sigWidth>
 				<sigDim>[1, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>ResolvedRates/p4</sigName>
-				<xpcsigName>control_mode/task_space/ResolvedRates/p4</xpcsigName>
+				<sigName>ResolvedRates/p3</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p3</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
 			<signal>
-				<sigName>ResolvedRates/p5</sigName>
-				<xpcsigName>control_mode/task_space/ResolvedRates/p5</xpcsigName>
+				<sigName>ResolvedRates/p4</sigName>
+				<xpcsigName>control_mode/task_space/ResolvedRates/p4</xpcsigName>
 				<sigWidth>6</sigWidth>
 				<sigDim>[6, 1]</sigDim>
 			</signal>
