@@ -34,14 +34,15 @@
 %       See also FTP.GET, FS.FOPEN, FS.FREAD
 
 f = xpctarget.ftp;
-f.get('xcur.dat')
-f.get('qdel.dat')
-f.get('q1.dat')
-xcur = readxpcfile('xcur.dat');
-qdel = readxpcfile('qdel.dat');
-q = readxpcfile('q1.dat');
+f.get('qref.dat')
+f.get('qvec.dat')
+f.get('xvec.dat')
+xvec = readxpcfile('xvec.dat');
+qref = readxpcfile('qref.dat');
+qvec = readxpcfile('qvec.dat');
 
-
+file_name = 'data04';
+save(file_name,'qref','qvec','xvec')
 
 % f = xpctarget.fs;
 % h = f.fopen('qdel.dat');

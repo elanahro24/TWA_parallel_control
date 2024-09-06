@@ -1,12 +1,12 @@
 close all;
 clear;
 
-load('data02.mat')
+load('data04.mat')
 % plot joint positions
 fig1 = figure();
 
 hold on
-q_vec = q.data;
+q_vec = qvec.data;
 vecsize = size(q_vec);
 
 for i = 1:(vecsize(2)-1);plot(q_vec(:,vecsize(2)),q_vec(:,i),'linewidth',2.5); end
@@ -34,7 +34,7 @@ lgd.FontSize = 11;
 % Plot EE Position
 fig2 = figure();
 hold on
-x_vec = xcur.data;
+x_vec = xvec.data;
 
 vecsize = size(x_vec);
 

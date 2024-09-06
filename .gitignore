@@ -3,3 +3,4 @@
 *.mexw32
 model/slprj/*
 model/twa_parallel_xpcert_rtw/*
+data/
