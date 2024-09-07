@@ -19,8 +19,8 @@ Ki = [9;9;9];%9*ones(3,1);
 Kd = [5;0.15;0.15];%0.15*ones(3,1);
 
 Kp_mu = 150*ones(3,1);
-Ki_mu = [50;50;50]; %[100;100;100]
-Kd_mu = [2;5;5];
+Ki_mu = 5*ones(3,1); %[100;100;100]
+Kd_mu = 2*ones(3,1);
 
 % Motor parameters
 enc_res = [512; 256; 256]*4; %[cnt/trn] * quadrature

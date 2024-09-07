@@ -22,7 +22,7 @@ function varargout = GUIMAIN(varargin)
 
 % Edit the above text to modify the response to help GUIMAIN
 
-% Last Modified by GUIDE v2.5 05-Sep-2024 19:17:02
+% Last Modified by GUIDE v2.5 06-Sep-2024 18:13:51
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -84,11 +84,18 @@ fprintf('[\bAttempting to Connect to Target... ]\b\n');
 target = slrt;
 connected = char(target.Connected);
 
-if all(connected == 'Yes')
+
+try all(connected == 'Yes')
     fprintf('Succesfully Connected to Target!\n');
-elseif all(connected == 'No')
-    fprintf(2,'Unsuccesfull Connection to Target!\n');
+catch
+    error('No connection to target!');
 end
+
+% if all(connected == 'Yes')
+%     
+% elseif all(connected == 'No')
+%     fprintf(2,'Unsuccesfull Connection to Target!\n');
+% end
 
 handles.tg = slrt;
 
@@ -102,7 +109,10 @@ function load_model_Callback(hObject, eventdata, handles)
 % hObject    handle to load_model (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-handles.tg.load('twa_parallel_pc104');
+try handles.tg.load('twa_parallel_pc104');
+catch
+    error('You need to be in the model/build directory to find the file');
+end
 
 
 % --- Executes on button press in start_button.
@@ -512,9 +522,9 @@ function setcontrolmode_Callback(hObject, eventdata, handles)
 mode = get(handles.descontrolmode,'String');
 
 if strcmp(mode,'Joint Space') || strcmp(mode,'joint space') || strcmp(mode,'joint') || strcmp(mode,'Joint')
-    handles.tg.setcontrolmode(1);
+    setcontrolmode(handles.tg,1);
 elseif strcmp(mode,'Task Space') || strcmp(mode,'task space') || strcmp(mode,'task') || strcmp(mode,'Task')
-    handles.tg.setcontrolmode(2);
+    setcontrolmode(handles.tg,2);
 else
     errordlg({'You must enter one of the following:'; 'Joint Space, joint space, Joint, joint';...
         'Task Space, task space, Task, task'},'Invalid Input','modal')
@@ -573,12 +583,11 @@ enable = get(hObject,'Value');
 sc6 = handles.tg.getscope(6);
 sc7 = handles.tg.getscope(7);
 sc8 = handles.tg.getscope(8);
-sc9 = handles.tg.getscope(9);
 
 if enable
-    sc6.start; sc7.start; sc8.start; sc9.start;
+    sc6.start; sc7.start; sc8.start; 
 else
-    sc6.stop; sc7.stop; sc8.stop; sc9.start;
+    sc6.stop; sc7.stop; sc8.stop;
 end
 
 
@@ -719,3 +728,97 @@ function enablepid_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of enablepid
 enable = get(hObject,'Value');
 handles.tg.setparam('pid_mode',enable);
+
+
+
+function kpmuvalue_Callback(hObject, eventdata, handles)
+% hObject    handle to kpmuvalue (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of kpmuvalue as text
+%        str2double(get(hObject,'String')) returns contents of kpmuvalue as a double
+s = get(hObject,'String');
+kp = str2double(strsplit(s,','));
+set(hObject,'Value',kp);
+
+% --- Executes during object creation, after setting all properties.
+function kpmuvalue_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to kpmuvalue (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function kimuvalue_Callback(hObject, eventdata, handles)
+% hObject    handle to kimuvalue (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of kimuvalue as text
+%        str2double(get(hObject,'String')) returns contents of kimuvalue as a double
+s = get(hObject,'String');
+ki = str2double(strsplit(s,','));
+set(hObject,'Value',ki);
+
+% --- Executes during object creation, after setting all properties.
+function kimuvalue_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to kimuvalue (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function kdmuvalue_Callback(hObject, eventdata, handles)
+% hObject    handle to kdmuvalue (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of kdmuvalue as text
+%        str2double(get(hObject,'String')) returns contents of kdmuvalue as a double
+s = get(hObject,'String');
+kd = str2double(strsplit(s,','));
+set(hObject,'Value',kd);
+
+% --- Executes during object creation, after setting all properties.
+function kdmuvalue_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to kdmuvalue (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in settwapidgains.
+function settwapidgains_Callback(hObject, eventdata, handles)
+% hObject    handle to settwapidgains (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+kp_mu = transpose(get(handles.kpmuvalue,'Value'));
+ki_mu = transpose(get(handles.kimuvalue,'Value'));
+kd_mu = transpose(get(handles.kdmuvalue,'Value'));
+
+handles.tg.setparam('Kp_mu',kp_mu);
+handles.tg.setparam('Ki_mu',ki_mu);
+handles.tg.setparam('Kd_mu',kd_mu);
+
+fprintf('TWA PID Gains ');
+fprintf('Kp: [%0.4f,%0.4f,%0.4f] ',kp_mu(1),kp_mu(2),kp_mu(3));
+fprintf('Ki: [%0.4f,%0.4f,%0.4f] ',ki_mu(1),ki_mu(2),ki_mu(3));
+fprintf('Kd: [%0.4f,%0.4f,%0.4f]\n',kd_mu(1),kd_mu(2),kd_mu(3));

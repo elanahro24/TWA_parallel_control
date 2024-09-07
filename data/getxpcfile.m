@@ -1,4 +1,16 @@
-% get file scope data from xpc target
+smlnk = SimulinkRealTime;
+
+SimulinkRealTime.copyFileToHost('qvec.dat')
+SimulinkRealTime.copyFileToHost('xvec.dat')
+SimulinkRealTime.copyFileToHost('qref.dat')
+
+qvec = SimulinkRealTime.utils.getFileScopeData('qvec.dat');
+qref = SimulinkRealTime.utils.getFileScopeData('qref.dat');
+xvec = SimulinkRealTime.utils.getFileScopeData('xvec.dat');
+
+save('data05','qvec','qref','xvec')
+
+% get file scope data from xpc target r2010a
 % elan ahronovich 08/2024
 
 %    READXPCFILE Reads an xpc file format.
