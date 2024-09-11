@@ -1,7 +1,7 @@
 close all;
 clear;
 
-load('data05.mat')
+load('data0910_1.mat')
 % plot joint positions
 fig1 = figure();
 

@@ -22,7 +22,7 @@ function varargout = GUIMAIN(varargin)
 
 % Edit the above text to modify the response to help GUIMAIN
 
-% Last Modified by GUIDE v2.5 06-Sep-2024 18:13:51
+% Last Modified by GUIDE v2.5 10-Sep-2024 19:01:10
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -482,27 +482,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
-function descontrolmode_Callback(hObject, eventdata, handles)
-% hObject    handle to descontrolmode (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of descontrolmode as text
-%        str2double(get(hObject,'String')) returns contents of
-%        descontrolmode as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function descontrolmode_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to descontrolmode (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
 
 % --- Executes on button press in setmacroinc.
 function setmacroinc_Callback(hObject, eventdata, handles)
@@ -512,65 +491,6 @@ function setmacroinc_Callback(hObject, eventdata, handles)
 qincvec = [get(handles.q1inc,'Value');get(handles.q2inc,'Value');...
         get(handles.q3inc,'Value')];
 setmacrostroke(handles.tg,qincvec);
-
-
-% --- Executes on button press in setcontrolmode.
-function setcontrolmode_Callback(hObject, eventdata, handles)
-% hObject    handle to setcontrolmode (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-mode = get(handles.descontrolmode,'String');
-
-if strcmp(mode,'Joint Space') || strcmp(mode,'joint space') || strcmp(mode,'joint') || strcmp(mode,'Joint')
-    setcontrolmode(handles.tg,1);
-elseif strcmp(mode,'Task Space') || strcmp(mode,'task space') || strcmp(mode,'task') || strcmp(mode,'Task')
-    setcontrolmode(handles.tg,2);
-else
-    errordlg({'You must enter one of the following:'; 'Joint Space, joint space, Joint, joint';...
-        'Task Space, task space, Task, task'},'Invalid Input','modal')
-end
-
-
-% --- Executes on button press in setSolutionType.
-function setSolutionType_Callback(hObject, eventdata, handles)
-% hObject    handle to setSolutionType (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-mode = get(handles.desSolutionType,'String');
-
-if strcmp(mode,'Resolved Rate') || strcmp(mode,'resolved rates') || strcmp(mode,'rr') || strcmp(mode,'RR')
-    id = handles.tg.getparamid('control_mode/task_space/mode','Value');
-    handles.tg.setparam(id,1);
-elseif strcmp(mode,'Inv Kin') || strcmp(mode,'inv kin') || strcmp(mode,'ik') || strcmp(mode,'IK')
-    id = handles.tg.getparamid('control_mode/task_space/mode','Value');
-    handles.tg.setparam(id,2);
-else
-    errordlg({'You must enter one of the following:'; 'Resolved Rates, resolved rates, RR, rr';...
-        'Inv Kin, inv kin, IK, ik'},'Invalid Input','modal')
-end
-
-
-function desSolutionType_Callback(hObject, eventdata, handles)
-% hObject    handle to desSolutionType (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of desSolutionType as text
-%        str2double(get(hObject,'String')) returns contents of desSolutionType as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function desSolutionType_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to desSolutionType (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
 
 % --- Executes on button press in enableFileScope.
 function enableFileScope_Callback(hObject, eventdata, handles)
@@ -822,3 +742,46 @@ fprintf('TWA PID Gains ');
 fprintf('Kp: [%0.4f,%0.4f,%0.4f] ',kp_mu(1),kp_mu(2),kp_mu(3));
 fprintf('Ki: [%0.4f,%0.4f,%0.4f] ',ki_mu(1),ki_mu(2),ki_mu(3));
 fprintf('Kd: [%0.4f,%0.4f,%0.4f]\n',kd_mu(1),kd_mu(2),kd_mu(3));
+
+
+% --- Executes on button press in jointspacecontrolbtn.
+function jointspacecontrolbtn_Callback(hObject, eventdata, handles)
+% hObject    handle to jointspacecontrolbtn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of jointspacecontrolbtn
+set(handles.taskspacecontrolbtn,'Value',0);
+setcontrolmode(handles.tg,1);
+
+% --- Executes on button press in taskspacecontrolbtn.
+function taskspacecontrolbtn_Callback(hObject, eventdata, handles)
+% hObject    handle to taskspacecontrolbtn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of taskspacecontrolbtn
+set(handles.jointspacecontrolbtn,'Value',0);
+setcontrolmode(handles.tg,2);
+
+% --- Executes on button press in resolvedratesbtn.
+function resolvedratesbtn_Callback(hObject, eventdata, handles)
+% hObject    handle to resolvedratesbtn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of resolvedratesbtn
+set(handles.invkinbtn,'Value',0);
+id = handles.tg.getparamid('control_mode/task_space/mode','Value');
+handles.tg.setparam(id,1);
+
+% --- Executes on button press in invkinbtn.
+function invkinbtn_Callback(hObject, eventdata, handles)
+% hObject    handle to invkinbtn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of invkinbtn
+set(handles.resolvedratesbtn,'Value',0);
+id = handles.tg.getparamid('control_mode/task_space/mode','Value');
+handles.tg.setparam(id,2);

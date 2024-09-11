@@ -8,7 +8,7 @@ qvec = SimulinkRealTime.utils.getFileScopeData('qvec.dat');
 qref = SimulinkRealTime.utils.getFileScopeData('qref.dat');
 xvec = SimulinkRealTime.utils.getFileScopeData('xvec.dat');
 
-save('data05','qvec','qref','xvec')
+save('data0910_1','qvec','qref','xvec')
 
 % get file scope data from xpc target r2010a
 % elan ahronovich 08/2024

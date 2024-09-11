@@ -17,7 +17,7 @@ if cur_mode == 2
         str = ['control_mode/control_switch/s',num2str(i)];
         q_des_cur(i,1) = tg.getsignal(str);
     end
-    tg.setqdes(q_des_cur);
+    setqdes(tg,q_des_cur);
 end
 
 %change control mode

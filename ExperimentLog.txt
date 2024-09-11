@@ -1,0 +1,15 @@
+Experiment log for TWA
+
+2024_09_10
+-> Notes: both experiments showed diagonal motion from the vicra data
+-> experiment tracing a circle 2mm in radius and using redundancy resolution to resolve position
+	-> vicra data: twa_0910.tsv 
+	-> did not save file scope data
+-> experiment tracing a circle 1mm in radius and using inv kin only with TWA
+	-> vicra data: twa_0910_twa.tsv
+	-> file scope data: data0910_1.mat
+
+2024_09_09
+-> Go to position [10,-10] using redundnacy resolution
+	-> vicra data: twa_0909.tsv
+	-> file scope data: data0909.mat

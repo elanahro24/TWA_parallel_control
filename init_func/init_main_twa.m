@@ -47,7 +47,7 @@ res_rate_param = [0.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
 
 % a second column for micro actuator resolved rates
 res_rate_param = [res_rate_param,...
-                       [0.001, 0.0087, 0.5, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
+                       [0.001, 0.0087, 0.01, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
 
 
 % switch for using twa in task space when manually choosing macro/micro
