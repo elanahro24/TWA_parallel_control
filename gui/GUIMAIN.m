@@ -22,7 +22,7 @@ function varargout = GUIMAIN(varargin)
 
 % Edit the above text to modify the response to help GUIMAIN
 
-% Last Modified by GUIDE v2.5 11-Sep-2024 11:21:50
+% Last Modified by GUIDE v2.5 11-Sep-2024 13:57:47
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -52,15 +52,25 @@ function GUIMAIN_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to GUIMAIN (see VARARGIN)
 
+% UIWAIT makes GUIMAIN wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+fprintf('[\bAttempting to Connect to Target... ]\b\n');
+
+tg = slrt;
+handles.tg = tg;
+connected = char(handles.tg.Connected);
+
+try all(connected == 'Yes');
+    fprintf('Succesfully Connected to Target!\n');
+catch
+    error('No connection to target!');
+end
+
 % Choose default command line output for GUIMAIN
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-
-% UIWAIT makes GUIMAIN wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
-
 
 % --- Outputs from this function are returned to the command line.
 function varargout = GUIMAIN_OutputFcn(hObject, eventdata, handles) 
@@ -73,32 +83,12 @@ function varargout = GUIMAIN_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in connect_target.
-function connect_target_Callback(hObject, eventdata, handles)
-% hObject    handle to connect_target (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-fprintf('[\bAttempting to Connect to Target... ]\b\n');
-
-handles.tg = slrt;
-connected = char(handles.tg.Connected);
-
-try all(connected == 'Yes')
-    fprintf('Succesfully Connected to Target!\n');
-catch
-    error('No connection to target!');
-end
-
-% Update handles structure
-guidata(hObject, handles);  
-
-
 % --- Executes on button press in load_model.
 function load_model_Callback(hObject, eventdata, handles)
 % hObject    handle to load_model (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-try handles.tg.load('model/build/twa_parallel_pc104');
+try handles.tg.load('model\build\twa_parallel_pc104');
 catch
     error('You need to be in the model/build directory to find the file');
 end
@@ -509,7 +499,7 @@ function initializeTWA_Callback(hObject, eventdata, handles)
 %move twas to some small initial position to get around singularity at 0
 %encoder counts
 setqdes(handles.tg,[0;0;0;0.001;0.001;0.001]);
-pause(1);
+pause(get(handles.quintic_tf,'Value'));
 
 % now go to initial position of wires
 qvec = [0;0;0;5.6842;4.66442;3.584];
@@ -798,14 +788,14 @@ function resettwabtn_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % check if joint quintic polynomial is activated, if not, turn on
-quintic_on = get(hanels.enable_jnt_quintic,'Value');
+quintic_on = get(handles.enable_jnt_quintic,'Value');
 
 if ~quintic_on
     enablequintic(handles.tg,1);
     set(handles.enable_jnt_quintic,'Value',1);
 end
 
-qvec = [0;0;0;5.6842;4.66442;3.584];
+qvec = [0;0;0;0.001;0.001;0.001];
 setqdes(handles.tg,qvec);
 
 set(handles.q1value,'Value',qvec(1,1));
@@ -820,3 +810,14 @@ set(handles.q5value,'Value',qvec(5,1));
 set(handles.q5value,'String',num2str(qvec(5,1)));
 set(handles.q6value,'Value',qvec(6,1));
 set(handles.q6value,'String',num2str(qvec(6,1)));
+
+
+% --- Executes on button press in enabletwa.
+function enabletwa_Callback(hObject, eventdata, handles)
+% hObject    handle to enabletwa (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of enabletwa
+usetwas = get(hObject,'Value');
+handles.tg.setparam('use_twa',usetwas);

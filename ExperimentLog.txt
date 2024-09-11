@@ -1,5 +1,12 @@
 Experiment log for TWA
 
+2024_09_11
+-> Notes: when plotting data, plotting raw data pre transformation in 3 dimensions reveals expected motion
+-> tracing 0.25mm radius circle with twas
+    -> ellipsoid shape output, could be due to starting position, flexure rigidity, twa motor housing
+-> tracing 10mm radius circle with macro actuators
+    -> perfect circle as expected
+
 2024_09_10
 -> Notes: both experiments showed diagonal motion from the vicra data
 -> experiment tracing a circle 2mm in radius and using redundancy resolution to resolve position
