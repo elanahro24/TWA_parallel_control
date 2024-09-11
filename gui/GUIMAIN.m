@@ -22,7 +22,7 @@ function varargout = GUIMAIN(varargin)
 
 % Edit the above text to modify the response to help GUIMAIN
 
-% Last Modified by GUIDE v2.5 10-Sep-2024 19:01:10
+% Last Modified by GUIDE v2.5 11-Sep-2024 11:21:50
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -80,25 +80,14 @@ function connect_target_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 fprintf('[\bAttempting to Connect to Target... ]\b\n');
 
-%Connect to target and add slrt class to the handles accessible to gui
-target = slrt;
-connected = char(target.Connected);
-
+handles.tg = slrt;
+connected = char(handles.tg.Connected);
 
 try all(connected == 'Yes')
     fprintf('Succesfully Connected to Target!\n');
 catch
     error('No connection to target!');
 end
-
-% if all(connected == 'Yes')
-%     
-% elseif all(connected == 'No')
-%     fprintf(2,'Unsuccesfull Connection to Target!\n');
-% end
-
-handles.tg = slrt;
-
 
 % Update handles structure
 guidata(hObject, handles);  
@@ -109,7 +98,7 @@ function load_model_Callback(hObject, eventdata, handles)
 % hObject    handle to load_model (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-try handles.tg.load('twa_parallel_pc104');
+try handles.tg.load('model/build/twa_parallel_pc104');
 catch
     error('You need to be in the model/build directory to find the file');
 end
@@ -516,6 +505,13 @@ function initializeTWA_Callback(hObject, eventdata, handles)
 % hObject    handle to initializeTWA (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+%move twas to some small initial position to get around singularity at 0
+%encoder counts
+setqdes(handles.tg,[0;0;0;0.001;0.001;0.001]);
+pause(1);
+
+% now go to initial position of wires
 qvec = [0;0;0;5.6842;4.66442;3.584];
 setqdes(handles.tg,qvec);
 
@@ -754,6 +750,10 @@ function jointspacecontrolbtn_Callback(hObject, eventdata, handles)
 set(handles.taskspacecontrolbtn,'Value',0);
 setcontrolmode(handles.tg,1);
 
+% show joint space control panel, hide task space panel
+set(handles.taskspacepanel,'Visible','off')
+set(handles.jointspacepanel,'Visible','on')
+
 % --- Executes on button press in taskspacecontrolbtn.
 function taskspacecontrolbtn_Callback(hObject, eventdata, handles)
 % hObject    handle to taskspacecontrolbtn (see GCBO)
@@ -763,6 +763,10 @@ function taskspacecontrolbtn_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of taskspacecontrolbtn
 set(handles.jointspacecontrolbtn,'Value',0);
 setcontrolmode(handles.tg,2);
+
+% show task space control panel, hide joint space panel
+set(handles.taskspacepanel,'Visible','on')
+set(handles.jointspacepanel,'Visible','off')
 
 % --- Executes on button press in resolvedratesbtn.
 function resolvedratesbtn_Callback(hObject, eventdata, handles)
@@ -785,3 +789,34 @@ function invkinbtn_Callback(hObject, eventdata, handles)
 set(handles.resolvedratesbtn,'Value',0);
 id = handles.tg.getparamid('control_mode/task_space/mode','Value');
 handles.tg.setparam(id,2);
+
+
+% --- Executes on button press in resettwabtn.
+function resettwabtn_Callback(hObject, eventdata, handles)
+% hObject    handle to resettwabtn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% check if joint quintic polynomial is activated, if not, turn on
+quintic_on = get(hanels.enable_jnt_quintic,'Value');
+
+if ~quintic_on
+    enablequintic(handles.tg,1);
+    set(handles.enable_jnt_quintic,'Value',1);
+end
+
+qvec = [0;0;0;5.6842;4.66442;3.584];
+setqdes(handles.tg,qvec);
+
+set(handles.q1value,'Value',qvec(1,1));
+set(handles.q1value,'String',num2str(qvec(1,1)));
+set(handles.q2value,'Value',qvec(2,1));
+set(handles.q2value,'String',num2str(qvec(2,1)));
+set(handles.q3value,'Value',qvec(3,1));
+set(handles.q3value,'String',num2str(qvec(3,1)));
+set(handles.q4value,'Value',qvec(4,1));
+set(handles.q4value,'String',num2str(qvec(4,1)));
+set(handles.q5value,'Value',qvec(5,1));
+set(handles.q5value,'String',num2str(qvec(5,1)));
+set(handles.q6value,'Value',qvec(6,1));
+set(handles.q6value,'String',num2str(qvec(6,1)));
