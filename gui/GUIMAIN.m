@@ -480,13 +480,11 @@ function enableFileScope_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of enableFileScope
 enable = get(hObject,'Value');
 sc6 = handles.tg.getscope(6);
-sc7 = handles.tg.getscope(7);
-sc8 = handles.tg.getscope(8);
 
 if enable
-    sc6.start; sc7.start; sc8.start; 
+    sc6.start;
 else
-    sc6.stop; sc7.stop; sc8.stop;
+    sc6.stop;
 end
 
 
@@ -498,11 +496,11 @@ function initializeTWA_Callback(hObject, eventdata, handles)
 
 %move twas to some small initial position to get around singularity at 0
 %encoder counts
-setqdes(handles.tg,[0;0;0;0.001;0.001;0.001]);
+setqdes(handles.tg,[0;0;0;0.5;0.5;0.5]);
 pause(get(handles.quintic_tf,'Value'));
 
 % now go to initial position of wires
-qvec = [0;0;0;5.6842;4.66442;3.584];
+qvec = [0;0;0;2.969;5.169;1.269];
 setqdes(handles.tg,qvec);
 
 set(handles.q1value,'Value',qvec(1,1));

@@ -1,17 +1,27 @@
-x = 0.25*cos(0:pi/10:2*pi);
-y = 0.25*sin(0:pi/10:2*pi);
-f = waitbar(0,'Going to point 1...');
+x = 0.5*cos(0:5*pi/180:2*pi);
+y = 0.5*sin(0:5*pi/180:2*pi);
 
 for i = 1:length(x)
+    str = sprintf('Going to point %i/%i',i,2*length(x));
+    if i == 1
+    f = waitbar(i/(2*length(x)),str);
+    else
+        waitbar(i/(2*length(x)),f,str);
+    end    
     xdes = [x(i);y(i);0];
     setxdes(tg,xdes);
     
-    if i == 1
-        pause(3)
-    else
-        pause(1)
-    end
-    
-    str = sprintf('Going to point %i',i);
-    waitbar(i/length(x),f,str);
+    pause(2)    
 end
+
+for i = 1:length(x)
+    str = sprintf('Going to point %i/%i',i+length(x),2*length(x));
+
+    waitbar((i+length(x))/(2*length(x)),f,str);  
+    xdes = [x(i);y(i);0];
+    setxdes(tg,xdes);
+    
+    pause(2)    
+end
+
+close(f)

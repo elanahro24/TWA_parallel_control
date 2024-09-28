@@ -1,12 +1,25 @@
 %%%%%%       Initialization File for Control of the 3 Segment Snake %%%%%
 % Elan Ahronovich 2024/05
 
+%%% test
+q_des = 0;
+manual_cur = 0;
+quintic_tf = 10;
+do_quintic = 1;
+pot_volt = 10;
+kp_twa = 25;
+ki_twa = 2;
+kd_twa = 0.75;
+
 % xPC Target Setting
 dt = 0.001;  %control loop cycle
 
 % Moving Average Filters
 N_velocity = 2;
 vel_filter_coeffs = ones(N_velocity,1);
+
+N_pot = 5;
+pot_filter_coeffs = ones(N_pot,1);
 
 N_pos = 1;
 pos_filter_coeffs = ones(N_pos,1);
@@ -32,8 +45,6 @@ twa_gear_rat  = 3249/196;
 enc_res_vec = [enc_res;twa_enc_res*ones(3,1)];
 gear_rat_vec = [gear_rat;twa_gear_rat*ones(3,1)];
 
-% initialize encoder counts to enable zeroing
-init_cnt = 20;
 
 % velmex pitch, screw is 20 turns/inch => 0.05 inch/turn => 1.27 mm/turn
 velmex_pitch = 1.27; % [mm/turn]
@@ -43,16 +54,18 @@ velmex_pitch = 1.27; % [mm/turn]
 % [p_epsilon; w_epsilon; vmax; vmin; wmax; wmin; p_lambda; w_lambda; qeps]
 
 % 1/3 rule for macro motion with w_eps = 0.035 (~2 deg) give wmax = 11.667
-res_rate_param = [0.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
+% res_rate_param = [0.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
+res_rate_param = [1.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
 
 % a second column for micro actuator resolved rates
+% res_rate_param = [res_rate_param,...
+%                        [0.001, 0.0087, 0.01, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
 res_rate_param = [res_rate_param,...
-                       [0.001, 0.0087, 0.01, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
-
+                       [0.001, 0.0087, 0.25, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
 
 % switch for using twa in task space when manually choosing macro/micro
 % motion. 0 = no; 1 = yes
-use_twa = 0;
+use_twa = 1;
 
 % scope formatting
 q_format = 'q1 [mm] %12.6f,q2 [mm] %12.6f,q3 [mm] %12.6f,q4 [cnt] %12.6f,q5 [cnt] %12.6f,q6 [cnt] %12.6f';
