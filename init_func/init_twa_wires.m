@@ -35,8 +35,3 @@ Ks = E.*A*num_strands;
 F = 20; %[N]
 
 wire_delta = F./Ks;
-
-% qmicro_nom = zeros(3,1);
-% qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
-% qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;
-% qmicro_nom(1,1) = norm(m_in_w(:,1) - b_in_w(:,1)) - twa_flange_offset;

@@ -11,7 +11,7 @@ for i = 1:length(x)
     xdes = [x(i);y(i);0];
     setxdes(tg,xdes);
     
-    pause(2)    
+    pause(3)    
 end
 
 for i = 1:length(x)

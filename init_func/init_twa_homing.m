@@ -19,7 +19,7 @@ b_in_w = b_rad*[cos(base_vertex_locations);sin(base_vertex_locations);zeros(1,3)
 
 % flexure rotation center
 f_rad = 80; %[mm]
-flexure_locs = [-45 75 196]*pi/180;
+flexure_locs = [-45 75 195]*pi/180;
 f_in_w = f_rad*[cos(flexure_locs);sin(flexure_locs);zeros(1,3)];
 
 % TWA motor position
@@ -28,12 +28,13 @@ motor_locs = [257.177 17.177 137.177]*pi/180;
 m_in_w = m_rad*[cos(motor_locs);sin(motor_locs);zeros(1,3)];
 
 % TWA attachment point position 
-t_rad = 169.6918;
-t_locs = [327.0745 87.0745 207.0745]*pi/180;
+t_rad = 170.13;%169.6918;
+t_locs = [326.24 86.24 206.24]*pi/180; %[327.0745 87.0745 207.0745]*pi/180;
 t_in_w = t_rad*[cos(t_locs);sin(t_locs);zeros(1,3)];
 
 % angle between base vertex and twa attachment point, in flexure frame
-twa_gamma = 11.6087 * pi/180;
+% twa_gamma = 11.6087 * pi/180;
+twa_gamma = 13.16 * pi/180;
 
 % moving platform starts at the origin with 30 degree rotation
 p_in_w = zeros(3,3) + rm2w_homing*p_in_m;

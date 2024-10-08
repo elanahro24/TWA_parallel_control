@@ -45,7 +45,6 @@ twa_gear_rat  = 3249/196;
 enc_res_vec = [enc_res;twa_enc_res*ones(3,1)];
 gear_rat_vec = [gear_rat;twa_gear_rat*ones(3,1)];
 
-
 % velmex pitch, screw is 20 turns/inch => 0.05 inch/turn => 1.27 mm/turn
 velmex_pitch = 1.27; % [mm/turn]
 
@@ -61,7 +60,7 @@ res_rate_param = [1.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
 % res_rate_param = [res_rate_param,...
 %                        [0.001, 0.0087, 0.01, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
 res_rate_param = [res_rate_param,...
-                       [0.001, 0.0087, 0.25, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
+                       [0.001, 0.0087, 0.05, 0.0005, 1.45, 0.001, 20, 1.5, 0.0003]'];
 
 % switch for using twa in task space when manually choosing macro/micro
 % motion. 0 = no; 1 = yes
