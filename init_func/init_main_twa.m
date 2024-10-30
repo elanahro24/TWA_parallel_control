@@ -18,6 +18,9 @@ dt = 0.001;  %control loop cycle
 N_velocity = 2;
 vel_filter_coeffs = ones(N_velocity,1);
 
+N_rad = 50;
+rad_filter_coeffs = ones(N_rad,1);
+
 N_pot = 5;
 pot_filter_coeffs = ones(N_pot,1);
 
@@ -54,7 +57,7 @@ velmex_pitch = 1.27; % [mm/turn]
 
 % 1/3 rule for macro motion with w_eps = 0.035 (~2 deg) give wmax = 11.667
 % res_rate_param = [0.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
-res_rate_param = [1.5, 0.035, 2, 0.1, 2, 0.05, 3, 3, 0.005]';
+res_rate_param = [0.25, 0.035, 0.5, 0.1, 2, 0.05, 3, 3, 0.005]';
 
 % a second column for micro actuator resolved rates
 % res_rate_param = [res_rate_param,...
@@ -67,7 +70,7 @@ res_rate_param = [res_rate_param,...
 use_twa = 1;
 
 % scope formatting
-q_format = 'q1 [mm] %12.6f,q2 [mm] %12.6f,q3 [mm] %12.6f,q4 [cnt] %12.6f,q5 [cnt] %12.6f,q6 [cnt] %12.6f';
+q_format = 'q1 [mm] %12.6f,q2 [mm] %12.6f,q3 [mm] %12.6f,q4 [mm] %12.6f,q5 [mm] %12.6f,q6 [mm] %12.6f';
 qdes_format = 'q1_ref [cnt] %8.4f,q2_ref [cnt] %8.4f,q3_ref [cnt] %8.4f,q4_ref [cnt] %8.4f,q5_ref [cnt] %8.4f,q6_ref [cnt] %8.4f';
 qd_format = 'q1d [mm/s] %8.6f,q2d [mm/s] %8.6f,q3d [mm/s] %8.6f,q4d [cnt] %8.6f,q5d [cnt] %8.6f,q6d [cnt] %8.6f, qdnorm %5i';
 qcmd_format = 'q1_cmd [A] %12.4f,q2_cmd [A] %12.4f,q3_cmd [A] %12.4f,q4_cmd [A] %12.4f,q5_cmd [A] %12.4f,q6_cmd [A] %12.4f';

@@ -1,4 +1,5 @@
-% for initialization resolved rates.
+% Parameters associated with robot initial position used in kinematics clac
+
 % physically measured macro leg lengths at initial position
 meas_macro_len = [124.79;125.42;125.23];
 
@@ -19,7 +20,7 @@ b_in_w = b_rad*[cos(base_vertex_locations);sin(base_vertex_locations);zeros(1,3)
 
 % flexure rotation center
 f_rad = 80; %[mm]
-flexure_locs = [-45 75 195]*pi/180;
+flexure_locs = [315 75 195]*pi/180;
 f_in_w = f_rad*[cos(flexure_locs);sin(flexure_locs);zeros(1,3)];
 
 % TWA motor position
